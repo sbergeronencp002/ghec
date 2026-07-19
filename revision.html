@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>Révision — GHEC · CSSBF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap">
+<link rel="stylesheet" href="style.css?v=31">
+<style>
+header nav { display:flex; align-items:center; gap:.25rem; margin-left:auto; }
+header nav a { padding:.45rem .9rem; border-radius:6px; color:rgba(255,255,255,.75); text-decoration:none; font-size:.8rem; font-weight:500; transition:background .15s,color .15s; white-space:nowrap; cursor:pointer; }
+header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
+
+.rv-toolbar { background:var(--paper-2); border-bottom:1px solid var(--border); padding:.75rem 1.5rem; display:flex; gap:1rem; align-items:flex-end; flex-wrap:wrap; }
+.rv-field { display:flex; flex-direction:column; gap:.25rem; }
+.rv-field label { font-size:.65rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); font-weight:500; }
+.rv-toolbar select { width:180px; }
+.rv-toolbar input[type=search] { width:200px; padding:.5rem .75rem; border:1px solid var(--border); border-radius:4px; font-family:inherit; font-size:.8rem; background:var(--paper); color:var(--ink); }
+.rv-toolbar input[type=search]:focus { outline:none; border-color:var(--ink-2); }
+.rv-reset { padding:.5rem .85rem; background:transparent; border:1px solid var(--border); border-radius:4px; font-size:.75rem; color:var(--ink-3); cursor:pointer; }
+.rv-reset:hover { background:var(--paper-3); color:var(--ink); }
+.rv-stat { margin-left:auto; font-size:.78rem; color:var(--ink-3); }
+.rv-stat b { color:var(--ink-2); }
+
+.rv-stage { display:flex; align-items:stretch; gap:1rem; padding:1.5rem 1.5rem .5rem; max-width:920px; margin:0 auto; }
+.rv-arrow { flex-shrink:0; width:44px; align-self:center; height:72px; border-radius:8px; border:1px solid var(--border); background:#fff; color:var(--ink-2); font-size:1.6rem; cursor:pointer; transition:all .15s; }
+.rv-arrow:hover:not(:disabled) { background:var(--paper-2); color:var(--ink); }
+.rv-arrow:disabled { opacity:.3; cursor:default; }
+
+.rv-card-wrap { flex:1; min-width:0; touch-action:pan-y; }
+.rv-card-wrap img { -webkit-user-drag:none; user-select:none; }
+.rv-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1.5rem 1.75rem; min-height:60vh; box-shadow:0 2px 14px rgba(0,0,0,.05); }
+
+.rv-topline { display:flex; align-items:center; justify-content:space-between; gap:.5rem; margin-bottom:.15rem; }
+.rv-id { font-size:.72rem; color:var(--ink-3); font-weight:600; flex-shrink:0; }
+.rv-aspect { font-size:.78rem; color:var(--ink-2); opacity:.85; margin-bottom:2px; }
+.rv-points { font-size:.7rem; color:var(--ink-3); font-weight:600; margin-bottom:.4rem; }
+
+.rv-note { font-size:.78rem; color:var(--ink-3); font-style:italic; }
+
+.rv-guide-label { color:#2A7A4A !important; display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
+.rv-guide-box { background:#EAF6EE; border:1px solid #CDE9D6; border-radius:8px; padding:.75rem 1rem; font-size:.85rem; color:var(--ink); line-height:1.6; }
+.rv-guide-empty { color:var(--ink-3); font-style:italic; }
+.rv-guide-edit-btn { font-size:.68rem; font-weight:600; text-transform:none; letter-spacing:0; color:#2A7A4A; background:#fff; border:1px solid #CDE9D6; border-radius:5px; padding:.15rem .55rem; cursor:pointer; font-family:inherit; }
+.rv-guide-edit-btn:hover { background:#EAF6EE; }
+.rv-guide-textarea { width:100%; min-height:110px; padding:.6rem .75rem; border:1px solid #CDE9D6; border-radius:6px; font-family:inherit; font-size:.85rem; color:var(--ink); resize:vertical; background:#fff; }
+.rv-guide-textarea:focus { outline:none; border-color:#2A7A4A; }
+.rv-guide-edit-actions { display:flex; align-items:center; gap:.5rem; margin-top:.5rem; justify-content:flex-end; }
+.rv-guide-status { font-size:.75rem; margin-right:auto; color:var(--ink-3); }
+.rv-guide-status.ok { color:#276539; }
+.rv-guide-status.err { color:#842029; }
+.rv-guide-btn-cancel, .rv-guide-btn-save { padding:.35rem .85rem; border-radius:6px; font-size:.78rem; font-weight:500; cursor:pointer; border:1px solid transparent; font-family:inherit; }
+.rv-guide-btn-cancel { background:var(--paper-2); color:var(--ink-2); border-color:var(--border); }
+.rv-guide-btn-cancel:hover { background:var(--paper-3); }
+.rv-guide-btn-save { background:#1B3B6F; color:#fff; }
+.rv-guide-btn-save:hover { opacity:.88; }
+.rv-guide-btn-save:disabled { opacity:.5; cursor:not-allowed; }
+
+/* Étiquette de section avec bouton d'édition (énoncé, documents) — même layout que
+   .rv-guide-label mais sans sa couleur verte propre au guide. */
+.rv-label-flex { display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
+.rv-doc-edit-btn { position:absolute; top:4px; right:4px; }
+.rv-doc-field-label { display:block; font-size:.68rem; font-weight:600; color:var(--ink-3); margin-top:.35rem; }
+.rv-doc-input { width:100%; padding:.35rem .5rem; margin-top:.1rem; border:1px solid var(--border); border-radius:5px; font-family:inherit; font-size:.78rem; color:var(--ink); background:#fff; }
+.rv-doc-input:focus { outline:none; border-color:#1B3B6F; }
+
+.rv-progress { text-align:center; padding:.5rem 0 .35rem; font-size:.82rem; color:var(--ink-2); font-weight:500; }
+.rv-hint { text-align:center; padding:0 0 1.5rem; font-size:.68rem; color:var(--ink-3); opacity:.75; }
+
+.rv-empty { text-align:center; padding:3rem 1rem; color:var(--ink-3); font-size:.9rem; }
+
+@keyframes rvSlideL { from{opacity:0; transform:translateX(-16px);} to{opacity:1; transform:translateX(0);} }
+@keyframes rvSlideR { from{opacity:0; transform:translateX(16px);} to{opacity:1; transform:translateX(0);} }
+.slide-in-left .rv-card { animation:rvSlideL .22s ease; }
+.slide-in-right .rv-card { animation:rvSlideR .22s ease; }
+
+@media (max-width:640px) {
+  .rv-stage { padding:1rem .4rem; gap:.35rem; }
+  .rv-arrow { width:32px; height:56px; font-size:1.3rem; }
+  .rv-card { padding:1.1rem; }
+  .rv-toolbar select, .rv-toolbar input[type=search] { width:140px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GHEC · CSSBF</h1>
+  <span style="font-size:0.7rem;color:rgba(255,255,255,0.6);letter-spacing:0.08em;text-transform:uppercase;margin-left:12px">Révision — défilement par carte</span>
+  <nav>
+    <a href="admin.html">⚙ Admin</a>
+    <a href="documents.html">🖼 Documents</a>
+    <a href="index.html">← Site</a>
+  </nav>
+</header>
+
+<div class="rv-toolbar">
+  <div class="rv-field">
+    <label for="f-search">Recherche</label>
+    <input type="search" id="f-search" placeholder="Mot-clé…" oninput="rvDebouncedApply()">
+  </div>
+  <div class="rv-field">
+    <label for="f-niveau">Niveau</label>
+    <select id="f-niveau" onchange="rvOnNiveauChange()">
+      <option value="">Tous</option>
+    </select>
+  </div>
+  <div class="rv-field">
+    <label for="f-periode">Période</label>
+    <select id="f-periode" onchange="rvOnPeriodeChange()">
+      <option value="">Toutes</option>
+    </select>
+  </div>
+  <div class="rv-field">
+    <label for="f-aspect">Aspect</label>
+    <select id="f-aspect" onchange="rvApplyFilters()">
+      <option value="">Tous</option>
+    </select>
+  </div>
+  <div class="rv-field">
+    <label for="f-oi">Opération intellectuelle</label>
+    <select id="f-oi" onchange="rvApplyFilters()">
+      <option value="">Toutes</option>
+    </select>
+  </div>
+  <button class="rv-reset" onclick="rvResetFilters()">↺ Réinitialiser</button>
+  <div class="rv-stat" id="rv-stat">0 question</div>
+</div>
+
+<div class="rv-stage">
+  <button class="rv-arrow" id="rv-prev" onclick="rvNav(-1)" aria-label="Question précédente">‹</button>
+  <div class="rv-card-wrap" id="rv-card-wrap">
+    <div class="rv-card" id="rv-card"></div>
+  </div>
+  <button class="rv-arrow" id="rv-next" onclick="rvNav(1)" aria-label="Question suivante">›</button>
+</div>
+<div class="rv-progress" id="rv-pos">0 / 0</div>
+<div class="rv-hint">← → ou glisser pour naviguer</div>
+
+<div class="lightbox" id="rv-lightbox" onclick="rvCloseLightbox(event)">
+  <button class="lightbox-close" onclick="rvCloseLightbox()">×</button>
+  <div id="lightbox-viewport">
+    <img id="rv-lightbox-img" src="" alt="Image agrandie" draggable="false">
+  </div>
+</div>
+
+<script src="oi-config.js?v=1"></script>
+<script src="questions-io.js?v=3"></script>
+<script src="contexte.js"></script>
+<script src="filters.js?v=1"></script>
+<script>
+// Page autonome (comme documents.html) : pas de dépendance à app.js.
+// Charge oi-config.js (styles OI), questions-io.js (sérialiseur partagé pour
+// l'édition du guide), contexte.js (périodes/aspects) et questions.js
+// (QUESTIONS, REGLETTES, IMAGE_DB) en lecture seule — aucune écriture ici.
+
+// Un navigateur ne revérifie sw.js qu'au plus une fois par 24h par défaut (throttle du
+// navigateur, indépendant de tout cache-bust côté serveur) — un F5 ou même fermer/rouvrir
+// l'onglet ne suffit donc pas à récupérer un correctif tout juste déployé si cette page
+// est encore contrôlée par un ancien service worker. On force la vérification ici et on
+// recharge une seule fois si un nouveau SW prend effectivement le relais.
+if ('serviceWorker' in navigator) {
+  let _swReloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (_swReloaded) return;
+    _swReloaded = true;
+    location.reload();
+  });
+  navigator.serviceWorker.getRegistration().then(reg => { if (reg) reg.update(); }).catch(() => {});
+}
+
+function rvEscLine(s) {
+  return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+// Échappe pour un attribut HTML entre guillemets doubles (ex. alt).
+function rvEscAttr(s) {
+  return rvEscLine(s).replace(/"/g,'&quot;');
+}
+// Échappe pour une chaîne JS entre apostrophes (ex. dans un onclick="…('…')") — même
+// convention que jsStr() d'app.js.
+function rvJsStr(s) {
+  return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+}
+function rvBoldify(s) {
+  return s.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+}
+function rvFormatTexte(text) {
+  let html = '', inList = false;
+  (text || '').split('\n').forEach(line => {
+    if(line.startsWith('• ')) {
+      if(!inList) { html += '<ul style="margin:2px 0 2px 14px;padding:0">'; inList = true; }
+      html += '<li>' + rvBoldify(rvEscLine(line.slice(2))) + '</li>';
+    } else {
+      if(inList) { html += '</ul>'; inList = false; }
+      if(line.trim()) html += rvBoldify(rvEscLine(line)) + '<br>';
+      else html += '<br>';
+    }
+  });
+  if(inList) html += '</ul>';
+  return html;
+}
+function rvFold(s) {
+  return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+function rvOiStyle(oi) {
+  return (typeof OI_CONFIG !== 'undefined' && OI_CONFIG[oi]) || {color:'var(--ink-2)', bg:'var(--paper-3)'};
+}
+
+// Token lu depuis le stockage partagé avec admin.html/documents.html (jamais saisi ici)
+function rvGetToken() {
+  return localStorage.getItem('gh_token') || sessionStorage.getItem('gh_token') || '';
+}
+function rvRequireToken() {
+  const t = rvGetToken();
+  if(!t) throw new Error('Token GitHub manquant — connectez-vous dans admin.html d\'abord.');
+  return t;
+}
+const RV_REPO  = 'sbergeronencp002/ghec';
+const RV_API  = 'https://api.github.com/repos/' + RV_REPO + '/contents/';
+
+// Lit questions.js depuis l'API GitHub Contents et décode son contenu source (base64
+// inline si ≤ 1 Mo, sinon téléchargement via download_url). Retourne { content, sha }.
+async function rvFetchQuestionsJsSource(headers) {
+  const rq = await fetch(RV_API + 'questions.js?t=' + Date.now(), { headers, cache: 'no-store' });
+  if(!rq.ok) throw new Error('Lecture questions.js (' + rq.status + ')');
+  const dq = await rq.json();
+  let content;
+  if(dq.content) {
+    const rawBytes = Uint8Array.from(atob(dq.content.replace(/\n/g,'')), c => c.charCodeAt(0));
+    content = new TextDecoder('utf-8').decode(rawBytes);
+  } else if(dq.download_url) {
+    const dlUrl = dq.download_url.includes('?') ? dq.download_url + '&t=' + Date.now() : dq.download_url + '?t=' + Date.now();
+    const raw = await fetch(dlUrl, {cache: 'no-store'});
+    if(!raw.ok) throw new Error('Impossible de télécharger questions.js : ' + raw.status);
+    content = await raw.text();
+  } else {
+    throw new Error("Réponse inattendue de l'API GitHub pour questions.js");
+  }
+  return { content, sha: dq.sha };
+}
+
+// GitHub peut mettre plusieurs dizaines de secondes à propager un commit sur tous ses
+// réplicas de lecture (vécu le 2026-07-13 : une « lecture fraîche » 35 s après un commit
+// précédent a quand même renvoyé l'état d'AVANT ce commit, l'écrasant silencieusement ;
+// re-vécu le 2026-07-14 alors qu'un délai fixe de 12 s s'était pourtant écoulé — un délai
+// fixe ne peut pas garantir la fraîcheur). Plutôt que d'espérer qu'un délai suffise, on
+// relit deux fois de suite espacées de RV_STABLE_READ_POLL_MS : si les deux lectures
+// renvoient le même SHA, les réplicas sont considérés stabilisés et la lecture est fiable.
+// Sinon on réessaie jusqu'à RV_STABLE_READ_MAX_WAIT_MS, puis on abandonne en avertissant
+// plutôt que de bloquer indéfiniment.
+const RV_STABLE_READ_POLL_MS = 3000;
+const RV_STABLE_READ_MAX_WAIT_MS = 45000;
+
+async function rvFetchStableQuestionsJs(headers) {
+  const start = Date.now();
+  let prev = await rvFetchQuestionsJsSource(headers);
+  while(Date.now() - start < RV_STABLE_READ_MAX_WAIT_MS) {
+    await new Promise(r => setTimeout(r, RV_STABLE_READ_POLL_MS));
+    const next = await rvFetchQuestionsJsSource(headers);
+    if(next.sha === prev.sha) return next;
+    prev = next;
+  }
+  console.warn('questions.js : lectures instables après ' + RV_STABLE_READ_MAX_WAIT_MS + ' ms — poursuite avec la dernière lecture disponible.');
+  return prev;
+}
+
+// Lecture fraîche (stabilisée) de questions.js → mutation ciblée → réécriture (PUT), 1 retry sur conflit SHA
+async function rvApplyQuestionsEdit(mutate, commitMsg) {
+  const token = rvRequireToken();
+  for(let attempt = 0; attempt < 2; attempt++) {
+    const { content, sha } = await rvFetchStableQuestionsJs({Authorization: 'token ' + token});
+    let parsed;
+    try {
+      parsed = new Function(content + '\n return { REGLETTES, IMAGE_DB, QUESTIONS };')();
+    } catch(e) {
+      throw new Error('questions.js illisible : ' + e.message);
+    }
+    const changed = mutate(parsed);
+    if(!changed) return false;
+    const out = generateQuestionsJs(parsed.QUESTIONS, parsed.REGLETTES, parsed.IMAGE_DB);
+    const enc = new TextEncoder().encode(out);
+    let binary = ''; enc.forEach(b => binary += String.fromCharCode(b));
+    const rp = await fetch(RV_API + 'questions.js', {
+      method: 'PUT',
+      headers: {Authorization: 'token ' + token, 'Content-Type': 'application/json'},
+      body: JSON.stringify({message: commitMsg, content: btoa(binary), sha: sha})
+    });
+    if(rp.ok) return true;
+    if(rp.status === 409 && attempt === 0) continue;
+    throw new Error('Échec écriture questions.js (' + rp.status + ')');
+  }
+  throw new Error('Conflit persistant — réessayez.');
+}
+// Un seul champ éditable à la fois sur la carte (guide, énoncé, ou un document) : plus
+// simple à raisonner que plusieurs éditions concurrentes, et suffisant en pratique.
+// `isDirty()` compare le DOM courant à la valeur chargée à l'ouverture de l'édition.
+let _rvActiveEdit = null;
+// Incrémenté à chaque nouvelle session d'édition — permet au setTimeout différé de
+// rvSave* (voir plus bas) de détecter qu'un champ a été rouvert pour édition avant
+// que le rendu différé de l'ancienne sauvegarde ne s'applique, et de s'abstenir
+// plutôt que d'écraser le texte en cours de frappe (le nœud conteneur reste
+// `.isConnected` puisque seul son innerHTML change en cas de réouverture — cette
+// vérification à elle seule ne suffit donc pas).
+let _rvEditGen = 0;
+function rvBeginEdit(key, isDirty, cancelFn) {
+  if(_rvActiveEdit && _rvActiveEdit.key !== key) {
+    alert('Enregistrez ou annulez l\'édition en cours avant d\'en commencer une autre.');
+    return false;
+  }
+  _rvEditGen++;
+  _rvActiveEdit = { key, isDirty, cancel: cancelFn };
+  return true;
+}
+function rvEndEdit() { _rvActiveEdit = null; }
+function hasUnsavedEdit() { return !!_rvActiveEdit && _rvActiveEdit.isDirty(); }
+// À appeler avant toute navigation/changement de filtre qui régénère la carte :
+// demande confirmation si une édition non enregistrée serait perdue.
+function confirmDiscardEdit() {
+  if(!hasUnsavedEdit()) return true;
+  return confirm('Des modifications non enregistrées seraient perdues. Continuer ?');
+}
+
+function rvDocsForRender(documents) {
+  const docs = documents || [];
+  const allSingleTextes = docs.every(d => d && d.type === 'textes' && (d.cols||[]).length === 1);
+  if((docs.length === 2 || docs.length === 4) && allSingleTextes) {
+    return [{ type: 'textes', cols: docs.map(d => d.cols[0]), colsPerRow: 2 }];
+  }
+  return docs;
+}
+
+const periodeOrder = (typeof PERIODES_PAR_NIVEAU !== 'undefined')
+  ? Object.values(PERIODES_PAR_NIVEAU).flat()
+  : [];
+let rvAspects = [];
+let rvList = [];
+let rvIndex = 0;
+
+// Ids des <select> de la cascade niveau→période→aspect (voir filters.js, chargé plus haut).
+const RV_FILTER_IDS = { niveau: 'f-niveau', periode: 'f-periode', aspect: 'f-aspect' };
+
+function rvPopulateFilters() {
+  const allOis = [...new Set(QUESTIONS.map(q => q.oi))].sort((a,b) => a.localeCompare(b,'fr'));
+  const aspectsByPeriode = {};
+  QUESTIONS.forEach(q => {
+    (q.aspects||[]).forEach(a => {
+      if(!aspectsByPeriode[q.periode]) aspectsByPeriode[q.periode] = new Set();
+      aspectsByPeriode[q.periode].add(a.aspect);
+    });
+  });
+  rvAspects = periodeOrder.flatMap(p => {
+    if(!aspectsByPeriode[p]) return [];
+    return [...aspectsByPeriode[p]].sort((a,b) => a.localeCompare(b,'fr')).map(a => ({aspect:a, periode:p}));
+  });
+  const periodesPresentes = new Set(QUESTIONS.map(q => q.periode));
+  const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
+
+  fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort(), 'Tous');
+  fillSelect('f-periode', periodes, 'Toutes');
+  fillAspectSelect('f-aspect', rvAspects, periodeOrder);
+  fillSelect('f-oi', allOis, 'Toutes');
+}
+
+function rvOnNiveauChange() {
+  cascadeNiveauChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU);
+  rvApplyFilters();
+}
+
+function rvOnPeriodeChange() {
+  cascadePeriodeChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU);
+  rvApplyFilters();
+}
+
+let _rvSearchTimer = 0;
+function rvDebouncedApply() {
+  clearTimeout(_rvSearchTimer);
+  _rvSearchTimer = setTimeout(rvApplyFilters, 280);
+}
+
+function rvApplyFilters() {
+  // Empêche de perdre une édition non enregistrée en changeant de filtre : le
+  // <select>/l'input a déjà pris sa nouvelle valeur au moment du onchange/oninput (on ne
+  // la remet pas en arrière si l'utilisateur annule), mais la carte n'est pas régénérée.
+  if(!confirmDiscardEdit()) return;
+  rvEndEdit();
+  const oi      = document.getElementById('f-oi').value;
+  const aspect  = document.getElementById('f-aspect').value;
+  const periode = document.getElementById('f-periode').value;
+  const niveau  = document.getElementById('f-niveau').value;
+  const search  = rvFold((document.getElementById('f-search').value || '').trim());
+  const currentOi = oi;
+
+  const filtered = [];
+  const oiSet = new Set();
+  for(const q of QUESTIONS) {
+    const niveauOk  = !niveau  || String(q.niveau) === niveau;
+    const periodeOk = !periode || q.periode === periode;
+    const aspectOk  = !aspect  || (q.aspects||[]).some(a => a.aspect === aspect);
+    if(niveauOk && periodeOk && aspectOk) oiSet.add(q.oi);
+    if(!niveauOk || !periodeOk || !aspectOk) continue;
+    if(oi && q.oi !== oi) continue;
+    if(search) {
+      const idx = rvFold([q.enonce||'', q.oi||'', q.periode||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
+      if(!idx.includes(search)) continue;
+    }
+    filtered.push(q);
+  }
+
+  filtered.sort((a, b) => {
+    if(a.niveau !== b.niveau) return a.niveau - b.niveau;
+    const pa = periodeOrder.indexOf(a.periode), pb = periodeOrder.indexOf(b.periode);
+    if(pa !== pb) return pa - pb;
+    return (parseInt(a.id.replace(/\D/g,''))||0) - (parseInt(b.id.replace(/\D/g,''))||0);
+  });
+
+  const relevantOis = [...oiSet].sort((a,b) => a.localeCompare(b,'fr'));
+  fillSelect('f-oi', relevantOis, 'Toutes');
+  if(relevantOis.includes(currentOi)) document.getElementById('f-oi').value = currentOi;
+
+  rvList = filtered;
+  rvIndex = 0;
+  const totalPts = filtered.reduce((s,q) => s+(q.points||0), 0);
+  document.getElementById('rv-stat').innerHTML =
+    filtered.length === QUESTIONS.length
+      ? `<b>${filtered.length}</b> questions`
+      : `<b>${filtered.length}</b> question${filtered.length!==1?'s':''} · ${totalPts} pt${totalPts!==1?'s':''}`;
+  rvRenderCard();
+}
+
+function rvResetFilters() {
+  ['f-niveau','f-periode','f-aspect','f-oi','f-search'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+  rvPopulateFilters();
+  rvApplyFilters();
+}
+
+function rvRenderReponse(q) {
+  if(!q.reponse || q.reponse === false) return '';
+  if(q.reponse === true) {
+    return '<div style="border-bottom:1px solid var(--border);height:28px;margin:6px 0"></div>';
+  }
+  if(q.reponse.type === 'tableau_3col') {
+    const {col1='', col2='', col3=''} = q.reponse;
+    const S = 'border:1px solid var(--ink-2);text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem';
+    return '<table style="border-collapse:collapse;margin:8px 0;">'
+      + '<tr>'
+      + '<td style="' + S + '">' + rvEscLine(col1) + '</td>'
+      + '<td style="' + S + ';vertical-align:middle" rowspan="2">' + rvEscLine(col2) + '</td>'
+      + '<td style="' + S + '">' + rvEscLine(col3) + '</td>'
+      + '</tr><tr>'
+      + '<td style="border:1px solid var(--ink-2);background:var(--paper-2);height:50px;min-width:80px"></td>'
+      + '<td style="border:1px solid var(--ink-2);background:var(--paper-2);height:50px;min-width:80px"></td>'
+      + '</tr></table>';
+  }
+  if(q.reponse.type === 'image') {
+    const img = IMAGE_DB[q.reponse.ref];
+    if(!img) return '';
+    const reduire = q.soustag === 'Ordre chronologique' || q.soustag === 'Ligne du temps';
+    const imgStyle = reduire ? ' style="max-width:75%"' : '';
+    return '<div class="doc-img-wrap"><img src="' + rvEscAttr(img.src) + '" alt="Image de réponse" class="doc-img"' + imgStyle + ' draggable="false" onclick="' + rvEscAttr("rvOpenLightbox('" + rvJsStr(img.src) + "')") + '" title="Cliquer pour agrandir"></div>';
+  }
+  if(q.reponse.type === 'lignes') {
+    const n = q.reponse.nombre || 1;
+    return '<div>' + Array(n).fill('<div style="border-bottom:1px solid var(--border);height:28px;margin:6px 0"></div>').join('') + '</div>';
+  }
+  if(q.reponse.type === 'tableau') {
+    let html = '<table style="border-collapse:collapse;margin:8px 0;font-size:0.8rem;">'
+      + '<tr><th style="border:0.5px solid var(--border);padding:4px 8px;background:var(--paper-2);text-align:left"></th>'
+      + '<th style="border:0.5px solid var(--border);padding:4px 8px;background:var(--paper-2);text-align:center">Document</th></tr>';
+    (q.reponse.lignes||[]).forEach(l => {
+      html += '<tr><td style="border:0.5px solid var(--border);padding:4px 8px">' + rvEscLine(l.label) + '</td>'
+            + '<td style="border:0.5px solid var(--border);padding:4px 30px"></td></tr>';
+    });
+    html += '</table>';
+    return html;
+  }
+  if(q.reponse.type === 'grille') {
+    const {entetes=[], rangees=[]} = q.reponse;
+    const TH = 'border:0.5px solid var(--border);padding:4px 8px;background:var(--paper-2);text-align:center;font-weight:600;font-size:0.8rem';
+    const TD = 'border:0.5px solid var(--border);padding:4px 8px;font-size:0.8rem';
+    let html = '<table style="border-collapse:collapse;margin:8px 0;">';
+    html += '<tr>' + entetes.map(h => `<th style="${TH}">${rvEscLine(h)}</th>`).join('') + '</tr>';
+    rangees.forEach(row => {
+      html += '<tr>' + row.map((cell, ci) => `<td style="${TD}${ci===0?';font-weight:500':';min-width:60px;height:24px'}">${rvEscLine(cell)}</td>`).join('') + '</tr>';
+    });
+    html += '</table>';
+    return html;
+  }
+  if(q.reponse.type === 'tableau_2col') {
+    const CS = 'border:1px solid var(--ink-2);text-align:center;padding:6px 8px;font-size:0.8rem;width:113px';
+    return '<table style="border-collapse:collapse;margin:8px 0;">'
+      + '<tr><td style="' + CS + ';font-weight:600;background:var(--paper-2)">Réponse</td>'
+      + '<td style="' + CS + ';background:var(--paper);height:40px"></td></tr>'
+      + '</table>';
+  }
+  if(q.reponse.type === 'cause-consequence') {
+    const B = 'border:1px solid var(--ink-2)';
+    const TH = B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem;white-space:nowrap';
+    const TC = B + ';text-align:center;padding:8px 16px';
+    const circle = '<span style="display:inline-block;width:1.25cm;height:1.25cm;border-radius:50%;border:1.5px solid #000"></span>';
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0">'
+      + ['Cause','Conséquence'].map(l => '<tr><td style="' + TH + '">' + l + '</td><td style="' + TC + '">' + circle + '</td></tr>').join('')
+      + '</table>';
+  }
+  if(q.reponse.type === 'mettre-en-relation') {
+    const els = q.reponse.elements || [];
+    const n = els.length;
+    const B = 'border:1px solid var(--ink-2)';
+    const circle = '<span style="display:inline-block;width:1.25cm;height:1.25cm;border-radius:50%;border:1.5px solid #000"></span>';
+    const TH = B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem';
+    const TC = B + ';text-align:center;padding:8px 4px';
+    const colPct = Math.floor(100 / n) + '%';
+    if(n === 2 && q.reponse.double) {
+      const BT = 'border-top:1px solid var(--ink-2);border-bottom:1px solid var(--ink-2)';
+      const TC_NR = B + ';border-right:none;text-align:center;padding:8px 10px';
+      const SN   = BT + ';border-left:none;border-right:none;text-align:center;padding:8px 6px;font-size:0.8rem';
+      const TC_NL = B + ';border-left:none;text-align:center;padding:8px 10px';
+      return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0">'
+        + els.map(e => '<tr>'
+          + '<td style="' + TH + ';white-space:nowrap">' + rvEscLine(e) + '</td>'
+          + '<td style="' + TC_NR + '">' + circle + '</td>'
+          + '<td style="' + SN + '">et</td>'
+          + '<td style="' + TC_NL + '">' + circle + '</td>'
+          + '</tr>').join('')
+        + '</table>';
+    }
+    if(n === 2) {
+      return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0">'
+        + els.map(e => '<tr><td style="' + TH + ';white-space:nowrap">' + rvEscLine(e) + '</td><td style="' + TC + ';text-align:center;padding:8px 16px">' + circle + '</td></tr>').join('')
+        + '</table>';
+    }
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin:8px 0">'
+      + '<tr>' + els.map(e => '<td style="' + TH + ';width:' + colPct + '">' + rvEscLine(e) + '</td>').join('') + '</tr>'
+      + '<tr>' + els.map(() => '<td style="' + TC + ';text-align:center">' + circle + '</td>').join('') + '</tr>'
+      + '</table>';
+  }
+  if(q.reponse.type === 'situer-dans-lespace') {
+    const els = q.reponse.elements || ['Élément 1','Élément 2'];
+    const B = 'border:1px solid var(--ink-2)';
+    const TH = B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem';
+    const TC = B + ';text-align:center;padding:12px 16px';
+    const circle = '<span style="display:inline-block;width:1.25cm;height:1.25cm;border-radius:50%;border:1.5px solid #000"></span>';
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0">'
+      + '<tr>' + els.map(e => '<td style="' + TH + '">' + rvEscLine(e) + '</td>').join('') + '</tr>'
+      + '<tr>' + els.map(() => '<td style="' + TC + '">' + circle + '</td>').join('') + '</tr>'
+      + '</table>';
+  }
+  if(q.reponse.type === 'avant-apres') {
+    const lbl = q.reponse.label || '';
+    const B = 'border:1px solid var(--ink-2)';
+    const circle = '<span style="display:inline-block;width:2cm;height:2cm;border-radius:50%;border:1.5px solid #000"></span>';
+    const sideCell = '<div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 4px">' + circle + '<span style="font-size:0.8rem">et</span>' + circle + '</div>';
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin:8px 0">'
+      + '<tr>'
+      + '<td style="' + B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem;width:33%">Avant</td>'
+      + '<td style="' + B + ';text-align:center;font-weight:700;padding:8px;font-size:0.85rem;width:34%;vertical-align:middle" rowspan="2">' + rvEscLine(lbl) + '</td>'
+      + '<td style="' + B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem;width:33%">Après</td>'
+      + '</tr><tr>'
+      + '<td style="' + B + '">' + sideCell + '</td>'
+      + '<td style="' + B + '">' + sideCell + '</td>'
+      + '</tr></table>';
+  }
+  return '';
+}
+
+// Retrouve la position (docIdx, colIdx) d'une colonne dans le tableau ORIGINAL
+// (non fusionné) q.documents, par identité d'objet — rvDocsForRender() peut regrouper
+// plusieurs documents mono-colonne dans un document synthétique pour l'affichage
+// (2 ou 4 colonnes par rangée), mais les objets `col` restent les mêmes références.
+function rvFindColPath(documents, col) {
+  for(let di=0; di<(documents||[]).length; di++) {
+    const cols = documents[di].cols;
+    if(!cols) continue;
+    const ci = cols.indexOf(col);
+    if(ci !== -1) return {docIdx: di, colIdx: ci};
+  }
+  return null;
+}
+
+// Contenu d'une cellule de document « textes » (hors <td> englobant) — partagé entre le
+// rendu initial et la restauration après annulation/enregistrement d'une édition.
+function rvRenderDocColInner(col, path) {
+  let h = '';
+  if(path) h += '<button class="rv-guide-edit-btn rv-doc-edit-btn" onclick="rvEditDoc(' + path.docIdx + ',' + path.colIdx + ')" title="Modifier ce document">✏</button>';
+  h += '<div style="font-size:0.75rem;font-weight:600;color:var(--ink)">' + rvEscLine(col.titre||'') + '</div>';
+  if(col.soustitre) h += '<div style="font-size:0.7rem;font-style:italic;color:var(--ink-2);margin-bottom:4px">' + rvEscLine(col.soustitre) + '</div>';
+  else h += '<div style="margin-bottom:4px"></div>';
+  if(col.texte) {
+    h += '<div style="font-size:0.75rem;color:var(--ink-2);line-height:1.5">' + rvFormatTexte(col.texte) + '</div>';
+  } else if(col.ref) {
+    const img2 = IMAGE_DB[col.ref];
+    if(img2) h += '<div class="doc-img-tile" style="max-width:100%" onclick="' + rvEscAttr("rvOpenLightbox('" + rvJsStr(img2.src) + "')") + '"><img src="' + rvEscAttr(img2.src) + '" alt="' + rvEscAttr(col.titre||col.ref||'Document') + '" style="max-width:100%;max-height:180px;object-fit:contain" draggable="false"></div>';
+  }
+  if(col.auteur) h += '<div style="font-size:0.7rem;color:var(--ink-2);margin-top:4px;font-style:italic">' + rvEscLine(col.auteur) + '</div>';
+  if(col.source) h += '<div style="font-size:0.65rem;color:var(--ink-3);margin-top:2px;font-style:italic">' + rvEscLine(col.source) + '</div>';
+  return h;
+}
+
+function rvRenderDoc(d, origDocuments) {
+  if(d.type === 'textes') {
+    const cpr = d.colsPerRow || d.cols.length || 1;
+    const colW = Math.floor(100/cpr);
+    function renderCol(col) {
+      const path = rvFindColPath(origDocuments, col);
+      const cellId = path ? ' id="rv-doc-cell-' + path.docIdx + '-' + path.colIdx + '"' : '';
+      return '<td' + cellId + ' style="width:' + colW + '%;padding:6px;vertical-align:top;border:0.5px solid var(--border);position:relative">'
+        + rvRenderDocColInner(col, path)
+        + '</td>';
+    }
+    let html = '<table style="width:100%;border-collapse:collapse;margin-bottom:8px">';
+    for(let i=0; i<d.cols.length; i+=cpr) {
+      html += '<tr>' + d.cols.slice(i, i+cpr).map(renderCol).join('') + '</tr>';
+    }
+    html += '</table>';
+    return html;
+  }
+  if(d.type === 'tableau') {
+    let html = '<div class="doc-img-tiles">';
+    d.cols.forEach(function(col) {
+      const img = IMAGE_DB[col.ref];
+      if(!img) return;
+      html += '<div class="doc-img-tile" onclick="' + rvEscAttr("rvOpenLightbox('" + rvJsStr(img.src) + "')") + '">';
+      html += '<img src="' + rvEscAttr(img.src) + '" alt="' + rvEscAttr(col.titre||col.ref||'Document') + '" draggable="false">';
+      if(col.titre) html += '<div class="doc-img-tile-label">' + rvEscLine(col.titre) + '</div>';
+      if(col.soustitre) html += '<div class="doc-img-tile-sub">' + rvEscLine(col.soustitre) + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+    return html;
+  }
+  const img = IMAGE_DB[d.ref];
+  if(img) {
+    let html = '<div class="doc-img-tiles"><div class="doc-img-tile" onclick="' + rvEscAttr("rvOpenLightbox('" + rvJsStr(img.src) + "')") + '">';
+    html += '<img src="' + rvEscAttr(img.src) + '" alt="' + rvEscAttr(d.titre||d.ref||'Document') + '" style="max-width:200px;max-height:200px;object-fit:contain" draggable="false">';
+    if(d.titre) html += '<div class="doc-img-tile-label">' + rvEscLine(d.titre) + '</div>';
+    html += '</div></div>';
+    return html;
+  }
+  return '<div><span class="doc-chip">' + rvEscLine(d.type||'') + ' — ' + rvEscLine(d.ref||'') + '</span></div>';
+}
+
+function rvRenderGuide(q) {
+  if(!q.guide) return '<span class="rv-guide-empty">Aucun corrigé renseigné.</span>';
+  if(typeof q.guide === 'string') return rvFormatTexte(q.guide);
+  if(q.guide.type === 'grille' || q.guide.type === 'tableau') {
+    const TH = 'border:0.5px solid var(--border);padding:4px 10px;background:#fff;font-weight:600;font-size:0.8rem';
+    const TD = 'border:0.5px solid var(--border);padding:4px 10px;font-size:0.8rem;background:#fff';
+    let html = '<table style="border-collapse:collapse;margin-top:2px">';
+    if(q.guide.type === 'grille') {
+      html += '<tr>' + (q.guide.entetes||[]).map(h => `<th style="${TH}">${rvEscLine(h)}</th>`).join('') + '</tr>';
+      (q.guide.rangees||[]).forEach(row => {
+        html += '<tr>' + row.map((cell, ci) => `<td style="${TD}${ci===0?';font-weight:500':''}">${rvEscLine(cell)}</td>`).join('') + '</tr>';
+      });
+    } else {
+      html += `<tr><th style="${TH}"></th><th style="${TH}">Document</th></tr>`;
+      (q.guide.lignes||[]).forEach(l => {
+        html += `<tr><td style="${TD};font-weight:500">${rvEscLine(l.label)}</td><td style="${TD};text-align:center">${rvEscLine(l.valeur)}</td></tr>`;
+      });
+    }
+    html += '</table>';
+    return html;
+  }
+  return '<span class="rv-guide-empty">Aucun corrigé renseigné.</span>';
+}
+
+function rvBuildCardHtml(q) {
+  const st = rvOiStyle(q.oi);
+  const aspects = (q.aspects||[]).map(a => a.aspect).join(' · ');
+  let html = '<div class="rv-topline">';
+  html += `<span class="q-oi-badge" style="color:${st.color};background:${st.bg}">${rvEscLine(q.oi)}</span>`;
+  html += `<span class="rv-id">${rvEscLine(q.id)} · ${rvEscLine(q.periode||'')}</span>`;
+  html += '</div>';
+  if(aspects) html += `<div class="rv-aspect">${rvEscLine(aspects)}</div>`;
+  html += `<div class="rv-points">${q.points}&thinsp;pt${q.points > 1 ? 's' : ''}</div>`;
+
+  html += '<div class="q-section-label rv-label-flex">Question'
+    + '<button class="rv-guide-edit-btn" onclick="rvEditEnonce()">✏ Modifier</button>'
+    + '</div>';
+  html += '<div class="q-full-enonce" id="rv-enonce-box">' + rvFormatTexte(q.enonce) + '</div>';
+
+  const docsR = rvDocsForRender(q.documents);
+  if(docsR.length) {
+    html += '<div class="q-section-label">Documents</div>';
+    html += '<div class="q-docs-images">' + docsR.map(d => rvRenderDoc(d, q.documents)).join('<div class="doc-spacer"></div>') + '</div>';
+  }
+
+  const rep = rvRenderReponse(q);
+  if(rep) html += '<div class="q-section-label">Espace réponse</div>' + rep;
+
+  const r = REGLETTES[q.id];
+  if(r) {
+    html += '<div class="q-section-label">Réglette</div>';
+    if(r.variante) {
+      html += '<div class="rv-note">Réglette complexe — disponible dans le cahier généré (admin/index).</div>';
+    } else {
+      html += '<table class="reglette-table">' + (r.niveaux||[]).map(n =>
+        `<tr><td class="r-pts-cell">${n.pts}&thinsp;pt${n.pts > 1 ? 's' : ''}</td><td class="r-desc-cell">${rvEscLine(n.desc)}</td></tr>`
+      ).join('') + '</table>';
+    }
+  }
+
+  const isTextGuide = q.guide === undefined || q.guide === false || typeof q.guide === 'string';
+  html += '<div class="q-section-label rv-guide-label">📘 Guide de correction'
+    + (isTextGuide ? '<button class="rv-guide-edit-btn" onclick="rvEditGuide()">✏ Modifier</button>' : '')
+    + '</div>';
+  html += '<div class="rv-guide-box" id="rv-guide-box">' + rvRenderGuide(q) + '</div>';
+  if(!isTextGuide) html += '<div class="rv-note" style="margin-top:.35rem">Guide en tableau — modifiable dans admin.html.</div>';
+
+  return html;
+}
+
+function rvEditGuide() {
+  const q = rvList[rvIndex];
+  if(!q) return;
+  const current = typeof q.guide === 'string' ? q.guide : '';
+  if(!rvBeginEdit('guide', () => {
+    const ta = document.getElementById('rv-guide-textarea');
+    return !!ta && ta.value !== current;
+  }, rvCancelGuideEdit)) return;
+  const box = document.getElementById('rv-guide-box');
+  box.innerHTML = '<textarea id="rv-guide-textarea" class="rv-guide-textarea"></textarea>'
+    + '<div class="rv-guide-edit-actions">'
+    + '<span class="rv-guide-status" id="rv-guide-status"></span>'
+    + '<button class="rv-guide-btn-cancel" onclick="rvCancelGuideEdit()">Annuler</button>'
+    + '<button class="rv-guide-btn-save" id="rv-guide-save-btn" onclick="rvSaveGuide()">Enregistrer</button>'
+    + '</div>';
+  const ta = document.getElementById('rv-guide-textarea');
+  ta.value = current;
+  ta.focus();
+}
+
+function rvCancelGuideEdit() {
+  const q = rvList[rvIndex];
+  if(!q) return;
+  rvEndEdit();
+  document.getElementById('rv-guide-box').innerHTML = rvRenderGuide(q);
+}
+
+async function rvSaveGuide() {
+  const q = rvList[rvIndex];
+  if(!q) return;
+  const id = q.id;
+  const newVal = document.getElementById('rv-guide-textarea').value;
+  const btn = document.getElementById('rv-guide-save-btn');
+  const status = document.getElementById('rv-guide-status');
+  btn.disabled = true;
+  status.className = 'rv-guide-status';
+  status.textContent = 'Enregistrement…';
+  try {
+    const changed = await rvApplyQuestionsEdit(parsed => {
+      const target = parsed.QUESTIONS.find(x => x.id === id);
+      if(!target) throw new Error('Question ' + id + ' introuvable');
+      if(typeof target.guide !== 'string' && target.guide !== false && target.guide !== undefined) {
+        throw new Error('Ce guide est un tableau — non modifiable ici.');
+      }
+      if((target.guide || '') === newVal) return false;
+      target.guide = newVal;
+      return true;
+    }, 'Modifier le guide de correction — ' + id);
+    q.guide = newVal;
+    rvEndEdit();
+    status.className = 'rv-guide-status ok';
+    status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
+    // Capturer la référence DOM et la génération d'édition maintenant : si l'utilisateur
+    // navigue vers une autre carte pendant le délai, rvRenderCard() remplace tout #rv-card
+    // (nouveau nœud #rv-guide-box) — cet ancien nœud devient détaché, et `.isConnected`
+    // l'exclut. Si l'utilisateur rouvre CE MÊME champ pour une correction avant la fin du
+    // délai, le conteneur reste `.isConnected` (seul son innerHTML change) — la génération
+    // capturée protège ce cas-là en plus.
+    const box = document.getElementById('rv-guide-box');
+    const gen = _rvEditGen;
+    setTimeout(() => {
+      if(box && box.isConnected && _rvEditGen === gen) box.innerHTML = rvRenderGuide(q);
+    }, 700);
+  } catch(err) {
+    status.className = 'rv-guide-status err';
+    status.textContent = '✗ ' + err.message;
+    btn.disabled = false;
+  }
+}
+
+// ── Édition de l'énoncé (même pattern que le guide) ──────────────────────────
+function rvEditEnonce() {
+  const q = rvList[rvIndex];
+  if(!q) return;
+  const current = q.enonce || '';
+  if(!rvBeginEdit('enonce', () => {
+    const ta = document.getElementById('rv-enonce-textarea');
+    return !!ta && ta.value !== current;
+  }, rvCancelEnonceEdit)) return;
+  const box = document.getElementById('rv-enonce-box');
+  box.innerHTML = '<textarea id="rv-enonce-textarea" class="rv-guide-textarea"></textarea>'
+    + '<div class="rv-guide-edit-actions">'
+    + '<span class="rv-guide-status" id="rv-enonce-status"></span>'
+    + '<button class="rv-guide-btn-cancel" onclick="rvCancelEnonceEdit()">Annuler</button>'
+    + '<button class="rv-guide-btn-save" id="rv-enonce-save-btn" onclick="rvSaveEnonce()">Enregistrer</button>'
+    + '</div>';
+  const ta = document.getElementById('rv-enonce-textarea');
+  ta.value = current;
+  ta.focus();
+}
+
+function rvCancelEnonceEdit() {
+  const q = rvList[rvIndex];
+  if(!q) return;
+  rvEndEdit();
+  document.getElementById('rv-enonce-box').innerHTML = rvFormatTexte(q.enonce);
+}
+
+async function rvSaveEnonce() {
+  const q = rvList[rvIndex];
+  if(!q) return;
+  const id = q.id;
+  const newVal = document.getElementById('rv-enonce-textarea').value.trim();
+  const btn = document.getElementById('rv-enonce-save-btn');
+  const status = document.getElementById('rv-enonce-status');
+  if(!newVal) {
+    status.className = 'rv-guide-status err';
+    status.textContent = "✗ L'énoncé ne peut pas être vide.";
+    return;
+  }
+  btn.disabled = true;
+  status.className = 'rv-guide-status';
+  status.textContent = 'Enregistrement…';
+  try {
+    const changed = await rvApplyQuestionsEdit(parsed => {
+      const target = parsed.QUESTIONS.find(x => x.id === id);
+      if(!target) throw new Error('Question ' + id + ' introuvable');
+      if((target.enonce || '') === newVal) return false;
+      target.enonce = newVal;
+      return true;
+    }, 'Modifier l\'énoncé — ' + id);
+    q.enonce = newVal;
+    rvEndEdit();
+    status.className = 'rv-guide-status ok';
+    status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
+    // Voir le commentaire équivalent dans rvSaveGuide : la génération protège contre une
+    // réouverture du même champ avant la fin du délai (le conteneur reste `.isConnected`).
+    const box = document.getElementById('rv-enonce-box');
+    const gen = _rvEditGen;
+    setTimeout(() => {
+      if(box && box.isConnected && _rvEditGen === gen) box.innerHTML = rvFormatTexte(q.enonce);
+    }, 700);
+  } catch(err) {
+    status.className = 'rv-guide-status err';
+    status.textContent = '✗ ' + err.message;
+    btn.disabled = false;
+  }
+}
+
+// ── Édition d'un document « textes » (titre/sous-titre/texte/auteur/source) ─────────
+// docIdx/colIdx réfèrent toujours au tableau ORIGINAL q.documents (voir rvFindColPath),
+// pas à la structure fusionnée utilisée pour l'affichage.
+function rvEditDoc(docIdx, colIdx) {
+  const q = rvList[rvIndex];
+  const col = q?.documents?.[docIdx]?.cols?.[colIdx];
+  if(!col) return;
+  const orig = { titre: col.titre||'', soustitre: col.soustitre||'', texte: col.texte||'', auteur: col.auteur||'', source: col.source||'' };
+  const isImgCol = !!col.ref;
+  const key = 'doc:' + docIdx + ':' + colIdx;
+  if(!rvBeginEdit(key, () => {
+    if(document.getElementById('rvd-titre').value !== orig.titre) return true;
+    if(document.getElementById('rvd-soustitre').value !== orig.soustitre) return true;
+    if(!isImgCol && document.getElementById('rvd-texte').value !== orig.texte) return true;
+    if(document.getElementById('rvd-auteur').value !== orig.auteur) return true;
+    if(document.getElementById('rvd-source').value !== orig.source) return true;
+    return false;
+  }, () => rvCancelDocEdit(docIdx, colIdx))) return;
+
+  const cell = document.getElementById('rv-doc-cell-' + docIdx + '-' + colIdx);
+  if(!cell) return;
+  cell.innerHTML = '<label class="rv-doc-field-label">Titre</label>'
+    + '<input id="rvd-titre" class="rv-doc-input" value="' + rvEscAttr(orig.titre) + '">'
+    + '<label class="rv-doc-field-label">Sous-titre</label>'
+    + '<input id="rvd-soustitre" class="rv-doc-input" value="' + rvEscAttr(orig.soustitre) + '">'
+    + (isImgCol ? '' : '<label class="rv-doc-field-label">Texte</label>'
+      + '<textarea id="rvd-texte" class="rv-guide-textarea" style="min-height:70px">' + rvEscLine(orig.texte) + '</textarea>')
+    + '<label class="rv-doc-field-label">Auteur</label>'
+    + '<input id="rvd-auteur" class="rv-doc-input" value="' + rvEscAttr(orig.auteur) + '">'
+    + '<label class="rv-doc-field-label">Source</label>'
+    + '<input id="rvd-source" class="rv-doc-input" value="' + rvEscAttr(orig.source) + '">'
+    + '<div class="rv-guide-edit-actions">'
+    + '<span class="rv-guide-status" id="rv-doc-status"></span>'
+    + '<button class="rv-guide-btn-cancel" onclick="rvCancelDocEdit(' + docIdx + ',' + colIdx + ')">Annuler</button>'
+    + '<button class="rv-guide-btn-save" id="rv-doc-save-btn" onclick="rvSaveDocEdit(' + docIdx + ',' + colIdx + ')">Enregistrer</button>'
+    + '</div>';
+  document.getElementById('rvd-titre').focus();
+}
+
+function rvCancelDocEdit(docIdx, colIdx) {
+  const q = rvList[rvIndex];
+  const col = q?.documents?.[docIdx]?.cols?.[colIdx];
+  const cell = document.getElementById('rv-doc-cell-' + docIdx + '-' + colIdx);
+  if(!col || !cell) return;
+  rvEndEdit();
+  cell.innerHTML = rvRenderDocColInner(col, {docIdx, colIdx});
+}
+
+// Applique les 5 champs textuels sur un objet colonne (partagé entre l'état local et la
+// mutation appliquée à questions.js — chaîne vide → suppression de la clé, comme admin.html).
+function rvApplyDocFields(col, f) {
+  col.titre = f.titre;
+  if(f.soustitre) col.soustitre = f.soustitre; else delete col.soustitre;
+  if(f.texte !== undefined) col.texte = f.texte;
+  if(f.auteur) col.auteur = f.auteur; else delete col.auteur;
+  if(f.source) col.source = f.source; else delete col.source;
+}
+
+async function rvSaveDocEdit(docIdx, colIdx) {
+  const q = rvList[rvIndex];
+  const col = q?.documents?.[docIdx]?.cols?.[colIdx];
+  if(!col) return;
+  const id = q.id;
+  const isImgCol = !!col.ref;
+  const fields = {
+    titre: document.getElementById('rvd-titre').value.trim(),
+    soustitre: document.getElementById('rvd-soustitre').value.trim(),
+    texte: isImgCol ? undefined : document.getElementById('rvd-texte').value,
+    auteur: document.getElementById('rvd-auteur').value.trim(),
+    source: document.getElementById('rvd-source').value.trim(),
+  };
+  const btn = document.getElementById('rv-doc-save-btn');
+  const status = document.getElementById('rv-doc-status');
+  btn.disabled = true;
+  status.className = 'rv-guide-status';
+  status.textContent = 'Enregistrement…';
+  try {
+    const changed = await rvApplyQuestionsEdit(parsed => {
+      const target = parsed.QUESTIONS.find(x => x.id === id);
+      if(!target) throw new Error('Question ' + id + ' introuvable');
+      const tCol = target.documents?.[docIdx]?.cols?.[colIdx];
+      if(!tCol) throw new Error('Document introuvable — la structure a peut-être changé, rechargez (F5).');
+      const before = JSON.stringify(tCol);
+      rvApplyDocFields(tCol, fields);
+      return JSON.stringify(tCol) !== before;
+    }, 'Modifier un document — ' + id);
+    rvApplyDocFields(col, fields);
+    rvEndEdit();
+    status.className = 'rv-guide-status ok';
+    status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
+    // Voir le commentaire équivalent dans rvSaveGuide : la génération protège contre une
+    // réouverture du même champ avant la fin du délai (le conteneur reste `.isConnected`).
+    const cell = document.getElementById('rv-doc-cell-' + docIdx + '-' + colIdx);
+    const gen = _rvEditGen;
+    setTimeout(() => {
+      if(cell && cell.isConnected && _rvEditGen === gen) cell.innerHTML = rvRenderDocColInner(col, {docIdx, colIdx});
+    }, 700);
+  } catch(err) {
+    status.className = 'rv-guide-status err';
+    status.textContent = '✗ ' + err.message;
+    btn.disabled = false;
+  }
+}
+
+function rvRenderCard() {
+  const card = document.getElementById('rv-card');
+  const pos  = document.getElementById('rv-pos');
+  if(!rvList.length) {
+    card.innerHTML = '<div class="rv-empty">Aucune question ne correspond aux filtres.</div>';
+    pos.textContent = '0 / 0';
+    document.getElementById('rv-prev').disabled = true;
+    document.getElementById('rv-next').disabled = true;
+    return;
+  }
+  if(rvIndex < 0) rvIndex = 0;
+  if(rvIndex >= rvList.length) rvIndex = rvList.length - 1;
+  const q = rvList[rvIndex];
+  card.innerHTML = rvBuildCardHtml(q);
+  pos.textContent = (rvIndex+1) + ' / ' + rvList.length;
+  document.getElementById('rv-prev').disabled = rvIndex === 0;
+  document.getElementById('rv-next').disabled = rvIndex === rvList.length - 1;
+}
+
+function rvNav(dir) {
+  if(!rvList.length) return;
+  const next = rvIndex + dir;
+  if(next < 0 || next >= rvList.length) return;
+  if(!confirmDiscardEdit()) return;
+  rvEndEdit();
+  rvIndex = next;
+  const wrap = document.getElementById('rv-card-wrap');
+  wrap.classList.remove('slide-in-left','slide-in-right');
+  void wrap.offsetWidth;
+  rvRenderCard();
+  wrap.classList.add(dir > 0 ? 'slide-in-right' : 'slide-in-left');
+}
+
+function rvOpenLightbox(src) {
+  document.getElementById('rv-lightbox-img').src = src;
+  document.getElementById('rv-lightbox').classList.add('open');
+}
+function rvCloseLightbox(e) {
+  if(e && e.target.id !== 'rv-lightbox') return;
+  document.getElementById('rv-lightbox').classList.remove('open');
+}
+
+// Navigation clavier (flèches) — ignorée si un champ de filtre a le focus
+document.addEventListener('keydown', e => {
+  const tag = (document.activeElement && document.activeElement.tagName) || '';
+  if(tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+  if(e.key === 'ArrowLeft')  { e.preventDefault(); rvNav(-1); }
+  if(e.key === 'ArrowRight') { e.preventDefault(); rvNav(1); }
+  if(e.key === 'Escape')     { rvCloseLightbox(); }
+});
+
+// Navigation tactile / souris (Pointer Events unifiés) sur la carte
+(function() {
+  // setPointerCapture lie tout le geste (jusqu'au pointerup/pointercancel) au pointerId qui
+  // l'a commencé, même si le relâchement a lieu hors des limites de #rv-card-wrap : plus
+  // besoin d'un booléen `dragging` global qui pouvait rester bloqué à `true` si un pointerup
+  // survenait hors de l'élément et n'était jamais reçu (voir historique : ce bug pouvait
+  // transformer un simple clic sur un bouton en navigation involontaire).
+  let startX = 0, startY = 0, activePointerId = null;
+  const wrap = document.getElementById('rv-card-wrap');
+  wrap.addEventListener('pointerdown', e => {
+    if(e.target.closest('textarea, input, button, select, a')) return;
+    activePointerId = e.pointerId;
+    startX = e.clientX; startY = e.clientY;
+    wrap.setPointerCapture(e.pointerId);
+  });
+  function endDrag(e) {
+    if(e.pointerId !== activePointerId) return;
+    activePointerId = null;
+    const dx = e.clientX - startX, dy = e.clientY - startY;
+    if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+      rvNav(dx < 0 ? 1 : -1);
+    }
+  }
+  wrap.addEventListener('pointerup', endDrag);
+  wrap.addEventListener('pointercancel', e => { if(e.pointerId === activePointerId) activePointerId = null; });
+})();
+
+// Charge questions.js avec cache-bust (timestamp) plutôt qu'un <script src="?v=1">
+// statique : sinon le navigateur peut servir indéfiniment une copie mise en cache
+// sous cette URL fixe, masquant les questions ajoutées/modifiées depuis.
+(function loadQuestionsThenInit() {
+  function runSource(src) {
+    try {
+      const s = document.createElement('script');
+      s.textContent = src;
+      document.head.appendChild(s);
+      return typeof QUESTIONS !== 'undefined';
+    } catch (e) { return false; }
+  }
+  function scriptTagFallback() {
+    const qs = document.createElement('script');
+    qs.src = 'questions.js?v=1&t=' + Date.now();
+    qs.onload = () => { rvPopulateFilters(); rvApplyFilters(); };
+    document.head.appendChild(qs);
+  }
+  function staticFetchFallback() {
+    fetch('questions.js?t=' + Date.now(), { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(src => { if (runSource(src)) { rvPopulateFilters(); rvApplyFilters(); } else scriptTagFallback(); })
+      .catch(scriptTagFallback);
+  }
+  // Lit d'abord via l'API GitHub (comme admin.html) plutôt que le site statique : GitHub
+  // Pages est servi derrière un CDN qui peut continuer à servir une ancienne version de
+  // questions.js pendant un moment après une publication, même avec le cache-bust par
+  // timestamp sur l'URL (le CDN peut ignorer la query string pour la clé de cache).
+  // L'API GitHub, elle, reflète toujours l'état réel du dépôt. Repli sur le site statique
+  // si l'API échoue (hors ligne, quota anonyme de 60 req/h dépassé, etc.).
+  const token = rvGetToken();
+  fetch(RV_API + 'questions.js?ref=main&t=' + Date.now(), {
+    headers: token ? {Authorization: 'token ' + token} : {},
+    cache: 'no-store'
+  })
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(d => {
+      if (d.content) {
+        const rawBytes = Uint8Array.from(atob(d.content.replace(/\n/g,'')), c => c.charCodeAt(0));
+        return new TextDecoder('utf-8').decode(rawBytes);
+      }
+      if (d.download_url) {
+        const dlUrl = d.download_url + (d.download_url.includes('?') ? '&' : '?') + 't=' + Date.now();
+        return fetch(dlUrl, { cache: 'no-store' }).then(raw => {
+          if (!raw.ok) throw new Error('download_url ' + raw.status);
+          return raw.text();
+        });
+      }
+      throw new Error('Réponse API inattendue');
+    })
+    .then(src => { if (runSource(src)) { rvPopulateFilters(); rvApplyFilters(); } else staticFetchFallback(); })
+    .catch(staticFetchFallback);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+questions_oi.xlsx
+*.docx
+.claude/worktrees/
+node_modules/

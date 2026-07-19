@@ -1,0 +1,52 @@
+name: Publier une question
+
+on:
+  repository_dispatch:
+    types: [publish-question]
+
+# Deux repository_dispatch simultanés (deux enseignants publient en même temps) lançaient
+# jusqu'ici deux jobs indépendants qui checkout/mutent/pushent en parallèle : le second
+# `git push` échouait en non-fast-forward sans retry ni rebase, perdant silencieusement
+# la mutation (admin.html ne surveille que le statut, pas le contenu du job). cancel-in-progress
+# à false met les dispatches en file plutôt que de les faire courir en parallèle ou d'annuler
+# un job déjà en cours.
+concurrency:
+  group: publish-question
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT_WORKER }}
+          sparse-checkout: |
+            questions.js
+            tools/apply-mutation.mjs
+          sparse-checkout-cone-mode: false
+
+      - name: Appliquer la mutation
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: node tools/apply-mutation.mjs
+
+      - name: Commit et push
+        env:
+          COMMIT_MSG: ${{ github.event.client_payload.commitMsg }}
+        run: |
+          git config user.name "Admin GHEC"
+          git config user.email "noreply@hqc-cssbf.ca"
+          git add questions.js
+          git diff --staged --quiet && echo "Aucun changement à committer" || \
+            git commit -m "$COMMIT_MSG"
+          # La concurrency queue ci-dessus protège contre deux jobs de CETTE Action qui se
+          # chevauchent, mais pas contre une publication directe (PUT admin.html/documents.html)
+          # arrivée entre le checkout et ce push : un seul retry avec rebase suffit ici, le cas
+          # étant rare (fenêtre de quelques secondes).
+          if ! git push; then
+            echo "Push rejeté (main a avancé) — rebase et nouvel essai…"
+            git fetch origin main
+            git rebase origin/main
+            git push
+          fi

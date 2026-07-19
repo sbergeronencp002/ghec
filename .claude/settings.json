@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node tools/check-all.mjs 2>&1 | tail -60 || true",
+            "statusMessage": "Vérifications (données, fumée, anti-XSS)…"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | { read -r f; [[ \"$f\" == */images/*.png ]] && pngquant --force --quality=65-85 --output /tmp/pq_hook.png \"$f\" 2>/dev/null && cp /tmp/pq_hook.png \"$f\"; } 2>/dev/null || true",
+            "statusMessage": "Compression PNG…"
+          }
+        ]
+      }
+    ]
+  }
+}

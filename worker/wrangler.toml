@@ -1,0 +1,8 @@
+name = "ghec-admin"
+main = "index.js"
+compatibility_date = "2024-09-23"
+
+# Déploiement : git push sur main (paths: worker/**) déclenche la GitHub Action.
+# Secrets (ne jamais mettre ici — utiliser wrangler secret put) :
+#   wrangler secret put GITHUB_PAT     → coller le PAT GitHub (scope repo)
+#   wrangler secret put WORKER_SECRET  → coller la clé partagée avec admin.html

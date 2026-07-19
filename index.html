@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GHEC · CSSBF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap">
+<link rel="stylesheet" href="style.css?v=31">
+</head>
+<body>
+<noscript><div style="padding:2rem;text-align:center;font-family:sans-serif;color:#1a1814">Ce site nécessite JavaScript pour fonctionner.</div></noscript>
+
+<header>
+  <h1>GHEC · CSSBF</h1>
+  <span style="font-size:0.7rem;color:rgba(255,255,255,0.6);letter-spacing:0.08em;text-transform:uppercase;margin-left:12px">Hub des Questions et des Compétences</span>
+  <a href="examen.html" class="header-link">📝 Examen</a>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Filtres</h2>
+
+    <div class="filter-group">
+      <label class="filter-label" for="f-search">Recherche</label>
+      <input type="text" id="f-search" placeholder="Mot-clé…" oninput="debouncedApplyFilters()">
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label" for="f-niveau">Niveau</label>
+      <select id="f-niveau" onchange="onNiveauChange()">
+        <option value="">Tous</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label" for="f-periode">Période</label>
+      <select id="f-periode" onchange="onPeriodeChange()">
+        <option value="">Toutes</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label" for="f-aspect">Aspect</label>
+      <select id="f-aspect" onchange="applyFilters()">
+        <option value="">Tous</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label" for="f-oi">Opération intellectuelle</label>
+      <select id="f-oi" onchange="applyFilters()">
+        <option value="">Toutes</option>
+      </select>
+    </div>
+
+    <button class="reset-btn" onclick="resetFilters()">↺ Réinitialiser les filtres</button>
+
+    <div class="stats" style="margin-top:2rem">
+      <span class="stat-num" id="stat-num">0</span>
+      question(s) affichée(s)
+      <div id="stat-pts" style="font-size:0.75rem;color:var(--ink-3);margin-top:2px"></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="results-bar">
+      <span id="results-label">Toutes les questions</span>
+    </div>
+    <div class="q-grid" id="q-list"></div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="preview-modal" onclick="closePreview(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="preview-modal-label">
+    <div class="modal-header">
+      <span id="preview-modal-label">Prévisualisation du cahier</span>
+      <button class="modal-close" onclick="closePreviewBtn()">×</button>
+    </div>
+    <div class="modal-body" id="preview-body"></div>
+    <div class="modal-footer">
+      <button class="btn-vider" onclick="closePreviewBtn()">Fermer</button>
+      <button class="btn-generer" style="background:#1B3B6F;color:#fff" onclick="closePreviewBtn();genererDocx(false)">⬇ Générer Cahier</button>
+      <button class="btn-generer" style="background:var(--paper-3);color:var(--ink)" onclick="closePreviewBtn();genererDocx(true)">⬇ Générer Guide</button>
+    </div>
+  </div>
+</div>
+
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <div id="lightbox-viewport">
+    <img id="lightbox-img" src="" alt="Image agrandie" draggable="false">
+  </div>
+  <span class="lightbox-hint">Molette pour zoomer · Double-clic pour réinitialiser</span>
+</div>
+
+<div id="text-zoom-overlay" onclick="closeTextZoom(event)">
+  <div id="text-zoom-box">
+    <div id="text-zoom-header">
+      <span id="text-zoom-title"></span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="tz-size-btn" onclick="tzAdjust(-1)" title="Réduire">A−</button>
+        <button class="tz-size-btn" onclick="tzAdjust(1)"  title="Agrandir">A+</button>
+        <button id="text-zoom-close" onclick="closeTextZoomBtn()">×</button>
+      </div>
+    </div>
+    <div id="text-zoom-body"></div>
+  </div>
+</div>
+
+<div class="panier-bar" id="panier-bar">
+  <span class="panier-count" id="panier-count">0 / 20</span>
+  <div class="panier-actions">
+    <button class="btn-vider" onclick="viderPanier()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg> Vider</button>
+    <button class="btn-organiser" onclick="openCahier()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Construire</button>
+    <button class="btn-projeter" onclick="openExam()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Projeter</button>
+  </div>
+</div>
+
+<div class="cahier-backdrop" id="cahier-backdrop" onclick="closeCahier()"></div>
+<div class="cahier-panel" id="cahier-panel">
+  <div class="cahier-panel-header">
+    <div>
+      <h3>Cahier en construction</h3>
+      <div class="cahier-panel-sub" id="cahier-panel-sub">0 question · 0 pt</div>
+    </div>
+    <button class="cahier-panel-close" onclick="closeCahier()">×</button>
+  </div>
+  <div class="cahier-body" id="cahier-body"></div>
+  <div class="cahier-footer">
+    <div class="cahier-options">
+      <input type="text" id="exam-nom" class="cahier-exam-input" placeholder="Nom de l'évaluation…">
+      <div class="cahier-toggles">
+        <label class="exam-toggle"><input type="checkbox" id="exam-eleve"> Élève</label>
+        <label class="exam-toggle"><input type="checkbox" id="exam-groupe"> Groupe</label>
+        <label class="exam-toggle"><input type="checkbox" id="exam-date"> Date</label>
+        <label class="exam-toggle"><input type="checkbox" id="exam-score"> Résultat</label>
+        <label class="exam-toggle"><input type="checkbox" id="exam-commentaires"> Commentaires</label>
+      </div>
+    </div>
+    <div class="cahier-footer-stats" id="cahier-footer-stats"></div>
+    <div class="cahier-footer-btns">
+      <button class="cfb-ghost" onclick="viderPanier()" title="Vider le panier">Vider</button>
+      <button class="cfb-icon"  onclick="melangerPanier()" title="Mélanger l'ordre aléatoirement">🔀</button>
+      <button class="cfb-outline" onclick="previsualiser(false)">👁 Aperçu</button>
+      <button class="cfb-primary" id="btn-generer" onclick="genererDocx(false)">⬇ Cahier</button>
+      <button class="cfb-alt"  id="btn-generer-guide" onclick="genererDocx(true)">⬇ Guide</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="q-modal-overlay" onclick="closeQModalOverlay(event)">
+  <div class="modal q-modal" role="dialog" aria-modal="true" aria-labelledby="q-modal-title">
+    <div class="modal-header" id="q-modal-header">
+      <div id="q-modal-title" style="flex:1;min-width:0"></div>
+      <span id="q-modal-num" style="font-size:0.7rem;font-weight:700;opacity:0.45;letter-spacing:0.05em;align-self:flex-start;padding-top:2px;margin-right:6px"></span>
+      <button class="modal-close" id="q-modal-close" onclick="closeQModal()">×</button>
+    </div>
+    <div class="modal-body" id="q-modal-body"></div>
+    <div class="modal-footer">
+      <button class="btn-modal-sec" onclick="closeQModal()">Fermer</button>
+      <button class="btn-modal-sec" id="q-modal-copy-btn" onclick="copyQuestion()">Copier</button>
+      <button id="q-modal-panier-btn" onclick="togglePanierModal()"></button>
+    </div>
+  </div>
+</div>
+
+<div class="warn-toast" id="warn-toast"></div>
+
+<!-- Mode examen -->
+<div id="exam-overlay" role="dialog" aria-modal="true" aria-label="Mode examen" style="display:none">
+  <div class="exam-header">
+    <div class="exam-progress" id="exam-progress"></div>
+    <button class="exam-close" onclick="closeExam()" title="Quitter">×</button>
+  </div>
+  <div class="exam-body" id="exam-body"></div>
+  <div class="exam-footer">
+    <div class="exam-dot-row" id="exam-dots"></div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="exam-nav" id="exam-prev" onclick="examNav(-1)">←</button>
+      <span class="exam-pts-badge" id="exam-pts"></span>
+      <button class="exam-nav" id="exam-next" onclick="examNav(1)">→</button>
+    </div>
+  </div>
+</div>
+
+<script src="contexte.js"></script>
+<script src="oi-config.js?v=1"></script>
+<script src="filters.js?v=1"></script>
+<script src="app.js?v=52"></script>
+<script>
+  // Charge questions-index.js (~200 Ko, champs grille seulement) pour affichage immédiat.
+  // Les données complètes (documents, réponse, guide, réglettes) sont chargées en lazy
+  // par app.js (ensureDataLoaded) au premier clic « Détail », prévisualisation ou DOCX.
+  (function loadIndex() {
+    function fallback() {
+      var qs = document.createElement('script');
+      qs.src = 'questions-index.js?v=1&t=' + Date.now();
+      qs.onload = function() { initSite(); };
+      document.head.appendChild(qs);
+    }
+    fetch('questions-index.js?v=1&t=' + Date.now(), { cache: 'no-cache' })
+      .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function(src) {
+        var ok = false;
+        try {
+          var s = document.createElement('script');
+          s.textContent = src;
+          document.head.appendChild(s);
+          ok = (typeof QUESTIONS !== 'undefined');
+        } catch (e) { ok = false; }
+        if (ok) initSite(); else fallback();
+      })
+      .catch(fallback);
+  })();
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+</script>
+</body>
+</html>
+

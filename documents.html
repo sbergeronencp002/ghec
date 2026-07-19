@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>Documents & Images — GHEC CSSBF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap">
+<style>
+:root {
+  --ink:   #1A1714;
+  --ink-2: #4A453E;
+  --ink-3: #9A938A;
+  --paper:   #F8F5F0;
+  --paper-2: #EDE9E2;
+  --paper-3: #E2DDD5;
+  --accent:  #1D4E9F;
+  --border:  rgba(0,0,0,0.09);
+  --c-slot1: #3A6FA8; --c-slot1-bg: #E4EDF8;
+  --c-slot2: #3A8050; --c-slot2-bg: #E2F0E6;
+  --c-slot3: #C06030; --c-slot3-bg: #F8EBE0;
+  --c-lnk: #C06030; --c-lnk-bg: #F8EBE0;
+  --c-slot4: #7A4A9A; --c-slot4-bg: #EDE4F5;
+  --c-slot5: #607880; --c-slot5-bg: #E6EAEC;
+  --c-slot6: #B03A3A; --c-slot6-bg: #F5E4E4;
+  --c-slot7:  #2A8A8A; --c-slot7-bg:  #DFF0F0;
+  --c-slot8: #9A6030; --c-slot8-bg: #F2E8DC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans','Segoe UI',Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);min-height:100vh}
+
+header{background:#1B3B6F;color:var(--paper);padding:0 1.5rem;display:flex;align-items:stretch;min-height:52px}
+.header-brand{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.25rem .75rem 0;border-right:1px solid rgba(255,255,255,.15);margin-right:1rem}
+.header-brand h1{font-family:'DM Serif Display',Georgia,serif;font-size:1.4rem;font-weight:400}
+.header-brand small{font-size:.65rem;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:1px}
+nav{display:flex;align-items:center;gap:.25rem;margin-left:auto}
+nav a{padding:.45rem .9rem;border-radius:6px;color:rgba(255,255,255,.75);text-decoration:none;font-size:.8rem;font-weight:500;transition:background .15s,color .15s;white-space:nowrap;cursor:pointer}
+nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+nav a.active{background:rgba(255,255,255,.18);color:#fff}
+
+.toolbar{background:var(--paper-2);border-bottom:1px solid var(--border);padding:.6rem 1.5rem;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.toolbar input,.toolbar select{padding:.38rem .75rem;border-radius:7px;border:1px solid var(--border);background:var(--paper);font-family:inherit;font-size:.8rem;color:var(--ink);outline:none}
+.toolbar input:focus,.toolbar select:focus{border-color:var(--accent)}
+.toolbar input{width:200px}
+.stat-chip{font-size:.75rem;color:var(--ink-3);margin-left:auto}
+.stat-chip b{color:var(--ink-2)}
+
+.section{padding:1.5rem}
+.section-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.1rem;font-weight:400;color:var(--ink-2);margin-bottom:1.25rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+
+/* Grille d'images uniformes (vue « Toutes les images ») */
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.img-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;transition:box-shadow .15s,transform .15s}
+.img-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-2px)}
+.img-card img{display:block;width:100%;height:150px;object-fit:cover;background:#fff}
+.img-card .ic-label{font-size:.72rem;color:var(--ink-2);padding:.45rem .55rem;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-top:1px solid var(--border)}
+.img-card .ic-count{position:absolute;top:.4rem;right:.4rem;background:#1B3B6F;color:#fff;border-radius:20px;padding:.1rem .5rem;font-size:.68rem;font-weight:600}
+.img-card .ic-count.single{background:rgba(255,255,255,.92);color:var(--ink-3)}
+
+.orphan-row{display:flex;align-items:center;gap:.9rem;padding:.65rem 1rem;background:#fff;border:1px solid #f5c6c6;border-radius:8px;margin-bottom:.5rem}
+.orphan-row img{height:42px;width:68px;object-fit:cover;border-radius:5px;border:1px solid var(--border);flex-shrink:0;cursor:zoom-in}
+.orphan-row .img-label{font-size:.85rem;font-weight:500;color:var(--ink);flex:1}
+.btn-delete{background:none;border:1px solid #f5c6c6;cursor:pointer;color:#842029;font-size:.78rem;padding:.28rem .7rem;border-radius:5px;transition:background .15s,color .15s;flex-shrink:0;font-family:inherit}
+.btn-delete:hover{background:#f8d7da;color:#5a0f16}
+
+.tile{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:.55rem .7rem;width:auto;max-width:420px;flex-shrink:0;transition:box-shadow .15s,transform .15s}
+.tile:hover{box-shadow:0 2px 12px rgba(0,0,0,.07);transform:translateY(-1px)}
+.tile-top{display:flex;align-items:center;gap:.35rem;margin-bottom:.2rem;flex-wrap:wrap}
+.tile-id{font-size:.65rem;font-weight:500;color:var(--ink-3);background:var(--paper-2);border-radius:4px;padding:.08rem .35rem;flex-shrink:0}
+.tile-oi-tag{font-size:.62rem;font-weight:500;border-radius:20px;padding:.1rem .45rem;white-space:nowrap}
+.tile-periode{font-size:.65rem;color:var(--ink-3);margin-bottom:.3rem}
+.tile-enonce{font-size:.72rem;color:var(--ink-2);line-height:1.4;margin-bottom:.5rem}
+.tile-imgs{display:flex;flex-wrap:wrap;gap:.5rem}
+.img-wrap{display:flex;flex-direction:column;align-items:center;gap:0;position:relative}
+.img-wrap img{width:190px;height:140px;object-fit:contain;background:#fff;border-radius:6px;border:2px solid var(--border);cursor:zoom-in;transition:border-color .15s}
+.img-wrap img:hover{border-color:var(--accent)}
+.img-wrap.shared img{border-color:#C06030}
+.img-wrap .img-name{display:none}
+.img-wrap .share-badge{position:absolute;top:-5px;right:-5px;background:#C06030;color:#fff;border-radius:50%;width:16px;height:16px;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* Size badge */
+.size-badge{display:inline-block;font-size:.62rem;font-weight:500;border-radius:10px;padding:.08rem .4rem;white-space:nowrap;flex-shrink:0}
+.size-badge.ok{background:#D4EDDA;color:#276539}
+.size-badge.warn{background:#FFF3CD;color:#856404}
+.size-badge.big{background:#F8D7DA;color:#842029}
+.size-badge.loading{background:var(--paper-3);color:var(--ink-3)}
+
+/* Rename button */
+.btn-rename,.btn-replace{background:none;border:none;cursor:pointer;color:var(--ink-3);font-size:.8rem;padding:.15rem .3rem;border-radius:4px;transition:color .15s,background .15s;flex-shrink:0;line-height:1}
+.btn-rename:hover{color:var(--accent);background:rgba(29,78,159,.08)}
+.btn-replace:hover{color:#276539;background:rgba(39,101,57,.08)}
+
+.all-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.7rem}
+.all-grid .tile{width:auto}
+
+#lb{display:none;position:fixed;inset:0;background:rgba(26,23,20,.88);z-index:999;align-items:center;justify-content:center;padding:2rem}
+#lb.open{display:flex}
+#lb-body{display:flex;gap:1.25rem;align-items:stretch;max-width:94vw;max-height:88vh}
+#lb-imgcol{display:flex;flex-direction:column;align-items:center;gap:.75rem;min-width:0}
+#lb img{max-width:62vw;max-height:78vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.5);object-fit:contain}
+#lb-questions{width:340px;flex-shrink:0;background:#fff;border-radius:10px;padding:1rem;max-height:88vh;overflow:hidden}
+#lb-q-list{overflow-y:auto;max-height:calc(88vh - 180px)}
+.lbq-title{font-family:'DM Serif Display',Georgia,serif;font-size:.95rem;color:var(--ink-2);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.lbq{padding:.55rem 0;border-bottom:1px solid var(--border)}
+.lbq:last-child{border-bottom:none}
+.lbq-top{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;margin-bottom:.25rem}
+.lbq-per{font-size:.66rem;color:var(--ink-3)}
+.lbq-en{font-size:.74rem;color:var(--ink-2);line-height:1.4}
+.lbq-sub{font-size:.78rem;color:var(--ink);line-height:1.4;font-weight:500}
+.lbq-sub.empty{color:var(--ink-3);font-style:italic;font-weight:400}
+.lbq-edit{background:none;border:none;cursor:pointer;color:var(--ink-3);font-size:.82rem;padding:.1rem .3rem;border-radius:4px;margin-left:auto;line-height:1;flex-shrink:0;transition:color .15s,background .15s}
+.lbq-edit:hover{color:var(--accent);background:rgba(29,78,159,.08)}
+.lbq-source{font-size:.7rem;color:var(--ink-3);margin-top:.15rem;line-height:1.3}
+.lbq-source.missing{color:#c0392b;font-style:italic}
+.lbq-source.ok{color:#2a8a4a}
+.lbq-source.diff{color:#c06030}
+/* Panneau propagation source */
+#lb-source-panel{background:#f8f5f0;border-top:1px solid var(--border);padding:.8rem 1rem;margin:.75rem -1rem -1rem;border-radius:0 0 10px 10px}
+#lb-source-panel h4{font-size:.75rem;font-weight:700;color:var(--ink-2);margin-bottom:.6rem;letter-spacing:.04em;text-transform:uppercase}
+.lb-src-field{display:flex;flex-direction:column;gap:.2rem;margin-bottom:.5rem}
+.lb-src-field label{font-size:.67rem;color:var(--ink-3);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.lb-src-field input{font-size:.78rem;padding:.35rem .55rem;border:1px solid var(--border);border-radius:5px;font-family:inherit;width:100%;background:#fff}
+#lb-src-apply{width:100%;margin-top:.5rem;padding:.45rem;border-radius:6px;border:none;background:var(--accent);color:#fff;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s}
+#lb-src-apply:hover{opacity:.85}
+#lb-src-apply:disabled{opacity:.38;cursor:not-allowed}
+#lb-src-status{font-size:.72rem;margin-top:.35rem;min-height:1em}
+#lb-footer{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:center}
+#lb-caption{color:rgba(255,255,255,.55);font-size:.78rem}
+#lb-size{font-size:.72rem;font-weight:500;border-radius:10px;padding:.1rem .5rem}
+#lb-rename{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;padding:.35rem .8rem;font-size:.78rem;cursor:pointer;font-family:inherit;transition:background .15s}
+#lb-rename:hover{background:rgba(255,255,255,.22)}
+#lb-close{position:fixed;top:1rem;right:1.5rem;font-size:2rem;cursor:pointer;color:rgba(255,255,255,.7);line-height:1}
+#lb-close:hover{color:#fff}
+
+/* Replace modal */
+#replace-modal{display:none;position:fixed;inset:0;background:rgba(26,23,20,.6);z-index:1000;align-items:center;justify-content:center}
+#replace-modal.open{display:flex}
+.replace-box{background:#fff;border-radius:12px;padding:1.5rem;width:420px;max-width:92vw;box-shadow:0 8px 40px rgba(0,0,0,.18)}
+.replace-box h3{font-family:'DM Serif Display',Georgia,serif;font-size:1rem;font-weight:400;margin-bottom:.25rem}
+.replace-box p{font-size:.78rem;color:var(--ink-3);margin-bottom:1rem}
+.replace-drop{border:2px dashed var(--border);border-radius:8px;padding:1.25rem;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;margin-bottom:.9rem}
+.replace-drop:hover,.replace-drop.drag{border-color:var(--accent);background:rgba(29,78,159,.04)}
+.replace-drop input{display:none}
+.replace-drop-label{font-size:.82rem;color:var(--ink-3)}
+.replace-preview{display:none;flex-direction:column;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.replace-preview.show{display:flex}
+.replace-preview img{max-width:100%;max-height:200px;border-radius:6px;border:1px solid var(--border)}
+.replace-preview-meta{font-size:.75rem;color:var(--ink-3);text-align:center}
+.replace-actions{display:flex;gap:.6rem;justify-content:flex-end}
+.replace-actions button{padding:.42rem .95rem;border-radius:7px;font-family:inherit;font-size:.8rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:background .15s}
+.replace-status{font-size:.78rem;margin-top:.6rem;min-height:1.2em;text-align:right}
+.replace-status.err{color:#842029}
+.replace-status.ok{color:#276539}
+
+/* Rename modal */
+#rename-modal,#sub-modal{display:none;position:fixed;inset:0;background:rgba(26,23,20,.6);z-index:1000;align-items:center;justify-content:center}
+#rename-modal.open,#sub-modal.open{display:flex}
+.rename-box{background:#fff;border-radius:12px;padding:1.5rem;width:380px;max-width:92vw;box-shadow:0 8px 40px rgba(0,0,0,.18)}
+.rename-box h3{font-family:'DM Serif Display',Georgia,serif;font-size:1rem;font-weight:400;margin-bottom:.25rem}
+.rename-box p{font-size:.78rem;color:var(--ink-3);margin-bottom:1rem}
+.rename-box input{width:100%;padding:.5rem .75rem;border:1px solid var(--border);border-radius:7px;font-family:inherit;font-size:.85rem;color:var(--ink);outline:none;margin-bottom:1rem}
+.rename-box input:focus{border-color:var(--accent)}
+.rename-actions{display:flex;gap:.6rem;justify-content:flex-end}
+.rename-actions button{padding:.42rem .95rem;border-radius:7px;font-family:inherit;font-size:.8rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:background .15s}
+.btn-cancel{background:var(--paper-2);color:var(--ink-2);border-color:var(--border)}
+.btn-cancel:hover{background:var(--paper-3)}
+.btn-confirm{background:#1B3B6F;color:#fff}
+.btn-confirm:hover{background:#163264}
+.btn-confirm:disabled{opacity:.5;cursor:not-allowed}
+.rename-status{font-size:.78rem;margin-top:.6rem;min-height:1.2em;text-align:right}
+.rename-status.err{color:#842029}
+.rename-status.ok{color:#276539}
+.rename-status.warn{color:#856404}
+.page-lock-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(255,255,255,.55);cursor:wait;align-items:center;justify-content:center}
+.page-lock-overlay.show{display:flex}
+.page-lock-badge{background:#1B3B6F;color:#fff;padding:.6rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:500;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+
+<div class="page-lock-overlay" id="page-lock-overlay"><span class="page-lock-badge" id="page-lock-badge">⏳ Opération en cours…</span></div>
+
+<header>
+  <div class="header-brand">
+    <div>
+      <h1>GHEC · CSSBF</h1>
+      <small>Documents &amp; Images</small>
+    </div>
+  </div>
+  <nav>
+    <a id="nav-shared" class="active" onclick="setActive('shared')">Toutes les images</a>
+    <a id="nav-all" onclick="setActive('all')">Toutes les questions</a>
+    <a id="nav-orphans" onclick="setActive('orphans')">Non utilisées</a>
+    <a href="admin.html" style="margin-left:.5rem;padding-left:.9rem;border-left:1px solid rgba(255,255,255,.15)">⚙ Admin</a>
+    <a href="revision.html">🔁 Révision</a>
+    <a href="index.html">← Site</a>
+  </nav>
+</header>
+
+<div class="toolbar">
+  <input type="search" id="search" placeholder="Rechercher…" oninput="filterAll()">
+  <select id="filterOi" onchange="filterAll()"><option value="">Toutes les OI</option></select>
+  <select id="sortImg" onchange="renderImgGrid();filterAll()" title="Ordre d'affichage des images">
+    <option value="usage">Partagées d'abord</option>
+    <option value="alpha">A → Z</option>
+  </select>
+  <span class="stat-chip" id="stat-chip"></span>
+</div>
+
+<div id="sec-shared" class="section">
+  <div class="section-title">Toutes les images</div>
+  <div id="shared-container"></div>
+</div>
+<div id="sec-all" class="section" style="display:none">
+  <div class="section-title">Toutes les questions avec image</div>
+  <div class="all-grid" id="allGrid"></div>
+</div>
+<div id="sec-orphans" class="section" style="display:none">
+  <div class="section-title" style="color:#842029">Images non utilisées</div>
+  <div id="orphans-container"></div>
+</div>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image agrandie" onclick="closeLb(event)">
+  <span id="lb-close">&times;</span>
+  <div id="lb-body">
+    <div id="lb-imgcol">
+      <img id="lb-img" src="" alt="">
+      <div id="lb-footer">
+        <span id="lb-caption"></span>
+        <span id="lb-size" class="size-badge loading"></span>
+        <button id="lb-rename" onclick="event.stopPropagation();openRename(currentLbImg)">✏ Renommer</button>
+        <button id="lb-replace" onclick="event.stopPropagation();openReplace(currentLbImg)" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;padding:.35rem .8rem;font-size:.78rem;cursor:pointer;font-family:inherit;transition:background .15s">⇪ Remplacer</button>
+      </div>
+    </div>
+    <div id="lb-questions" style="display:flex;flex-direction:column">
+      <div id="lb-q-list" style="flex:1;overflow-y:auto"></div>
+      <div id="lb-source-panel">
+        <h4>Source &amp; auteur</h4>
+        <div class="lb-src-field">
+          <label>Auteur</label>
+          <input type="text" id="lb-src-auteur" placeholder="Prénom Nom, titre…">
+        </div>
+        <div class="lb-src-field">
+          <label>Source</label>
+          <input type="text" id="lb-src-source" placeholder="Titre, éditeur, année…">
+        </div>
+        <button id="lb-src-apply" onclick="applySourceToAll()">Appliquer à toutes les questions</button>
+        <div id="lb-src-status"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Replace modal -->
+<div id="replace-modal" onclick="closeReplaceModal(event)">
+  <div class="replace-box" role="dialog" aria-modal="true" aria-label="Remplacer l'image" onclick="event.stopPropagation()">
+    <h3>Remplacer l'image</h3>
+    <p id="replace-old-label"></p>
+    <div class="replace-drop" id="replace-drop" onclick="document.getElementById('replace-file').click()"
+         ondragover="event.preventDefault();this.classList.add('drag')"
+         ondragleave="this.classList.remove('drag')"
+         ondrop="event.preventDefault();this.classList.remove('drag');handleReplaceFile(event.dataTransfer.files[0])">
+      <input type="file" id="replace-file" accept="image/png,image/jpeg" onchange="handleReplaceFile(this.files[0])">
+      <span class="replace-drop-label">Cliquez ou déposez une image PNG/JPEG</span>
+    </div>
+    <div class="replace-preview" id="replace-preview">
+      <img id="replace-preview-img" src="">
+      <div class="replace-preview-meta" id="replace-preview-meta"></div>
+    </div>
+    <div class="replace-actions">
+      <button class="btn-cancel" onclick="closeReplaceModal()">Annuler</button>
+      <button class="btn-confirm" id="replace-confirm-btn" onclick="confirmReplace()" disabled>Remplacer</button>
+    </div>
+    <div class="replace-status" id="replace-status"></div>
+  </div>
+</div>
+
+<!-- Rename modal -->
+<div id="rename-modal" onclick="closeRenameModal(event)">
+  <div class="rename-box" role="dialog" aria-modal="true" aria-label="Renommer l'image" onclick="event.stopPropagation()">
+    <h3>Renommer l'image</h3>
+    <p id="rename-old-label"></p>
+    <input type="text" id="rename-input" placeholder="Nouveau nom (sans .png)">
+    <div class="rename-actions">
+      <button class="btn-cancel" onclick="closeRenameModal()">Annuler</button>
+      <button class="btn-confirm" id="rename-confirm-btn" onclick="confirmRename()">Renommer</button>
+    </div>
+    <div class="rename-status" id="rename-status"></div>
+  </div>
+</div>
+
+<!-- Sous-titre modal -->
+<div id="sub-modal" onclick="closeSubModal(event)">
+  <div class="rename-box" role="dialog" aria-modal="true" aria-label="Modifier le sous-titre" onclick="event.stopPropagation()">
+    <h3>Modifier le sous-titre</h3>
+    <p id="sub-old-label"></p>
+    <textarea id="sub-input" rows="2" placeholder="Sous-titre du document"
+      style="width:100%;padding:.5rem .75rem;border:1px solid var(--border);border-radius:7px;font-family:inherit;font-size:.85rem;color:var(--ink);outline:none;margin-bottom:1rem;resize:vertical"></textarea>
+    <div class="rename-actions">
+      <button class="btn-cancel" onclick="closeSubModal()">Annuler</button>
+      <button class="btn-confirm" id="sub-confirm-btn" onclick="confirmSoustitre()">Enregistrer</button>
+    </div>
+    <div class="rename-status" id="sub-status"></div>
+  </div>
+</div>
+
+<script src="oi-config.js?v=1"></script>
+<script src="questions-io.js?v=3"></script>
+<script>
+// Un navigateur ne revérifie sw.js qu'au plus une fois par 24h par défaut (throttle du
+// navigateur, indépendant de tout cache-bust côté serveur) — un F5 ou même fermer/rouvrir
+// l'onglet ne suffit donc pas à récupérer un correctif tout juste déployé si cette page
+// est encore contrôlée par un ancien service worker. On force la vérification ici et on
+// recharge une seule fois si un nouveau SW prend effectivement le relais.
+if ('serviceWorker' in navigator) {
+  let _swReloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (_swReloaded) return;
+    _swReloaded = true;
+    location.reload();
+  });
+  navigator.serviceWorker.getRegistration().then(reg => { if (reg) reg.update(); }).catch(() => {});
+}
+
+// Token lu depuis le stockage partagé avec admin.html (jamais hardcodé)
+function getToken() {
+  return localStorage.getItem('gh_token') || sessionStorage.getItem('gh_token') || '';
+}
+function requireToken() {
+  const t = getToken();
+  if (!t) throw new Error('Token GitHub manquant — connectez-vous dans admin.html d\'abord.');
+  return t;
+}
+const REPO  = 'sbergeronencp002/ghec';
+const API   = 'https://api.github.com/repos/' + REPO + '/contents/';
+
+// Couleurs des pastilles OI : dérivées de oi-config.js (source unique de vérité)
+// pour rester cohérentes avec index.html et admin.html. On applique color/bg en
+// style inline (les variables --c-* sont définies dans le :root de cette page).
+function oiStyleAttr(oi) {
+  const c = (typeof OI_CONFIG !== 'undefined') && OI_CONFIG[oi];
+  return c ? `color:${c.color};background:${c.bg}` : '';
+}
+// Abréviations d'affichage compact par OI (facultatif — sans entrée, le nom complet de
+// l'OI est utilisé). Vide au départ pour GHEC — format : { '<OI>': '<abréviation>' }.
+const OI_SHORT = {
+};
+
+function escH(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+let imgMap = {};
+let allImgGroups = []; // [img, ids][] — global pour permettre le re-tri
+let qById = {};        // id -> question (global, utilisé par la lightbox)
+let sizeCache = {};    // img -> bytes
+let currentLbImg = '';
+let renameTarget = '';
+let renameExt = '.png'; // extension d'origine, préservée au renommage
+
+function renderImgGrid() {
+  const sort = (document.getElementById('sortImg') || {}).value || 'usage';
+  const groups = sort === 'alpha'
+    ? [...allImgGroups].sort((a, b) => a[0].localeCompare(b[0], 'fr'))
+    : [...allImgGroups].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'fr'));
+  document.getElementById('shared-container').innerHTML =
+    '<div class="img-grid">' + groups.map(([img, ids]) => {
+      const isShared = ids.length > 1;
+      const oisArr = [...new Set(ids.filter(id => qById[id]).map(id => qById[id].oi))];
+      return `<div class="img-card" data-img-name="${escH(img.replace(/\.[^.]+$/i,'').toLowerCase())}" data-ois="${escH(JSON.stringify(oisArr))}" onclick="showImg(${escH(JSON.stringify(img))})">
+        <span class="ic-count${isShared ? '' : ' single'}">${ids.length}</span>
+        <img src="images/${escH(img)}" loading="lazy" alt="${escH(img)}">
+        <div class="ic-label" title="${escH(img)}">${escH(img.replace(/\.[^.]+$/i,''))}</div>
+      </div>`;
+    }).join('') + '</div>';
+}
+
+function sizeBadgeHtml(img) {
+  return `<span class="size-badge loading" data-size-badge="${img}">…</span>`;
+}
+
+function tileHtml(q) {
+  const short = OI_SHORT[q.oi] || q.oi;
+  const periodeShort = (q.periode || '').replace(/P\d+ — /, '');
+  const enonce = (q.enonce || '').replace(/\*\*/g, '');
+  const enonceCut = enonce.length > 120 ? enonce.substring(0,120) + '…' : enonce;
+  const imgsHtml = q._imgs.map(img => {
+    const shared = imgMap[img] && imgMap[img].length > 1;
+    return `<div class="img-wrap${shared?' shared':''}">
+      <img src="images/${escH(img)}" loading="lazy" title="${escH(img)}" onclick="showImg(${escH(JSON.stringify(img))})">
+      <span class="img-name">${escH(img.replace('.png',''))}</span>
+      ${shared ? `<span class="share-badge">${imgMap[img].length}</span>` : ''}
+    </div>`;
+  }).join('');
+  return `<div class="tile" data-oi="${escH(q.oi)}" data-text="${escH(q.id+' '+q.oi+' '+(q.periode||'')+' '+enonce.toLowerCase())}">
+  <div class="tile-top"><span class="tile-id">${escH(q.id)}</span><span class="tile-oi-tag" style="${oiStyleAttr(q.oi)}">${escH(short)}</span></div>
+  <div class="tile-periode">${escH(periodeShort)}</div>
+  <div class="tile-enonce">${escH(enonceCut)}</div>
+  <div class="tile-imgs">${imgsHtml}</div>
+</div>`;
+}
+
+async function init() {
+  const questions = [];
+  QUESTIONS.forEach(q => {
+    const docImgs = [];
+    (q.documents || []).forEach(doc => {
+      (doc.cols || []).forEach(col => { if (col.ref) docImgs.push(col.ref); });
+    });
+    if (q.reponse && q.reponse.ref) docImgs.push(q.reponse.ref); // image dans l'espace réponse
+    if (!docImgs.length) return;
+    const unique = [...new Set(docImgs)];
+    q._imgs = unique;
+    questions.push(q);
+  });
+
+  questions.forEach(q => q._imgs.forEach(img => {
+    if (!imgMap[img]) imgMap[img] = [];
+    imgMap[img].push(q.id);
+  }));
+
+  questions.forEach(q => qById[q.id] = q);
+
+  allImgGroups = Object.entries(imgMap)
+    .sort((a,b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'fr'));
+
+  const sharedCount = allImgGroups.filter(([,ids]) => ids.length > 1).length;
+
+  renderImgGrid();
+
+  document.getElementById('allGrid').innerHTML = questions.map(q => tileHtml(q)).join('');
+
+  const ois = [...new Set(questions.map(q=>q.oi))].sort();
+  const sel = document.getElementById('filterOi');
+  ois.forEach(oi => { const o = document.createElement('option'); o.value=oi; o.textContent=oi; sel.appendChild(o); });
+
+  // Orphelines : images présentes sur GitHub mais non référencées dans aucune question.
+  // On lit le répertoire images/ via l'API GitHub (source de vérité) — pas seulement IMAGE_DB,
+  // ce qui permet de voir les images uploadées mais pas encore liées à une question.
+  const usedImgs = new Set(Object.keys(imgMap));
+  let orphans = [];
+  try {
+    const headers = getToken() ? { Authorization: 'token ' + getToken() } : {};
+    const r = await fetch(API + 'images?ref=main&t=' + Date.now(), { headers, cache: 'no-store' });
+    if (r.ok) {
+      const files = await r.json();
+      if (Array.isArray(files)) {
+        orphans = files
+          .map(f => f.name)
+          .filter(name => name !== '.gitkeep' && !usedImgs.has(name))
+          .sort();
+      }
+    }
+  } catch(_) {
+    // Repli sur IMAGE_DB si l'API est inaccessible
+    orphans = Object.keys(IMAGE_DB).filter(img => !usedImgs.has(img)).sort();
+  }
+
+  if (orphans.length) {
+    document.getElementById('orphans-container').innerHTML = orphans.map(img => `
+      <div class="orphan-row" id="orphan-${CSS.escape(img)}">
+        <img src="images/${escH(img)}" loading="lazy" title="${escH(img)}" onclick="showImg(${escH(JSON.stringify(img))})">
+        <span class="img-label">${escH(img.replace(/\.[^.]+$/, ''))}</span>
+        ${sizeBadgeHtml(img)}
+        <button class="btn-delete" onclick="deleteOrphan(${escH(JSON.stringify(img))})">🗑 Supprimer</button>
+      </div>`).join('');
+    document.getElementById('nav-orphans').style.display = '';
+    fetchSizes(orphans);
+  } else {
+    document.getElementById('nav-orphans').style.display = 'none';
+  }
+
+  document.getElementById('stat-chip').innerHTML =
+    `<b>${Object.keys(imgMap).length}</b> images · <b>${sharedCount}</b> partagées · <b>${questions.length}</b> questions${orphans.length ? ` · <b style="color:#842029">${orphans.length} non utilisée${orphans.length>1?'s':''}</b>` : ''}`;
+
+  fetchSizes(Object.keys(imgMap));
+}
+
+// Charge questions.js via l'API GitHub en priorité plutôt que le site statique : GitHub
+// Pages est servi derrière un CDN qui peut continuer à servir une ancienne version pendant
+// un moment après une publication, même avec un cache-bust par timestamp sur l'URL (le CDN
+// peut ignorer la query string pour la clé de cache) — l'API GitHub, elle, reflète toujours
+// l'état réel du dépôt (voir fetchQuestionsJsSource, déjà utilisée pour les éditions).
+// Repli sur le site statique puis sur une balise <script> si l'API échoue.
+(function loadQuestionsThenInit() {
+  function runSource(src) {
+    try {
+      const s = document.createElement('script');
+      s.textContent = src;
+      document.head.appendChild(s);
+      return typeof QUESTIONS !== 'undefined';
+    } catch (e) { return false; }
+  }
+  function scriptTagFallback() {
+    const qs = document.createElement('script');
+    qs.src = 'questions.js?v=1&t=' + Date.now();
+    qs.onload = init;
+    document.head.appendChild(qs);
+  }
+  function staticFetchFallback() {
+    fetch('questions.js?t=' + Date.now(), { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(src => { if (runSource(src)) init(); else scriptTagFallback(); })
+      .catch(scriptTagFallback);
+  }
+  const token = getToken();
+  fetchQuestionsJsSource(token ? {Authorization: 'token ' + token} : undefined)
+    .then(({content}) => { if (runSource(content)) init(); else staticFetchFallback(); })
+    .catch(staticFetchFallback);
+})();
+
+function fetchSizes(imgs) {
+  imgs.forEach(async img => {
+    try {
+      const r = await fetch('images/' + img, {method:'HEAD'});
+      const bytes = parseInt(r.headers.get('content-length') || '0');
+      sizeCache[img] = bytes;
+      applySizeBadge(img, bytes);
+    } catch(e) { /* silently skip */ }
+  });
+}
+
+function sizeClass(bytes) {
+  const kb = bytes / 1024;
+  if (kb < 400) return 'ok';
+  if (kb < 800) return 'warn';
+  return 'big';
+}
+
+function sizeLabel(bytes) {
+  if (!bytes) return '? Ko';
+  return Math.round(bytes / 1024) + ' Ko';
+}
+
+function applySizeBadge(img, bytes) {
+  const cls = sizeClass(bytes);
+  const label = sizeLabel(bytes);
+  document.querySelectorAll(`[data-size-badge="${CSS.escape(img)}"]`).forEach(el => {
+    el.className = 'size-badge ' + cls;
+    el.textContent = label;
+  });
+}
+
+function setActive(id) {
+  document.getElementById('nav-shared').classList.toggle('active', id==='shared');
+  document.getElementById('nav-all').classList.toggle('active', id==='all');
+  document.getElementById('nav-orphans').classList.toggle('active', id==='orphans');
+  document.getElementById('sec-shared').style.display = id==='shared' ? '' : 'none';
+  document.getElementById('sec-all').style.display = id==='all' ? '' : 'none';
+  document.getElementById('sec-orphans').style.display = id==='orphans' ? '' : 'none';
+  document.getElementById('search').value = '';
+}
+
+function filterAll() {
+  const s = document.getElementById('search').value.toLowerCase();
+  const oi = document.getElementById('filterOi').value;
+  // Filtrer la grille "toutes les questions"
+  document.querySelectorAll('#allGrid .tile').forEach(t => {
+    const show = (!s || t.dataset.text.includes(s)) && (!oi || t.dataset.oi===oi);
+    t.style.display = show ? '' : 'none';
+  });
+  // Filtrer la grille d'images par nom + OI
+  document.querySelectorAll('#shared-container .img-card').forEach(c => {
+    const nameMatch = !s || c.dataset.imgName.includes(s);
+    const oiMatch = !oi || (() => { try { return JSON.parse(c.dataset.ois || '[]').includes(oi); } catch(_) { return false; } })();
+    c.style.display = (nameMatch && oiMatch) ? '' : 'none';
+  });
+}
+
+function showImg(img) {
+  currentLbImg = img;
+  document.getElementById('lb-img').src = 'images/'+img;
+  document.getElementById('lb-img').alt = img.replace(/\.(png|jpe?g)$/i, '');
+  document.getElementById('lb-caption').textContent = img;
+  const lbSize = document.getElementById('lb-size');
+  if (sizeCache[img]) {
+    lbSize.className = 'size-badge ' + sizeClass(sizeCache[img]);
+    lbSize.textContent = sizeLabel(sizeCache[img]);
+  } else {
+    lbSize.className = 'size-badge loading';
+    lbSize.textContent = '…';
+  }
+  // Liste des questions utilisant cette image
+  const ids = (imgMap[img] || []).filter(id => qById[id]);
+
+  // Détection des sources uniques pour pré-remplir le panneau
+  const allSources  = ids.map(id => sourceAuteurFor(qById[id], img).source);
+  const allAuteurs  = ids.map(id => sourceAuteurFor(qById[id], img).auteur);
+  const uniqSrc  = [...new Set(allSources.filter(Boolean))];
+  const uniqAut  = [...new Set(allAuteurs.filter(Boolean))];
+  document.getElementById('lb-src-source').value = uniqSrc.length === 1 ? uniqSrc[0] : '';
+  document.getElementById('lb-src-source').placeholder = uniqSrc.length > 1
+    ? uniqSrc.length + ' valeurs différentes — saisir pour unifier'
+    : 'Titre, éditeur, année…';
+  document.getElementById('lb-src-auteur').value = uniqAut.length === 1 ? uniqAut[0] : '';
+  document.getElementById('lb-src-auteur').placeholder = uniqAut.length > 1
+    ? uniqAut.length + ' valeurs différentes — saisir pour unifier'
+    : 'Prénom Nom, titre…';
+  document.getElementById('lb-src-status').textContent = '';
+  document.getElementById('lb-src-apply').disabled = false;
+
+  const qhtml = ids.map(id => {
+    const q = qById[id];
+    const short = OI_SHORT[q.oi] || q.oi;
+    const per = (q.periode || '').replace(/P\d+ — /, '');
+    const en = (q.enonce || '').replace(/\*\*/g, '');
+    const sub = soustitreFor(q, img);
+    const subHtml = sub
+      ? `<div class="lbq-sub" title="${escH(en)}">${escH(sub)}</div>`
+      : `<div class="lbq-sub empty" title="${escH(en)}">Aucun sous-titre</div>`;
+    const sa = sourceAuteurFor(q, img);
+    const srcTxt = [sa.auteur, sa.source].filter(Boolean).join(' · ') || null;
+    const canonSrc = uniqSrc.length === 1 ? uniqSrc[0] : null;
+    const canonAut = uniqAut.length === 1 ? uniqAut[0] : null;
+    const srcClass = !srcTxt ? 'missing'
+      : (canonSrc && sa.source !== canonSrc) || (canonAut && sa.auteur !== canonAut) ? 'diff' : 'ok';
+    const srcHtml = `<div class="lbq-source ${srcClass}">${srcTxt ? escH(srcTxt) : 'Aucune source'}</div>`;
+    return `<div class="lbq">
+      <div class="lbq-top">
+        <span class="tile-id">${escH(q.id)}</span>
+        <span class="tile-oi-tag" style="${oiStyleAttr(q.oi)}">${escH(short)}</span>
+        <span class="lbq-per">${escH(per)}</span>
+        <button class="lbq-edit" title="Modifier le sous-titre" onclick="event.stopPropagation();openSoustitre(${escH(JSON.stringify(id))})">✏</button>
+      </div>
+      ${subHtml}
+      ${srcHtml}
+    </div>`;
+  }).join('');
+  document.getElementById('lb-q-list').innerHTML =
+    `<div class="lbq-title">${ids.length} question${ids.length>1?'s':''} avec cette image</div>` + qhtml;
+  document.getElementById('lb').classList.add('open');
+}
+
+function closeLb(e) {
+  if (!e || e.target === document.getElementById('lb') || e.target === document.getElementById('lb-close')) {
+    document.getElementById('lb').classList.remove('open');
+  }
+}
+document.addEventListener('keydown', e => { if (e.key==='Escape') { closeLb(); closeRenameModal(); closeReplaceModal(); closeSubModal(); } });
+
+// Verrouille toute la page (overlay plein écran) pendant une opération GitHub
+// asynchrone (suppression, renommage, remplacement, édition de sous-titre/source) :
+// empêche de lancer une 2e opération concurrente sur la même image ou une autre
+// pendant qu'une écriture est en cours.
+function setPageLocked(locked, msg) {
+  const el = document.getElementById('page-lock-overlay');
+  if (!el) return;
+  el.classList.toggle('show', locked);
+  if (locked && msg) document.getElementById('page-lock-badge').textContent = msg;
+}
+
+// ── Delete orphan ────────────────────────────────────────────────────────────
+
+async function deleteOrphan(img) {
+  if (!confirm(`Supprimer définitivement « ${img} » du dépôt GitHub ?\nCette action est irréversible (hors historique git).`)) return;
+  const btn = document.querySelector(`#orphan-${CSS.escape(img)} .btn-delete`);
+  if (btn) { btn.disabled = true; btn.textContent = '⏳…'; }
+  setPageLocked(true, 'Suppression de ' + img + '…');
+  try {
+    // 0. Revérifier sur l'état FRAIS de questions.js (pas l'instantané figé au chargement
+    //    de la page) qu'aucune question n'a été publiée entre-temps avec cette image.
+    if (!(await isImageStillOrphan(img))) {
+      throw new Error(img + ' est maintenant utilisée par une question — rafraîchissez la page.');
+    }
+
+    // 1. Get SHA of image file
+    const r1 = await fetch(API + 'images/' + encodeURIComponent(img), {
+      headers: {Authorization: 'token ' + requireToken()}
+    });
+    if (!r1.ok) throw new Error('Impossible de lire ' + img + ' (' + r1.status + ')');
+    const d1 = await r1.json();
+
+    // 2. Delete image file
+    const r2 = await fetch(API + 'images/' + encodeURIComponent(img), {
+      method: 'DELETE',
+      headers: {Authorization: 'token ' + requireToken(), 'Content-Type': 'application/json'},
+      body: JSON.stringify({message: 'Supprimer image orpheline ' + img, sha: d1.sha})
+    });
+    if (!r2.ok) throw new Error('Échec suppression (' + r2.status + ')');
+
+    // 3. Remove from IMAGE_DB in questions.js — édition STRUCTURÉE (parse → mutation →
+    //    re-sérialisation) avec retry SHA, plutôt qu'un remplacement regex fragile qui
+    //    pouvait corrompre le fichier si une entrée IMAGE_DB contenait des accolades.
+    await applyQuestionsEdit(parsed => {
+      if (!parsed.IMAGE_DB || !(img in parsed.IMAGE_DB)) return false; // déjà absente
+      delete parsed.IMAGE_DB[img];
+      return true;
+    }, 'Retirer ' + img + ' de IMAGE_DB');
+
+    // Remove row from DOM
+    document.getElementById('orphan-' + CSS.escape(img))?.remove();
+    if (!document.querySelector('#orphans-container .orphan-row')) {
+      document.getElementById('sec-orphans').style.display = 'none';
+      document.getElementById('nav-orphans').style.display = 'none';
+      setActive('shared');
+    }
+  } catch(err) {
+    if (btn) { btn.disabled = false; btn.textContent = '🗑 Supprimer'; }
+    alert('Erreur : ' + err.message);
+  } finally {
+    setPageLocked(false);
+  }
+}
+
+// ── Replace ─────────────────────────────────────────────────────────────────
+
+let replaceTarget = '';
+let replaceB64 = '';
+let replaceBytes = 0;
+
+function openReplace(img) {
+  replaceTarget = img;
+  replaceB64 = '';
+  document.getElementById('replace-old-label').textContent = 'Image actuelle : ' + img;
+  document.getElementById('replace-file').value = '';
+  document.getElementById('replace-preview').classList.remove('show');
+  document.getElementById('replace-preview-img').src = '';
+  document.getElementById('replace-status').textContent = '';
+  document.getElementById('replace-status').className = 'replace-status';
+  document.getElementById('replace-confirm-btn').disabled = true;
+  document.getElementById('replace-modal').classList.add('open');
+}
+
+function closeReplaceModal(e) {
+  if (!e || e.target === document.getElementById('replace-modal')) {
+    document.getElementById('replace-modal').classList.remove('open');
+  }
+}
+
+function handleReplaceFile(file) {
+  if (!file) return;
+  const status = document.getElementById('replace-status');
+  status.textContent = '';
+  if (!/^image\/(png|jpe?g)$/i.test(file.type)) {
+    status.className = 'replace-status err';
+    status.textContent = '✗ Fichier non pris en charge — déposez une image PNG ou JPEG.';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const img = new Image();
+    img.onload = function() {
+      const MAX = 1200;
+      let w = img.width, h = img.height;
+      if (w > MAX || h > MAX) {
+        if (w >= h) { h = Math.round(h * MAX / w); w = MAX; }
+        else        { w = Math.round(w * MAX / h); h = MAX; }
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      // Encode dans le format de la cible (le nom de fichier ne change pas) :
+      // un .jpg doit recevoir du JPEG, pas du PNG sous une fausse extension.
+      const isJpg = /\.jpe?g$/i.test(replaceTarget);
+      const dataUrl = isJpg ? canvas.toDataURL('image/jpeg', 0.85) : canvas.toDataURL('image/png');
+      replaceB64 = dataUrl.split(',')[1];
+      const bytes = Math.round(replaceB64.length * 3 / 4);
+      replaceBytes = bytes;
+      const ko = Math.round(bytes / 1024);
+      const cls = ko < 400 ? 'ok' : ko < 800 ? 'warn' : 'big';
+      document.getElementById('replace-preview-img').src = dataUrl;
+      document.getElementById('replace-preview-meta').innerHTML =
+        `${w} × ${h} px — <span class="size-badge ${cls}">${ko} Ko</span>`;
+      document.getElementById('replace-preview').classList.add('show');
+      document.getElementById('replace-confirm-btn').disabled = false;
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function confirmReplace() {
+  if (!replaceB64) return;
+  const btn = document.getElementById('replace-confirm-btn');
+  const status = document.getElementById('replace-status');
+  btn.disabled = true;
+  setPageLocked(true, 'Remplacement de ' + replaceTarget + '…');
+  status.className = 'replace-status';
+  status.textContent = 'Récupération du SHA…';
+  try {
+    const r = await fetch(API + 'images/' + encodeURIComponent(replaceTarget), {
+      headers: {Authorization: 'token ' + requireToken()}
+    });
+    if (!r.ok) throw new Error('Impossible de lire ' + replaceTarget + ' (' + r.status + ')');
+    const d = await r.json();
+    status.textContent = 'Envoi…';
+    const rp = await fetch(API + 'images/' + encodeURIComponent(replaceTarget), {
+      method: 'PUT',
+      headers: {Authorization: 'token ' + requireToken(), 'Content-Type': 'application/json'},
+      body: JSON.stringify({message: 'Remplacer ' + replaceTarget, content: replaceB64, sha: d.sha})
+    });
+    if (!rp.ok) throw new Error('Échec de l\'envoi (' + rp.status + ')');
+    // Update DOM
+    const newSrc = document.getElementById('replace-preview-img').src;
+    document.querySelectorAll(`img[src="images/${replaceTarget}"], img[src^="images/${replaceTarget}?"]`).forEach(el => {
+      el.src = newSrc;
+    });
+    if (currentLbImg === replaceTarget) document.getElementById('lb-img').src = newSrc;
+    sizeCache[replaceTarget] = replaceBytes;
+    applySizeBadge(replaceTarget, replaceBytes);
+    status.className = 'replace-status ok';
+    status.textContent = '✓ Image remplacée. Le cache GitHub Pages peut prendre quelques minutes.';
+  } catch(err) {
+    status.className = 'replace-status err';
+    status.textContent = '✗ ' + err.message;
+    btn.disabled = false;
+  } finally {
+    setPageLocked(false);
+  }
+}
+
+// ── Rename ──────────────────────────────────────────────────────────────────
+
+function openRename(img) {
+  renameTarget = img;
+  // Détecter l'extension d'origine (.png ou .jpg/.jpeg) et la préserver
+  const extMatch = img.match(/(\.[^.]+)$/i);
+  renameExt = extMatch ? extMatch[1].toLowerCase() : '.png';
+  document.getElementById('rename-old-label').textContent = 'Image actuelle : ' + img;
+  document.getElementById('rename-input').value = img.replace(/\.[^.]+$/i, '');
+  document.getElementById('rename-input').placeholder = 'Nouveau nom (sans ' + renameExt + ')';
+  document.getElementById('rename-status').textContent = '';
+  document.getElementById('rename-status').className = 'rename-status';
+  document.getElementById('rename-confirm-btn').disabled = false;
+  document.getElementById('rename-modal').classList.add('open');
+  setTimeout(() => document.getElementById('rename-input').focus(), 50);
+}
+
+function closeRenameModal(e) {
+  if (!e || e.target === document.getElementById('rename-modal')) {
+    document.getElementById('rename-modal').classList.remove('open');
+  }
+}
+
+async function confirmRename() {
+  const btn = document.getElementById('rename-confirm-btn');
+  const status = document.getElementById('rename-status');
+  // Même assainissement qu'admin.html (uploadImage) : pas d'espaces, ni \ ' " ` < > &
+  // — ces caractères cassent les attributs HTML / onclick et pourraient corrompre questions.js.
+  // Retirer toute extension que l'utilisateur aurait laissée, puis re-ajouter l'extension d'origine
+  const raw = document.getElementById('rename-input').value.trim()
+    .replace(/\.[^.]+$/i, '').replace(/\s+/g, '_').replace(/[\\'"`<>&]/g, '');
+  if (!raw) { status.className = 'rename-status err'; status.textContent = '✗ Nom vide ou invalide.'; return; }
+  const newName = raw + renameExt;
+  if (newName === renameTarget) { closeRenameModal(); return; }
+  // Refuser l'écrasement d'une image existante (imgMap = dans une question, IMAGE_DB = connu)
+  if (imgMap[newName] || (typeof IMAGE_DB !== 'undefined' && IMAGE_DB[newName])) {
+    status.className = 'rename-status err';
+    status.textContent = '✗ « ' + newName + ' » existe déjà — choisissez un autre nom.';
+    return;
+  }
+
+  btn.disabled = true;
+  setPageLocked(true, 'Renommage de ' + renameTarget + '…');
+  status.className = 'rename-status';
+  status.textContent = 'Récupération du fichier…';
+
+  const oldNameForDelete = renameTarget;
+  try {
+    // 1. Get old file (SHA + content)
+    const r1 = await fetch(API + 'images/' + encodeURIComponent(renameTarget), {
+      headers: {Authorization: 'token ' + requireToken()}
+    });
+    if (!r1.ok) throw new Error('Impossible de lire ' + renameTarget + ' (' + r1.status + ')');
+    const d1 = await r1.json();
+
+    // 2. Create new file
+    status.textContent = 'Création de ' + newName + '…';
+    const r2 = await fetch(API + 'images/' + encodeURIComponent(newName), {
+      method: 'PUT',
+      headers: {Authorization: 'token ' + requireToken(), 'Content-Type': 'application/json'},
+      body: JSON.stringify({message: 'Rename ' + renameTarget + ' → ' + newName, content: d1.content})
+    });
+    if (!r2.ok) throw new Error('Échec création ' + newName + ' (' + r2.status + ')');
+
+    // 3. Mettre à jour les refs de questions.js AVANT de supprimer l'ancien fichier.
+    //    Si cette étape échoue, l'ancien fichier existe toujours et les refs restent
+    //    valides ; le nouveau fichier n'est qu'un orphelin récupérable via documents.html.
+    status.textContent = 'Mise à jour de questions.js…';
+    const refsChanged = await applyQuestionsEdit(parsed => {
+      let did = false;
+      parsed.QUESTIONS.forEach(q => {
+        (q.documents || []).forEach(d => (d.cols || []).forEach(c => {
+          if (c.ref === renameTarget) { c.ref = newName; did = true; }
+        }));
+        if (q.reponse && q.reponse.ref === renameTarget) { q.reponse.ref = newName; did = true; }
+      });
+      if (parsed.IMAGE_DB[renameTarget]) {
+        const entry = parsed.IMAGE_DB[renameTarget];
+        delete parsed.IMAGE_DB[renameTarget];
+        entry.src = 'images/' + newName;
+        parsed.IMAGE_DB[newName] = entry;
+        did = true;
+      }
+      return did;
+    }, 'Rename ' + renameTarget + ' → ' + newName + ' (refs)');
+
+    // Les refs de questions.js pointent déjà vers newName et le nouveau fichier existe :
+    // refléter l'état local dès maintenant, avant la suppression de l'ancien fichier — si
+    // celle-ci échoue ensuite, le pire résiduel est un ancien fichier orphelin récupérable
+    // via cette même page, pas une incohérence entre le DOM et questions.js.
+    updateDomAfterRename(renameTarget, newName);
+    renameTarget = newName;
+    document.getElementById('rename-old-label').textContent = 'Image actuelle : ' + newName;
+
+    // Revérifier sur l'état FRAIS de questions.js qu'aucune question n'a été publiée entre-
+    // temps (autre onglet / admin.html) avec une référence à l'ancien nom — sinon supprimer
+    // le fichier casserait cette référence toute neuve.
+    if (!(await isImageStillOrphan(oldNameForDelete))) {
+      status.className = 'rename-status warn';
+      status.textContent = '✓ Renommé, mais « ' + oldNameForDelete + ' » est de nouveau référencée par une question récente — fichier non supprimé (à nettoyer manuellement si besoin).';
+      setTimeout(closeRenameModal, 2600);
+      return;
+    }
+
+    // 4. Supprimer l'ancien fichier image (en dernier).
+    status.textContent = 'Suppression de ' + oldNameForDelete + '…';
+    const r3 = await fetch(API + 'images/' + encodeURIComponent(oldNameForDelete), {
+      method: 'DELETE',
+      headers: {Authorization: 'token ' + requireToken(), 'Content-Type': 'application/json'},
+      body: JSON.stringify({message: 'Rename ' + oldNameForDelete + ' → ' + newName, sha: d1.sha})
+    });
+    if (!r3.ok) throw new Error('Fichier renommé, mais échec de suppression de l\'ancien ' + oldNameForDelete + ' (' + r3.status + ') — orphelin à nettoyer manuellement.');
+
+    if (refsChanged) {
+      status.className = 'rename-status ok';
+      status.textContent = '✓ Renommé avec succès.';
+    } else {
+      status.className = 'rename-status warn';
+      status.textContent = '✓ Fichier renommé (aucune référence trouvée dans questions.js).';
+    }
+    setTimeout(closeRenameModal, 1800);
+
+  } catch(err) {
+    status.className = 'rename-status err';
+    status.textContent = '✗ ' + err.message + ' — actualisez la page pour voir l\'état réel.';
+    btn.disabled = false;
+  } finally {
+    setPageLocked(false);
+  }
+}
+
+function updateDomAfterRename(oldName, newName) {
+  // Update all img src attributes
+  document.querySelectorAll(`img[src="images/${oldName}"]`).forEach(el => {
+    el.src = 'images/' + newName;
+  });
+  // Update data-size-badge attributes
+  document.querySelectorAll(`[data-size-badge="${CSS.escape(oldName)}"]`).forEach(el => {
+    el.dataset.sizeBadge = newName;
+  });
+  // Update img-card dans la grille
+  document.querySelectorAll('#shared-container .img-card').forEach(card => {
+    const im = card.querySelector('img');
+    if (!im || im.getAttribute('src') !== 'images/' + oldName) return;
+    im.src = 'images/' + newName;
+    im.alt = newName;
+    card.dataset.imgName = newName.replace('.png','').toLowerCase();
+    card.setAttribute('onclick', 'showImg(' + JSON.stringify(newName) + ')');
+    const label = card.querySelector('.ic-label');
+    if (label) { label.textContent = newName.replace('.png',''); label.title = newName; }
+  });
+  // Update tile img-wraps (vue "toutes les questions")
+  document.querySelectorAll('.img-wrap').forEach(wrap => {
+    const im = wrap.querySelector('img');
+    if (im && im.title === oldName) {
+      im.title = newName;
+      im.setAttribute('onclick', 'showImg(' + JSON.stringify(newName) + ')');
+      const nameSpan = wrap.querySelector('.img-name');
+      if (nameSpan) nameSpan.textContent = newName.replace('.png','');
+    }
+  });
+  // Update imgMap
+  if (imgMap[oldName]) { imgMap[newName] = imgMap[oldName]; delete imgMap[oldName]; }
+  // Update sizeCache
+  if (sizeCache[oldName]) { sizeCache[newName] = sizeCache[oldName]; delete sizeCache[oldName]; }
+  // Update allImgGroups (sinon un re-tri régénère la grille avec l'ancien nom, image cassée)
+  const grp = allImgGroups.find(([name]) => name === oldName);
+  if (grp) grp[0] = newName;
+  // Update la ligne "orpheline" correspondante (id, libellé, bouton Supprimer)
+  const orphanRow = document.getElementById('orphan-' + CSS.escape(oldName));
+  if (orphanRow) {
+    orphanRow.id = 'orphan-' + CSS.escape(newName);
+    const label = orphanRow.querySelector('.img-label');
+    if (label) label.textContent = newName.replace(/\.[^.]+$/, '');
+    const delBtn = orphanRow.querySelector('.btn-delete');
+    if (delBtn) delBtn.setAttribute('onclick', 'deleteOrphan(' + JSON.stringify(newName) + ')');
+  }
+  // Update les refs en mémoire des questions (sinon l'édition de sous-titre casse après un rename)
+  Object.values(qById).forEach(q => {
+    (q.documents || []).forEach(doc => (doc.cols || []).forEach(col => {
+      if (col.ref === oldName) col.ref = newName;
+    }));
+  });
+  // Update lightbox if open
+  if (currentLbImg === oldName) {
+    currentLbImg = newName;
+    document.getElementById('lb-caption').textContent = newName;
+  }
+}
+
+// ── Sous-titre ────────────────────────────────────────────────────────────────
+// Le sérialiseur (serializeValue / ensureImageDbComplete / generateQuestionsJs)
+// est partagé avec admin.html via questions-io.js — chargé plus haut.
+
+// Source/auteur de la (première) colonne d'un document de q qui référence cette image
+function sourceAuteurFor(q, img) {
+  for (const doc of (q.documents || [])) {
+    for (const col of (doc.cols || [])) {
+      if (col.ref === img) return { source: col.source || '', auteur: col.auteur || '' };
+    }
+  }
+  return { source: '', auteur: '' };
+}
+
+async function applySourceToAll() {
+  const img     = currentLbImg;
+  const auteur  = document.getElementById('lb-src-auteur').value.trim();
+  const source  = document.getElementById('lb-src-source').value.trim();
+  const ids     = (imgMap[img] || []).filter(id => qById[id]);
+  if (!ids.length) return;
+  const btn    = document.getElementById('lb-src-apply');
+  const status = document.getElementById('lb-src-status');
+  btn.disabled = true;
+  setPageLocked(true, 'Mise à jour de ' + ids.length + ' question' + (ids.length > 1 ? 's' : '') + '…');
+  status.style.color = 'var(--ink-3)';
+  status.textContent = '⏳ Publication…';
+  try {
+    const changed = await applyQuestionsEdit(({ QUESTIONS }) => {
+      let modified = false;
+      for (const q of QUESTIONS) {
+        if (!ids.includes(q.id)) continue;
+        for (const doc of (q.documents || [])) {
+          for (const col of (doc.cols || [])) {
+            if (col.ref !== img) continue;
+            if (auteur !== '' && col.auteur !== auteur) { col.auteur = auteur; modified = true; }
+            if (source !== '' && col.source !== source) { col.source = source; modified = true; }
+          }
+        }
+      }
+      return modified;
+    }, `docs: uniformiser source/auteur pour ${img}`);
+    if (changed) {
+      // Mettre à jour qById local
+      ids.forEach(id => {
+        const q = qById[id];
+        if (!q) return;
+        for (const doc of (q.documents || [])) {
+          for (const col of (doc.cols || [])) {
+            if (col.ref === img) {
+              if (auteur !== '') col.auteur = auteur;
+              if (source !== '') col.source = source;
+            }
+          }
+        }
+      });
+      status.style.color = '#2a8a4a';
+      status.textContent = `✓ Appliqué à ${ids.length} question${ids.length > 1 ? 's' : ''}`;
+      showImg(img); // re-render pour mettre à jour les pastilles
+    } else {
+      status.style.color = 'var(--ink-3)';
+      status.textContent = 'Aucun changement à appliquer.';
+    }
+  } catch(e) {
+    status.style.color = '#c0392b';
+    status.textContent = '✗ ' + e.message;
+  } finally {
+    setPageLocked(false);
+    btn.disabled = false;
+  }
+}
+
+// Sous-titre de la (première) colonne d'un document de q qui référence cette image
+function soustitreFor(q, img) {
+  for (const doc of (q.documents || [])) {
+    for (const col of (doc.cols || [])) {
+      if (col.ref === img) return col.soustitre || '';
+    }
+  }
+  return '';
+}
+// Met à jour la copie en mémoire (qById) après écriture distante
+function setSoustitreLocal(id, img, val) {
+  const q = qById[id];
+  if (!q) return;
+  for (const doc of (q.documents || [])) {
+    for (const col of (doc.cols || [])) {
+      if (col.ref === img) { col.soustitre = val; return; }
+    }
+  }
+}
+
+// Lit questions.js depuis l'API GitHub Contents et décode son contenu source (base64 inline
+// si ≤ 1 Mo, sinon téléchargement via download_url) — factorisé pour que applyQuestionsEdit()
+// et isImageStillOrphan() ne puissent pas diverger (l'une décodait mal la réponse JSON avant
+// ce correctif, ce qui faisait échouer systématiquement la revérification de fraîcheur).
+async function fetchQuestionsJsSource(headers) {
+  const rq = await fetch(API + 'questions.js?t=' + Date.now(), { headers, cache: 'no-store' });
+  if (!rq.ok) throw new Error('Lecture questions.js (' + rq.status + ')');
+  const dq = await rq.json();
+  let content;
+  if (dq.content) {
+    const rawBytes = Uint8Array.from(atob(dq.content.replace(/\n/g,'')), c => c.charCodeAt(0));
+    content = new TextDecoder('utf-8').decode(rawBytes);
+  } else if (dq.download_url) {
+    const dlUrl = dq.download_url.includes('?') ? dq.download_url + '&t=' + Date.now() : dq.download_url + '?t=' + Date.now();
+    const raw = await fetch(dlUrl, {cache: 'no-store'});
+    if (!raw.ok) throw new Error('Impossible de télécharger questions.js : ' + raw.status);
+    content = await raw.text();
+  } else {
+    throw new Error("Réponse inattendue de l'API GitHub pour questions.js");
+  }
+  return { content, sha: dq.sha };
+}
+
+// Relit questions.js à l'instant présent et retourne vrai si aucune question ne
+// référence encore `img` (dans un document ou en réponse-image) — utilisé pour
+// revérifier juste avant une suppression irréversible, au cas où une publication
+// concurrente (autre onglet / admin.html) aurait entre-temps réutilisé l'image.
+async function isImageStillOrphan(img) {
+  const { content } = await fetchQuestionsJsSource();
+  let parsed;
+  try {
+    parsed = new Function(content + '\n return { QUESTIONS };')();
+  } catch(e) {
+    throw new Error('questions.js illisible : ' + e.message);
+  }
+  return !parsed.QUESTIONS.some(q =>
+    (q.documents || []).some(d => (d.cols || []).some(c => c.ref === img)) ||
+    (q.reponse && q.reponse.ref === img)
+  );
+}
+
+// GitHub peut mettre plusieurs dizaines de secondes à propager un commit sur tous ses
+// réplicas de lecture (vécu le 2026-07-13 : une « lecture fraîche » 35 s après un commit
+// précédent a quand même renvoyé l'état d'AVANT ce commit, l'écrasant silencieusement ;
+// re-vécu le 2026-07-14 alors qu'un délai fixe de 12 s s'était pourtant écoulé — un délai
+// fixe ne peut pas garantir la fraîcheur). Plutôt que d'espérer qu'un délai suffise, on
+// relit deux fois de suite espacées de STABLE_READ_POLL_MS : si les deux lectures
+// renvoient le même SHA, les réplicas sont considérés stabilisés et la lecture est fiable.
+// Sinon on réessaie jusqu'à STABLE_READ_MAX_WAIT_MS, puis on abandonne en avertissant
+// plutôt que de bloquer indéfiniment.
+const STABLE_READ_POLL_MS = 3000;
+const STABLE_READ_MAX_WAIT_MS = 45000;
+
+async function fetchStableQuestionsJs(headers) {
+  const start = Date.now();
+  let prev = await fetchQuestionsJsSource(headers);
+  while (Date.now() - start < STABLE_READ_MAX_WAIT_MS) {
+    await new Promise(r => setTimeout(r, STABLE_READ_POLL_MS));
+    const next = await fetchQuestionsJsSource(headers);
+    if (next.sha === prev.sha) return next;
+    prev = next;
+  }
+  console.warn('questions.js : lectures instables après ' + STABLE_READ_MAX_WAIT_MS + ' ms — poursuite avec la dernière lecture disponible.');
+  return prev;
+}
+
+async function applyQuestionsEdit(mutate, commitMsg) {
+  const token = requireToken();
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const { content, sha } = await fetchStableQuestionsJs({Authorization: 'token ' + token});
+    let parsed;
+    try {
+      parsed = new Function(content + '\n return { REGLETTES, IMAGE_DB, QUESTIONS };')();
+    } catch(e) {
+      throw new Error('questions.js illisible : ' + e.message);
+    }
+    const changed = mutate(parsed);
+    if (!changed) return false;
+    const out = generateQuestionsJs(parsed.QUESTIONS, parsed.REGLETTES, parsed.IMAGE_DB);
+    const enc = new TextEncoder().encode(out);
+    let binary = ''; enc.forEach(b => binary += String.fromCharCode(b));
+    const rp = await fetch(API + 'questions.js', {
+      method: 'PUT',
+      headers: {Authorization: 'token ' + token, 'Content-Type': 'application/json'},
+      body: JSON.stringify({message: commitMsg, content: btoa(binary), sha: sha})
+    });
+    if (rp.ok) return true;
+    if (rp.status === 409 && attempt < 2) continue; // conflit SHA → on relit et on réessaie
+    throw new Error('Échec écriture questions.js (' + rp.status + ')');
+  }
+  throw new Error('Conflit persistant — réessayez.');
+}
+
+let subTargetId = '';
+let subTargetImg = '';
+
+function openSoustitre(id) {
+  const q = qById[id];
+  if (!q) return;
+  subTargetId = id;
+  subTargetImg = currentLbImg;
+  document.getElementById('sub-old-label').textContent = id + ' · ' + currentLbImg;
+  document.getElementById('sub-input').value = soustitreFor(q, currentLbImg);
+  const st = document.getElementById('sub-status');
+  st.textContent = ''; st.className = 'rename-status';
+  document.getElementById('sub-confirm-btn').disabled = false;
+  document.getElementById('sub-modal').classList.add('open');
+  setTimeout(() => document.getElementById('sub-input').focus(), 50);
+}
+
+function closeSubModal(e) {
+  if (!e || e.target === document.getElementById('sub-modal')) {
+    document.getElementById('sub-modal').classList.remove('open');
+  }
+}
+
+async function confirmSoustitre() {
+  const newVal = document.getElementById('sub-input').value.trim();
+  const id = subTargetId, img = subTargetImg;
+  const btn = document.getElementById('sub-confirm-btn');
+  const status = document.getElementById('sub-status');
+  btn.disabled = true;
+  setPageLocked(true, 'Enregistrement du sous-titre…');
+  status.className = 'rename-status';
+  status.textContent = 'Enregistrement…';
+  try {
+    const changed = await applyQuestionsEdit(parsed => {
+      const q = parsed.QUESTIONS.find(x => x.id === id);
+      if (!q) throw new Error('Question ' + id + ' introuvable');
+      for (const doc of (q.documents || [])) {
+        for (const col of (doc.cols || [])) {
+          if (col.ref === img) {
+            if ((col.soustitre || '') === newVal) return false;
+            col.soustitre = newVal;
+            return true;
+          }
+        }
+      }
+      throw new Error('Colonne référençant ' + img + ' introuvable dans ' + id);
+    }, 'Modifier sous-titre ' + id + ' (' + img + ')');
+    if (changed) {
+      setSoustitreLocal(id, img, newVal);
+      if (currentLbImg === img) showImg(img); // re-render de la liste
+    }
+    status.className = 'rename-status ok';
+    status.textContent = changed ? '✓ Sous-titre enregistré.' : 'Aucun changement.';
+    setTimeout(closeSubModal, 1200);
+  } catch(err) {
+    status.className = 'rename-status err';
+    status.textContent = '✗ ' + err.message;
+    btn.disabled = false;
+  } finally {
+    setPageLocked(false);
+  }
+}
+</script>
+</body>
+</html>

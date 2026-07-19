@@ -1,0 +1,29 @@
+name: Déployer Worker Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'worker/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Déployer le Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 2b96ba1644b05d5253fab566f5c49158
+          workingDirectory: worker
+
+      - name: Configurer les secrets du Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          echo "${{ secrets.GH_PAT_WORKER }}" | npx wrangler secret put GITHUB_PAT --name ghec-admin
+          echo "${{ secrets.WORKER_SECRET }}" | npx wrangler secret put WORKER_SECRET --name ghec-admin
+        working-directory: worker

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>Générateur d'examens — GHEC CSSBF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap">
+<style>
+:root {
+  --ink:   #1A1714;
+  --ink-2: #4A453E;
+  --ink-3: #9A938A;
+  --paper:   #F8F5F0;
+  --paper-2: #EDE9E2;
+  --paper-3: #E2DDD5;
+  --accent:  #1D4E9F;
+  --border:  rgba(0,0,0,0.09);
+  --green: #2E7D4F; --red: #B03A3A;
+  --c-slot1: #3A6FA8; --c-slot1-bg: #E4EDF8;
+  --c-slot2: #3A8050; --c-slot2-bg: #E2F0E6;
+  --c-slot3: #C06030; --c-slot3-bg: #F8EBE0;
+  --c-lnk: #C06030; --c-lnk-bg: #F8EBE0;
+  --c-slot4: #7A4A9A; --c-slot4-bg: #EDE4F5;
+  --c-slot5: #607880; --c-slot5-bg: #E6EAEC;
+  --c-slot6: #B03A3A; --c-slot6-bg: #F5E4E4;
+  --c-slot7:  #2A8A8A; --c-slot7-bg:  #DFF0F0;
+  --c-slot8: #9A6030; --c-slot8-bg: #F2E8DC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans','Segoe UI',Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);min-height:100vh}
+
+header{background:#1B3B6F;color:var(--paper);padding:0 1.5rem;display:flex;align-items:stretch;min-height:52px}
+.header-brand{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.25rem .75rem 0;border-right:1px solid rgba(255,255,255,.15);margin-right:1rem}
+.header-brand h1{font-family:'DM Serif Display',Georgia,serif;font-size:1.4rem;font-weight:400}
+.header-brand small{font-size:.65rem;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:1px}
+nav{display:flex;align-items:center;gap:.25rem;margin-left:auto}
+nav a{padding:.45rem .9rem;border-radius:6px;color:rgba(255,255,255,.75);text-decoration:none;font-size:.8rem;font-weight:500;transition:background .15s,color .15s;white-space:nowrap;cursor:pointer}
+nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+nav a.active{background:rgba(255,255,255,.18);color:#fff}
+
+.toolbar{background:var(--paper-2);border-bottom:1px solid var(--border);padding:.7rem 1.5rem;display:flex;gap:.9rem;align-items:center;flex-wrap:wrap}
+.toolbar label{font-size:.72rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;margin-right:.35rem}
+.toolbar select,.toolbar input{padding:.4rem .7rem;border-radius:7px;border:1px solid var(--border);background:#fff;font-family:inherit;font-size:.82rem;color:var(--ink);outline:none}
+.toolbar select:focus,.toolbar input:focus{border-color:var(--accent)}
+.field{display:flex;align-items:center}
+.btn{padding:.5rem 1rem;border-radius:7px;border:1px solid var(--border);background:#fff;font-family:inherit;font-size:.82rem;font-weight:500;color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-primary:hover{background:#163f80;color:#fff}
+.btn-primary:disabled{background:var(--ink-3);border-color:var(--ink-3)}
+
+.section{padding:1.5rem;max-width:1100px;margin:0 auto}
+.section-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.15rem;font-weight:400;color:var(--ink-2);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.empty-hint{color:var(--ink-3);font-size:.9rem;padding:2rem 0;text-align:center}
+
+.summary-bar{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.2rem}
+.chip{font-size:.78rem;font-weight:500;border-radius:20px;padding:.32rem .8rem;background:var(--paper-2);color:var(--ink-2);border:1px solid var(--border)}
+.chip.ok{background:#DCEFE3;color:var(--green);border-color:transparent}
+.chip.warn{background:#FBE6D9;color:#8A4A1E;border-color:transparent}
+.chip b{font-weight:700}
+
+.q-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.q-table th{background:var(--paper-2);text-align:left;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);padding:.5rem .7rem;border-bottom:1px solid var(--border)}
+.q-table td{padding:.55rem .7rem;font-size:.82rem;border-bottom:1px solid var(--border);vertical-align:middle}
+.q-table tr:last-child td{border-bottom:none}
+.q-table tr:hover td{background:#FBFAF7}
+.oi-pill{font-size:.68rem;font-weight:600;border-radius:20px;padding:.15rem .55rem;white-space:nowrap;display:inline-block}
+.q-aspect{color:var(--ink-2)}
+.q-enonce{color:var(--ink-3);font-size:.76rem;max-width:340px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-swap{background:none;border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--ink-3);font-size:.72rem;padding:.25rem .55rem;font-family:inherit;transition:color .15s,border-color .15s}
+.btn-swap:hover{color:var(--accent);border-color:var(--accent)}
+.btn-swap:disabled{opacity:.4;cursor:not-allowed}
+
+.oi-dist{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
+.oi-dist-item{font-size:.7rem;border-radius:20px;padding:.2rem .6rem}
+
+.actions-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid var(--border)}
+
+#toast{position:fixed;bottom:1.5rem;right:1.5rem;padding:.75rem 1.25rem;border-radius:7px;font-size:.85rem;font-weight:500;display:none;z-index:999;color:#fff}
+#toast.ok{background:var(--green)}
+#toast.err{background:var(--red)}
+
+.note{font-size:.78rem;color:var(--ink-3);line-height:1.5;margin-top:.6rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-brand">
+    <div>
+      <h1>GHEC · CSSBF</h1>
+      <small>Générateur d'examens</small>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">← Site</a>
+  </nav>
+</header>
+
+<div class="toolbar">
+  <div class="field"><label for="ex-periode">Période</label>
+    <select id="ex-periode" onchange="updateFavoriOptions()"></select>
+  </div>
+  <div class="field"><label for="ex-favori">OI à privilégier</label>
+    <select id="ex-favori">
+      <option value="">Aucune préférence</option>
+    </select>
+  </div>
+  <div class="field"><label for="ex-titre">Titre</label>
+    <input type="text" id="ex-titre" style="width:320px" placeholder="Examen — Titre de la période">
+  </div>
+  <button class="btn btn-primary" id="btn-generer" onclick="exGenerate()" disabled>⏳ Chargement…</button>
+</div>
+
+<div class="section">
+  <div id="ex-empty" class="empty-hint">Choisissez une période et cliquez sur « Générer » pour construire un examen.</div>
+
+  <div id="ex-result" style="display:none">
+    <div class="section-title">Résumé</div>
+    <div class="summary-bar" id="ex-summary"></div>
+    <div class="oi-dist" id="ex-oidist"></div>
+
+    <div class="section-title">Questions sélectionnées</div>
+    <table class="q-table">
+      <thead><tr><th>#</th><th>Aspect du programme</th><th>OI</th><th>Pts</th><th>Docs</th><th>Énoncé</th><th></th></tr></thead>
+      <tbody id="ex-tbody"></tbody>
+    </table>
+    <p class="note">🔀 remplace la question par une autre couvrant le(s) même(s) aspect(s), en respectant le budget de points et la règle « jamais deux fois le même sous-tag pour une OI ». La variété/quota d'OI n'est pas revérifiée après un remplacement manuel — vérifiez la colonne OI ci-dessus si vous en faites plusieurs.</p>
+
+    <div class="actions-row">
+      <button class="btn" onclick="exGenerate()">🎲 Régénérer tout</button>
+      <button class="btn btn-primary" id="btn-questionnaire" onclick="exDownloadQuestionnaire()">⬇ Questionnaire (.docx)</button>
+      <button class="btn btn-primary" id="btn-dossier" onclick="exDownloadDossier()">⬇ Dossier documentaire (.docx)</button>
+      <button class="btn btn-primary" id="btn-guide" onclick="exDownloadGuide()">⬇ Guide de correction (.docx)</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="oi-config.js?v=1"></script>
+<script src="contexte.js"></script>
+<script src="examen-gen.js?v=2"></script>
+<script>
+'use strict';
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Échappement HTML (mêmes conventions que documents.html : escH/escAttr)
+// ═══════════════════════════════════════════════════════════════════════════
+function escH(s) {
+  return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function escAttr(s) {
+  return escH(s).replace(/"/g,'&quot;');
+}
+// Échappe pour une chaîne JS entre apostrophes (ex. dans un onclick="…('…')").
+function jsStr(s) {
+  return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+}
+
+function toast(msg, type) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = type || 'ok';
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+
+function oiStyle(oi) {
+  return (typeof OI_CONFIG !== 'undefined' && OI_CONFIG[oi]) ? OI_CONFIG[oi] : { color: 'var(--ink-2)', bg: 'var(--paper-3)' };
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// État & chargement des données (lecture seule — pas d'écriture sur questions.js)
+// ═══════════════════════════════════════════════════════════════════════════
+let QUESTIONS = [];
+let REGLETTES = {};
+let IMAGE_DB = {};
+let EX_SELECTION = null;   // liste des questions sélectionnées (ordre d'examen)
+let EX_DOCMAP = null;      // { docItems, byQuestion } — voir examen-gen.js
+let EX_PERIODE = null;
+// Cibles réellement atteintes par la dernière génération (peuvent dépasser EX_OI_HARD_CAP /
+// EX_OI_FIXED_TARGET — voir exOiCap dans examen-gen.js) : exSwapOne doit s'y référer plutôt
+// que de recalculer un plafond à partir des seules constantes de base, sinon un remplacement
+// manuel refuse à tort une OI qui a légitimement dépassé sa cible de fond (ex. favorite).
+let EX_FAVORI_OI = null;
+let EX_FAVORI_TARGET_APPLIED = 0;
+let EX_FIXED_TARGETS_APPLIED = {};
+const EX_MAX_POINTS = 25;
+
+const PERIODES_ALL = Object.values(PERIODES_PAR_NIVEAU).flat();
+
+(function initPeriodeSelect() {
+  const sel = document.getElementById('ex-periode');
+  PERIODES_ALL.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p; opt.textContent = p;
+    if (p.startsWith('P5')) opt.selected = true;
+    sel.appendChild(opt);
+  });
+})();
+
+async function loadQuestions() {
+  const r = await fetch('questions.js?t=' + Date.now(), { cache: 'no-store' });
+  if (!r.ok) throw new Error('Impossible de charger questions.js (' + r.status + ')');
+  const src = await r.text();
+  const result = new Function(src + '\nreturn{REGLETTES,IMAGE_DB,QUESTIONS}')();
+  QUESTIONS = result.QUESTIONS;
+  REGLETTES = result.REGLETTES;
+  IMAGE_DB  = result.IMAGE_DB;
+}
+
+// Désactive/masque les options de favori dont l'OI n'a aucune question dans la période
+// choisie (ex. « Déterminer des changements et des continuités » n'existe pas en P1) —
+// évite de proposer un favori qui ne peut de toute façon jamais s'appliquer.
+function updateFavoriOptions() {
+  const periode = document.getElementById('ex-periode').value;
+  const sel = document.getElementById('ex-favori');
+  const availableOis = new Set(QUESTIONS.filter(q => q.periode === periode).map(q => q.oi));
+  [...sel.options].forEach(opt => {
+    if (!opt.value) return; // « Aucune préférence » toujours disponible
+    const available = availableOis.has(opt.value);
+    opt.disabled = !available;
+    opt.hidden = !available;
+  });
+  if (sel.options[sel.selectedIndex] && sel.options[sel.selectedIndex].disabled) sel.value = '';
+}
+
+// Peuple le menu « OI à privilégier » depuis OI_LIST (oi-config.js) — toute OI configurée
+// peut être choisie comme favorite ; updateFavoriOptions() masque ensuite celles absentes
+// de la période sélectionnée.
+(function populateFavoriSelect() {
+  const sel = document.getElementById('ex-favori');
+  (typeof OI_LIST !== 'undefined' ? OI_LIST : []).forEach(oi => {
+    const opt = document.createElement('option');
+    opt.value = oi;
+    opt.textContent = oi;
+    sel.appendChild(opt);
+  });
+})();
+
+loadQuestions().then(() => {
+  const btn = document.getElementById('btn-generer');
+  btn.disabled = false;
+  btn.textContent = '🎲 Générer';
+  updateFavoriOptions();
+}).catch(e => {
+  console.error(e);
+  toast('Erreur de chargement des données : ' + e.message, 'err');
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Génération
+// ═══════════════════════════════════════════════════════════════════════════
+function exGenerate() {
+  const periode = document.getElementById('ex-periode').value;
+  const favoriOi = document.getElementById('ex-favori').value || null;
+  const aspects = ASPECTS_PAR_PERIODE[periode];
+  if (!aspects || !aspects.length) { toast('Aucun aspect défini pour cette période.', 'err'); return; }
+
+  const btn = document.getElementById('btn-generer');
+  btn.disabled = true; btn.textContent = '⏳ Génération…';
+
+  // setTimeout : laisse le navigateur peindre le bouton désactivé avant le calcul (peut prendre ~1s)
+  setTimeout(() => {
+    try {
+      const res = exGenererExamen({ questions: QUESTIONS, periode, aspects, oiList: OI_LIST, favoriOi, maxPoints: EX_MAX_POINTS });
+      if (!res.ok) { toast(res.reason, 'err'); return; }
+      EX_SELECTION = res.selected;
+      EX_DOCMAP = exBuildDocMap(EX_SELECTION);
+      EX_PERIODE = periode;
+      EX_FAVORI_OI = favoriOi;
+      EX_FAVORI_TARGET_APPLIED = res.favoriTargetApplied || 0;
+      EX_FIXED_TARGETS_APPLIED = res.fixedTargetsApplied || {};
+      const titreInput = document.getElementById('ex-titre');
+      if (!titreInput.value.trim() || titreInput.dataset.auto === '1') {
+        titreInput.value = 'Examen — ' + periode.replace(/^P\d+\s*—\s*/, (m) => periode.split('—')[0].trim() + ' — ');
+        titreInput.value = 'Examen — ' + periode;
+        titreInput.dataset.auto = '1';
+      }
+      exRender(favoriOi);
+      toast('Examen généré : ' + res.points + ' / ' + EX_MAX_POINTS + ' points, ' + res.attempts + ' tentative(s).', 'ok');
+    } catch (e) {
+      console.error(e);
+      toast('Erreur : ' + e.message, 'err');
+    } finally {
+      btn.disabled = false; btn.textContent = '🎲 Générer';
+    }
+  }, 30);
+}
+
+function exRender(favoriOi) {
+  document.getElementById('ex-empty').style.display = 'none';
+  document.getElementById('ex-result').style.display = 'block';
+
+  const sel = EX_SELECTION;
+  const aspects = ASPECTS_PAR_PERIODE[EX_PERIODE];
+  const totalPoints = sel.reduce((s, q) => s + q.points, 0);
+  const oiCounts = {};
+  sel.forEach(q => { oiCounts[q.oi] = (oiCounts[q.oi] || 0) + 1; });
+  const oiMissing = OI_LIST.filter(o => !oiCounts[o]);
+
+  const summary = document.getElementById('ex-summary');
+  summary.innerHTML =
+    '<span class="chip ' + (totalPoints <= EX_MAX_POINTS ? 'ok' : 'warn') + '"><b>' + totalPoints + '</b> / ' + EX_MAX_POINTS + ' points</span>' +
+    '<span class="chip ok"><b>' + aspects.length + '</b> / ' + aspects.length + ' aspects couverts</span>' +
+    '<span class="chip ' + (oiMissing.length ? 'warn' : 'ok') + '"><b>' + (OI_LIST.length - oiMissing.length) + '</b> / ' + OI_LIST.length + ' OI représentées</span>' +
+    (favoriOi ? '<span class="chip"><b>' + (oiCounts[favoriOi] || 0) + '</b> question(s) — ' + escH(favoriOi) + '</span>' : '');
+
+  const oidist = document.getElementById('ex-oidist');
+  oidist.innerHTML = OI_LIST.map(oi => {
+    const st = oiStyle(oi);
+    const n = oiCounts[oi] || 0;
+    return '<span class="oi-dist-item" style="color:' + st.color + ';background:' + st.bg + '">' + escH(oi) + ' : ' + n + '</span>';
+  }).join('');
+
+  document.getElementById('ex-tbody').innerHTML = sel.map((q, i) => {
+    const st = oiStyle(q.oi);
+    const nDocs = (q.documents || []).reduce((s, d) => s + (d.cols || [d]).length, 0);
+    const aspectLabel = (q.aspects || []).map(a => a.aspect).join(', ');
+    return '<tr data-qid="' + escAttr(q.id) + '">' +
+      '<td>' + (i + 1) + '</td>' +
+      '<td class="q-aspect">' + escH(aspectLabel) + '</td>' +
+      '<td><span class="oi-pill" style="color:' + st.color + ';background:' + st.bg + '">' + escH(q.oi) + '</span></td>' +
+      '<td>' + q.points + '</td>' +
+      '<td>' + nDocs + '</td>' +
+      '<td><span class="q-enonce" title="' + escAttr(q.enonce || '') + '">' + escH(q.enonce || '') + '</span></td>' +
+      '<td><button class="btn-swap" onclick="exSwapOne(\'' + jsStr(q.id) + '\')" title="Remplacer par une autre question couvrant le(s) même(s) aspect(s)">🔀</button></td>' +
+      '</tr>';
+  }).join('');
+}
+
+function exSwapOne(qId) {
+  const idx = EX_SELECTION.findIndex(q => q.id === qId);
+  if (idx === -1) return;
+  const old = EX_SELECTION[idx];
+  const favoriOi = EX_FAVORI_OI;
+  const oldAspects = exAspectsOf(old).slice().sort();
+  const usedIds = new Set(EX_SELECTION.map(q => q.id));
+  const totalPoints = EX_SELECTION.reduce((s, q) => s + q.points, 0);
+  const others = EX_SELECTION.filter((q, i) => i !== idx);
+  const otherOiTags = new Set(others.filter(q => exDiversityKey(q)).map(q => q.oi + '||' + exDiversityKey(q)));
+  const otherOiCounts = {};
+  others.forEach(q => { otherOiCounts[q.oi] = (otherOiCounts[q.oi] || 0) + 1; });
+
+  const candidates = QUESTIONS.filter(q =>
+    q.periode === EX_PERIODE &&
+    q.id !== old.id &&
+    !usedIds.has(q.id) &&
+    exAspectsOf(q).slice().sort().join('|') === oldAspects.join('|') &&
+    (totalPoints - old.points + q.points) <= EX_MAX_POINTS &&
+    !(exDiversityKey(q) && otherOiTags.has(q.oi + '||' + exDiversityKey(q))) &&
+    (otherOiCounts[q.oi] || 0) < exOiCap(q.oi, favoriOi, EX_FAVORI_TARGET_APPLIED, EX_FIXED_TARGETS_APPLIED)
+  );
+  if (!candidates.length) {
+    toast("Aucune autre question ne couvre exactement le(s) même(s) aspect(s) dans le budget de points restant, sans réutiliser un sous-tag déjà pris pour la même OI ni dépasser un plafond d'OI.", 'err');
+    return;
+  }
+  const picked = candidates[Math.floor(Math.random() * candidates.length)];
+  EX_SELECTION[idx] = picked;
+  EX_DOCMAP = exBuildDocMap(EX_SELECTION);
+  exRender(document.getElementById('ex-favori').value || null);
+  toast('Question remplacée : ' + old.id + ' → ' + picked.id, 'ok');
+}
+</script>
+
+<script src="docx-examen.js?v=1"></script>
+</body>
+</html>

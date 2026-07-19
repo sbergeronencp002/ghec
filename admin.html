@@ -1,0 +1,3045 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>Admin — GHEC · CSSBF</title>
+<script src="reglettes.js?v=3"></script>
+<script src="contexte.js"></script>
+<script src="oi-config.js?v=1"></script>
+<script src="questions-io.js?v=3"></script>
+<style>
+:root {
+  --ink: #1a1814; --ink-2: #4a4740; --ink-3: #8a8680;
+  --paper: #f7f4ef; --paper-2: #ede9e2; --paper-3: #e2ddd5;
+  --accent: #1B3B6F; --border: rgba(26,24,20,0.15);
+  --green: #1a5c3a; --red: #c0392b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans','Segoe UI',Helvetica,Arial,sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
+
+/* ── HEADER ── */
+header { background: var(--accent); color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+header h1 { font-size: 1.2rem; font-weight: 500; }
+header a { color: rgba(255,255,255,.7); font-size: .8rem; text-decoration: none; }
+header a:hover { color: #fff; }
+
+/* ── LAYOUT ── */
+#app { display: flex; flex-direction: column; min-height: 100vh; }
+.container { width: 100%; max-width: min(2200px, 94vw); margin: 0 auto; padding: 2rem 1.5rem; }
+
+/* ── TOKEN BAR ── */
+.token-bar { background: var(--paper-2); border: 1px solid var(--border); border-radius: 7px; padding: .75rem 1rem; display: flex; flex-direction: column; gap: .5rem; margin-bottom: 2rem; }
+.token-bar-row { display: flex; gap: .75rem; align-items: center; }
+.token-bar label { font-size: .75rem; font-weight: 600; color: var(--ink-3); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.token-bar input { flex: 1; padding: .4rem .6rem; border: 1px solid var(--border); border-radius: 4px; font-size: .8rem; font-family: monospace; min-width: 0; }
+.token-bar-sep { border: none; border-top: 1px solid var(--border); margin: 0; }
+.token-status { font-size: .75rem; white-space: nowrap; }
+.token-status.ok { color: var(--green); }
+.token-status.ko { color: var(--red); }
+
+/* ── SECTION ── */
+.section { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.section-title { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-bottom: 1rem; }
+
+/* ── FORM ── */
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-size: .75rem; font-weight: 600; color: var(--ink-2); margin-bottom: .35rem; }
+.field input, .field select, .field textarea {
+  width: 100%; padding: .5rem .75rem; border: 1px solid var(--border);
+  border-radius: 5px; font-family: inherit; font-size: .85rem; color: var(--ink);
+  background: var(--paper); transition: border-color .15s;
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+.field textarea { resize: vertical; min-height: 80px; }
+.img-select-wrap { display: flex; align-items: center; gap: .6rem; }
+.img-select-wrap select { flex: 1; min-width: 0; width: auto !important; }
+.img-thumb { width: 64px; height: 48px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: zoom-in; flex-shrink: 0; display: none; background: var(--paper); }
+.img-thumb.visible { display: block; }
+#img-float-preview { position: fixed; z-index: 9999; pointer-events: none; display: none; background: #fff; border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,.18); padding: 4px; }
+#img-float-preview img { display: block; max-width: 320px; max-height: 260px; object-fit: contain; border-radius: 5px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+
+/* ── DYNAMIC BLOCKS ── */
+.block { border: 1px solid var(--border); border-radius: 6px; padding: 1rem; margin-bottom: .75rem; position: relative; background: var(--paper); }
+.block-title { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); margin-bottom: .75rem; }
+.btn-remove { position: absolute; top: .6rem; right: .6rem; background: none; border: none; color: var(--ink-3); font-size: 1.1rem; cursor: pointer; padding: 0 .2rem; line-height: 1; }
+.btn-remove:hover { color: var(--red); }
+.btn-add { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .9rem; background: var(--paper-2); border: 1px dashed var(--border); border-radius: 5px; font-size: .78rem; color: var(--ink-2); cursor: pointer; margin-top: .25rem; transition: all .15s; }
+.btn-add:hover { background: var(--paper-3); color: var(--ink); border-style: solid; }
+
+/* ── COLS ── */
+.col-block { border: 1px solid var(--border); border-radius: 5px; padding: .75rem; margin-bottom: .5rem; background: #fff; position: relative; }
+.col-type-toggle { display: flex; gap: .4rem; margin-bottom: .6rem; }
+.col-type-toggle button { padding: .25rem .6rem; border: 1px solid var(--border); border-radius: 4px; font-size: .72rem; cursor: pointer; background: var(--paper); color: var(--ink-2); }
+.col-type-toggle button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── NIVEAU CHIPS ── */
+.niveau-row { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+.niveau-row input[type=number] { width: 60px; }
+.niveau-row input[type=text] { flex: 1; }
+.niveau-row .btn-remove { position: static; }
+
+/* ── ACTIONS ── */
+.actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
+.btn-primary { padding: .65rem 1.5rem; background: var(--green); color: #fff; border: none; border-radius: 6px; font-size: .9rem; font-weight: 600; cursor: pointer; transition: opacity .15s; }
+.btn-primary:hover { opacity: .88; }
+.btn-primary:disabled { opacity: .45; cursor: not-allowed; }
+.btn-secondary { padding: .6rem 1.2rem; background: var(--paper-2); border: 1px solid var(--border); border-radius: 6px; font-size: .85rem; cursor: pointer; }
+.btn-secondary:hover { background: var(--paper-3); }
+.btn-danger { padding: .6rem 1.2rem; background: var(--red); color: #fff; border: none; border-radius: 6px; font-size: .85rem; cursor: pointer; opacity: .85; }
+.btn-danger:hover { opacity: 1; }
+.btn-danger:disabled { opacity: .35; cursor: not-allowed; }
+
+/* ── TOAST ── */
+#toast { position: fixed; bottom: 1.5rem; right: 1.5rem; padding: .75rem 1.25rem; border-radius: 7px; font-size: .85rem; font-weight: 500; display: none; z-index: 999; color: #fff; }
+#toast.ok { background: var(--green); }
+#toast.err { background: var(--red); }
+
+/* ── ID badge ── */
+.id-badge { display: inline-block; background: var(--accent); color: #fff; font-size: .7rem; font-weight: 700; padding: .15rem .5rem; border-radius: 4px; letter-spacing: .05em; }
+/* ── GUIDE GRILLE ── */
+.guide-grille { border-collapse: collapse; width: 100%; margin-top: .25rem; }
+.guide-grille th, .guide-grille td { border: 1px solid var(--border); padding: 0; }
+.guide-grille-num { width: 26px; text-align: center; font-size: .68rem; color: var(--ink-3); background: var(--paper-2); padding: 0 4px; }
+.guide-grille th { background: var(--paper-2); }
+.guide-grille input { width: 100%; border: none; padding: .34rem .55rem; font-size: .82rem; background: transparent; font-family: inherit; color: var(--ink); min-width: 80px; }
+.guide-grille input:focus { outline: none; background: rgba(27,59,111,0.05); }
+.guide-grille-entete { font-weight: 600; }
+
+.soustag-pill {
+  display:inline-flex; align-items:center; gap:4px;
+  padding:4px 11px; border-radius:20px;
+  border:1.5px solid var(--border);
+  font-size:.75rem; font-weight:500; color:var(--ink-2);
+  cursor:pointer; user-select:none;
+  transition:background .15s, color .15s, border-color .15s;
+  background:var(--paper);
+}
+.soustag-pill input { position:absolute; opacity:0; width:0; height:0; pointer-events:none; }
+.soustag-pill:has(input:checked) { background:#1B3B6F; color:#fff; border-color:#1B3B6F; }
+.soustag-pill:hover:not(:has(input:checked)) { border-color:var(--ink-2); color:var(--ink); }
+.dash-grid { display:flex; gap:1.25rem; margin-bottom:1.25rem; align-items:flex-start; }
+.dash-col { flex:1; min-width:0; }
+.dash-col.collapsed { flex:0 0 auto; }
+.dash-niv-title { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin-bottom:.6rem; }
+.dash-row { display:flex; align-items:center; gap:.5rem; margin-bottom:.35rem; }
+.dash-label { font-size:.72rem; color:var(--ink-2); white-space:nowrap; min-width:120px; overflow:hidden; text-overflow:ellipsis; }
+.dash-bar-wrap { flex:1; background:var(--paper-3); border-radius:4px; height:8px; min-width:40px; overflow:hidden; }
+.dash-bar { height:100%; border-radius:4px; transition:width .4s ease; }
+.dash-count { font-size:.7rem; color:var(--ink-3); white-space:nowrap; min-width:108px; text-align:right; }
+.dash-divider { border:none; border-top:1px solid var(--border); margin:.75rem 0; }
+.dash-oi-row { display:flex; align-items:center; gap:.5rem; margin-bottom:.3rem; }
+.dash-oi-label { font-size:.72rem; color:var(--ink-2); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.dash-oi-count { font-size:.7rem; color:var(--ink-3); white-space:nowrap; min-width:60px; text-align:right; }
+.dash-row-clickable { cursor:pointer; border-radius:4px; padding:2px 4px; margin-left:-4px; transition:background .15s; }
+.dash-row-clickable:hover { background:var(--paper-2); }
+.dash-chevron { font-size:.55rem; color:var(--ink-3); transition:transform .2s; flex-shrink:0; }
+.dash-row-clickable.open .dash-chevron { transform:rotate(180deg); }
+.dash-period-detail { margin:.15rem 0 .55rem 1rem; padding-left:.6rem; border-left:2px solid var(--paper-3); }
+.dash-sub-row { display:flex; align-items:center; gap:.5rem; margin-bottom:.2rem; }
+.dash-sub-label { font-size:.68rem; color:var(--ink-2); flex:0 0 auto; width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.dash-sub-bar-wrap { flex:1; background:var(--paper-3); border-radius:3px; height:5px; overflow:hidden; min-width:20px; }
+.dash-sub-bar { height:100%; border-radius:3px; transition:width .4s ease; }
+.dash-sub-count { font-size:.66rem; color:var(--ink-3); white-space:nowrap; min-width:80px; text-align:right; }
+.dash-n4-toggle { font-size:.7rem; color:var(--ink-3); cursor:pointer; border:none; background:none; padding:0; margin-bottom:.3rem; text-decoration:underline dotted; }
+.dash-n4-toggle:hover { color:var(--ink-1); }
+
+.rich-toolbar { display:flex; gap:4px; margin-bottom:10px; }
+.rich-toolbar button { font-size:.75rem; padding:2px 8px; border:1px solid var(--border); border-radius:4px; background:var(--paper-2); cursor:pointer; color:var(--ink); }
+.rich-toolbar button:hover { background:var(--paper-3); }
+
+.edit-search-row { display:flex; gap:.5rem; margin-bottom:.6rem; flex-wrap:wrap; }
+.edit-search-row input { flex:1; min-width:160px; padding:.45rem .7rem; border:1px solid var(--border); border-radius:6px; font-size:.85rem; font-family:inherit; background:var(--paper); color:var(--ink); }
+.edit-search-row input:focus { outline:none; border-color:var(--accent); }
+.edit-search-row select { padding:.45rem .7rem; border:1px solid var(--border); border-radius:6px; font-size:.82rem; font-family:inherit; background:var(--paper); color:var(--ink); cursor:pointer; }
+.edit-search-row select:focus { outline:none; border-color:var(--accent); }
+
+.edit-results { max-height:260px; overflow-y:auto; border:1px solid var(--border); border-radius:6px; background:var(--paper); }
+.edit-result-card { padding:.55rem .85rem; cursor:pointer; border-bottom:1px solid var(--border); display:flex; align-items:baseline; gap:.5rem; transition:background .1s; }
+.edit-result-card:last-child { border-bottom:none; }
+.edit-result-card:hover { background:var(--paper-2); }
+.edit-result-card.selected { background:rgba(27,59,111,0.07); }
+.edit-card-id { font-size:.8rem; font-weight:700; color:var(--ink); white-space:nowrap; }
+.edit-card-warn { color:#c0392b; font-size:.75rem; }
+.edit-card-meta { font-size:.78rem; color:var(--ink-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.edit-card-enonce { font-size:.76rem; color:var(--ink-3); margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-style:italic; }
+.edit-card-sub { font-size:.72rem; color:var(--ink-3); margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.edit-result-card.focused { background:var(--paper-2); outline:2px solid rgba(27,59,111,0.25); outline-offset:-2px; }
+.edit-results-empty { padding:.75rem 1rem; font-size:.82rem; color:var(--ink-3); font-style:italic; }
+
+.edit-selected-bar { margin-top:.75rem; padding:.6rem .85rem; background:rgba(27,59,111,0.06); border:1px solid rgba(27,59,111,0.18); border-radius:6px; display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap; }
+.edit-selected-label { font-size:.82rem; font-weight:600; color:#1B3B6F; }
+
+/* ── ANCHOR NAV ── */
+.anchor-nav { position:sticky; top:0; z-index:20; background:var(--paper-2); border-bottom:1px solid var(--border); margin:0 -1.5rem 1.5rem; padding:.4rem 1.5rem; display:flex; gap:.25rem; flex-wrap:wrap; }
+.anchor-nav a { font-size:.72rem; font-weight:600; color:var(--ink-2); text-decoration:none; padding:.22rem .65rem; border-radius:4px; transition:background .12s,color .12s; white-space:nowrap; }
+.anchor-nav a:hover { background:var(--paper-3); color:var(--ink); }
+.anchor-preview-btn { margin-left:auto; font-size:.72rem; font-weight:600; padding:.22rem .8rem; border-radius:4px; border:1.5px solid var(--accent); background:none; color:var(--accent); cursor:pointer; transition:background .12s,color .12s; white-space:nowrap; }
+.anchor-preview-btn:hover,.anchor-preview-btn.active { background:var(--accent); color:#fff; }
+#live-preview-panel { position:fixed; top:0; right:0; width:min(440px,44vw); height:100vh; background:#fff; border-left:1px solid var(--border); box-shadow:-4px 0 24px rgba(0,0,0,.10); z-index:200; display:flex; flex-direction:column; overflow:hidden; }
+.lp-header { display:flex; align-items:center; justify-content:space-between; padding:.7rem 1rem; border-bottom:1px solid var(--border); background:var(--paper-2); flex-shrink:0; }
+.lp-title { font-size:.85rem; font-weight:700; color:var(--ink); }
+.lp-close { background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--ink-3); line-height:1; padding:0 .2rem; }
+.lp-close:hover { color:var(--ink); }
+.lp-body { flex:1; overflow-y:auto; padding:1rem; font-size:.82rem; }
+.lp-card { border:1.5px solid var(--border); border-radius:8px; padding:1rem; }
+.lp-oi-badge { display:inline-block; border-radius:4px; padding:1px 8px; font-size:.7rem; font-weight:700; letter-spacing:.04em; margin-bottom:.5rem; }
+.lp-meta { font-size:.7rem; color:var(--ink-3); margin-bottom:.6rem; }
+.lp-enonce { font-size:.85rem; line-height:1.55; margin-bottom:.8rem; }
+.lp-doc-titre { font-size:.72rem; font-weight:700; color:var(--ink-2); margin-bottom:.2rem; }
+.lp-doc-texte { font-size:.78rem; color:var(--ink); background:var(--paper-2); border-radius:4px; padding:.4rem .6rem; margin-bottom:.5rem; white-space:pre-wrap; max-height:120px; overflow:hidden; }
+.lp-doc-img { max-width:100%; border-radius:4px; margin-bottom:.5rem; display:block; }
+.lp-reponse { border-top:1.5px dashed var(--border); padding-top:.6rem; margin-top:.6rem; font-size:.72rem; color:var(--ink-3); }
+
+/* ── MOVE BUTTONS ── */
+.btn-move { position:absolute; top:.55rem; background:none; border:none; color:var(--ink-3); font-size:.85rem; cursor:pointer; padding:0 .15rem; line-height:1.2; }
+.btn-move-up { right:3.8rem; }
+.btn-move-dn { right:2.5rem; }
+.btn-move:hover { color:var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- APP -->
+<div id="app">
+  <header>
+    <h1>GHEC · CSSBF — Gestion des questions</h1>
+    <div style="display:flex;gap:1.25rem;align-items:center">
+      <a href="documents.html">🖼 Documents &amp; Images</a>
+      <a href="revision.html">🔁 Révision</a>
+      <a href="index.html">← Retour au site</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- TOKEN -->
+    <div class="token-bar">
+      <div class="token-bar-row">
+        <label>Token GitHub</label>
+        <input type="password" id="gh-token" placeholder="ghp_..." autocomplete="off" oninput="saveToken()">
+        <label style="display:flex;align-items:center;gap:.3rem;font-size:.75rem;white-space:nowrap;cursor:pointer">
+          <input type="checkbox" id="gh-remember" onchange="saveToken()"> Mémoriser
+        </label>
+        <span class="token-status" id="token-status"></span>
+      </div>
+      <hr class="token-bar-sep">
+      <div class="token-bar-row">
+        <label>Worker URL</label>
+        <input type="text" id="worker-url" placeholder="https://ghec-admin.sbergeron-ens.workers.dev" autocomplete="off"
+               style="flex:3;" oninput="localStorage.setItem('workerUrl',this.value.trim())">
+        <label>Clé</label>
+        <input type="password" id="worker-secret" placeholder="clé partagée" autocomplete="off"
+               style="flex:1;" oninput="saveWorkerSecret(this.value.trim())">
+        <span id="worker-status" style="font-size:.75rem;white-space:nowrap;"></span>
+      </div>
+    </div>
+
+    <!-- ANCHOR NAV -->
+    <nav class="anchor-nav">
+      <a href="#config-section">Configuration</a>
+      <a href="#section-contexte">Contexte</a>
+      <a href="#section-question">Question</a>
+      <a href="#section-docs">Documents</a>
+      <a href="#section-upload">Image</a>
+      <a href="#section-reponse">Réponse</a>
+      <a href="#section-reglette">Réglette</a>
+      <a href="#section-guide">Guide</a>
+      <a href="#section-actions">Publier ↓</a>
+      <button class="anchor-preview-btn" id="btn-preview-toggle" onclick="toggleLivePreview()" title="Aperçu en temps réel">👁 Aperçu</button>
+    </nav>
+
+    <!-- APERÇU EN TEMPS RÉEL -->
+    <div id="live-preview-panel" style="display:none">
+      <div class="lp-header">
+        <span class="lp-title">Aperçu</span>
+        <button class="lp-close" onclick="toggleLivePreview()">×</button>
+      </div>
+      <div class="lp-body" id="lp-body"><em style="color:var(--ink-3);font-size:.85rem">Remplissez le formulaire…</em></div>
+    </div>
+
+    <!-- TABLEAU DE BORD -->
+    <div class="section" id="dashboard-section" style="display:none">
+      <div class="section-title" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="toggleDashboard()">
+        <span>Tableau de bord — Couverture</span>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span id="dashboard-total" style="font-size:.75rem;font-weight:600;color:var(--ink-2)"></span>
+          <span id="dashboard-toggle-icon" style="font-size:.8rem;color:var(--ink-3);transition:transform .2s">▼</span>
+        </div>
+      </div>
+      <div id="dashboard-content" style="display:none"></div>
+    </div>
+
+    <!-- CONFIGURATION DU PROGRAMME -->
+    <div class="section" id="config-section">
+      <div class="section-title" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="toggleConfigSection()">
+        <span>⚙️ Configuration du programme (OI, niveaux, périodes, aspects)</span>
+        <span id="config-toggle-icon" style="font-size:.8rem;color:var(--ink-3);transition:transform .2s">▼</span>
+      </div>
+      <div id="config-content">
+        <p style="font-size:.78rem;color:var(--ink-3);margin:0 0 1rem;max-width:70ch">
+          Ces réglages définissent la structure du programme : les opérations intellectuelles (OI) et les
+          niveaux/périodes/aspects. Ils pilotent les menus déroulants, les filtres et le générateur d'examens
+          partout sur le site. Publiés directement sur GitHub (oi-config.js / contexte.js), comme les questions.
+        </p>
+
+        <div class="block-title" style="margin-top:0">Opérations intellectuelles (OI)</div>
+        <div id="cfg-oi-list"></div>
+        <div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem">
+          <button class="btn-add" onclick="cfgAddOi()">+ Ajouter une OI</button>
+          <button class="btn-primary" style="padding:.45rem 1rem;font-size:.8rem" onclick="cfgPublishOi()">💾 Enregistrer les OI</button>
+          <span id="cfg-oi-status" style="font-size:.75rem"></span>
+        </div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--border)">
+
+        <div class="block-title">Niveaux, périodes et aspects</div>
+        <div id="cfg-niveaux-list"></div>
+        <div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem">
+          <button class="btn-add" onclick="cfgAddNiveau()">+ Ajouter un niveau</button>
+          <button class="btn-primary" style="padding:.45rem 1rem;font-size:.8rem" onclick="cfgPublishContexte()">💾 Enregistrer niveaux/périodes/aspects</button>
+          <span id="cfg-contexte-status" style="font-size:.75rem"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE -->
+    <div class="section">
+      <div class="section-title">Mode</div>
+      <div style="display:flex;gap:1.5rem;margin-bottom:.5rem">
+        <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer;font-size:.85rem">
+          <input type="radio" name="mode" value="new" checked onchange="setMode('new')"> Nouvelle question
+        </label>
+        <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer;font-size:.85rem">
+          <input type="radio" name="mode" value="edit" onchange="setMode('edit')"> Modifier une question existante
+        </label>
+      </div>
+      <div id="edit-select-wrap" style="display:none">
+        <div class="edit-search-row">
+          <input type="text" id="edit-search" placeholder="Rechercher — ID, OI, période, énoncé…"
+            oninput="debouncedFilterEditList()" onkeydown="editKeyNav(event)">
+          <select id="edit-filter-niveau" onchange="filterEditList()">
+            <option value="">Tous les niveaux</option>
+          </select>
+          <select id="edit-filter-oi" onchange="filterEditList()">
+            <option value="">Toutes les OI</option>
+          </select>
+        </div>
+        <div id="edit-results-count" style="font-size:.72rem;color:var(--ink-3);margin-bottom:.3rem"></div>
+        <div id="edit-results" class="edit-results"></div>
+        <div id="edit-selected-bar" style="display:none" class="edit-selected-bar">
+          <span id="edit-selected-label" class="edit-selected-label"></span>
+          <div style="display:flex;gap:.5rem">
+            <button class="btn-secondary" id="btn-dupliquer" onclick="dupliquerQuestion()" disabled>📋 Dupliquer</button>
+            <button class="btn-danger" id="btn-supprimer" onclick="supprimerQuestion()" disabled>🗑 Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDENTIFIANT -->
+    <div class="section">
+      <div class="section-title">Identifiant</div>
+      <div class="field">
+        <label>ID de la question <span id="next-id-badge" class="id-badge"></span></label>
+        <input type="text" id="q-id" placeholder="Chargement…">
+      </div>
+    </div>
+
+    <!-- CONTEXTE -->
+    <div class="section" id="section-contexte">
+      <div class="section-title">Contexte</div>
+      <div class="row">
+        <div class="field">
+          <label>Niveau</label>
+          <select id="q-niveau" onchange="updatePeriodes()">
+          </select>
+        </div>
+        <div class="field">
+          <label>Période</label>
+          <select id="q-periode" onchange="updateAspects()"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Aspect(s)</label>
+        <div id="aspects-list" style="display:flex;flex-direction:column;gap:.3rem;margin-top:.3rem;padding:.5rem;background:var(--paper);border:1px solid var(--border);border-radius:5px;max-height:180px;overflow-y:auto"></div>
+      </div>
+      <div class="field">
+        <label>Opération intellectuelle</label>
+        <!-- Options générées depuis OI_CONFIG (oi-config.js) par populateOiSelect() -->
+        <select id="q-oi" onchange="onOiChange()"></select>
+      </div>
+      <div class="field" id="soustag-row" style="display:none">
+        <label>Sous-tag</label>
+        <div id="soustag-pills" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+      </div>
+    </div>
+
+    <!-- QUESTION -->
+    <div class="section" id="section-question">
+      <div class="section-title">Question</div>
+      <div class="field">
+        <div class="rich-toolbar">
+          <button type="button" onclick="insertBold('q-enonce')"><b>G</b></button>
+          <button type="button" onclick="insertBullet('q-enonce')">• Puce</button>
+        </div>
+        <textarea id="q-enonce" rows="4" placeholder="Texte de la question…"></textarea>
+      </div>
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="section" id="section-docs">
+      <div class="section-title">Documents</div>
+      <div id="docs-list"></div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+        <button class="btn-add" onclick="addDoc('textes')">+ Texte</button>
+        <button class="btn-add" onclick="addDoc('image')">+ Image</button>
+        <button class="btn-add" onclick="addDoc('textes-image')">+ Texte + Image (côte à côte)</button>
+      </div>
+    </div>
+
+    <!-- UPLOAD IMAGE -->
+    <div class="section" id="section-upload">
+      <div class="section-title">Téléverser une image</div>
+      <div class="row">
+        <div class="field">
+          <label>Fichier</label>
+          <input type="file" id="upload-file" accept="image/*" onchange="onUploadFileChange()" style="padding:.3rem">
+        </div>
+        <div class="field">
+          <label>Renommer <span style="font-weight:400;color:var(--ink-3)">(optionnel)</span></label>
+          <input type="text" id="upload-name" placeholder="nom_du_fichier.png">
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;margin-top:.5rem">
+        <button class="btn-secondary" id="btn-upload" onclick="uploadImage()">⬆ Téléverser dans GitHub</button>
+        <span id="upload-status" style="font-size:.82rem;color:var(--ink-3)"></span>
+      </div>
+    </div>
+
+    <!-- RÉPONSE -->
+    <div class="section" id="section-reponse">
+      <div class="section-title">Réponse</div>
+      <div class="field">
+        <label>Type de réponse</label>
+        <select id="rep-type" onchange="updateReponseUI()">
+          <option value="none">Aucune</option>
+          <option value="lignes">Lignes de réponse</option>
+          <option value="image">Image seule</option>
+
+          <option value="tableau_2col">Tableau 2 colonnes (Réponse | vide)</option>
+          <option value="grille">Tableau (grille visuelle)</option>
+          <option value="avant-apres">Tableau Avant / Après</option>
+          <option value="mettre-en-relation">Tableau Mettre en relation</option>
+          <option value="situer-dans-lespace">Tableau Situer dans l'espace</option>
+          <option value="cause-consequence">Tableau Cause / Conséquence</option>
+        </select>
+      </div>
+      <div id="rep-extra"></div>
+    </div>
+
+    <!-- RÉGLETTE -->
+    <div class="section" id="section-reglette">
+      <div class="section-title">Réglette</div>
+      <div class="field">
+        <label>Réglette prémémorisée</label>
+        <select id="reg-preset">
+          <option value="">— Sélectionner —</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- GUIDE -->
+    <div class="section" id="section-guide">
+      <div class="section-title">Guide de correction</div>
+      <div class="field">
+        <label>Type</label>
+        <select id="guide-type" onchange="updateGuideUI()">
+          <option value="texte">Texte</option>
+          <option value="grille">Tableau (grille visuelle)</option>
+        </select>
+      </div>
+      <div id="guide-extra">
+        <div class="field"><textarea id="guide-texte" rows="3" placeholder="Réponse attendue…"></textarea></div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="actions" id="section-actions">
+      <button class="btn-primary" id="btn-publier" onclick="publier()">Publier sur GitHub</button>
+      <button class="btn-secondary" onclick="resetForm()">Réinitialiser</button>
+      <span id="publish-status" style="font-size:.82rem;color:var(--ink-3)"></span>
+    </div>
+
+  </div><!-- /container -->
+</div><!-- /app -->
+
+<div id="toast"></div>
+
+<script>
+// Un navigateur ne revérifie sw.js qu'au plus une fois par 24h par défaut (throttle du
+// navigateur, indépendant de tout cache-bust côté serveur) — un F5 ou même fermer/rouvrir
+// l'onglet ne suffit donc pas à récupérer un correctif tout juste déployé si cette page
+// est encore contrôlée par un ancien service worker. On force la vérification ici et on
+// recharge une seule fois si un nouveau SW prend effectivement le relais.
+if ('serviceWorker' in navigator) {
+  let _swReloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (_swReloaded) return;
+    _swReloaded = true;
+    location.reload();
+  });
+  navigator.serviceWorker.getRegistration().then(reg => { if (reg) reg.update(); }).catch(() => {});
+}
+
+// ── TOKEN ─────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', init);
+
+function utf8b64(str) {
+  const bytes = new TextEncoder().encode(str);
+  const CHUNK = 8192;
+  let binary = '';
+  for (let i = 0; i < bytes.length; i += CHUNK)
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK));
+  return btoa(binary);
+}
+
+// Normalise pour la recherche : minuscules + suppression des accents (é → e)
+function fold(s) {
+  return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+let formDirty = false;
+window.addEventListener('beforeunload', e => { if(formDirty) { e.preventDefault(); e.returnValue = ''; } });
+
+function saveToken() {
+  const val = document.getElementById('gh-token').value;
+  const remember = document.getElementById('gh-remember').checked;
+  if(remember) { localStorage.setItem('gh_token', val); sessionStorage.removeItem('gh_token'); }
+  else { sessionStorage.setItem('gh_token', val); localStorage.removeItem('gh_token'); }
+  document.getElementById('token-status').textContent = '';
+}
+function getToken() { return document.getElementById('gh-token').value || localStorage.getItem('gh_token') || sessionStorage.getItem('gh_token') || ''; }
+
+// ── INIT ──────────────────────────────────────────────────────────────
+const OWNER  = 'sbergeronencp002';
+const REPO   = 'ghec';
+const BRANCH = 'main';
+
+// Un onglet resté ouvert continue d'exécuter le JS chargé à l'ouverture, même
+// après un déploiement de correctifs (deux incidents de perte de question ce
+// jour-là venaient d'un onglet obsolète). ADMIN_BUILD doit être incrémenté à
+// chaque modification d'admin.html ; isAdminStale() compare avec la version
+// réellement déployée avant chaque publication.
+const ADMIN_BUILD = '2026-07-19-1';
+async function isAdminStale() {
+  try {
+    const r = await fetch(`admin.html?t=${Date.now()}`, { cache: 'no-store' });
+    if(!r.ok) return false;
+    const html = await r.text();
+    const m = html.match(/const ADMIN_BUILD = '([^']+)'/);
+    return !!(m && m[1] !== ADMIN_BUILD);
+  } catch(_) { return false; } // hors ligne / réseau indisponible → ne bloque pas
+}
+function showStaleBanner() {
+  if(document.getElementById('stale-banner')) return;
+  const div = document.createElement('div');
+  div.id = 'stale-banner';
+  div.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#c0392b;color:#fff;padding:12px 16px;text-align:center;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,.3);';
+  div.textContent = '⚠️ Cette page a été mise à jour depuis son chargement — rechargez (F5) avant de publier, sinon vous risquez d\'écraser des données.';
+  document.body.prepend(div);
+}
+
+// ── Worker URL ────────────────────────────────────────────────────────
+// URL assignée par Cloudflare après le premier déploiement (wrangler deploy).
+// Format : https://ghec-admin.<sous-domaine-CF>.workers.dev
+const WORKER_URL = localStorage.getItem('workerUrl') || '';
+
+// Clé partagée avec le Worker (même valeur que le secret WORKER_SECRET
+// configuré via wrangler secret put). Stockée dans localStorage.
+function getWorkerSecret() { return localStorage.getItem('workerSecret') || ''; }
+function saveWorkerSecret(s) { localStorage.setItem('workerSecret', s); }
+
+function updatePeriodes() {
+  const niveau = document.getElementById('q-niveau').value;
+  const periodes = PERIODES_PAR_NIVEAU[niveau] || [];
+  const sel = document.getElementById('q-periode');
+  sel.innerHTML = periodes.map(p => `<option value="${p}">${p}</option>`).join('');
+  if (periodes.length) sel.value = periodes[0];
+  updateAspects();
+}
+
+function updateAspects() {
+  const periode = document.getElementById('q-periode').value;
+  const aspects = ASPECTS_PAR_PERIODE[periode] || [];
+  const wrap = document.getElementById('aspects-list');
+  wrap.innerHTML = aspects.map(a =>
+    `<label style="display:flex;align-items:center;gap:.5rem;font-size:.83rem;cursor:pointer">
+      <input type="checkbox" value="${a}" style="width:auto;cursor:pointer"> ${a}
+    </label>`
+  ).join('');
+}
+
+// Dérivé de la source unique OI_CONFIG (oi-config.js).
+const SOUSTAG_MAP = {};
+OI_LIST.forEach(oi => { if(OI_CONFIG[oi].soustags) SOUSTAG_MAP[oi] = OI_CONFIG[oi].soustags; });
+
+function updateSoustag() {
+  const oi = document.getElementById('q-oi')?.value || '';
+  const row = document.getElementById('soustag-row');
+  if(!row) return;
+  const options = SOUSTAG_MAP[oi];
+  if(!options) {
+    row.style.display = 'none';
+    document.querySelectorAll('input[name="q-soustag"]').forEach(r => r.checked = false);
+    return;
+  }
+  const pills = document.getElementById('soustag-pills');
+  pills.innerHTML = options.map(v =>
+    `<label class="soustag-pill"><input type="radio" name="q-soustag" value="${v}" onchange="autoFromSoustag()"> ${v}</label>`
+  ).join('') + `<label class="soustag-pill"><input type="radio" name="q-soustag" value="" onchange="autoFromSoustag()"> Aucun</label>`;
+  row.style.display = '';
+}
+
+function getSoustag() {
+  const checked = document.querySelector('input[name="q-soustag"]:checked');
+  return checked ? checked.value : '';
+}
+
+function setSoustag(val) {
+  document.querySelectorAll('input[name="q-soustag"]').forEach(r => {
+    r.checked = (r.value === (val || ''));
+  });
+}
+
+// Dérivé de la source unique OI_CONFIG (oi-config.js).
+const OI_AUTO_REPONSE = {};
+OI_LIST.forEach(oi => { if(OI_CONFIG[oi].autoReponse) OI_AUTO_REPONSE[oi] = OI_CONFIG[oi].autoReponse; });
+
+function autoReponseFromOI() {
+  const oi = document.getElementById('q-oi')?.value || '';
+  const auto = OI_AUTO_REPONSE[oi];
+  if(!auto) return;
+  const repSel = document.getElementById('rep-type');
+  if(!repSel) return;
+  repSel.value = auto.type;
+  updateReponseUI();
+  if(auto.type === 'lignes') {
+    const nb = document.getElementById('rep-nombre');
+    if(nb) nb.value = String(auto.nombre);
+  }
+}
+
+function updatePresets() {
+  const oi = document.getElementById('q-oi').value;
+  const presets = REGLETTES_PRESET[oi] || [];
+  const sel = document.getElementById('reg-preset');
+  sel.innerHTML = '<option value="">— Sélectionner —</option>'
+    + presets.map((p,i) => `<option value="${i}">${escHtml(p.label)}</option>`).join('');
+}
+
+// ── AUTO-SÉLECTION PAR SOUS-TAG (réglette + réponse) ──────────────────
+// Quand l'utilisateur clique un sous-tag, pré-remplir la réglette et le type
+// de réponse selon la convention pédagogique. Ne se déclenche que sur clic
+// manuel : charger une question existante (setSoustag) ne fire pas onchange.
+// Les `preset` doivent correspondre exactement aux labels de reglettes.js.
+// Vide au départ pour GHEC (aucune OI/sous-tag configuré encore) — format :
+// { '<OI>': { '<sous-tag>': { preset: '<label de reglettes.js>', reponse: {...}, guide: ... } } }
+const SOUSTAG_AUTO = {
+};
+
+// Auto-sélection au niveau de l'OI (pour les OI SANS sous-tags) : déclenchée
+// dès qu'on choisit l'OI. `preset` doit matcher un label de reglettes.js.
+// Vide au départ pour GHEC — format : { '<OI>': { preset: '...', reponse: {...} } }.
+const OI_AUTO = {
+};
+
+// Applique une config { preset, reponse } : sélectionne la réglette et règle le
+// type de réponse. Partagé entre l'auto par sous-tag et l'auto par OI.
+function applyAutoCfg(oi, cfg) {
+  if(!cfg) return;
+  // Réglette : retrouver l'index du preset par son label
+  const idx = (REGLETTES_PRESET[oi] || []).findIndex(p => p.label === cfg.preset);
+  if(idx >= 0) {
+    const regSel = document.getElementById('reg-preset');
+    if(regSel) regSel.value = String(idx);
+  }
+  // Type de réponse
+  const repSel = document.getElementById('rep-type');
+  if(repSel && cfg.reponse) {
+    repSel.value = cfg.reponse.type;
+    updateReponseUI();
+    if(cfg.reponse.type === 'lignes' && cfg.reponse.nombre != null) {
+      const nb = document.getElementById('rep-nombre');
+      if(nb) nb.value = String(cfg.reponse.nombre);
+    } else if(cfg.reponse.type === 'mettre-en-relation' && cfg.reponse.n != null) {
+      // Régler le nombre d'éléments puis re-rendre (champs Élément laissés vides ;
+      // le guide se resynchronise tout seul via syncGuideFromMer).
+      const nSel = document.getElementById('rep-mer-n');
+      if(nSel) { nSel.value = String(cfg.reponse.n); updateReponseUI(); }
+    }
+  }
+  // Guide par sous-tag (optionnel) : 'texte' ou { type:'grille', cols, rows }.
+  if(cfg.guide) {
+    const guideSel = document.getElementById('guide-type');
+    if(guideSel && cfg.guide === 'texte') {
+      guideSel.value = 'texte'; updateGuideUI();
+    } else if(guideSel && cfg.guide.type === 'grille') {
+      guideSel.value = 'grille'; updateGuideUI();
+      const gc = document.getElementById('guide-cols'), gr = document.getElementById('guide-rows');
+      if(gc && cfg.guide.cols != null) gc.value = String(cfg.guide.cols);
+      if(gr && cfg.guide.rows != null) gr.value = String(cfg.guide.rows);
+      updateGrille();
+    }
+  }
+}
+
+function autoFromSoustag() {
+  const oi = document.getElementById('q-oi')?.value || '';
+  applyAutoCfg(oi, (SOUSTAG_AUTO[oi] || {})[getSoustag()]);
+}
+
+function autoFromOI() {
+  const oi = document.getElementById('q-oi')?.value || '';
+  applyAutoCfg(oi, OI_AUTO[oi]);
+}
+
+// OI pour lesquelles le guide de correction par défaut est « Texte » (les autres
+// gardent « grille »). Vide au départ pour GHEC — ajouter les noms d'OI voulus une
+// fois le programme configuré, ex. new Set(["Nom d'OI", ...]).
+const GUIDE_TEXTE_OIS = new Set([
+]);
+
+// Handler du changement d'OI. On repart d'une réponse vierge (« Aucune ») à
+// chaque changement, PUIS on laisse les auto-configs OI-level (autoReponse
+// d'oi-config + OI_AUTO) la régler si l'OI en a une. Ainsi un type de réponse
+// d'une OI précédente ne « traîne » plus. Pour les OI à sous-tags, la réponse
+// reste « Aucune » jusqu'au clic d'un sous-tag (autoFromSoustag).
+function onOiChange() {
+  updatePresets();
+  updateSoustag();
+  const repSel = document.getElementById('rep-type');
+  if(repSel) { repSel.value = 'none'; updateReponseUI(); }
+  autoReponseFromOI();
+  autoFromOI();
+  // Guide par défaut « Texte » pour certaines OI
+  const oi = document.getElementById('q-oi')?.value || '';
+  const guideSel = document.getElementById('guide-type');
+  if(guideSel && GUIDE_TEXTE_OIS.has(oi)) { guideSel.value = 'texte'; updateGuideUI(); }
+}
+
+// ── MODE ÉDITION ──────────────────────────────────────────────────────
+let editingId = null;
+// Verrouille #q-id pendant l'édition : évite qu'un rechargement de questions.js
+// (ex. token relu) n'écrase silencieusement l'id de la question en cours d'édition.
+function setEditingId(id) {
+  editingId = id;
+  const qidEl = document.getElementById('q-id');
+  if(qidEl) qidEl.disabled = !!id;
+}
+
+// Verrouille tous les champs/boutons du formulaire pendant une requête réseau
+// (publication, suppression, upload) pour empêcher toute action concurrente.
+// Ne touche pas aux éléments déjà désactivés pour une autre raison (ex. #q-id
+// en édition) : ceux-ci sont exclus au verrouillage donc préservés tels quels
+// au déverrouillage. `exceptEl` (généralement le bouton qui déclenche l'action)
+// est aussi exclu : chaque fonction appelante gère déjà elle-même son propre
+// état disabled/texte (y compris une logique succès/erreur asymétrique).
+// Réentrant (compteur de profondeur) : un appel verrouillé imbriqué (ex. publier()
+// verrouille avant son await réseau, puis la voie Worker/directe verrouille à nouveau
+// en interne) ne fait qu'incrémenter/décrémenter plutôt que d'écraser l'état capturé
+// par l'appel englobant — sinon le second setFormLocked(true) capture un formulaire
+// déjà quasi vide, et le premier setFormLocked(false) ne réactive plus que ça.
+let _lockedFormEls = [];
+let _lockDepth = 0;
+function setFormLocked(locked, exceptEl) {
+  if(locked) {
+    _lockDepth++;
+    if(_lockDepth > 1) return;
+    _lockedFormEls = [...document.querySelectorAll('#app input, #app select, #app textarea, #app button')]
+      .filter(el => el !== exceptEl && !el.disabled);
+    _lockedFormEls.forEach(el => el.disabled = true);
+  } else {
+    _lockDepth = Math.max(0, _lockDepth - 1);
+    if(_lockDepth > 0) return;
+    _lockedFormEls.forEach(el => el.disabled = false);
+    _lockedFormEls = [];
+  }
+}
+
+function setMode(mode) {
+  const wrap = document.getElementById('edit-select-wrap');
+  if(mode === 'edit') {
+    wrap.style.display = '';
+    populateEditSearch();
+  } else {
+    wrap.style.display = 'none';
+    setEditingId(null);
+    const nums = currentQuestions.map(q => parseInt(q.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
+    const nextId = nums.length ? 'Q' + (Math.max(...nums)+1) : 'Q1';
+    document.getElementById('q-id').value = nextId;
+    document.getElementById('next-id-badge').textContent = nextId;
+    resetForm(true);
+  }
+}
+
+function populateEditSearch() {
+  // Remplir le filtre OI
+  const ois = [...new Set(currentQuestions.map(q => q.oi))].sort((a,b) => a.localeCompare(b,'fr'));
+  const selOi = document.getElementById('edit-filter-oi');
+  const prevOi = selOi.value;
+  selOi.innerHTML = '<option value="">Toutes les OI</option>'
+    + ois.map(oi => `<option value="${oi}">${oi}</option>`).join('');
+  if(prevOi) selOi.value = prevOi;
+  filterEditList();
+}
+
+let editFocusIdx = -1;
+let editFilteredResults = [];
+let _adminSearchTimer = 0;
+function debouncedFilterEditList() {
+  clearTimeout(_adminSearchTimer);
+  _adminSearchTimer = setTimeout(filterEditList, 260);
+}
+
+const ADMIN_PAGE = 100; // max cards rendues à la fois
+
+function filterEditList() {
+  const search  = fold((document.getElementById('edit-search')?.value || '').trim());
+  const niveau  = document.getElementById('edit-filter-niveau')?.value || '';
+  const oi      = document.getElementById('edit-filter-oi')?.value || '';
+  // Pré-construire l'index de recherche à la volée (currentQuestions peut changer)
+  editFilteredResults = currentQuestions.filter(q => {
+    if(niveau && String(q.niveau) !== niveau) return false;
+    if(oi     && q.oi !== oi) return false;
+    if(search) {
+      const hay = fold([q.id, q.oi, q.periode, q.enonce||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
+      if(!hay.includes(search)) return false;
+    }
+    return true;
+  });
+  const results = editFilteredResults;
+
+  editFocusIdx = results.findIndex(q => q.id === editingId);
+
+  const countEl = document.getElementById('edit-results-count');
+  if(countEl) countEl.textContent = results.length
+    ? `${results.length} question${results.length > 1 ? 's' : ''} trouvée${results.length > 1 ? 's' : ''}`
+    : '';
+
+  const container = document.getElementById('edit-results');
+  if(!results.length) {
+    container.innerHTML = '<div class="edit-results-empty">Aucune question trouvée.</div>';
+    return;
+  }
+
+  function highlight(text, term) {
+    if(!term) return escHtml(text);
+    const idx = fold(text).indexOf(term); // fold() pour détecter "periode" dans "Période"
+    if(idx < 0) return escHtml(text);
+    return escHtml(text.slice(0, idx))
+      + '<mark style="background:#fff3b0;border-radius:2px">' + escHtml(text.slice(idx, idx + term.length)) + '</mark>'
+      + escHtml(text.slice(idx + term.length));
+  }
+
+  const visible = results.slice(0, ADMIN_PAGE);
+  const remaining = results.length - ADMIN_PAGE;
+  container.innerHTML = visible.map((q, i) => {
+    const aspects = (q.aspects||[]).map(a => a.aspect).join(' · ');
+    const noG = !q.guide;
+    const isSelected = q.id === editingId;
+    const isFocused  = i === editFocusIdx;
+    const enonce = (q.enonce||'').replace(/\*\*/g,'').slice(0, 90) + ((q.enonce||'').length > 90 ? '…' : '');
+    return `<div class="edit-result-card${isSelected ? ' selected' : ''}${isFocused ? ' focused' : ''}"
+      data-idx="${i}" data-id="${q.id}" onclick="loadQuestion('${q.id}')" onmouseenter="editFocusIdx=${i}">
+      <div style="min-width:0;flex:1">
+        <div class="edit-card-meta">
+          ${noG ? '<span class="edit-card-warn">⚠ </span>' : ''}<span class="edit-card-id">${highlight(q.id, search)}</span>
+          &nbsp;—&nbsp;${highlight(q.oi, search)}
+        </div>
+        <div class="edit-card-enonce">${highlight(enonce, search)}</div>
+        <div class="edit-card-sub">Niv.${q.niveau} · ${highlight(q.periode, search)} · ${highlight(aspects, search)}</div>
+      </div>
+    </div>`;
+  }).join('');
+  if(remaining > 0) {
+    container.insertAdjacentHTML('beforeend',
+      `<div style="padding:8px 12px;font-size:0.78rem;color:var(--ink-3);text-align:center;border-top:1px solid var(--border)">
+        + ${remaining} autre${remaining>1?'s':''} — affinez la recherche pour les voir
+      </div>`);
+  }
+
+  // Scroll la carte sélectionnée dans la vue
+  const sel = container.querySelector('.selected');
+  if(sel) sel.scrollIntoView({ block: 'nearest' });
+}
+
+function editKeyNav(e) {
+  const cards = [...document.querySelectorAll('#edit-results .edit-result-card')];
+  if(!cards.length) return;
+  if(e.key === 'ArrowDown') { e.preventDefault(); editFocusIdx = Math.min(editFocusIdx + 1, cards.length - 1); }
+  else if(e.key === 'ArrowUp') { e.preventDefault(); editFocusIdx = Math.max(editFocusIdx - 1, 0); }
+  else if(e.key === 'Enter' && editFocusIdx >= 0) { e.preventDefault(); loadQuestion(editFilteredResults[editFocusIdx]?.id); return; }
+  else return;
+  cards.forEach((c, i) => c.classList.toggle('focused', i === editFocusIdx));
+  cards[editFocusIdx]?.scrollIntoView({ block: 'nearest' });
+}
+
+function dupliquerQuestion() {
+  if(!editingId) return;
+  // Génère un nouvel ID
+  const nums = currentQuestions.map(q => parseInt(q.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
+  const newId = 'Q' + (nums.length ? Math.max(...nums) + 1 : 1);
+  // Bascule en mode "nouvelle question" sans effacer le formulaire
+  setEditingId(null);
+  document.querySelector('input[name="mode"][value="new"]').checked = true;
+  document.getElementById('edit-select-wrap').style.display = 'none';
+  document.getElementById('btn-supprimer').disabled = true;
+  document.getElementById('btn-dupliquer').disabled = true;
+  document.getElementById('q-id').value = newId;
+  document.getElementById('next-id-badge').textContent = newId;
+  toast('Formulaire dupliqué — modifie puis publie comme nouvelle question.', 'ok');
+}
+
+function loadQuestion(id) {
+  const btnSuppr = document.getElementById('btn-supprimer');
+  const btnDupl  = document.getElementById('btn-dupliquer');
+  const selBar   = document.getElementById('edit-selected-bar');
+  if(!id) {
+    setEditingId(null);
+    if(btnSuppr) btnSuppr.disabled = true;
+    if(btnDupl)  btnDupl.disabled  = true;
+    if(selBar)   selBar.style.display = 'none';
+    return;
+  }
+  const q = currentQuestions.find(x => x.id === id);
+  const r = currentReglettes[id];
+  if(!q) return;
+  setEditingId(id);
+  if(btnSuppr) btnSuppr.disabled = false;
+  if(btnDupl)  btnDupl.disabled  = false;
+
+  // Mettre à jour la barre de sélection et la liste
+  if(selBar) {
+    selBar.style.display = '';
+    const aspects = (q.aspects||[]).map(a=>a.aspect).join(' · ');
+    document.getElementById('edit-selected-label').textContent =
+      `${q.id} — ${q.oi} · Niv.${q.niveau} · ${q.periode}`;
+  }
+  // Mettre à jour la sélection visuellement sans re-rendre toute la liste
+  document.querySelectorAll('#edit-results .edit-result-card').forEach(el => {
+    el.classList.toggle('selected', el.dataset.id === id);
+  });
+
+  document.getElementById('q-id').value = q.id;
+  document.getElementById('next-id-badge').textContent = q.id;
+  document.getElementById('q-niveau').value = String(q.niveau);
+  updatePeriodes();
+  document.getElementById('q-periode').value = q.periode;
+  updateAspects();
+  const aspectValues = new Set((q.aspects||[]).map(a=>a.aspect));
+  document.querySelectorAll('#aspects-list input[type=checkbox]').forEach(cb => { cb.checked = aspectValues.has(cb.value); });
+  document.getElementById('q-oi').value = q.oi;
+  updatePresets();
+  updateSoustag();
+  setSoustag(q.soustag || '');
+  document.getElementById('q-enonce').value = q.enonce || '';
+
+  document.getElementById('docs-list').innerHTML = '';
+  docCount = 0; colCount = 0;
+  (q.documents||[]).forEach(d => {
+    if(d.type==='textes' && d.cols) {
+      if(d.cols.length===1) {
+        const col = d.cols[0];
+        if(col.ref) {
+          addDoc('image');
+          document.getElementById('doc-'+docCount+'-titre').value = col.titre||'';
+          const stEl2 = document.getElementById('doc-'+docCount+'-soustitre');
+          if(stEl2) stEl2.value = col.soustitre||'';
+          const s = document.getElementById('doc-'+docCount+'-ref');
+          if(s) { s.value = col.ref; updateImgPreview(s); }
+          const autEl2 = document.getElementById('doc-'+docCount+'-auteur');
+          if(autEl2) autEl2.value = col.auteur||'';
+          const srcEl2 = document.getElementById('doc-'+docCount+'-source');
+          if(srcEl2) srcEl2.value = col.source||'';
+        } else {
+          addDoc('textes');
+          document.getElementById('doc-'+docCount+'-titre').value = col.titre||'';
+          const stEl = document.getElementById('doc-'+docCount+'-soustitre');
+          if(stEl) stEl.value = col.soustitre||'';
+          document.getElementById('doc-'+docCount+'-texte').value = col.texte||'';
+          const autEl = document.getElementById('doc-'+docCount+'-auteur');
+          if(autEl) autEl.value = col.auteur||'';
+          const srcEl = document.getElementById('doc-'+docCount+'-source');
+          if(srcEl) srcEl.value = col.source||'';
+        }
+      } else {
+        addDoc('textes-image');
+        const docId = docCount;
+        d.cols.forEach(col => {
+          if(col.ref) {
+            addCol(docId,'image');
+            document.getElementById('col-'+colCount+'-titre').value = col.titre||'';
+            const stElC2 = document.getElementById('col-'+colCount+'-soustitre');
+            if(stElC2) stElC2.value = col.soustitre||'';
+            const s = document.getElementById('col-'+colCount+'-ref');
+            if(s) { s.value = col.ref; updateImgPreview(s); }
+            const autElC = document.getElementById('col-'+colCount+'-auteur');
+            if(autElC) autElC.value = col.auteur||'';
+            const srcElC = document.getElementById('col-'+colCount+'-source');
+            if(srcElC) srcElC.value = col.source||'';
+          } else {
+            addCol(docId,'texte');
+            document.getElementById('col-'+colCount+'-titre').value = col.titre||'';
+            const stElC = document.getElementById('col-'+colCount+'-soustitre');
+            if(stElC) stElC.value = col.soustitre||'';
+            document.getElementById('col-'+colCount+'-texte').value = col.texte||'';
+            const autEl = document.getElementById('col-'+colCount+'-auteur');
+            if(autEl) autEl.value = col.auteur||'';
+            const srcEl = document.getElementById('col-'+colCount+'-source');
+            if(srcEl) srcEl.value = col.source||'';
+          }
+        });
+      }
+    }
+  });
+
+  const repType = q.reponse ? (q.reponse===true?'_court':q.reponse.type) : 'none';
+  const repSel = document.getElementById('rep-type');
+  // Garde-fou : si la question utilise un type de réponse de format hérité
+  // (retiré du menu, ex. tableau_3col / tableau), on injecte une option à la
+  // volée pour que la valeur tienne et soit réécrite telle quelle à la sauvegarde
+  // (sinon le <select> retomberait sur « Aucune » et la réponse serait perdue).
+  if(repType && ![...repSel.options].some(o => o.value === repType)) {
+    const o = document.createElement('option');
+    o.value = repType; o.textContent = repType + ' (format hérité)';
+    repSel.appendChild(o);
+  }
+  repSel.value = repType;
+  updateReponseUI();
+  if(repType==='lignes') document.getElementById('rep-nombre').value = q.reponse.nombre||2;
+  else if(repType==='image') { const s=document.getElementById('rep-ref'); if(s) s.value=q.reponse.ref||''; }
+  else if(repType==='tableau_3col') {
+    const c1=document.getElementById('rep-col1'); if(c1) c1.value=q.reponse.col1||'';
+    const c2=document.getElementById('rep-col2'); if(c2) c2.value=q.reponse.col2||'';
+    const c3=document.getElementById('rep-col3'); if(c3) c3.value=q.reponse.col3||'';
+  }
+  else if(repType==='tableau') document.getElementById('rep-lignes').value = (q.reponse.lignes||[]).map(l=>l.label).join('\n');
+  else if(repType==='grille') {
+    document.getElementById('rep-cols').value = String(Math.max(2,(q.reponse.entetes||[]).length));
+    document.getElementById('rep-rows').value = String(Math.max(1,(q.reponse.rangees||[]).length));
+    updateRepGrille(q.reponse);
+  }
+  else if(repType==='avant-apres') {
+    const lbl = document.getElementById('rep-avant-apres-label');
+    if(lbl) lbl.value = q.reponse.label || '';
+  }
+  else if(repType==='mettre-en-relation') {
+    const els = q.reponse.elements || [];
+    const nSel = document.getElementById('rep-mer-n');
+    if(nSel) { nSel.value = String(els.length || 2); updateReponseUI(); }
+    const dbl = document.getElementById('rep-mer-double');
+    if(dbl) { dbl.checked = !!q.reponse.double; updateReponseUI(); }
+    els.forEach((v, i) => {
+      const el = document.getElementById('rep-mer-el-' + i);
+      if(el) el.value = v;
+    });
+  }
+  else if(repType==='situer-dans-lespace') {
+    const els = q.reponse.elements || [];
+    els.forEach((v, i) => {
+      const el = document.getElementById('rep-sde-el-' + i);
+      if(el) el.value = v;
+    });
+  }
+
+  if(r) {
+    const rOi = r.oi || q.oi;
+    const presets = REGLETTES_PRESET[rOi] || [];
+    let matchIdx = -1;
+    if(r.variante) {
+      matchIdx = presets.findIndex(p => p.variante === r.variante);
+    } else {
+      matchIdx = presets.findIndex(p => !p.variante && p.niveaux?.[0]?.desc === r.niveaux?.[0]?.desc);
+    }
+    if(matchIdx !== -1) document.getElementById('reg-preset').value = String(matchIdx);
+  }
+
+  if(q.guide && typeof q.guide==='string') {
+    document.getElementById('guide-type').value='texte'; updateGuideUI();
+    document.getElementById('guide-texte').value = q.guide;
+  } else if(q.guide && q.guide.type==='grille') {
+    document.getElementById('guide-type').value='grille'; updateGuideUI();
+    document.getElementById('guide-cols').value = String(Math.max(2,(q.guide.entetes||[]).length));
+    document.getElementById('guide-rows').value = String(Math.max(1,(q.guide.rangees||[]).length));
+    updateGrille(q.guide);
+  } else if(q.guide && q.guide.type==='tableau') {
+    // Conversion automatique ancien format → grille
+    document.getElementById('guide-type').value='grille'; updateGuideUI();
+    const converted = { entetes:['Élément','Document'], rangees:(q.guide.lignes||[]).map(l=>[l.label,l.valeur]) };
+    document.getElementById('guide-cols').value='2';
+    document.getElementById('guide-rows').value = String(Math.max(1,converted.rangees.length));
+    updateGrille(converted);
+  } else {
+    document.getElementById('guide-type').value='grille'; updateGuideUI();
+  }
+  formDirty = false;
+}
+
+// ── SUPPRIMER QUESTION ────────────────────────────────────────────────
+// Lit questions.js via l'API Contents (avec fallback download_url si > 1 Mo).
+// Retourne { sha, content (texte JS brut) }.
+async function _fetchQuestionsRaw(headers) {
+  const r = await fetch(
+    `https://api.github.com/repos/${OWNER}/${REPO}/contents/questions.js?ref=${BRANCH}&t=${Date.now()}`,
+    { headers, cache: 'no-store' }
+  );
+  if(!r.ok) throw new Error('Impossible de lire questions.js : ' + r.status);
+  const data = await r.json();
+  const sha = data.sha;
+  let content;
+  if(data.content) {
+    // Fichier ≤ 1 Mo : contenu inline base64
+    const rawB64 = data.content.replace(/\n/g,'');
+    const binary = atob(rawB64);
+    const bytes = new Uint8Array(binary.length);
+    for(let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    content = new TextDecoder('utf-8').decode(bytes);
+  } else if(data.download_url) {
+    // Fichier > 1 Mo : téléchargement direct
+    const dlUrl = data.download_url.includes('?') ? data.download_url + '&t=' + Date.now() : data.download_url + '?t=' + Date.now();
+    const raw = await fetch(dlUrl, { cache: 'no-store' });
+    if(!raw.ok) throw new Error('Impossible de télécharger questions.js : ' + raw.status);
+    content = await raw.text();
+  } else {
+    throw new Error("Réponse inattendue de l'API GitHub pour questions.js");
+  }
+  return { sha, content };
+}
+
+// IDs déjà confirmés par un PUT GitHub réussi dans CETTE session (contrairement à
+// currentQuestions, qui peut aussi contenir une question tout juste poussée localement par
+// mutate() mais pas encore confirmée par GitHub — ex. avant le tout 1er essai d'un ajout, ou
+// pendant un essai en cours). Sert de base fiable au garde-fou anti-régression ci-dessous :
+// on ne réinjecte que ce qui est SÛREMENT déjà sur GitHub, jamais une mutation encore en vol
+// (sinon un ajout qui retente après un 409 se verrait faussement bloqué par sa propre copie
+// « déjà ajoutée par un autre utilisateur »). Mise à jour à chaque écriture confirmée.
+let confirmedIds = new Set();
+
+function _assignFreshState(sha, content) {
+  let result;
+  try {
+    const fn = new Function(content + '\nreturn { REGLETTES, IMAGE_DB, QUESTIONS };');
+    result = fn();
+  } catch(e) {
+    throw new Error('questions.js est invalide ou corrompu : ' + e.message);
+  }
+  // Garde-fou anti-régression : un réplica de l'API GitHub peut sembler « stable »
+  // (deux lectures consécutives identiques dans fetchFreshStateStable) tout en étant EN
+  // RETARD sur le vrai HEAD (§ Latence de propagation plus haut). Sans cette fusion, une
+  // relecture qui atterrit sur un tel réplica écraserait silencieusement une question que
+  // CETTE session vient elle-même de publier avec succès un instant plus tôt — vécu avec
+  // Q712/Q738/Q745/Q767/Q772/Q779 (2026-07-16 au 18) : chacune committée avec succès, puis
+  // effacée par la publication suivante qui a relu un état antérieur sans avertissement ni
+  // conflit 409. Toute question déjà CONFIRMÉE localement (confirmedIds) et absente de la
+  // relecture est réinjectée plutôt que perdue.
+  const freshIds = new Set(result.QUESTIONS.map(q => q.id));
+  const missing = currentQuestions.filter(q => confirmedIds.has(q.id) && !freshIds.has(q.id));
+  if(missing.length) {
+    console.warn('questions.js : relecture en retard détectée — réinjection de ' + missing.length + ' question(s) connue(s) localement : ' + missing.map(q=>q.id).join(', '));
+    result.QUESTIONS = result.QUESTIONS.concat(missing);
+  }
+  questionsFileSha = sha;
+  currentQuestions = result.QUESTIONS;
+  currentReglettes = result.REGLETTES;
+  currentImageDb   = result.IMAGE_DB;
+  confirmedIds = new Set(currentQuestions.map(q => q.id));
+  buildImageMetaMap();
+  return result;
+}
+
+async function fetchFreshState(token) {
+  const { sha, content } = await _fetchQuestionsRaw({ Authorization: `token ${token}` });
+  return _assignFreshState(sha, content);
+}
+
+// GitHub peut mettre plusieurs dizaines de secondes à propager un commit sur tous ses
+// réplicas de lecture (vécu le 2026-07-13 : une « lecture fraîche » 35 s après un commit
+// précédent — depuis une autre page — a quand même renvoyé l'état d'AVANT ce commit,
+// l'écrasant silencieusement ; re-vécu le 2026-07-14 sur revision.html malgré un délai
+// fixe de 12 s). Plutôt qu'un délai fixe, on relit deux fois de suite espacées de
+// QJS_STABLE_READ_POLL_MS : si les deux lectures renvoient le même SHA, les réplicas
+// sont considérés stabilisés. Sinon on réessaie jusqu'à QJS_STABLE_READ_MAX_WAIT_MS,
+// puis on abandonne en avertissant plutôt que de bloquer indéfiniment. Utilisé pour les
+// relectures qui précèdent une mutation (suppression, retry après conflit 409) — pas pour
+// les rafraîchissements post-publication (déjà appliquée côté serveur, simple confort UI).
+const QJS_STABLE_READ_POLL_MS = 3000;
+const QJS_STABLE_READ_MAX_WAIT_MS = 45000;
+
+async function fetchFreshStateStable(token) {
+  const headers = { Authorization: `token ${token}` };
+  const start = Date.now();
+  let prev = await _fetchQuestionsRaw(headers);
+  while(Date.now() - start < QJS_STABLE_READ_MAX_WAIT_MS) {
+    await new Promise(r => setTimeout(r, QJS_STABLE_READ_POLL_MS));
+    const next = await _fetchQuestionsRaw(headers);
+    if(next.sha === prev.sha) return _assignFreshState(next.sha, next.content);
+    prev = next;
+  }
+  console.warn('questions.js : lectures instables après ' + QJS_STABLE_READ_MAX_WAIT_MS + ' ms — poursuite avec la dernière lecture disponible.');
+  return _assignFreshState(prev.sha, prev.content);
+}
+
+async function supprimerQuestion() {
+  if(!editingId) return;
+  if(!confirm(`Supprimer ${editingId} ? (les autres questions conservent leur identifiant)`)) return;
+
+  const btn = document.getElementById('btn-supprimer');
+  setFormLocked(true, btn);
+  btn.disabled = true; btn.textContent = '⏳ Suppression…';
+
+  const workerUrl    = localStorage.getItem('workerUrl') || '';
+  const workerSecret = getWorkerSecret();
+
+  try {
+    const idSupp = editingId;
+
+    // ── Voie Worker ───────────────────────────────────────────────────
+    if(workerUrl && workerSecret) {
+      let workerOk = false;
+      try {
+        const resp = await fetch(workerUrl + '/publish', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ secret: workerSecret, action: 'delete', question: { id: idSupp } })
+        });
+        const data = await resp.json().catch(() => ({ ok: false, error: resp.status }));
+        if(!data.ok) throw new Error(data.error || resp.status);
+        currentQuestions = currentQuestions.filter(q => q.id !== idSupp);
+        delete currentReglettes[idSupp];
+        questionsFileSha = data.sha;
+        confirmedIds = new Set(currentQuestions.map(q => q.id));
+        workerOk = true;
+        // Voie Worker : ne touche pas questions-index.js (voir même commentaire dans publier())
+        const idxToken = getToken();
+        if(idxToken) publishIndex(idxToken, `Supprimer ${idSupp}`);  // fire-and-forget
+      } catch(we) {
+        if(we.message !== 'Failed to fetch') throw we;
+        // Worker inaccessible → GitHub Actions
+        const token = getToken();
+        if(!token) throw new Error('Worker inaccessible et pas de token GitHub.');
+        const statusEl = { textContent: '' };
+        await publierViaDispatch(token, 'delete', { id: idSupp }, null, null, `Supprimer ${idSupp}`, btn, statusEl);
+        await fetchFreshState(token);
+        publishIndex(token, `Supprimer ${idSupp}`);  // fire-and-forget — apply-mutation.mjs ne touche pas questions-index.js
+        workerOk = true;
+      }
+      if(!workerOk) return;
+
+    } else {
+      // ── Voie directe GitHub (fallback) ───────────────────────────
+      const token = getToken();
+      if(!token) { toast('Saisis ton token GitHub (ou configure le Worker).', 'err'); return; }
+
+      await fetchFreshStateStable(token);
+      await putQuestionsJsWithRetry(token, `Supprimer ${idSupp}`, () => {
+        currentQuestions = currentQuestions.filter(q => q.id !== idSupp);
+        delete currentReglettes[idSupp];
+      });
+      publishIndex(token, `Supprimer ${idSupp}`);  // fire-and-forget
+    }
+
+    toast(`${idSupp} supprimé.`, 'ok');
+    renderDashboard();
+    setEditingId(null);
+    document.getElementById('edit-selected-bar').style.display = 'none';
+    populateEditSearch();
+    resetForm(false);
+    const delNums = currentQuestions.map(q => parseInt(q.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
+    const nextId = 'Q' + (delNums.length ? Math.max(...delNums)+1 : 1);
+    document.getElementById('q-id').value = nextId;
+    document.getElementById('next-id-badge').textContent = nextId;
+
+  } catch(e) {
+    toast('Erreur : ' + e.message, 'err');
+    console.error(e);
+    btn.disabled = false;
+  } finally {
+    setFormLocked(false);
+    btn.textContent = '🗑 Supprimer cette question';
+  }
+}
+
+// ── UPLOAD IMAGE ──────────────────────────────────────────────────────
+function onUploadFileChange() {
+  const file = document.getElementById('upload-file').files[0];
+  if(!file) return;
+  const nameField = document.getElementById('upload-name');
+  if(!nameField.value) nameField.value = file.name;
+}
+
+async function uploadImage() {
+  const token = getToken();
+  if(!token) { toast('Saisis ton token GitHub.', 'err'); return; }
+  const file = document.getElementById('upload-file').files[0];
+  if(!file) { toast('Sélectionne un fichier image.', 'err'); return; }
+  // Nom de base SANS extension : l'extension finale dépend du format choisi plus bas.
+  const baseName = (document.getElementById('upload-name').value.trim() || file.name)
+    .replace(/\.(png|jpe?g|webp|gif)$/i, '')
+    .replace(/\s+/g,'_').replace(/[\\'"`<>&]/g,'');   // pas d'espaces, quotes, antislash ni <>& (cassent onclick/attributs/HTML)
+  const statusEl = document.getElementById('upload-status');
+  const btn = document.getElementById('btn-upload');
+  setFormLocked(true, btn);
+  btn.disabled = true; statusEl.textContent = '⏳ Téléversement…';
+  try {
+    // Redimensionne (max 1200 px) puis choisit le format le plus léger sans perte visible :
+    //  • transparence détectée → PNG obligatoire ;
+    //  • sinon → on compare PNG vs JPEG 0.85 et on garde le plus petit. Les photos/scans
+    //    pèsent ~5× moins en JPEG (c'était la cause des images à 2,5 Mo) ; les aplats et
+    //    graphiques restent en PNG s'il est plus avantageux.
+    const imgInfo = await new Promise((res,rej) => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = new Image();
+        img.onload = () => {
+          const MAX = 1200;
+          const scale = Math.min(1, MAX / Math.max(img.naturalWidth, img.naturalHeight));
+          const w = Math.round(img.naturalWidth * scale);
+          const h = Math.round(img.naturalHeight * scale);
+          const canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          let hasAlpha = false;
+          try {
+            const data = ctx.getImageData(0, 0, w, h).data;
+            for(let i = 3; i < data.length; i += 4) { if(data[i] < 255) { hasAlpha = true; break; } }
+          } catch(_) { hasAlpha = true; }   // canvas inaccessible → on reste prudent en PNG
+          const pngB64 = canvas.toDataURL('image/png').split(',')[1];
+          let b64 = pngB64, ext = 'png';
+          if(!hasAlpha) {
+            const jpgB64 = canvas.toDataURL('image/jpeg', 0.85).split(',')[1];
+            if(jpgB64.length < pngB64.length) { b64 = jpgB64; ext = 'jpg'; }
+          }
+          res({ b64, w, h, ext });
+        };
+        img.onerror = rej;
+        img.src = e.target.result;
+      };
+      reader.onerror = rej;
+      reader.readAsDataURL(file);
+    });
+    const name = baseName + '.' + imgInfo.ext;
+    // SHA d'un éventuel fichier existant de même nom (pour l'écraser proprement).
+    const existingSha = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${name}?ref=${BRANCH}&t=${Date.now()}`, { headers:{ Authorization:`token ${token}` } })
+      .then(r => r.ok ? r.json().then(d => d.sha || '') : '').catch(() => '');
+    if(existingSha && !confirm(`« ${name} » existe déjà — l'écraser ? Toutes les questions qui l'utilisent afficheront la nouvelle image.`)) {
+      statusEl.textContent = '✗ Téléversement annulé.';
+      btn.disabled = false;
+      return;
+    }
+    const putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${name}`, {
+      method:'PUT',
+      headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
+      body: JSON.stringify({ message:`Ajouter image : ${name}`, content:imgInfo.b64, branch:BRANCH, ...(existingSha ? { sha: existingSha } : {}) })
+    });
+    if(!putResp.ok) { const err=await putResp.json(); throw new Error(err.message||putResp.status); }
+    currentImageDb[name] = { src: 'images/' + name, w: imgInfo.w, h: imgInfo.h };
+    const ko = Math.round(imgInfo.b64.length * 3 / 4 / 1024);
+    statusEl.textContent = `✓ ${name} téléversé (${ko} Ko) !`;
+    if(ko > 500) toast(`⚠ ${name} fait ${ko} Ko même après compression. Réduis la résolution de l'image source si possible.`, 'err');
+    document.getElementById('upload-file').value='';
+    document.getElementById('upload-name').value='';
+    if (!IMAGES.includes(name)) { IMAGES.push(name); IMAGES.sort(); }
+    addRecentImage(name);
+    const opts = buildImageOptions();
+    document.querySelectorAll('select[id$="-ref"]').forEach(sel => { const v=sel.value; sel.innerHTML=opts; sel.value=v; });
+    toast(`"${name}" ajouté aux images.`, 'ok');
+  } catch(e) {
+    statusEl.textContent = '✗ ' + e.message;
+    toast('Erreur : ' + e.message, 'err');
+  } finally { setFormLocked(false); btn.disabled = false; }
+}
+
+let IMAGES = [];
+let RECENT_IMAGES = [];
+let currentQuestions = [];
+let currentReglettes = {};
+let currentImageDb = {};
+let questionsFileSha = '';
+let indexFileSha = '';  // SHA de questions-index.js (mis à jour après chaque PUT)
+
+// Publie questions-index.js en fire-and-forget après une publication réussie de questions.js.
+async function publishIndex(token, commitMsg) {
+  try {
+    if(!indexFileSha) {
+      const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js?ref=${BRANCH}&t=${Date.now()}`,
+        { headers:{ Authorization:`token ${token}` }, cache:'no-store' });
+      if(r.ok) { const d = await r.json(); indexFileSha = d.sha; }
+    }
+    const content = utf8b64(generateIndexJs(currentQuestions));
+    const body = { message: commitMsg + ' [index]', content, branch: BRANCH };
+    if(indexFileSha) body.sha = indexFileSha;
+    const r2 = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js`, {
+      method:'PUT', headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
+      body: JSON.stringify(body)
+    });
+    if(r2.ok) { const d2 = await r2.json(); indexFileSha = d2.content.sha; }
+    else indexFileSha = '';  // sha probablement obsolète (409) — force un refetch au prochain appel plutôt que d'échouer indéfiniment
+  } catch(_) { indexFileSha = ''; }  // fire-and-forget : une erreur ici ne bloque pas la publication de questions.js
+}
+
+async function loadRecentImages() {
+  try { RECENT_IMAGES = JSON.parse(localStorage.getItem('hqc_recent_images') || '[]'); } catch(_) { RECENT_IMAGES = []; }
+  if(!getToken()) return;
+  try {
+    const r = await fetch(
+      `https://api.github.com/repos/${OWNER}/${REPO}/commits?path=images&per_page=15&ref=${BRANCH}`,
+      { headers: { Authorization: `token ${getToken()}` }, cache: 'no-store' }
+    );
+    if(!r.ok) return;
+    const commits = await r.json();
+    const seen = [];
+    for(const c of commits) {
+      const m = (c.commit?.message || '').match(/^Ajouter image\s*:\s*(.+)/m);
+      if(m) { const name = m[1].trim(); if(!seen.includes(name)) seen.push(name); }
+      if(seen.length >= 3) break;
+    }
+    if(seen.length) {
+      RECENT_IMAGES = seen;
+      try { localStorage.setItem('hqc_recent_images', JSON.stringify(RECENT_IMAGES)); } catch(_) {}
+    }
+  } catch(_) {}
+}
+function addRecentImage(name) {
+  RECENT_IMAGES = [name, ...RECENT_IMAGES.filter(x => x !== name)].slice(0, 3);
+  try { localStorage.setItem('hqc_recent_images', JSON.stringify(RECENT_IMAGES)); } catch(_) {}
+}
+function buildImageOptions() {
+  const recent = RECENT_IMAGES.filter(r => IMAGES.includes(r)).sort((a,b) => a.localeCompare(b,'fr'));
+  const rest = IMAGES.filter(i => !recent.includes(i));
+  let opts = '<option value="">— Choisir une image —</option>';
+  if(recent.length) {
+    opts += recent.map(f => `<option value="${escHtml(f)}">⭐ ${escHtml(f)}</option>`).join('');
+    opts += '<option value="" disabled>──────────────────</option>';
+  }
+  return opts + rest.map(f => `<option value="${escHtml(f)}">${escHtml(f)}</option>`).join('');
+}
+
+// Remplit le menu OI depuis la source unique OI_CONFIG (ordre = OI_LIST).
+function populateOiSelect() {
+  const sel = document.getElementById('q-oi');
+  if(!sel || typeof OI_LIST === 'undefined') return;
+  sel.innerHTML = OI_LIST.map(oi => `<option>${oi}</option>`).join('');
+}
+
+// Peuple les <select> niveau (formulaire + filtre de recherche) depuis les clés de
+// PERIODES_PAR_NIVEAU (contexte.js) — générique, aucun niveau codé en dur.
+function populateNiveauSelects() {
+  const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort();
+  const q = document.getElementById('q-niveau');
+  if(q) { q.innerHTML = niveaux.map(n => `<option value="${n}">${n}</option>`).join(''); }
+  const f = document.getElementById('edit-filter-niveau');
+  if(f) { f.innerHTML = '<option value="">Tous les niveaux</option>' + niveaux.map(n => `<option value="${n}">Niveau ${n}</option>`).join(''); }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// CONFIGURATION DU PROGRAMME (OI → oi-config.js ; niveaux/périodes/aspects
+// → contexte.js). Écrit directement sur GitHub, comme questions.js, mais sans
+// la choréographie de stabilisation de fetchFreshStateStable : ces fichiers
+// changent rarement et à la main (jamais en rafale ni depuis plusieurs pages
+// à la fois comme questions.js), un simple retry-après-409 suffit.
+// ═══════════════════════════════════════════════════════════════════
+function toggleConfigSection() {
+  const content = document.getElementById('config-content');
+  const icon = document.getElementById('config-toggle-icon');
+  const hidden = content.style.display === 'none';
+  content.style.display = hidden ? '' : 'none';
+  icon.style.transform = hidden ? '' : 'rotate(-90deg)';
+}
+
+async function _fetchFileRaw(path, headers) {
+  const r = await fetch(
+    `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`,
+    { headers, cache: 'no-store' }
+  );
+  if(!r.ok) throw new Error(`Impossible de lire ${path} : ` + r.status);
+  const data = await r.json();
+  const rawB64 = data.content.replace(/\n/g,'');
+  const binary = atob(rawB64);
+  const bytes = new Uint8Array(binary.length);
+  for(let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return { sha: data.sha, content: new TextDecoder('utf-8').decode(bytes) };
+}
+
+// PUT avec 1 retry sur conflit SHA (refetch + réapplication de `build`).
+async function _putFileWithRetry(path, message, build) {
+  const token = getToken();
+  if(!token) throw new Error('Saisis ton token GitHub.');
+  const headers = { Authorization: `token ${token}` };
+  let { sha } = await _fetchFileRaw(path, headers);
+  for(let attempt = 0; attempt < 2; attempt++) {
+    const content = build();
+    const encoded = utf8b64(content);
+    const putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, content: encoded, sha, branch: BRANCH })
+    });
+    if(putResp.ok) return;
+    if(putResp.status !== 409 || attempt === 1) {
+      let msg = putResp.status;
+      try { const err = await putResp.json(); msg = err.message || msg; } catch(_) {}
+      throw new Error(`Échec écriture ${path} : ` + msg);
+    }
+    ({ sha } = await _fetchFileRaw(path, headers)); // conflit : on relit le SHA et on réessaie
+  }
+}
+
+function _serializeEntries(obj) {
+  return Object.entries(obj).map(([k,v]) => `${JSON.stringify(k)}: ${serializeValue(v,0)}`).join(',\n');
+}
+
+// ── OI (oi-config.js) ──────────────────────────────────────────────────
+const CFG_COLOR_SLOTS = [1,2,3,4,5,6,7,8];
+const CFG_REP_TYPES = ['','lignes','image','tableau_2col','cause-consequence','mettre-en-relation','situer-dans-lespace','avant-apres','grille'];
+const CFG_REP_LABELS = {'':'Aucune','lignes':'Lignes','image':'Image','tableau_2col':'Tableau 2 col.','cause-consequence':'Cause/Conséquence','mettre-en-relation':'Mettre en relation','situer-dans-lespace':"Situer dans l'espace",'avant-apres':'Avant/Après','grille':'Grille'};
+
+function cfgOiAutoTypeChange(sel) {
+  const wrap = sel.closest('.block').querySelector('.cfg-oi-auto-nombre-wrap');
+  wrap.style.display = sel.value === 'lignes' ? '' : 'none';
+}
+
+let cfgOiCount = 0;
+function cfgAddOi(oi, name) {
+  const id = ++cfgOiCount;
+  const cfg = oi || {};
+  const auto = cfg.autoReponse || {};
+  const slotOptions = CFG_COLOR_SLOTS.map(n => {
+    const sel = cfg.color === `var(--c-slot${n})` ? ' selected' : '';
+    return `<option value="${n}" style="background:var(--c-slot${n}-bg);color:var(--c-slot${n})"${sel}>Couleur ${n}</option>`;
+  }).join('');
+  const repOptions = CFG_REP_TYPES.map(t => `<option value="${t}"${auto.type===t?' selected':''}>${escHtml(CFG_REP_LABELS[t])}</option>`).join('');
+  const div = document.createElement('div');
+  div.className = 'block';
+  div.id = 'oi-' + id;
+  div.innerHTML = `
+    <button class="btn-move btn-move-up" onclick="moveDoc('oi-${id}',-1)" title="Monter">↑</button>
+    <button class="btn-move btn-move-dn" onclick="moveDoc('oi-${id}',1)" title="Descendre">↓</button>
+    <button class="btn-remove" onclick="removeEl('oi-${id}')">✕</button>
+    <div class="row">
+      <div class="field"><label>Nom de l'OI</label><input type="text" class="cfg-oi-nom" value="${escHtml(name||'')}" placeholder="ex. : Interroger les réalités sociales"></div>
+      <div class="field"><label>Couleur</label><select class="cfg-oi-couleur">${slotOptions}</select></div>
+    </div>
+    <div class="field"><label>Sous-tags <span style="font-weight:400;color:var(--ink-3)">(séparés par des virgules, optionnel)</span></label>
+      <input type="text" class="cfg-oi-soustags" value="${escHtml((cfg.soustags||[]).join(', '))}" placeholder="ex. : Sous-type A, Sous-type B"></div>
+    <div class="row">
+      <div class="field"><label>Réponse auto <span style="font-weight:400;color:var(--ink-3)">(optionnel)</span></label><select class="cfg-oi-auto-type" onchange="cfgOiAutoTypeChange(this)">${repOptions}</select></div>
+      <div class="field cfg-oi-auto-nombre-wrap" style="display:${auto.type==='lignes'?'':'none'}"><label>Nombre de lignes</label><input type="number" class="cfg-oi-auto-nombre" min="1" value="${auto.nombre||1}"></div>
+    </div>`;
+  document.getElementById('cfg-oi-list').appendChild(div);
+}
+
+function cfgRenderOiList() {
+  document.getElementById('cfg-oi-list').innerHTML = '';
+  OI_LIST.forEach(name => cfgAddOi(OI_CONFIG[name], name));
+}
+
+function cfgCollectOi() {
+  const oiConfig = {}, oiList = [];
+  document.querySelectorAll('#cfg-oi-list > .block').forEach(row => {
+    const name = row.querySelector('.cfg-oi-nom').value.trim();
+    if(!name) return;
+    const slot = row.querySelector('.cfg-oi-couleur').value;
+    const soustags = row.querySelector('.cfg-oi-soustags').value.split(',').map(s=>s.trim()).filter(Boolean);
+    const autoType = row.querySelector('.cfg-oi-auto-type').value;
+    const entry = { color: `var(--c-slot${slot})`, bg: `var(--c-slot${slot}-bg)` };
+    if(soustags.length) entry.soustags = soustags;
+    if(autoType) {
+      entry.autoReponse = autoType === 'lignes'
+        ? { type: 'lignes', nombre: parseInt(row.querySelector('.cfg-oi-auto-nombre').value) || 1 }
+        : { type: autoType };
+    }
+    oiConfig[name] = entry;
+    oiList.push(name);
+  });
+  return { oiConfig, oiList };
+}
+
+async function cfgPublishOi() {
+  const status = document.getElementById('cfg-oi-status');
+  const { oiConfig, oiList } = cfgCollectOi();
+  const names = new Set(oiList);
+  if(names.size !== oiList.length) { status.textContent = '✗ Deux OI portent le même nom.'; status.style.color = 'var(--red)'; return; }
+  status.textContent = '⏳ Publication…'; status.style.color = '';
+  try {
+    await _putFileWithRetry('oi-config.js', 'Configuration OI', () => {
+      let out = `// Source unique de vérité pour les opérations intellectuelles / compétences (OI).\n`
+        + `// Généré par la section Configuration d'admin.html — ne pas éditer à la main.\n`
+        + `const OI_CONFIG = {\n${_serializeEntries(oiConfig)}\n}\n\n`
+        + `const OI_LIST = [\n${oiList.map(o=>JSON.stringify(o)).join(',\n')}\n]\n`;
+      return out;
+    });
+    // Reflète la nouvelle config localement (OI_CONFIG/OI_LIST sont des `const` : on les
+    // mute en place plutôt que de les réassigner) — pas besoin de recharger la page.
+    Object.keys(OI_CONFIG).forEach(k => delete OI_CONFIG[k]);
+    Object.assign(OI_CONFIG, oiConfig);
+    OI_LIST.length = 0;
+    OI_LIST.push(...oiList);
+    populateOiSelect();
+    status.textContent = '✓ OI publiées.'; status.style.color = 'var(--green)';
+  } catch(e) {
+    status.textContent = '✗ ' + e.message; status.style.color = 'var(--red)';
+  }
+}
+
+// ── Niveaux / périodes / aspects (contexte.js) ─────────────────────────
+let cfgNiveauCount = 0, cfgPeriodeCount = 0;
+
+function cfgAddPeriode(niveauListEl, nom, aspects) {
+  const id = ++cfgPeriodeCount;
+  const div = document.createElement('div');
+  div.className = 'block cfg-periode-block';
+  div.id = 'per-' + id;
+  div.style.background = 'var(--paper-2)';
+  div.innerHTML = `
+    <button class="btn-move btn-move-up" onclick="moveDoc('per-${id}',-1)" title="Monter">↑</button>
+    <button class="btn-move btn-move-dn" onclick="moveDoc('per-${id}',1)" title="Descendre">↓</button>
+    <button class="btn-remove" onclick="removeEl('per-${id}')">✕</button>
+    <div class="field"><label>Nom de la période</label><input type="text" class="cfg-per-nom" value="${escHtml(nom||'')}" placeholder="ex. : Les premières civilisations"></div>
+    <div class="field"><label>Aspects <span style="font-weight:400;color:var(--ink-3)">(un par ligne)</span></label>
+      <textarea class="cfg-per-aspects" rows="3" placeholder="Aspect 1&#10;Aspect 2">${escHtml((aspects||[]).join('\n'))}</textarea></div>`;
+  niveauListEl.appendChild(div);
+}
+
+function cfgAddNiveau(num, periodes) {
+  const id = ++cfgNiveauCount;
+  const div = document.createElement('div');
+  div.className = 'block';
+  div.id = 'niv-' + id;
+  div.innerHTML = `
+    <button class="btn-move btn-move-up" onclick="moveDoc('niv-${id}',-1)" title="Monter">↑</button>
+    <button class="btn-move btn-move-dn" onclick="moveDoc('niv-${id}',1)" title="Descendre">↓</button>
+    <button class="btn-remove" onclick="removeEl('niv-${id}')">✕</button>
+    <div class="field" style="max-width:200px"><label>Niveau</label><input type="text" class="cfg-niv-num" value="${escHtml(num||'')}" placeholder="ex. : 1"></div>
+    <div class="cfg-per-list" id="niv-${id}-per"></div>
+    <button class="btn-add" onclick="cfgAddPeriode(document.getElementById('niv-${id}-per'))">+ Ajouter une période</button>`;
+  document.getElementById('cfg-niveaux-list').appendChild(div);
+  const perList = document.getElementById('niv-' + id + '-per');
+  Object.entries(periodes || {}).forEach(([nom, aspects]) => cfgAddPeriode(perList, nom, aspects));
+}
+
+function cfgRenderNiveauxList() {
+  document.getElementById('cfg-niveaux-list').innerHTML = '';
+  Object.keys(PERIODES_PAR_NIVEAU).sort().forEach(num => {
+    const periodes = {};
+    (PERIODES_PAR_NIVEAU[num] || []).forEach(p => { periodes[p] = ASPECTS_PAR_PERIODE[p] || []; });
+    cfgAddNiveau(num, periodes);
+  });
+}
+
+function cfgCollectContexte() {
+  const periodesParNiveau = {}, aspectsParPeriode = {};
+  document.querySelectorAll('#cfg-niveaux-list > .block').forEach(nivRow => {
+    const num = nivRow.querySelector('.cfg-niv-num').value.trim();
+    if(!num) return;
+    const periodes = [];
+    nivRow.querySelectorAll('.cfg-periode-block').forEach(perRow => {
+      const nom = perRow.querySelector('.cfg-per-nom').value.trim();
+      if(!nom) return;
+      periodes.push(nom);
+      aspectsParPeriode[nom] = perRow.querySelector('.cfg-per-aspects').value.split('\n').map(s=>s.trim()).filter(Boolean);
+    });
+    periodesParNiveau[num] = periodes;
+  });
+  return { periodesParNiveau, aspectsParPeriode };
+}
+
+async function cfgPublishContexte() {
+  const status = document.getElementById('cfg-contexte-status');
+  const { periodesParNiveau, aspectsParPeriode } = cfgCollectContexte();
+  status.textContent = '⏳ Publication…'; status.style.color = '';
+  try {
+    await _putFileWithRetry('contexte.js', 'Configuration niveaux/périodes/aspects', () => {
+      return `// Données statiques de contexte du programme.\n`
+        + `// Généré par la section Configuration d'admin.html — ne pas éditer à la main.\n`
+        + `const PERIODES_PAR_NIVEAU = {\n${_serializeEntries(periodesParNiveau)}\n}\n\n`
+        + `const ASPECTS_PAR_PERIODE = {\n${_serializeEntries(aspectsParPeriode)}\n}\n`;
+    });
+    Object.keys(PERIODES_PAR_NIVEAU).forEach(k => delete PERIODES_PAR_NIVEAU[k]);
+    Object.assign(PERIODES_PAR_NIVEAU, periodesParNiveau);
+    Object.keys(ASPECTS_PAR_PERIODE).forEach(k => delete ASPECTS_PAR_PERIODE[k]);
+    Object.assign(ASPECTS_PAR_PERIODE, aspectsParPeriode);
+    populateNiveauSelects();
+    updatePeriodes();
+    status.textContent = '✓ Niveaux/périodes/aspects publiés.'; status.style.color = 'var(--green)';
+  } catch(e) {
+    status.textContent = '✗ ' + e.message; status.style.color = 'var(--red)';
+  }
+}
+
+async function init() {
+  populateNiveauSelects();
+  populateOiSelect();
+  cfgRenderOiList();
+  cfgRenderNiveauxList();
+  const lsToken = localStorage.getItem('gh_token');
+  const ssToken = sessionStorage.getItem('gh_token');
+  if(lsToken) { document.getElementById('gh-token').value = lsToken; document.getElementById('gh-remember').checked = true; }
+  else if(ssToken) { document.getElementById('gh-token').value = ssToken; }
+  // Charger Worker URL + secret
+  const savedWorkerUrl = localStorage.getItem('workerUrl') || '';
+  const savedWorkerSecret = getWorkerSecret();
+  if(savedWorkerUrl) document.getElementById('worker-url').value = savedWorkerUrl;
+  if(savedWorkerSecret) document.getElementById('worker-secret').value = savedWorkerSecret;
+  if(savedWorkerUrl && savedWorkerSecret) {
+    document.getElementById('worker-status').textContent = '⚡ Worker actif';
+    document.getElementById('worker-status').style.color = 'var(--green)';
+  }
+  updatePeriodes();
+  updatePresets();
+  document.querySelector('.container').addEventListener('input', e => { if(!e.target.closest('.token-bar')) formDirty = true; });
+  await Promise.all([loadQuestionsJs(), loadImages(), loadReglettesJs(), loadRecentImages()]);
+  // Rafraîchit les selects après que loadRecentImages ait rempli RECENT_IMAGES
+  refreshImageSelects();
+  if(await isAdminStale()) showStaleBanner();
+  setInterval(async () => { if(await isAdminStale()) showStaleBanner(); }, 5 * 60 * 1000);
+}
+
+function refreshImageSelects() {
+  const options = buildImageOptions();
+  document.querySelectorAll('select[id$="-ref"]').forEach(sel => {
+    const val = sel.value;
+    sel.innerHTML = options;
+    sel.value = val;
+  });
+}
+
+async function loadImages() {
+  let sansToken = false;
+  for(let tentative = 0; tentative < 3; tentative++) {
+    try {
+      const headers = (getToken() && !sansToken) ? { Authorization: `token ${getToken()}` } : {};
+      const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images?ref=${BRANCH}&t=${Date.now()}`, { headers, cache: 'no-store' });
+      if((r.status === 401 || r.status === 403) && !sansToken) {
+        // Token expiré ou invalide : le dépôt est public, on réessaie en lecture anonyme
+        sansToken = true;
+        toast('Token GitHub invalide ou expiré — régénérez-le sur github.com/settings/tokens puis recollez-le dans le champ ci-dessus.', 'err');
+        continue;
+      }
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+      if(!Array.isArray(data)) throw new Error('Réponse inattendue de l’API GitHub');
+      IMAGES = data.filter(f => f.name !== '.gitkeep').map(f => f.name).sort();
+      refreshImageSelects();
+      return;
+    } catch(e) {
+      if(tentative < 2) await new Promise(res => setTimeout(res, 1200 * (tentative + 1)));
+    }
+  }
+  // Mode secours : liste reconstruite depuis IMAGE_DB (questions.js)
+  const secours = Object.keys(currentImageDb || {}).sort();
+  if(secours.length) {
+    IMAGES = secours;
+    refreshImageSelects();
+    toast('Liste d’images chargée en mode secours depuis questions.js — vérifiez le token GitHub.', 'err');
+  } else {
+    toast('Impossible de charger la liste des images — vérifiez la connexion et le token GitHub.', 'err');
+  }
+}
+
+async function loadQuestionsJs() {
+  try {
+    let tokenKo = false;
+    let sha, content;
+    try {
+      const headers = getToken() ? { Authorization: `token ${getToken()}` } : {};
+      ({ sha, content } = await _fetchQuestionsRaw(headers));
+    } catch(e) {
+      // 401/403 → on relit en anonyme (dépôt public)
+      if(/401|403/.test(e.message)) {
+        tokenKo = true;
+        document.getElementById('token-status').textContent = '✗ Token invalide ou expiré';
+        document.getElementById('token-status').className = 'token-status ko';
+        ({ sha, content } = await _fetchQuestionsRaw({}));
+      } else {
+        throw e;
+      }
+    }
+    questionsFileSha = sha;
+    let result;
+    try {
+      const fn = new Function(content + '\n return { REGLETTES, IMAGE_DB, QUESTIONS };');
+      result = fn();
+    } catch(e) {
+      throw new Error('questions.js est invalide ou corrompu : ' + e.message);
+    }
+    currentQuestions = result.QUESTIONS;
+    currentReglettes = result.REGLETTES;
+    currentImageDb   = result.IMAGE_DB;
+    confirmedIds = new Set(currentQuestions.map(q => q.id));
+    // Next ID
+    const nums = currentQuestions.map(q => parseInt(q.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
+    const nextNum = nums.length ? Math.max(...nums) + 1 : 1;
+    const nextId = 'Q' + nextNum;
+    // Ne pas écraser l'id en cours d'édition (ex. token rechargé pendant une modification) :
+    // sinon la question éditée serait republiée sous un nouvel id, désynchronisant réglette/index.
+    if(!editingId) document.getElementById('q-id').value = nextId;
+    document.getElementById('next-id-badge').textContent = nextId;
+    if(!tokenKo) {
+      document.getElementById('token-status').textContent = '✓ Connecté';
+      document.getElementById('token-status').className = 'token-status ok';
+    }
+    renderDashboard();
+    buildImageMetaMap();
+  } catch(e) {
+    document.getElementById('token-status').textContent = '✗ Erreur de connexion';
+    document.getElementById('token-status').className = 'token-status ko';
+  }
+}
+
+// Construit un dict {nomImage → {soustitre, auteur, source}} depuis toutes les questions existantes.
+let imageMetaMap = {};
+function buildImageMetaMap() {
+  imageMetaMap = {};
+  for(const q of (currentQuestions || [])) {
+    for(const doc of (q.documents || [])) {
+      for(const col of (doc.cols || [])) {
+        if(!col.ref) continue;
+        const entry = imageMetaMap[col.ref] || {};
+        if(col.soustitre) entry.soustitre = col.soustitre;
+        if(col.auteur)    entry.auteur    = col.auteur;
+        if(col.source)    entry.source    = col.source;
+        imageMetaMap[col.ref] = entry;
+      }
+    }
+  }
+}
+
+// Appelé lors du changement de sélection image ; remplit soustitre/auteur/source si vides.
+function autofillImageMeta(sel) {
+  const meta = imageMetaMap[sel.value];
+  if(!meta) return;
+  const prefix = sel.id.replace(/-ref$/, '');
+  const fill = (suffix, val) => {
+    if(!val) return;
+    const el = document.getElementById(prefix + suffix);
+    if(el && !el.value) el.value = val;
+  };
+  fill('-soustitre', meta.soustitre);
+  fill('-auteur',    meta.auteur);
+  fill('-source',    meta.source);
+}
+
+
+async function loadReglettesJs() {
+  try {
+    const headers = getToken() ? { Authorization: `token ${getToken()}` } : {};
+    const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/reglettes.js?ref=${BRANCH}&t=${Date.now()}`, { headers, cache: 'no-store' });
+    if(!r.ok) return;
+    const data = await r.json();
+    if(!data.content) return; // fichier trop grand (> 1 Mo) : l'API retourne download_url sans content
+    const binary = atob(data.content.replace(/\n/g,''));
+    const bytes = new Uint8Array(binary.length);
+    for(let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    const content = new TextDecoder('utf-8').decode(bytes);
+    const fn = new Function(content + '\nreturn REGLETTES_PRESET;');
+    const fresh = fn();
+    for(const k in REGLETTES_PRESET) delete REGLETTES_PRESET[k];
+    Object.assign(REGLETTES_PRESET, fresh);
+    updatePresets();
+  } catch(e) { /* utilise la version statique */ }
+}
+
+document.getElementById('gh-token').addEventListener('change', () => { loadQuestionsJs(); loadImages(); loadReglettesJs(); });
+
+// ── DOCUMENTS ─────────────────────────────────────────────────────────
+let docCount = 0;
+
+function richToolbar(id) {
+  return `<div class="rich-toolbar">
+    <button type="button" onclick="insertBold('${id}')"><b>G</b></button>
+    <button type="button" onclick="insertBullet('${id}')">• Puce</button>
+  </div>`;
+}
+function insertBold(id) {
+  const ta = document.getElementById(id);
+  const s = ta.selectionStart, e = ta.selectionEnd;
+  const sel = ta.value.substring(s, e) || 'texte';
+  ta.value = ta.value.substring(0, s) + '**' + sel + '**' + ta.value.substring(e);
+  ta.focus(); ta.setSelectionRange(s+2, s+2+sel.length);
+}
+function insertBullet(id) {
+  const ta = document.getElementById(id);
+  const s = ta.selectionStart;
+  const ls = ta.value.lastIndexOf('\n', s-1) + 1;
+  ta.value = ta.value.substring(0, ls) + '• ' + ta.value.substring(ls);
+  ta.focus(); ta.setSelectionRange(ls+2, ls+2);
+}
+function addDoc(type) {
+  const id = ++docCount;
+  const wrap = document.getElementById('docs-list');
+  const letter = String.fromCharCode(65 + wrap.querySelectorAll(':scope > .block').length);
+  const div = document.createElement('div');
+  div.className = 'block';
+  div.id = 'doc-' + id;
+  div.dataset.type = type;
+
+  if(type === 'textes') {
+    div.innerHTML = `
+      <div class="block-title">Document texte</div>
+      <button class="btn-move btn-move-up" onclick="moveDoc('doc-${id}',-1)" title="Monter">↑</button>
+      <button class="btn-move btn-move-dn" onclick="moveDoc('doc-${id}',1)" title="Descendre">↓</button>
+      <button class="btn-secondary" style="position:absolute;top:.45rem;right:5.5rem;padding:2px 7px;font-size:.75rem" onclick="convertDoc(${id})" title="Convertir en document image">⇄ Image</button>
+      <button class="btn-remove" onclick="removeEl('doc-${id}')">✕</button>
+      <div class="field"><label>Titre</label><input type="text" id="doc-${id}-titre" placeholder="Document ${letter}" value="Document ${letter}"></div>
+      <div class="field"><label>Sous-titre <span style="font-weight:400;color:var(--ink-3)">(optionnel)</span></label><input type="text" id="doc-${id}-soustitre" placeholder="ex. : Champlain et ses alliés…"></div>
+      <div class="field"><label>Texte</label>${richToolbar('doc-'+id+'-texte')}<textarea id="doc-${id}-texte" rows="4" placeholder="Contenu du document…"></textarea></div>
+      <div class="field"><label>Auteur</label><input type="text" id="doc-${id}-auteur" placeholder="Prénom Nom, titre…"></div>
+      <div class="field"><label>Source</label><input type="text" id="doc-${id}-source" placeholder="Titre, éditeur, année…"></div>`;
+  } else if(type === 'image') {
+    div.innerHTML = `
+      <div class="block-title">Document image</div>
+      <button class="btn-move btn-move-up" onclick="moveDoc('doc-${id}',-1)" title="Monter">↑</button>
+      <button class="btn-move btn-move-dn" onclick="moveDoc('doc-${id}',1)" title="Descendre">↓</button>
+      <button class="btn-secondary" style="position:absolute;top:.45rem;right:5.5rem;padding:2px 7px;font-size:.75rem" onclick="convertDoc(${id})" title="Convertir en document texte">⇄ Texte</button>
+      <button class="btn-remove" onclick="removeEl('doc-${id}')">✕</button>
+      <div class="field"><label>Titre</label><input type="text" id="doc-${id}-titre" placeholder="Document ${letter}" value="Document ${letter}"></div>
+      <div class="field"><label>Sous-titre <span style="font-weight:400;color:var(--ink-3)">(optionnel)</span></label><input type="text" id="doc-${id}-soustitre" placeholder="ex. : Carte du territoire en 1763…"></div>
+      <div class="field"><label>Image</label>${imageSelect('doc-'+id+'-ref')}</div>
+      <div class="field"><label>Auteur</label><input type="text" id="doc-${id}-auteur" placeholder="Prénom Nom, titre…"></div>
+      <div class="field"><label>Source</label><input type="text" id="doc-${id}-source" placeholder="Titre, éditeur, année…"></div>`;
+  } else if(type === 'textes-image') {
+    div.innerHTML = `
+      <div class="block-title">Colonnes texte / image</div>
+      <button class="btn-move btn-move-up" onclick="moveDoc('doc-${id}',-1)" title="Monter">↑</button>
+      <button class="btn-move btn-move-dn" onclick="moveDoc('doc-${id}',1)" title="Descendre">↓</button>
+      <button class="btn-remove" onclick="removeEl('doc-${id}')">✕</button>
+      <div id="doc-${id}-cols"></div>
+      <div style="display:flex;gap:.4rem">
+        <button class="btn-add" onclick="addCol(${id},'texte')">+ Col. texte</button>
+        <button class="btn-add" onclick="addCol(${id},'image')">+ Col. image</button>
+      </div>`;
+  }
+  wrap.appendChild(div);
+}
+
+let colCount = 0;
+function addCol(docId, type) {
+  const id = ++colCount;
+  const wrap = document.getElementById('doc-'+docId+'-cols');
+  const div = document.createElement('div');
+  div.className = 'col-block';
+  div.id = 'col-'+id;
+  div.dataset.type = type;
+  if(type === 'texte') {
+    div.innerHTML = `
+      <button class="btn-remove" onclick="removeEl('col-${id}')">✕</button>
+      <div class="field"><label>Titre</label><input type="text" id="col-${id}-titre" placeholder="Document A"></div>
+      <div class="field"><label>Sous-titre <span style="font-weight:400;color:var(--ink-3)">(optionnel)</span></label><input type="text" id="col-${id}-soustitre" placeholder="ex. : Champlain et ses alliés…"></div>
+      <div class="field"><label>Texte</label>${richToolbar('col-'+id+'-texte')}<textarea id="col-${id}-texte" rows="3"></textarea></div>
+      <div class="field"><label>Auteur</label><input type="text" id="col-${id}-auteur" placeholder="Prénom Nom, titre…"></div>
+      <div class="field"><label>Source</label><input type="text" id="col-${id}-source" placeholder="Titre, éditeur, année…"></div>`;
+  } else {
+    div.innerHTML = `
+      <button class="btn-remove" onclick="removeEl('col-${id}')">✕</button>
+      <div class="field"><label>Titre</label><input type="text" id="col-${id}-titre" placeholder="Document A"></div>
+      <div class="field"><label>Sous-titre <span style="font-weight:400;color:var(--ink-3)">(optionnel)</span></label><input type="text" id="col-${id}-soustitre" placeholder="ex. : Carte du territoire en 1763…"></div>
+      <div class="field"><label>Image</label>${imageSelect('col-'+id+'-ref')}</div>
+      <div class="field"><label>Auteur</label><input type="text" id="col-${id}-auteur" placeholder="Prénom Nom, titre…"></div>
+      <div class="field"><label>Source</label><input type="text" id="col-${id}-source" placeholder="Titre, éditeur, année…"></div>`;
+  }
+  wrap.appendChild(div);
+}
+
+function imageSelect(id) {
+  return `<div class="img-select-wrap"><select id="${id}" onchange="autofillImageMeta(this);updateImgPreview(this)">${buildImageOptions()}</select><img class="img-thumb" id="${id}-thumb" src="" alt="" onmouseenter="showFloatPreview(this,event)" onmouseleave="hideFloatPreview()" onmousemove="moveFloatPreview(event)"></div>`;
+}
+
+function updateImgPreview(sel) {
+  const thumb = document.getElementById(sel.id + '-thumb');
+  if(!thumb) return;
+  if(sel.value) { thumb.src = 'images/' + sel.value; thumb.classList.add('visible'); }
+  else { thumb.src = ''; thumb.classList.remove('visible'); }
+}
+
+function showFloatPreview(thumb, e) {
+  const fp = document.getElementById('img-float-preview');
+  fp.querySelector('img').src = thumb.src;
+  fp.style.display = 'block';
+  moveFloatPreview(e);
+}
+function moveFloatPreview(e) {
+  const fp = document.getElementById('img-float-preview');
+  if(fp.style.display === 'none') return;
+  const x = e.clientX + 16, y = e.clientY + 16;
+  fp.style.left = (x + 340 > window.innerWidth  ? e.clientX - 344 : x) + 'px';
+  fp.style.top  = (y + 280 > window.innerHeight ? e.clientY - 284 : y) + 'px';
+}
+function hideFloatPreview() { document.getElementById('img-float-preview').style.display = 'none'; }
+
+function removeEl(id) { document.getElementById(id)?.remove(); }
+
+function convertDoc(id) {
+  const div = document.getElementById('doc-' + id);
+  if(!div) return;
+  const currentType = div.dataset.type;
+  if(currentType !== 'textes' && currentType !== 'image') return;
+  const titre    = document.getElementById('doc-'+id+'-titre')?.value || '';
+  const soustitre = document.getElementById('doc-'+id+'-soustitre')?.value || '';
+  const auteur   = document.getElementById('doc-'+id+'-auteur')?.value || '';
+  const source   = document.getElementById('doc-'+id+'-source')?.value || '';
+  const newType  = currentType === 'textes' ? 'image' : 'textes';
+  const placeholder = titre || 'Document';
+  div.dataset.type = newType;
+  if(newType === 'image') {
+    div.innerHTML = `
+      <div class="block-title">Document image</div>
+      <button class="btn-move btn-move-up" onclick="moveDoc('doc-${id}',-1)" title="Monter">↑</button>
+      <button class="btn-move btn-move-dn" onclick="moveDoc('doc-${id}',1)" title="Descendre">↓</button>
+      <button class="btn-secondary" style="position:absolute;top:.45rem;right:5.5rem;padding:2px 7px;font-size:.75rem" onclick="convertDoc(${id})" title="Convertir en document texte">⇄ Texte</button>
+      <button class="btn-remove" onclick="removeEl('doc-${id}')">✕</button>
+      <div class="field"><label>Titre</label><input type="text" id="doc-${id}-titre" placeholder="${escHtml(placeholder)}" value="${escHtml(titre)}"></div>
+      <div class="field"><label>Sous-titre <span style="font-weight:400;color:var(--ink-3)">(optionnel)</span></label><input type="text" id="doc-${id}-soustitre" placeholder="ex. : Carte du territoire en 1763…" value="${escHtml(soustitre)}"></div>
+      <div class="field"><label>Image</label>${imageSelect('doc-'+id+'-ref')}</div>
+      <div class="field"><label>Auteur</label><input type="text" id="doc-${id}-auteur" placeholder="Prénom Nom, titre…" value="${escHtml(auteur)}"></div>
+      <div class="field"><label>Source</label><input type="text" id="doc-${id}-source" placeholder="Titre, éditeur, année…" value="${escHtml(source)}"></div>`;
+  } else {
+    div.innerHTML = `
+      <div class="block-title">Document texte</div>
+      <button class="btn-move btn-move-up" onclick="moveDoc('doc-${id}',-1)" title="Monter">↑</button>
+      <button class="btn-move btn-move-dn" onclick="moveDoc('doc-${id}',1)" title="Descendre">↓</button>
+      <button class="btn-secondary" style="position:absolute;top:.45rem;right:5.5rem;padding:2px 7px;font-size:.75rem" onclick="convertDoc(${id})" title="Convertir en document image">⇄ Image</button>
+      <button class="btn-remove" onclick="removeEl('doc-${id}')">✕</button>
+      <div class="field"><label>Titre</label><input type="text" id="doc-${id}-titre" placeholder="${escHtml(placeholder)}" value="${escHtml(titre)}"></div>
+      <div class="field"><label>Sous-titre <span style="font-weight:400;color:var(--ink-3)">(optionnel)</span></label><input type="text" id="doc-${id}-soustitre" placeholder="ex. : Champlain et ses alliés…" value="${escHtml(soustitre)}"></div>
+      <div class="field"><label>Texte</label>${richToolbar('doc-'+id+'-texte')}<textarea id="doc-${id}-texte" rows="4" placeholder="Contenu du document…"></textarea></div>
+      <div class="field"><label>Auteur</label><input type="text" id="doc-${id}-auteur" placeholder="Prénom Nom, titre…" value="${escHtml(auteur)}"></div>
+      <div class="field"><label>Source</label><input type="text" id="doc-${id}-source" placeholder="Titre, éditeur, année…" value="${escHtml(source)}"></div>`;
+  }
+  refreshImageSelects();
+}
+
+function moveDoc(id, dir) {
+  const el = document.getElementById(id);
+  if(!el) return;
+  const parent = el.parentNode;
+  const sibs = [...parent.querySelectorAll(':scope > .block')];
+  const idx = sibs.indexOf(el);
+  if(dir < 0 && idx > 0) parent.insertBefore(el, sibs[idx - 1]);
+  else if(dir > 0 && idx < sibs.length - 1) parent.insertBefore(sibs[idx + 1], el);
+}
+
+// ── RÉPONSE ───────────────────────────────────────────────────────────
+let _prevRepType = '';
+function updateReponseUI() {
+  const type = document.getElementById('rep-type').value;
+  const wrap = document.getElementById('rep-extra');
+  if(type === 'lignes') {
+    wrap.innerHTML = `<div class="field"><label>Nombre de lignes</label><input type="number" id="rep-nombre" value="2" min="1" max="10"></div>`;
+  } else if(type === 'image') {
+    wrap.innerHTML = `<div class="field"><label>Image de référence</label>${imageSelect('rep-ref')}</div>`;
+  } else if(type === 'tableau_3col') {
+    wrap.innerHTML = `
+      <div class="row-3">
+        <div class="field"><label>Col. gauche</label><input type="text" id="rep-col1" placeholder="Avant"></div>
+        <div class="field"><label>Col. centrale (événement)</label><input type="text" id="rep-col2" placeholder="La capitulation de Montréal"></div>
+        <div class="field"><label>Col. droite</label><input type="text" id="rep-col3" placeholder="Après"></div>
+      </div>`;
+  } else if(type === 'tableau') {
+    wrap.innerHTML = `
+      <div class="field"><label>Lignes du tableau <span style="font-weight:400;color:var(--ink-3)">(une par ligne)</span></label>
+      <textarea id="rep-lignes" rows="3" placeholder="Mercantilisme\nObligations des compagnies\nPrivilèges des compagnies"></textarea></div>`;
+  } else if(type === 'tableau_2col') {
+    wrap.innerHTML = `<div class="field" style="color:var(--ink-3);font-size:.82rem">Tableau fixe : colonne « Réponse » + colonne vide, texte centré, cellules de 2 cm.</div>`;
+  } else if(type === 'grille') {
+    const sel = (id, vals, def) => `<select id="${id}" style="padding:.28rem .45rem;font-size:.82rem;border:1px solid var(--border);border-radius:4px;background:var(--paper)" onchange="updateRepGrille()">${vals.map(v=>`<option value="${v}"${v==def?' selected':''}>${v}</option>`).join('')}</select>`;
+    wrap.innerHTML = `
+      <div style="display:flex;gap:1.2rem;align-items:center;margin-bottom:.75rem;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <label style="font-size:.75rem;font-weight:600;color:var(--ink-2)">Colonnes</label>
+          ${sel('rep-cols',[2,3,4],2)}
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <label style="font-size:.75rem;font-weight:600;color:var(--ink-2)">Rangées</label>
+          ${sel('rep-rows',[1,2,3,4,5,6,7,8],2)}
+        </div>
+      </div>
+      <div id="rep-grille-wrap"></div>`;
+    updateRepGrille();
+  } else if(type === 'avant-apres') {
+    wrap.innerHTML = `<div class="field"><label>Événement repère (colonne centrale)</label><input type="text" id="rep-avant-apres-label" placeholder="ex. : la capitulation de Montréal"></div>`;
+  } else if(type === 'mettre-en-relation') {
+    const n = parseInt(document.getElementById('rep-mer-n')?.value || '2') || 2;
+    const doubleCirc = n === 2 && (document.getElementById('rep-mer-double')?.checked || false);
+    const MER_EX = {};
+    const sel = (id, vals, def) => `<select id="${id}" style="padding:.28rem .45rem;font-size:.82rem;border:1px solid var(--border);border-radius:4px;background:var(--paper)" onchange="updateReponseUI()">${vals.map(v=>`<option value="${v}"${v==def?' selected':''}>${v}</option>`).join('')}</select>`;
+    let fields = `<div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:.75rem;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <label style="font-size:.75rem;font-weight:600;color:var(--ink-2)">Nombre d'éléments</label>
+        ${sel('rep-mer-n',[2,3,4],n)}
+      </div>`;
+    if(n === 2) {
+      fields += `<label style="display:flex;align-items:center;gap:.4rem;font-size:.78rem;cursor:pointer">
+        <input type="checkbox" id="rep-mer-double" onchange="updateReponseUI()"${doubleCirc?' checked':''}> Deux cercles (avec et)
+      </label>`;
+    }
+    fields += `</div><div style="display:grid;grid-template-columns:repeat(${n},1fr);gap:.5rem">`;
+    for(let i = 0; i < n; i++) {
+      const ex = (MER_EX[n] || [])[i] || 'Élément ' + (i+1);
+      fields += `<div class="field" style="margin:0"><label style="font-size:.72rem">Élément ${i+1}</label><input type="text" id="rep-mer-el-${i}" placeholder="ex. : ${ex}" oninput="syncGuideFromMer(false)"></div>`;
+    }
+    fields += '</div>';
+    wrap.innerHTML = fields;
+  } else if(type === 'situer-dans-lespace') {
+    let fields = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">`;
+    for(let i = 0; i < 2; i++) {
+      fields += `<div class="field" style="margin:0"><label style="font-size:.72rem">Élément ${i+1}</label><input type="text" id="rep-sde-el-${i}" placeholder="ex. : Lieu ${i+1}"></div>`;
+    }
+    fields += '</div>';
+    wrap.innerHTML = fields;
+  } else if(type === 'cause-consequence') {
+    wrap.innerHTML = `<div class="field" style="color:var(--ink-3);font-size:.82rem">Tableau fixe : Cause et Conséquence avec cercle de réponse (1,25 cm).</div>`;
+  } else {
+    wrap.innerHTML = '';
+  }
+
+  // Guide « miroir » pour Mettre en relation : on bascule le guide en grille
+  // reprenant les éléments en en-têtes + une rangée pour la lettre du document.
+  const merJustOpened = (type === 'mettre-en-relation' && _prevRepType !== 'mettre-en-relation');
+  if(type === 'mettre-en-relation') syncGuideFromMer(merJustOpened);
+  _prevRepType = type;
+}
+
+// Reprend les éléments de la réponse « Mettre en relation » dans le guide,
+// sous forme de grille : en-têtes = éléments, une rangée vide pour les lettres.
+// forceCreate = true → bascule le guide en grille (à l'ouverture du type MER) ;
+// sinon, resynchronise seulement si le guide est déjà une grille (respecte un
+// guide « Texte » choisi volontairement). Les lettres déjà saisies sont conservées.
+function syncGuideFromMer(forceCreate) {
+  if(document.getElementById('rep-type').value !== 'mettre-en-relation') return;
+  const guideTypeSel = document.getElementById('guide-type');
+  if(forceCreate) { guideTypeSel.value = 'grille'; updateGuideUI(); }
+  if(guideTypeSel.value !== 'grille') return;
+  const n = parseInt(document.getElementById('rep-mer-n')?.value || '2') || 2;
+  const els = [];
+  for(let i = 0; i < n; i++) {
+    els.push((document.getElementById('rep-mer-el-' + i)?.value || '').trim() || ('Élément ' + (i + 1)));
+  }
+  const prevRow = (getGrilleValues().rangees || [])[0] || [];
+  const row = Array.from({ length: n }, (_, i) => prevRow[i] || '');
+  document.getElementById('guide-cols').value = String(n);
+  document.getElementById('guide-rows').value = '1';
+  updateGrille({ entetes: els, rangees: [row] });
+}
+
+function updateRepGrille(data) {
+  const cols = parseInt(document.getElementById('rep-cols').value);
+  const rows = parseInt(document.getElementById('rep-rows').value);
+  const prev = data || getRepGrilleValues();
+  let html = '<table class="guide-grille"><tr><td class="guide-grille-num"></td>';
+  for(let c = 0; c < cols; c++) {
+    const v = escHtml((prev.entetes && prev.entetes[c]) || '');
+    html += `<th><input type="text" class="rep-grille-entete" placeholder="En-tête ${c+1}" value="${v}"></th>`;
+  }
+  html += '</tr>';
+  for(let r = 0; r < rows; r++) {
+    html += `<tr><td class="guide-grille-num">${r+1}</td>`;
+    for(let c = 0; c < cols; c++) {
+      const v = escHtml((prev.rangees && prev.rangees[r] && prev.rangees[r][c]) || '');
+      html += `<td><input type="text" class="rep-grille-cell" placeholder="…" value="${v}"></td>`;
+    }
+    html += '</tr>';
+  }
+  html += '</table>';
+  document.getElementById('rep-grille-wrap').innerHTML = html;
+}
+
+function getRepGrilleValues() {
+  const entetes = [...document.querySelectorAll('.rep-grille-entete')].map(i => i.value);
+  const rangees = [];
+  document.querySelectorAll('#rep-grille-wrap tr').forEach((tr, idx) => {
+    if(idx === 0) return;
+    rangees.push([...tr.querySelectorAll('.rep-grille-cell')].map(i => i.value));
+  });
+  return { entetes, rangees };
+}
+
+// ── GUIDE ─────────────────────────────────────────────────────────────
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function updateGuideUI() {
+  const type = document.getElementById('guide-type').value;
+  const wrap = document.getElementById('guide-extra');
+  if(type === 'texte') {
+    wrap.innerHTML = `<div class="field"><textarea id="guide-texte" rows="3" placeholder="Réponse attendue…"></textarea></div>`;
+  } else {
+    const sel = (id, vals, def) => `<select id="${id}" style="padding:.28rem .45rem;font-size:.82rem;border:1px solid var(--border);border-radius:4px;background:var(--paper)" onchange="updateGrille()">${vals.map(v=>`<option value="${v}"${v==def?' selected':''}>${v}</option>`).join('')}</select>`;
+    wrap.innerHTML = `
+      <div style="display:flex;gap:1.2rem;align-items:center;margin-bottom:.75rem;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <label style="font-size:.75rem;font-weight:600;color:var(--ink-2)">Colonnes</label>
+          ${sel('guide-cols',[2,3,4],2)}
+        </div>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <label style="font-size:.75rem;font-weight:600;color:var(--ink-2)">Rangées</label>
+          ${sel('guide-rows',[1,2,3,4,5,6,7,8],2)}
+        </div>
+      </div>
+      <div id="guide-grille-wrap"></div>`;
+    updateGrille();
+  }
+}
+
+function updateGrille(data) {
+  const cols = parseInt(document.getElementById('guide-cols').value);
+  const rows = parseInt(document.getElementById('guide-rows').value);
+  const prev = data || getGrilleValues();
+  let html = '<table class="guide-grille"><tr><td class="guide-grille-num"></td>';
+  for(let c = 0; c < cols; c++) {
+    const v = escHtml((prev.entetes && prev.entetes[c]) || '');
+    html += `<th><input type="text" class="guide-grille-entete" placeholder="En-tête ${c+1}" value="${v}"></th>`;
+  }
+  html += '</tr>';
+  for(let r = 0; r < rows; r++) {
+    html += `<tr><td class="guide-grille-num">${r+1}</td>`;
+    for(let c = 0; c < cols; c++) {
+      const v = escHtml((prev.rangees && prev.rangees[r] && prev.rangees[r][c]) || '');
+      html += `<td><input type="text" class="guide-grille-cell" placeholder="…" value="${v}"></td>`;
+    }
+    html += '</tr>';
+  }
+  html += '</table>';
+  document.getElementById('guide-grille-wrap').innerHTML = html;
+}
+
+function getGrilleValues() {
+  const entetes = [...document.querySelectorAll('.guide-grille-entete')].map(i => i.value);
+  const rangees = [];
+  document.querySelectorAll('#guide-grille-wrap tr').forEach((tr, idx) => {
+    if(idx === 0) return;
+    rangees.push([...tr.querySelectorAll('.guide-grille-cell')].map(i => i.value));
+  });
+  return { entetes, rangees };
+}
+
+// ── BUILD QUESTION OBJECT ─────────────────────────────────────────────
+function buildQuestion() {
+  const id = document.getElementById('q-id').value.trim();
+  const niveau = parseInt(document.getElementById('q-niveau').value);
+  const oi = document.getElementById('q-oi').value;
+  const periode = document.getElementById('q-periode').value;
+  const enonce = document.getElementById('q-enonce').value.trim();
+  const aspects = [...document.querySelectorAll('#aspects-list input[type=checkbox]:checked')]
+    .map(cb => ({ aspect: cb.value }));
+  const presetIdx = parseInt(document.getElementById('reg-preset').value);
+  const presetOi = document.getElementById('q-oi').value;
+  const preset = !isNaN(presetIdx) ? (REGLETTES_PRESET[presetOi] || [])[presetIdx] : null;
+  let points = 2;
+  if(preset) {
+    if(preset.variante) points = 3;
+    else if(preset.niveaux?.length) points = Math.max(...preset.niveaux.map(n => n.pts));
+  }
+
+  // Documents
+  const documents = [];
+  document.querySelectorAll('#docs-list > .block').forEach(docEl => {
+    const dtype = docEl.dataset.type;
+    if(dtype === 'textes') {
+      const titre = docEl.querySelector('[id$="-titre"]')?.value.trim() || '';
+      const soustitre = docEl.querySelector('[id$="-soustitre"]')?.value.trim() || '';
+      const texte = docEl.querySelector('[id$="-texte"]')?.value.trim() || '';
+      const auteur = docEl.querySelector('[id$="-auteur"]')?.value.trim() || '';
+      const source = docEl.querySelector('[id$="-source"]')?.value.trim() || '';
+      const col = { titre, texte };
+      if(soustitre) col.soustitre = soustitre;
+      if(auteur) col.auteur = auteur;
+      if(source) col.source = source;
+      documents.push({ type: 'textes', cols: [col] });
+    } else if(dtype === 'image') {
+      const titre = docEl.querySelector('[id$="-titre"]')?.value.trim() || '';
+      const soustitre = docEl.querySelector('[id$="-soustitre"]')?.value.trim() || '';
+      const ref = docEl.querySelector('[id$="-ref"]')?.value || '';
+      const auteur = docEl.querySelector('[id$="-auteur"]')?.value.trim() || '';
+      const source = docEl.querySelector('[id$="-source"]')?.value.trim() || '';
+      const col = { titre, ref };
+      if(soustitre) col.soustitre = soustitre;
+      if(auteur) col.auteur = auteur;
+      if(source) col.source = source;
+      documents.push({ type: 'textes', cols: [col] });
+    } else if(dtype === 'textes-image') {
+      const cols = [];
+      docEl.querySelectorAll('.col-block').forEach(colEl => {
+        const ctype = colEl.dataset.type;
+        const titre = colEl.querySelector('[id$="-titre"]')?.value.trim() || '';
+        const soustitre = colEl.querySelector('[id$="-soustitre"]')?.value.trim() || '';
+        if(ctype === 'texte') {
+          const texte = colEl.querySelector('[id$="-texte"]')?.value.trim() || '';
+          const auteur = colEl.querySelector('[id$="-auteur"]')?.value.trim() || '';
+          const source = colEl.querySelector('[id$="-source"]')?.value.trim() || '';
+          const col = { titre, texte };
+          if(soustitre) col.soustitre = soustitre;
+          if(auteur) col.auteur = auteur;
+          if(source) col.source = source;
+          cols.push(col);
+        } else {
+          const ref = colEl.querySelector('[id$="-ref"]')?.value || '';
+          const auteurImg = colEl.querySelector('[id$="-auteur"]')?.value.trim() || '';
+          const sourceImg = colEl.querySelector('[id$="-source"]')?.value.trim() || '';
+          const col = { titre, ref };
+          if(soustitre) col.soustitre = soustitre;
+          if(auteurImg) col.auteur = auteurImg;
+          if(sourceImg) col.source = sourceImg;
+          cols.push(col);
+        }
+      });
+      if(cols.length) documents.push({ type: 'textes', cols });
+    }
+  });
+
+  // Réponse
+  let reponse = false;
+  const repType = document.getElementById('rep-type').value;
+  if(repType === 'lignes') {
+    // min/max du <input> ne sont pas appliqués (pas de soumission de <form>) — clamp explicite
+    // pour éviter un nombre ≤0/NaN qui ferait planter Array(n) sur le site public (RangeError).
+    reponse = { type: 'lignes', nombre: Math.min(10, Math.max(1, parseInt(document.getElementById('rep-nombre').value) || 1)) };
+  } else if(repType === 'image') {
+    reponse = { type: 'image', ref: document.getElementById('rep-ref').value };
+  } else if(repType === 'tableau_3col') {
+    reponse = { type: 'tableau_3col',
+      col1: document.getElementById('rep-col1').value.trim(),
+      col2: document.getElementById('rep-col2').value.trim(),
+      col3: document.getElementById('rep-col3').value.trim()
+    };
+  } else if(repType === 'tableau') {
+    const lignes = document.getElementById('rep-lignes').value.trim().split('\n').map(s=>s.trim()).filter(Boolean).map(s=>({ label: s }));
+    reponse = { type: 'tableau', lignes };
+  } else if(repType === 'tableau_2col') {
+    reponse = { type: 'tableau_2col' };
+  } else if(repType === 'grille') {
+    const { entetes, rangees } = getRepGrilleValues();
+    const hasContent = entetes.some(e=>e.trim()) || rangees.some(r=>r.some(c=>c.trim()));
+    if(hasContent) reponse = { type: 'grille', entetes, rangees };
+  } else if(repType === 'avant-apres') {
+    const eventLabel = document.getElementById('rep-avant-apres-label')?.value.trim() || '';
+    reponse = { type: 'avant-apres', ...(eventLabel ? { label: eventLabel } : {}) };
+  } else if(repType === 'cause-consequence') {
+    reponse = { type: 'cause-consequence' };
+  } else if(repType === 'situer-dans-lespace') {
+    const elements = [0,1].map(i => (document.getElementById('rep-sde-el-' + i)?.value || '').trim());
+    reponse = { type: 'situer-dans-lespace', elements };
+  } else if(repType === '_court') {
+    reponse = true;
+  } else if(repType === 'mettre-en-relation') {
+    const n = parseInt(document.getElementById('rep-mer-n')?.value || '2') || 2;
+    const elements = [];
+    for(let i = 0; i < n; i++) {
+      elements.push((document.getElementById('rep-mer-el-' + i)?.value || '').trim());
+    }
+    const double = n === 2 && !!document.getElementById('rep-mer-double')?.checked;
+    reponse = { type: 'mettre-en-relation', elements, ...(double ? { double: true } : {}) };
+  }
+
+  // Guide
+  let guide = false;
+  const guideType = document.getElementById('guide-type').value;
+  if(guideType === 'texte') {
+    guide = document.getElementById('guide-texte').value.trim() || false;
+  } else {
+    const { entetes, rangees } = getGrilleValues();
+    const hasContent = entetes.some(e=>e.trim()) || rangees.some(r=>r.some(c=>c.trim()));
+    if(hasContent) guide = { type:'grille', entetes, rangees };
+  }
+
+  const soustag = getSoustag();
+  const updatedAt = new Date().toISOString();
+  return { id, niveau, oi, periode, points, ...(soustag ? { soustag } : {}), enonce, aspects, documents, reponse, guide, updatedAt };
+}
+
+function buildReglette(id) {
+  const oi = document.getElementById('q-oi').value;
+  const idx = parseInt(document.getElementById('reg-preset').value);
+  if(isNaN(idx)) return null; // aucun preset sélectionné → conserver la réglette existante
+  const preset = (REGLETTES_PRESET[oi] || [])[idx];
+  if(!preset) return null;
+  const { label, ...rest } = preset;
+  return { oi, ...rest };
+}
+
+// ── GENERATE questions.js ─────────────────────────────────────────────
+// ── SÉRIALISEUR ───────────────────────────────────────────────────────
+// serializeValue / ensureImageDbComplete / generateQuestionsJs sont
+// désormais définis dans questions-io.js (partagé avec documents.html).
+
+// ── VALIDATION ────────────────────────────────────────────────────────
+// Règles de validation déclaratives : chaque règle a un message et un test `check()` qui
+// retourne vrai si la règle est respectée. Plus facile à auditer/étendre à mesure que de
+// nouvelles contraintes apparaissent (ex. image de document obligatoire, ajoutée ici lors
+// d'un audit) qu'une suite de if/else ad hoc — une nouvelle contrainte = une entrée de plus.
+const VALIDATION_RULES = [
+  { message: 'ID manquant',
+    check: () => !!document.getElementById('q-id').value.trim() },
+  { message: 'Énoncé vide',
+    check: () => !!document.getElementById('q-enonce').value.trim() },
+  { message: 'Période non sélectionnée',
+    check: () => !!document.getElementById('q-periode').value },
+  { message: 'Aucun aspect sélectionné',
+    check: () => document.querySelectorAll('#aspects-list input[type=checkbox]:checked').length > 0 },
+  { message: 'Image de réponse non sélectionnée',
+    check: () => document.getElementById('rep-type').value !== 'image' || !!document.getElementById('rep-ref')?.value },
+  { message: 'Étiquette centrale du tableau manquante',
+    check: () => document.getElementById('rep-type').value !== 'tableau_3col' || !!document.getElementById('rep-col2')?.value.trim() },
+  { message: 'Lignes du tableau réponse vides',
+    check: () => document.getElementById('rep-type').value !== 'tableau' || !!document.getElementById('rep-lignes')?.value.trim() },
+  { message: 'Réglette non sélectionnée',
+    check: () => {
+      const oi = document.getElementById('q-oi').value;
+      return (REGLETTES_PRESET[oi] || []).length === 0 || document.getElementById('reg-preset').value !== '';
+    } },
+  // Chaque bloc/colonne image doit avoir un fichier sélectionné, sinon le document publié
+  // est vide (ref:'') et n'affiche rien sur le site public.
+  { message: 'Image de document non sélectionnée',
+    check: () => [...document.querySelectorAll('#docs-list > .block')].every(docEl => {
+      if(docEl.dataset.type === 'image') return !!docEl.querySelector('[id$="-ref"]')?.value;
+      if(docEl.dataset.type === 'textes-image') {
+        return [...docEl.querySelectorAll('.col-block')].every(colEl =>
+          colEl.dataset.type === 'texte' || !!colEl.querySelector('[id$="-ref"]')?.value);
+      }
+      return true;
+    }) },
+];
+
+function validateForm() {
+  return VALIDATION_RULES.filter(rule => !rule.check()).map(rule => rule.message);
+}
+
+// Rétention des backups : conserve les plus récents, supprime les plus anciens.
+// Best-effort, fire-and-forget, plafonné pour éviter les rafales d'appels API.
+// (Le contenu supprimé reste récupérable dans l'historique git.)
+async function pruneBackups(token) {
+  const KEEP = 20;        // backups conservés
+  const MAX_DEL = 12;     // suppressions max par publication
+  try {
+    const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/backups?ref=${BRANCH}&t=${Date.now()}`,
+      { headers: { Authorization: `token ${token}` }, cache: 'no-store' });
+    if(!r.ok) return;
+    const files = (await r.json())
+      .filter(f => f.type === 'file' && /^questions-.*\.js$/.test(f.name))
+      .sort((a,b) => a.name.localeCompare(b.name));   // noms ISO → ordre chronologique
+    const excess = files.length - KEEP;
+    if(excess <= 0) return;
+    for(const f of files.slice(0, Math.min(excess, MAX_DEL))) {
+      await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/backups/${encodeURIComponent(f.name)}`, {
+        method: 'DELETE',
+        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: `Élaguer backup ${f.name}`, sha: f.sha, branch: BRANCH })
+      }).catch(()=>{});
+    }
+  } catch(_) {}
+}
+
+// Applique la mutation `mutate()` sur (currentQuestions, currentReglettes, currentImageDb)
+// puis tente le PUT sur questions.js, avec retry (3 tentatives : refetch stabilisé de
+// l'état frais + ré-application de `mutate()` avant chaque nouvelle tentative) en cas de
+// conflit SHA (409). Centralise la logique jusque-là dupliquée entre publier() et
+// supprimerQuestion() — met à jour questionsFileSha en cas de succès, laisse l'exception
+// se propager sinon. admin.html évite déjà l'essentiel du problème de propagation en
+// gardant un état local optimiste plutôt qu'en relisant à chaque publication — cette
+// relecture (via fetchFreshStateStable, voir plus haut) ne se produit qu'en cas de
+// conflit 409.
+async function putQuestionsJsWithRetry(token, commitMsg, mutate) {
+  for(let attempt = 0; attempt < 3; attempt++) {
+    if(attempt > 0) await fetchFreshStateStable(token);
+    mutate();
+    const encoded = utf8b64(generateQuestionsJs(currentQuestions, currentReglettes, currentImageDb));
+    const putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions.js`, {
+      method: 'PUT',
+      headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: commitMsg, content: encoded, sha: questionsFileSha, branch: BRANCH })
+    });
+    if(putResp.ok) {
+      questionsFileSha = (await putResp.json()).content.sha;
+      confirmedIds = new Set(currentQuestions.map(q => q.id));
+      return;
+    }
+    let msg = putResp.status;
+    try { const err = await putResp.json(); msg = err.message || msg; } catch(_) {}
+    const isConflict = putResp.status === 409 || String(msg).toLowerCase().includes('fast forward') || String(msg).toLowerCase().includes('conflict');
+    if(!isConflict || attempt === 2) throw new Error(isConflict ? 'Conflit persistant après 3 tentatives. Rechargez (F5) et réessayez.' : msg);
+    await new Promise(r => setTimeout(r, 800 * (attempt + 1)));
+  }
+}
+
+// ── PUBLIER ───────────────────────────────────────────────────────────
+async function publier() {
+  const errors = validateForm();
+  if(errors.length) { toast('Champs manquants : ' + errors.join(', '), 'err'); return; }
+
+  // Verrouiller tout de suite, avant le fetch réseau de isAdminStale() ci-dessous :
+  // sans ça, un clic sur Dupliquer/Réinitialiser/une autre question pendant cette
+  // attente changerait editingId/le formulaire sous les pieds de cette publication
+  // déjà validée. setFormLocked est réentrant (compteur de profondeur) donc le
+  // verrouillage propre à chaque voie plus bas (Worker/direct) reste sans risque.
+  const btnTop = document.getElementById('btn-publier');
+  setFormLocked(true, btnTop);
+  btnTop.disabled = true;
+
+  try {
+  if(await isAdminStale()) {
+    showStaleBanner();
+    if(!confirm('⚠️ Cette page a été mise à jour depuis son chargement.\n\nPublier avec une version obsolète risque d\'écraser une question existante.\n\nRecommandé : annuler et recharger (F5).\n\nPublier quand même ?')) return;
+  }
+
+  const workerUrl    = localStorage.getItem('workerUrl') || '';
+  const workerSecret = getWorkerSecret();
+
+  // ── Voie Worker (rapide) ──────────────────────────────────────────────
+  if(workerUrl && workerSecret) {
+    const btn = document.getElementById('btn-publier');
+    const status = document.getElementById('publish-status');
+    setFormLocked(true, btn);
+    btn.disabled = true;
+    btn.textContent = '⏳ Publication…';
+    status.textContent = '';
+
+    try {
+      const q = buildQuestion();
+      const r = buildReglette(q.id);
+
+      if(!editingId && currentQuestions.find(x => x.id === q.id)) {
+        toast(`L'identifiant ${q.id} existe déjà — rechargez (F5).`, 'err');
+        return;
+      }
+      // #q-id est verrouillé (disabled) dès que editingId est posé (setEditingId) — les deux
+      // ne devraient donc jamais diverger. Un écart signale un JS obsolète (onglet resté ouvert
+      // depuis avant ce verrou) : refuser plutôt que de remplacer silencieusement une autre question.
+      if(editingId && editingId !== q.id) {
+        toast(`Incohérence : édition de ${editingId} mais id publié ${q.id}. Publication annulée — rechargez (F5).`, 'err');
+        return;
+      }
+
+      const wPubWarnings = [];
+      if(!q.guide) wPubWarnings.push('• Cette question n\'a pas de guide de correction.');
+      if(document.getElementById('rep-type').value === 'grille' && q.reponse === false) wPubWarnings.push('• Le tableau (grille) de réponse est vide — aucune réponse ne sera affichée.');
+      if(wPubWarnings.length && !confirm('⚠️ Avertissements avant publication :\n\n' + wPubWarnings.join('\n') + '\n\nPublier quand même ?')) return;
+
+      const resp = await fetch(workerUrl + '/publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ secret: workerSecret, action: 'upsert', question: q, reglette: r ?? currentReglettes[q.id] ?? { oi: q.oi, colonnes:[], niveaux:[] }, editingId })
+      });
+      const data = await resp.json().catch(() => ({ ok: false, error: resp.status }));
+      if(!data.ok) throw new Error(data.error || resp.status);
+
+      // Mettre à jour l'état local
+      const refsUsed = new Set();
+      q.documents.forEach(d => d.cols?.forEach(c => { if(c.ref) refsUsed.add(c.ref); }));
+      if(q.reponse?.ref) refsUsed.add(q.reponse.ref);
+      refsUsed.forEach(ref => { if(!currentImageDb[ref]) currentImageDb[ref] = { src: 'images/' + ref }; });
+      if(editingId) {
+        const idx = currentQuestions.findIndex(x => x.id === editingId);
+        if(idx !== -1) currentQuestions[idx] = q; else currentQuestions.push(q);
+      } else {
+        currentQuestions.push(q);
+      }
+      if(r != null) currentReglettes[q.id] = r;
+      questionsFileSha = data.sha;
+      confirmedIds = new Set(currentQuestions.map(x => x.id));
+      // Voie Worker : questions.js est déjà à jour côté serveur mais le Worker ne touche pas
+      // à questions-index.js (chargé par index.html au démarrage) — le publier nous-mêmes ici,
+      // sinon la grille publique diverge silencieusement de questions.js indéfiniment.
+      const idxToken = getToken();
+      if(idxToken) publishIndex(idxToken, editingId ? `Modifier ${q.id} — ${q.oi}` : `Ajouter ${q.id} — ${q.oi} (${q.periode})`);  // fire-and-forget
+
+      document.getElementById('q-id').value = data.nextId;
+      document.getElementById('next-id-badge').textContent = data.nextId;
+      toast(editingId ? `${q.id} modifié !` : `${q.id} publié !`, 'ok');
+      renderDashboard();
+      const statusMsg = `✓ ${q.id} ${editingId ? 'modifié' : 'ajouté'}`;
+      let secs = 30;
+      const cd = setInterval(() => {
+        status.textContent = secs > 0 ? `${statusMsg} — visible dans ${secs}s` : `${statusMsg} — visible maintenant`;
+        if(secs-- <= 0) clearInterval(cd);
+      }, 1000);
+      setEditingId(null);
+      resetForm(true);
+
+    } catch(e) {
+      // Worker inaccessible (réseau) OU erreur applicative → basculer sur GitHub Actions
+      const token = getToken();
+      if(!token) { toast('Worker indisponible : ' + e.message, 'err'); btn.disabled=false; btn.textContent='Publier sur GitHub'; return; }
+      toast('Worker indisponible — bascule sur GitHub…', 'err');
+      try {
+        const q2 = buildQuestion();
+        const r2 = buildReglette(q2.id) ?? currentReglettes[q2.id] ?? { oi: q2.oi, colonnes:[], niveaux:[] };
+        const cm = editingId ? `Modifier ${q2.id} — ${q2.oi}` : `Ajouter ${q2.id} — ${q2.oi} (${q2.periode})`;
+        await publierViaDispatch(token, 'upsert', q2, r2, editingId, cm, btn, status);
+        await fetchFreshState(token);
+        publishIndex(token, cm);  // fire-and-forget — apply-mutation.mjs ne touche pas questions-index.js
+        const nums2 = currentQuestions.map(x=>parseInt(x.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
+        const nid2 = 'Q'+(nums2.length?Math.max(...nums2)+1:1);
+        document.getElementById('q-id').value = nid2;
+        document.getElementById('next-id-badge').textContent = nid2;
+        toast(`${q2.id} publié via GitHub Actions !`, 'ok');
+        renderDashboard();
+        status.textContent = `✓ ${q2.id} publié — visible maintenant`;
+        setEditingId(null);
+        resetForm(true);
+      } catch(e2) {
+        toast('Erreur : ' + e2.message, 'err');
+        console.error(e2);
+      }
+    } finally {
+      setFormLocked(false);
+      btn.disabled = false;
+      btn.textContent = 'Publier sur GitHub';
+    }
+    return;
+  }
+
+  // ── Voie directe GitHub (fallback si Worker non configuré) ────────────
+  const token = getToken();
+  if(!token) { toast('Saisis ton token GitHub (ou configure le Worker).', 'err'); return; }
+
+  const btn = document.getElementById('btn-publier');
+  const status = document.getElementById('publish-status');
+  setFormLocked(true, btn);
+  btn.disabled = true;
+  btn.textContent = '⏳ Publication…';
+  status.textContent = '';
+
+  try {
+    // Backup automatique (fire-and-forget)
+    const ts = new Date().toISOString().slice(0,19).replace('T','_').replace(/:/g,'-');
+    const backupB64 = utf8b64(generateQuestionsJs(currentQuestions, currentReglettes, currentImageDb));
+    fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/backups/questions-${ts}.js`, {
+      method:'PUT',
+      headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
+      body: JSON.stringify({ message:`Backup auto ${ts}`, content: backupB64, branch: BRANCH })
+    }).then(() => pruneBackups(token)).catch(()=>{});
+
+    const q = buildQuestion();
+    const r = buildReglette(q.id);
+
+    if(!editingId && currentQuestions.find(x => x.id === q.id)) {
+      toast(`L'identifiant ${q.id} existe déjà — rechargez (F5) pour obtenir le prochain ID libre.`, 'err');
+      btn.disabled = false; btn.textContent = 'Publier sur GitHub';
+      return;
+    }
+    // Voir le commentaire équivalent dans la voie Worker ci-dessus.
+    if(editingId && editingId !== q.id) {
+      toast(`Incohérence : édition de ${editingId} mais id publié ${q.id}. Publication annulée — rechargez (F5).`, 'err');
+      btn.disabled = false; btn.textContent = 'Publier sur GitHub';
+      return;
+    }
+
+    const pubWarnings = [];
+    if(!q.guide) pubWarnings.push('• Cette question n\'a pas de guide de correction.');
+    if(document.getElementById('rep-type').value === 'grille' && q.reponse === false) pubWarnings.push('• Le tableau (grille) de réponse est vide — aucune réponse ne sera affichée.');
+    if(pubWarnings.length && !confirm('⚠️ Avertissements avant publication :\n\n' + pubWarnings.join('\n') + '\n\nPublier quand même ?')) {
+      btn.disabled = false; btn.textContent = 'Publier sur GitHub'; return;
+    }
+
+    const refsUsed = new Set();
+    q.documents.forEach(d => d.cols?.forEach(c => { if(c.ref) refsUsed.add(c.ref); }));
+    if(q.reponse?.ref) refsUsed.add(q.reponse.ref);
+
+    const commitMsg = editingId ? `Modifier ${q.id} — ${q.oi}` : `Ajouter ${q.id} — ${q.oi} (${q.periode})`;
+
+    await putQuestionsJsWithRetry(token, commitMsg, () => {
+      if(editingId) {
+        const idx = currentQuestions.findIndex(x => x.id === editingId);
+        if(idx !== -1) currentQuestions[idx] = q; else currentQuestions.push(q);
+      } else if(!currentQuestions.find(x => x.id === q.id)) {
+        currentQuestions.push(q);
+      } else {
+        throw new Error(`L'identifiant ${q.id} a été ajouté par un autre utilisateur entre-temps. Rechargez (F5).`);
+      }
+      if(r !== null) currentReglettes[q.id] = r; // null = pas de preset sélectionné → conserver l'existante
+      refsUsed.forEach(ref => { if(!currentImageDb[ref]) currentImageDb[ref] = { src: 'images/' + ref }; });
+    });
+
+    publishIndex(token, commitMsg);  // fire-and-forget
+
+    const nums = currentQuestions.map(q=>parseInt(q.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
+    const nextId = 'Q' + (nums.length ? Math.max(...nums)+1 : 1);
+    document.getElementById('q-id').value = nextId;
+    document.getElementById('next-id-badge').textContent = nextId;
+
+    toast(editingId ? `${q.id} modifié !` : `${q.id} publié !`, 'ok');
+    renderDashboard();
+    const statusMsg = `✓ ${q.id} ${editingId?'modifié':'ajouté'}`;
+    let secs = 30;
+    const cd = setInterval(() => {
+      status.textContent = secs > 0 ? `${statusMsg} — visible dans ${secs}s` : `${statusMsg} — visible maintenant`;
+      if(secs-- <= 0) clearInterval(cd);
+    }, 1000);
+    setEditingId(null);
+    resetForm(true);
+
+  } catch(e) {
+    toast('Erreur : ' + e.message, 'err');
+    console.error(e);
+  } finally {
+    setFormLocked(false);
+    btn.disabled = false;
+    btn.textContent = 'Publier sur GitHub';
+  }
+  } finally {
+    setFormLocked(false);
+    btnTop.disabled = false;
+  }
+}
+
+// ── PUBLICATION VIA GITHUB ACTIONS (fallback quand Worker inaccessible) ───────
+// Envoie ~2 Ko à api.github.com, la GitHub Action applique la mutation côté
+// serveur (~30-40 s). Utilisé quand le Worker est bloqué par le réseau.
+async function publierViaDispatch(token, action, question, reglette, editingId, commitMsg, btn, status) {
+  const dispatchTime = Date.now();
+
+  // 1. Déclencher la GitHub Action
+  const dispResp = await fetch(
+    `https://api.github.com/repos/${OWNER}/${REPO}/dispatches`,
+    {
+      method: 'POST',
+      headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event_type: 'publish-question',
+        client_payload: { action, question, reglette, editingId, commitMsg }
+      })
+    }
+  );
+  if (!dispResp.ok) {
+    const err = await dispResp.json().catch(() => ({}));
+    throw new Error(err.message || `Dispatch échoué (${dispResp.status})`);
+  }
+
+  // 2. Attendre et sonder le statut de l'Action (max 90 s)
+  status.textContent = '⏳ Action GitHub déclenchée…';
+  await new Promise(r => setTimeout(r, 4000));
+
+  for (let i = 0; i < 25; i++) {
+    const elapsed = Math.round((Date.now() - dispatchTime) / 1000);
+    status.textContent = `⏳ Action GitHub en cours… (${elapsed}s)`;
+
+    const runsResp = await fetch(
+      `https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/publish-question.yml/runs?per_page=5`,
+      { headers: { Authorization: `token ${token}` }, cache: 'no-store' }
+    );
+    if (runsResp.ok) {
+      const data = await runsResp.json();
+      const run = data.workflow_runs?.find(r =>
+        new Date(r.created_at).getTime() >= dispatchTime - 6000
+      );
+      if (run?.status === 'completed') {
+        if (run.conclusion === 'success') return; // ✓
+        throw new Error(`Action échouée (${run.conclusion}). Consultez l'onglet Actions sur GitHub.`);
+      }
+    }
+    await new Promise(r => setTimeout(r, 3500));
+  }
+  throw new Error('Timeout (90 s) — vérifiez l\'onglet Actions sur GitHub.');
+}
+
+// ── RESET ─────────────────────────────────────────────────────────────
+function resetForm(keepId=false) {
+  setEditingId(null);
+  formDirty = false;
+  const newRadio = document.querySelector('input[name="mode"][value="new"]');
+  if(newRadio) { newRadio.checked = true; document.getElementById('edit-select-wrap').style.display='none'; }
+  if(!keepId) document.getElementById('q-id').value = '';
+  document.getElementById('q-niveau').value = '4';
+  document.getElementById('q-oi').value = document.getElementById('q-oi').options[0].value;
+  updatePresets();
+  updateSoustag();
+  setSoustag('');
+  document.getElementById('q-periode').value = document.getElementById('q-periode').options[0].value;
+  document.getElementById('q-enonce').value = '';
+  updatePeriodes();
+  document.getElementById('docs-list').innerHTML = '';
+  document.getElementById('rep-type').value = 'none';
+  document.getElementById('rep-extra').innerHTML = '';
+  document.getElementById('reg-preset').value = '';
+  document.getElementById('guide-type').value = 'grille';
+  docCount = 0; colCount = 0;
+  updateGuideUI();
+}
+
+// ── TABLEAU DE BORD ───────────────────────────────────────────────────
+function toggleDashboard() {
+  const content = document.getElementById('dashboard-content');
+  const icon = document.getElementById('dashboard-toggle-icon');
+  const hidden = content.style.display === 'none';
+  content.style.display = hidden ? '' : 'none';
+  icon.textContent = hidden ? '▲' : '▼';
+}
+
+function renderDashboard() {
+  if(!currentQuestions.length) return;
+  document.getElementById('dashboard-section').style.display = '';
+  // Garde l'état masqué/visible existant (pas de forçage)
+
+  const totalQ   = currentQuestions.length;
+  const totalPts = currentQuestions.reduce((s,q) => s + (q.points||0), 0);
+  document.getElementById('dashboard-total').textContent = `${totalQ} question${totalQ>1?'s':''} · ${totalPts} pts`;
+
+  // Périodes par niveau — dérivé directement de PERIODES_PAR_NIVEAU (contexte.js),
+  // générique pour n'importe quel nombre/nom de niveaux (aucune hypothèse HQC-spécifique
+  // sur le nombre total de périodes ni sur leur répartition par niveau).
+  const DASH_NIV_COLORS = ['#1B3B6F', '#6B3FA0', '#3A8050', '#B03A3A', '#9A6030', '#2A8A8A', '#607880', '#C06030'];
+  const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort().map((num, i) => ({
+    label: 'Niveau ' + num, num, color: DASH_NIV_COLORS[i % DASH_NIV_COLORS.length]
+  }));
+
+  // Répartition par OI pour une période donnée (dépliée au clic), triée par nombre
+  function periodeDetailHtml(periode, color) {
+    const inP = currentQuestions.filter(x => x.periode === periode);
+    if(!inP.length) {
+      return '<div class="dash-period-detail" style="display:none"><div class="dash-sub-row"><span class="dash-sub-label" style="font-style:italic;color:var(--ink-3)">Aucune question</span></div></div>';
+    }
+    const m = {};
+    inP.forEach(q => { if(!m[q.oi]) m[q.oi] = { q:0, pts:0 }; m[q.oi].q++; m[q.oi].pts += q.points||0; });
+    const totalInP = inP.length;
+    const rows = Object.entries(m)
+      .sort((a,b) => b[1].q - a[1].q || a[0].localeCompare(b[0], 'fr'))
+      .map(([oi,v]) => {
+        const pct = Math.round(v.q / totalInP * 100);
+        return `<div class="dash-sub-row"><span class="dash-sub-label" title="${escHtml(oi)}">${escHtml(oi)}</span><div class="dash-sub-bar-wrap"><div class="dash-sub-bar" style="width:${pct}%;background:${color}"></div></div><span class="dash-sub-count">${pct}% · ${v.q}q · ${v.pts}pts</span></div>`;
+      })
+      .join('');
+    const nOi = Object.keys(m).length;
+    const head = `<div class="dash-sub-row" style="margin-bottom:.3rem"><span class="dash-sub-label" style="font-weight:600;color:var(--ink-3)">${nOi} OI</span></div>`;
+    return `<div class="dash-period-detail" style="display:none">${head}${rows}</div>`;
+  }
+
+  function barRows(list, color) {
+    const counts = list.map(p => ({
+      p,
+      q: currentQuestions.filter(x => x.periode === p).length,
+      pts: currentQuestions.filter(x => x.periode === p).reduce((s,x) => s+(x.points||0), 0)
+    }));
+    // Barre = part de la période dans le total du niveau (la piste = 100 % du programme)
+    const levelTotalQ = counts.reduce((s,c) => s+c.q, 0) || 1;
+    return counts.map(c => {
+      const pct = Math.round(c.q / levelTotalQ * 100);
+      const shortLabel = c.p.replace(/^P\d+ — /, '');
+      return `<div class="dash-period-block">
+        <div class="dash-row dash-row-clickable" role="button" tabindex="0" title="Voir la répartition par OI"
+          onclick="togglePeriode(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();togglePeriode(this)}">
+          <div class="dash-label" title="${escHtml(c.p)}">${escHtml(c.p.match(/^P\d+/)?.[0]||'')} — ${escHtml(shortLabel.slice(0,22))}${shortLabel.length>22?'…':''}</div>
+          <div class="dash-bar-wrap" title="${pct}% du niveau (${c.q} / ${levelTotalQ} questions)"><div class="dash-bar" style="width:${pct}%;background:${color}${c.q===0?';opacity:.25':''}"></div></div>
+          <div class="dash-count">${pct}% · ${c.q}q · ${c.pts}pts</div>
+          <span class="dash-chevron">▾</span>
+        </div>
+        ${periodeDetailHtml(c.p, color)}
+      </div>`;
+    }).join('');
+  }
+
+  // OI distribution
+  const oiMap = {};
+  currentQuestions.forEach(q => {
+    if(!oiMap[q.oi]) oiMap[q.oi] = { q:0, pts:0 };
+    oiMap[q.oi].q++;
+    oiMap[q.oi].pts += q.points||0;
+  });
+  const oiList = Object.entries(oiMap).sort((a,b) => a[0].localeCompare(b[0], 'fr'));
+  const maxOiQ = Math.max(...oiList.map(e => e[1].q), 1);
+  const oiRows = oiList.map(([oi, val]) => {
+    const pct = Math.round(val.q / maxOiQ * 100);
+    return `<div class="dash-oi-row">
+      <div class="dash-oi-label" title="${escHtml(oi)}">${escHtml(oi)}</div>
+      <div class="dash-bar-wrap" style="max-width:120px"><div class="dash-bar" style="width:${pct}%;background:#888"></div></div>
+      <div class="dash-oi-count">${val.q}q · ${val.pts}pts</div>
+    </div>`;
+  }).join('');
+
+  const dashCols = niveaux.map((niv, i) => {
+    const total = currentQuestions.filter(q => String(q.niveau) === niv.num);
+    const collapsed = i > 0; // seul le 1er niveau est déplié par défaut
+    return `<div class="dash-col${collapsed ? ' collapsed' : ''}" id="dash-col-niv-${escHtml(niv.num)}">
+      <button class="dash-n4-toggle" data-niv="${escHtml(niv.num)}" onclick="toggleNiveauCol(this,this.dataset.niv)">${collapsed ? '▶' : '▼'} ${escHtml(niv.label)} — ${total.length}q · ${total.reduce((s,q)=>s+(q.points||0),0)}pts</button>
+      <div id="dash-niv-content-${escHtml(niv.num)}" style="${collapsed ? 'display:none' : ''}">
+        ${barRows(PERIODES_PAR_NIVEAU[niv.num] || [], niv.color)}
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('dashboard-content').innerHTML = `
+    <div class="dash-grid">
+      ${dashCols}
+    </div>
+    <hr class="dash-divider">
+    <div class="dash-niv-title">Par opération intellectuelle</div>
+    ${oiRows}
+  `;
+}
+
+function toggleNiveauCol(btn, num) {
+  const content = document.getElementById('dash-niv-content-' + num);
+  const col = document.getElementById('dash-col-niv-' + num);
+  const hidden = content.style.display === 'none';
+  content.style.display = hidden ? '' : 'none';
+  col.classList.toggle('collapsed', !hidden);
+  btn.textContent = (hidden ? '▼ ' : '▶ ') + btn.textContent.slice(2);
+}
+
+// Déplie/replie la répartition par OI sous une période du tableau de bord
+function togglePeriode(rowEl) {
+  const detail = rowEl.nextElementSibling;
+  if(!detail || !detail.classList.contains('dash-period-detail')) return;
+  const hidden = detail.style.display === 'none';
+  detail.style.display = hidden ? '' : 'none';
+  rowEl.classList.toggle('open', hidden);
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────
+// ── APERÇU EN TEMPS RÉEL ─────────────────────────────────────────────────────
+let _lpVisible = false;
+let _lpTimer = null;
+
+function toggleLivePreview() {
+  _lpVisible = !_lpVisible;
+  const panel = document.getElementById('live-preview-panel');
+  const btn   = document.getElementById('btn-preview-toggle');
+  panel.style.display = _lpVisible ? 'flex' : 'none';
+  btn.classList.toggle('active', _lpVisible);
+  if (_lpVisible) refreshLivePreview();
+}
+
+function scheduleLivePreview() {
+  if (!_lpVisible) return;
+  clearTimeout(_lpTimer);
+  _lpTimer = setTimeout(refreshLivePreview, 350);
+}
+
+function refreshLivePreview() {
+  const panel = document.getElementById('lp-body');
+  if (!panel) return;
+  try {
+    const oi  = document.getElementById('q-oi')?.value || '';
+    const niveau = document.getElementById('q-niveau')?.value || '';
+    const periode = document.getElementById('q-periode')?.value || '';
+    const enonce  = (document.getElementById('q-enonce')?.value || '').trim();
+    const soustag = getSoustag ? getSoustag() : '';
+    const points  = document.getElementById('q-points')?.value || '1';
+
+    const s = (typeof OI_CONFIG !== 'undefined' && OI_CONFIG[oi])
+      ? { bg: OI_CONFIG[oi].bg || '#e8edf5', color: OI_CONFIG[oi].color || '#1B3B6F' }
+      : { bg: '#e8edf5', color: '#1B3B6F' };
+
+    function esc(t) { return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function fmt(t) {
+      return esc(t)
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/^• (.+)/gm, '<li>$1</li>')
+        .replace(/(<li>.*<\/li>)+/g, s => '<ul style="margin:.3rem 0 .3rem 1rem;padding:0">'+s+'</ul>');
+    }
+
+    // Documents
+    const docEls = document.querySelectorAll('#docs-list > [id^="doc-"]');
+    let docsHtml = '';
+    docEls.forEach(docDiv => {
+      const dtype = docDiv.dataset.type;
+      if (dtype === 'textes' || dtype === 'textes-image') {
+        const cols = docDiv.querySelectorAll('[id$="-texte"],[id$="-ref"]');
+        docDiv.querySelectorAll('[data-col]').length;
+        // Collect col data
+        const colDivs = docDiv.querySelectorAll('.col-block,[data-col]');
+        if (colDivs.length) {
+          colDivs.forEach(cd => {
+            const titre    = cd.querySelector('[id$="-titre"]')?.value || '';
+            const texteEl  = cd.querySelector('[id$="-texte"]');
+            const refSel   = cd.querySelector('select[id$="-ref"]');
+            if (texteEl) {
+              const txt = texteEl.value || '';
+              if (titre || txt) docsHtml += `<div class="lp-doc-titre">${esc(titre)}</div><div class="lp-doc-texte">${fmt(txt)}</div>`;
+            } else if (refSel && refSel.value) {
+              const ikey = refSel.value;
+              const entry = (typeof IMAGE_DB !== 'undefined') ? IMAGE_DB[ikey] : null;
+              if (entry && entry.src) {
+                docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><img class="lp-doc-img" src="${entry.src}" alt="${esc(ikey)}">`;
+              } else {
+                docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><div class="lp-doc-texte" style="color:var(--ink-3)">[image : ${esc(ikey)}]</div>`;
+              }
+            }
+          });
+        } else {
+          // Single-col textes
+          const titre   = docDiv.querySelector('[id$="-titre"]')?.value || '';
+          const texteEl = docDiv.querySelector('[id$="-texte"]');
+          const txt     = texteEl?.value || '';
+          if (titre || txt) docsHtml += `<div class="lp-doc-titre">${esc(titre)}</div><div class="lp-doc-texte">${fmt(txt)}</div>`;
+        }
+      } else if (dtype === 'image') {
+        const titre  = docDiv.querySelector('[id$="-titre"]')?.value || '';
+        const refSel = docDiv.querySelector('select[id$="-ref"]');
+        const ikey   = refSel?.value || '';
+        const entry  = ikey && (typeof IMAGE_DB !== 'undefined') ? IMAGE_DB[ikey] : null;
+        if (entry && entry.src) {
+          docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><img class="lp-doc-img" src="${entry.src}" alt="${esc(ikey)}">`;
+        } else if (ikey) {
+          docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><div class="lp-doc-texte" style="color:var(--ink-3)">[image : ${esc(ikey)}]</div>`;
+        }
+      }
+    });
+
+    // Réponse type
+    const repType = document.getElementById('rep-type')?.value || 'none';
+    let repHtml = '';
+    const repLabels = { none:'Aucun espace réponse', '_court':'Réponse courte', lignes:'Lignes', image:'Image', 'avant-apres':'Avant/Après', 'cause-consequence':'Cause/Conséquence', 'mettre-en-relation':'Mettre en relation', 'situer-dans-lespace':'Situer dans l\'espace', tableau_2col:'Tableau 2 col.', grille:'Grille' };
+    if (repType && repType !== 'none') repHtml = `<div class="lp-reponse">Réponse : ${esc(repLabels[repType] || repType)}</div>`;
+
+    const metaParts = [niveau ? `Niv. ${esc(niveau)}` : '', esc(periode), soustag ? esc(soustag) : ''].filter(Boolean);
+
+    panel.innerHTML = `<div class="lp-card">
+      ${oi ? `<div class="lp-oi-badge" style="background:${s.bg};color:${s.color}">${esc(oi)}</div>` : ''}
+      ${metaParts.length ? `<div class="lp-meta">${metaParts.join(' · ')} · ${esc(points)} pt${points>1?'s':''}</div>` : ''}
+      <div class="lp-enonce">${enonce ? fmt(enonce) : '<em style="color:var(--ink-3)">Énoncé vide</em>'}</div>
+      ${docsHtml}
+      ${repHtml}
+    </div>`;
+  } catch(e) {
+    document.getElementById('lp-body').innerHTML = `<em style="color:red;font-size:.75rem">Erreur aperçu : ${e.message}</em>`;
+  }
+}
+
+// Hook: observe form changes
+(function setupLivePreviewListeners() {
+  const targets = ['q-oi','q-niveau','q-periode','q-enonce','q-points','rep-type'];
+  function onChange() { scheduleLivePreview(); }
+  document.addEventListener('DOMContentLoaded', () => {
+    targets.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', onChange);
+    });
+    // Also observe docs-list for dynamic content changes
+    const docsList = document.getElementById('docs-list');
+    if (docsList) {
+      docsList.addEventListener('input', onChange);
+      new MutationObserver(onChange).observe(docsList, { childList:true, subtree:true });
+    }
+    // Sous-tag pills
+    const stpills = document.getElementById('soustag-pills');
+    if (stpills) stpills.addEventListener('click', () => setTimeout(onChange, 50));
+  });
+})();
+
+function toast(msg, type='ok') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = type;
+  el.style.display = 'block';
+  setTimeout(()=>{ el.style.display='none'; }, 3500);
+}
+</script>
+<div id="img-float-preview"><img src="" alt=""></div>
+</body>
+</html>

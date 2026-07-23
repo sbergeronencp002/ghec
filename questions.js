@@ -50,7 +50,8 @@ const IMAGE_DB = {
 "iroquoiens_poterie.jpg": {src: "images/iroquoiens_poterie.jpg", w: 1200, h: 800},
 "paniers_tisses.jpg": {src: "images/paniers_tisses.jpg", w: 1200, h: 800},
 "poterie.jpg": {src: "images/poterie.jpg", w: 1200, h: 800},
-"poterie_vannerie.jpg": {src: "images/poterie_vannerie.jpg", w: 1200, h: 800}
+"poterie_vannerie.jpg": {src: "images/poterie_vannerie.jpg", w: 1200, h: 800},
+"poterie_cuisson.jpg": {src: "images/poterie_cuisson.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -425,10 +426,10 @@ const QUESTIONS = [
  points: 3,
  enonce: "Explique pourquoi les Iroquoiens fabriquent des pots en terre cuite.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_cuisson.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens fabriquent des pots en terre cuite pour faire cuire ou conserver ou transporter leurs aliments.",
- updatedAt: "2026-07-23T19:23:23.991Z"
+ updatedAt: "2026-07-23T19:28:11.618Z"
 },
 {
  id: "Q26",

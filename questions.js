@@ -292,10 +292,10 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme la personne qui dirige les cérémonies chez les peuples autochtones vers 1500.",
- aspects: [{aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme.jpg", source: "Rreconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le chaman.",
- updatedAt: "2026-07-23T18:15:00.306Z"
+ updatedAt: "2026-07-23T18:16:12.452Z"
 }
 ]

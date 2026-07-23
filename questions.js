@@ -14,7 +14,8 @@ const REGLETTES = {
 "Q13": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q15": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q16": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
+"Q16": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q17": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -31,7 +32,8 @@ const IMAGE_DB = {
 "ressources_mais.jpg": {src: "images/ressources_mais.jpg", w: 1200, h: 960},
 "ressources_haricots_courges.jpg": {src: "images/ressources_haricots_courges.jpg", w: 1200, h: 960},
 "ressources_fourrures.jpg": {src: "images/ressources_fourrures.jpg", w: 1200, h: 960},
-"ressources_viandes_sechees.jpg": {src: "images/ressources_viandes_sechees.jpg", w: 1200, h: 960}
+"ressources_viandes_sechees.jpg": {src: "images/ressources_viandes_sechees.jpg", w: 1200, h: 960},
+"chaman_animisme.jpg": {src: "images/chaman_animisme.jpg"}
 }
 
 const QUESTIONS = [
@@ -280,5 +282,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Ressources produites", "Ressources recherchées"], double: true},
  guide: {type: "grille", entetes: ["Ressources produites", "Ressources recherchées"], rangees: [["B et C", "A et D"]]},
  updatedAt: "2026-07-23T16:51:26.467Z"
+},
+{
+ id: "Q17",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme la personne qui dirige les cérémonies chez les peuples autochtones vers 1500.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme.jpg", source: "Rreconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le chaman.",
+ updatedAt: "2026-07-23T18:15:00.306Z"
 }
 ]

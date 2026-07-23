@@ -167,10 +167,10 @@ const QUESTIONS = [
  points: 3,
  enonce: "Explique pourquoi les Algonquiens utilisent un toboggan et des raquettes.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Algonquiens utilisent des raquettes pour marcher dans la neige et un toboggan pour transporter leurs biens lorsqu'ils se déplacent.",
- updatedAt: "2026-07-23T14:29:51.744Z"
+ updatedAt: "2026-07-23T14:54:09.664Z"
 },
 {
  id: "Q11",

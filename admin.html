@@ -277,14 +277,14 @@ header a:hover { color: #fff; }
     <!-- CONFIGURATION DU PROGRAMME -->
     <div class="section" id="config-section">
       <div class="section-title" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="toggleConfigSection()">
-        <span>⚙️ Configuration du programme (OI, niveaux, périodes, aspects)</span>
+        <span>⚙️ Configuration du programme (compétences, niveaux, sociétés)</span>
         <span id="config-toggle-icon" style="font-size:.8rem;color:var(--ink-3);transition:transform .2s">▼</span>
       </div>
       <div id="config-content">
         <p style="font-size:.78rem;color:var(--ink-3);margin:0 0 1rem;max-width:70ch">
-          Ces réglages définissent la structure du programme : les opérations intellectuelles (OI) et les
-          niveaux/périodes/aspects. Ils pilotent les menus déroulants, les filtres et le générateur d'examens
-          partout sur le site. Publiés directement sur GitHub (oi-config.js / contexte.js), comme les questions.
+          Ces réglages définissent la structure du programme : les compétences (OI) et les niveaux/sociétés.
+          Ils pilotent les menus déroulants, les filtres et le générateur d'examens partout sur le site.
+          Publiés directement sur GitHub (oi-config.js / contexte.js), comme les questions.
         </p>
 
         <div class="block-title" style="margin-top:0">Opérations intellectuelles (OI)</div>
@@ -297,11 +297,11 @@ header a:hover { color: #fff; }
 
         <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--border)">
 
-        <div class="block-title">Niveaux, périodes et aspects</div>
+        <div class="block-title">Niveaux et sociétés</div>
         <div id="cfg-niveaux-list"></div>
         <div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem">
           <button class="btn-add" onclick="cfgAddNiveau()">+ Ajouter un niveau</button>
-          <button class="btn-primary" style="padding:.45rem 1rem;font-size:.8rem" onclick="cfgPublishContexte()">💾 Enregistrer niveaux/périodes/aspects</button>
+          <button class="btn-primary" style="padding:.45rem 1rem;font-size:.8rem" onclick="cfgPublishContexte()">💾 Enregistrer niveaux/sociétés</button>
           <span id="cfg-contexte-status" style="font-size:.75rem"></span>
         </div>
       </div>
@@ -320,7 +320,7 @@ header a:hover { color: #fff; }
       </div>
       <div id="edit-select-wrap" style="display:none">
         <div class="edit-search-row">
-          <input type="text" id="edit-search" placeholder="Rechercher — ID, OI, période, énoncé…"
+          <input type="text" id="edit-search" placeholder="Rechercher — ID, OI, société, énoncé…"
             oninput="debouncedFilterEditList()" onkeydown="editKeyNav(event)">
           <select id="edit-filter-niveau" onchange="filterEditList()">
             <option value="">Tous les niveaux</option>
@@ -360,7 +360,7 @@ header a:hover { color: #fff; }
           </select>
         </div>
         <div class="field">
-          <label>Période</label>
+          <label>Société</label>
           <select id="q-periode" onchange="updateAspects()"></select>
         </div>
       </div>
@@ -1610,8 +1610,8 @@ function cfgAddPeriode(niveauListEl, nom, aspects) {
     <button class="btn-move btn-move-up" onclick="moveDoc('per-${id}',-1)" title="Monter">↑</button>
     <button class="btn-move btn-move-dn" onclick="moveDoc('per-${id}',1)" title="Descendre">↓</button>
     <button class="btn-remove" onclick="removeEl('per-${id}')">✕</button>
-    <div class="field"><label>Nom de la période</label><input type="text" class="cfg-per-nom" value="${escHtml(nom||'')}" placeholder="ex. : Les premières civilisations"></div>
-    <div class="field"><label>Aspects <span style="font-weight:400;color:var(--ink-3)">(un par ligne)</span></label>
+    <div class="field"><label>Nom de la société</label><input type="text" class="cfg-per-nom" value="${escHtml(nom||'')}" placeholder="ex. : Les Iroquoiens vers 1500"></div>
+    <div class="field"><label>Aspects <span style="font-weight:400;color:var(--ink-3)">(optionnel, un par ligne — laisser vide pour l'instant)</span></label>
       <textarea class="cfg-per-aspects" rows="3" placeholder="Aspect 1&#10;Aspect 2">${escHtml((aspects||[]).join('\n'))}</textarea></div>`;
   niveauListEl.appendChild(div);
 }
@@ -1627,7 +1627,7 @@ function cfgAddNiveau(num, periodes) {
     <button class="btn-remove" onclick="removeEl('niv-${id}')">✕</button>
     <div class="field" style="max-width:200px"><label>Niveau</label><input type="text" class="cfg-niv-num" value="${escHtml(num||'')}" placeholder="ex. : 1"></div>
     <div class="cfg-per-list" id="niv-${id}-per"></div>
-    <button class="btn-add" onclick="cfgAddPeriode(document.getElementById('niv-${id}-per'))">+ Ajouter une période</button>`;
+    <button class="btn-add" onclick="cfgAddPeriode(document.getElementById('niv-${id}-per'))">+ Ajouter une société</button>`;
   document.getElementById('cfg-niveaux-list').appendChild(div);
   const perList = document.getElementById('niv-' + id + '-per');
   Object.entries(periodes || {}).forEach(([nom, aspects]) => cfgAddPeriode(perList, nom, aspects));
@@ -1664,7 +1664,7 @@ async function cfgPublishContexte() {
   const { periodesParNiveau, aspectsParPeriode } = cfgCollectContexte();
   status.textContent = '⏳ Publication…'; status.style.color = '';
   try {
-    await _putFileWithRetry('contexte.js', 'Configuration niveaux/périodes/aspects', () => {
+    await _putFileWithRetry('contexte.js', 'Configuration niveaux/sociétés', () => {
       return `// Données statiques de contexte du programme.\n`
         + `// Généré par la section Configuration d'admin.html — ne pas éditer à la main.\n`
         + `const PERIODES_PAR_NIVEAU = {\n${_serializeEntries(periodesParNiveau)}\n}\n\n`
@@ -1676,7 +1676,7 @@ async function cfgPublishContexte() {
     Object.assign(ASPECTS_PAR_PERIODE, aspectsParPeriode);
     populateNiveauSelects();
     updatePeriodes();
-    status.textContent = '✓ Niveaux/périodes/aspects publiés.'; status.style.color = 'var(--green)';
+    status.textContent = '✓ Niveaux/sociétés publiés.'; status.style.color = 'var(--green)';
   } catch(e) {
     status.textContent = '✗ ' + e.message; status.style.color = 'var(--red)';
   }
@@ -2388,7 +2388,7 @@ const VALIDATION_RULES = [
     check: () => !!document.getElementById('q-id').value.trim() },
   { message: 'Énoncé vide',
     check: () => !!document.getElementById('q-enonce').value.trim() },
-  { message: 'Période non sélectionnée',
+  { message: 'Société non sélectionnée',
     check: () => !!document.getElementById('q-periode').value },
   { message: 'Aucun aspect sélectionné',
     check: () => document.querySelectorAll('#aspects-list input[type=checkbox]:checked').length > 0 },
@@ -2829,11 +2829,11 @@ function renderDashboard() {
     const levelTotalQ = counts.reduce((s,c) => s+c.q, 0) || 1;
     return counts.map(c => {
       const pct = Math.round(c.q / levelTotalQ * 100);
-      const shortLabel = c.p.replace(/^P\d+ — /, '');
+      const shortLabel = c.p.length > 28 ? c.p.slice(0,28) + '…' : c.p;
       return `<div class="dash-period-block">
         <div class="dash-row dash-row-clickable" role="button" tabindex="0" title="Voir la répartition par OI"
           onclick="togglePeriode(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();togglePeriode(this)}">
-          <div class="dash-label" title="${escHtml(c.p)}">${escHtml(c.p.match(/^P\d+/)?.[0]||'')} — ${escHtml(shortLabel.slice(0,22))}${shortLabel.length>22?'…':''}</div>
+          <div class="dash-label" title="${escHtml(c.p)}">${escHtml(shortLabel)}</div>
           <div class="dash-bar-wrap" title="${pct}% du niveau (${c.q} / ${levelTotalQ} questions)"><div class="dash-bar" style="width:${pct}%;background:${color}${c.q===0?';opacity:.25':''}"></div></div>
           <div class="dash-count">${pct}% · ${c.q}q · ${c.pts}pts</div>
           <span class="dash-chevron">▾</span>

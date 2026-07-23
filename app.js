@@ -449,9 +449,9 @@ function copyQuestion() {
   const q = id && Q_MAP.get(id);
   if(!q) return;
   const aspects = (q.aspects||[]).map(a=>a.aspect).join(', ');
-  const periode = (q.periode||'').replace(/P\d+ — /,'');
+  const periode = q.periode || '';
   const enonce = (q.enonce||'').replace(/\*\*(.*?)\*\*/g,'$1').replace(/^• /gm,'- ');
-  const text = [q.oi, aspects && `Aspects : ${aspects}`, periode && `Période : ${periode}`, '', enonce]
+  const text = [q.oi, aspects && `Aspects : ${aspects}`, periode && `Société : ${periode}`, '', enonce]
     .filter(l=>l!==undefined).join('\n');
   navigator.clipboard.writeText(text).then(() => {
     const copyBtn = document.getElementById('q-modal-copy-btn');

@@ -103,7 +103,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 </header>
 
 <div class="toolbar">
-  <div class="field"><label for="ex-periode">Période</label>
+  <div class="field"><label for="ex-periode">Société</label>
     <select id="ex-periode" onchange="updateFavoriOptions()"></select>
   </div>
   <div class="field"><label for="ex-favori">OI à privilégier</label>
@@ -112,13 +112,13 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
     </select>
   </div>
   <div class="field"><label for="ex-titre">Titre</label>
-    <input type="text" id="ex-titre" style="width:320px" placeholder="Examen — Titre de la période">
+    <input type="text" id="ex-titre" style="width:320px" placeholder="Examen — Titre de la société">
   </div>
   <button class="btn btn-primary" id="btn-generer" onclick="exGenerate()" disabled>⏳ Chargement…</button>
 </div>
 
 <div class="section">
-  <div id="ex-empty" class="empty-hint">Choisissez une période et cliquez sur « Générer » pour construire un examen.</div>
+  <div id="ex-empty" class="empty-hint">Choisissez une société et cliquez sur « Générer » pour construire un examen.</div>
 
   <div id="ex-result" style="display:none">
     <div class="section-title">Résumé</div>
@@ -261,7 +261,7 @@ function exGenerate() {
   const periode = document.getElementById('ex-periode').value;
   const favoriOi = document.getElementById('ex-favori').value || null;
   const aspects = ASPECTS_PAR_PERIODE[periode];
-  if (!aspects || !aspects.length) { toast('Aucun aspect défini pour cette période.', 'err'); return; }
+  if (!aspects || !aspects.length) { toast('Aucun aspect défini pour cette société.', 'err'); return; }
 
   const btn = document.getElementById('btn-generer');
   btn.disabled = true; btn.textContent = '⏳ Génération…';
@@ -279,7 +279,6 @@ function exGenerate() {
       EX_FIXED_TARGETS_APPLIED = res.fixedTargetsApplied || {};
       const titreInput = document.getElementById('ex-titre');
       if (!titreInput.value.trim() || titreInput.dataset.auto === '1') {
-        titreInput.value = 'Examen — ' + periode.replace(/^P\d+\s*—\s*/, (m) => periode.split('—')[0].trim() + ' — ');
         titreInput.value = 'Examen — ' + periode;
         titreInput.dataset.auto = '1';
       }

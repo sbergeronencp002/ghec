@@ -1,24 +1,13 @@
-// ─────────────────────────────────────────────────────────────────────
 // Source unique de vérité pour les opérations intellectuelles / compétences (OI).
-// Chargé par index.html (site public) ET admin.html (gestion).
-//
-// Vide au départ — géré depuis la section « Configuration » d'admin.html
-// (aucune édition manuelle de ce fichier n'est nécessaire ; la page publie
-// directement sur GitHub, comme pour questions.js).
-//
-//   - cls   : optionnel, non utilisé par le rendu (color/bg suffisent).
-//   - color / bg : var(--c-slot1) … var(--c-slot8), voir style.css — 8 couleurs
-//     prédéfinies disponibles, une par OI (au-delà de 8, repli gris automatique).
-//   - soustags   : pills « sous-tag » proposées dans l'admin (optionnel).
-//   - autoReponse : type de réponse pré-sélectionné quand on choisit l'OI (optionnel).
-//
-// OI_LIST = ordre du menu déroulant de l'admin (doit contenir exactement les
-// mêmes clés que OI_CONFIG).
-//
-// Les réglettes prémémorisées restent dans reglettes.js (REGLETTES_PRESET).
-// ─────────────────────────────────────────────────────────────────────
+// Généré par la section Configuration d'admin.html — ne pas éditer à la main.
 const OI_CONFIG = {
+"Lire l'organisation du territoire": {color: "var(--c-slot1)", bg: "var(--c-slot1-bg)"},
+"Interpréter le changement": {color: "var(--c-slot2)", bg: "var(--c-slot2-bg)"},
+"S'ouvrir à la diversité": {color: "var(--c-slot3)", bg: "var(--c-slot3-bg)"}
 }
 
 const OI_LIST = [
+"Lire l'organisation du territoire",
+"Interpréter le changement",
+"S'ouvrir à la diversité"
 ]

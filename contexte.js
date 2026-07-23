@@ -1,16 +1,12 @@
-// ─────────────────────────────────────────────────────────────────────
-// Données statiques de contexte du programme : niveaux → périodes,
-// période → aspects. Chargé par index.html, admin.html, revision.html.
-//
-// Vide au départ — géré depuis la section « Configuration » d'admin.html
-// (aucune édition manuelle de ce fichier n'est nécessaire ; la page publie
-// directement sur GitHub, comme pour questions.js).
-//
-// PERIODES_PAR_NIVEAU : { "1": ["Période A", "Période B", ...], "2": [...] }
-// ASPECTS_PAR_PERIODE : { "Période A": ["Aspect 1", "Aspect 2", ...], ... }
-// ─────────────────────────────────────────────────────────────────────
+// Données statiques de contexte du programme.
+// Généré par la section Configuration d'admin.html — ne pas éditer à la main.
 const PERIODES_PAR_NIVEAU = {
+"3": ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500", "Les Incas vers 1500", "Les Iroquoiens vers 1745"]
 }
 
 const ASPECTS_PAR_PERIODE = {
+"Les Iroquoiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Commerce", "Transport", "Gouvernement"],
+"Les Algonquiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Commerce", "Transport", "Gouvernement"],
+"Les Incas vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Commerce", "Transport", "Gouvernement"],
+"Les Iroquoiens vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Commerce", "Transport", "Gouvernement"]
 }

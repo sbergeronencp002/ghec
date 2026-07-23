@@ -167,14 +167,14 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Algonquiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 3,
- enonce: "Explique pourquoi les Algonquiens utilisent un toboggan et des raquettes.",
+ enonce: "Explique pourquoi les peuples autochtones utilisent un toboggan et des raquettes.",
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Algonquiens utilisent des raquettes pour marcher dans la neige et un toboggan pour transporter leurs biens lorsqu'ils se déplacent.",
- updatedAt: "2026-07-23T14:54:09.664Z"
+ guide: "Les Algonquiens ou les Iroquoiens utilisent des raquettes pour marcher dans la neige et un toboggan pour transporter leurs biens lorsqu'ils se déplacent l'hiver.",
+ updatedAt: "2026-07-23T16:24:40.661Z"
 },
 {
  id: "Q11",

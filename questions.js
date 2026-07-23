@@ -6,7 +6,8 @@ const REGLETTES = {
 "Q5": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q6": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q7": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit les faits. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q8": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q8": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q9": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
 }
 
 const IMAGE_DB = {
@@ -15,7 +16,8 @@ const IMAGE_DB = {
 "village_iroquoien_1500_1.jpg": {src: "images/village_iroquoien_1500_1.jpg", w: 1200, h: 800},
 "campement_algonquien_2.jpg": {src: "images/campement_algonquien_2.jpg", w: 1200, h: 755},
 "iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg", w: 1200, h: 841},
-"algonquiens_deplacements_1.jpg": {src: "images/algonquiens_deplacements_1.jpg", w: 1200, h: 783}
+"algonquiens_deplacements_1.jpg": {src: "images/algonquiens_deplacements_1.jpg", w: 1200, h: 783},
+"algonquiens_deplacements_2.jpg": {src: "images/algonquiens_deplacements_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -138,5 +140,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les raquettes.\nLe toboggan.",
  updatedAt: "2026-07-23T14:24:10.956Z"
+},
+{
+ id: "Q9",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Algonquiens vers 1500"],
+ points: 3,
+ enonce: "Explique pourquoi les Algonquiens se déplacent au fil des saisons.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_2.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les Algonquiens se déplacent pour trouver la nourriture dont ils ont besoin selon les saisons.",
+ updatedAt: "2026-07-23T14:27:28.783Z"
 }
 ]

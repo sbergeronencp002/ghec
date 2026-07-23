@@ -1325,7 +1325,10 @@ async function uploadImage() {
   // Nom de base SANS extension : l'extension finale dépend du format choisi plus bas.
   const baseName = (document.getElementById('upload-name').value.trim() || file.name)
     .replace(/\.(png|jpe?g|webp|gif)$/i, '')
-    .replace(/\s+/g,'_').replace(/[\\'"`<>&]/g,'');   // pas d'espaces, quotes, antislash ni <>& (cassent onclick/attributs/HTML)
+    // pas d'espaces, quotes, antislash, <>& (cassent onclick/attributs/HTML) ni / (le nom est
+    // interpolé tel quel dans l'URL de l'API GitHub Contents plus bas — un '/' pourrait sortir
+    // du dossier images/, voir aussi encodeURIComponent sur cette même URL).
+    .replace(/\s+/g,'_').replace(/[\\/'"`<>&]/g,'');
   const statusEl = document.getElementById('upload-status');
   const btn = document.getElementById('btn-upload');
   setFormLocked(true, btn);
@@ -1369,15 +1372,16 @@ async function uploadImage() {
       reader.readAsDataURL(file);
     });
     const name = baseName + '.' + imgInfo.ext;
+    const nameEnc = encodeURIComponent(name);
     // SHA d'un éventuel fichier existant de même nom (pour l'écraser proprement).
-    const existingSha = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${name}?ref=${BRANCH}&t=${Date.now()}`, { headers:{ Authorization:`token ${token}` } })
+    const existingSha = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${nameEnc}?ref=${BRANCH}&t=${Date.now()}`, { headers:{ Authorization:`token ${token}` } })
       .then(r => r.ok ? r.json().then(d => d.sha || '') : '').catch(() => '');
     if(existingSha && !confirm(`« ${name} » existe déjà — l'écraser ? Toutes les questions qui l'utilisent afficheront la nouvelle image.`)) {
       statusEl.textContent = '✗ Téléversement annulé.';
       btn.disabled = false;
       return;
     }
-    const putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${name}`, {
+    const putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${nameEnc}`, {
       method:'PUT',
       headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
       body: JSON.stringify({ message:`Ajouter image : ${name}`, content:imgInfo.b64, branch:BRANCH, ...(existingSha ? { sha: existingSha } : {}) })
@@ -1469,7 +1473,7 @@ function buildImageOptions() {
 function populateOiSelect() {
   const sel = document.getElementById('q-oi');
   if(!sel || typeof OI_LIST === 'undefined') return;
-  sel.innerHTML = OI_LIST.map(oi => `<option>${oi}</option>`).join('');
+  sel.innerHTML = OI_LIST.map(oi => `<option>${escHtml(oi)}</option>`).join('');
 }
 
 // Compétence : dimension indépendante de l'OI (competences.js) — pas de couleur/réglette
@@ -1477,7 +1481,7 @@ function populateOiSelect() {
 function populateCompetenceSelect() {
   const sel = document.getElementById('q-competence');
   if(!sel || typeof COMPETENCE_LIST === 'undefined') return;
-  sel.innerHTML = COMPETENCE_LIST.map(c => `<option>${c}</option>`).join('');
+  sel.innerHTML = COMPETENCE_LIST.map(c => `<option>${escHtml(c)}</option>`).join('');
 }
 
 // Peuple les <select> niveau (formulaire + filtre de recherche) depuis les clés de
@@ -1485,9 +1489,9 @@ function populateCompetenceSelect() {
 function populateNiveauSelects() {
   const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort();
   const q = document.getElementById('q-niveau');
-  if(q) { q.innerHTML = niveaux.map(n => `<option value="${n}">${n}</option>`).join(''); }
+  if(q) { q.innerHTML = niveaux.map(n => `<option value="${escHtml(n)}">${escHtml(n)}</option>`).join(''); }
   const f = document.getElementById('edit-filter-niveau');
-  if(f) { f.innerHTML = '<option value="">Tous les niveaux</option>' + niveaux.map(n => `<option value="${n}">Niveau ${n}</option>`).join(''); }
+  if(f) { f.innerHTML = '<option value="">Tous les niveaux</option>' + niveaux.map(n => `<option value="${escHtml(n)}">Niveau ${escHtml(n)}</option>`).join(''); }
 }
 
 // ═══════════════════════════════════════════════════════════════════

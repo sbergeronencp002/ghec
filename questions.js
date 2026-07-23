@@ -11,7 +11,7 @@ const REGLETTES = {
 "Q10": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q11": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q12": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q13": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q13": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
 }
 
 const IMAGE_DB = {
@@ -24,7 +24,7 @@ const IMAGE_DB = {
 "algonquiens_deplacements_2.jpg": {src: "images/algonquiens_deplacements_2.jpg", w: 1200, h: 746},
 "algonquiens_deplacements.jpg": {src: "images/algonquiens_deplacements.jpg"},
 "autochtones_canot.jpg": {src: "images/autochtones_canot.jpg", w: 1200, h: 777},
-"autochtones_troc.jpg": {src: "images/autochtones_troc.jpg"}
+"autochtones_troc.jpg": {src: "images/autochtones_troc.jpg", w: 1200, h: 801}
 }
 
 const QUESTIONS = [
@@ -208,16 +208,15 @@ const QUESTIONS = [
 {
  id: "Q13",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Algonquiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme un moyen de transport utilisé par les peuples autochtones pour se déplacer sur les cours d'eau.",
- aspects: [{aspect: "Transport"}],
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 3,
+ enonce: "Explique pourquoi les peuples autochtones pratiquent le troc.",
+ aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Le canot d'écorce.",
- updatedAt: "2026-07-23T16:16:38.136Z"
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les peuples autochtones pratiquent le troc pour obtenir des ressources qu'ils ne possèdent pas ou pour répondre à leurs besoins.",
+ updatedAt: "2026-07-23T16:20:42.144Z"
 }
 ]

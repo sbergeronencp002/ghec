@@ -7,9 +7,9 @@ const REGLETTES = {
 }
 
 const IMAGE_DB = {
-"village_iroquoien_1500_a.jpg": {src: "images/village_iroquoien_1500_a.jpg", w: 1200, h: 800},
 "campement_algonquien_1.jpg": {src: "images/campement_algonquien_1.jpg", w: 1200, h: 800},
-"village_iroquoien_1500_2.jpg": {src: "images/village_iroquoien_1500_2.jpg", w: 1200, h: 800}
+"village_iroquoien_1500_2.jpg": {src: "images/village_iroquoien_1500_2.jpg", w: 1200, h: 800},
+"village_iroquoien_1500_1.jpg": {src: "images/village_iroquoien_1500_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -23,7 +23,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme le mode de vie des Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_a.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens sont sédentaires.",
  updatedAt: "2026-07-23T13:02:04.859Z"
@@ -53,7 +53,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une activité que les Iroquoiens pratiquent pour se nourrir.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_a.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens pratiquent l'agriculture.\nL'agriculture.",
  updatedAt: "2026-07-23T13:15:00.179Z"

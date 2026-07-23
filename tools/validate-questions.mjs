@@ -23,7 +23,11 @@ function loadGlobals() {
   const src = [read('oi-config.js'), read('competences.js'), read('contexte.js'), read('questions.js')].join('\n');
   // eslint-disable-next-line no-new-func
   return new Function(
-    src + '\n return { OI_CONFIG, COMPETENCE_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, REGLETTES, IMAGE_DB, QUESTIONS };'
+    // COMPETENCE_CONFIG (comparaison) est optionnel : un competences.js pas encore republié
+    // avec ce champ ne le déclare pas — repli sur {} plutôt que ReferenceError.
+    src + '\n return { OI_CONFIG, COMPETENCE_LIST,' +
+    ' COMPETENCE_CONFIG: (typeof COMPETENCE_CONFIG !== "undefined" ? COMPETENCE_CONFIG : {}),' +
+    ' PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, REGLETTES, IMAGE_DB, QUESTIONS };'
   )();
 }
 
@@ -39,7 +43,7 @@ try {
   console.error('✗ Impossible de charger/parser les fichiers de données : ' + e.message);
   process.exit(1);
 }
-const { OI_CONFIG, COMPETENCE_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, REGLETTES, IMAGE_DB, QUESTIONS } = G;
+const { OI_CONFIG, COMPETENCE_LIST, COMPETENCE_CONFIG, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, REGLETTES, IMAGE_DB, QUESTIONS } = G;
 
 // Fichiers image réellement présents sur le disque.
 const imageFiles = new Set(
@@ -80,6 +84,8 @@ for (const q of QUESTIONS) {
 
   if (q.competence && !competenceKeys.has(q.competence)) {
     err(`${tag} : compétence inconnue « ${q.competence} » (absente de competences.js)`);
+  } else if (q.competence && (q.periodes || []).length === 2 && !COMPETENCE_CONFIG[q.competence]?.comparaison) {
+    warn(`${tag} : 2 sociétés mais « ${q.competence} » n'est pas marquée compétence de comparaison dans competences.js`);
   }
 
   if (q.reponse && typeof q.reponse === 'object' && !VALID_REPONSE_TYPES.has(q.reponse.type)) {

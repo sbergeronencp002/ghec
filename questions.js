@@ -2,12 +2,14 @@ const REGLETTES = {
 "Q1": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q2": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q3": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q4": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit les faits. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q4": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit les faits. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q5": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
 }
 
 const IMAGE_DB = {
 "village_iroquoien_1500_a.jpg": {src: "images/village_iroquoien_1500_a.jpg", w: 1200, h: 800},
-"campement_algonquien_1.jpg": {src: "images/campement_algonquien_1.jpg", w: 1200, h: 800}
+"campement_algonquien_1.jpg": {src: "images/campement_algonquien_1.jpg", w: 1200, h: 800},
+"village_iroquoien_1500_2.jpg": {src: "images/village_iroquoien_1500_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -70,5 +72,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "Les Algonquiens pratiquent la chasse, la pêche et la cueillette.",
  updatedAt: "2026-07-23T13:16:21.725Z"
+},
+{
+ id: "Q5",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Nomme deux caractéristiques du village iroquoien qui montrent que les Iroquoiens sont sédentaires.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les maisons longues.\nLa palissade.\nLes champs de maïs (ou les champs cultivés).\nLe village permanent.",
+ updatedAt: "2026-07-23T14:05:03.263Z"
 }
 ]

@@ -48,11 +48,11 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Indique une activité que les Iroquoiens pratiquent pour se nourrir.",
+ enonce: "Nomme une activité que les Iroquoiens pratiquent pour se nourrir.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens pratiquent l'agriculture.\nL'agriculture.",
- updatedAt: "2026-07-23T13:14:13.428Z"
+ updatedAt: "2026-07-23T13:15:00.179Z"
 }
 ]

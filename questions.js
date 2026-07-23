@@ -214,9 +214,9 @@ const QUESTIONS = [
  points: 3,
  enonce: "Explique pourquoi les peuples autochtones pratiquent le troc.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_recoltes.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones pratiquent le troc pour obtenir des ressources qu'ils ne possèdent pas ou pour répondre à leurs besoins.",
- updatedAt: "2026-07-23T16:20:42.144Z"
+ updatedAt: "2026-07-23T16:21:38.254Z"
 }
 ]

@@ -313,12 +313,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 3,
- enonce: "Explique pourquoi les peuples autochtones participent aux cérémonies vers 1500.",
+ enonce: "Explique pourquoi les peuples autochtones organisent des cérémonies vers 1500.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones participent aux cérémonies pour remercier les esprits de la nature ou demander leur aide ou pratiquer leur religion.",
- updatedAt: "2026-07-23T18:40:35.739Z"
+ updatedAt: "2026-07-23T18:47:15.344Z"
 },
 {
  id: "Q19",

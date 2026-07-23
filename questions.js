@@ -31,7 +31,8 @@ const REGLETTES = {
 "Q30": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q31": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q32": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
-"Q33": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q33": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q34": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
 }
 
 const IMAGE_DB = {
@@ -62,7 +63,8 @@ const IMAGE_DB = {
 "ressources_poterie_vannerie.jpg": {src: "images/ressources_poterie_vannerie.jpg", w: 1200, h: 800},
 "confection_vetements.jpg": {src: "images/confection_vetements.jpg", w: 1200, h: 960},
 "raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
-"mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800}
+"mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800},
+"mocassins_deplacements.jpg": {src: "images/mocassins_deplacements.jpg"}
 }
 
 const QUESTIONS = [
@@ -558,5 +560,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Des mocassins.",
  updatedAt: "2026-07-23T19:56:44.164Z"
+},
+{
+ id: "Q34",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 3,
+ enonce: "Explique pourquoi les peuples autochtones fabriquent des mocassins.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins_deplacements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les peuples autochtones fabriquent des mocassins pour protéger leurs pieds lorsqu'ils se déplacent.",
+ updatedAt: "2026-07-23T19:58:56.098Z"
 }
 ]

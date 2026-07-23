@@ -12,7 +12,8 @@ const REGLETTES = {
 "Q11": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q12": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q13": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
-"Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q15": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -25,7 +26,11 @@ const IMAGE_DB = {
 "algonquiens_deplacements_2.jpg": {src: "images/algonquiens_deplacements_2.jpg", w: 1200, h: 746},
 "algonquiens_deplacements.jpg": {src: "images/algonquiens_deplacements.jpg"},
 "autochtones_canot.jpg": {src: "images/autochtones_canot.jpg", w: 1200, h: 801},
-"autochtones_troc.jpg": {src: "images/autochtones_troc.jpg", w: 1200, h: 801}
+"autochtones_troc.jpg": {src: "images/autochtones_troc.jpg", w: 1200, h: 801},
+"ressources_mais.jpg": {src: "images/ressources_mais.jpg", w: 1200, h: 960},
+"ressources_haricots_courges.jpg": {src: "images/ressources_haricots_courges.jpg", w: 1200, h: 960},
+"ressources_fourrures.jpg": {src: "images/ressources_fourrures.jpg", w: 1200, h: 960},
+"ressources_viandes_sechees.jpg": {src: "images/ressources_viandes_sechees.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -234,5 +239,24 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le troc.",
  updatedAt: "2026-07-23T16:39:42.480Z"
+},
+{
+ id: "Q15",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Les documents A à D présentent différentes ressources échangées par les nations iroquoiennes vers 1500. Associez chaque document à l'endroit correspondant.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "ressources_mais.jpg", soustitre: "Épis de maïs", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "ressources_fourrures.jpg", soustitre: "Fourrures et peaux d'animaux", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "ressources_viandes_sechees.jpg", soustitre: "Viandes séchées", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "ressources_haricots_courges.jpg", soustitre: "Courges et haricots", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Ressources produites", "Ressources recherchées"], double: true},
+ guide: {type: "grille", entetes: ["Ressources produites", "Ressources recherchées"], rangees: [["A et D", "B et C"]]},
+ updatedAt: "2026-07-23T16:50:42.830Z"
 }
 ]

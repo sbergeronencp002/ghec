@@ -195,7 +195,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un moyen de transport utilisé par les peuples autochtones pour se déplacer sur les cours d'eau.",
@@ -203,7 +203,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le canot d'écorce.",
- updatedAt: "2026-07-23T16:16:17.202Z"
+ updatedAt: "2026-07-23T16:17:27.695Z"
 },
 {
  id: "Q13",

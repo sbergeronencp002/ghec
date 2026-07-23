@@ -74,8 +74,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Les Algonquiens pratiquent la chasse, la pêche et la cueillette.",
- updatedAt: "2026-07-23T13:16:21.725Z"
+ guide: "La chasse.\nLa pêche.\nLa cueillette.",
+ updatedAt: "2026-07-23T14:19:58.371Z"
 },
 {
  id: "Q5",

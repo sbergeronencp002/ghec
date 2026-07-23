@@ -477,7 +477,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les fibres végétales.\nLes roseaux.\nL'écorce.",
- updatedAt: "2026-07-23T19:44:27.235Z"
+ updatedAt: "2026-07-23T19:45:09.465Z"
 },
 {
  id: "Q29",

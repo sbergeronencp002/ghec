@@ -138,15 +138,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme un objet qui aident les Algonquiens à se déplacer en hiver.",
+ enonce: "Nomme un objet utilisé par les peuples autochtones pour se déplacer en hiver.",
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les raquettes.\nLe toboggan.",
- updatedAt: "2026-07-23T14:33:22.974Z"
+ updatedAt: "2026-07-23T16:18:32.829Z"
 },
 {
  id: "Q9",

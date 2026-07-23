@@ -18,7 +18,8 @@ const REGLETTES = {
 "Q17": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q18": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q19": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
-"Q20": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q20": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q21": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
 }
 
 const IMAGE_DB = {
@@ -39,7 +40,8 @@ const IMAGE_DB = {
 "chaman_animisme.jpg": {src: "images/chaman_animisme.jpg"},
 "chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800},
 "chaman_ceremonie_2.jpg": {src: "images/chaman_ceremonie_2.jpg", w: 1200, h: 800},
-"chaman_ceremonie_3.jpg": {src: "images/chaman_ceremonie_3.jpg", w: 1200, h: 800}
+"chaman_ceremonie_3.jpg": {src: "images/chaman_ceremonie_3.jpg", w: 1200, h: 800},
+"iroquoien_paniers.jpg": {src: "images/iroquoien_paniers.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -346,5 +348,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les peuples autochtones pratiquent l'animisme.",
  updatedAt: "2026-07-23T18:30:34.226Z"
+},
+{
+ id: "Q21",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 3,
+ enonce: "Explique pourquoi les Iroquoiens fabriquent des paniers.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_paniers.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les Iroquoiens fabriquent des paniers pour transporter ou conserver ou ranger leurs récoltes et d'autres ressources.",
+ updatedAt: "2026-07-23T18:46:44.394Z"
 }
 ]

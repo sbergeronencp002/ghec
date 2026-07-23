@@ -6,9 +6,23 @@ Ce dépôt est un fork structurel du dépôt `hqccssbf` (banque de questions His
 Québec et du Canada) pour le programme **GHEC** (Géographie, histoire et éducation à
 la citoyenneté). Toute l'architecture technique est identique et générique — filtres,
 panier, DOCX, admin, révision, générateur d'examens — **rien n'est codé en dur pour un
-programme précis** dans ces pages. Les deux fichiers réellement spécifiques au contenu
-pédagogique (`oi-config.js`, `contexte.js`) partent **vides** : à remplir via la section
+programme précis** dans ces pages. Les trois fichiers réellement spécifiques au contenu
+pédagogique (`oi-config.js`, `competences.js`, `contexte.js`) sont gérés via la section
 « ⚙️ Configuration du programme » d'`admin.html`, sans toucher au code.
+
+**Terminologie** : le champ que HQC appelait « période » s'appelle **« Société »** dans
+toute la présentation GHEC (labels, filtres, messages). Le champ interne reste
+`periode`/`PERIODES_PAR_NIVEAU`/`ASPECTS_PAR_PERIODE` (aucun renommage de code) — seule
+la présentation change. Ne jamais réintroduire le mot « Période » dans un label
+utilisateur sans consulter l'enseignant d'abord.
+
+**Deux dimensions de classement indépendantes par question** : chaque question a une
+**OI** (opération intellectuelle — 8 choix, détermine réglette/couleur/réponse par
+défaut, voir `oi-config.js`) ET une **Compétence** (3 choix, simple étiquette de
+filtrage sans réglette ni couleur associée, voir `competences.js`) — deux champs
+séparés dans le formulaire (`q-oi` et `q-competence`), deux filtres séparés sur le site
+public et dans revision.html. Ne jamais fusionner les deux ni supposer qu'ils se
+correspondent un-à-un.
 
 ## Règles de workflow — autorisation permanente
 
@@ -28,25 +42,24 @@ peut être silencieusement écrasé par la publication suivante, ou l'inverse.
 
 Mes commits git ne doivent contenir que des fichiers de code : `app.js`, `style.css`,
 `admin.html`, `index.html`, `documents.html`, `revision.html`, `examen.html`,
-`examen-gen.js`, `docx-examen.js`, `oi-config.js`, `reglettes.js`, `contexte.js`,
-`CLAUDE.md`, etc. — jamais `questions.js` ni `questions-index.js`.
+`examen-gen.js`, `docx-examen.js`, `oi-config.js`, `competences.js`, `reglettes.js`,
+`contexte.js`, `CLAUDE.md`, etc. — jamais `questions.js` ni `questions-index.js`.
 
-**Même règle pour `oi-config.js` et `contexte.js`** une fois que la section
-Configuration d'admin.html a commencé à les gérer (elle écrit directement sur GitHub,
-comme pour les questions) : à partir de ce moment-là, les éditer à la main dans un
-commit git risquerait le même genre d'écrasement silencieux.
+**Même règle pour `oi-config.js`, `competences.js` et `contexte.js`** une fois que la
+section Configuration d'admin.html a commencé à les gérer (elle écrit directement sur
+GitHub, comme pour les questions) : à partir de ce moment-là, les éditer à la main dans
+un commit git risquerait le même genre d'écrasement silencieux.
 
 ---
 
-## État actuel : site vide
+## État actuel : GHEC 3 configuré, questions à saisir
 
-Au démarrage, `oi-config.js` (`OI_CONFIG = {}`, `OI_LIST = []`), `contexte.js`
-(`PERIODES_PAR_NIVEAU = {}`, `ASPECTS_PAR_PERIODE = {}`), `reglettes.js`
-(`REGLETTES_PRESET = {}`) et `questions.js`/`questions-index.js` sont vides. **Avant
-d'ajouter la première question**, il faut configurer au minimum les niveaux/périodes/
-aspects et au moins une OI via la section Configuration d'`admin.html` (voir plus bas) —
-sans ça, les menus déroulants du formulaire de question sont vides et rien ne peut être
-saisi.
+`oi-config.js` (8 OI), `competences.js` (3 compétences), `contexte.js` (niveau 3 : 4
+sociétés, 9 aspects communs à toutes) sont déjà remplis — voir la section Configuration
+d'`admin.html`. `reglettes.js` (`REGLETTES_PRESET = {}`) et
+`questions.js`/`questions-index.js` sont encore vides : aucune question saisie pour
+l'instant. Les niveaux 4/5/6 restent à ajouter (mêmes compétences/OI, nouvelles
+sociétés propres à chaque niveau) via la section Configuration.
 
 ---
 
@@ -59,21 +72,22 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 | Fichier | Rôle |
 |---------|------|
 | `index.html` | Site public (filtres, cartes, panier, prévisualisation, génération DOCX) |
-| `admin.html` | Interface de saisie/modification des questions **+ section Configuration** (OI, niveaux/périodes/aspects) — pousse via GitHub Contents API |
+| `admin.html` | Interface de saisie/modification des questions **+ section Configuration** (OI, compétences, niveaux/sociétés/aspects) — pousse via GitHub Contents API |
 | `documents.html` | Gestion Documents & Images — galerie de toutes les images, vue par question, images non utilisées. Renomme/remplace/supprime des images et édite les sous-titres directement via l'API GitHub (token partagé avec admin.html) |
 | `revision.html` | Révision par cartes — parcourt les questions une à la fois, navigation clavier/tactile, tout affiché sur une carte (énoncé, documents, réglette, réponse, guide). Édition inline du guide/énoncé/documents texte via l'API GitHub |
 | `examen.html` | Générateur d'examens — sélection automatique par aspect/OI/budget de points, remplacement manuel, génération de 3 DOCX (questionnaire, dossier documentaire, guide). Lecture seule sur `questions.js`. Les tables de réglages fines (cibles par OI, scénarios par période — voir `examen-gen.js`) sont **vides par défaut** : le générateur utilise l'algorithme générique (variété + budget) tant qu'aucun réglage n'est ajouté |
 | `examen-gen.js` | Algorithme pur de sélection (exact-cover des aspects + budget de points + quota OI) et de renumérotation des documents. Aucune dépendance au DOM — testable via node |
 | `docx-examen.js` | Génération des 3 DOCX d'examen.html |
 | `app.js` | Toute la logique du site public (rendu, filtres, panier, DOCX) |
-| `questions.js` | Données : `REGLETTES`, `IMAGE_DB`, `QUESTIONS` — généré et écrit par admin, **vide au départ** |
+| `questions.js` | Données : `REGLETTES`, `IMAGE_DB`, `QUESTIONS` — généré et écrit par admin, **vide au départ** (aucune question saisie) |
 | `reglettes.js` | Préréglages de réglettes par OI (`REGLETTES_PRESET`), **vide au départ** — gérable à la main dans admin.html en attendant une éventuelle UI dédiée |
-| `contexte.js` | `PERIODES_PAR_NIVEAU`, `ASPECTS_PAR_PERIODE` — **vide au départ**, géré via la section Configuration d'admin.html |
-| `oi-config.js` | Source unique des OI : `OI_CONFIG` (couleur, sous-tags, auto-réponse) + `OI_LIST` (ordre du menu) — **vide au départ**, géré via la section Configuration d'admin.html |
+| `contexte.js` | `PERIODES_PAR_NIVEAU` (niveau → sociétés), `ASPECTS_PAR_PERIODE` (société → aspects) — géré via la section Configuration d'admin.html. Niveau 3 configuré ; 4/5/6 à venir |
+| `oi-config.js` | Source unique des OI : `OI_CONFIG` (couleur, sous-tags, auto-réponse) + `OI_LIST` (ordre du menu, 8 OI) — géré via la section Configuration d'admin.html |
+| `competences.js` | `COMPETENCE_LIST` — dimension de classement **indépendante de l'OI** (3 compétences), simple liste sans couleur/réglette associée. Géré via la section Configuration d'admin.html |
 | `questions-io.js` | Sérialiseur partagé : `serializeValue`, `ensureImageDbComplete`, `generateQuestionsJs`, `generateIndexJs`. Chargé par admin.html ET documents.html |
 | `questions-index.js` | Index allégé (champs grille seulement) chargé par index.html au démarrage. Régénéré automatiquement par admin.html à chaque publication |
 | `filters.js` | Cascade de filtres partagée niveau→période→aspect — générique, aucun niveau codé en dur (lit `PERIODES_PAR_NIVEAU`/`ASPECTS_PAR_PERIODE` dynamiquement) |
-| `tools/validate-questions.mjs` | Validateur de données : vérifie `questions.js` contre `oi-config.js`, `contexte.js` et les fichiers `images/`. Lancé en hook SessionStart |
+| `tools/validate-questions.mjs` | Validateur de données : vérifie `questions.js` contre `oi-config.js`, `competences.js`, `contexte.js` et les fichiers `images/`. Lancé en hook SessionStart |
 | `tools/smoke-test.mjs` | Tests de fumée (fonctions de rendu critiques d'app.js, entrées adverses) |
 | `tools/check-escaping.mjs` | Scanner anti-XSS (concaténations HTML non échappées) |
 | `tools/check-all.mjs` | Lance les 3 vérifications ci-dessus — c'est celle-ci qui tourne en hook SessionStart |
@@ -87,21 +101,28 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ## Section Configuration d'admin.html (nouveau — n'existe pas dans hqccssbf)
 
-Accessible via le lien d'ancrage « Configuration » en haut d'admin.html. Deux
+Accessible via le lien d'ancrage « Configuration » en haut d'admin.html. Trois
 sous-sections, chacune avec son propre bouton « Enregistrer » qui publie directement
 sur GitHub (comme pour une question) :
 
 - **Opérations intellectuelles (OI)** : liste de lignes (nom, couleur parmi les 8
   préréglages de style.css, sous-tags optionnels séparés par virgules, réponse
   auto-sélectionnée optionnelle). Réordonnables (↑↓), publiées vers `oi-config.js`.
-- **Niveaux, périodes et aspects** : liste de niveaux, chacun contenant une liste de
-  périodes, chacune avec un textarea d'aspects (un par ligne). Réordonnables,
+- **Compétences** : simple liste ordonnée de noms (pas de couleur ni de réglette —
+  ces attributs restent portés par l'OI). Publiées vers `competences.js`.
+- **Niveaux et sociétés** : liste de niveaux, chacun contenant une liste de sociétés,
+  chacune avec un textarea d'aspects (un par ligne, optionnel). Réordonnables,
   publiées vers `contexte.js`.
 
-Fonctions clés (toutes dans admin.html, préfixe `cfg`) : `cfgAddOi`/`cfgCollectOi`/
-`cfgPublishOi`, `cfgAddNiveau`/`cfgAddPeriode`/`cfgCollectContexte`/`cfgPublishContexte`,
-`cfgRenderOiList`/`cfgRenderNiveauxList` (peuplent l'UI depuis l'état courant au chargement
-de la page). Après publication, `OI_CONFIG`/`OI_LIST`/`PERIODES_PAR_NIVEAU`/
+Fonctions clés (toutes dans admin.html, préfixe `cfg`) :
+`cfgAddOi`/`cfgCollectOi`/`cfgPublishOi`/`cfgRenderOiList` (OI) ;
+`cfgAddCompetence`/`cfgCollectCompetences`/`cfgPublishCompetences`/`cfgRenderCompetenceList`
+(compétences) ;
+`cfgAddNiveau`/`cfgAddPeriode`/`cfgCollectContexte`/`cfgPublishContexte`/`cfgRenderNiveauxList`
+(niveaux/sociétés — `cfgAddPeriode`/`cfgCollectContexte` gardent leur nom de fonction
+historique bien que le vocabulaire affiché soit « société »). Toutes les fonctions
+`cfgRender*` peuplent l'UI depuis l'état courant au chargement de la page (`init()`).
+Après publication, `OI_CONFIG`/`OI_LIST`/`COMPETENCE_LIST`/`PERIODES_PAR_NIVEAU`/
 `ASPECTS_PAR_PERIODE` sont mutés en place (ce sont des `const` — jamais réassignés) pour
 que le reste de la page (selects, dashboard) reflète la nouvelle config sans recharger.
 
@@ -120,9 +141,10 @@ config en parallèle, il faudrait durcir cette fonction sur le même modèle que
 ```js
 {
   id: 'Q1',
-  niveau: '1',                        // clé de PERIODES_PAR_NIVEAU (string)
-  oi: 'Nom exact d'une clé de OI_CONFIG',
-  periode: 'Nom exact d'une période de PERIODES_PAR_NIVEAU[niveau]',
+  niveau: '3',                        // clé de PERIODES_PAR_NIVEAU (string)
+  oi: 'Nom exact d'une clé de OI_CONFIG',            // 8 choix, voir oi-config.js
+  competence: 'Nom exact d'une entrée de COMPETENCE_LIST',  // optionnel, 3 choix, voir competences.js
+  periode: 'Nom exact d'une société de PERIODES_PAR_NIVEAU[niveau]',   // champ interne = "société" à l'affichage
   points: 2,
   soustag: '...',                      // optionnel, doit être dans OI_CONFIG[oi].soustags
   enonce: 'Texte avec **gras** et • puces',
@@ -145,11 +167,20 @@ config en parallèle, il faudrait durcir cette fonction sur le même modèle que
 }
 ```
 
-### Contexte (contexte.js)
+### Compétence (`COMPETENCE_LIST`, competences.js)
+Simple tableau de chaînes — pas d'objet, pas de couleur/réglette (celles-ci restent
+portées par l'OI, dimension indépendante) :
 ```js
-PERIODES_PAR_NIVEAU = { '1': ['Période A', 'Période B'], '2': [...] }
-ASPECTS_PAR_PERIODE = { 'Période A': ['Aspect 1', 'Aspect 2'], ... }
+const COMPETENCE_LIST = ["Lire l'organisation du territoire", 'Interpréter le changement', "S'ouvrir à la diversité"]
 ```
+
+### Contexte (contexte.js) — « société » à l'affichage, champ interne toujours `periode`
+```js
+PERIODES_PAR_NIVEAU = { '3': ['Les Iroquoiens vers 1500', 'Les Algonquiens vers 1500', ...] }
+ASPECTS_PAR_PERIODE = { 'Les Iroquoiens vers 1500': ['Territoire', 'Personnages', ...], ... }
+```
+Niveau 3 : 4 sociétés, 9 aspects communs à toutes (Territoire, Personnages, Population,
+Groupes sociaux, Vie quotidienne, Culture, Commerce, Transport, Gouvernement).
 
 ### Réglette (`REGLETTES['Q1']`)
 ```js

@@ -124,7 +124,7 @@ async function ensureDataLoaded() {
 function populateFilters() {
   Q_MAP = new Map(QUESTIONS.map(q => [q.id, q]));
   Q_SEARCH_IDX = new Map(QUESTIONS.map(q => [q.id,
-    fold([q.enonce||'', q.oi||'', q.periode||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '))
+    fold([q.enonce||'', q.oi||'', q.competence||'', q.periode||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '))
   ]));
   const sorted = [...QUESTIONS].sort((a,b) => {
     const ta = a.updatedAt || '';
@@ -134,6 +134,7 @@ function populateFilters() {
   });
   NEW_IDS = new Set(sorted.slice(0,10).map(q=>q.id));
   const allOis = [...new Set(QUESTIONS.map(q=>q.oi))].sort((a,b)=>a.localeCompare(b,'fr'));
+  const allCompetences = [...new Set(QUESTIONS.map(q=>q.competence).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
   const aspectsByPeriode = {};
   QUESTIONS.forEach(q=>{
     (q.aspects||[]).forEach(a=>{
@@ -152,6 +153,7 @@ function populateFilters() {
   fillSelect('f-periode', periodes, "Toutes");
   fillAspectSelect('f-aspect', aspects, periodeOrder);
   fillSelect('f-oi', allOis, "Toutes");
+  fillSelect('f-competence', allCompetences, "Toutes");
 }
 
 // Ids des <select> de la cascade niveau→période→aspect (voir filters.js, chargé avant app.js).
@@ -175,23 +177,27 @@ function debouncedApplyFilters() {
 }
 
 function applyFilters() {
-  const oi      = document.getElementById('f-oi').value;
+  const oi         = document.getElementById('f-oi').value;
+  const competence = document.getElementById('f-competence').value;
   const aspect  = document.getElementById('f-aspect').value;
   const periode = document.getElementById('f-periode').value;
   const niveau  = document.getElementById('f-niveau').value;
   const search  = fold((document.getElementById('f-search')?.value || '').trim());
   const currentOi = oi;
+  const currentCompetence = competence;
 
   // Parcours unique : construit filtered + relevantOis en même passe
   const filtered = [];
   const oiSet = new Set();
+  const competenceSet = new Set();
   for(const q of QUESTIONS) {
     const niveauOk  = !niveau  || String(q.niveau) === niveau;
     const periodeOk = !periode || q.periode === periode;
     const aspectOk  = !aspect  || (q.aspects||[]).some(a=>a.aspect===aspect);
-    if(niveauOk && periodeOk && aspectOk) oiSet.add(q.oi);
+    if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(q.competence) competenceSet.add(q.competence); }
     if(!niveauOk || !periodeOk || !aspectOk) continue;
     if(oi && q.oi !== oi) continue;
+    if(competence && q.competence !== competence) continue;
     if(search && !(Q_SEARCH_IDX.get(q.id)||'').includes(search)) continue;
     filtered.push(q);
   }
@@ -209,6 +215,10 @@ function applyFilters() {
   fillSelect('f-oi', relevantOis, "Toutes");
   if(relevantOis.includes(currentOi)) document.getElementById('f-oi').value = currentOi;
 
+  const relevantCompetences = [...competenceSet].sort((a,b)=>a.localeCompare(b,'fr'));
+  fillSelect('f-competence', relevantCompetences, "Toutes");
+  if(relevantCompetences.includes(currentCompetence)) document.getElementById('f-competence').value = currentCompetence;
+
   const totalPtsFilt = filtered.reduce((s,q)=>s+(q.points||0), 0);
   document.getElementById('stat-num').textContent = filtered.length;
   const statPts = document.getElementById('stat-pts');
@@ -222,7 +232,7 @@ function applyFilters() {
 }
 
 function resetFilters() {
-  ['f-niveau','f-periode','f-aspect','f-oi','f-search'].forEach(id=>{
+  ['f-niveau','f-periode','f-aspect','f-oi','f-competence','f-search'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.value = '';
   });
@@ -395,6 +405,7 @@ async function openQModal(id) {
   const aspects = (q.aspects||[]).map(a => a.aspect).join(' · ');
   document.getElementById('q-modal-title').innerHTML =
     `<div class="q-oi-badge" style="color:${st.color};background:rgba(0,0,0,0.08)">${escLine(q.oi)}</div>` +
+    (q.competence ? `<div style="font-size:0.68rem;margin-top:2px;opacity:0.72;font-weight:500">${escLine(q.competence)}</div>` : '') +
     `<div style="font-size:0.7rem;margin-top:3px;opacity:0.72">${escLine(aspects)}</div>` +
     `<div style="font-size:0.67rem;margin-top:2px;opacity:0.55;font-weight:600">${q.points}&thinsp;pt${q.points > 1 ? 's' : ''}</div>`;
 
@@ -502,6 +513,7 @@ function buildTileHtml(q) {
     <div class="q-tile-bar" style="display:none"></div>
     <div class="q-tile-content">
       <div class="q-tile-oi" style="display:block;font-size:1.1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:5px 12px;border-radius:6px;color:${st.color};background:${st.bg};line-height:1.3;word-break:break-word">${escLine(q.oi)}</div>
+      ${q.competence ? `<div style="font-size:0.72rem;font-weight:500;color:#8A8377;margin-top:4px">${escLine(q.competence)}</div>` : ''}
       <div class="q-tile-aspect" style="font-size:0.9rem;font-weight:400;color:#6B6560;margin-top:2px">${escLine(aspect)}</div>
       ${tagsHtml}
     </div>

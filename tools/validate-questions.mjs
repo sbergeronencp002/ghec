@@ -20,10 +20,10 @@ const read = (f) => readFileSync(join(ROOT, f), 'utf8');
 
 // Charge les fichiers de données (du code source pur, pas de modules) dans un scope isolé.
 function loadGlobals() {
-  const src = [read('oi-config.js'), read('contexte.js'), read('questions.js')].join('\n');
+  const src = [read('oi-config.js'), read('competences.js'), read('contexte.js'), read('questions.js')].join('\n');
   // eslint-disable-next-line no-new-func
   return new Function(
-    src + '\n return { OI_CONFIG, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, REGLETTES, IMAGE_DB, QUESTIONS };'
+    src + '\n return { OI_CONFIG, COMPETENCE_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, REGLETTES, IMAGE_DB, QUESTIONS };'
   )();
 }
 
@@ -39,7 +39,7 @@ try {
   console.error('✗ Impossible de charger/parser les fichiers de données : ' + e.message);
   process.exit(1);
 }
-const { OI_CONFIG, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, REGLETTES, IMAGE_DB, QUESTIONS } = G;
+const { OI_CONFIG, COMPETENCE_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, REGLETTES, IMAGE_DB, QUESTIONS } = G;
 
 // Fichiers image réellement présents sur le disque.
 const imageFiles = new Set(
@@ -53,6 +53,7 @@ const VALID_REPONSE_TYPES = new Set([
 const VALID_GUIDE_TYPES = new Set(['grille', 'tableau']);
 
 const oiKeys = new Set(Object.keys(OI_CONFIG));
+const competenceKeys = new Set(COMPETENCE_LIST);
 const periodeToNiveau = {};
 for (const [niv, periodes] of Object.entries(PERIODES_PAR_NIVEAU)) {
   for (const p of periodes) periodeToNiveau[p] = niv;
@@ -75,6 +76,10 @@ for (const q of QUESTIONS) {
     if (!validSoustags.includes(q.soustag)) {
       err(`${tag} : sous-tag « ${q.soustag} » absent de la liste de « ${q.oi} » dans oi-config.js`);
     }
+  }
+
+  if (q.competence && !competenceKeys.has(q.competence)) {
+    err(`${tag} : compétence inconnue « ${q.competence} » (absente de competences.js)`);
   }
 
   if (q.reponse && typeof q.reponse === 'object' && !VALID_REPONSE_TYPES.has(q.reponse.type)) {

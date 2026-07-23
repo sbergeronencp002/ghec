@@ -35,6 +35,13 @@
     </div>
 
     <div class="filter-group">
+      <label class="filter-label" for="f-competence">Compétence</label>
+      <select id="f-competence" onchange="applyFilters()">
+        <option value="">Toutes</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
       <label class="filter-label" for="f-periode">Société</label>
       <select id="f-periode" onchange="onPeriodeChange()">
         <option value="">Toutes</option>
@@ -187,6 +194,7 @@
 
 <script src="contexte.js"></script>
 <script src="oi-config.js?v=1"></script>
+<script src="competences.js"></script>
 <script src="filters.js?v=1"></script>
 <script src="app.js?v=52"></script>
 <script>

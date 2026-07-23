@@ -9,6 +9,7 @@
 <script src="reglettes.js?v=3"></script>
 <script src="contexte.js"></script>
 <script src="oi-config.js?v=1"></script>
+<script src="competences.js"></script>
 <script src="questions-io.js?v=3"></script>
 <style>
 :root {
@@ -297,6 +298,16 @@ header a:hover { color: #fff; }
 
         <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--border)">
 
+        <div class="block-title">Compétences <span style="font-weight:400;color:var(--ink-3);text-transform:none;letter-spacing:0">(dimension indépendante de l'OI)</span></div>
+        <div id="cfg-competence-list"></div>
+        <div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem">
+          <button class="btn-add" onclick="cfgAddCompetence()">+ Ajouter une compétence</button>
+          <button class="btn-primary" style="padding:.45rem 1rem;font-size:.8rem" onclick="cfgPublishCompetences()">💾 Enregistrer les compétences</button>
+          <span id="cfg-competence-status" style="font-size:.75rem"></span>
+        </div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--border)">
+
         <div class="block-title">Niveaux et sociétés</div>
         <div id="cfg-niveaux-list"></div>
         <div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem">
@@ -360,9 +371,14 @@ header a:hover { color: #fff; }
           </select>
         </div>
         <div class="field">
-          <label>Société</label>
-          <select id="q-periode" onchange="updateAspects()"></select>
+          <label>Compétence</label>
+          <!-- Options générées depuis COMPETENCE_LIST (competences.js) par populateCompetenceSelect() -->
+          <select id="q-competence"></select>
         </div>
+      </div>
+      <div class="field">
+        <label>Société</label>
+        <select id="q-periode" onchange="updateAspects()"></select>
       </div>
       <div class="field">
         <label>Aspect(s)</label>
@@ -947,6 +963,8 @@ function loadQuestion(id) {
   updatePresets();
   updateSoustag();
   setSoustag(q.soustag || '');
+  const compSel = document.getElementById('q-competence');
+  if(compSel) compSel.value = q.competence || '';
   document.getElementById('q-enonce').value = q.enonce || '';
 
   document.getElementById('docs-list').innerHTML = '';
@@ -1437,6 +1455,14 @@ function populateOiSelect() {
   sel.innerHTML = OI_LIST.map(oi => `<option>${oi}</option>`).join('');
 }
 
+// Compétence : dimension indépendante de l'OI (competences.js) — pas de couleur/réglette
+// associée, juste un menu déroulant simple.
+function populateCompetenceSelect() {
+  const sel = document.getElementById('q-competence');
+  if(!sel || typeof COMPETENCE_LIST === 'undefined') return;
+  sel.innerHTML = COMPETENCE_LIST.map(c => `<option>${c}</option>`).join('');
+}
+
 // Peuple les <select> niveau (formulaire + filtre de recherche) depuis les clés de
 // PERIODES_PAR_NIVEAU (contexte.js) — générique, aucun niveau codé en dur.
 function populateNiveauSelects() {
@@ -1578,7 +1604,7 @@ async function cfgPublishOi() {
   status.textContent = '⏳ Publication…'; status.style.color = '';
   try {
     await _putFileWithRetry('oi-config.js', 'Configuration OI', () => {
-      let out = `// Source unique de vérité pour les opérations intellectuelles / compétences (OI).\n`
+      let out = `// Source unique de vérité pour les opérations intellectuelles (OI).\n`
         + `// Généré par la section Configuration d'admin.html — ne pas éditer à la main.\n`
         + `const OI_CONFIG = {\n${_serializeEntries(oiConfig)}\n}\n\n`
         + `const OI_LIST = [\n${oiList.map(o=>JSON.stringify(o)).join(',\n')}\n]\n`;
@@ -1592,6 +1618,57 @@ async function cfgPublishOi() {
     OI_LIST.push(...oiList);
     populateOiSelect();
     status.textContent = '✓ OI publiées.'; status.style.color = 'var(--green)';
+  } catch(e) {
+    status.textContent = '✗ ' + e.message; status.style.color = 'var(--red)';
+  }
+}
+
+// ── Compétences (competences.js) ────────────────────────────────────────
+// Dimension indépendante de l'OI : chaque question a les deux (voir q-competence
+// dans la section Contexte). Simple liste ordonnée, pas de couleur/réglette associée.
+let cfgCompetenceCount = 0;
+function cfgAddCompetence(nom) {
+  const id = ++cfgCompetenceCount;
+  const div = document.createElement('div');
+  div.className = 'block';
+  div.id = 'comp-' + id;
+  div.innerHTML = `
+    <button class="btn-move btn-move-up" onclick="moveDoc('comp-${id}',-1)" title="Monter">↑</button>
+    <button class="btn-move btn-move-dn" onclick="moveDoc('comp-${id}',1)" title="Descendre">↓</button>
+    <button class="btn-remove" onclick="removeEl('comp-${id}')">✕</button>
+    <div class="field"><label>Nom de la compétence</label><input type="text" class="cfg-comp-nom" value="${escHtml(nom||'')}" placeholder="ex. : Interroger les réalités sociales"></div>`;
+  document.getElementById('cfg-competence-list').appendChild(div);
+}
+
+function cfgRenderCompetenceList() {
+  document.getElementById('cfg-competence-list').innerHTML = '';
+  (typeof COMPETENCE_LIST !== 'undefined' ? COMPETENCE_LIST : []).forEach(nom => cfgAddCompetence(nom));
+}
+
+function cfgCollectCompetences() {
+  const list = [];
+  document.querySelectorAll('#cfg-competence-list > .block').forEach(row => {
+    const nom = row.querySelector('.cfg-comp-nom').value.trim();
+    if(nom) list.push(nom);
+  });
+  return list;
+}
+
+async function cfgPublishCompetences() {
+  const status = document.getElementById('cfg-competence-status');
+  const list = cfgCollectCompetences();
+  if(new Set(list).size !== list.length) { status.textContent = '✗ Deux compétences portent le même nom.'; status.style.color = 'var(--red)'; return; }
+  status.textContent = '⏳ Publication…'; status.style.color = '';
+  try {
+    await _putFileWithRetry('competences.js', 'Configuration compétences', () => {
+      return `// Compétences disciplinaires — dimension indépendante de l'OI (oi-config.js).\n`
+        + `// Généré par la section Configuration d'admin.html — ne pas éditer à la main.\n`
+        + `const COMPETENCE_LIST = [\n${list.map(c=>JSON.stringify(c)).join(',\n')}\n]\n`;
+    });
+    COMPETENCE_LIST.length = 0;
+    COMPETENCE_LIST.push(...list);
+    populateCompetenceSelect();
+    status.textContent = '✓ Compétences publiées.'; status.style.color = 'var(--green)';
   } catch(e) {
     status.textContent = '✗ ' + e.message; status.style.color = 'var(--red)';
   }
@@ -1685,7 +1762,9 @@ async function cfgPublishContexte() {
 async function init() {
   populateNiveauSelects();
   populateOiSelect();
+  populateCompetenceSelect();
   cfgRenderOiList();
+  cfgRenderCompetenceList();
   cfgRenderNiveauxList();
   const lsToken = localStorage.getItem('gh_token');
   const ssToken = sessionStorage.getItem('gh_token');
@@ -2359,8 +2438,9 @@ function buildQuestion() {
   }
 
   const soustag = getSoustag();
+  const competence = document.getElementById('q-competence')?.value || '';
   const updatedAt = new Date().toISOString();
-  return { id, niveau, oi, periode, points, ...(soustag ? { soustag } : {}), enonce, aspects, documents, reponse, guide, updatedAt };
+  return { id, niveau, oi, ...(competence ? { competence } : {}), periode, points, ...(soustag ? { soustag } : {}), enonce, aspects, documents, reponse, guide, updatedAt };
 }
 
 function buildReglette(id) {
@@ -2755,12 +2835,15 @@ function resetForm(keepId=false) {
   const newRadio = document.querySelector('input[name="mode"][value="new"]');
   if(newRadio) { newRadio.checked = true; document.getElementById('edit-select-wrap').style.display='none'; }
   if(!keepId) document.getElementById('q-id').value = '';
-  document.getElementById('q-niveau').value = '4';
-  document.getElementById('q-oi').value = document.getElementById('q-oi').options[0].value;
+  const nivOptions = document.getElementById('q-niveau').options;
+  if(nivOptions.length) document.getElementById('q-niveau').value = nivOptions[nivOptions.length-1].value;
+  document.getElementById('q-oi').value = document.getElementById('q-oi').options[0]?.value || '';
+  const compSel = document.getElementById('q-competence');
+  if(compSel && compSel.options.length) compSel.value = compSel.options[0].value;
   updatePresets();
   updateSoustag();
   setSoustag('');
-  document.getElementById('q-periode').value = document.getElementById('q-periode').options[0].value;
+  document.getElementById('q-periode').value = document.getElementById('q-periode').options[0]?.value || '';
   document.getElementById('q-enonce').value = '';
   updatePeriodes();
   document.getElementById('docs-list').innerHTML = '';
@@ -2861,6 +2944,25 @@ function renderDashboard() {
     </div>`;
   }).join('');
 
+  // Compétence distribution (dimension indépendante de l'OI)
+  const compMap = {};
+  currentQuestions.forEach(q => {
+    if(!q.competence) return;
+    if(!compMap[q.competence]) compMap[q.competence] = { q:0, pts:0 };
+    compMap[q.competence].q++;
+    compMap[q.competence].pts += q.points||0;
+  });
+  const compList = Object.entries(compMap).sort((a,b) => a[0].localeCompare(b[0], 'fr'));
+  const maxCompQ = Math.max(...compList.map(e => e[1].q), 1);
+  const compRows = compList.map(([comp, val]) => {
+    const pct = Math.round(val.q / maxCompQ * 100);
+    return `<div class="dash-oi-row">
+      <div class="dash-oi-label" title="${escHtml(comp)}">${escHtml(comp)}</div>
+      <div class="dash-bar-wrap" style="max-width:120px"><div class="dash-bar" style="width:${pct}%;background:#888"></div></div>
+      <div class="dash-oi-count">${val.q}q · ${val.pts}pts</div>
+    </div>`;
+  }).join('');
+
   const dashCols = niveaux.map((niv, i) => {
     const total = currentQuestions.filter(q => String(q.niveau) === niv.num);
     const collapsed = i > 0; // seul le 1er niveau est déplié par défaut
@@ -2879,6 +2981,9 @@ function renderDashboard() {
     <hr class="dash-divider">
     <div class="dash-niv-title">Par opération intellectuelle</div>
     ${oiRows}
+    <hr class="dash-divider">
+    <div class="dash-niv-title">Par compétence</div>
+    ${compRows}
   `;
 }
 

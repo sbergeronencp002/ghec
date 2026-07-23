@@ -110,6 +110,12 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
     </select>
   </div>
   <div class="rv-field">
+    <label for="f-competence">Compétence</label>
+    <select id="f-competence" onchange="rvApplyFilters()">
+      <option value="">Toutes</option>
+    </select>
+  </div>
+  <div class="rv-field">
     <label for="f-periode">Société</label>
     <select id="f-periode" onchange="rvOnPeriodeChange()">
       <option value="">Toutes</option>
@@ -149,6 +155,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 </div>
 
 <script src="oi-config.js?v=1"></script>
+<script src="competences.js"></script>
 <script src="questions-io.js?v=3"></script>
 <script src="contexte.js"></script>
 <script src="filters.js?v=1"></script>
@@ -345,6 +352,7 @@ const RV_FILTER_IDS = { niveau: 'f-niveau', periode: 'f-periode', aspect: 'f-asp
 
 function rvPopulateFilters() {
   const allOis = [...new Set(QUESTIONS.map(q => q.oi))].sort((a,b) => a.localeCompare(b,'fr'));
+  const allCompetences = [...new Set(QUESTIONS.map(q => q.competence).filter(Boolean))].sort((a,b) => a.localeCompare(b,'fr'));
   const aspectsByPeriode = {};
   QUESTIONS.forEach(q => {
     (q.aspects||[]).forEach(a => {
@@ -360,6 +368,7 @@ function rvPopulateFilters() {
   const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort(), 'Tous');
+  fillSelect('f-competence', allCompetences, 'Toutes');
   fillSelect('f-periode', periodes, 'Toutes');
   fillAspectSelect('f-aspect', rvAspects, periodeOrder);
   fillSelect('f-oi', allOis, 'Toutes');
@@ -387,24 +396,28 @@ function rvApplyFilters() {
   // la remet pas en arrière si l'utilisateur annule), mais la carte n'est pas régénérée.
   if(!confirmDiscardEdit()) return;
   rvEndEdit();
-  const oi      = document.getElementById('f-oi').value;
+  const oi         = document.getElementById('f-oi').value;
+  const competence = document.getElementById('f-competence').value;
   const aspect  = document.getElementById('f-aspect').value;
   const periode = document.getElementById('f-periode').value;
   const niveau  = document.getElementById('f-niveau').value;
   const search  = rvFold((document.getElementById('f-search').value || '').trim());
   const currentOi = oi;
+  const currentCompetence = competence;
 
   const filtered = [];
   const oiSet = new Set();
+  const competenceSet = new Set();
   for(const q of QUESTIONS) {
     const niveauOk  = !niveau  || String(q.niveau) === niveau;
     const periodeOk = !periode || q.periode === periode;
     const aspectOk  = !aspect  || (q.aspects||[]).some(a => a.aspect === aspect);
-    if(niveauOk && periodeOk && aspectOk) oiSet.add(q.oi);
+    if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(q.competence) competenceSet.add(q.competence); }
     if(!niveauOk || !periodeOk || !aspectOk) continue;
     if(oi && q.oi !== oi) continue;
+    if(competence && q.competence !== competence) continue;
     if(search) {
-      const idx = rvFold([q.enonce||'', q.oi||'', q.periode||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
+      const idx = rvFold([q.enonce||'', q.oi||'', q.competence||'', q.periode||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
       if(!idx.includes(search)) continue;
     }
     filtered.push(q);
@@ -421,6 +434,10 @@ function rvApplyFilters() {
   fillSelect('f-oi', relevantOis, 'Toutes');
   if(relevantOis.includes(currentOi)) document.getElementById('f-oi').value = currentOi;
 
+  const relevantCompetences = [...competenceSet].sort((a,b) => a.localeCompare(b,'fr'));
+  fillSelect('f-competence', relevantCompetences, 'Toutes');
+  if(relevantCompetences.includes(currentCompetence)) document.getElementById('f-competence').value = currentCompetence;
+
   rvList = filtered;
   rvIndex = 0;
   const totalPts = filtered.reduce((s,q) => s+(q.points||0), 0);
@@ -432,7 +449,7 @@ function rvApplyFilters() {
 }
 
 function rvResetFilters() {
-  ['f-niveau','f-periode','f-aspect','f-oi','f-search'].forEach(id => {
+  ['f-niveau','f-periode','f-aspect','f-oi','f-competence','f-search'].forEach(id => {
     const el = document.getElementById(id);
     if(el) el.value = '';
   });
@@ -676,6 +693,7 @@ function rvBuildCardHtml(q) {
   html += `<span class="q-oi-badge" style="color:${st.color};background:${st.bg}">${rvEscLine(q.oi)}</span>`;
   html += `<span class="rv-id">${rvEscLine(q.id)} · ${rvEscLine(q.periode||'')}</span>`;
   html += '</div>';
+  if(q.competence) html += `<div class="rv-aspect" style="font-size:.78rem">${rvEscLine(q.competence)}</div>`;
   if(aspects) html += `<div class="rv-aspect">${rvEscLine(aspects)}</div>`;
   html += `<div class="rv-points">${q.points}&thinsp;pt${q.points > 1 ? 's' : ''}</div>`;
 

@@ -142,7 +142,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les raquettes.\nLe toboggan.",
- updatedAt: "2026-07-23T14:24:10.956Z"
+ updatedAt: "2026-07-23T14:33:22.974Z"
 },
 {
  id: "Q9",

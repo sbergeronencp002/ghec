@@ -8,7 +8,8 @@ const REGLETTES = {
 "Q7": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit les faits. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q8": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q9": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
-"Q10": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
+"Q10": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
+"Q11": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
 }
 
 const IMAGE_DB = {
@@ -170,5 +171,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Algonquiens utilisent des raquettes pour marcher dans la neige et un toboggan pour transporter leurs biens lorsqu'ils se déplacent.",
  updatedAt: "2026-07-23T14:29:51.744Z"
+},
+{
+ id: "Q11",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 3,
+ enonce: "Explique pourquoi les Iroquoiens peuvent vivre au même endroit toute l'année.",
+ aspects: [{aspect: "Territoire"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les Iroquoiens peuvent vivre au même endroit toute l'année parce qu'ils cultivent du maïs, des haricots et des courges pour se nourrir.",
+ updatedAt: "2026-07-23T14:31:48.722Z"
 }
 ]

@@ -21,7 +21,8 @@ const REGLETTES = {
 "Q20": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q21": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q22": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q23": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
+"Q23": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
+"Q24": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -43,7 +44,8 @@ const IMAGE_DB = {
 "chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800},
 "chaman_ceremonie_2.jpg": {src: "images/chaman_ceremonie_2.jpg", w: 1200, h: 800},
 "chaman_ceremonie_3.jpg": {src: "images/chaman_ceremonie_3.jpg", w: 1200, h: 800},
-"iroquoien_paniers.jpg": {src: "images/iroquoien_paniers.jpg", w: 1200, h: 800}
+"iroquoien_paniers.jpg": {src: "images/iroquoien_paniers.jpg", w: 1200, h: 800},
+"iroquoiens_poterie.jpg": {src: "images/iroquoiens_poterie.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -393,5 +395,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens fabriquent des paniers pour transporter, conserver et ranger leurs récoltes et d'autres ressources.",
  updatedAt: "2026-07-23T18:55:44.146Z"
+},
+{
+ id: "Q24",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À partir du document A, nomme l'activité représentée.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_poterie.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La poterie.",
+ updatedAt: "2026-07-23T18:56:47.904Z"
 }
 ]

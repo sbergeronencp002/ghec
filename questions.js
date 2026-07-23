@@ -15,7 +15,7 @@ const IMAGE_DB = {
 "village_iroquoien_1500_1.jpg": {src: "images/village_iroquoien_1500_1.jpg", w: 1200, h: 800},
 "campement_algonquien_2.jpg": {src: "images/campement_algonquien_2.jpg", w: 1200, h: 755},
 "iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg", w: 1200, h: 841},
-"algonquiens_deplacements.jpg": {src: "images/algonquiens_deplacements.jpg", w: 1200, h: 783}
+"algonquiens_deplacements_1.jpg": {src: "images/algonquiens_deplacements_1.jpg", w: 1200, h: 783}
 }
 
 const QUESTIONS = [
@@ -134,7 +134,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un objet qui aident les Algonquiens à se déplacer en hiver.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les raquettes.\nLe toboggan.",
  updatedAt: "2026-07-23T14:24:10.956Z"

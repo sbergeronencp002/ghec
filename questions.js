@@ -489,9 +489,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une ressource utilisée par les Iroquoiens pour fabriquer des pots en terre cuite.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "L'argile.\nLa terre.",
- updatedAt: "2026-07-23T19:44:12.452Z"
+ updatedAt: "2026-07-23T19:44:52.264Z"
 }
 ]

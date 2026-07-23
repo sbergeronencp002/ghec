@@ -248,6 +248,7 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
+ soustag: "Mettre en relation des faits - 4",
  enonce: "Les documents A à D présentent différentes ressources échangées par les nations iroquoiennes vers 1500. Associez chaque document à l'endroit correspondant.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [
@@ -258,7 +259,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Ressources produites", "Ressources recherchées"], double: true},
  guide: {type: "grille", entetes: ["Ressources produites", "Ressources recherchées"], rangees: [["A et D", "B et C"]]},
- updatedAt: "2026-07-23T16:50:42.830Z"
+ updatedAt: "2026-07-23T16:51:38.199Z"
 },
 {
  id: "Q16",

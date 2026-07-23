@@ -23,7 +23,8 @@ const REGLETTES = {
 "Q22": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q23": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q24": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q25": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
+"Q25": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
+"Q26": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
 }
 
 const IMAGE_DB = {
@@ -47,7 +48,8 @@ const IMAGE_DB = {
 "chaman_ceremonie_3.jpg": {src: "images/chaman_ceremonie_3.jpg", w: 1200, h: 800},
 "iroquoien_paniers.jpg": {src: "images/iroquoien_paniers.jpg", w: 1200, h: 800},
 "iroquoiens_poterie.jpg": {src: "images/iroquoiens_poterie.jpg", w: 1200, h: 800},
-"paniers_tisses.jpg": {src: "images/paniers_tisses.jpg", w: 1200, h: 800}
+"paniers_tisses.jpg": {src: "images/paniers_tisses.jpg", w: 1200, h: 800},
+"poterie.jpg": {src: "images/poterie.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -426,5 +428,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens fabriquent des pots en terre cuite pour faire cuire ou conserver ou transporter leurs aliments.",
  updatedAt: "2026-07-23T18:59:46.526Z"
+},
+{
+ id: "Q26",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 3,
+ enonce: "Explique pourquoi les Iroquoiens fabriquent eux-mêmes leurs objets.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les Iroquoiens fabriquent eux-mêmes leurs objets pour répondre à leurs besoins en utilisant les ressources de la nature.",
+ updatedAt: "2026-07-23T19:02:20.073Z"
 }
 ]

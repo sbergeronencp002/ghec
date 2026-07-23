@@ -49,7 +49,8 @@ const IMAGE_DB = {
 "iroquoien_paniers.jpg": {src: "images/iroquoien_paniers.jpg", w: 1200, h: 800},
 "iroquoiens_poterie.jpg": {src: "images/iroquoiens_poterie.jpg", w: 1200, h: 800},
 "paniers_tisses.jpg": {src: "images/paniers_tisses.jpg", w: 1200, h: 800},
-"poterie.jpg": {src: "images/poterie.jpg", w: 1200, h: 800}
+"poterie.jpg": {src: "images/poterie.jpg", w: 1200, h: 800},
+"poterie_vannerie.jpg": {src: "images/poterie_vannerie.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -438,9 +439,9 @@ const QUESTIONS = [
  points: 3,
  enonce: "Explique pourquoi les Iroquoiens fabriquent eux-mêmes leurs objets.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens fabriquent eux-mêmes leurs objets pour répondre à leurs besoins en utilisant les ressources de la nature.",
- updatedAt: "2026-07-23T19:02:20.073Z"
+ updatedAt: "2026-07-23T19:21:56.814Z"
 }
 ]

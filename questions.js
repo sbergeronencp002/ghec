@@ -52,7 +52,8 @@ const IMAGE_DB = {
 "paniers_tisses.jpg": {src: "images/paniers_tisses.jpg", w: 1200, h: 800},
 "poterie.jpg": {src: "images/poterie.jpg", w: 1200, h: 800},
 "poterie_vannerie.jpg": {src: "images/poterie_vannerie.jpg", w: 1200, h: 800},
-"poterie_cuisson.jpg": {src: "images/poterie_cuisson.jpg", w: 1200, h: 960}
+"poterie_cuisson.jpg": {src: "images/poterie_cuisson.jpg", w: 1200, h: 960},
+"ressources_poterie_vannerie.jpg": {src: "images/ressources_poterie_vannerie.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -367,12 +368,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 3,
- enonce: "Explique pourquoi les Iroquoiens utilisent des ressources de la nature pour fabriquer leurs paniers.",
+ enonce: "Explique pourquoi les Iroquoiens utilisent des ressources de la nature pour fabriquer leurs objets.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_paniers.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens utilisent des ressources de la nature pour fabriquer leurs paniers parce qu'ils trouvent les plantes et les fibres végétales dont ils ont besoin dans leur environnement ou dans la nature.",
- updatedAt: "2026-07-23T18:51:14.920Z"
+ guide: "Les Iroquoiens utilisent des ressources de la nature pour fabriquer leurs objets parce qu'ils trouvent les plantes ou les fibres végétales ou l'argile dont ils ont besoin dans leur environnement ou dans la nature.",
+ updatedAt: "2026-07-23T19:38:51.798Z"
 },
 {
  id: "Q22",

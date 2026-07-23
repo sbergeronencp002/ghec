@@ -180,10 +180,10 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 3,
  enonce: "Explique pourquoi les Iroquoiens peuvent vivre au même endroit toute l'année.",
- aspects: [{aspect: "Territoire"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens peuvent vivre au même endroit toute l'année parce qu'ils cultivent du maïs, des haricots et des courges pour se nourrir.",
- updatedAt: "2026-07-23T14:31:48.722Z"
+ updatedAt: "2026-07-23T14:55:00.598Z"
 }
 ]

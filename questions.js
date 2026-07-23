@@ -316,7 +316,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones participent aux cérémonies pour remercier les esprits de la nature ou demander leur aide ou pratiquer leur religion.",
- updatedAt: "2026-07-23T18:17:28.856Z"
+ updatedAt: "2026-07-23T18:40:35.739Z"
 },
 {
  id: "Q19",

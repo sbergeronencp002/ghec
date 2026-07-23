@@ -222,7 +222,7 @@ async function loadQuestions() {
 function updateFavoriOptions() {
   const periode = document.getElementById('ex-periode').value;
   const sel = document.getElementById('ex-favori');
-  const availableOis = new Set(QUESTIONS.filter(q => q.periode === periode).map(q => q.oi));
+  const availableOis = new Set(QUESTIONS.filter(q => (q.periodes||[]).includes(periode)).map(q => q.oi));
   [...sel.options].forEach(opt => {
     if (!opt.value) return; // « Aucune préférence » toujours disponible
     const available = availableOis.has(opt.value);
@@ -349,7 +349,7 @@ function exSwapOne(qId) {
   others.forEach(q => { otherOiCounts[q.oi] = (otherOiCounts[q.oi] || 0) + 1; });
 
   const candidates = QUESTIONS.filter(q =>
-    q.periode === EX_PERIODE &&
+    (q.periodes||[]).includes(EX_PERIODE) &&
     q.id !== old.id &&
     !usedIds.has(q.id) &&
     exAspectsOf(q).slice().sort().join('|') === oldAspects.join('|') &&

@@ -382,7 +382,7 @@ function sizeBadgeHtml(img) {
 
 function tileHtml(q) {
   const short = OI_SHORT[q.oi] || q.oi;
-  const periodeShort = q.periode || '';
+  const periodeShort = (q.periodes||[]).join(' + ');
   const enonce = (q.enonce || '').replace(/\*\*/g, '');
   const enonceCut = enonce.length > 120 ? enonce.substring(0,120) + '…' : enonce;
   const imgsHtml = q._imgs.map(img => {
@@ -393,7 +393,7 @@ function tileHtml(q) {
       ${shared ? `<span class="share-badge">${imgMap[img].length}</span>` : ''}
     </div>`;
   }).join('');
-  return `<div class="tile" data-oi="${escH(q.oi)}" data-text="${escH(q.id+' '+q.oi+' '+(q.periode||'')+' '+enonce.toLowerCase())}">
+  return `<div class="tile" data-oi="${escH(q.oi)}" data-text="${escH(q.id+' '+q.oi+' '+((q.periodes||[]).join(' + '))+' '+enonce.toLowerCase())}">
   <div class="tile-top"><span class="tile-id">${escH(q.id)}</span><span class="tile-oi-tag" style="${oiStyleAttr(q.oi)}">${escH(short)}</span></div>
   <div class="tile-periode">${escH(periodeShort)}</div>
   <div class="tile-enonce">${escH(enonceCut)}</div>
@@ -603,7 +603,7 @@ function showImg(img) {
   const qhtml = ids.map(id => {
     const q = qById[id];
     const short = OI_SHORT[q.oi] || q.oi;
-    const per = q.periode || '';
+    const per = (q.periodes||[]).join(' + ');
     const en = (q.enonce || '').replace(/\*\*/g, '');
     const sub = soustitreFor(q, img);
     const subHtml = sub

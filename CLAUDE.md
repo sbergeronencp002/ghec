@@ -11,18 +11,32 @@ pédagogique (`oi-config.js`, `competences.js`, `contexte.js`) sont gérés via 
 « ⚙️ Configuration du programme » d'`admin.html`, sans toucher au code.
 
 **Terminologie** : le champ que HQC appelait « période » s'appelle **« Société »** dans
-toute la présentation GHEC (labels, filtres, messages). Le champ interne reste
-`periode`/`PERIODES_PAR_NIVEAU`/`ASPECTS_PAR_PERIODE` (aucun renommage de code) — seule
-la présentation change. Ne jamais réintroduire le mot « Période » dans un label
-utilisateur sans consulter l'enseignant d'abord.
+toute la présentation GHEC (labels, filtres, messages). `PERIODES_PAR_NIVEAU`/
+`ASPECTS_PAR_PERIODE` gardent leur nom de code (aucun renommage) — seule la présentation
+change. Ne jamais réintroduire le mot « Période » dans un label utilisateur sans
+consulter l'enseignant d'abord.
 
-**Deux dimensions de classement indépendantes par question** : chaque question a une
-**OI** (opération intellectuelle — 8 choix, détermine réglette/couleur/réponse par
-défaut, voir `oi-config.js`) ET une **Compétence** (3 choix, simple étiquette de
-filtrage sans réglette ni couleur associée, voir `competences.js`) — deux champs
-séparés dans le formulaire (`q-oi` et `q-competence`), deux filtres séparés sur le site
-public et dans revision.html. Ne jamais fusionner les deux ni supposer qu'ils se
-correspondent un-à-un.
+**Une question peut avoir 1 ou 2 sociétés** (`q.periodes`, **tableau**, jamais une
+chaîne seule — contrairement à hqccssbf où `periode` était singulier). 1 société pour
+une question « simple » (ex. compétence « Lire l'organisation du territoire ») ; 2 pour
+une question de comparaison (ex. « Interpréter le changement » : même société à deux
+époques ; « S'ouvrir à la diversité » : deux sociétés différentes à la même époque).
+Toute la présentation reste néanmoins des **filtres à choix unique** (`<select>` Société
+sur index.html/revision.html/examen.html) : une question de comparaison apparaît sous
+CHACUNE de ses 2 sociétés dans ces filtres (logique `.includes()`, comme le filtre
+Aspect le fait déjà avec `q.aspects`). Ne jamais réintroduire un champ `periode` singulier
+— toute la chaîne (admin.html, app.js, revision.html, documents.html, examen.html/
+examen-gen.js, worker/index.js, tools/apply-mutation.mjs, tools/validate-questions.mjs,
+questions-io.js) a été adaptée pour lire/écrire `periodes` (tableau).
+
+**Trois dimensions de classement indépendantes par question** : **OI** (opération
+intellectuelle — 8 choix, détermine réglette/couleur/réponse par défaut, voir
+`oi-config.js`), **Compétence** (3 choix, simple étiquette de filtrage sans réglette ni
+couleur, voir `competences.js`), et **Société(s)** (1 ou 2, voir ci-dessus) — trois
+champs séparés dans le formulaire (`q-oi`, `q-competence`, cases à cocher
+`.q-periode-cb`), filtrés indépendamment sur le site public et dans revision.html, dans
+l'ordre Niveau → Compétence → Société → Aspect → OI. Ne jamais fusionner ces dimensions
+ni supposer qu'elles se correspondent un-à-un.
 
 ## Règles de workflow — autorisation permanente
 
@@ -55,7 +69,7 @@ un commit git risquerait le même genre d'écrasement silencieux.
 ## État actuel : GHEC 3 configuré, questions à saisir
 
 `oi-config.js` (8 OI), `competences.js` (3 compétences), `contexte.js` (niveau 3 : 4
-sociétés, 9 aspects communs à toutes) sont déjà remplis — voir la section Configuration
+sociétés, 10 aspects communs à toutes) sont déjà remplis — voir la section Configuration
 d'`admin.html`. `reglettes.js` (`REGLETTES_PRESET = {}`) et
 `questions.js`/`questions-index.js` sont encore vides : aucune question saisie pour
 l'instant. Les niveaux 4/5/6 restent à ajouter (mêmes compétences/OI, nouvelles
@@ -141,14 +155,14 @@ config en parallèle, il faudrait durcir cette fonction sur le même modèle que
 ```js
 {
   id: 'Q1',
-  niveau: '3',                        // clé de PERIODES_PAR_NIVEAU (string)
+  niveau: 3,                           // clé de PERIODES_PAR_NIVEAU (nombre, ex. worker/index.js le valide comme entier)
   oi: 'Nom exact d'une clé de OI_CONFIG',            // 8 choix, voir oi-config.js
   competence: 'Nom exact d'une entrée de COMPETENCE_LIST',  // optionnel, 3 choix, voir competences.js
-  periode: 'Nom exact d'une société de PERIODES_PAR_NIVEAU[niveau]',   // champ interne = "société" à l'affichage
+  periodes: ['Nom d'une société de PERIODES_PAR_NIVEAU[niveau]'],  // TABLEAU — 1 société, ou 2 pour une comparaison
   points: 2,
   soustag: '...',                      // optionnel, doit être dans OI_CONFIG[oi].soustags
   enonce: 'Texte avec **gras** et • puces',
-  aspects: [{ aspect: 'Nom exact d'un aspect de ASPECTS_PAR_PERIODE[periode]' }],
+  aspects: [{ aspect: 'Nom exact d'un aspect présent dans ASPECTS_PAR_PERIODE[une des periodes]' }],
   documents: [{
     type: 'textes',
     cols: [{ titre: '...', soustitre: '', texte: '...', /* ou ref: 'image.png' */ auteur: '', source: '' }]
@@ -179,8 +193,9 @@ const COMPETENCE_LIST = ["Lire l'organisation du territoire", 'Interpréter le c
 PERIODES_PAR_NIVEAU = { '3': ['Les Iroquoiens vers 1500', 'Les Algonquiens vers 1500', ...] }
 ASPECTS_PAR_PERIODE = { 'Les Iroquoiens vers 1500': ['Territoire', 'Personnages', ...], ... }
 ```
-Niveau 3 : 4 sociétés, 9 aspects communs à toutes (Territoire, Personnages, Population,
-Groupes sociaux, Vie quotidienne, Culture, Commerce, Transport, Gouvernement).
+Niveau 3 : 4 sociétés, 10 aspects communs à toutes (Territoire, Personnages, Population,
+Groupes sociaux, Vie quotidienne, Culture, Activités économiques, Communication,
+Transport, Gouvernement).
 
 ### Réglette (`REGLETTES['Q1']`)
 ```js

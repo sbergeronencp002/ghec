@@ -23,8 +23,8 @@ function validateQuestionPayload(q) {
   if (typeof q !== 'object' || q === null) return 'question invalide';
   if (typeof q.id !== 'string' || !/^Q\d+$/.test(q.id)) return 'question.id invalide (attendu "Q" suivi de chiffres)';
   if (typeof q.oi !== 'string' || !q.oi) return 'question.oi manquant';
-  if (q.niveau !== 3 && q.niveau !== 4) return 'question.niveau invalide (attendu 3 ou 4)';
-  if (typeof q.periode !== 'string' || !q.periode) return 'question.periode manquant';
+  if (typeof q.niveau !== 'number' || !Number.isInteger(q.niveau) || q.niveau < 1) return 'question.niveau invalide (entier positif attendu)';
+  if (!Array.isArray(q.periodes) || !q.periodes.length || q.periodes.some(p => typeof p !== 'string' || !p)) return 'question.periodes manquant (tableau de 1 ou 2 sociétés)';
   if (typeof q.enonce !== 'string') return 'question.enonce manquant';
   if (q.documents !== undefined && !Array.isArray(q.documents)) return 'question.documents doit être un tableau';
   if (q.aspects !== undefined && !Array.isArray(q.aspects)) return 'question.aspects doit être un tableau';

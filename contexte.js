@@ -5,8 +5,8 @@ const PERIODES_PAR_NIVEAU = {
 }
 
 const ASPECTS_PAR_PERIODE = {
-"Les Iroquoiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Commerce", "Transport", "Gouvernement"],
-"Les Algonquiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Commerce", "Transport", "Gouvernement"],
-"Les Incas vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Commerce", "Transport", "Gouvernement"],
-"Les Iroquoiens vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Commerce", "Transport", "Gouvernement"]
+"Les Iroquoiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
+"Les Algonquiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
+"Les Incas vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
+"Les Iroquoiens vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"]
 }

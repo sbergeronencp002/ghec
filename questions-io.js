@@ -56,7 +56,7 @@ function ensureImageDbComplete(questions, imageDb) {
 
 // Génère questions-index.js : version allégée de QUESTIONS (champs grille seulement).
 // Utilisé par index.html pour le chargement initial rapide (~200 Ko vs ~900 Ko).
-const _INDEX_FIELDS = ['id','niveau','oi','competence','periode','points','soustag','aspects','enonce','updatedAt'];
+const _INDEX_FIELDS = ['id','niveau','oi','competence','periodes','points','soustag','aspects','enonce','updatedAt'];
 function generateIndexJs(questions) {
   const slim = questions.map(q => {
     const s = {};

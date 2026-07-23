@@ -90,18 +90,23 @@ for (const q of QUESTIONS) {
   }
 
   const niv = String(q.niveau);
+  const periodes = q.periodes || [];
+  if (!periodes.length) err(`${tag} : aucune société (periodes vide ou absent)`);
+  if (periodes.length > 2) warn(`${tag} : plus de 2 sociétés (${periodes.length}) — attendu 1, ou 2 pour une comparaison`);
   if (!PERIODES_PAR_NIVEAU[niv]) {
     const attendus = Object.keys(PERIODES_PAR_NIVEAU).join(' ou ') || '(aucun niveau configuré)';
     err(`${tag} : niveau invalide « ${q.niveau} » (attendu ${attendus})`);
-  } else if (!PERIODES_PAR_NIVEAU[niv].includes(q.periode)) {
-    err(`${tag} : période « ${q.periode} » absente du niveau ${niv}`);
+  } else {
+    for (const p of periodes) {
+      if (!PERIODES_PAR_NIVEAU[niv].includes(p)) err(`${tag} : société « ${p} » absente du niveau ${niv}`);
+    }
   }
 
-  // Aspects : doivent appartenir à la période (avertissement, non bloquant).
-  const validAspects = ASPECTS_PAR_PERIODE[q.periode] || [];
+  // Aspects : doivent appartenir à au moins une des sociétés de la question (avertissement, non bloquant).
+  const validAspects = new Set(periodes.flatMap(p => ASPECTS_PAR_PERIODE[p] || []));
   for (const a of q.aspects || []) {
-    if (a.aspect && !validAspects.includes(a.aspect)) {
-      warn(`${tag} : aspect « ${a.aspect} » non listé pour ${q.periode}`);
+    if (a.aspect && !validAspects.has(a.aspect)) {
+      warn(`${tag} : aspect « ${a.aspect} » non listé pour ${periodes.join(' + ') || '(aucune société)'}`);
     }
   }
 

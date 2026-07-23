@@ -355,16 +355,18 @@ function rvPopulateFilters() {
   const allCompetences = [...new Set(QUESTIONS.map(q => q.competence).filter(Boolean))].sort((a,b) => a.localeCompare(b,'fr'));
   const aspectsByPeriode = {};
   QUESTIONS.forEach(q => {
-    (q.aspects||[]).forEach(a => {
-      if(!aspectsByPeriode[q.periode]) aspectsByPeriode[q.periode] = new Set();
-      aspectsByPeriode[q.periode].add(a.aspect);
+    (q.periodes||[]).forEach(p => {
+      (q.aspects||[]).forEach(a => {
+        if(!aspectsByPeriode[p]) aspectsByPeriode[p] = new Set();
+        aspectsByPeriode[p].add(a.aspect);
+      });
     });
   });
   rvAspects = periodeOrder.flatMap(p => {
     if(!aspectsByPeriode[p]) return [];
     return [...aspectsByPeriode[p]].sort((a,b) => a.localeCompare(b,'fr')).map(a => ({aspect:a, periode:p}));
   });
-  const periodesPresentes = new Set(QUESTIONS.map(q => q.periode));
+  const periodesPresentes = new Set(QUESTIONS.flatMap(q => q.periodes||[]));
   const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort(), 'Tous');
@@ -410,22 +412,23 @@ function rvApplyFilters() {
   const competenceSet = new Set();
   for(const q of QUESTIONS) {
     const niveauOk  = !niveau  || String(q.niveau) === niveau;
-    const periodeOk = !periode || q.periode === periode;
+    const periodeOk = !periode || (q.periodes||[]).includes(periode);
     const aspectOk  = !aspect  || (q.aspects||[]).some(a => a.aspect === aspect);
     if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(q.competence) competenceSet.add(q.competence); }
     if(!niveauOk || !periodeOk || !aspectOk) continue;
     if(oi && q.oi !== oi) continue;
     if(competence && q.competence !== competence) continue;
     if(search) {
-      const idx = rvFold([q.enonce||'', q.oi||'', q.competence||'', q.periode||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
+      const idx = rvFold([q.enonce||'', q.oi||'', q.competence||'', ...(q.periodes||[]), ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
       if(!idx.includes(search)) continue;
     }
     filtered.push(q);
   }
 
+  const minPeriodeIdx = q => Math.min(...(q.periodes||[]).map(p => periodeOrder.indexOf(p)).filter(i => i >= 0), Infinity);
   filtered.sort((a, b) => {
     if(a.niveau !== b.niveau) return a.niveau - b.niveau;
-    const pa = periodeOrder.indexOf(a.periode), pb = periodeOrder.indexOf(b.periode);
+    const pa = minPeriodeIdx(a), pb = minPeriodeIdx(b);
     if(pa !== pb) return pa - pb;
     return (parseInt(a.id.replace(/\D/g,''))||0) - (parseInt(b.id.replace(/\D/g,''))||0);
   });
@@ -691,7 +694,7 @@ function rvBuildCardHtml(q) {
   const aspects = (q.aspects||[]).map(a => a.aspect).join(' · ');
   let html = '<div class="rv-topline">';
   html += `<span class="q-oi-badge" style="color:${st.color};background:${st.bg}">${rvEscLine(q.oi)}</span>`;
-  html += `<span class="rv-id">${rvEscLine(q.id)} · ${rvEscLine(q.periode||'')}</span>`;
+  html += `<span class="rv-id">${rvEscLine(q.id)} · ${rvEscLine((q.periodes||[]).join(' + '))}</span>`;
   html += '</div>';
   if(q.competence) html += `<div class="rv-aspect" style="font-size:.78rem">${rvEscLine(q.competence)}</div>`;
   if(aspects) html += `<div class="rv-aspect">${rvEscLine(aspects)}</div>`;

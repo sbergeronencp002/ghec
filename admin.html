@@ -377,8 +377,8 @@ header a:hover { color: #fff; }
         </div>
       </div>
       <div class="field">
-        <label>Société</label>
-        <select id="q-periode" onchange="updateAspects()"></select>
+        <label>Société(s) <span style="font-weight:400;color:var(--ink-3)">(2 pour une question de comparaison)</span></label>
+        <div id="periodes-list" style="display:flex;flex-direction:column;gap:.3rem;margin-top:.3rem;padding:.5rem;background:var(--paper);border:1px solid var(--border);border-radius:5px;max-height:180px;overflow-y:auto"></div>
       </div>
       <div class="field">
         <label>Aspect(s)</label>
@@ -583,19 +583,29 @@ function saveWorkerSecret(s) { localStorage.setItem('workerSecret', s); }
 function updatePeriodes() {
   const niveau = document.getElementById('q-niveau').value;
   const periodes = PERIODES_PAR_NIVEAU[niveau] || [];
-  const sel = document.getElementById('q-periode');
-  sel.innerHTML = periodes.map(p => `<option value="${p}">${p}</option>`).join('');
-  if (periodes.length) sel.value = periodes[0];
+  const wrap = document.getElementById('periodes-list');
+  wrap.innerHTML = periodes.map((p,i) =>
+    `<label style="display:flex;align-items:center;gap:.5rem;font-size:.83rem;cursor:pointer">
+      <input type="checkbox" class="q-periode-cb" value="${escHtml(p)}" onchange="updateAspects();scheduleLivePreview()" style="width:auto;cursor:pointer"${i===0?' checked':''}> ${escHtml(p)}
+    </label>`
+  ).join('');
   updateAspects();
 }
 
+function getSelectedPeriodes() {
+  return [...document.querySelectorAll('.q-periode-cb:checked')].map(cb => cb.value);
+}
+
+// Union des aspects de toutes les sociétés cochées (1 ou 2 pour une comparaison) —
+// en pratique la même liste pour toutes les sociétés d'un même niveau, mais calculée
+// génériquement au cas où elle diffère un jour d'une société à l'autre.
 function updateAspects() {
-  const periode = document.getElementById('q-periode').value;
-  const aspects = ASPECTS_PAR_PERIODE[periode] || [];
+  const periodes = getSelectedPeriodes();
+  const aspects = [...new Set(periodes.flatMap(p => ASPECTS_PAR_PERIODE[p] || []))];
   const wrap = document.getElementById('aspects-list');
   wrap.innerHTML = aspects.map(a =>
     `<label style="display:flex;align-items:center;gap:.5rem;font-size:.83rem;cursor:pointer">
-      <input type="checkbox" value="${a}" style="width:auto;cursor:pointer"> ${a}
+      <input type="checkbox" value="${escHtml(a)}" style="width:auto;cursor:pointer"> ${escHtml(a)}
     </label>`
   ).join('');
 }
@@ -833,7 +843,7 @@ function filterEditList() {
     if(niveau && String(q.niveau) !== niveau) return false;
     if(oi     && q.oi !== oi) return false;
     if(search) {
-      const hay = fold([q.id, q.oi, q.periode, q.enonce||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
+      const hay = fold([q.id, q.oi, ...(q.periodes||[]), q.enonce||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
       if(!hay.includes(search)) return false;
     }
     return true;
@@ -870,6 +880,7 @@ function filterEditList() {
     const isSelected = q.id === editingId;
     const isFocused  = i === editFocusIdx;
     const enonce = (q.enonce||'').replace(/\*\*/g,'').slice(0, 90) + ((q.enonce||'').length > 90 ? '…' : '');
+    const periodesTxt = (q.periodes||[]).join(' + ');
     return `<div class="edit-result-card${isSelected ? ' selected' : ''}${isFocused ? ' focused' : ''}"
       data-idx="${i}" data-id="${q.id}" onclick="loadQuestion('${q.id}')" onmouseenter="editFocusIdx=${i}">
       <div style="min-width:0;flex:1">
@@ -878,7 +889,7 @@ function filterEditList() {
           &nbsp;—&nbsp;${highlight(q.oi, search)}
         </div>
         <div class="edit-card-enonce">${highlight(enonce, search)}</div>
-        <div class="edit-card-sub">Niv.${q.niveau} · ${highlight(q.periode, search)} · ${highlight(aspects, search)}</div>
+        <div class="edit-card-sub">Niv.${q.niveau} · ${highlight(periodesTxt, search)} · ${highlight(aspects, search)}</div>
       </div>
     </div>`;
   }).join('');
@@ -944,7 +955,7 @@ function loadQuestion(id) {
     selBar.style.display = '';
     const aspects = (q.aspects||[]).map(a=>a.aspect).join(' · ');
     document.getElementById('edit-selected-label').textContent =
-      `${q.id} — ${q.oi} · Niv.${q.niveau} · ${q.periode}`;
+      `${q.id} — ${q.oi} · Niv.${q.niveau} · ${(q.periodes||[]).join(' + ')}`;
   }
   // Mettre à jour la sélection visuellement sans re-rendre toute la liste
   document.querySelectorAll('#edit-results .edit-result-card').forEach(el => {
@@ -955,7 +966,8 @@ function loadQuestion(id) {
   document.getElementById('next-id-badge').textContent = q.id;
   document.getElementById('q-niveau').value = String(q.niveau);
   updatePeriodes();
-  document.getElementById('q-periode').value = q.periode;
+  const periodeValues = new Set(q.periodes||[]);
+  document.querySelectorAll('.q-periode-cb').forEach(cb => { cb.checked = periodeValues.has(cb.value); });
   updateAspects();
   const aspectValues = new Set((q.aspects||[]).map(a=>a.aspect));
   document.querySelectorAll('#aspects-list input[type=checkbox]').forEach(cb => { cb.checked = aspectValues.has(cb.value); });
@@ -2313,7 +2325,7 @@ function buildQuestion() {
   const id = document.getElementById('q-id').value.trim();
   const niveau = parseInt(document.getElementById('q-niveau').value);
   const oi = document.getElementById('q-oi').value;
-  const periode = document.getElementById('q-periode').value;
+  const periodes = getSelectedPeriodes();
   const enonce = document.getElementById('q-enonce').value.trim();
   const aspects = [...document.querySelectorAll('#aspects-list input[type=checkbox]:checked')]
     .map(cb => ({ aspect: cb.value }));
@@ -2440,7 +2452,7 @@ function buildQuestion() {
   const soustag = getSoustag();
   const competence = document.getElementById('q-competence')?.value || '';
   const updatedAt = new Date().toISOString();
-  return { id, niveau, oi, ...(competence ? { competence } : {}), periode, points, ...(soustag ? { soustag } : {}), enonce, aspects, documents, reponse, guide, updatedAt };
+  return { id, niveau, oi, ...(competence ? { competence } : {}), periodes, points, ...(soustag ? { soustag } : {}), enonce, aspects, documents, reponse, guide, updatedAt };
 }
 
 function buildReglette(id) {
@@ -2468,8 +2480,10 @@ const VALIDATION_RULES = [
     check: () => !!document.getElementById('q-id').value.trim() },
   { message: 'Énoncé vide',
     check: () => !!document.getElementById('q-enonce').value.trim() },
-  { message: 'Société non sélectionnée',
-    check: () => !!document.getElementById('q-periode').value },
+  { message: 'Aucune société sélectionnée',
+    check: () => getSelectedPeriodes().length > 0 },
+  { message: 'Maximum 2 sociétés par question',
+    check: () => getSelectedPeriodes().length <= 2 },
   { message: 'Aucun aspect sélectionné',
     check: () => document.querySelectorAll('#aspects-list input[type=checkbox]:checked').length > 0 },
   { message: 'Image de réponse non sélectionnée',
@@ -2636,7 +2650,7 @@ async function publier() {
       // à questions-index.js (chargé par index.html au démarrage) — le publier nous-mêmes ici,
       // sinon la grille publique diverge silencieusement de questions.js indéfiniment.
       const idxToken = getToken();
-      if(idxToken) publishIndex(idxToken, editingId ? `Modifier ${q.id} — ${q.oi}` : `Ajouter ${q.id} — ${q.oi} (${q.periode})`);  // fire-and-forget
+      if(idxToken) publishIndex(idxToken, editingId ? `Modifier ${q.id} — ${q.oi}` : `Ajouter ${q.id} — ${q.oi} (${(q.periodes||[]).join(' + ')})`);  // fire-and-forget
 
       document.getElementById('q-id').value = data.nextId;
       document.getElementById('next-id-badge').textContent = data.nextId;
@@ -2659,7 +2673,7 @@ async function publier() {
       try {
         const q2 = buildQuestion();
         const r2 = buildReglette(q2.id) ?? currentReglettes[q2.id] ?? { oi: q2.oi, colonnes:[], niveaux:[] };
-        const cm = editingId ? `Modifier ${q2.id} — ${q2.oi}` : `Ajouter ${q2.id} — ${q2.oi} (${q2.periode})`;
+        const cm = editingId ? `Modifier ${q2.id} — ${q2.oi}` : `Ajouter ${q2.id} — ${q2.oi} (${(q2.periodes||[]).join(' + ')})`;
         await publierViaDispatch(token, 'upsert', q2, r2, editingId, cm, btn, status);
         await fetchFreshState(token);
         publishIndex(token, cm);  // fire-and-forget — apply-mutation.mjs ne touche pas questions-index.js
@@ -2731,7 +2745,7 @@ async function publier() {
     q.documents.forEach(d => d.cols?.forEach(c => { if(c.ref) refsUsed.add(c.ref); }));
     if(q.reponse?.ref) refsUsed.add(q.reponse.ref);
 
-    const commitMsg = editingId ? `Modifier ${q.id} — ${q.oi}` : `Ajouter ${q.id} — ${q.oi} (${q.periode})`;
+    const commitMsg = editingId ? `Modifier ${q.id} — ${q.oi}` : `Ajouter ${q.id} — ${q.oi} (${(q.periodes||[]).join(' + ')})`;
 
     await putQuestionsJsWithRetry(token, commitMsg, () => {
       if(editingId) {
@@ -2843,7 +2857,6 @@ function resetForm(keepId=false) {
   updatePresets();
   updateSoustag();
   setSoustag('');
-  document.getElementById('q-periode').value = document.getElementById('q-periode').options[0]?.value || '';
   document.getElementById('q-enonce').value = '';
   updatePeriodes();
   document.getElementById('docs-list').innerHTML = '';
@@ -2883,7 +2896,7 @@ function renderDashboard() {
 
   // Répartition par OI pour une période donnée (dépliée au clic), triée par nombre
   function periodeDetailHtml(periode, color) {
-    const inP = currentQuestions.filter(x => x.periode === periode);
+    const inP = currentQuestions.filter(x => (x.periodes||[]).includes(periode));
     if(!inP.length) {
       return '<div class="dash-period-detail" style="display:none"><div class="dash-sub-row"><span class="dash-sub-label" style="font-style:italic;color:var(--ink-3)">Aucune question</span></div></div>';
     }
@@ -2905,8 +2918,8 @@ function renderDashboard() {
   function barRows(list, color) {
     const counts = list.map(p => ({
       p,
-      q: currentQuestions.filter(x => x.periode === p).length,
-      pts: currentQuestions.filter(x => x.periode === p).reduce((s,x) => s+(x.points||0), 0)
+      q: currentQuestions.filter(x => (x.periodes||[]).includes(p)).length,
+      pts: currentQuestions.filter(x => (x.periodes||[]).includes(p)).reduce((s,x) => s+(x.points||0), 0)
     }));
     // Barre = part de la période dans le total du niveau (la piste = 100 % du programme)
     const levelTotalQ = counts.reduce((s,c) => s+c.q, 0) || 1;
@@ -3031,7 +3044,7 @@ function refreshLivePreview() {
   try {
     const oi  = document.getElementById('q-oi')?.value || '';
     const niveau = document.getElementById('q-niveau')?.value || '';
-    const periode = document.getElementById('q-periode')?.value || '';
+    const periode = getSelectedPeriodes ? getSelectedPeriodes().join(' + ') : '';
     const enonce  = (document.getElementById('q-enonce')?.value || '').trim();
     const soustag = getSoustag ? getSoustag() : '';
     const points  = document.getElementById('q-points')?.value || '1';
@@ -3118,7 +3131,7 @@ function refreshLivePreview() {
 
 // Hook: observe form changes
 (function setupLivePreviewListeners() {
-  const targets = ['q-oi','q-niveau','q-periode','q-enonce','q-points','rep-type'];
+  const targets = ['q-oi','q-niveau','q-enonce','q-points','rep-type'];
   function onChange() { scheduleLivePreview(); }
   document.addEventListener('DOMContentLoaded', () => {
     targets.forEach(id => {

@@ -566,7 +566,7 @@ function exReorderNoAdjacentOi(list) {
 //   maxPoints   : budget de points maximum (25 par défaut)
 //   rng         : générateur pseudo-aléatoire optionnel (tests reproductibles)
 function exGenererExamen({ questions, periode, aspects, oiList, favoriOi, maxPoints = 25, rng }) {
-  const pool = questions.filter(q => q.periode === periode);
+  const pool = questions.filter(q => (q.periodes||[]).includes(periode));
   const baseAspectRepeat = EX_ASPECT_REPEAT_BY_PERIODE[periode] || {};
   const varietyExclude = new Set(EX_OI_VARIETY_EXCLUDE_BY_PERIODE[periode] || []);
   // Cibles fixes globales (EX_OI_FIXED_TARGET) + cibles propres à cette période

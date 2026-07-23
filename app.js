@@ -124,7 +124,7 @@ async function ensureDataLoaded() {
 function populateFilters() {
   Q_MAP = new Map(QUESTIONS.map(q => [q.id, q]));
   Q_SEARCH_IDX = new Map(QUESTIONS.map(q => [q.id,
-    fold([q.enonce||'', q.oi||'', q.competence||'', q.periode||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '))
+    fold([q.enonce||'', q.oi||'', q.competence||'', ...(q.periodes||[]), ...(q.aspects||[]).map(a=>a.aspect)].join(' '))
   ]));
   const sorted = [...QUESTIONS].sort((a,b) => {
     const ta = a.updatedAt || '';
@@ -137,16 +137,18 @@ function populateFilters() {
   const allCompetences = [...new Set(QUESTIONS.map(q=>q.competence).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
   const aspectsByPeriode = {};
   QUESTIONS.forEach(q=>{
-    (q.aspects||[]).forEach(a=>{
-      if(!aspectsByPeriode[q.periode]) aspectsByPeriode[q.periode]=new Set();
-      aspectsByPeriode[q.periode].add(a.aspect);
+    (q.periodes||[]).forEach(p=>{
+      (q.aspects||[]).forEach(a=>{
+        if(!aspectsByPeriode[p]) aspectsByPeriode[p]=new Set();
+        aspectsByPeriode[p].add(a.aspect);
+      });
     });
   });
   aspects = periodeOrder.flatMap(p=>{
     if(!aspectsByPeriode[p]) return [];
     return [...aspectsByPeriode[p]].sort((a,b)=>a.localeCompare(b,'fr')).map(a=>({aspect:a, periode:p}));
   });
-  const periodesPresentes = new Set(QUESTIONS.map(q=>q.periode));
+  const periodesPresentes = new Set(QUESTIONS.flatMap(q=>q.periodes||[]));
   const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort(), "Tous");
@@ -192,7 +194,7 @@ function applyFilters() {
   const competenceSet = new Set();
   for(const q of QUESTIONS) {
     const niveauOk  = !niveau  || String(q.niveau) === niveau;
-    const periodeOk = !periode || q.periode === periode;
+    const periodeOk = !periode || (q.periodes||[]).includes(periode);
     const aspectOk  = !aspect  || (q.aspects||[]).some(a=>a.aspect===aspect);
     if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(q.competence) competenceSet.add(q.competence); }
     if(!niveauOk || !periodeOk || !aspectOk) continue;
@@ -460,7 +462,7 @@ function copyQuestion() {
   const q = id && Q_MAP.get(id);
   if(!q) return;
   const aspects = (q.aspects||[]).map(a=>a.aspect).join(', ');
-  const periode = q.periode || '';
+  const periode = (q.periodes||[]).join(' + ');
   const enonce = (q.enonce||'').replace(/\*\*(.*?)\*\*/g,'$1').replace(/^• /gm,'- ');
   const text = [q.oi, aspects && `Aspects : ${aspects}`, periode && `Société : ${periode}`, '', enonce]
     .filter(l=>l!==undefined).join('\n');
@@ -2120,7 +2122,8 @@ function renderExam() {
 
   // Corps
   const soustag = q.soustag ? `<span class="exam-meta">${escLine(q.soustag)}</span>` : '';
-  const periode = q.periode ? `<span class="exam-meta">${escLine(q.periode)}</span>` : '';
+  const periodeTxt = (q.periodes||[]).join(' + ');
+  const periode = periodeTxt ? `<span class="exam-meta">${escLine(periodeTxt)}</span>` : '';
   const docs = (q.documents || []).map(d => renderDoc(d, true)).join('');
   const rep  = renderReponse(q);
 

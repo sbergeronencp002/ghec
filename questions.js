@@ -22,7 +22,8 @@ const IMAGE_DB = {
 "algonquiens_deplacements_1.jpg": {src: "images/algonquiens_deplacements_1.jpg", w: 1200, h: 783},
 "algonquiens_deplacements_2.jpg": {src: "images/algonquiens_deplacements_2.jpg", w: 1200, h: 746},
 "algonquiens_deplacements.jpg": {src: "images/algonquiens_deplacements.jpg"},
-"autochtones_canot.jpg": {src: "images/autochtones_canot.jpg", w: 1200, h: 777}
+"autochtones_canot.jpg": {src: "images/autochtones_canot.jpg", w: 1200, h: 777},
+"autochtones_troc.jpg": {src: "images/autochtones_troc.jpg"}
 }
 
 const QUESTIONS = [
@@ -193,14 +194,14 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un moyen de transport utilisé par les peuples autochtones pour se déplacer sur les cours d'eau.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_canot.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le canot d'écorce.",
- updatedAt: "2026-07-23T16:13:46.100Z"
+ updatedAt: "2026-07-23T16:16:17.202Z"
 }
 ]

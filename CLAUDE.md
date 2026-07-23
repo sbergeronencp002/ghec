@@ -122,12 +122,8 @@ sur GitHub (comme pour une question) :
 - **Opérations intellectuelles (OI)** : liste de lignes (nom, couleur parmi les 8
   préréglages de style.css, sous-tags optionnels séparés par virgules, réponse
   auto-sélectionnée optionnelle). Réordonnables (↑↓), publiées vers `oi-config.js`.
-- **Compétences** : liste ordonnée de noms + case « Compétence de comparaison » par
-  compétence (`COMPETENCE_CONFIG[nom].comparaison`, absent/`{}` = non-comparaison).
-  Détermine si 2 sociétés cochées sur une question forment 1 question à 2 sociétés
-  (comparaison) ou déclenchent l'éclatement en 2 questions distinctes (voir
-  `publierAvecSplitSociete` plus bas). Pas de couleur ni de réglette (portées par l'OI).
-  Publiées vers `competences.js`.
+- **Compétences** : simple liste ordonnée de noms (pas de couleur ni de réglette —
+  ces attributs restent portés par l'OI). Publiées vers `competences.js`.
 - **Niveaux et sociétés** : liste de niveaux, chacun contenant une liste de sociétés,
   chacune avec un textarea d'aspects (un par ligne, optionnel). Réordonnables,
   publiées vers `contexte.js`.
@@ -153,23 +149,6 @@ tant que la page n'est pas rechargée. `loadConfigJs()` relit les 3 fichiers via
 `populateOiSelect`/`populateNiveauSelects`/`populateCompetenceSelect`/`cfgRender*`/
 `updatePeriodes`/`updatePresets` — silencieux en cas d'échec (page reste utilisable avec les
 données du `<script src>` déjà peintes).
-
-`COMPETENCE_CONFIG` est un champ récent : un `competences.js` publié avant son introduction
-ne le déclare pas du tout (pas juste vide). Partout où il est lu (`cfgRenderCompetenceList`,
-`publierAvecSplitSociete`, `loadConfigJs`, `tools/validate-questions.mjs`), repli défensif sur
-`typeof COMPETENCE_CONFIG !== 'undefined' ? COMPETENCE_CONFIG : {}` plutôt qu'une référence nue
-— sinon `ReferenceError` tant que la page n'a pas republié au moins une fois avec le nouveau
-format (même convention déjà utilisée pour `COMPETENCE_LIST` avant lui).
-
-**`publierAvecSplitSociete()`** (bouton « Publier sur GitHub », remplace l'ancien
-`onclick="publier()"`) : en mode création (pas `editingId`), si 2 sociétés sont cochées ET que
-la compétence choisie n'a PAS `comparaison:true`, publie 2 questions distinctes (même OI/
-énoncé/documents/réglette/réponse/guide/points, 1 société chacune, ids consécutifs) au lieu
-d'1 question à 2 sociétés — raccourci pour éviter de ressaisir 2 fois le même contenu quand les
-2 sociétés ne sont pas destinées à être comparées dans une même question. Sinon (édition, 1
-société, ou compétence de comparaison), délègue tel quel à `publier()`. N'emprunte que la voie
-directe GitHub (token requis, via `putQuestionsJsWithRetry` en boucle) — pas de repli
-Worker/GitHub Actions pour cette action moins fréquente, contrairement à `publier()`.
 
 `_putFileWithRetry(path, message, build)` factorise la lecture SHA + PUT + un seul
 retry sur conflit 409 — **pas** la choréographie de double-lecture stabilisée de

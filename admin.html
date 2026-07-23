@@ -486,7 +486,7 @@ header a:hover { color: #fff; }
 
     <!-- ACTIONS -->
     <div class="actions" id="section-actions">
-      <button class="btn-primary" id="btn-publier" onclick="publierAvecSplitSociete()">Publier sur GitHub</button>
+      <button class="btn-primary" id="btn-publier" onclick="publier()">Publier sur GitHub</button>
       <button class="btn-secondary" onclick="resetForm()">Réinitialiser</button>
       <span id="publish-status" style="font-size:.82rem;color:var(--ink-3)"></span>
     </div>
@@ -1565,10 +1565,7 @@ async function loadConfigJs() {
     ]);
     const fresh = new Function(
       oiSrc.content + '\n' + ctxSrc.content + '\n' + compSrc.content +
-      // COMPETENCE_CONFIG (comparaison) est nouveau : un competences.js pas encore republié
-      // avec ce champ ne le déclare pas — repli sur {} plutôt que ReferenceError.
-      '\n return { OI_CONFIG, OI_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, COMPETENCE_LIST,' +
-      ' COMPETENCE_CONFIG: (typeof COMPETENCE_CONFIG !== "undefined" ? COMPETENCE_CONFIG : {}) };'
+      '\n return { OI_CONFIG, OI_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, COMPETENCE_LIST };'
     )();
 
     Object.keys(OI_CONFIG).forEach(k => delete OI_CONFIG[k]);
@@ -1579,8 +1576,6 @@ async function loadConfigJs() {
     Object.keys(ASPECTS_PAR_PERIODE).forEach(k => delete ASPECTS_PAR_PERIODE[k]);
     Object.assign(ASPECTS_PAR_PERIODE, fresh.ASPECTS_PAR_PERIODE);
     COMPETENCE_LIST.length = 0; COMPETENCE_LIST.push(...fresh.COMPETENCE_LIST);
-    if(typeof COMPETENCE_CONFIG === 'undefined') { COMPETENCE_CONFIG = fresh.COMPETENCE_CONFIG; }
-    else { Object.keys(COMPETENCE_CONFIG).forEach(k => delete COMPETENCE_CONFIG[k]); Object.assign(COMPETENCE_CONFIG, fresh.COMPETENCE_CONFIG); }
 
     populateNiveauSelects();
     populateOiSelect();
@@ -1693,7 +1688,7 @@ async function cfgPublishOi() {
 // Dimension indépendante de l'OI : chaque question a les deux (voir q-competence
 // dans la section Contexte). Simple liste ordonnée, pas de couleur/réglette associée.
 let cfgCompetenceCount = 0;
-function cfgAddCompetence(nom, cfg) {
+function cfgAddCompetence(nom) {
   const id = ++cfgCompetenceCount;
   const div = document.createElement('div');
   div.className = 'block';
@@ -1702,50 +1697,35 @@ function cfgAddCompetence(nom, cfg) {
     <button class="btn-move btn-move-up" onclick="moveDoc('comp-${id}',-1)" title="Monter">↑</button>
     <button class="btn-move btn-move-dn" onclick="moveDoc('comp-${id}',1)" title="Descendre">↓</button>
     <button class="btn-remove" onclick="removeEl('comp-${id}')">✕</button>
-    <div class="field"><label>Nom de la compétence</label><input type="text" class="cfg-comp-nom" value="${escHtml(nom||'')}" placeholder="ex. : Interroger les réalités sociales"></div>
-    <label style="display:flex;align-items:center;gap:.4rem;font-size:.8rem;margin-top:.4rem;cursor:pointer">
-      <input type="checkbox" class="cfg-comp-comparaison" style="width:auto;cursor:pointer"${cfg?.comparaison ? ' checked' : ''}>
-      Compétence de comparaison (question à 2 sociétés)
-    </label>`;
+    <div class="field"><label>Nom de la compétence</label><input type="text" class="cfg-comp-nom" value="${escHtml(nom||'')}" placeholder="ex. : Interroger les réalités sociales"></div>`;
   document.getElementById('cfg-competence-list').appendChild(div);
 }
 
 function cfgRenderCompetenceList() {
   document.getElementById('cfg-competence-list').innerHTML = '';
-  const config = typeof COMPETENCE_CONFIG !== 'undefined' ? COMPETENCE_CONFIG : {};
-  (typeof COMPETENCE_LIST !== 'undefined' ? COMPETENCE_LIST : []).forEach(nom => cfgAddCompetence(nom, config[nom]));
+  (typeof COMPETENCE_LIST !== 'undefined' ? COMPETENCE_LIST : []).forEach(nom => cfgAddCompetence(nom));
 }
 
-// Retourne { list, config } : config[nom] = {comparaison:true} si cochée, sinon {}. Le flag
-// « comparaison » détermine si 2 sociétés cochées forment 1 question (comparaison) ou déclenchent
-// l'éclatement en 2 questions distinctes (voir publierAvecSplitSociete) pour cette compétence.
 function cfgCollectCompetences() {
-  const list = [], config = {};
+  const list = [];
   document.querySelectorAll('#cfg-competence-list > .block').forEach(row => {
     const nom = row.querySelector('.cfg-comp-nom').value.trim();
-    if(!nom) return;
-    list.push(nom);
-    config[nom] = row.querySelector('.cfg-comp-comparaison').checked ? { comparaison: true } : {};
+    if(nom) list.push(nom);
   });
-  return { list, config };
+  return list;
 }
 
 async function cfgPublishCompetences() {
   const status = document.getElementById('cfg-competence-status');
-  const { list, config } = cfgCollectCompetences();
+  const list = cfgCollectCompetences();
   if(new Set(list).size !== list.length) { status.textContent = '✗ Deux compétences portent le même nom.'; status.style.color = 'var(--red)'; return; }
   status.textContent = '⏳ Publication…'; status.style.color = '';
   try {
     await _putFileWithRetry('competences.js', 'Configuration compétences', () => {
       return `// Compétences disciplinaires — dimension indépendante de l'OI (oi-config.js).\n`
         + `// Généré par la section Configuration d'admin.html — ne pas éditer à la main.\n`
-        + `const COMPETENCE_CONFIG = {\n${_serializeEntries(config)}\n}\n\n`
         + `const COMPETENCE_LIST = [\n${list.map(c=>JSON.stringify(c)).join(',\n')}\n]\n`;
     });
-    // COMPETENCE_CONFIG est nouveau : compétences.js publié avant ce changement ne le déclare
-    // pas encore, donc pas de `const` existant à muter la 1ʳᵉ fois qu'on publie depuis cette page.
-    if(typeof COMPETENCE_CONFIG === 'undefined') { COMPETENCE_CONFIG = config; }
-    else { Object.keys(COMPETENCE_CONFIG).forEach(k => delete COMPETENCE_CONFIG[k]); Object.assign(COMPETENCE_CONFIG, config); }
     COMPETENCE_LIST.length = 0;
     COMPETENCE_LIST.push(...list);
     populateCompetenceSelect();
@@ -2637,93 +2617,6 @@ async function putQuestionsJsWithRetry(token, commitMsg, mutate) {
     const isConflict = putResp.status === 409 || String(msg).toLowerCase().includes('fast forward') || String(msg).toLowerCase().includes('conflict');
     if(!isConflict || attempt === 2) throw new Error(isConflict ? 'Conflit persistant après 3 tentatives. Rechargez (F5) et réessayez.' : msg);
     await new Promise(r => setTimeout(r, 800 * (attempt + 1)));
-  }
-}
-
-// ── PUBLICATION AVEC ÉCLATEMENT PAR SOCIÉTÉ ────────────────────────────
-// Si la compétence sélectionnée n'est PAS une compétence « de comparaison »
-// (COMPETENCE_CONFIG[nom].comparaison, coché dans Configuration → Compétences) et que 2
-// sociétés sont cochées en mode création, publie 2 questions distinctes (même contenu,
-// 1 société chacune) plutôt qu'une seule question à 2 sociétés — raccourci demandé par
-// l'enseignant pour éviter de ressaisir 2 fois le même énoncé/documents/réglette quand les
-// 2 sociétés ne sont pas destinées à être comparées dans une même question. Sinon,
-// comportement inchangé (délègue à publier()).
-//
-// N'emprunte que la voie directe GitHub (token requis) — pas de repli Worker/GitHub Actions
-// pour cette action moins fréquente qu'une simple publication, afin de ne pas dupliquer cette
-// choréographie à 3 voies pour un raccourci additionnel.
-async function publierAvecSplitSociete() {
-  const periodes = getSelectedPeriodes();
-  const competence = document.getElementById('q-competence')?.value || '';
-  const compConfig = (typeof COMPETENCE_CONFIG !== 'undefined' ? COMPETENCE_CONFIG : {})[competence];
-  const isComparaison = !!compConfig?.comparaison;
-
-  if(editingId || periodes.length !== 2 || isComparaison) return publier();
-
-  const errors = validateForm();
-  if(errors.length) { toast('Champs manquants : ' + errors.join(', '), 'err'); return; }
-
-  if(!confirm(`« ${competence} » n'est pas une compétence de comparaison.\n\n2 questions distinctes seront créées (même contenu, 1 société chacune) :\n— ${periodes[0]}\n— ${periodes[1]}\n\nContinuer ?`)) return;
-
-  const token = getToken();
-  if(!token) { toast('Saisis ton token GitHub pour cette publication à 2 questions (voie directe uniquement).', 'err'); return; }
-
-  const btn = document.getElementById('btn-publier');
-  const status = document.getElementById('publish-status');
-  setFormLocked(true, btn);
-  btn.disabled = true;
-  status.textContent = '';
-
-  try {
-    if(await isAdminStale()) {
-      showStaleBanner();
-      if(!confirm('⚠️ Cette page a été mise à jour depuis son chargement.\n\nPublier avec une version obsolète risque d\'écraser une question existante.\n\nRecommandé : annuler et recharger (F5).\n\nPublier quand même ?')) return;
-    }
-
-    const template = buildQuestion();
-    const reglette = buildReglette(template.id); // null = aucun preset sélectionné → pas de réglette (question neuve, rien à « conserver »)
-    const refsUsed = new Set();
-    template.documents.forEach(d => d.cols?.forEach(c => { if(c.ref) refsUsed.add(c.ref); }));
-    if(template.reponse?.ref) refsUsed.add(template.reponse.ref);
-
-    const pubWarnings = [];
-    if(!template.guide) pubWarnings.push('• Ces questions n\'auront pas de guide de correction.');
-    if(document.getElementById('rep-type').value === 'grille' && template.reponse === false) pubWarnings.push('• Le tableau (grille) de réponse est vide — aucune réponse ne sera affichée.');
-    if(pubWarnings.length && !confirm('⚠️ Avertissements avant publication :\n\n' + pubWarnings.join('\n') + '\n\nPublier quand même ?')) return;
-
-    const publiedIds = [];
-    for(let i = 0; i < periodes.length; i++) {
-      btn.textContent = `⏳ Publication (${i+1}/${periodes.length})…`;
-      const nums = currentQuestions.map(x=>parseInt(x.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
-      const id = 'Q' + (nums.length ? Math.max(...nums)+1 : 1);
-      const q = { ...template, id, periodes: [periodes[i]] };
-      const commitMsg = `Ajouter ${q.id} — ${q.oi} (${periodes[i]})`;
-      await putQuestionsJsWithRetry(token, commitMsg, () => {
-        if(!currentQuestions.find(x => x.id === q.id)) currentQuestions.push(q);
-        if(reglette !== null) currentReglettes[q.id] = reglette;
-        refsUsed.forEach(ref => { if(!currentImageDb[ref]) currentImageDb[ref] = { src: 'images/' + ref }; });
-      });
-      publishIndex(token, commitMsg); // fire-and-forget
-      publiedIds.push(q.id);
-    }
-
-    const nums = currentQuestions.map(x=>parseInt(x.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
-    const nextId = 'Q' + (nums.length ? Math.max(...nums)+1 : 1);
-    document.getElementById('q-id').value = nextId;
-    document.getElementById('next-id-badge').textContent = nextId;
-
-    toast(`${publiedIds.join(' et ')} publiées !`, 'ok');
-    renderDashboard();
-    status.textContent = `✓ ${publiedIds.join(' et ')} ajoutées — visibles sous peu`;
-    setEditingId(null);
-    resetForm(true);
-  } catch(e) {
-    toast('Erreur : ' + e.message, 'err');
-    console.error(e);
-  } finally {
-    setFormLocked(false);
-    btn.disabled = false;
-    btn.textContent = 'Publier sur GitHub';
   }
 }
 

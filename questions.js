@@ -30,7 +30,8 @@ const REGLETTES = {
 "Q29": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q30": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q31": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
-"Q32": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
+"Q32": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
+"Q33": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -60,7 +61,8 @@ const IMAGE_DB = {
 "poterie_cuisson.jpg": {src: "images/poterie_cuisson.jpg", w: 1200, h: 960},
 "ressources_poterie_vannerie.jpg": {src: "images/ressources_poterie_vannerie.jpg", w: 1200, h: 800},
 "confection_vetements.jpg": {src: "images/confection_vetements.jpg", w: 1200, h: 960},
-"raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800}
+"raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
+"mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -541,5 +543,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones utilisent des raquettes pour marcher sur la neige sans s'enfoncer.",
  updatedAt: "2026-07-23T19:52:13.981Z"
+},
+{
+ id: "Q33",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À partir du document A, nomme l'objet fabriqué.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Des mocassins.",
+ updatedAt: "2026-07-23T19:56:44.164Z"
 }
 ]

@@ -6,8 +6,8 @@ const REGLETTES = {
 }
 
 const IMAGE_DB = {
-"campement_algonquien.jpg": {src: "images/campement_algonquien.jpg", w: 1200, h: 800},
-"village_iroquoien_1500_a.jpg": {src: "images/village_iroquoien_1500_a.jpg", w: 1200, h: 800}
+"village_iroquoien_1500_a.jpg": {src: "images/village_iroquoien_1500_a.jpg", w: 1200, h: 800},
+"campement_algonquien_1.jpg": {src: "images/campement_algonquien_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -36,7 +36,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme le mode de vie des Algonquiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Algonquiens sont nomades.",
  updatedAt: "2026-07-23T13:11:07.174Z"
@@ -66,7 +66,7 @@ const QUESTIONS = [
  soustag: "Établir tous les faits - 2",
  enonce: "Nomme deux activités que les Algonquiens pratiquent pour se nourrir.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Les Algonquiens pratiquent la chasse, la pêche et la cueillette.",
  updatedAt: "2026-07-23T13:16:21.725Z"

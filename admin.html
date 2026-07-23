@@ -1547,6 +1547,50 @@ function _serializeEntries(obj) {
   return Object.entries(obj).map(([k,v]) => `${JSON.stringify(k)}: ${serializeValue(v,0)}`).join(',\n');
 }
 
+// oi-config.js / contexte.js / competences.js sont chargés en <script src> statique — comme
+// pour questions.js (voir la section « Latence de propagation » du CLAUDE.md), GitHub Pages peut
+// continuer à servir une version mise en cache après une publication depuis cette même page
+// (« le menu OI ne se met pas à jour tant qu'on ne recharge pas »). Relit les 3 fichiers via
+// l'API GitHub (toujours à jour, dépôt public donc pas besoin de token) au chargement et re-rend
+// les menus/listes — pas de flash de contenu vide, la page a déjà peint avec les données statiques
+// potentiellement périmées, ceci ne fait que les rafraîchir si elles avaient du retard.
+// OI_CONFIG/OI_LIST/PERIODES_PAR_NIVEAU/ASPECTS_PAR_PERIODE/COMPETENCE_LIST sont des `const` d'un
+// fichier externe : on ne peut pas les réassigner, seulement les muter en place.
+async function loadConfigJs() {
+  try {
+    const [oiSrc, ctxSrc, compSrc] = await Promise.all([
+      _fetchFileRaw('oi-config.js', {}),
+      _fetchFileRaw('contexte.js', {}),
+      _fetchFileRaw('competences.js', {})
+    ]);
+    const fresh = new Function(
+      oiSrc.content + '\n' + ctxSrc.content + '\n' + compSrc.content +
+      '\n return { OI_CONFIG, OI_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, COMPETENCE_LIST };'
+    )();
+
+    Object.keys(OI_CONFIG).forEach(k => delete OI_CONFIG[k]);
+    Object.assign(OI_CONFIG, fresh.OI_CONFIG);
+    OI_LIST.length = 0; OI_LIST.push(...fresh.OI_LIST);
+    Object.keys(PERIODES_PAR_NIVEAU).forEach(k => delete PERIODES_PAR_NIVEAU[k]);
+    Object.assign(PERIODES_PAR_NIVEAU, fresh.PERIODES_PAR_NIVEAU);
+    Object.keys(ASPECTS_PAR_PERIODE).forEach(k => delete ASPECTS_PAR_PERIODE[k]);
+    Object.assign(ASPECTS_PAR_PERIODE, fresh.ASPECTS_PAR_PERIODE);
+    COMPETENCE_LIST.length = 0; COMPETENCE_LIST.push(...fresh.COMPETENCE_LIST);
+
+    populateNiveauSelects();
+    populateOiSelect();
+    populateCompetenceSelect();
+    cfgRenderOiList();
+    cfgRenderCompetenceList();
+    cfgRenderNiveauxList();
+    updatePeriodes();
+    updatePresets();
+  } catch(e) {
+    // Échec silencieux : la page reste utilisable avec les données du <script src> statique.
+    console.warn('Rechargement de la configuration (oi-config/contexte/competences) échoué :', e.message);
+  }
+}
+
 // ── OI (oi-config.js) ──────────────────────────────────────────────────
 const CFG_COLOR_SLOTS = [1,2,3,4,5,6,7,8];
 const CFG_REP_TYPES = ['','lignes','image','tableau_2col','cause-consequence','mettre-en-relation','situer-dans-lespace','avant-apres','grille'];
@@ -1799,7 +1843,7 @@ async function init() {
   updatePeriodes();
   updatePresets();
   document.querySelector('.container').addEventListener('input', e => { if(!e.target.closest('.token-bar')) formDirty = true; });
-  await Promise.all([loadQuestionsJs(), loadImages(), loadReglettesJs(), loadRecentImages()]);
+  await Promise.all([loadConfigJs(), loadQuestionsJs(), loadImages(), loadReglettesJs(), loadRecentImages()]);
   // Rafraîchit les selects après que loadRecentImages ait rempli RECENT_IMAGES
   refreshImageSelects();
   if(await isAdminStale()) showStaleBanner();

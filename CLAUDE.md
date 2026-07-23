@@ -140,6 +140,16 @@ Après publication, `OI_CONFIG`/`OI_LIST`/`COMPETENCE_LIST`/`PERIODES_PAR_NIVEAU
 `ASPECTS_PAR_PERIODE` sont mutés en place (ce sont des `const` — jamais réassignés) pour
 que le reste de la page (selects, dashboard) reflète la nouvelle config sans recharger.
 
+`loadConfigJs()` (`init()`, en parallèle de `loadQuestionsJs()`) : `oi-config.js`/`contexte.js`/
+`competences.js` sont chargés en `<script src>` statique, donc soumis au même risque de cache
+CDN GitHub Pages périmé que `questions.js` (voir section Latence plus bas) — après une
+publication Configuration depuis cette page, le menu OI/les sociétés peuvent rester périmés
+tant que la page n'est pas rechargée. `loadConfigJs()` relit les 3 fichiers via l'API GitHub
+(anonyme, dépôt public) au chargement, mute les mêmes globals en place, puis rappelle
+`populateOiSelect`/`populateNiveauSelects`/`populateCompetenceSelect`/`cfgRender*`/
+`updatePeriodes`/`updatePresets` — silencieux en cas d'échec (page reste utilisable avec les
+données du `<script src>` déjà peintes).
+
 `_putFileWithRetry(path, message, build)` factorise la lecture SHA + PUT + un seul
 retry sur conflit 409 — **pas** la choréographie de double-lecture stabilisée de
 `fetchFreshStateStable` (utilisée pour `questions.js`) : ces fichiers de config changent
@@ -255,6 +265,16 @@ avoir publié avec succès (`confirmedIds`), `_assignFreshState` réinjecte ces 
 plutôt que de les perdre. Ce filet de sécurité **n'existe pas** pour `oi-config.js`/
 `contexte.js` (`_putFileWithRetry`, un seul retry simple) — acceptable tant que ces
 fichiers ne sont édités qu'à la main, rarement, une personne à la fois.
+
+⚠️ **Ce n'est pas le même problème** que le cache CDN de GitHub Pages : celui-ci concerne
+l'API elle-même (dépôt), l'autre concerne le site déployé. Symptôme observé (2026-07-23) :
+le menu OI/les sociétés dans admin.html restaient parfois périmés après une publication
+Configuration depuis la même page, jusqu'à un rechargement manuel — parce que
+`oi-config.js`/`contexte.js`/`competences.js` sont chargés en `<script src>` statique,
+sans cache-bust qui change à chaque publication (contrairement à `questions.js`, chargé en
+lazy avec cache-bust par timestamp). Corrigé par `loadConfigJs()` (voir section
+Configuration ci-dessus) : relecture via l'API GitHub au chargement d'admin.html, qui
+reflète toujours l'état réel du dépôt contrairement au CDN Pages.
 
 ---
 

@@ -15,7 +15,8 @@ const REGLETTES = {
 "Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q15": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q16": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q17": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q17": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q18": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []}
 }
 
 const IMAGE_DB = {
@@ -33,7 +34,8 @@ const IMAGE_DB = {
 "ressources_haricots_courges.jpg": {src: "images/ressources_haricots_courges.jpg", w: 1200, h: 960},
 "ressources_fourrures.jpg": {src: "images/ressources_fourrures.jpg", w: 1200, h: 960},
 "ressources_viandes_sechees.jpg": {src: "images/ressources_viandes_sechees.jpg", w: 1200, h: 960},
-"chaman_animisme.jpg": {src: "images/chaman_animisme.jpg"}
+"chaman_animisme.jpg": {src: "images/chaman_animisme.jpg"},
+"chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -297,5 +299,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le chaman.",
  updatedAt: "2026-07-23T18:16:12.452Z"
+},
+{
+ id: "Q18",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 3,
+ enonce: "Explique pourquoi les peuples autochtones participent aux cérémonies vers 1500.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les peuples autochtones participent aux cérémonies pour remercier les esprits de la nature ou demander leur aide ou pratiquer leur religion.",
+ updatedAt: "2026-07-23T18:17:28.856Z"
 }
 ]

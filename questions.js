@@ -19,7 +19,7 @@ const IMAGE_DB = {
 "campement_algonquien_2.jpg": {src: "images/campement_algonquien_2.jpg", w: 1200, h: 755},
 "iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg", w: 1200, h: 841},
 "algonquiens_deplacements_1.jpg": {src: "images/algonquiens_deplacements_1.jpg", w: 1200, h: 783},
-"algonquiens_deplacements_2.jpg": {src: "images/algonquiens_deplacements_2.jpg"},
+"algonquiens_deplacements_2.jpg": {src: "images/algonquiens_deplacements_2.jpg", w: 1200, h: 746},
 "algonquiens_deplacements.jpg": {src: "images/algonquiens_deplacements.jpg"}
 }
 
@@ -152,11 +152,11 @@ const QUESTIONS = [
  periodes: ["Les Algonquiens vers 1500"],
  points: 3,
  enonce: "Explique pourquoi les Algonquiens se déplacent au fil des saisons.",
- aspects: [{aspect: "Activités économiques"}],
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_2.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Algonquiens se déplacent pour trouver la nourriture dont ils ont besoin selon les saisons.",
- updatedAt: "2026-07-23T14:27:28.783Z"
+ updatedAt: "2026-07-23T14:33:57.431Z"
 },
 {
  id: "Q10",

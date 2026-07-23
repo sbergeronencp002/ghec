@@ -5,7 +5,8 @@ const REGLETTES = {
 "Q4": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit les faits. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q5": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q6": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
-"Q7": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit les faits. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q7": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit les faits. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q8": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -13,7 +14,8 @@ const IMAGE_DB = {
 "village_iroquoien_1500_2.jpg": {src: "images/village_iroquoien_1500_2.jpg", w: 1200, h: 800},
 "village_iroquoien_1500_1.jpg": {src: "images/village_iroquoien_1500_1.jpg", w: 1200, h: 800},
 "campement_algonquien_2.jpg": {src: "images/campement_algonquien_2.jpg", w: 1200, h: 755},
-"iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg", w: 1200, h: 841}
+"iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg", w: 1200, h: 841},
+"algonquiens_deplacements.jpg": {src: "images/algonquiens_deplacements.jpg", w: 1200, h: 783}
 }
 
 const QUESTIONS = [
@@ -121,5 +123,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "Le maïs.\nLes courges.\nLes haricots.",
  updatedAt: "2026-07-23T14:19:19.016Z"
+},
+{
+ id: "Q8",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme un objet qui aident les Algonquiens à se déplacer en hiver.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les raquettes.\nLe toboggan.",
+ updatedAt: "2026-07-23T14:24:10.956Z"
 }
 ]

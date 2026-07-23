@@ -568,11 +568,11 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 3,
- enonce: "Explique pourquoi les peuples autochtones fabriquent des mocassins.",
+ enonce: "Explique pourquoi les peuples autochtones portent des mocassins.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins_deplacements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones fabriquent des mocassins pour protéger leurs pieds lorsqu'ils se déplacent.",
- updatedAt: "2026-07-23T19:58:56.098Z"
+ updatedAt: "2026-07-23T19:59:33.178Z"
 }
 ]

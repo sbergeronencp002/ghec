@@ -1482,7 +1482,7 @@ async function genererDocx(includeGuide=false) {
 
     function imgWithBorder(bytes, imgType, w, h) {
       return new Paragraph({
-        alignment: AlignmentType.LEFT,
+        alignment: AlignmentType.CENTER,
         children: [new docx.ImageRun({ data: bytes, type: imgType, transformation: { width: w, height: h } })]
       });
     }
@@ -1722,6 +1722,7 @@ async function genererDocx(includeGuide=false) {
       const firstLine = (q.enonce||'').split('\n')[0];
       const otherLines = (q.enonce||'').split('\n').slice(1);
       children.push(new Paragraph({
+        indent: { left: 284, hanging: 284 },
         children: [new TextRun({ text: qNum + '.  ', font: 'Aptos', size: 24 }), ...mkRuns(firstLine, 'Aptos', 24)]
       }));
       otherLines.forEach(line => { if(line.trim()) children.push(mkLine(line, 'Aptos', 24)); });

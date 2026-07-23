@@ -267,7 +267,7 @@ function exBuildReponse(q, C, EllipseRun, imgR, pageW) {
         const imgType = (ext === 'jpg' || ext === 'jpeg') ? 'jpg' : 'png';
         const w = Math.min(400, imgData.w);
         const h = Math.round(w / (imgData.w / imgData.h));
-        out.push(new Paragraph({ alignment: AlignmentType.LEFT, children: [new docx.ImageRun({ data: bytes, type: imgType, transformation: { width: w, height: h } })] }));
+        out.push(new Paragraph({ alignment: AlignmentType.CENTER, children: [new docx.ImageRun({ data: bytes, type: imgType, transformation: { width: w, height: h } })] }));
       }
     }
   } else if (q.reponse.type === 'lignes') {

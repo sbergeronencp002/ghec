@@ -81,7 +81,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens sont sédentaires.",
- updatedAt: "2026-07-23T13:02:04.859Z"
+ updatedAt: "2026-07-23T20:05:02.100Z"
 },
 {
  id: "Q2",

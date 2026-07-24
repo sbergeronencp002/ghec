@@ -187,8 +187,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien_2.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les tipis et les wigwams (des habitations faciles à démonter et à transporter).\nL'absence de champs cultivés.\nLe campement temporaire.\nLes toboggans utilisés pour transporter les biens.\nLes raquettes qui facilitent les déplacements réguliers en hiver.",
- updatedAt: "2026-07-24T18:48:36.984Z"
+ guide: "Il est couvert de vastes forêts.\nIl comprend de nombreux lacs et rivières.\nLe sol est peu fertile.\nLe climat est froid avec des hivers rigoureux.\nLe relief est généralement accidenté, par endroits.\nLa faune y est abondante (orignaux, castors, caribous, etc.).",
+ updatedAt: "2026-07-24T18:49:57.944Z"
 },
 {
  id: "Q7",

@@ -51,7 +51,8 @@ const REGLETTES = {
 "Q50": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q51": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q52": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q53": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
+"Q53": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q54": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
 }
 
 const IMAGE_DB = {
@@ -98,7 +99,8 @@ const IMAGE_DB = {
 "fetes_communautes_2.jpg": {src: "images/fetes_communautes_2.jpg", w: 1200, h: 800},
 "fetes_communautes_3.jpg": {src: "images/fetes_communautes_3.jpg", w: 1200, h: 800},
 "fetes_communautes_4.jpg": {src: "images/fetes_communautes_4.jpg", w: 1200, h: 800},
-"territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg"}
+"territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg"},
+"territoire_algonquien_2.jpg": {src: "images/territoire_algonquien_2.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -894,5 +896,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Il est couvert de vastes forêts.\nIl comprend de nombreux lacs et rivières.\nLe sol est peu fertile.\nLe climat est froid avec des hivers rigoureux.\nLe relief est généralement accidenté, par endroits.\nLa faune y est abondante (orignaux, castors, caribous, etc.).",
  updatedAt: "2026-07-24T18:54:26.151Z"
+},
+{
+ id: "Q54",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Nomme deux caractéristiques du territoire habité par les Algonquiens.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien_2.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Il est couvert de vastes forêts.\nIl comprend de nombreux lacs et rivières.\nLe sol est peu fertile.\nLe climat est froid avec des hivers rigoureux.\nLe relief est généralement accidenté, par endroits.\nLa faune y est abondante (orignaux, castors, caribous, etc.).",
+ updatedAt: "2026-07-24T18:56:07.604Z"
 }
 ]

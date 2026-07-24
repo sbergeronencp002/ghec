@@ -44,7 +44,8 @@ const REGLETTES = {
 "Q43": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q44": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q45": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q46": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q46": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q47": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -86,7 +87,8 @@ const IMAGE_DB = {
 "vetements.jpg": {src: "images/vetements.jpg"},
 "tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg", w: 1200, h: 800},
 "crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800},
-"chasse.jpg": {src: "images/chasse.jpg"}
+"chasse.jpg": {src: "images/chasse.jpg"},
+"fetes_communautes_1.jpg": {src: "images/fetes_communautes_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -781,5 +783,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La pêche.",
  updatedAt: "2026-07-24T12:33:06.394Z"
+},
+{
+ id: "Q47",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi les rassemblements communautaires sont importants chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les membres de la communauté se réunissent lors de fêtes saisonnières ou de cérémonies (les rassemblements communautaires). \nIls y partagent des repas, des jeux, des chants et des danses (les activités communautaires).\nCes rencontres renforcent les liens entre les membres de la communauté et permettent de transmettre les traditions (la cohésion et la transmission de la culture).",
+ updatedAt: "2026-07-24T12:40:16.729Z"
 }
 ]

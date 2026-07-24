@@ -1815,6 +1815,11 @@ async function genererDocx(includeGuide=false) {
       }
 
       children.push(new Paragraph({ children: [new TextRun({ text: '' })] }));
+      // Un paragraphe vide de plus pour « Établir des liens de causalité » : plus d'air entre
+      // les documents et l'espace réponse (diagramme cause-conséquence), demandé par l'enseignant.
+      if(q.oi === 'Établir des liens de causalité') {
+        children.push(new Paragraph({ children: [new TextRun({ text: '' })] }));
+      }
 
       // Réponse
       if(q.reponse) {

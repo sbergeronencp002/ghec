@@ -38,7 +38,8 @@ const REGLETTES = {
 "Q37": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q40": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q40": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q41": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -77,7 +78,8 @@ const IMAGE_DB = {
 "territoire_iroquoien_1.jpg": {src: "images/territoire_iroquoien_1.jpg", w: 1200, h: 800},
 "territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg"},
 "tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800},
-"vetements.jpg": {src: "images/vetements.jpg"}
+"vetements.jpg": {src: "images/vetements.jpg"},
+"tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -683,5 +685,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Ils décorent leurs vêtements avec des piquants de porc-épic.\nIls décorent leurs vêtements avec des coquillages.\nIls décorent leurs vêtements avec des perles.",
  updatedAt: "2026-07-24T12:21:44.435Z"
+},
+{
+ id: "Q41",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi les récits oraux occupent une place importante dans la communauté.",
+ aspects: [{aspect: "Culture"}, {aspect: "Communication"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les aînés racontent des légendes et des récits (les récits oraux).\nCes récits transmettent les traditions et les enseignements de la communauté (la transmission des connaissances).\nLes jeunes apprennent ainsi les valeurs et l'histoire de leur peuple (la préservation des traditions).",
+ updatedAt: "2026-07-24T12:26:56.882Z"
 }
 ]

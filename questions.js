@@ -33,7 +33,8 @@ const REGLETTES = {
 "Q32": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q33": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q34": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
-"Q35": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
+"Q35": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q36": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
 }
 
 const IMAGE_DB = {
@@ -66,7 +67,9 @@ const IMAGE_DB = {
 "raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
 "mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800},
 "mocassins_deplacements.jpg": {src: "images/mocassins_deplacements.jpg"},
-"agriculture.jpg": {src: "images/agriculture.jpg"}
+"agriculture.jpg": {src: "images/agriculture.jpg"},
+"cueillette.jpg": {src: "images/cueillette.jpg"},
+"peche.jpg": {src: "images/peche.jpg"}
 }
 
 const QUESTIONS = [
@@ -595,5 +598,24 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Poterie", "Vannerie"]},
  guide: {type: "grille", entetes: ["Agriculture", "Poterie", "Vannerie"], rangees: [["C", "B", "A"]]},
  updatedAt: "2026-07-24T00:49:33.303Z"
+},
+{
+ id: "Q36",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 3",
+ enonce: "Les documents A à C présentent différentes activités pratiquées par les Iroquoiens vers 1500. Associe chaque document à l'activité correspondante.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "cueillette.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "peche.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "agriculture.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Cueillette", "Pêche"]},
+ guide: {type: "grille", entetes: ["Agriculture", "Cueillette", "Pêche"], rangees: [["C", "A", "B"]]},
+ updatedAt: "2026-07-24T00:53:47.055Z"
 }
 ]

@@ -52,7 +52,8 @@ const REGLETTES = {
 "Q51": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q52": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q53": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
-"Q54": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
+"Q54": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q55": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
 }
 
 const IMAGE_DB = {
@@ -100,7 +101,8 @@ const IMAGE_DB = {
 "fetes_communautes_3.jpg": {src: "images/fetes_communautes_3.jpg", w: 1200, h: 800},
 "fetes_communautes_4.jpg": {src: "images/fetes_communautes_4.jpg", w: 1200, h: 800},
 "territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg"},
-"territoire_algonquien_2.jpg": {src: "images/territoire_algonquien_2.jpg", w: 1200, h: 960}
+"territoire_algonquien_2.jpg": {src: "images/territoire_algonquien_2.jpg", w: 1200, h: 960},
+"territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -911,5 +913,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Il est couvert de vastes forêts.\nIl comprend de nombreux lacs et rivières.\nLe sol est peu fertile.\nLe climat est froid avec des hivers rigoureux.\nLe relief est généralement accidenté, par endroits.\nLa faune y est abondante (orignaux, castors, caribous, etc.).",
  updatedAt: "2026-07-24T18:57:55.902Z"
+},
+{
+ id: "Q55",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Nomme deux caractéristiques du territoire habité par les Iroquoiens.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Il est situé dans les Basses-terres du Saint-Laurent.\nIl s'étend jusqu'à la région des Grands Lacs.\nIl comprend des plaines fertiles.\nIl est traversé par de nombreux cours d'eau (fleuve, rivières et lacs).\nLe climat permet la pratique de l'agriculture durant l'été.\nLe fleuve Saint-Laurent.",
+ updatedAt: "2026-07-24T18:59:01.242Z"
 }
 ]

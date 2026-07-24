@@ -46,7 +46,8 @@ const REGLETTES = {
 "Q45": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q46": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q47": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q48": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q48": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q49": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -90,7 +91,8 @@ const IMAGE_DB = {
 "crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800},
 "chasse.jpg": {src: "images/chasse.jpg"},
 "fetes_communautes_1.jpg": {src: "images/fetes_communautes_1.jpg", w: 1200, h: 800},
-"fetes_communautes_2.jpg": {src: "images/fetes_communautes_2.jpg", w: 1200, h: 800}
+"fetes_communautes_2.jpg": {src: "images/fetes_communautes_2.jpg", w: 1200, h: 800},
+"fetes_communautes_3.jpg": {src: "images/fetes_communautes_3.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -813,5 +815,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les familles se réunissent lors de fêtes saisonnières ou de rencontres entre bandes (les rassemblements communautaires).\nElles partagent des repas, des jeux, des chants et des danses (les activités communautaires).\nCes rassemblements renforcent les liens entre les membres de la communauté et favorisent l'entraide (la cohésion de la communauté).",
  updatedAt: "2026-07-24T12:41:38.128Z"
+},
+{
+ id: "Q49",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Algonquiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi les chants et les danses sont importants chez les Algonquiens vers 1500.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les membres de la communauté se réunissent pour chanter et danser (les chants et les danses). \nIls participent ensemble aux fêtes et aux cérémonies (les rassemblements communautaires).\nCes activités renforcent les liens entre les familles et favorisent le partage des traditions (la cohésion de la communauté).",
+ updatedAt: "2026-07-24T12:45:34.468Z"
 }
 ]

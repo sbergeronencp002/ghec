@@ -97,7 +97,6 @@ const IMAGE_DB = {
 "vetements.jpg": {src: "images/vetements.jpg"},
 "tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg", w: 1200, h: 800},
 "crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800},
-"chasse.jpg": {src: "images/chasse.jpg"},
 "fetes_communautes_1.jpg": {src: "images/fetes_communautes_1.jpg", w: 1200, h: 800},
 "fetes_communautes_2.jpg": {src: "images/fetes_communautes_2.jpg", w: 1200, h: 800},
 "fetes_communautes_3.jpg": {src: "images/fetes_communautes_3.jpg", w: 1200, h: 800},
@@ -107,7 +106,8 @@ const IMAGE_DB = {
 "territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg"},
 "territoire_algonquien_3.jpg": {src: "images/territoire_algonquien_3.jpg", w: 1200, h: 960},
 "piegeage.jpg": {src: "images/piegeage.jpg", w: 1200, h: 960},
-"chasse_2.jpg": {src: "images/chasse_2.jpg", w: 1200, h: 960}
+"chasse_2.jpg": {src: "images/chasse_2.jpg", w: 1200, h: 960},
+"chasse_1.jpg": {src: "images/chasse_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -783,7 +783,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À partir du document A, nomme l'activité pratiquée.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La chasse.",
  updatedAt: "2026-07-24T12:32:43.753Z"
@@ -945,7 +945,7 @@ const QUESTIONS = [
  enonce: "Les documents A à C présentent différentes activités pratiquées par les Algonquiens vers 1500. Associe chaque document à l'activité correspondante.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "chasse.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "peche.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "cueillette.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],

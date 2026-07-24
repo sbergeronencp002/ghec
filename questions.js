@@ -19,7 +19,7 @@ const REGLETTES = {
 "Q18": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q19": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q20": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q21": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
+"Q21": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q22": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q23": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q24": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -387,13 +387,13 @@ const QUESTIONS = [
  oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
- points: 3,
+ points: 2,
  enonce: "Explique pourquoi les Iroquoiens utilisent des ressources de la nature pour fabriquer leurs objets.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens utilisent des ressources de la nature pour fabriquer leurs objets parce qu'ils trouvent les plantes ou les fibres végétales ou l'argile dont ils ont besoin dans leur environnement ou dans la nature.",
- updatedAt: "2026-07-23T19:38:51.798Z"
+ updatedAt: "2026-07-24T03:59:10.214Z"
 },
 {
  id: "Q22",

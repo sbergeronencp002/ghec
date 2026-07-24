@@ -653,12 +653,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  soustag: "Caractériser un territoire - 2",
- enonce: "Nomme deux caractéristiques du territoire des Iroquoiens.",
+ enonce: "Nomme deux caractéristiques du territoire habité par les Iroquoiens.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Il est situé dans les Basses-terres du Saint-Laurent.\nIl s'étend jusqu'à la région des Grands Lacs.\nIl comprend des plaines fertiles.\nIl est traversé par de nombreux cours d'eau (fleuve, rivières et lacs).\nLe climat permet la pratique de l'agriculture durant l'été.\nLe fleuve Saint-Laurent.",
- updatedAt: "2026-07-24T18:51:11.095Z"
+ updatedAt: "2026-07-24T18:53:48.824Z"
 },
 {
  id: "Q38",

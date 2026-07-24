@@ -107,6 +107,10 @@ const REGLETTES_PRESET = {
     ] }
   ],
   "Établir des liens de causalité": [
-    { label:"3 pts — 3 éléments, 2 liens (complexe)", variante:"3 éléments — 2 liens", colonnes:["3 points","2 points","1 point","0 point"], niveaux:[] }
+    { label:"2 pts — le lien de causalité", colonnes:["2 points","1 point","0 point"], niveaux:[
+      {pts:2, desc:"L'élève établit correctement le lien de causalité."},
+      {pts:1, desc:"L'élève établit partiellement le lien de causalité."},
+      {pts:0, desc:"L'élève n'établit pas le lien de causalité."}
+    ] }
   ]
 }

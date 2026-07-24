@@ -657,8 +657,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Des terres fertiles.\nDes forêts de feuillus.\nDes rivières.\nDes lacs.\nLe fleuve Saint-Laurent.",
- updatedAt: "2026-07-24T00:59:57.204Z"
+ guide: "Il est situé dans les Basses-terres du Saint-Laurent.\nIl s'étend jusqu'à la région des Grands Lacs.\nIl comprend des plaines fertiles.\nIl est traversé par de nombreux cours d'eau (fleuve, rivières et lacs).\nLe climat permet la pratique de l'agriculture durant l'été.\nLe fleuve Saint-Laurent.",
+ updatedAt: "2026-07-24T18:51:11.095Z"
 },
 {
  id: "Q38",

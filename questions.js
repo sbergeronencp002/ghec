@@ -649,6 +649,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens s'installent près des rivières et des lacs pour avoir accès à l'eau, à la pêche et pour se déplacer en canot.",
- updatedAt: "2026-07-24T04:00:37.384Z"
+ updatedAt: "2026-07-24T04:00:59.850Z"
 }
 ]

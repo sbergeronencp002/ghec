@@ -37,7 +37,8 @@ const REGLETTES = {
 "Q36": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q37": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q40": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -75,7 +76,8 @@ const IMAGE_DB = {
 "peche.jpg": {src: "images/peche.jpg"},
 "territoire_iroquoien_1.jpg": {src: "images/territoire_iroquoien_1.jpg", w: 1200, h: 800},
 "territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg"},
-"tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800}
+"tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800},
+"vetements.jpg": {src: "images/vetements.jpg"}
 }
 
 const QUESTIONS = [
@@ -666,5 +668,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les mères de clan jouent un rôle important chez les Iroquoiens parce qu'elles choisissent les chefs et participent aux décisions importantes de la communauté.",
  updatedAt: "2026-07-24T04:07:43.551Z"
+},
+{
+ id: "Q40",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme un matériau utilisé pour décorer les vêtements des peuples autochtones vers 1500.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vetements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Ils décorent leurs vêtements avec des piquants de porc-épic.\nIls décorent leurs vêtements avec des coquillages.\nIls décorent leurs vêtements avec des perles.",
+ updatedAt: "2026-07-24T12:21:44.435Z"
 }
 ]

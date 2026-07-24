@@ -54,7 +54,8 @@ const REGLETTES = {
 "Q53": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q54": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q55": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
-"Q56": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
+"Q56": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q57": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
 }
 
 const IMAGE_DB = {
@@ -104,7 +105,9 @@ const IMAGE_DB = {
 "territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg"},
 "territoire_algonquien_2.jpg": {src: "images/territoire_algonquien_2.jpg", w: 1200, h: 960},
 "territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg"},
-"territoire_algonquien_3.jpg": {src: "images/territoire_algonquien_3.jpg", w: 1200, h: 960}
+"territoire_algonquien_3.jpg": {src: "images/territoire_algonquien_3.jpg", w: 1200, h: 960},
+"piegeage.jpg": {src: "images/piegeage.jpg", w: 1200, h: 960},
+"chasse_2.jpg": {src: "images/chasse_2.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -949,5 +952,24 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Chasse", "Cueillette", "Pêche"]},
  guide: {type: "grille", entetes: ["Chasse", "Cueillette", "Pêche"], rangees: [["A", "C", "B"]]},
  updatedAt: "2026-07-24T19:28:12.858Z"
+},
+{
+ id: "Q57",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 3",
+ enonce: "Les documents A à C présentent différentes activités pratiquées par les Algonquiens vers 1500. Associe chaque document à l'activité correspondante.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "piegeage.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "chasse_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Chasse", "Piégeage", "Troc"]},
+ guide: {type: "grille", entetes: ["Chasse", "Piégeage", "Troc"], rangees: [["C", "B", "A"]]},
+ updatedAt: "2026-07-24T19:37:09.855Z"
 }
 ]

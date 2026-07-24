@@ -36,7 +36,8 @@ const REGLETTES = {
 "Q35": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q36": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q37": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
-"Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -73,7 +74,8 @@ const IMAGE_DB = {
 "cueillette.jpg": {src: "images/cueillette.jpg"},
 "peche.jpg": {src: "images/peche.jpg"},
 "territoire_iroquoien_1.jpg": {src: "images/territoire_iroquoien_1.jpg", w: 1200, h: 800},
-"territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg"}
+"territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg"},
+"tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -650,5 +652,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens s'installent près des rivières et des lacs pour avoir accès à l'eau, à la pêche et pour se déplacer en canot.",
  updatedAt: "2026-07-24T04:00:59.850Z"
+},
+{
+ id: "Q39",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi les mères de clan jouent un rôle important chez les Iroquoiens.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les mères de clan jouent un rôle important chez les Iroquoiens parce qu'elles choisissent les chefs et participent aux décisions importantes de la communauté.",
+ updatedAt: "2026-07-24T04:07:43.551Z"
 }
 ]

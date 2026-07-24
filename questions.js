@@ -34,7 +34,8 @@ const REGLETTES = {
 "Q33": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q34": {oi: "Établir des liens de causalité", variante: "3 éléments — 2 liens", colonnes: ["3 points", "2 points", "1 point", "0 point"], niveaux: []},
 "Q35": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
-"Q36": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
+"Q36": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q37": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
 }
 
 const IMAGE_DB = {
@@ -69,7 +70,8 @@ const IMAGE_DB = {
 "mocassins_deplacements.jpg": {src: "images/mocassins_deplacements.jpg"},
 "agriculture.jpg": {src: "images/agriculture.jpg"},
 "cueillette.jpg": {src: "images/cueillette.jpg"},
-"peche.jpg": {src: "images/peche.jpg"}
+"peche.jpg": {src: "images/peche.jpg"},
+"territoire_iroquoien.jpg": {src: "images/territoire_iroquoien.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -617,5 +619,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Cueillette", "Pêche"]},
  guide: {type: "grille", entetes: ["Agriculture", "Cueillette", "Pêche"], rangees: [["C", "A", "B"]]},
  updatedAt: "2026-07-24T00:53:47.055Z"
+},
+{
+ id: "Q37",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Nomme deux caractéristiques du territoire des Iroquoiens.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Des terres fertiles.\nDes forêts de feuillus.\nDes rivières.\nDes lacs.\nLe fleuve Saint-Laurent.",
+ updatedAt: "2026-07-24T00:59:57.204Z"
 }
 ]

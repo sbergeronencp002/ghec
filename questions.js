@@ -945,13 +945,13 @@ const QUESTIONS = [
  enonce: "Les documents A à C présentent différentes activités pratiquées par les Algonquiens vers 1500. Associe chaque document à l'activité correspondante.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "chasse.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "peche.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "cueillette.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document A", ref: "chasse.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "peche.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "cueillette.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Chasse", "Cueillette", "Pêche"]},
  guide: {type: "grille", entetes: ["Chasse", "Cueillette", "Pêche"], rangees: [["A", "C", "B"]]},
- updatedAt: "2026-07-24T19:28:12.858Z"
+ updatedAt: "2026-07-24T19:37:27.493Z"
 },
 {
  id: "Q57",

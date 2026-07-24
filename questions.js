@@ -168,12 +168,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  soustag: "Caractériser un territoire - 2",
- enonce: "Nomme deux caractéristiques du village iroquoien qui montrent que les Iroquoiens sont sédentaires.",
+ enonce: "Nomme deux caractéristiques du territoire habité par les Iroquoiens.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les maisons longues.\nLa palissade.\nLes champs de maïs (ou les champs cultivés).\nLe village permanent.",
- updatedAt: "2026-07-23T14:05:03.263Z"
+ guide: "Il est situé dans les Basses-terres du Saint-Laurent.\nIl s'étend jusqu'à la région des Grands Lacs.\nIl comprend des plaines fertiles.\nIl est traversé par de nombreux cours d'eau (fleuve, rivières et lacs).\nLe climat permet la pratique de l'agriculture durant l'été.",
+ updatedAt: "2026-07-24T18:50:42.939Z"
 },
 {
  id: "Q6",

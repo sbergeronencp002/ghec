@@ -1070,7 +1070,7 @@ const QUESTIONS = [
  id: "Q64",
  niveau: 3,
  oi: "Situer dans l'espace",
- competence: "Lire l'organisation du territoire",
+ competence: "S'ouvrir à la diversité",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Situer 2 éléments dans l'espace",
@@ -1079,6 +1079,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "grille", entetes: ["Nations algonquiennes", "Nations iroquoiennes"], rangees: [["", ""]]},
  guide: {type: "grille", entetes: ["Nations algonquiennes", "Nations iroquoiennes"], rangees: [["A", "B"]]},
- updatedAt: "2026-07-25T00:09:54.973Z"
+ updatedAt: "2026-07-25T14:28:26.507Z"
 }
 ]

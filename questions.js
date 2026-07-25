@@ -1105,15 +1105,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500"],
+ periodes: ["Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme une nation iroquoienne.",
+ enonce: "Nomme une nation algonquienne.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "Adapté de Récitus."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les Haudenosaunee (Iroquois).\nLes Hurons-Wendats.\nLes Iroquoiens du Saint-Laurent.",
- updatedAt: "2026-07-25T14:59:44.973Z"
+ guide: "Les Innus.\nLes Cris.\nLes Abénakis.\nLes Mi'gmaqs.\nLes Atikamekws.\nLes Anishinabegs (Algonquins).\nLes Wolastoqiyik (Malécites).\nLes Naskapis.",
+ updatedAt: "2026-07-25T15:13:56.187Z"
 },
 {
  id: "Q67",

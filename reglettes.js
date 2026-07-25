@@ -23,14 +23,14 @@ const REGLETTES_PRESET = {
     ] }
   ],
   "Situer dans l'espace": [
-    { label:"1 pt — les faits", colonnes:["1 point","0 point"], niveaux:[
-      {pts:1, desc:"L'élève situe les faits dans l'espace."},
-      {pts:0, desc:"L'élève ne situe pas les faits dans l'espace."}
+    { label:"1 pt — 1 élément", colonnes:["1 point","0 point"], niveaux:[
+      {pts:1, desc:"L'élève situe le fait dans l'espace."},
+      {pts:0, desc:"L'élève ne situe pas le fait dans l'espace."}
     ] },
-    { label:"2 pts — 3 sur 3", colonnes:["2 points","1 point","0 point"], niveaux:[
-      {pts:2, desc:"L'élève situe tous les faits dans l'espace. (3 sur 3)"},
-      {pts:1, desc:"L'élève situe les faits dans l'espace. (2 sur 3)"},
-      {pts:0, desc:"L'élève ne situe pas les faits dans l'espace. (1 ou 0 sur 3)"}
+    { label:"2 pts — 2 éléments", colonnes:["2 points","1 point","0 point"], niveaux:[
+      {pts:2, desc:"L'élève situe les faits dans l'espace."},
+      {pts:1, desc:"L'élève situe un fait dans l'espace."},
+      {pts:0, desc:"L'élève ne situe pas les faits dans l'espace."}
     ] }
   ],
   "Établir des faits": [

@@ -1049,7 +1049,7 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "Indique la lettre correspondant au territoire habité par les nations iroquoiennes.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "tableau_2col"},
  guide: "B",
  updatedAt: "2026-07-25T00:06:42.905Z"
@@ -1064,7 +1064,7 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "Indique la lettre correspondant au territoire habité par les nations algonquiennes.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "tableau_2col"},
  guide: "A",
  updatedAt: "2026-07-25T00:07:15.326Z"
@@ -1079,7 +1079,7 @@ const QUESTIONS = [
  soustag: "Situer 2 éléments dans l'espace",
  enonce: "Indique la lettre correspondant au territoire habité par :\n• les nations iroquoiennes\n• les nations algonquiennes.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "grille", entetes: ["Nations algonquiennes", "Nations iroquoiennes"], rangees: [["", ""]]},
  guide: {type: "grille", entetes: ["Nations algonquiennes", "Nations iroquoiennes"], rangees: [["A", "B"]]},
  updatedAt: "2026-07-25T14:29:59.458Z"

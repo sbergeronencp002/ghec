@@ -1039,14 +1039,14 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Situer dans l'espace",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Algonquiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Situer 1 élément dans l'espace",
- enonce: "Indique la lettre correspondant au territoire habité par les nations algonquiennes.",
+ enonce: "Indique la lettre correspondant au territoire habité par les nations iroquoiennes.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "tableau_2col"},
- guide: "A",
- updatedAt: "2026-07-25T00:06:18.371Z"
+ guide: "B",
+ updatedAt: "2026-07-25T00:06:42.905Z"
 }
 ]

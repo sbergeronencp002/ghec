@@ -61,7 +61,8 @@ const REGLETTES = {
 "Q60": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q61": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q62": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
-"Q63": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
+"Q63": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
+"Q64": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -1064,5 +1065,20 @@ const QUESTIONS = [
  reponse: {type: "tableau_2col"},
  guide: "A",
  updatedAt: "2026-07-25T00:07:15.326Z"
+},
+{
+ id: "Q64",
+ niveau: 3,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Situer 2 éléments dans l'espace",
+ enonce: "Indique la lettre correspondant au territoire habité par :\n• les nations iroquoiennes\n• les nations algonquiennes.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "grille", entetes: ["Nations algonquiennes", "Nations iroquoiennes"], rangees: [["", ""]]},
+ guide: {type: "grille", entetes: ["Nations algonquiennes", "Nations iroquoiennes"], rangees: [["A", "B"]]},
+ updatedAt: "2026-07-25T00:09:54.973Z"
 }
 ]

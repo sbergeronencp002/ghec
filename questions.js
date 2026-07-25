@@ -1084,7 +1084,21 @@ const QUESTIONS = [
  guide: {type: "grille", entetes: ["Nations algonquiennes", "Nations iroquoiennes"], rangees: [["A", "B"]]},
  updatedAt: "2026-07-25T14:29:59.458Z"
 },
-{id: "Q65", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", enonce: "À quel groupe de nations appartiennent les Haudenosaunee et les Hurons-Wendats?", aspects: [{aspect: "Population"}], documents: [], reponse: {type: "lignes", nombre: 1}, guide: "Les Iroquoiens.", updatedAt: "2026-07-25T14:57:55.601Z"},
+{
+ id: "Q65",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À quel groupe de nations appartiennent les Haudenosaunee et les Hurons-Wendats?",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "Adapté de Récitus."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Iroquoiens.",
+ updatedAt: "2026-07-25T15:12:02.325Z"
+},
 {
  id: "Q66",
  niveau: 3,

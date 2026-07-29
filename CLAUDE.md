@@ -113,6 +113,22 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ---
 
+### Cache-bust actuel
+
+`index.html` charge `app.js?v=53`, `style.css?v=31`, `filters.js?v=1`, `oi-config.js?v=1`.
+
+⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
+visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de
+recevoir indéfiniment l'ancien code, même après une publication (le SW ne revérifie
+jamais un asset précaché en cache-first tant que son URL ne change pas). Incident vécu
+le 2026-07-28 : plusieurs modifications d'`app.js` en cours de session sans bump de
+version — répercuter aussi le nouveau `?v=N` dans `sw.js` (`PRECACHE`) et incrémenter la
+constante `CACHE` de `sw.js` (une liste `PRECACHE` changée sans bump de `CACHE` laisse les
+navigateurs déjà visités sur l'ancienne liste indéfiniment). Cette table doit être tenue à
+jour à chaque bump, sinon un futur agent repart d'un mauvais numéro de version.
+
+---
+
 ## Section Configuration d'admin.html (nouveau — n'existe pas dans hqccssbf)
 
 Accessible via le lien d'ancrage « Configuration » en haut d'admin.html. Trois

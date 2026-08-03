@@ -122,7 +122,8 @@ const IMAGE_DB = {
 "chasse_2.jpg": {src: "images/chasse_2.jpg", w: 1200, h: 960},
 "chasse_1.jpg": {src: "images/chasse_1.jpg"},
 "carte_territoires_physio.jpg": {src: "images/carte_territoires_physio.jpg"},
-"nations_autochtones_1500.jpg": {src: "images/nations_autochtones_1500.jpg", w: 1200, h: 892}
+"nations_autochtones_1500.jpg": {src: "images/nations_autochtones_1500.jpg", w: 1200, h: 892},
+"transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -1158,10 +1159,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une voie de communication terrestre utilisée par les peuples autochtones vers 1500.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins_deplacements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_sentiers.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les sentiers forestiers.",
- updatedAt: "2026-08-03T16:02:21.491Z"
+ updatedAt: "2026-08-03T16:05:08.090Z"
 },
 {
  id: "Q70",

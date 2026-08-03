@@ -1006,10 +1006,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment les caractéristiques du territoire habité par les Iroquoiens influencent leur mode de vie sédentaire.",
  aspects: [{aspect: "Territoire"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_recoltes.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire des Iroquoiens comprend des plaines fertiles et un climat favorable à l'agriculture (le territoire habité des Iroquoiens).\nCela leur permet de cultiver le maïs, les haricots et les courges (la pratique de l'agriculture).\nLes Iroquoiens vivent donc dans des villages permanents (le mode de vie sédentaire).",
- updatedAt: "2026-07-24T23:46:11.856Z"
+ updatedAt: "2026-08-03T18:22:43.534Z"
 },
 {
  id: "Q59",

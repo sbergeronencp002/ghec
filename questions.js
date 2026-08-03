@@ -478,10 +478,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les Iroquoiens fabriquent des paniers.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "paniers_tisses.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "paniers_tisses.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoien_paniers.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens fabriquent des paniers pour transporter, conserver et ranger leurs récoltes et d'autres ressources.",
- updatedAt: "2026-07-24T04:02:08.986Z"
+ updatedAt: "2026-08-03T18:16:13.808Z"
 },
 {
  id: "Q24",

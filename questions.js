@@ -1034,10 +1034,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment les caractéristiques du territoire habité par les Algonquiens influencent leur mode de vie nomade.",
  aspects: [{aspect: "Territoire"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire des Algonquiens est couvert de vastes forêts et de nombreux lacs et rivières (le territoire habité des Algonquiens).\nCes ressources les amènent à se déplacer pour chasser, pêcher et cueillir selon les saisons (les activités de subsistance).\nLes Algonquiens adoptent donc un mode de vie nomade (le mode de vie nomade).",
- updatedAt: "2026-07-24T23:47:45.761Z"
+ updatedAt: "2026-08-03T18:20:50.642Z"
 },
 {
  id: "Q61",

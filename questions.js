@@ -123,7 +123,8 @@ const IMAGE_DB = {
 "chasse_1.jpg": {src: "images/chasse_1.jpg"},
 "carte_territoires_physio.jpg": {src: "images/carte_territoires_physio.jpg"},
 "nations_autochtones_1500.jpg": {src: "images/nations_autochtones_1500.jpg", w: 1200, h: 892},
-"transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960}
+"transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
+"transport_canot.jpg": {src: "images/transport_canot.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -1174,9 +1175,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une voie de communication sur l'eau utilisée par les peuples autochtones vers 1500.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_canot.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Un cours d'eau, une rivière, un lac ou le fleuve Saint-Laurent.",
- updatedAt: "2026-08-03T16:04:33.924Z"
+ updatedAt: "2026-08-03T16:05:30.604Z"
 }
 ]

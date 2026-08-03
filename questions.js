@@ -70,7 +70,8 @@ const REGLETTES = {
 "Q69": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q70": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q71": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q72": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q72": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q73": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -128,7 +129,8 @@ const IMAGE_DB = {
 "transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
 "transport_canot.jpg": {src: "images/transport_canot.jpg", w: 1200, h: 960},
 "vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960},
-"poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962}
+"poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962},
+"iroquoiens_conseil.jpg": {src: "images/iroquoiens_conseil.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -1213,5 +1215,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La poterie.",
  updatedAt: "2026-08-03T16:10:49.734Z"
+},
+{
+ id: "Q73",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme le moyen par lequel les Iroquoiens prennent les décisions importantes vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les décisions importantes sont prises en conseil.",
+ updatedAt: "2026-08-03T16:16:20.708Z"
 }
 ]

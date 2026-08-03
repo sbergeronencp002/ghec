@@ -47,7 +47,7 @@ const REGLETTES = {
 "Q46": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q47": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q48": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q49": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q49": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q50": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q51": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q52": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -859,16 +859,17 @@ const QUESTIONS = [
 {
  id: "Q49",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Algonquiens vers 1500"],
- points: 2,
- enonce: "Explique pourquoi les chants et les danses sont importants chez les Algonquiens vers 1500.",
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme un divertissement pratiqué par les Algonquiens vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les membres de la communauté se réunissent pour chanter et danser (les chants et les danses). \nIls participent ensemble aux fêtes et aux cérémonies (les rassemblements communautaires).\nCes activités renforcent les liens entre les familles et favorisent le partage des traditions (la cohésion de la communauté).",
- updatedAt: "2026-07-24T12:45:34.468Z"
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les danses et les chants.",
+ updatedAt: "2026-08-03T18:27:08.756Z"
 },
 {
  id: "Q50",

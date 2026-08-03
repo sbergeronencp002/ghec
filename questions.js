@@ -69,7 +69,8 @@ const REGLETTES = {
 "Q68": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q69": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q70": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q71": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q71": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q72": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -126,7 +127,8 @@ const IMAGE_DB = {
 "nations_autochtones_1500.jpg": {src: "images/nations_autochtones_1500.jpg", w: 1200, h: 892},
 "transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
 "transport_canot.jpg": {src: "images/transport_canot.jpg", w: 1200, h: 960},
-"vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960}
+"vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960},
+"poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962}
 }
 
 const QUESTIONS = [
@@ -1196,5 +1198,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La vannerie.",
  updatedAt: "2026-08-03T16:09:20.819Z"
+},
+{
+ id: "Q72",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme une forme d'art pratiquée par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_b.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La poterie.",
+ updatedAt: "2026-08-03T16:10:49.734Z"
 }
 ]

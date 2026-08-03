@@ -68,7 +68,8 @@ const REGLETTES = {
 "Q67": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q68": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q69": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q70": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q70": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q71": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -124,7 +125,8 @@ const IMAGE_DB = {
 "carte_territoires_physio.jpg": {src: "images/carte_territoires_physio.jpg"},
 "nations_autochtones_1500.jpg": {src: "images/nations_autochtones_1500.jpg", w: 1200, h: 892},
 "transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
-"transport_canot.jpg": {src: "images/transport_canot.jpg", w: 1200, h: 960}
+"transport_canot.jpg": {src: "images/transport_canot.jpg", w: 1200, h: 960},
+"vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -1179,5 +1181,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Un cours d'eau, une rivière, un lac ou le fleuve Saint-Laurent.",
  updatedAt: "2026-08-03T16:05:30.604Z"
+},
+{
+ id: "Q71",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme une forme d'art pratiquée par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La vannerie.",
+ updatedAt: "2026-08-03T16:09:20.819Z"
 }
 ]

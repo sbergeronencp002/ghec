@@ -6,7 +6,7 @@ const REGLETTES = {
 "Q5": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q6": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q7": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit les faits. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q8": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q8": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q9": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q10": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q11": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -132,7 +132,8 @@ const IMAGE_DB = {
 "vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960},
 "poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962},
 "iroquoiens_conseil.jpg": {src: "images/iroquoiens_conseil.jpg", w: 1200, h: 960},
-"iroquoiens_femmes_chefs.jpg": {src: "images/iroquoiens_femmes_chefs.jpg", w: 1200, h: 960}
+"iroquoiens_femmes_chefs.jpg": {src: "images/iroquoiens_femmes_chefs.jpg", w: 1200, h: 960},
+"toboggan.jpg": {src: "images/toboggan.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -247,14 +248,14 @@ const QUESTIONS = [
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme un objet utilisé par les peuples autochtones pour se déplacer en hiver.",
- aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
+ points: 2,
+ soustag: "Établir 1 fait - 2",
+ enonce: "Nomme deux objets utilisés par les peuples autochtones pour se déplacer en hiver.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "toboggan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "raquettes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
  guide: "Les raquettes.\nLe toboggan.",
- updatedAt: "2026-07-23T16:18:32.829Z"
+ updatedAt: "2026-08-05T12:44:59.545Z"
 },
 {
  id: "Q9",

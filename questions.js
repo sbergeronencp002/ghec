@@ -622,12 +622,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À partir du document A, nomme l'objet fabriqué.",
+ enonce: "Nomme l'objet utilisé par les peuples autochtones pour se déplacer sur les sentiers forestiers.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Des mocassins.",
- updatedAt: "2026-07-23T19:56:44.164Z"
+ updatedAt: "2026-08-05T12:38:54.630Z"
 },
 {
  id: "Q34",

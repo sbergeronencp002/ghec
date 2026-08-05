@@ -337,6 +337,22 @@ function requireToken() {
 const REPO  = 'sbergeronencp002/ghec';
 const API   = 'https://api.github.com/repos/' + REPO + '/contents/';
 
+// Dernier état complet de confiance connu de cette page (chargement initial, ou écriture
+// confirmée par applyQuestionsEdit) — garde-fou anti-régression symétrique à celui
+// d'admin.html (voir _assignFreshState/confirmedIds dans admin.html, section « Latence de
+// propagation » du CLAUDE.md) : sans lui, une relecture stabilisée qui atterrit quand même
+// sur un réplica GitHub en retard (ex. une question publiée par admin.html dans un autre
+// onglet juste avant) ferait disparaître cette question lors de la réécriture complète du
+// fichier par applyQuestionsEdit, sans erreur ni conflit 409.
+let confirmedQuestions = [];
+let confirmedIds = new Set();
+function seedConfirmed() {
+  if (typeof QUESTIONS !== 'undefined') {
+    confirmedQuestions = QUESTIONS;
+    confirmedIds = new Set(QUESTIONS.map(q => q.id));
+  }
+}
+
 // Couleurs des pastilles OI : dérivées de oi-config.js (source unique de vérité)
 // pour rester cohérentes avec index.html et admin.html. On applique color/bg en
 // style inline (les variables --c-* sont définies dans le :root de cette page).
@@ -495,18 +511,18 @@ async function init() {
   function scriptTagFallback() {
     const qs = document.createElement('script');
     qs.src = 'questions.js?v=1&t=' + Date.now();
-    qs.onload = init;
+    qs.onload = () => { seedConfirmed(); init(); };
     document.head.appendChild(qs);
   }
   function staticFetchFallback() {
     fetch('questions.js?t=' + Date.now(), { cache: 'no-store' })
       .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(src => { if (runSource(src)) init(); else scriptTagFallback(); })
+      .then(src => { if (runSource(src)) { seedConfirmed(); init(); } else scriptTagFallback(); })
       .catch(scriptTagFallback);
   }
   const token = getToken();
   fetchQuestionsJsSource(token ? {Authorization: 'token ' + token} : undefined)
-    .then(({content}) => { if (runSource(content)) init(); else staticFetchFallback(); })
+    .then(({content}) => { if (runSource(content)) { seedConfirmed(); init(); } else staticFetchFallback(); })
     .catch(staticFetchFallback);
 })();
 
@@ -1167,6 +1183,12 @@ async function applyQuestionsEdit(mutate, commitMsg) {
     } catch(e) {
       throw new Error('questions.js illisible : ' + e.message);
     }
+    const freshIds = new Set(parsed.QUESTIONS.map(q => q.id));
+    const missing = confirmedQuestions.filter(q => confirmedIds.has(q.id) && !freshIds.has(q.id));
+    if (missing.length) {
+      console.warn('questions.js : relecture en retard détectée — réinjection de ' + missing.length + ' question(s) connue(s) localement : ' + missing.map(q=>q.id).join(', '));
+      parsed.QUESTIONS = parsed.QUESTIONS.concat(missing);
+    }
     const changed = mutate(parsed);
     if (!changed) return false;
     const out = generateQuestionsJs(parsed.QUESTIONS, parsed.REGLETTES, parsed.IMAGE_DB);
@@ -1177,7 +1199,11 @@ async function applyQuestionsEdit(mutate, commitMsg) {
       headers: {Authorization: 'token ' + token, 'Content-Type': 'application/json'},
       body: JSON.stringify({message: commitMsg, content: btoa(binary), sha: sha})
     });
-    if (rp.ok) return true;
+    if (rp.ok) {
+      confirmedQuestions = parsed.QUESTIONS;
+      confirmedIds = new Set(parsed.QUESTIONS.map(q => q.id));
+      return true;
+    }
     if (rp.status === 409 && attempt < 2) continue; // conflit SHA → on relit et on réessaie
     throw new Error('Échec écriture questions.js (' + rp.status + ')');
   }

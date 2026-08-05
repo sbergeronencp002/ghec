@@ -829,7 +829,7 @@ function populateEditSearch() {
   const selOi = document.getElementById('edit-filter-oi');
   const prevOi = selOi.value;
   selOi.innerHTML = '<option value="">Toutes les OI</option>'
-    + ois.map(oi => `<option value="${oi}">${oi}</option>`).join('');
+    + ois.map(oi => `<option value="${escHtml(oi)}">${escHtml(oi)}</option>`).join('');
   if(prevOi) selOi.value = prevOi;
   filterEditList();
 }

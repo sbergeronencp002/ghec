@@ -554,10 +554,10 @@ function renderMore() {
 }
 
 function initSite() {
-  // Les données sont déjà chargées par <script src="questions.js"> (globals
-  // QUESTIONS / REGLETTES / IMAGE_DB). Un re-fetch via new Function() ne
-  // fuiterait pas ses const en global : c'était du code mort qui doublait
-  // le téléchargement. On s'appuie donc directement sur les globals.
+  // Appelé par loadIndex() (index.html) une fois questions-index.js chargé — QUESTIONS
+  // à ce stade ne contient que les champs grille (index allégé). Les champs complets
+  // sont chargés en lazy via ensureDataLoaded() au premier clic « Détail »,
+  // prévisualisation ou DOCX.
   populateFilters();
   applyFilters();
   try {

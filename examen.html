@@ -206,10 +206,39 @@ const PERIODES_ALL = Object.values(PERIODES_PAR_NIVEAU).flat();
   });
 })();
 
+const EX_REPO = 'sbergeronencp002/ghec';
+const EX_API  = 'https://api.github.com/repos/' + EX_REPO + '/contents/';
+
+// Lit questions.js via l'API GitHub Contents en priorité plutôt que le site statique :
+// GitHub Pages est servi derrière un CDN qui peut continuer à servir une ancienne version
+// pendant un moment après une publication, même avec un cache-bust par timestamp sur l'URL
+// (le CDN peut ignorer la query string pour la clé de cache) — l'API GitHub, elle, reflète
+// toujours l'état réel du dépôt (même parade que dans app.js/revision.html/documents.html,
+// voir section « Latence de propagation » du CLAUDE.md). Repli sur le site statique si
+// l'API échoue (hors ligne, quota anonyme de 60 req/h dépassé, etc.) — lecture seule ici,
+// pas besoin de token.
 async function loadQuestions() {
-  const r = await fetch('questions.js?t=' + Date.now(), { cache: 'no-store' });
-  if (!r.ok) throw new Error('Impossible de charger questions.js (' + r.status + ')');
-  const src = await r.text();
+  let src;
+  try {
+    const r = await fetch(EX_API + 'questions.js?ref=main&t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('' + r.status);
+    const d = await r.json();
+    if (d.content) {
+      const rawBytes = Uint8Array.from(atob(d.content.replace(/\n/g,'')), c => c.charCodeAt(0));
+      src = new TextDecoder('utf-8').decode(rawBytes);
+    } else if (d.download_url) {
+      const dlUrl = d.download_url + (d.download_url.includes('?') ? '&' : '?') + 't=' + Date.now();
+      const raw = await fetch(dlUrl, { cache: 'no-store' });
+      if (!raw.ok) throw new Error('download_url ' + raw.status);
+      src = await raw.text();
+    } else {
+      throw new Error("Réponse API inattendue");
+    }
+  } catch(e) {
+    const r = await fetch('questions.js?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('Impossible de charger questions.js (' + r.status + ')');
+    src = await r.text();
+  }
   const result = new Function(src + '\nreturn{REGLETTES,IMAGE_DB,QUESTIONS}')();
   QUESTIONS = result.QUESTIONS;
   REGLETTES = result.REGLETTES;

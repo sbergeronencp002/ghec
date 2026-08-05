@@ -229,6 +229,22 @@ function rvRequireToken() {
 const RV_REPO  = 'sbergeronencp002/ghec';
 const RV_API  = 'https://api.github.com/repos/' + RV_REPO + '/contents/';
 
+// Dernier état complet de confiance connu de cette page (chargement initial, ou écriture
+// confirmée par rvApplyQuestionsEdit) — garde-fou anti-régression symétrique à celui
+// d'admin.html (voir _assignFreshState/confirmedIds dans admin.html, section « Latence de
+// propagation » du CLAUDE.md) : sans lui, une relecture stabilisée qui atterrit quand même
+// sur un réplica GitHub en retard (ex. une question publiée par admin.html dans un autre
+// onglet juste avant) ferait disparaître cette question lors de la réécriture complète du
+// fichier par rvApplyQuestionsEdit, sans erreur ni conflit 409.
+let rvConfirmedQuestions = [];
+let rvConfirmedIds = new Set();
+function rvSeedConfirmed() {
+  if(typeof QUESTIONS !== 'undefined') {
+    rvConfirmedQuestions = QUESTIONS;
+    rvConfirmedIds = new Set(QUESTIONS.map(q => q.id));
+  }
+}
+
 // Lit questions.js depuis l'API GitHub Contents et décode son contenu source (base64
 // inline si ≤ 1 Mo, sinon téléchargement via download_url). Retourne { content, sha }.
 async function rvFetchQuestionsJsSource(headers) {
@@ -286,6 +302,12 @@ async function rvApplyQuestionsEdit(mutate, commitMsg) {
     } catch(e) {
       throw new Error('questions.js illisible : ' + e.message);
     }
+    const freshIds = new Set(parsed.QUESTIONS.map(q => q.id));
+    const missing = rvConfirmedQuestions.filter(q => rvConfirmedIds.has(q.id) && !freshIds.has(q.id));
+    if(missing.length) {
+      console.warn('questions.js : relecture en retard détectée — réinjection de ' + missing.length + ' question(s) connue(s) localement : ' + missing.map(q=>q.id).join(', '));
+      parsed.QUESTIONS = parsed.QUESTIONS.concat(missing);
+    }
     const changed = mutate(parsed);
     if(!changed) return false;
     const out = generateQuestionsJs(parsed.QUESTIONS, parsed.REGLETTES, parsed.IMAGE_DB);
@@ -296,7 +318,11 @@ async function rvApplyQuestionsEdit(mutate, commitMsg) {
       headers: {Authorization: 'token ' + token, 'Content-Type': 'application/json'},
       body: JSON.stringify({message: commitMsg, content: btoa(binary), sha: sha})
     });
-    if(rp.ok) return true;
+    if(rp.ok) {
+      rvConfirmedQuestions = parsed.QUESTIONS;
+      rvConfirmedIds = new Set(parsed.QUESTIONS.map(q => q.id));
+      return true;
+    }
     if(rp.status === 409 && attempt === 0) continue;
     throw new Error('Échec écriture questions.js (' + rp.status + ')');
   }
@@ -1072,13 +1098,13 @@ document.addEventListener('keydown', e => {
   function scriptTagFallback() {
     const qs = document.createElement('script');
     qs.src = 'questions.js?v=1&t=' + Date.now();
-    qs.onload = () => { rvPopulateFilters(); rvApplyFilters(); };
+    qs.onload = () => { rvSeedConfirmed(); rvPopulateFilters(); rvApplyFilters(); };
     document.head.appendChild(qs);
   }
   function staticFetchFallback() {
     fetch('questions.js?t=' + Date.now(), { cache: 'no-store' })
       .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(src => { if (runSource(src)) { rvPopulateFilters(); rvApplyFilters(); } else scriptTagFallback(); })
+      .then(src => { if (runSource(src)) { rvSeedConfirmed(); rvPopulateFilters(); rvApplyFilters(); } else scriptTagFallback(); })
       .catch(scriptTagFallback);
   }
   // Lit d'abord via l'API GitHub (comme admin.html) plutôt que le site statique : GitHub
@@ -1107,7 +1133,7 @@ document.addEventListener('keydown', e => {
       }
       throw new Error('Réponse API inattendue');
     })
-    .then(src => { if (runSource(src)) { rvPopulateFilters(); rvApplyFilters(); } else staticFetchFallback(); })
+    .then(src => { if (runSource(src)) { rvSeedConfirmed(); rvPopulateFilters(); rvApplyFilters(); } else staticFetchFallback(); })
     .catch(staticFetchFallback);
 })();
 </script>

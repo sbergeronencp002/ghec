@@ -133,7 +133,8 @@ const IMAGE_DB = {
 "poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962},
 "iroquoiens_conseil.jpg": {src: "images/iroquoiens_conseil.jpg", w: 1200, h: 960},
 "iroquoiens_femmes_chefs.jpg": {src: "images/iroquoiens_femmes_chefs.jpg", w: 1200, h: 960},
-"toboggan.jpg": {src: "images/toboggan.jpg", w: 1200, h: 800}
+"toboggan.jpg": {src: "images/toboggan.jpg", w: 1200, h: 800},
+"deplacement_hiver_1.jpg": {src: "images/deplacement_hiver_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -610,10 +611,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones utilisent des raquettes en hiver.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "deplacement_hiver_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les peuples autochtones utilisent des raquettes pour marcher sur la neige sans s'enfoncer.",
- updatedAt: "2026-07-24T04:02:21.935Z"
+ guide: "Les peuples autochtones utilisent des raquettes en hiver, car elles leur permettent de marcher sur la neige sans trop s'enfoncer.",
+ updatedAt: "2026-08-05T12:46:40.015Z"
 },
 {
  id: "Q33",

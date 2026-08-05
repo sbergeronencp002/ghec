@@ -645,7 +645,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_troc_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_troc_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les cours d'eau sont un atout, car ils permettent aux peuples autochtones de se déplacer, de pêcher et d'échanger des ressources.",
- updatedAt: "2026-08-05T13:14:53.974Z"
+ updatedAt: "2026-08-05T16:43:58.838Z"
 },
 {
  id: "Q35",

@@ -267,10 +267,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les Algonquiens se déplacent au fil des saisons.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_2.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_2.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Algonquiens se déplacent pour trouver la nourriture dont ils ont besoin selon les saisons.",
- updatedAt: "2026-07-24T03:55:48.018Z"
+ guide: "Les Algonquiens se déplacent au fil des saisons pour suivre les ressources dont ils ont besoin, comme les animaux, les poissons et les plantes.",
+ updatedAt: "2026-08-05T13:02:09.110Z"
 },
 {
  id: "Q10",

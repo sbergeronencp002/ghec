@@ -134,7 +134,9 @@ const IMAGE_DB = {
 "iroquoiens_conseil.jpg": {src: "images/iroquoiens_conseil.jpg", w: 1200, h: 960},
 "iroquoiens_femmes_chefs.jpg": {src: "images/iroquoiens_femmes_chefs.jpg", w: 1200, h: 960},
 "toboggan.jpg": {src: "images/toboggan.jpg", w: 1200, h: 800},
-"deplacement_hiver_1.jpg": {src: "images/deplacement_hiver_1.jpg"}
+"deplacement_hiver_1.jpg": {src: "images/deplacement_hiver_1.jpg"},
+"transport_troc_1.jpg": {src: "images/transport_troc_1.jpg", w: 1200, h: 800},
+"transport_troc_2.jpg": {src: "images/transport_troc_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -638,12 +640,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les peuples autochtones portent des mocassins.",
+ enonce: "Explique pourquoi les cours d'eau sont un atout pour les peuples autochtones vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins_deplacements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_troc_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_troc_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les peuples autochtones fabriquent des mocassins pour protéger leurs pieds lorsqu'ils se déplacent.",
- updatedAt: "2026-07-24T04:00:27.458Z"
+ guide: "Les cours d'eau sont un atout, car ils permettent aux peuples autochtones de se déplacer, de pêcher et d'échanger des ressources.",
+ updatedAt: "2026-08-05T13:14:53.974Z"
 },
 {
  id: "Q35",

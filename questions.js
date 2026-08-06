@@ -72,7 +72,8 @@ const REGLETTES = {
 "Q71": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q72": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q73": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q74": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q74": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q75": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -144,7 +145,8 @@ const IMAGE_DB = {
 "ressources_objets.jpg": {src: "images/ressources_objets.jpg", w: 1200, h: 800},
 "ceremonies_objets.jpg": {src: "images/ceremonies_objets.jpg", w: 1200, h: 960},
 "ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800},
-"village_iroquoien_1500_4.jpg": {src: "images/village_iroquoien_1500_4.jpg"}
+"village_iroquoien_1500_4.jpg": {src: "images/village_iroquoien_1500_4.jpg"},
+"canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1261,5 +1263,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les femmes aînées ou les mères de clan.",
  updatedAt: "2026-08-03T16:17:56.558Z"
+},
+{
+ id: "Q75",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi les peuples autochtones utilisent un canot d'écorce en été.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "canot_ecorce.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les peuples autochtones utilisent un canot d'écorce en été parce qu'il leur permet de se déplacer sur les cours d'eau.",
+ updatedAt: "2026-08-06T14:18:56.695Z"
 }
 ]

@@ -532,7 +532,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens fabriquent eux-mêmes leurs objets pour répondre à leurs besoins en utilisant les ressources de la nature.",
- updatedAt: "2026-08-06T13:10:04.286Z"
+ updatedAt: "2026-08-06T13:44:53.500Z"
 },
 {
  id: "Q27",

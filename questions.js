@@ -140,7 +140,8 @@ const IMAGE_DB = {
 "aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960},
 "iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg"},
 "village_iroquoien_1500_3.jpg": {src: "images/village_iroquoien_1500_3.jpg", w: 1200, h: 960},
-"vetements_2.jpg": {src: "images/vetements_2.jpg", w: 1200, h: 960}
+"vetements_2.jpg": {src: "images/vetements_2.jpg", w: 1200, h: 960},
+"ressources_objets.jpg": {src: "images/ressources_objets.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -457,10 +458,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les Iroquoiens utilisent des ressources de la nature pour fabriquer leurs objets.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_objets.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens utilisent des ressources de la nature pour fabriquer leurs objets parce qu'ils trouvent les plantes ou les fibres végétales ou l'argile dont ils ont besoin dans leur environnement ou dans la nature.",
- updatedAt: "2026-07-24T03:59:10.214Z"
+ updatedAt: "2026-08-06T13:48:59.906Z"
 },
 {
  id: "Q22",

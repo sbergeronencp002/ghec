@@ -1295,10 +1295,14 @@ const QUESTIONS = [
  soustag: "Mettre en relation des faits - 3",
  enonce: "Les documents A à C présentent différents objets utilisés par les peuples autochtones pour se déplacer vers 1500. Associe chaque document à l'objet correspondant.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce.jpg"}]}, {type: "textes", cols: [{titre: "Document B", ref: "toboggan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document C", ref: "raquettes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "toboggan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "raquettes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
  reponse: {type: "mettre-en-relation", elements: ["Canot d'écorce", "Raquettes", "Toboggan"]},
  guide: {type: "grille", entetes: ["Canot d'écorce", "Raquettes", "Toboggan"], rangees: [["A", "C", "B"]]},
- updatedAt: "2026-08-06T18:41:02.549Z"
+ updatedAt: "2026-08-06T19:53:34.280Z"
 },
 {
  id: "Q77",

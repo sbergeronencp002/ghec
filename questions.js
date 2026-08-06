@@ -141,7 +141,8 @@ const IMAGE_DB = {
 "iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg"},
 "village_iroquoien_1500_3.jpg": {src: "images/village_iroquoien_1500_3.jpg", w: 1200, h: 960},
 "vetements_2.jpg": {src: "images/vetements_2.jpg", w: 1200, h: 960},
-"ressources_objets.jpg": {src: "images/ressources_objets.jpg", w: 1200, h: 800}
+"ressources_objets.jpg": {src: "images/ressources_objets.jpg", w: 1200, h: 800},
+"ceremonies_objets.jpg": {src: "images/ceremonies_objets.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -413,12 +414,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les peuples autochtones organisent des cérémonies vers 1500.",
+ enonce: "Explique pourquoi les peuples autochtones organisent une cérémonie de guérison vers 1500.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ceremonies_objets.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les peuples autochtones participent aux cérémonies pour remercier les esprits de la nature ou demander leur aide ou pratiquer leur religion.",
- updatedAt: "2026-07-24T03:58:40.665Z"
+ guide: "Les peuples autochtones organisent une cérémonie de guérison parce qu'ils croient qu'elle peut aider une personne malade à retrouver la santé.",
+ updatedAt: "2026-08-06T14:01:28.453Z"
 },
 {
  id: "Q19",

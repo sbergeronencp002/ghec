@@ -142,7 +142,8 @@ const IMAGE_DB = {
 "village_iroquoien_1500_3.jpg": {src: "images/village_iroquoien_1500_3.jpg", w: 1200, h: 960},
 "vetements_2.jpg": {src: "images/vetements_2.jpg", w: 1200, h: 960},
 "ressources_objets.jpg": {src: "images/ressources_objets.jpg", w: 1200, h: 800},
-"ceremonies_objets.jpg": {src: "images/ceremonies_objets.jpg", w: 1200, h: 960}
+"ceremonies_objets.jpg": {src: "images/ceremonies_objets.jpg", w: 1200, h: 960},
+"ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -332,10 +333,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones pratiquent le troc.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Rreconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Rreconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_troc.jpg", source: "Rreconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones pratiquent le troc pour obtenir des ressources qu'ils ne possèdent pas ou pour répondre à leurs besoins.",
- updatedAt: "2026-07-24T03:58:19.949Z"
+ updatedAt: "2026-08-06T14:06:36.605Z"
 },
 {
  id: "Q14",

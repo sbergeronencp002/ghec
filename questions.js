@@ -237,7 +237,7 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- soustag: "Établir 1 fait - 1",
+ soustag: "Établir tous les faits - 2",
  enonce: "Nomme deux aliments que les Iroquoiens cultivent pour se nourrir.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_recoltes.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
@@ -354,7 +354,7 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 4",
- enonce: "Les documents A à D présentent différentes ressources échangées par les nations iroquoiennes vers 1500. Associez chaque document à l'endroit correspondant.",
+ enonce: "Les documents A à D présentent différentes ressources échangées par les nations iroquoiennes vers 1500. Associez chaque document à la catégorie correspondante : ressource produite ou ressource recherchée.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "ressources_mais.jpg", soustitre: "Épis de maïs", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -374,7 +374,7 @@ const QUESTIONS = [
  periodes: ["Les Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 4",
- enonce: "Les documents A à D présentent différentes ressources échangées par les nations algonquiennes vers 1500. Associez chaque document à l'endroit correspondant.",
+ enonce: "Les documents A à D présentent différentes ressources échangées par les nations algonquiennes vers 1500. Associez chaque document à la catégorie correspondante : ressource produite ou ressource recherchée.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "ressources_mais.jpg", soustitre: "Épis de maïs", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -585,7 +585,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une ressource utilisée par les peuples autochtones pour fabriquer leurs vêtements.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_fourrures.jpg", soustitre: "Fourrures et peaux d'animaux", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_fourrures.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les peaux d'animaux.\nLes fourrures.",
  updatedAt: "2026-07-23T19:48:44.259Z"
@@ -897,12 +897,13 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
- enonce: "Nnomme un divertissement pratiqué par les Iroquoiens vers 1500.",
+ enonce: "Nomme un divertissement pratiqué par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les danses et les chants.",
- updatedAt: "2026-08-03T18:26:13.788Z"
+ updatedAt: "2026-08-03T18:26:13.788Z",
+ soustag: "Établir 1 fait - 1"
 },
 {
  id: "Q52",

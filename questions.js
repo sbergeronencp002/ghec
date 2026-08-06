@@ -853,12 +853,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Algonquiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les rassemblements communautaires sont importants chez les Algonquiens vers 1500.",
+ enonce: "Explique pourquoi les Algonquiens se rassemblent en bandes à certains moments de l'année.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "fetes_communautes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les familles se réunissent lors de fêtes saisonnières ou de rencontres entre bandes (les rassemblements communautaires).\nElles partagent des repas, des jeux, des chants et des danses (les activités communautaires).\nCes rassemblements renforcent les liens entre les membres de la communauté et favorisent l'entraide (la cohésion de la communauté).",
- updatedAt: "2026-07-24T12:41:38.128Z"
+ guide: "Les rassemblements en bandes sont importants chez les Algonquiens vers 1500 parce qu'ils permettent aux familles de se retrouver pour échanger des ressources, partager leurs connaissances, célébrer des cérémonies et prendre des décisions importantes pour la communauté.",
+ updatedAt: "2026-08-06T13:27:00.190Z"
 },
 {
  id: "Q49",

@@ -605,7 +605,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_fourrures.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les peaux d'animaux.\nLes fourrures.",
- updatedAt: "2026-07-23T19:48:44.259Z"
+ updatedAt: "2026-08-06T18:59:39.200Z"
 },
 {
  id: "Q31",

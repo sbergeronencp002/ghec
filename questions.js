@@ -143,7 +143,8 @@ const IMAGE_DB = {
 "vetements_2.jpg": {src: "images/vetements_2.jpg", w: 1200, h: 960},
 "ressources_objets.jpg": {src: "images/ressources_objets.jpg", w: 1200, h: 800},
 "ceremonies_objets.jpg": {src: "images/ceremonies_objets.jpg", w: 1200, h: 960},
-"ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800}
+"ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800},
+"village_iroquoien_1500_4.jpg": {src: "images/village_iroquoien_1500_4.jpg"}
 }
 
 const QUESTIONS = [
@@ -302,12 +303,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les Iroquoiens peuvent vivre au même endroit toute l'année.",
- aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Explique pourquoi le territoire des Iroquoiens leur permet de vivre au même endroit toute l'année.",
+ aspects: [{aspect: "Territoire"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_1500_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens peuvent vivre au même endroit toute l'année parce qu'ils cultivent du maïs, des haricots et des courges pour se nourrir.",
- updatedAt: "2026-07-24T03:58:10.287Z"
+ guide: "Les Iroquoiens peuvent vivre au même endroit toute l'année parce qu'ils cultivent la terre et produisent suffisamment de nourriture pour répondre à leurs besoins.",
+ updatedAt: "2026-08-06T14:12:47.998Z"
 },
 {
  id: "Q12",

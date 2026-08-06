@@ -827,10 +827,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À partir du document A, nomme l'activité pratiquée.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La pêche.",
- updatedAt: "2026-07-24T12:33:06.394Z"
+ updatedAt: "2026-08-06T13:29:54.861Z"
 },
 {
  id: "Q47",

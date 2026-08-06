@@ -139,7 +139,8 @@ const IMAGE_DB = {
 "transport_troc_2.jpg": {src: "images/transport_troc_2.jpg", w: 1200, h: 800},
 "aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960},
 "iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg"},
-"village_iroquoien_1500_3.jpg": {src: "images/village_iroquoien_1500_3.jpg", w: 1200, h: 960}
+"village_iroquoien_1500_3.jpg": {src: "images/village_iroquoien_1500_3.jpg", w: 1200, h: 960},
+"vetements_2.jpg": {src: "images/vetements_2.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -598,14 +599,14 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones utilisent les peaux d'animaux pour fabriquer leurs vêtements.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "confection_vetements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "confection_vetements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vetements_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les peuples autochtones utilisent les peaux d'animaux parce qu'elles sont chaudes ou résistantes ou les protègent du froid.",
- updatedAt: "2026-07-24T04:00:14.874Z"
+ guide: "Les peuples autochtones utilisent les peaux d'animaux pour fabriquer leurs vêtements parce qu'elles les protègent du froid et sont disponibles dans leur environnement.",
+ updatedAt: "2026-08-06T13:43:58.404Z"
 },
 {
  id: "Q32",

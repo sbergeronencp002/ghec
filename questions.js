@@ -1323,7 +1323,7 @@ const QUESTIONS = [
  id: "Q78",
  niveau: 3,
  oi: "Mettre en relation des faits",
- competence: "Lire l'organisation du territoire",
+ competence: "S'ouvrir à la diversité",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 4",
@@ -1337,7 +1337,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"], double: true},
  guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A et D", "B et C"]]},
- updatedAt: "2026-08-06T18:56:14.474Z"
+ updatedAt: "2026-08-06T19:52:46.969Z"
 },
 {
  id: "Q79",

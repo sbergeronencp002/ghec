@@ -437,12 +437,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la croyance religieuse pratiquée par les peuples autochtones vers 1500.",
+ enonce: "Nomme la croyance spirituelle pratiquée par les peuples autochtones vers 1500.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les peuples autochtones pratiquent l'animisme.",
- updatedAt: "2026-07-23T18:30:34.226Z"
+ updatedAt: "2026-08-06T13:06:24.754Z"
 },
 {
  id: "Q21",

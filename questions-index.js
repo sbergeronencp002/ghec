@@ -106,8 +106,8 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 4",
- aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ aspects: [{aspect: "Territoire"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  enonce: "Les documents A à D présentent des éléments de la société algonquienne et de la société iroquoienne vers 1500. Associe chaque document à la société correspondante.",
- updatedAt: "2026-08-06T18:55:19.535Z"
+ updatedAt: "2026-08-06T18:56:14.474Z"
 }
 ]

@@ -291,10 +291,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones utilisent un toboggan en hiver.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_deplacements_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "toboggan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les peuples autochtones utilisent un toboggan pour transporter leurs biens lorsqu'ils se déplacent l'hiver.",
- updatedAt: "2026-07-24T03:56:00.650Z"
+ guide: "Les peuples autochtones utilisent un toboggan en hiver parce qu'il permet de transporter des personnes ou des charges sur la neige.",
+ updatedAt: "2026-08-06T14:13:31.122Z"
 },
 {
  id: "Q11",

@@ -74,7 +74,8 @@ const REGLETTES = {
 "Q73": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q74": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q75": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q76": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
+"Q76": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q77": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
 }
 
 const IMAGE_DB = {
@@ -147,7 +148,10 @@ const IMAGE_DB = {
 "ceremonies_objets.jpg": {src: "images/ceremonies_objets.jpg", w: 1200, h: 960},
 "ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800},
 "village_iroquoien_1500_4.jpg": {src: "images/village_iroquoien_1500_4.jpg"},
-"canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800}
+"canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800},
+"iroquoien_maisons_longues.jpg": {src: "images/iroquoien_maisons_longues.jpg", w: 1200, h: 800},
+"iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800},
+"iroquoiens_palissade.jpg": {src: "images/iroquoiens_palissade.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1293,5 +1297,24 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Canot d'écorce", "Raquettes", "Toboggan"]},
  guide: {type: "grille", entetes: ["Canot d'écorce", "Raquettes", "Toboggan"], rangees: [["A", "C", "B"]]},
  updatedAt: "2026-08-06T18:41:02.549Z"
+},
+{
+ id: "Q77",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 3",
+ enonce: "Les documents A à C présentent trois éléments de la société iroquoienne vers 1500. Associe chaque document à l'élément correspondant.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_champs.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "iroquoiens_palissade.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Champs", "Maison longue", "Palissade"]},
+ guide: {type: "grille", entetes: ["Champs", "Maison longue", "Palissade"], rangees: [["B", "A", "C"]]},
+ updatedAt: "2026-08-06T18:51:16.804Z"
 }
 ]

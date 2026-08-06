@@ -1327,7 +1327,7 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 4",
  enonce: "Les documents A à D présentent des éléments de la société algonquienne et de la société iroquoienne vers 1500. Associe chaque document à la société correspondante.",
- aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ aspects: [{aspect: "Territoire"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "territoire_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -1336,6 +1336,6 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"], double: true},
  guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A et D", "B et C"]]},
- updatedAt: "2026-08-06T18:55:19.535Z"
+ updatedAt: "2026-08-06T18:56:14.474Z"
 }
 ]

@@ -525,10 +525,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les Iroquoiens fabriquent eux-mêmes leurs objets.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens fabriquent eux-mêmes leurs objets pour répondre à leurs besoins en utilisant les ressources de la nature.",
- updatedAt: "2026-07-24T04:00:03.356Z"
+ updatedAt: "2026-08-06T13:10:04.286Z"
 },
 {
  id: "Q27",

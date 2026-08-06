@@ -136,7 +136,8 @@ const IMAGE_DB = {
 "toboggan.jpg": {src: "images/toboggan.jpg", w: 1200, h: 800},
 "deplacement_hiver_1.jpg": {src: "images/deplacement_hiver_1.jpg"},
 "transport_troc_1.jpg": {src: "images/transport_troc_1.jpg", w: 1200, h: 800},
-"transport_troc_2.jpg": {src: "images/transport_troc_2.jpg", w: 1200, h: 800}
+"transport_troc_2.jpg": {src: "images/transport_troc_2.jpg", w: 1200, h: 800},
+"aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -750,12 +751,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les récits oraux occupent une place importante dans la communauté.",
+ enonce: "Explique pourquoi les récits oraux occupent une place importante chez les peuples autochtones vers 1500.",
  aspects: [{aspect: "Culture"}, {aspect: "Communication"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les aînés racontent des légendes et des récits (les récits oraux).\nCes récits transmettent les traditions et les enseignements de la communauté (la transmission des connaissances).\nLes jeunes apprennent ainsi les valeurs et l'histoire de leur peuple (la préservation des traditions).",
- updatedAt: "2026-07-24T12:26:56.882Z"
+ guide: "Les récits oraux occupent une place importante dans la communauté parce qu'ils permettent de transmettre les connaissances, les traditions et l'histoire d'une génération à l'autre.",
+ updatedAt: "2026-08-06T13:34:12.633Z"
 },
 {
  id: "Q42",

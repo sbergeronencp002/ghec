@@ -138,7 +138,8 @@ const IMAGE_DB = {
 "transport_troc_1.jpg": {src: "images/transport_troc_1.jpg", w: 1200, h: 800},
 "transport_troc_2.jpg": {src: "images/transport_troc_2.jpg", w: 1200, h: 800},
 "aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960},
-"iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg"}
+"iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg"},
+"village_iroquoien_1500_3.jpg": {src: "images/village_iroquoien_1500_3.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -711,10 +712,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les Iroquoiens installent leur village près cours d'eau.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_1500_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens s'installent près des rivières et des lacs pour avoir accès à l'eau, à la pêche et pour se déplacer en canot.",
- updatedAt: "2026-07-24T04:00:59.850Z"
+ guide: "Les Iroquoiens installent leur village près des cours d'eau parce qu'ils facilitent les déplacements, les échanges et l'accès aux ressources.",
+ updatedAt: "2026-08-06T13:39:33.311Z"
 },
 {
  id: "Q39",

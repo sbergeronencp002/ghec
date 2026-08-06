@@ -857,8 +857,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "fetes_communautes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les rassemblements en bandes sont importants chez les Algonquiens vers 1500 parce qu'ils permettent aux familles de se retrouver pour échanger des ressources, partager leurs connaissances, célébrer des cérémonies et prendre des décisions importantes pour la communauté.",
- updatedAt: "2026-08-06T13:27:00.190Z"
+ guide: "Les Algonquiens se rassemblent en bandes à certains moments de l'année pour discuter d'enjeux communs, renforcer les alliances et participer à des cérémonies.",
+ updatedAt: "2026-08-06T13:30:25.481Z"
 },
 {
  id: "Q49",

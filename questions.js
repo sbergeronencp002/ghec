@@ -427,12 +427,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les peuples autochtones respectent la nature vers 1500.",
+ enonce: "Explique pourquoi les peuples autochtones pratiquent l'animisme vers 1500.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chaman_ceremonie_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les peuples autochtones respectent la nature, car ils croient que des esprits vivent dans les animaux, les plantes, les rivières et les montagnes.",
- updatedAt: "2026-07-24T03:58:57.004Z"
+ guide: "Les peuples autochtones pratiquent l'animisme parce qu'ils croient que les êtres vivants et les éléments de la nature possèdent un esprit.",
+ updatedAt: "2026-08-06T13:54:20.745Z"
 },
 {
  id: "Q20",

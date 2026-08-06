@@ -839,12 +839,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les rassemblements communautaires sont importants chez les Iroquoiens vers 1500.",
+ enonce: "Explique pourquoi les Iroquoiens se rassemblent en nations à certains moments de l'année.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "fetes_communautes_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les membres de la communauté se réunissent lors de fêtes saisonnières ou de cérémonies (les rassemblements communautaires). \nIls y partagent des repas, des jeux, des chants et des danses (les activités communautaires).\nCes rencontres renforcent les liens entre les membres de la communauté et permettent de transmettre les traditions (la cohésion et la transmission de la culture).",
- updatedAt: "2026-07-24T12:40:16.729Z"
+ guide: "Les Iroquoiens se rassemblent en nations à certains moments de l'année pour discuter d'enjeux communs, renforcer les alliances et participer à des cérémonies.",
+ updatedAt: "2026-08-06T13:29:22.976Z"
 },
 {
  id: "Q48",

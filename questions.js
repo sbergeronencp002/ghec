@@ -137,7 +137,8 @@ const IMAGE_DB = {
 "deplacement_hiver_1.jpg": {src: "images/deplacement_hiver_1.jpg"},
 "transport_troc_1.jpg": {src: "images/transport_troc_1.jpg", w: 1200, h: 800},
 "transport_troc_2.jpg": {src: "images/transport_troc_2.jpg", w: 1200, h: 800},
-"aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960}
+"aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960},
+"iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg"}
 }
 
 const QUESTIONS = [
@@ -722,12 +723,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les mères de clan jouent un rôle important chez les Iroquoiens.",
+ enonce: "Explique pourquoi les mères de clan jouent un rôle important chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les mères de clan jouent un rôle important chez les Iroquoiens parce qu'elles choisissent les chefs et participent aux décisions importantes de la communauté.",
- updatedAt: "2026-07-24T04:07:43.551Z"
+ updatedAt: "2026-08-06T13:36:48.485Z"
 },
 {
  id: "Q40",

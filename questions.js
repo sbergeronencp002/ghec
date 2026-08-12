@@ -763,7 +763,7 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 2",
  enonce: "Nomme deux caractéristiques du territoire habité par les Iroquoiens.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Il est situé dans les Basses-terres du Saint-Laurent.\nIl s'étend jusqu'à la région des Grands Lacs.\nIl comprend des plaines fertiles.\nIl est traversé par de nombreux cours d'eau (fleuve, rivières et lacs).\nLe climat permet la pratique de l'agriculture durant l'été.\nLe fleuve Saint-Laurent.",
  updatedAt: "2026-07-24T18:53:48.824Z"
@@ -1385,7 +1385,7 @@ const QUESTIONS = [
  enonce: "Les documents A à D présentent des éléments de la société algonquienne et de la société iroquoienne vers 1500. Associe chaque document à la société correspondante.",
  aspects: [{aspect: "Territoire"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "territoire_algonquien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "territoire_algonquien_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document D", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}

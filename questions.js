@@ -608,7 +608,7 @@ const QUESTIONS = [
  soustag: "Établir tous les faits - 2",
  enonce: "Nomme deux objets fabriqués par les Iroquoiens pour conserver leurs récoltes.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_vannerie.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Un panier tissé.\nUn pot en terre cuite.",
  updatedAt: "2026-07-23T19:29:26.287Z"

@@ -820,7 +820,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les récits oraux occupent une place importante chez les peuples autochtones vers 1500.",
  aspects: [{aspect: "Culture"}, {aspect: "Communication"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les récits oraux occupent une place importante dans la communauté parce qu'ils permettent de transmettre les connaissances, les traditions et l'histoire d'une génération à l'autre.",
  updatedAt: "2026-08-06T13:34:12.633Z"
@@ -1438,7 +1438,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une façon utilisée par les peuples autochtones pour transmettre leurs connaissances et leurs traditions vers 1500.",
  aspects: [{aspect: "Communication"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Ils transmettent leurs connaissances et leurs traditions oralement, par la parole.",
  updatedAt: "2026-08-12T13:26:02.873Z"

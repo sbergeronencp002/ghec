@@ -168,7 +168,8 @@ const IMAGE_DB = {
 "chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg", w: 1200, h: 960},
 "aines_2.jpg": {src: "images/aines_2.jpg", w: 1200, h: 800},
 "aines_3.jpg": {src: "images/aines_3.jpg", w: 1200, h: 960},
-"iroquoiens_conseil_femmes_chef.jpg": {src: "images/iroquoiens_conseil_femmes_chef.jpg"}
+"iroquoiens_conseil_femmes_chef.jpg": {src: "images/iroquoiens_conseil_femmes_chef.jpg"},
+"iroquoiens_matriarcat.jpg": {src: "images/iroquoiens_matriarcat.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -1494,5 +1495,19 @@ const QUESTIONS = [
  guide: "Les femmes aînées choisissent les chefs.\nLes décisions importantes sont prises en conseil.",
  updatedAt: "2026-08-12T14:31:37.606Z"
 },
-{id: "Q88", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", enonce: "Nomme l’organisation familiale chez les nations iroquoiennes.", aspects: [{aspect: "Population"}], documents: [], reponse: {type: "lignes", nombre: 1}, guide: "Une organisation matrilinéaire.", updatedAt: "2026-08-12T14:36:16.475Z"}
+{
+ id: "Q88",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme l’organisation familiale chez les nations iroquoiennes.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Une organisation matrilinéaire.",
+ updatedAt: "2026-08-12T14:39:04.706Z"
+}
 ]

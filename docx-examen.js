@@ -426,8 +426,13 @@ async function exDownloadQuestionnaire() {
       const lines = enonce.split('\n');
       // Retrait en accolade (hanging indent) : si l'énoncé s'étend sur 2 lignes, la 2ᵉ
       // ligne s'aligne sous le texte plutôt que de revenir à la marge de gauche.
-      children.push(new Paragraph({ spacing: { before: 200 }, indent: { left: 284, hanging: 284 }, children: [new TextRun({ text: (idx + 1) + '.  ', font: 'Aptos', size: 24, bold: true }), ...exMkRuns(lines[0], 'Aptos', 24)] }));
-      lines.slice(1).forEach(line => { if (line.trim()) children.push(exMkLine(line, 'Aptos', 24)); });
+      // Justifié : style demandé par l'enseignant (voir même correctif dans app.js).
+      children.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, spacing: { before: 200 }, indent: { left: 284, hanging: 284 }, children: [new TextRun({ text: (idx + 1) + '.  ', font: 'Aptos', size: 24, bold: true }), ...exMkRuns(lines[0], 'Aptos', 24)] }));
+      lines.slice(1).forEach(line => {
+        if (!line.trim()) return;
+        if (line.startsWith('• ')) { children.push(exMkLine(line, 'Aptos', 24)); return; }
+        children.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: exMkRuns(line, 'Aptos', 24) }));
+      });
       children.push(new Paragraph({ children: [new TextRun({ text: '' })] }));
 
       exBuildReponse(q, C, EllipseRun, imgR, EX_PAGE_W_Q).forEach(el => children.push(el));

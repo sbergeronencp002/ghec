@@ -115,10 +115,11 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=54`, `style.css?v=31`, `filters.js?v=1`, `oi-config.js?v=1`.
-`sw.js` : `CACHE = 'ghec-v3'` (bump 2026-08-12 : ajout de `competences.js` à
+`index.html` charge `app.js?v=55`, `style.css?v=31`, `filters.js?v=1`, `oi-config.js?v=1`.
+`sw.js` : `CACHE = 'ghec-v4'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
-il restait donc en cache-first indéfiniment après une publication Configuration).
+il restait donc en cache-first indéfiniment après une publication Configuration ; puis
+bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas).
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de

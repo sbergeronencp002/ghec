@@ -1623,7 +1623,7 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document A", ref: "taches_hommes_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "taches_femmes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "taches_femmes_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "taches_hommes_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document D", ref: "taches_hommes_4.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Femmes", "Hommes"], double: true},
  guide: {type: "grille", entetes: ["Femmes", "Hommes"], rangees: [["B et C", "A et D"]]},
@@ -1684,7 +1684,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 2",
  enonce: "Nomme deux tâches assurées par les hommes iroquoiens.",
  aspects: [{aspect: "Groupes sociaux"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_hommes_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "taches_hommes_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_hommes_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "taches_hommes_4.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le défrichage des champs.\nLa construction des maisons longues et des palissades.",
  updatedAt: "2026-08-12T15:59:42.593Z"

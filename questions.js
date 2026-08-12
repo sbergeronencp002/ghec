@@ -323,7 +323,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 2",
  enonce: "Nomme deux objets utilisés par les peuples autochtones pour se déplacer en hiver.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "toboggan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "raquettes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "toboggan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "raquettes.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Les raquettes.\nLe toboggan.",
  updatedAt: "2026-08-05T12:44:59.545Z"
@@ -681,7 +681,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones utilisent des raquettes en hiver.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "deplacement_hiver_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "deplacement_hiver_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones utilisent des raquettes en hiver, car elles leur permettent de marcher sur la neige sans trop s'enfoncer.",
  updatedAt: "2026-08-05T12:46:40.015Z"
@@ -1349,7 +1349,7 @@ const QUESTIONS = [
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "toboggan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "raquettes.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document C", ref: "raquettes.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Canot d'écorce", "Raquettes", "Toboggan"]},
  guide: {type: "grille", entetes: ["Canot d'écorce", "Raquettes", "Toboggan"], rangees: [["A", "C", "B"]]},

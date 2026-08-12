@@ -1555,7 +1555,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme l’organisation familiale chez les nations algonquiennes.",
  aspects: [{aspect: "Groupes sociaux"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Une organisation patrilinéaire.",
  updatedAt: "2026-08-12T14:46:41.135Z"

@@ -96,7 +96,8 @@ const REGLETTES = {
 "Q95": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q96": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q97": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q98": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q98": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q99": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -1689,5 +1690,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Conserver les aliments.\nCuisiner les aliments.\nRécolter les aliments.",
  updatedAt: "2026-08-12T16:01:44.937Z"
+},
+{
+ id: "Q99",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 2",
+ enonce: "Nomme deux tâches assurées par les femmes iroquoiennes.",
+ aspects: [{aspect: "Groupes sociaux"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_femmes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Cultiver les champs (semer, entretenir et récolter le maïs, la courge et le haricot).\nFabriquer la poterie.\nFabriquer la vannerie.\nRécolter.",
+ updatedAt: "2026-08-12T16:02:56.871Z"
 }
 ]

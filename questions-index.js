@@ -133,5 +133,17 @@ const QUESTIONS = [
 {id: "Q88", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", aspects: [{aspect: "Population"}], enonce: "Nomme l’organisation familiale chez les nations iroquoiennes.", updatedAt: "2026-08-12T14:39:04.706Z"},
 {id: "Q89", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Algonquiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", aspects: [{aspect: "Groupes sociaux"}], enonce: "Nomme l’organisation familiale chez les nations algonquiennes.", updatedAt: "2026-08-12T14:46:41.135Z"},
 {id: "Q90", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 2, soustag: "Établir 1 fait - 2", aspects: [{aspect: "Gouvernement"}], enonce: "Nomme deux caractéristiques de la gouvernance iroquoienne vers 1500.", updatedAt: "2026-08-12T14:56:50.198Z"},
-{id: "Q91", niveau: 3, oi: "Établir des liens de causalité", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 2, aspects: [{aspect: "Gouvernement"}], enonce: "Explique pourquoi le pouvoir des chefs est limité chez les Iroquoiens vers 1500.", updatedAt: "2026-08-12T15:08:08.454Z"}
+{id: "Q91", niveau: 3, oi: "Établir des liens de causalité", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 2, aspects: [{aspect: "Gouvernement"}], enonce: "Explique pourquoi le pouvoir des chefs est limité chez les Iroquoiens vers 1500.", updatedAt: "2026-08-12T15:08:08.454Z"},
+{
+ id: "Q92",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ enonce: "Les documents A à D présentent différentes tâches réalisées principalement par les femmes et les hommes dans la société iroquoienne vers 1500. Associe chaque tâche au groupe correspondant.",
+ updatedAt: "2026-08-12T15:27:08.945Z"
+}
 ]

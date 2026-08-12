@@ -293,7 +293,7 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 2",
  enonce: "Nomme deux caractéristiques du territoire habité par les Algonquiens.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_3.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Il est couvert de vastes forêts.\nIl comprend de nombreux lacs et rivières.\nLe sol est peu fertile.\nLe climat est froid avec des hivers rigoureux.\nLe relief est généralement accidenté, par endroits.\nLa faune y est abondante (orignaux, castors, caribous, etc.).",
  updatedAt: "2026-07-24T19:01:44.241Z"
@@ -1407,7 +1407,7 @@ const QUESTIONS = [
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "campement_algonquien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "territoire_algonquien_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "territoire_algonquien_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document D", ref: "village_iroquoien_1500_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"], double: true},

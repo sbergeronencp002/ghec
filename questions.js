@@ -213,7 +213,8 @@ const IMAGE_DB = {
 "population_village.jpg": {src: "images/population_village.jpg", w: 1200, h: 960},
 "territoire_iroquoien_hiver.jpg": {src: "images/territoire_iroquoien_hiver.jpg"},
 "territoire_iroquoien_ete.jpg": {src: "images/territoire_iroquoien_ete.jpg"},
-"construction_canot_ecorce.jpg": {src: "images/construction_canot_ecorce.jpg", w: 1200, h: 900}
+"construction_canot_ecorce.jpg": {src: "images/construction_canot_ecorce.jpg", w: 1200, h: 900},
+"wigwam.jpg": {src: "images/wigwam.jpg", w: 1200, h: 883}
 }
 
 const QUESTIONS = [
@@ -1902,14 +1903,14 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500"],
+ periodes: ["Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme le type d’habitation utilisé par les Iroquoiens vers 1500 dans le document A.",
+ enonce: "Nomme le type d’habitation utilisé par les Algonquiens vers 1500 dans le document A.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "wigwam.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Une maison longue.",
- updatedAt: "2026-08-12T19:26:45.757Z"
+ guide: "Un wigwam.",
+ updatedAt: "2026-08-12T19:28:47.328Z"
 }
 ]

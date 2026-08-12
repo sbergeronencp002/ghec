@@ -1774,7 +1774,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Où se situe principalement la population iroquoienne vers 1500?",
  aspects: [{aspect: "Territoire"}, {aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_nations.jpg", source: "Récitus - les nations iroquoeinnes vers 1500."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_nations.jpg", source: "RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "En bordure du Saint-Laurent et des Grands Lacs.",
  updatedAt: "2026-08-12T16:36:57.916Z"

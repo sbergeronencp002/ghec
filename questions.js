@@ -485,7 +485,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones pratiquent l'animisme vers 1500.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chaman_animisme_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chaman_animisme_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones pratiquent l'animisme parce qu'ils croient que les êtres vivants et les éléments de la nature possèdent un esprit.",
  updatedAt: "2026-08-12T13:33:01.621Z"

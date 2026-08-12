@@ -930,12 +930,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À partir du document A, un objet utilisé pour accompagner les chants et les danses.",
+ enonce: "À partir du document A, nomme un objet utilisé pour accompagner les chants et les danses.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Un tambour.\nUn hochet.",
- updatedAt: "2026-07-24T12:48:33.593Z"
+ updatedAt: "2026-08-12T13:04:32.203Z"
 },
 {
  id: "Q53",

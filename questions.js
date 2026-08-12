@@ -848,12 +848,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À partir du document A, nomme l'activité pratiquée.",
+ enonce: "Nomme l'activité pratiquée par les peuples autochtones dans le document A.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "L'agriculture.",
- updatedAt: "2026-07-24T12:31:54.614Z"
+ updatedAt: "2026-08-12T18:58:02.307Z"
 },
 {
  id: "Q44",

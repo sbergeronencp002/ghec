@@ -208,11 +208,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme le mode de vie des Iroquoiens vers 1500.",
- aspects: [{aspect: "Territoire"}],
+ aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens sont sédentaires.",
- updatedAt: "2026-07-23T20:05:02.100Z"
+ updatedAt: "2026-08-12T16:31:41.428Z"
 },
 {
  id: "Q2",

@@ -90,7 +90,8 @@ const REGLETTES = {
 "Q89": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q90": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q91": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q92": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
+"Q92": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q93": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -179,7 +180,11 @@ const IMAGE_DB = {
 "taches_femmes_1.jpg": {src: "images/taches_femmes_1.jpg"},
 "taches_hommes_1.jpg": {src: "images/taches_hommes_1.jpg"},
 "taches_hommes_2.jpg": {src: "images/taches_hommes_2.jpg"},
-"taches_femmes_2.jpg": {src: "images/taches_femmes_2.jpg"}
+"taches_femmes_2.jpg": {src: "images/taches_femmes_2.jpg"},
+"taches_hommes_3.jpg": {src: "images/taches_hommes_3.jpg", w: 1200, h: 960},
+"taches_hommes_4.jpg": {src: "images/taches_hommes_4.jpg", w: 1200, h: 960},
+"taches_femmes_3.jpg": {src: "images/taches_femmes_3.jpg", w: 1200, h: 960},
+"taches_femmes_4.jpg": {src: "images/taches_femmes_4.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -1583,5 +1588,25 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Femmes", "Hommes"], double: true},
  guide: {type: "grille", entetes: ["Femmes", "Hommes"], rangees: [["A et D", "B et C"]]},
  updatedAt: "2026-08-12T15:27:08.945Z"
+},
+{
+ id: "Q93",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent différentes tâches réalisées principalement par les femmes et les hommes dans la société iroquoienne vers 1500. Associe chaque tâche au groupe correspondant.",
+ aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "taches_hommes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "taches_femmes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "taches_femmes_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "taches_hommes_4.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Femmes", "Hommes"], double: true},
+ guide: {type: "grille", entetes: ["Femmes", "Hommes"], rangees: [["B et C", "A et D"]]},
+ updatedAt: "2026-08-12T15:35:57.244Z"
 }
 ]

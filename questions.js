@@ -1790,7 +1790,7 @@ const QUESTIONS = [
  enonce: "Les documents A à C présentent différents niveaux d’organisation de la société iroquoienne vers 1500. Associe chaque document au niveau d’organisation correspondant.",
  aspects: [{aspect: "Population"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "population_confederation.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document A", ref: "population_confederation.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "population_clan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "population_nations.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
@@ -1809,7 +1809,7 @@ const QUESTIONS = [
  enonce: "Les documents A à C présentent différents regroupements de la société iroquoienne vers 1500. Associe chaque document au nombre approximatif de personnes correspondant.",
  aspects: [{aspect: "Population"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "population_confederation.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document A", ref: "population_confederation.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "population_village.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "population_maison_longue.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],

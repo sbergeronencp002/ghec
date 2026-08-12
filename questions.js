@@ -278,7 +278,7 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 2",
  enonce: "Nomme deux caractéristiques du territoire habité par les Iroquoiens.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Il est situé dans les Basses-terres du Saint-Laurent.\nIl s'étend jusqu'à la région des Grands Lacs.\nIl comprend des plaines fertiles.\nIl est traversé par de nombreux cours d'eau (fleuve, rivières et lacs).\nLe climat permet la pratique de l'agriculture durant l'été.",
  updatedAt: "2026-08-06T19:55:32.757Z"
@@ -777,7 +777,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les Iroquoiens installent leur village près cours d'eau.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_1500_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_1500_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens installent leur village près des cours d'eau parce qu'ils facilitent les déplacements, les échanges et l'accès aux ressources.",
  updatedAt: "2026-08-06T13:39:33.311Z"
@@ -1388,7 +1388,7 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "territoire_algonquien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "territoire_algonquien_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document D", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"], double: true},
  guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A et D", "B et C"]]},

@@ -621,12 +621,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme une ressource utilisée pour fabriquer des paniers tissés.",
+ enonce: "Nomme une ressource utilisée par les Iroquoiens pour fabriquer des paniers tissés.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "ressources_poterie_vannerie.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les fibres végétales.\nLes roseaux.\nL'écorce.",
- updatedAt: "2026-07-23T19:45:09.465Z"
+ updatedAt: "2026-08-12T18:59:25.248Z"
 },
 {
  id: "Q29",

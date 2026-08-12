@@ -643,12 +643,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme l'objet utilisé par les peuples autochtones pour se déplacer sur les sentiers forestiers.",
+ enonce: "Nomme un vêtement porté par les peuples autochtones pour se déplacer sur les sentiers forestiers.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Des mocassins.",
- updatedAt: "2026-08-05T12:38:54.630Z"
+ updatedAt: "2026-08-12T13:11:53.040Z"
 },
 {
  id: "Q34",

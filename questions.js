@@ -880,7 +880,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À partir du document A, nomme l'activité pratiquée.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La chasse.",
  updatedAt: "2026-07-24T12:32:43.753Z"
@@ -1044,7 +1044,7 @@ const QUESTIONS = [
  enonce: "Les documents A à C présentent différentes activités pratiquées par les Algonquiens vers 1500. Associe chaque document à l'activité correspondante.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "peche.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "cueillette.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
@@ -1108,7 +1108,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment les caractéristiques du territoire habité par les Algonquiens influencent leur mode de vie nomade.",
  aspects: [{aspect: "Territoire"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire des Algonquiens est couvert de vastes forêts et de nombreux lacs et rivières (le territoire habité des Algonquiens).\nCes ressources les amènent à se déplacer pour chasser, pêcher et cueillir selon les saisons (les activités de subsistance).\nLes Algonquiens adoptent donc un mode de vie nomade (le mode de vie nomade).",
  updatedAt: "2026-08-03T18:20:50.642Z"

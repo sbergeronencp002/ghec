@@ -998,7 +998,7 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 2",
  enonce: "Nomme deux caractéristiques du territoire habité par les Algonquiens.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Il est couvert de vastes forêts.\nIl comprend de nombreux lacs et rivières.\nLe sol est peu fertile.\nLe climat est froid avec des hivers rigoureux.\nLe relief est généralement accidenté, par endroits.\nLa faune y est abondante (orignaux, castors, caribous, etc.).",
  updatedAt: "2026-07-24T18:54:26.151Z"
@@ -1108,7 +1108,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment les caractéristiques du territoire habité par les Algonquiens influencent leur mode de vie nomade.",
  aspects: [{aspect: "Territoire"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire des Algonquiens est couvert de vastes forêts et de nombreux lacs et rivières (le territoire habité des Algonquiens).\nCes ressources les amènent à se déplacer pour chasser, pêcher et cueillir selon les saisons (les activités de subsistance).\nLes Algonquiens adoptent donc un mode de vie nomade (le mode de vie nomade).",
  updatedAt: "2026-08-03T18:20:50.642Z"
@@ -1386,7 +1386,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "territoire_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "territoire_algonquien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "territoire_algonquien_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document D", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],

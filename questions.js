@@ -923,7 +923,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les Algonquiens se rassemblent en bandes à certains moments de l'année.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "fetes_communautes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "fetes_communautes_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Algonquiens se rassemblent en bandes à certains moments de l'année pour discuter d'enjeux communs, renforcer les alliances et participer à des cérémonies.",
  updatedAt: "2026-08-06T13:30:25.481Z"
@@ -938,7 +938,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un divertissement pratiqué par les Algonquiens vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les danses et les chants.",
  updatedAt: "2026-08-03T18:27:08.756Z"
@@ -953,7 +953,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À partir du document A, un objet utilisé pour accompagner les chants et les danses.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Un tambour.\nUn hochet.",
  updatedAt: "2026-07-24T12:49:05.097Z"

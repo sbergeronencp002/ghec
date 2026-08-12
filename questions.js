@@ -1601,7 +1601,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "taches_femmes_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "taches_hommes_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "taches_hommes_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "taches_hommes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document D", ref: "taches_femmes_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
@@ -1669,7 +1669,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 2",
  enonce: "Nomme deux tâches assurées par les hommes iroquoiens.",
  aspects: [{aspect: "Groupes sociaux"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_hommes_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "taches_hommes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_hommes_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "taches_hommes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le défrichage des champs.\nLa construction des maisons longues et des palissades.",
  updatedAt: "2026-08-12T15:59:13.153Z"

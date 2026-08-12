@@ -87,7 +87,8 @@ const REGLETTES = {
 "Q86": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q87": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q88": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q89": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q89": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q90": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -171,7 +172,8 @@ const IMAGE_DB = {
 "aines_3.jpg": {src: "images/aines_3.jpg", w: 1200, h: 960},
 "iroquoiens_conseil_femmes_chef.jpg": {src: "images/iroquoiens_conseil_femmes_chef.jpg"},
 "iroquoiens_matriarcat.jpg": {src: "images/iroquoiens_matriarcat.jpg", w: 1200, h: 900},
-"algonquiens_patriarcat.jpg": {src: "images/algonquiens_patriarcat.jpg", w: 1200, h: 900}
+"algonquiens_patriarcat.jpg": {src: "images/algonquiens_patriarcat.jpg", w: 1200, h: 900},
+"iroquoiens_conseil_2.jpg": {src: "images/iroquoiens_conseil_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1526,5 +1528,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Une organisation patrilinéaire.",
  updatedAt: "2026-08-12T14:46:41.135Z"
+},
+{
+ id: "Q90",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Établir 1 fait - 2",
+ enonce: "Nomme deux caractéristiques de la gouvernance iroquoienne vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes_chef.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les femmes aînées choisissent les chefs.\nLes décisions sont prises en conseil.\nLes chefs ont des pouvoirs limités.",
+ updatedAt: "2026-08-12T14:56:50.198Z"
 }
 ]

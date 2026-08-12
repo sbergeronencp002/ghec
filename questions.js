@@ -101,7 +101,8 @@ const REGLETTES = {
 "Q100": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q101": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q102": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q103": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q103": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q104": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
 }
 
 const IMAGE_DB = {
@@ -197,7 +198,10 @@ const IMAGE_DB = {
 "taches_femmes_4.jpg": {src: "images/taches_femmes_4.jpg", w: 1200, h: 960},
 "taches_hommes_5.jpg": {src: "images/taches_hommes_5.jpg", w: 1200, h: 800},
 "societe_iroquoienne.png": {src: "images/societe_iroquoienne.png"},
-"iroquoiens_nations.jpg": {src: "images/iroquoiens_nations.jpg"}
+"iroquoiens_nations.jpg": {src: "images/iroquoiens_nations.jpg"},
+"population_confederation.jpg": {src: "images/population_confederation.jpg"},
+"population_clan.jpg": {src: "images/population_clan.jpg"},
+"population_nations.jpg": {src: "images/population_nations.jpg"}
 }
 
 const QUESTIONS = [
@@ -1771,5 +1775,24 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "En bordure du Saint-Laurent et des Grands Lacs.",
  updatedAt: "2026-08-12T16:36:57.916Z"
+},
+{
+ id: "Q104",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 3",
+ enonce: "Les documents A à C présentent différents niveaux d’organisation de la société iroquoienne vers 1500. Associe chaque document au niveau d’organisation correspondant.",
+ aspects: [{aspect: "Population"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "population_confederation.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "population_clan.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "population_nations.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Clan", "Nation", "Confédération"]},
+ guide: {type: "grille", entetes: ["Clan", "Nation", "Confédération"], rangees: [["B", "C", "B"]]},
+ updatedAt: "2026-08-12T17:05:17.687Z"
 }
 ]

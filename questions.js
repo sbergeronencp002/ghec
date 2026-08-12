@@ -77,7 +77,8 @@ const REGLETTES = {
 "Q76": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q77": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q78": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q79": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
+"Q79": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q80": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -153,7 +154,8 @@ const IMAGE_DB = {
 "canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800},
 "iroquoien_maisons_longues.jpg": {src: "images/iroquoien_maisons_longues.jpg", w: 1200, h: 800},
 "iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800},
-"iroquoiens_palissade.jpg": {src: "images/iroquoiens_palissade.jpg", w: 1200, h: 800}
+"iroquoiens_palissade.jpg": {src: "images/iroquoiens_palissade.jpg", w: 1200, h: 800},
+"transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1362,5 +1364,19 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"], double: true},
  guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A et D", "B et C"]]},
  updatedAt: "2026-08-06T18:57:24.380Z"
+},
+{
+ id: "Q80",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi les rapides sont une contrainte pour les déplacements.",
+ aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_portage.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Ils rendent la circulation en canot plus difficile et peuvent obliger les voyageurs à faire du portage.",
+ updatedAt: "2026-08-12T13:23:35.803Z"
 }
 ]

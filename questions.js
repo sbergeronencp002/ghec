@@ -107,7 +107,8 @@ const REGLETTES = {
 "Q106": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q107": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q108": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q109": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q109": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q110": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -210,7 +211,8 @@ const IMAGE_DB = {
 "population_maison_longue.jpg": {src: "images/population_maison_longue.jpg", w: 1200, h: 800},
 "population_village.jpg": {src: "images/population_village.jpg", w: 1200, h: 960},
 "territoire_iroquoien_hiver.jpg": {src: "images/territoire_iroquoien_hiver.jpg"},
-"territoire_iroquoien_ete.jpg": {src: "images/territoire_iroquoien_ete.jpg"}
+"territoire_iroquoien_ete.jpg": {src: "images/territoire_iroquoien_ete.jpg"},
+"construction_canot_ecorce.jpg": {src: "images/construction_canot_ecorce.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -1879,5 +1881,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Le froid et la neige en hiver sont une contrainte parce qu’ils limitent les activités écoomiques et rendent les déplacements plus difficiles.",
  updatedAt: "2026-08-12T19:16:57.237Z"
+},
+{
+ id: "Q110",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi la forêt est un atout pour les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_hommes_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "construction_canot_ecorce.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "La forêt est un atout parce qu’elle fournit des matériaux pour construire les maisons longues et les canots.",
+ updatedAt: "2026-08-12T19:20:12.012Z"
 }
 ]

@@ -106,7 +106,8 @@ const REGLETTES = {
 "Q105": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q106": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q107": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q108": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q108": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q109": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -207,7 +208,9 @@ const IMAGE_DB = {
 "population_clan.jpg": {src: "images/population_clan.jpg"},
 "population_nations.jpg": {src: "images/population_nations.jpg"},
 "population_maison_longue.jpg": {src: "images/population_maison_longue.jpg", w: 1200, h: 800},
-"population_village.jpg": {src: "images/population_village.jpg", w: 1200, h: 960}
+"population_village.jpg": {src: "images/population_village.jpg", w: 1200, h: 960},
+"territoire_iroquoien_hiver.jpg": {src: "images/territoire_iroquoien_hiver.jpg"},
+"territoire_iroquoien_ete.jpg": {src: "images/territoire_iroquoien_ete.jpg"}
 }
 
 const QUESTIONS = [
@@ -1862,5 +1865,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "La chaleur et la pluie en été sont un atout parce qu’elles permettent aux Iroquoiens de pratiquer l’agriculture.",
  updatedAt: "2026-08-12T19:07:27.187Z"
+},
+{
+ id: "Q109",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi le climat en hiver est une contrainte pour les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_hiver.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_iroquoien_ete.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Le froid et la neige en hiver sont une contrainte parce qu’ils limitent les activités écoomiques et rendent les déplacements plus difficiles.",
+ updatedAt: "2026-08-12T19:16:57.237Z"
 }
 ]

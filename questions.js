@@ -1182,7 +1182,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À quel groupe de nations appartiennent les Haudenosaunee et les Hurons-Wendats?",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "Adapté de RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens.",
  updatedAt: "2026-07-25T15:12:02.325Z"
@@ -1197,7 +1197,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une nation algonquienne.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "Adapté de RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Innus.\nLes Cris.\nLes Abénakis.\nLes Mi'gmaqs.\nLes Atikamekws.\nLes Anishinabegs (Algonquins).\nLes Wolastoqiyik (Malécites).\nLes Naskapis.",
  updatedAt: "2026-07-25T15:13:56.187Z"
@@ -1212,7 +1212,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À quel groupe de nations appartiennent les Attikameks et les Cris.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "Adapté de RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Algonquiens.",
  updatedAt: "2026-07-25T15:13:15.048Z"
@@ -1227,7 +1227,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une nation iroquoienne.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "Adapté de RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "nations_autochtones_1500.jpg", source: "RÉCIT de l’univers social, Les nations autochtones vers 1500"}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Haudenosaunee (Iroquois).\nLes Hurons-Wendats.\nLes Iroquoiens du Saint-Laurent.",
  updatedAt: "2026-07-25T15:17:20.277Z"

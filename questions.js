@@ -92,7 +92,8 @@ const REGLETTES = {
 "Q91": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q92": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q93": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q94": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q94": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q95": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -185,7 +186,8 @@ const IMAGE_DB = {
 "taches_hommes_3.jpg": {src: "images/taches_hommes_3.jpg", w: 1200, h: 960},
 "taches_hommes_4.jpg": {src: "images/taches_hommes_4.jpg", w: 1200, h: 960},
 "taches_femmes_3.jpg": {src: "images/taches_femmes_3.jpg", w: 1200, h: 960},
-"taches_femmes_4.jpg": {src: "images/taches_femmes_4.jpg", w: 1200, h: 960}
+"taches_femmes_4.jpg": {src: "images/taches_femmes_4.jpg", w: 1200, h: 960},
+"taches_hommes_5.jpg": {src: "images/taches_hommes_5.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1624,5 +1626,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les femmes.",
  updatedAt: "2026-08-12T15:36:56.881Z"
+},
+{
+ id: "Q95",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Dans la société iroquoienne vers 1500, nomme le groupe qui s'occupe principalement de la chasse et de la pêche.",
+ aspects: [{aspect: "Groupes sociaux"}, {aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_hommes_5.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les hommes.",
+ updatedAt: "2026-08-12T15:57:33.332Z"
 }
 ]

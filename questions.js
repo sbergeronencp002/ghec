@@ -223,11 +223,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme le mode de vie des Algonquiens vers 1500.",
- aspects: [{aspect: "Territoire"}],
+ aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Algonquiens sont nomades.",
- updatedAt: "2026-07-23T13:11:07.174Z"
+ updatedAt: "2026-08-12T16:31:56.882Z"
 },
 {
  id: "Q3",

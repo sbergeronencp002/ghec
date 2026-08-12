@@ -84,7 +84,8 @@ const REGLETTES = {
 "Q83": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q84": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q85": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q86": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q86": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q87": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -165,7 +166,8 @@ const IMAGE_DB = {
 "chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960},
 "chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg", w: 1200, h: 960},
 "aines_2.jpg": {src: "images/aines_2.jpg", w: 1200, h: 800},
-"aines_3.jpg": {src: "images/aines_3.jpg", w: 1200, h: 960}
+"aines_3.jpg": {src: "images/aines_3.jpg", w: 1200, h: 960},
+"iroquoiens_conseil_femmes_chef.jpg": {src: "images/iroquoiens_conseil_femmes_chef.jpg"}
 }
 
 const QUESTIONS = [
@@ -1475,5 +1477,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Matriarcat.",
  updatedAt: "2026-08-12T14:28:50.917Z"
+},
+{
+ id: "Q87",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme une caractéristique de l’organisation politique des Iroquoiens vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes_chef.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les femmes aînées choisissent les chefs.\nLes décisions importantes sont prises en conseil.",
+ updatedAt: "2026-08-12T14:31:37.606Z"
 }
 ]

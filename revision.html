@@ -793,6 +793,10 @@ async function rvSaveGuide() {
   const q = rvList[rvIndex];
   if(!q) return;
   const id = q.id;
+  // Capturée AVANT l'attente réseau : si l'utilisateur rouvre un autre champ (même sur une
+  // autre carte) pendant la sauvegarde, _rvEditGen avance et cette session de sauvegarde ne
+  // doit plus toucher _rvActiveEdit ni le DOM d'une carte qui n'est plus celle affichée.
+  const gen = _rvEditGen;
   const newVal = document.getElementById('rv-guide-textarea').value;
   const btn = document.getElementById('rv-guide-save-btn');
   const status = document.getElementById('rv-guide-status');
@@ -811,19 +815,18 @@ async function rvSaveGuide() {
       return true;
     }, 'Modifier le guide de correction — ' + id);
     q.guide = newVal;
-    rvEndEdit();
+    // Ne libérer/rafraîchir l'édition active que si elle appartient encore à CETTE session
+    // (voir commentaire sur `gen` ci-dessus) — sinon une sauvegarde lente pourrait effacer
+    // le suivi « non enregistré » d'une édition plus récente démarrée entre-temps ailleurs.
+    if(_rvEditGen === gen) rvEndEdit();
     status.className = 'rv-guide-status ok';
     status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
-    // Capturer la référence DOM et la génération d'édition maintenant : si l'utilisateur
-    // navigue vers une autre carte pendant le délai, rvRenderCard() remplace tout #rv-card
-    // (nouveau nœud #rv-guide-box) — cet ancien nœud devient détaché, et `.isConnected`
-    // l'exclut. Si l'utilisateur rouvre CE MÊME champ pour une correction avant la fin du
-    // délai, le conteneur reste `.isConnected` (seul son innerHTML change) — la génération
-    // capturée protège ce cas-là en plus.
     const box = document.getElementById('rv-guide-box');
-    const gen = _rvEditGen;
     setTimeout(() => {
-      if(box && box.isConnected && _rvEditGen === gen) box.innerHTML = rvRenderGuide(q);
+      // `rvList[rvIndex]?.id === id` : la carte affichée est encore celle de cette sauvegarde
+      // (une simple navigation vers une autre carte, sans ouvrir de nouvelle édition, ne fait
+      // PAS avancer _rvEditGen — cette vérification supplémentaire est donc nécessaire).
+      if(box && box.isConnected && _rvEditGen === gen && rvList[rvIndex]?.id === id) box.innerHTML = rvRenderGuide(q);
     }, 700);
   } catch(err) {
     status.className = 'rv-guide-status err';
@@ -864,6 +867,8 @@ async function rvSaveEnonce() {
   const q = rvList[rvIndex];
   if(!q) return;
   const id = q.id;
+  // Voir le commentaire équivalent dans rvSaveGuide.
+  const gen = _rvEditGen;
   const newVal = document.getElementById('rv-enonce-textarea').value.trim();
   const btn = document.getElementById('rv-enonce-save-btn');
   const status = document.getElementById('rv-enonce-status');
@@ -884,15 +889,12 @@ async function rvSaveEnonce() {
       return true;
     }, 'Modifier l\'énoncé — ' + id);
     q.enonce = newVal;
-    rvEndEdit();
+    if(_rvEditGen === gen) rvEndEdit();
     status.className = 'rv-guide-status ok';
     status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
-    // Voir le commentaire équivalent dans rvSaveGuide : la génération protège contre une
-    // réouverture du même champ avant la fin du délai (le conteneur reste `.isConnected`).
     const box = document.getElementById('rv-enonce-box');
-    const gen = _rvEditGen;
     setTimeout(() => {
-      if(box && box.isConnected && _rvEditGen === gen) box.innerHTML = rvFormatTexte(q.enonce);
+      if(box && box.isConnected && _rvEditGen === gen && rvList[rvIndex]?.id === id) box.innerHTML = rvFormatTexte(q.enonce);
     }, 700);
   } catch(err) {
     status.className = 'rv-guide-status err';
@@ -964,6 +966,8 @@ async function rvSaveDocEdit(docIdx, colIdx) {
   const col = q?.documents?.[docIdx]?.cols?.[colIdx];
   if(!col) return;
   const id = q.id;
+  // Voir le commentaire équivalent dans rvSaveGuide.
+  const gen = _rvEditGen;
   const isImgCol = !!col.ref;
   const fields = {
     titre: document.getElementById('rvd-titre').value.trim(),
@@ -988,15 +992,12 @@ async function rvSaveDocEdit(docIdx, colIdx) {
       return JSON.stringify(tCol) !== before;
     }, 'Modifier un document — ' + id);
     rvApplyDocFields(col, fields);
-    rvEndEdit();
+    if(_rvEditGen === gen) rvEndEdit();
     status.className = 'rv-guide-status ok';
     status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
-    // Voir le commentaire équivalent dans rvSaveGuide : la génération protège contre une
-    // réouverture du même champ avant la fin du délai (le conteneur reste `.isConnected`).
     const cell = document.getElementById('rv-doc-cell-' + docIdx + '-' + colIdx);
-    const gen = _rvEditGen;
     setTimeout(() => {
-      if(cell && cell.isConnected && _rvEditGen === gen) cell.innerHTML = rvRenderDocColInner(col, {docIdx, colIdx});
+      if(cell && cell.isConnected && _rvEditGen === gen && rvList[rvIndex]?.id === id) cell.innerHTML = rvRenderDocColInner(col, {docIdx, colIdx});
     }, 700);
   } catch(err) {
     status.className = 'rv-guide-status err';

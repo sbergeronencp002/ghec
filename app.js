@@ -117,7 +117,14 @@ async function ensureDataLoaded() {
       else Q_MAP.set(q.id, q);
     }
     _dataLoaded = true;
-  })();
+  })().catch(e => {
+    // Ne PAS garder une promesse rejetée en cache indéfiniment : sans ce reset, un seul
+    // échec réseau transitoire (API GitHub down/quota dépassé ET repli statique en échec)
+    // bloquerait Aperçu/DOCX/Examen pour le reste de la session, même après le retour de
+    // la connexion — chaque futur appel retournait la même promesse déjà rejetée.
+    _dataLoadPromise = null;
+    throw e;
+  });
   return _dataLoadPromise;
 }
 
@@ -508,10 +515,15 @@ function buildTileHtml(q) {
   const tagsHtml = (NEW_IDS.has(q.id) || q.soustag)
     ? `<div style="margin-top:6px;display:flex;gap:5px;flex-wrap:wrap">${NEW_IDS.has(q.id) ? badgeNew : ''}${q.soustag ? badge(q.soustag) : ''}</div>`
     : '';
+  // Même id que data-id (escAttr) mais dans un contexte attribut+chaîne-JS imbriqué
+  // (onclick="fn('...')") : échappement JS (jsStr) PUIS échappement HTML de l'ensemble
+  // (escAttr), même convention que renderDoc/openLightbox plus bas dans ce fichier.
+  const openCall   = escAttr(`openQModal('${jsStr(q.id)}')`);
+  const toggleCall = escAttr(`togglePanier('${jsStr(q.id)}')`);
   return `<div class="q-tile${inPanier ? ' in-panier' : ''}" id="tile-${q.id}"
     role="button" tabindex="0" aria-label="${escAttr(q.oi + (aspect ? ' — ' + aspect : ''))}"
-    style="--tile-color:${st.color};background:#fff" onclick="openQModal('${q.id}')"
-    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openQModal('${q.id}')}">
+    style="--tile-color:${st.color};background:#fff" onclick="${openCall}"
+    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${openCall}}">
     <div class="q-tile-bar" style="display:none"></div>
     <div class="q-tile-content">
       <div class="q-tile-oi" style="display:block;font-size:1.1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:5px 12px;border-radius:6px;color:${st.color};background:${st.bg};line-height:1.3;word-break:break-word">${escLine(q.oi)}</div>
@@ -520,8 +532,8 @@ function buildTileHtml(q) {
       ${tagsHtml}
     </div>
     <span class="q-tile-check" role="button" tabindex="0" aria-label="Ajouter ou retirer du panier"
-      onclick="event.stopPropagation();togglePanier('${q.id}')"
-      onkeydown="if(event.key==='Enter'||event.key===' '){event.stopPropagation();event.preventDefault();togglePanier('${q.id}')}">✓</span>
+      onclick="event.stopPropagation();${toggleCall}"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.stopPropagation();event.preventDefault();${toggleCall}}">✓</span>
   </div>`;
 }
 
@@ -932,7 +944,12 @@ function closeTextZoomBtn() {
 
 async function previsualiser(guideMode) {
   if(panier.length === 0) { showWarn('Le panier est vide.'); return; }
-  await ensureDataLoaded();
+  try {
+    await ensureDataLoaded();
+  } catch(e) {
+    showWarn('Impossible de charger les données complètes : ' + e.message);
+    return;
+  }
   const body = document.getElementById('preview-body');
   if(guideMode) {
     // Guide preview — numéros + réponses seulement
@@ -1298,7 +1315,7 @@ function renderCahier() {
         </div>
         <div class="cahier-enonce">${escLine(preview)}</div>
       </div>
-      <button class="cahier-remove" onclick="retirerPanier('${id}')">×</button>
+      <button class="cahier-remove" onclick="${escAttr(`retirerPanier('${jsStr(id)}')`)}">×</button>
     </div>`;
   }).join('');
 }
@@ -2086,7 +2103,12 @@ let examIdx = 0;
 
 async function openExam() {
   if(!panier.length) { showWarn('Le cahier est vide.'); return; }
-  await ensureDataLoaded(); // sinon q.documents/q.reponse sont undefined si le panier a été rempli sans jamais ouvrir de modal/aperçu
+  try {
+    await ensureDataLoaded(); // sinon q.documents/q.reponse sont undefined si le panier a été rempli sans jamais ouvrir de modal/aperçu
+  } catch(e) {
+    showWarn('Impossible de charger les données complètes : ' + e.message);
+    return;
+  }
   examIdx = 0;
   closeCahier();
   renderExam();

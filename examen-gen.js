@@ -567,6 +567,12 @@ function exReorderNoAdjacentOi(list) {
 //   rng         : générateur pseudo-aléatoire optionnel (tests reproductibles)
 function exGenererExamen({ questions, periode, aspects, oiList, favoriOi, maxPoints = 25, rng }) {
   const pool = questions.filter(q => (q.periodes||[]).includes(periode));
+  // Court-circuit : sans ça, les ~150×niveaux tentatives ci-dessous échouent toutes de la
+  // même façon triviale (aucun candidat) et le message générique final laisse croire à un
+  // conflit de contraintes (budget/variété) plutôt qu'à une société sans aucune question.
+  if (!pool.length) {
+    return { ok: false, reason: "Aucune question saisie pour « " + periode + " » — ajoutez des questions pour cette société avant de générer un examen." };
+  }
   const baseAspectRepeat = EX_ASPECT_REPEAT_BY_PERIODE[periode] || {};
   const varietyExclude = new Set(EX_OI_VARIETY_EXCLUDE_BY_PERIODE[periode] || []);
   // Cibles fixes globales (EX_OI_FIXED_TARGET) + cibles propres à cette période

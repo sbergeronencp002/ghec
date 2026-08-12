@@ -198,10 +198,12 @@ const PERIODES_ALL = Object.values(PERIODES_PAR_NIVEAU).flat();
 
 (function initPeriodeSelect() {
   const sel = document.getElementById('ex-periode');
+  // Pas de présélection par nom : les sociétés hqccssbf ("P5"…) n'existent pas dans GHEC
+  // (noms comme "Les Iroquoiens vers 1500") — le navigateur sélectionne la première option
+  // par défaut, ce qui était déjà le comportement observé tant que ce test ne matchait rien.
   PERIODES_ALL.forEach(p => {
     const opt = document.createElement('option');
     opt.value = p; opt.textContent = p;
-    if (p.startsWith('P5')) opt.selected = true;
     sel.appendChild(opt);
   });
 })();
@@ -359,7 +361,7 @@ function exRender(favoriOi) {
       '<td>' + q.points + '</td>' +
       '<td>' + nDocs + '</td>' +
       '<td><span class="q-enonce" title="' + escAttr(q.enonce || '') + '">' + escH(q.enonce || '') + '</span></td>' +
-      '<td><button class="btn-swap" onclick="exSwapOne(\'' + jsStr(q.id) + '\')" title="Remplacer par une autre question couvrant le(s) même(s) aspect(s)">🔀</button></td>' +
+      '<td><button class="btn-swap" onclick="' + escAttr("exSwapOne('" + jsStr(q.id) + "')") + '" title="Remplacer par une autre question couvrant le(s) même(s) aspect(s)">🔀</button></td>' +
       '</tr>';
   }).join('');
 }

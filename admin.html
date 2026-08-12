@@ -626,7 +626,7 @@ function updateSoustag() {
   }
   const pills = document.getElementById('soustag-pills');
   pills.innerHTML = options.map(v =>
-    `<label class="soustag-pill"><input type="radio" name="q-soustag" value="${v}" onchange="autoFromSoustag()"> ${v}</label>`
+    `<label class="soustag-pill"><input type="radio" name="q-soustag" value="${escHtml(v)}" onchange="autoFromSoustag()"> ${escHtml(v)}</label>`
   ).join('') + `<label class="soustag-pill"><input type="radio" name="q-soustag" value="" onchange="autoFromSoustag()"> Aucun</label>`;
   row.style.display = '';
 }
@@ -1264,9 +1264,8 @@ async function supprimerQuestion() {
         questionsFileSha = data.sha;
         confirmedIds = new Set(currentQuestions.map(q => q.id));
         workerOk = true;
-        // Voie Worker : ne touche pas questions-index.js (voir même commentaire dans publier())
-        const idxToken = getToken();
-        if(idxToken) publishIndex(idxToken, `Supprimer ${idSupp}`);  // fire-and-forget
+        // Voie Worker : le Worker republie lui-même questions-index.js (voir même
+        // commentaire dans publier()) — rien à faire ici côté client.
       } catch(we) {
         if(we.message !== 'Failed to fetch') throw we;
         // Worker inaccessible → GitHub Actions
@@ -1809,6 +1808,16 @@ function cfgCollectContexte() {
 async function cfgPublishContexte() {
   const status = document.getElementById('cfg-contexte-status');
   const { periodesParNiveau, aspectsParPeriode } = cfgCollectContexte();
+  // Même garde-fou que cfgPublishOi/cfgPublishCompetences : sans ça, deux sociétés du même
+  // nom dans un niveau écraseraient silencieusement leur entrée ASPECTS_PAR_PERIODE commune
+  // au moment de la publication (aspectsParPeriode[nom] = ... dans cfgCollectContexte).
+  for(const niv in periodesParNiveau) {
+    const periodes = periodesParNiveau[niv];
+    if(new Set(periodes).size !== periodes.length) {
+      status.textContent = `✗ Deux sociétés du niveau ${niv} portent le même nom.`; status.style.color = 'var(--red)';
+      return;
+    }
+  }
   status.textContent = '⏳ Publication…'; status.style.color = '';
   try {
     await _putFileWithRetry('contexte.js', 'Configuration niveaux/sociétés', () => {
@@ -1919,18 +1928,12 @@ async function loadQuestionsJs() {
         throw e;
       }
     }
-    questionsFileSha = sha;
-    let result;
-    try {
-      const fn = new Function(content + '\n return { REGLETTES, IMAGE_DB, QUESTIONS };');
-      result = fn();
-    } catch(e) {
-      throw new Error('questions.js est invalide ou corrompu : ' + e.message);
-    }
-    currentQuestions = result.QUESTIONS;
-    currentReglettes = result.REGLETTES;
-    currentImageDb   = result.IMAGE_DB;
-    confirmedIds = new Set(currentQuestions.map(q => q.id));
+    // Passe par _assignFreshState (même garde-fou que fetchFreshState/fetchFreshStateStable) :
+    // ce chargement peut survenir en cours de session (ex. token collé/corrigé après une
+    // publication réussie), pas seulement au démarrage — sans cette protection, une lecture
+    // en retard sur un réplica de l'API écraserait confirmedIds/currentQuestions et ferait
+    // perdre le garde-fou anti-régression pour les questions déjà publiées par CETTE session.
+    _assignFreshState(sha, content);
     // Next ID
     const nums = currentQuestions.map(q => parseInt(q.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
     const nextNum = nums.length ? Math.max(...nums) + 1 : 1;
@@ -2704,11 +2707,12 @@ async function publier() {
       if(r != null) currentReglettes[q.id] = r;
       questionsFileSha = data.sha;
       confirmedIds = new Set(currentQuestions.map(x => x.id));
-      // Voie Worker : questions.js est déjà à jour côté serveur mais le Worker ne touche pas
-      // à questions-index.js (chargé par index.html au démarrage) — le publier nous-mêmes ici,
-      // sinon la grille publique diverge silencieusement de questions.js indéfiniment.
-      const idxToken = getToken();
-      if(idxToken) publishIndex(idxToken, editingId ? `Modifier ${q.id} — ${q.oi}` : `Ajouter ${q.id} — ${q.oi} (${(q.periodes||[]).join(' + ')})`);  // fire-and-forget
+      // Voie Worker : le Worker republie lui-même questions-index.js server-to-server
+      // (avec GITHUB_PAT, sans dépendre d'un token client) — voir doPublishIndex dans
+      // worker/index.js. Ne pas le refaire ici : un enseignant qui n'a configuré que la
+      // voie Worker (pas de PAT personnel dans #gh-token) n'aurait sinon jamais son index
+      // republié, et republier en double depuis le client ne ferait que risquer un conflit
+      // de SHA inutile avec la publication déjà faite côté serveur.
 
       document.getElementById('q-id').value = data.nextId;
       document.getElementById('next-id-badge').textContent = data.nextId;
@@ -3105,7 +3109,16 @@ function refreshLivePreview() {
     const periode = getSelectedPeriodes ? getSelectedPeriodes().join(' + ') : '';
     const enonce  = (document.getElementById('q-enonce')?.value || '').trim();
     const soustag = getSoustag ? getSoustag() : '';
-    const points  = document.getElementById('q-points')?.value || '1';
+    // Il n'existe pas de champ #q-points dans le formulaire — les points sont dérivés de
+    // la réglette sélectionnée (#reg-preset), même calcul que buildQuestion(). Sans ça,
+    // l'aperçu affichait toujours « 1 pt » quelle que soit la réglette réellement choisie.
+    const lpPresetIdx = parseInt(document.getElementById('reg-preset')?.value);
+    const lpPreset = !isNaN(lpPresetIdx) ? (REGLETTES_PRESET[oi] || [])[lpPresetIdx] : null;
+    let points = 2;
+    if(lpPreset) {
+      if(lpPreset.variante) points = 3;
+      else if(lpPreset.niveaux?.length) points = Math.max(...lpPreset.niveaux.map(n => n.pts));
+    }
 
     const s = (typeof OI_CONFIG !== 'undefined' && OI_CONFIG[oi])
       ? { bg: OI_CONFIG[oi].bg || '#e8edf5', color: OI_CONFIG[oi].color || '#1B3B6F' }
@@ -3189,7 +3202,7 @@ function refreshLivePreview() {
 
 // Hook: observe form changes
 (function setupLivePreviewListeners() {
-  const targets = ['q-oi','q-niveau','q-enonce','q-points','rep-type'];
+  const targets = ['q-oi','q-niveau','q-enonce','reg-preset','rep-type'];
   function onChange() { scheduleLivePreview(); }
   document.addEventListener('DOMContentLoaded', () => {
     targets.forEach(id => {

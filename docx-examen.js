@@ -383,8 +383,17 @@ async function exSaveDocx(doc, filename, btnId) {
   }
 }
 
+// Historiquement écrit pour des noms de société hqccssbf du type "P5..." (d'où le nom
+// de la fonction) — les sociétés GHEC ("Les Iroquoiens vers 1500", etc.) ne matchaient
+// jamais ce motif : le .replace() était un no-op et les noms de fichiers gardaient
+// espaces/accents/majuscules non nettoyés. Slugifie maintenant n'importe quel nom de
+// société : minuscules, accents retirés, tout ce qui n'est pas alphanumérique → "_".
 function exSlug(periode) {
-  return periode.replace(/^P(\d+).*$/, 'p$1');
+  return periode
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -407,7 +416,8 @@ async function exDownloadQuestionnaire() {
     // Les images de réponse (type reponse.image) doivent être résolues avant la construction.
     const neededKeys = new Set();
     EX_SELECTION.forEach(q => { if (q.reponse && q.reponse.ref && IMAGE_DB[q.reponse.ref]) neededKeys.add(q.reponse.ref); });
-    await exResolveImages([...neededKeys]);
+    const failed = await exResolveImages([...neededKeys]);
+    if (failed.length) toast('Images introuvables dans le questionnaire : ' + failed.join(', '), 'err');
     const imgR = k => _imgDocxCache[k] || IMAGE_DB[k];
 
     EX_SELECTION.forEach((q, idx) => {

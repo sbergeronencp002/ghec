@@ -8,10 +8,10 @@
 // ⚠️ CACHE doit être incrémenté à chaque changement de PRECACHE (cf. CLAUDE.md, table
 // « Cache-bust actuel ») — sinon les navigateurs déjà visités gardent l'ancienne liste
 // indéfiniment (self.skipWaiting()/clients.claim() ne rechargent pas les onglets ouverts).
-const CACHE = 'ghec-v2';
+const CACHE = 'ghec-v3';
 const PRECACHE = [
   './style.css?v=31',
-  './app.js?v=53',
+  './app.js?v=54',
   './filters.js?v=1',
   './oi-config.js?v=1',
 ];
@@ -21,6 +21,7 @@ const PRECACHE = [
 const NETWORK_FIRST_PRECACHE = [
   './index.html',
   './contexte.js',
+  './competences.js',
 ];
 
 self.addEventListener('install', e => {
@@ -59,6 +60,7 @@ self.addEventListener('fetch', e => {
     || url.pathname.endsWith('/index.html')
     || url.pathname.endsWith('/') // navigation vers la racine du site (ex. /ghec/) == index.html
     || url.pathname.endsWith('/contexte.js')
+    || url.pathname.endsWith('/competences.js')
     || url.pathname.endsWith('/admin.html')
     || url.pathname.endsWith('/documents.html')
     || url.pathname.endsWith('/revision.html')

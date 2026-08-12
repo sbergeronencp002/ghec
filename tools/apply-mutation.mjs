@@ -81,7 +81,11 @@ function _isFlat(v) {
   if(Array.isArray(v) || typeof v !== 'object' || v === null) return false;
   return Object.values(v).every(_isScalar);
 }
+// Voir la même garde dans worker/index.js et questions-io.js — ces trois copies doivent
+// rester identiques.
+const _SERIALIZE_MAX_DEPTH = 30;
 function serializeValue(v, indent=0) {
+  if(indent > _SERIALIZE_MAX_DEPTH) throw new Error('Structure trop profondément imbriquée (max ' + _SERIALIZE_MAX_DEPTH + ' niveaux)');
   const pad = ' '.repeat(indent);
   const pad1 = ' '.repeat(indent+1);
   if(_isScalar(v)) return v === null || v === undefined ? 'null' : typeof v === 'string' ? JSON.stringify(v) : String(v);

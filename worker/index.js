@@ -41,7 +41,14 @@ function _isFlat(v) {
 // Sérialise récursivement une valeur JS en code source compact (sans indentation).
 // Les objets et tableaux dont la représentation tient en ≤ 500 chars sont mis sur
 // une seule ligne ; sinon ils sont éclatés avec une indentation minimale (1 espace).
+// Profondeur d'imbrication max raisonnable pour une question (documents→cols→champs
+// scalaires ≈ 4-5 niveaux) — au-delà, on refuse plutôt que de risquer un dépassement de
+// pile sur une structure pathologique. Particulièrement important ici : ce Worker est
+// exposé publiquement (protégé seulement par WORKER_SECRET) — ces trois copies
+// (questions-io.js, tools/apply-mutation.mjs) doivent rester identiques.
+const _SERIALIZE_MAX_DEPTH = 30;
 function serializeValue(v, indent=0) {
+  if(indent > _SERIALIZE_MAX_DEPTH) throw new Error('Structure trop profondément imbriquée (max ' + _SERIALIZE_MAX_DEPTH + ' niveaux)');
   const pad = ' '.repeat(indent);
   const pad1 = ' '.repeat(indent+1);
   if(_isScalar(v)) return v === null || v === undefined ? 'null' : typeof v === 'string' ? JSON.stringify(v) : String(v);
@@ -70,6 +77,19 @@ function ensureImageDbComplete(questions, imageDb) {
     }));
     if(q.reponse?.ref && !imageDb[q.reponse.ref]) imageDb[q.reponse.ref] = { src: 'images/' + q.reponse.ref };
   });
+}
+
+// Génère questions-index.js : version allégée de QUESTIONS (champs grille seulement).
+// Copie EXACTE de generateIndexJs (questions-io.js) — voir la note plus haut sur les
+// copies du sérialiseur qui doivent rester identiques.
+const _INDEX_FIELDS = ['id','niveau','oi','competence','periodes','points','soustag','aspects','enonce','updatedAt'];
+function generateIndexJs(questions) {
+  const slim = questions.map(q => {
+    const s = {};
+    _INDEX_FIELDS.forEach(k => { if(q[k] !== undefined) s[k] = q[k]; });
+    return s;
+  });
+  return 'const QUESTIONS = [\n' + slim.map(q => serializeValue(q,0)).join(',\n') + '\n]\n';
 }
 
 // Reconstruit le fichier questions.js complet (REGLETTES + IMAGE_DB + QUESTIONS).
@@ -143,6 +163,20 @@ function validateQuestionPayload(q) {
   return null;
 }
 
+// Plafond de taille du payload — cet endpoint est public (protégé seulement par
+// WORKER_SECRET, voir CLAUDE.md) ; sans plafond, quiconque connaît/devine le secret
+// pourrait committer un payload de plusieurs Mo sur `main` et casser le site public pour
+// tous les élèves. Une question réelle (énoncé + documents texte + réglette) ne dépasse
+// jamais quelques Ko — 100 Ko laisse une marge très large.
+const MAX_BODY_BYTES = 100_000;
+// reglette n'était auparavant pas validé du tout : n'importe quelle forme (chaîne, tableau,
+// nombre) était acceptée et écrite telle quelle dans REGLETTES.
+function validateReglette(r) {
+  if (r === undefined) return null;
+  if (typeof r !== 'object' || r === null || Array.isArray(r)) return 'reglette doit être un objet';
+  return null;
+}
+
 // ── Fetch questions.js depuis GitHub ─────────────────────────────────────────
 
 async function fetchQuestionsRaw(token) {
@@ -207,15 +241,46 @@ async function doBackupAndPrune(token, content) {
   } catch (_) {}
 }
 
+// ── Republier questions-index.js (fire-and-forget via ctx.waitUntil) ─────────
+// Le Worker écrit questions.js server-to-server sans jamais passer par le token GitHub
+// personnel du client (getToken() dans admin.html) — publishIndex() côté admin.html, qui
+// dépend de ce token, ne se déclenche donc QUE s'il est configuré. Un enseignant qui n'a
+// configuré que la voie Worker (workerUrl/workerSecret, sans PAT personnel) ne l'aura
+// jamais : questions-index.js resterait périmé indéfiniment après chaque publication
+// Worker. En le publiant nous-mêmes ici avec GITHUB_PAT (déjà en main côté serveur), la
+// voie Worker n'a plus besoin d'un token client pour rester cohérente.
+async function doPublishIndex(token, questions, commitMsg) {
+  try {
+    let sha;
+    const r1 = await fetch(
+      `https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js?ref=${BRANCH}&t=${Date.now()}`,
+      { headers: { Authorization: `token ${token}`, 'User-Agent': 'ghec-worker' }, cache: 'no-store' }
+    );
+    if (r1.ok) { const d1 = await r1.json(); sha = d1.sha; }
+    const body = { message: commitMsg + ' [index]', content: utf8b64(generateIndexJs(questions)), branch: BRANCH };
+    if (sha) body.sha = sha;
+    await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js`, {
+      method: 'PUT',
+      headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json', 'User-Agent': 'ghec-worker' },
+      body: JSON.stringify(body),
+    });
+  } catch (_) {}
+}
+
 // ── Handler principal ─────────────────────────────────────────────────────────
 
 async function handlePublish(request, env, ctx) {
-  let body;
-  try { body = await request.json(); } catch { return errResp('JSON invalide'); }
+  let body, rawText;
+  try { rawText = await request.text(); body = JSON.parse(rawText); } catch { return errResp('JSON invalide'); }
 
   const { secret, action, question, reglette, editingId } = body;
 
   if (!secret || !timingSafeEqual(secret, env.WORKER_SECRET)) return errResp('Non autorisé', 401);
+  // Plafond APRÈS l'authentification : un appelant non authentifié n'a aucune raison de
+  // savoir que la taille du payload est même examinée.
+  if (rawText.length > MAX_BODY_BYTES) {
+    return errResp(`Payload trop volumineux (${rawText.length} > ${MAX_BODY_BYTES} octets)`, 413);
+  }
   if (!action || !['upsert', 'delete'].includes(action)) return errResp('action invalide');
   if (typeof question?.id !== 'string' || !/^Q\d+$/.test(question.id)) {
     return errResp('question.id invalide (attendu "Q" suivi de chiffres)');
@@ -229,6 +294,8 @@ async function handlePublish(request, env, ctx) {
   if (action === 'upsert') {
     const payloadErr = validateQuestionPayload(question);
     if (payloadErr) return errResp(payloadErr);
+    const regletteErr = validateReglette(reglette);
+    if (regletteErr) return errResp(regletteErr);
   }
 
   const token = env.GITHUB_PAT;
@@ -324,6 +391,7 @@ async function handlePublish(request, env, ctx) {
     if (putResp.ok) {
       const putData = await putResp.json();
       newSha = putData.content.sha;
+      ctx.waitUntil(doPublishIndex(token, QUESTIONS, commitMsg));
       break;
     }
 
@@ -357,7 +425,16 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname === '/publish' && request.method === 'POST') {
-      return handlePublish(request, env, ctx);
+      // Toute exception non prévue (ex. serializeValue qui refuse une structure trop
+      // profonde, ou tout autre bug) doit renvoyer une réponse AVEC les en-têtes CORS —
+      // sinon le client voit une erreur CORS/réseau opaque plutôt que le vrai message, et
+      // admin.html interprète ça comme « Worker indisponible » et bascule silencieusement
+      // sur le fallback GitHub Actions, masquant le bug réel pendant le débogage.
+      try {
+        return await handlePublish(request, env, ctx);
+      } catch (e) {
+        return errResp('Erreur interne : ' + e.message, 500);
+      }
     }
 
     return new Response('GHEC CSSBF Worker — OK', { status: 200 });

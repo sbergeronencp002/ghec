@@ -79,7 +79,8 @@ const REGLETTES = {
 "Q78": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q79": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q80": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q81": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q81": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q82": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -158,7 +159,8 @@ const IMAGE_DB = {
 "iroquoiens_palissade.jpg": {src: "images/iroquoiens_palissade.jpg", w: 1200, h: 800},
 "transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800},
 "chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960},
-"chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg", w: 1200, h: 960}
+"chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg", w: 1200, h: 960},
+"aines_2.jpg": {src: "images/aines_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1396,5 +1398,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Ils transmettent leurs connaissances et leurs traditions oralement, par la parole.",
  updatedAt: "2026-08-12T13:26:02.873Z"
+},
+{
+ id: "Q82",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 2,
+ enonce: "Explique comment la tradition orale permet de conserver les connaissances d’une communauté.",
+ aspects: [{aspect: "Culture"}, {aspect: "Communication"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "La tradition orale permet de conserver les connaissances parce que les membres de la communauté racontent et transmettent les récits et les savoirs aux générations suivantes.",
+ updatedAt: "2026-08-12T13:47:31.298Z"
 }
 ]

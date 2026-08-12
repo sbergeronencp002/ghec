@@ -843,7 +843,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À partir du document A, nomme l'activité pratiquée.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "L'agriculture.",
  updatedAt: "2026-07-24T12:31:54.614Z"
@@ -1087,7 +1087,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment les caractéristiques du territoire habité par les Iroquoiens influencent leur mode de vie sédentaire.",
  aspects: [{aspect: "Territoire"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "agriculture.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "agriculture.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire des Iroquoiens comprend des plaines fertiles et un climat favorable à l'agriculture (le territoire habité des Iroquoiens).\nCela leur permet de cultiver le maïs, les haricots et les courges (la pratique de l'agriculture).\nLes Iroquoiens vivent donc dans des villages permanents (le mode de vie sédentaire).",
  updatedAt: "2026-08-03T18:22:07.157Z"
@@ -1632,7 +1632,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Dans la société iroquoienne vers 1500, nomme le groupe qui s'occupe principalement de l'agriculture.",
  aspects: [{aspect: "Groupes sociaux"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "econstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les femmes.",
  updatedAt: "2026-08-12T15:36:56.881Z"

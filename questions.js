@@ -89,7 +89,8 @@ const REGLETTES = {
 "Q88": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q89": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q90": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q91": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q91": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q92": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -174,7 +175,11 @@ const IMAGE_DB = {
 "iroquoiens_conseil_femmes_chef.jpg": {src: "images/iroquoiens_conseil_femmes_chef.jpg"},
 "iroquoiens_matriarcat.jpg": {src: "images/iroquoiens_matriarcat.jpg", w: 1200, h: 900},
 "algonquiens_patriarcat.jpg": {src: "images/algonquiens_patriarcat.jpg", w: 1200, h: 900},
-"iroquoiens_conseil_2.jpg": {src: "images/iroquoiens_conseil_2.jpg", w: 1200, h: 800}
+"iroquoiens_conseil_2.jpg": {src: "images/iroquoiens_conseil_2.jpg", w: 1200, h: 800},
+"taches_femmes_1.jpg": {src: "images/taches_femmes_1.jpg"},
+"taches_hommes_1.jpg": {src: "images/taches_hommes_1.jpg"},
+"taches_hommes_2.jpg": {src: "images/taches_hommes_2.jpg"},
+"taches_femmes_2.jpg": {src: "images/taches_femmes_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1558,5 +1563,25 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Le pouvoir des chefs est limité parce que les décisions importantes sont prises en conseil et qu’ils ne décident pas seuls.",
  updatedAt: "2026-08-12T15:08:08.454Z"
+},
+{
+ id: "Q92",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent différentes tâches réalisées principalement par les femmes et les hommes dans la société iroquoienne vers 1500. Associe chaque tâche au groupe correspondant.",
+ aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "taches_femmes_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "taches_hommes_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "taches_hommes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "taches_femmes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Femmes", "Hommes"], double: true},
+ guide: {type: "grille", entetes: ["Femmes", "Hommes"], rangees: [["A et D", "B et C"]]},
+ updatedAt: "2026-08-12T15:27:08.945Z"
 }
 ]

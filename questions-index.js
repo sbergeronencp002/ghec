@@ -145,5 +145,17 @@ const QUESTIONS = [
  aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  enonce: "Les documents A à D présentent différentes tâches réalisées principalement par les femmes et les hommes dans la société iroquoienne vers 1500. Associe chaque tâche au groupe correspondant.",
  updatedAt: "2026-08-12T15:27:08.945Z"
+},
+{
+ id: "Q93",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ enonce: "Les documents A à D présentent différentes tâches réalisées principalement par les femmes et les hommes dans la société iroquoienne vers 1500. Associe chaque tâche au groupe correspondant.",
+ updatedAt: "2026-08-12T15:35:57.244Z"
 }
 ]

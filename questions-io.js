@@ -23,7 +23,13 @@ function _isFlat(v) {
 // Sérialise récursivement une valeur JS en code source compact (sans indentation).
 // Les objets et tableaux dont la représentation tient en ≤ 500 chars sont mis sur
 // une seule ligne ; sinon ils sont éclatés avec une indentation minimale (1 espace).
+// Profondeur d'imbrication max raisonnable pour une question (documents→cols→champs
+// scalaires ≈ 4-5 niveaux) — au-delà, on refuse plutôt que de risquer un dépassement de
+// pile sur une structure pathologique (voir la même garde dans worker/index.js, exposé
+// publiquement, et tools/apply-mutation.mjs — ces trois copies doivent rester identiques).
+const _SERIALIZE_MAX_DEPTH = 30;
 function serializeValue(v, indent=0) {
+  if(indent > _SERIALIZE_MAX_DEPTH) throw new Error('Structure trop profondément imbriquée (max ' + _SERIALIZE_MAX_DEPTH + ' niveaux)');
   const pad = ' '.repeat(indent);
   const pad1 = ' '.repeat(indent+1);
   if(_isScalar(v)) return v === null || v === undefined ? 'null' : typeof v === 'string' ? JSON.stringify(v) : String(v);

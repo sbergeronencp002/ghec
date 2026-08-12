@@ -1133,9 +1133,12 @@ async function fetchQuestionsJsSource(headers) {
 // Relit questions.js à l'instant présent et retourne vrai si aucune question ne
 // référence encore `img` (dans un document ou en réponse-image) — utilisé pour
 // revérifier juste avant une suppression irréversible, au cas où une publication
-// concurrente (autre onglet / admin.html) aurait entre-temps réutilisé l'image.
+// concurrente (autre onglet / admin.html) aurait entre-temps réutilisé l'image. Passe par
+// la lecture STABILISÉE (comme applyQuestionsEdit), pas une lecture simple : la décision
+// qui suit est irréversible (suppression de fichier), donc elle mérite la même protection
+// contre un réplica de l'API GitHub en retard que toute mutation de questions.js.
 async function isImageStillOrphan(img) {
-  const { content } = await fetchQuestionsJsSource();
+  const { content } = await fetchStableQuestionsJs({Authorization: 'token ' + requireToken()});
   let parsed;
   try {
     parsed = new Function(content + '\n return { QUESTIONS };')();

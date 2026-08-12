@@ -1497,7 +1497,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi le chaman peut aider les membres de la communauté lorsqu’ils sont malades.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ceremonies_objets.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ceremonies_objets.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le chaman peut les aider parce qu’il connaît certaines plantes utilisées pour leurs propriétés médicinales et qu’il agit aussi comme guérisseur.",
  updatedAt: "2026-08-12T14:02:27.346Z"

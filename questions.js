@@ -1792,7 +1792,7 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document C", ref: "population_nations.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Clan", "Nation", "Confédération"]},
- guide: {type: "grille", entetes: ["Clan", "Nation", "Confédération"], rangees: [["B", "C", "B"]]},
- updatedAt: "2026-08-12T17:05:17.687Z"
+ guide: {type: "grille", entetes: ["Clan", "Nation", "Confédération"], rangees: [["B", "C", "A"]]},
+ updatedAt: "2026-08-12T17:05:40.706Z"
 }
 ]

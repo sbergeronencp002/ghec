@@ -160,7 +160,8 @@ const IMAGE_DB = {
 "transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800},
 "chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960},
 "chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg", w: 1200, h: 960},
-"aines_2.jpg": {src: "images/aines_2.jpg", w: 1200, h: 800}
+"aines_2.jpg": {src: "images/aines_2.jpg", w: 1200, h: 800},
+"aines_3.jpg": {src: "images/aines_3.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -1408,9 +1409,9 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment la tradition orale permet de conserver les connaissances d’une communauté.",
  aspects: [{aspect: "Culture"}, {aspect: "Communication"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La tradition orale permet de conserver les connaissances parce que les membres de la communauté racontent et transmettent les récits et les savoirs aux générations suivantes.",
- updatedAt: "2026-08-12T13:47:31.298Z"
+ updatedAt: "2026-08-12T13:49:07.572Z"
 }
 ]

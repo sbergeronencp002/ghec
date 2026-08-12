@@ -100,7 +100,8 @@ const REGLETTES = {
 "Q99": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q100": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q101": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q102": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q102": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q103": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -195,7 +196,8 @@ const IMAGE_DB = {
 "taches_femmes_3.jpg": {src: "images/taches_femmes_3.jpg", w: 1200, h: 960},
 "taches_femmes_4.jpg": {src: "images/taches_femmes_4.jpg", w: 1200, h: 960},
 "taches_hommes_5.jpg": {src: "images/taches_hommes_5.jpg", w: 1200, h: 800},
-"societe_iroquoienne.png": {src: "images/societe_iroquoienne.png"}
+"societe_iroquoienne.png": {src: "images/societe_iroquoienne.png"},
+"iroquoiens_nations.jpg": {src: "images/iroquoiens_nations.jpg"}
 }
 
 const QUESTIONS = [
@@ -1754,5 +1756,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La confédération.",
  updatedAt: "2026-08-12T16:21:07.841Z"
+},
+{
+ id: "Q103",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Où se situe principalement la population iroquoienne vers 1500?",
+ aspects: [{aspect: "Territoire"}, {aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_nations.jpg", source: "Récitus - les nations iroquoeinnes vers 1500."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "En bordure du Saint-Laurent et des Grands Lacs.",
+ updatedAt: "2026-08-12T16:36:57.916Z"
 }
 ]

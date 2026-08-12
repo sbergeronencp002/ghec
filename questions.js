@@ -1452,7 +1452,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment la tradition orale permet de conserver les connaissances d’une communauté.",
  aspects: [{aspect: "Culture"}, {aspect: "Communication"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_3.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La tradition orale permet de conserver les connaissances parce que les membres de la communauté racontent et transmettent les récits et les savoirs aux générations suivantes.",
  updatedAt: "2026-08-12T13:49:07.572Z"

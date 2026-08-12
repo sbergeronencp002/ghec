@@ -1257,7 +1257,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une voie de communication sur l'eau utilisée par les peuples autochtones vers 1500.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Un cours d'eau, une rivière, un lac ou le fleuve Saint-Laurent.",
  updatedAt: "2026-08-03T16:05:30.604Z"
@@ -1331,7 +1331,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones utilisent un canot d'écorce en été.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "canot_ecorce.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "canot_ecorce.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones utilisent un canot d'écorce en été parce qu'il leur permet de se déplacer sur les cours d'eau.",
  updatedAt: "2026-08-06T14:18:56.695Z"
@@ -1423,7 +1423,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les rapides sont une contrainte pour les déplacements.",
  aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_portage.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_canot.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_portage.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Ils rendent la circulation en canot plus difficile et peuvent obliger les voyageurs à faire du portage.",
  updatedAt: "2026-08-12T13:23:35.803Z"

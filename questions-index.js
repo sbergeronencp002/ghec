@@ -121,5 +121,6 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}, {aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  enonce: "Les documents A à D présentent des éléments de la société algonquienne et de la société iroquoienne vers 1500. Associe chaque document à la société correspondante.",
  updatedAt: "2026-08-06T18:57:24.380Z"
-}
+},
+{id: "Q80", niveau: 3, oi: "Établir des liens de causalité", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 2, aspects: [{aspect: "Territoire"}, {aspect: "Transport"}], enonce: "Explique pourquoi les rapides sont une contrainte pour les déplacements.", updatedAt: "2026-08-12T13:23:35.803Z"}
 ]

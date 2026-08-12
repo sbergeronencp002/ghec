@@ -1734,15 +1734,22 @@ async function genererDocx(includeGuide=false) {
       const q = Q_MAP.get(id);
       if(!q) return;
 
-      // Énoncé avec numéro
+      // Énoncé avec numéro — justifié (style demandé par l'enseignant, voir cahier_GHEC
+      // modifié à la main le 2026-08-12 : toutes les lignes d'énoncé y sont en JUSTIFY
+      // plutôt qu'alignées à gauche par défaut).
       const qNum = idx + 1;
       const firstLine = (q.enonce||'').split('\n')[0];
       const otherLines = (q.enonce||'').split('\n').slice(1);
       children.push(new Paragraph({
+        alignment: AlignmentType.JUSTIFIED,
         indent: { left: 284, hanging: 284 },
         children: [new TextRun({ text: qNum + '.  ', font: 'Aptos', size: 24 }), ...mkRuns(firstLine, 'Aptos', 24)]
       }));
-      otherLines.forEach(line => { if(line.trim()) children.push(mkLine(line, 'Aptos', 24)); });
+      otherLines.forEach(line => {
+        if(!line.trim()) return;
+        if(line.startsWith('• ')) { children.push(mkLine(line, 'Aptos', 24)); return; }
+        children.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: mkRuns(line, 'Aptos', 24) }));
+      });
       children.push(new Paragraph({ children: [new TextRun({ text: '' })] }));
 
       // Documents

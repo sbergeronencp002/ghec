@@ -308,7 +308,7 @@ const QUESTIONS = [
  soustag: "Établir tous les faits - 2",
  enonce: "Nomme deux aliments que les Iroquoiens cultivent pour se nourrir.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_recoltes.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_recoltes.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Le maïs.\nLes courges.\nLes haricots.",
  updatedAt: "2026-07-23T14:19:19.016Z"
@@ -1080,7 +1080,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment les caractéristiques du territoire habité par les Iroquoiens influencent leur mode de vie sédentaire.",
  aspects: [{aspect: "Territoire"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_recoltes.jpg", source: "Adapté de Récitus et reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_1500_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_recoltes.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire des Iroquoiens comprend des plaines fertiles et un climat favorable à l'agriculture (le territoire habité des Iroquoiens).\nCela leur permet de cultiver le maïs, les haricots et les courges (la pratique de l'agriculture).\nLes Iroquoiens vivent donc dans des villages permanents (le mode de vie sédentaire).",
  updatedAt: "2026-08-03T18:22:43.534Z"

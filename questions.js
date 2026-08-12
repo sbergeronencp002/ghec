@@ -1603,7 +1603,7 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document A", ref: "taches_femmes_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "taches_hommes_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "taches_hommes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "taches_femmes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document D", ref: "taches_femmes_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Femmes", "Hommes"], double: true},
  guide: {type: "grille", entetes: ["Femmes", "Hommes"], rangees: [["A et D", "B et C"]]},
@@ -1714,7 +1714,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 2",
  enonce: "Nomme deux tâches assurées par les femmes iroquoiennes.",
  aspects: [{aspect: "Groupes sociaux"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_femmes_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "taches_femmes_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Cultiver les champs (semer, entretenir et récolter le maïs, la courge et le haricot).\nFabriquer la poterie.\nFabriquer la vannerie.\nRécolter.",
  updatedAt: "2026-08-12T16:02:56.871Z"

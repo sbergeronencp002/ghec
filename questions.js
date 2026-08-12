@@ -156,7 +156,9 @@ const IMAGE_DB = {
 "iroquoien_maisons_longues.jpg": {src: "images/iroquoien_maisons_longues.jpg", w: 1200, h: 800},
 "iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800},
 "iroquoiens_palissade.jpg": {src: "images/iroquoiens_palissade.jpg", w: 1200, h: 800},
-"transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800}
+"transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800},
+"chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960},
+"chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -444,10 +446,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones pratiquent l'animisme vers 1500.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chaman_ceremonie_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chaman_animisme_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones pratiquent l'animisme parce qu'ils croient que les êtres vivants et les éléments de la nature possèdent un esprit.",
- updatedAt: "2026-08-06T13:54:20.745Z"
+ updatedAt: "2026-08-12T13:33:01.621Z"
 },
 {
  id: "Q20",

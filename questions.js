@@ -97,7 +97,8 @@ const REGLETTES = {
 "Q96": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q97": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q98": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q99": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q99": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q100": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -191,7 +192,8 @@ const IMAGE_DB = {
 "taches_hommes_4.jpg": {src: "images/taches_hommes_4.jpg", w: 1200, h: 960},
 "taches_femmes_3.jpg": {src: "images/taches_femmes_3.jpg", w: 1200, h: 960},
 "taches_femmes_4.jpg": {src: "images/taches_femmes_4.jpg", w: 1200, h: 960},
-"taches_hommes_5.jpg": {src: "images/taches_hommes_5.jpg", w: 1200, h: 800}
+"taches_hommes_5.jpg": {src: "images/taches_hommes_5.jpg", w: 1200, h: 800},
+"societe_iroquoienne.png": {src: "images/societe_iroquoienne.png"}
 }
 
 const QUESTIONS = [
@@ -1705,5 +1707,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Cultiver les champs (semer, entretenir et récolter le maïs, la courge et le haricot).\nFabriquer la poterie.\nFabriquer la vannerie.\nRécolter.",
  updatedAt: "2026-08-12T16:02:56.871Z"
+},
+{
+ id: "Q100",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme le groupe formé de plusieurs familles chez les Iroquoiens.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "societe_iroquoienne.png", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le clan.",
+ updatedAt: "2026-08-12T16:20:13.947Z"
 }
 ]

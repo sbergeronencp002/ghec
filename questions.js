@@ -657,12 +657,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les cours d'eau sont un atout pour les peuples autochtones vers 1500.",
+ enonce: "Explique pourquoi les cours d'eau sont un atout important pour les peuples autochtones vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_troc_1.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_troc_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les cours d'eau sont un atout, car ils permettent aux peuples autochtones de se déplacer, de pêcher et d'échanger des ressources.",
- updatedAt: "2026-08-05T16:43:58.838Z"
+ updatedAt: "2026-08-12T13:08:09.968Z"
 },
 {
  id: "Q35",

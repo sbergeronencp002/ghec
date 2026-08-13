@@ -1925,10 +1925,10 @@ const QUESTIONS = [
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent le mode de vie de la société iroquoienne et de la société algonquienne vers 1500. Associe chaque document à la société correspondante.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "wigwam.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_iroquoien_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Nomade", "Sédentaire"]},
  guide: {type: "grille", entetes: ["Nomade", "Sédentaire"], rangees: [["B", "A"]]},
- updatedAt: "2026-08-13T12:43:23.395Z"
+ updatedAt: "2026-08-13T12:45:20.617Z"
 },
 {
  id: "Q113",

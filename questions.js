@@ -113,7 +113,8 @@ const REGLETTES = {
 "Q112": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q113": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q114": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q115": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
+"Q115": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q116": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -1977,5 +1978,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "La société iroquoienne est matriarcale, tandis que la société algonquienne est patriarcale.",
  updatedAt: "2026-08-13T12:59:33.806Z"
+},
+{
+ id: "Q116",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présentent l’organisation politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à la société correspondante.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"]},
+ guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["B", "A"]]},
+ updatedAt: "2026-08-13T13:01:24.998Z"
 }
 ]

@@ -1575,12 +1575,12 @@ const QUESTIONS = [
  periodes: ["Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme l’organisation familiale chez les nations algonquiennes.",
+ enonce: "Nomme la structure politique associée à la société algonquienne vers 1500.",
  aspects: [{aspect: "Groupes sociaux"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Une organisation patrilinéaire.",
- updatedAt: "2026-08-12T14:46:41.135Z"
+ guide: "Une organisation patriarcale.",
+ updatedAt: "2026-08-13T13:48:47.602Z"
 },
 {
  id: "Q90",

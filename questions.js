@@ -1978,12 +1978,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
  soustag: "Établir une différence",
- enonce: "Nomme une différence entre l'organisation politique des sociétés iroquoeinnes et algonquiennes vers 1500.",
+ enonce: "Nomme une différence entre l'organisation politique des sociétés iroquoienne et algonquienne vers 1500.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", soustitre: "Société iroquoienne", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algonquiens_patriarcat.jpg", soustitre: "Société algonquienne", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La société iroquoienne est matriarcale, tandis que la société algonquienne est patriarcale.",
- updatedAt: "2026-08-13T12:59:33.806Z"
+ updatedAt: "2026-08-13T13:19:58.375Z"
 },
 {
  id: "Q116",

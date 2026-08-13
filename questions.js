@@ -1560,12 +1560,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme l’organisation familiale chez les nations iroquoiennes.",
+ enonce: "Nomme la structure politique associée à la société iroquoienne vers 1500.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Une organisation matrilinéaire.",
- updatedAt: "2026-08-12T14:39:04.706Z"
+ guide: "Une organisation matriarcale.",
+ updatedAt: "2026-08-13T13:48:12.583Z"
 },
 {
  id: "Q89",

@@ -116,7 +116,8 @@ const REGLETTES = {
 "Q115": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q116": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q117": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
+"Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q119": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
 }
 
 const IMAGE_DB = {
@@ -222,7 +223,10 @@ const IMAGE_DB = {
 "territoire_iroquoien_ete.jpg": {src: "images/territoire_iroquoien_ete.jpg"},
 "construction_canot_ecorce.jpg": {src: "images/construction_canot_ecorce.jpg", w: 1200, h: 900},
 "wigwam.jpg": {src: "images/wigwam.jpg", w: 1200, h: 883},
-"campement_algonquien_3.jpg": {src: "images/campement_algonquien_3.jpg"}
+"campement_algonquien_3.jpg": {src: "images/campement_algonquien_3.jpg"},
+"campement_algonquien_4.jpg": {src: "images/campement_algonquien_4.jpg", w: 1200, h: 841},
+"activites_economiques_iroquoiens.jpg": {src: "images/activites_economiques_iroquoiens.jpg", w: 1200, h: 800},
+"activites_economiques_algonquiens.jpg": {src: "images/activites_economiques_algonquiens.jpg", w: 1200, h: 841}
 }
 
 const QUESTIONS = [
@@ -2025,5 +2029,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Algonquiens habitent dans des wigwams.",
  updatedAt: "2026-08-13T13:11:00.692Z"
+},
+{
+ id: "Q119",
+ niveau: 3,
+ oi: "Établir des comparaisons",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Établir une différence",
+ enonce: "Nomme une différence entre les activités économiques pratiquées par les Iroquoiens et les Algonquiens vers 1500.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les Iroquoiens pratiquent l’agriculture, tandis que les Algonquiens ne pratiquent pas l’agriculture.",
+ updatedAt: "2026-08-13T13:19:02.050Z"
 }
 ]

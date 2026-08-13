@@ -115,7 +115,8 @@ const REGLETTES = {
 "Q114": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q115": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q116": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q117": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
+"Q117": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
 }
 
 const IMAGE_DB = {
@@ -2009,5 +2010,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens sont sédentaires tandis que les Algonquiens sont nomades.",
  updatedAt: "2026-08-13T13:04:34.353Z"
+},
+{
+ id: "Q118",
+ niveau: 3,
+ oi: "Établir des comparaisons",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Établir une différence",
+ enonce: "Nomme une différence entre l'habitation des Iroquoiens et celle des Algonquiens vers 1500.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "wigwam.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Algonquiens habitent dans des wigwams.",
+ updatedAt: "2026-08-13T13:11:00.692Z"
 }
 ]

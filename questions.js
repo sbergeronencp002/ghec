@@ -797,12 +797,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les Iroquoiens installent leur village près cours d'eau.",
+ enonce: "Explique pourquoi les Iroquoiens installent leur village près des cours d’eau.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_1500_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens installent leur village près des cours d'eau parce qu'ils facilitent les déplacements, les échanges et l'accès aux ressources.",
- updatedAt: "2026-08-06T13:39:33.311Z"
+ updatedAt: "2026-08-13T13:47:19.860Z"
 },
 {
  id: "Q39",

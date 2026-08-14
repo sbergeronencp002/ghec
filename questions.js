@@ -241,11 +241,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme l’activité pratiquée par les Iroquoiens dans le document A.",
- aspects: [{aspect: "Activités économiques"}],
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La vannerie.",
- updatedAt: "2026-08-14T13:25:26.221Z"
+ updatedAt: "2026-08-14T13:30:33.981Z"
 },
 {
  id: "Q15",

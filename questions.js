@@ -89,8 +89,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Des plaines.\nDes cours d’eau (fleuve, rivières, lacs).\nDes forêts.\nDes sols fertiles.",
- updatedAt: "2026-08-14T12:45:35.724Z"
+ guide: "Relief : des plaines, notamment les Basses-terres du Saint-Laurent;\nClimat : des étés assez chauds et pluvieux et des hivers froids et enneigés;\nHydrographie : présence de nombreux cours d’eau, de lacs et du fleuve Saint-Laurent;\nRessources : des forêts, de la faune et des terres propices à l’agriculture.",
+ updatedAt: "2026-08-14T12:50:29.765Z"
 },
 {
  id: "Q6",

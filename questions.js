@@ -2,14 +2,16 @@ const REGLETTES = {
 "Q1": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q2": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q3": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q4": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q4": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q5": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
 }
 
 const IMAGE_DB = {
 "activites_economiques_iroquoiens.jpg": {src: "images/activites_economiques_iroquoiens.jpg", w: 1200, h: 800},
 "activites_economiques_algonquiens.jpg": {src: "images/activites_economiques_algonquiens.jpg", w: 1200, h: 841},
 "agriculture.jpg": {src: "images/agriculture.jpg", w: 1200, h: 800},
-"chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800}
+"chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800},
+"territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -72,5 +74,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La chasse.\nLa pêche.\nLa cueillette.",
  updatedAt: "2026-08-14T12:40:32.725Z"
+},
+{
+ id: "Q5",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Nomme deux caractéristiques du territoire occupé par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Des plaines.\nDes cours d’eau (fleuve, rivières, lacs).\nDes forêts.\nDes sols fertiles.",
+ updatedAt: "2026-08-14T12:45:35.724Z"
 }
 ]

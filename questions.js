@@ -38,7 +38,8 @@ const REGLETTES = {
 "Q37": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q40": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q40": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q41": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -675,5 +676,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Canot", "Raquettes"]},
  guide: {type: "grille", entetes: ["Canot", "Raquettes"], rangees: [["A", "B"]]},
  updatedAt: "2026-08-14T21:15:53.771Z"
+},
+{
+ id: "Q41",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présententdes voies de communication utilisés par les Iroquoiens vers 1500. Associe chaque document à l’élément correspondant.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_sentiers.jpg"}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Cours d'eau", "Sentiers forestiers"]},
+ guide: {type: "grille", entetes: ["Cours d'eau", "Sentiers forestiers"], rangees: [["A", "B"]]},
+ updatedAt: "2026-08-14T21:17:23.929Z"
 }
 ]

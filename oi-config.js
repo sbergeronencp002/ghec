@@ -6,9 +6,9 @@ const OI_CONFIG = {
 "Établir des faits": {color: "var(--c-slot3)", bg: "var(--c-slot3-bg)", soustags: ["Établir 1 fait - 1", "Établir 1 fait - 2", "Établir tous les faits - 2"]},
 "Caractériser un territoire": {color: "var(--c-slot4)", bg: "var(--c-slot4-bg)", soustags: ["Caractériser un territoire - 1", "Caractériser un territoire - 2"]},
 "Établir des comparaisons": {color: "var(--c-slot5)", bg: "var(--c-slot5-bg)", soustags: ["Établir une différence", "Établir une similitude"]},
-"Déterminer des changements": {color: "var(--c-slot6)", bg: "var(--c-slot6-bg)", soustags: ["Déterminer un changement", "Déterminer une continuité"]},
+"Déterminer des changements": {color: "var(--c-slot8)", bg: "var(--c-slot8-bg)", soustags: ["Déterminer un changement", "Déterminer une continuité"]},
 "Mettre en relation des faits": {color: "var(--c-slot7)", bg: "var(--c-slot7-bg)", soustags: ["Mettre en relation des faits - 2", "Mettre en relation des faits - 3", "Mettre en relation des faits - 4"]},
-"Établir des liens de causalité": {color: "var(--c-slot8)", bg: "var(--c-slot8-bg)"}
+"Établir des liens de causalité": {color: "var(--c-slot6)", bg: "var(--c-slot6-bg)"}
 }
 
 const OI_LIST = [

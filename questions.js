@@ -23,7 +23,8 @@ const REGLETTES = {
 "Q22": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q23": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q24": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q25": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
+"Q25": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
+"Q26": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -446,5 +447,20 @@ const QUESTIONS = [
  reponse: false,
  guide: "B",
  updatedAt: "2026-08-14T14:58:38.208Z"
+},
+{
+ id: "Q26",
+ niveau: 3,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Situer 1 élément dans l'espace",
+ enonce: "Indique la lettre correspondant au territoire occupé par les Algonquiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: false,
+ guide: "A",
+ updatedAt: "2026-08-14T14:59:05.262Z"
 }
 ]

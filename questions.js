@@ -338,13 +338,13 @@ const QUESTIONS = [
  enonce: "Les documents A à D présentent des activités pratiquées par les Iroquoiens vers 1500. Associe chaque document à l’activité économique correspondante.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "vannerie.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "agriculture.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "poterie_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "vetements.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "peche_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "cueillette.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "autochtones_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
- reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Confection de vêtements", "Poterie", "Vannerie"]},
- guide: {type: "grille", entetes: ["Agriculture", "Confection de vêtements", "Poterie", "Vannerie"], rangees: [["B", "D", "C", "A"]]},
- updatedAt: "2026-08-14T13:55:48.837Z"
+ reponse: {type: "mettre-en-relation", elements: ["Chasse", "Cueillette", "Pêche", "Troc"]},
+ guide: {type: "grille", entetes: ["Chasse", "Cueillette", "Pêche", "Troc"], rangees: [["A", "C", "B", "D"]]},
+ updatedAt: "2026-08-14T13:57:16.937Z"
 }
 ]

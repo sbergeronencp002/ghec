@@ -8,7 +8,8 @@ const REGLETTES = {
 "Q7": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q8": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q9": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q10": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q10": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q11": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -21,7 +22,8 @@ const IMAGE_DB = {
 "territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg", w: 1200, h: 960},
 "iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg"},
 "agriculture.jpg": {src: "images/agriculture.jpg", w: 1200, h: 800},
-"territoire_algonquiens_2.jpg": {src: "images/territoire_algonquiens_2.jpg", w: 1200, h: 960}
+"territoire_algonquiens_2.jpg": {src: "images/territoire_algonquiens_2.jpg", w: 1200, h: 960},
+"chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -174,5 +176,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "Le maïs.\nLes haricots.\nLes courges.",
  updatedAt: "2026-08-14T13:13:34.646Z"
+},
+{
+ id: "Q11",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme l’activité pratiquée par les peuples autochtones dans le document A.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Ils pratiquent la chasse.",
+ updatedAt: "2026-08-14T13:17:46.477Z"
 }
 ]

@@ -14,9 +14,9 @@ const IMAGE_DB = {
 "activites_economiques_algonquiens.jpg": {src: "images/activites_economiques_algonquiens.jpg", w: 1200, h: 841},
 "territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg", w: 1200, h: 960},
 "territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg", w: 1200, h: 960},
-"territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg"},
 "campement_algonquien_4.jpg": {src: "images/campement_algonquien_4.jpg", w: 1200, h: 900},
-"territoire_algonquiens_1.jpg": {src: "images/territoire_algonquiens_1.jpg"}
+"territoire_algonquiens_1.jpg": {src: "images/territoire_algonquiens_1.jpg"},
+"territoire_iroquoien_1.jpg": {src: "images/territoire_iroquoien_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -120,7 +120,7 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 2",
  enonce: "Nomme deux caractéristiques du territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Relief : des plaines, notamment les Basses-terres du Saint-Laurent;\nClimat : des étés assez chauds et pluvieux et des hivers froids et enneigés;\nHydrographie : présence de nombreux cours d’eau, de lacs et du fleuve Saint-Laurent;\nRessources : des forêts, de la faune et des terres propices à l’agriculture.",
  updatedAt: "2026-08-14T12:52:52.159Z"

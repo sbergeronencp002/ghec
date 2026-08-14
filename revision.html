@@ -451,13 +451,7 @@ function rvApplyFilters() {
     filtered.push(q);
   }
 
-  const minPeriodeIdx = q => Math.min(...(q.periodes||[]).map(p => periodeOrder.indexOf(p)).filter(i => i >= 0), Infinity);
-  filtered.sort((a, b) => {
-    if(a.niveau !== b.niveau) return a.niveau - b.niveau;
-    const pa = minPeriodeIdx(a), pb = minPeriodeIdx(b);
-    if(pa !== pb) return pa - pb;
-    return (parseInt(a.id.replace(/\D/g,''))||0) - (parseInt(b.id.replace(/\D/g,''))||0);
-  });
+  filtered.sort((a, b) => (parseInt(a.id.replace(/\D/g,''))||0) - (parseInt(b.id.replace(/\D/g,''))||0));
 
   const relevantOis = [...oiSet].sort((a,b) => a.localeCompare(b,'fr'));
   fillSelect('f-oi', relevantOis, 'Toutes');

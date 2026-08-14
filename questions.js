@@ -26,7 +26,8 @@ const REGLETTES = {
 "Q25": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q26": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q27": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q28": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q28": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q29": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -56,7 +57,8 @@ const IMAGE_DB = {
 "village_iroquoien_ete.jpg": {src: "images/village_iroquoien_ete.jpg"},
 "village_iroquoien_hiver.jpg": {src: "images/village_iroquoien_hiver.jpg"},
 "territoire_iroquoiens_5.jpg": {src: "images/territoire_iroquoiens_5.jpg", w: 1200, h: 960},
-"agriculture_2.jpg": {src: "images/agriculture_2.jpg", w: 1200, h: 960}
+"agriculture_2.jpg": {src: "images/agriculture_2.jpg", w: 1200, h: 960},
+"autochtones_canot.jpg": {src: "images/autochtones_canot.jpg", w: 1200, h: 801}
 }
 
 const QUESTIONS = [
@@ -496,5 +498,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Le climat en été est un atout parce que la température et la pluie permettent aux Iroquoiens de pratiquer l’agriculture.",
  updatedAt: "2026-08-14T15:17:47.414Z"
+},
+{
+ id: "Q29",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi les cours d’eau du territoire occupé par les Iroquoiens vers 1500 sont un atout.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoiens_5.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "autochtones_canot.jpg", soustitre: "Village iroquoien en hiver", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les cours d’eau sont un atout parce qu’ils facilitent les déplacements et l’accès au territoire.",
+ updatedAt: "2026-08-14T15:20:25.995Z"
 }
 ]

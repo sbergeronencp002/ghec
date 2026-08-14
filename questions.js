@@ -34,7 +34,8 @@ const REGLETTES = {
 "Q33": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q34": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q35": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q36": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q36": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q37": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -70,7 +71,8 @@ const IMAGE_DB = {
 "transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800},
 "canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800},
 "raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
-"canot_2.jpg": {src: "images/canot_2.jpg", w: 1200, h: 960}
+"canot_2.jpg": {src: "images/canot_2.jpg", w: 1200, h: 960},
+"transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -625,5 +627,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les cours d'eau.",
  updatedAt: "2026-08-14T18:01:42.128Z"
+},
+{
+ id: "Q37",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme une voie de communication terrestre utilisée par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_sentiers.jpg"}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les sentiers forestiers.",
+ updatedAt: "2026-08-14T18:02:46.860Z"
 }
 ]

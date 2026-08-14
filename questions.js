@@ -828,7 +828,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un matériau utilisé pour décorer les vêtements des peuples autochtones vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "vetements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vetements.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Ils décorent leurs vêtements avec des piquants de porc-épic.\nIls décorent leurs vêtements avec des coquillages.\nIls décorent leurs vêtements avec des perles.",
  updatedAt: "2026-07-24T12:21:44.435Z"

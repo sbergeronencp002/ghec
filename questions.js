@@ -15,7 +15,8 @@ const IMAGE_DB = {
 "territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg", w: 1200, h: 960},
 "territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg", w: 1200, h: 960},
 "territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg"},
-"campement_algonquien_4.jpg": {src: "images/campement_algonquien_4.jpg", w: 1200, h: 900}
+"campement_algonquien_4.jpg": {src: "images/campement_algonquien_4.jpg", w: 1200, h: 900},
+"territoire_algonquiens_1.jpg": {src: "images/territoire_algonquiens_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -134,9 +135,9 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 2",
  enonce: "Nomme deux caractéristiques du territoire occupé par les Algonquiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquiens_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Relief : un territoire généralement accidenté, avec des collines et des plateaux;\nClimat : des étés courts et des hivers longs et froids;\nHydrographie : présence de nombreux lacs et rivières;\nRessources : de vastes forêts ainsi qu'une faune et des ressources aquatiques abondantes.",
- updatedAt: "2026-08-14T12:58:29.689Z"
+ updatedAt: "2026-08-14T13:02:13.705Z"
 }
 ]

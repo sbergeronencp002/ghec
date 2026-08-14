@@ -207,12 +207,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Nomme deux aliments que les Iroquoiens cultivent pour se nourrir.",
- aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ enonce: "Nomme deux aliments que les Iroquoiens cultivent pour se nourrir vers 1500.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_recoltes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Le maïs.\nLes haricots.\nLes courges.",
- updatedAt: "2026-08-14T13:07:56.877Z"
+ updatedAt: "2026-08-14T21:11:16.497Z"
 },
 {
  id: "Q10",

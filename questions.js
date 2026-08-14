@@ -383,7 +383,7 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 4",
  enonce: "Les documents A à D présentent des activités pratiquées par les Iroquoiens vers 1500. Associe chaque document à l’activité correspondante.",
- aspects: [{aspect: "Activités économiques"}],
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "poterie_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -392,7 +392,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Confection de vêtements", "Poterie", "Vannerie"]},
  guide: {type: "grille", entetes: ["Agriculture", "Confection de vêtements", "Poterie", "Vannerie"], rangees: [["D", "A", "B", "C"]]},
- updatedAt: "2026-08-14T14:09:57.715Z"
+ updatedAt: "2026-08-14T14:22:13.258Z"
 },
 {
  id: "Q23",

@@ -624,6 +624,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les cours d'eau.",
- updatedAt: "2026-08-14T17:56:06.460Z"
+ updatedAt: "2026-08-14T18:01:42.128Z"
 }
 ]

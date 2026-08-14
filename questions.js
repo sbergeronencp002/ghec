@@ -360,7 +360,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Algonquiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 4",
  enonce: "Les documents A à D présentent des activités pratiquées par les Iroquoiens vers 1500. Associe chaque document à l’activité correspondante.",
@@ -373,7 +373,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Chasse", "Cueillette", "Pêche", "Troc"]},
  guide: {type: "grille", entetes: ["Chasse", "Cueillette", "Pêche", "Troc"], rangees: [["A", "C", "B", "D"]]},
- updatedAt: "2026-08-14T14:09:36.488Z"
+ updatedAt: "2026-08-14T14:52:23.253Z"
 },
 {
  id: "Q22",

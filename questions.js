@@ -13,7 +13,21 @@ const IMAGE_DB = {
 }
 
 const QUESTIONS = [
-{id: "Q1", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", enonce: "Nomme le mode de vie des Iroquoiens vers 1500.", aspects: [{aspect: "Population"}], documents: [], reponse: {type: "lignes", nombre: 1}, guide: "Les Iroquoiens ont un mode de vie sédentaire.", updatedAt: "2026-08-14T12:35:01.718Z"},
+{
+ id: "Q1",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme le mode de vie des Iroquoiens vers 1500.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Iroquoiens ont un mode de vie sédentaire.",
+ updatedAt: "2026-08-14T12:39:21.893Z"
+},
 {id: "Q2", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Algonquiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", enonce: "Nomme le mode de vie des Algonquiens vers 1500.", aspects: [{aspect: "Personnages"}], documents: [], reponse: {type: "lignes", nombre: 1}, guide: "Les Algonquiens ont un mode de vie nomade.", updatedAt: "2026-08-14T12:35:58.339Z"},
 {id: "Q3", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", enonce: "Nomme une activité pratiquée par les Iroquoiens pour se nourrir.", aspects: [{aspect: "Activités économiques"}], documents: [], reponse: {type: "lignes", nombre: 1}, guide: "L'agrilculture.", updatedAt: "2026-08-14T12:36:25.008Z"},
 {

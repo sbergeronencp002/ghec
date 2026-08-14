@@ -1309,7 +1309,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une forme d'art pratiquée par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_b.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_b.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La poterie.",
  updatedAt: "2026-08-03T16:10:49.734Z"

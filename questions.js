@@ -587,9 +587,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un moyen de transport utilisé par les Iroquoiens vers 1500 pour se déplacer sur les cours d’eau.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le canot.",
- updatedAt: "2026-08-14T17:50:32.864Z"
+ updatedAt: "2026-08-14T17:51:09.636Z"
 }
 ]

@@ -2951,7 +2951,7 @@ function renderDashboard() {
   // Périodes par niveau — dérivé directement de PERIODES_PAR_NIVEAU (contexte.js),
   // générique pour n'importe quel nombre/nom de niveaux (aucune hypothèse HQC-spécifique
   // sur le nombre total de périodes ni sur leur répartition par niveau).
-  const DASH_NIV_COLORS = ['#1B3B6F', '#6B3FA0', '#3A8050', '#B03A3A', '#9A6030', '#2A8A8A', '#607880', '#C06030'];
+  const DASH_NIV_COLORS = ['#1B3B6F', '#6B3FA0', '#3A8050', '#B03A3A', '#8A3A6A', '#2A8A8A', '#607880', '#C06030'];
   const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort().map((num, i) => ({
     label: 'Niveau ' + num, num, color: DASH_NIV_COLORS[i % DASH_NIV_COLORS.length]
   }));

@@ -25,7 +25,8 @@ const REGLETTES = {
 "Q24": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q25": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q26": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
-"Q27": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q27": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q28": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -51,7 +52,9 @@ const IMAGE_DB = {
 "construction_maison_longue.jpg": {src: "images/construction_maison_longue.jpg"},
 "construction_palissade.jpg": {src: "images/construction_palissade.jpg"},
 "fabrication_armes.jpg": {src: "images/fabrication_armes.jpg"},
-"carte_territoires_physio.jpg": {src: "images/carte_territoires_physio.jpg"}
+"carte_territoires_physio.jpg": {src: "images/carte_territoires_physio.jpg"},
+"village_iroquoien_ete.jpg": {src: "images/village_iroquoien_ete.jpg"},
+"village_iroquoien_hiver.jpg": {src: "images/village_iroquoien_hiver.jpg"}
 }
 
 const QUESTIONS = [
@@ -477,5 +480,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les plaines sont un atout parce qu’elles permettent aux Iroquoiens de pratiquer l’agriculture.",
  updatedAt: "2026-08-14T15:01:27.592Z"
+},
+{
+ id: "Q28",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi le climat en été est un atout pour les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", soustitre: "Village iroquoien en hiver", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Le climat en été est un atout parce que la température et la pluie permettent aux Iroquoiens de pratiquer l’agriculture.",
+ updatedAt: "2026-08-14T15:09:29.587Z"
 }
 ]

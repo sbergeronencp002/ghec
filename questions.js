@@ -31,7 +31,8 @@ const REGLETTES = {
 "Q30": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q31": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q32": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q33": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q33": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q34": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -64,7 +65,8 @@ const IMAGE_DB = {
 "agriculture_2.jpg": {src: "images/agriculture_2.jpg", w: 1200, h: 960},
 "autochtones_canot.jpg": {src: "images/autochtones_canot.jpg", w: 1200, h: 801},
 "taches_hommes_2.jpg": {src: "images/taches_hommes_2.jpg", w: 1200, h: 960},
-"transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800}
+"transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800},
+"canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -574,5 +576,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les rapides sont une contrainte parce qu’ils limitent les déplacements sur les cours d’eau.",
  updatedAt: "2026-08-14T15:47:02.719Z"
+},
+{
+ id: "Q34",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme un moyen de transport utilisé par les Iroquoiens vers 1500 pour se déplacer sur les cours d’eau.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le canot.",
+ updatedAt: "2026-08-14T17:50:32.864Z"
 }
 ]

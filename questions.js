@@ -25,7 +25,8 @@ const IMAGE_DB = {
 "agriculture.jpg": {src: "images/agriculture.jpg", w: 1200, h: 800},
 "territoire_algonquiens_2.jpg": {src: "images/territoire_algonquiens_2.jpg", w: 1200, h: 960},
 "chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800},
-"peche_1.jpg": {src: "images/peche_1.jpg", w: 1200, h: 800}
+"peche_1.jpg": {src: "images/peche_1.jpg", w: 1200, h: 800},
+"cueillette.jpg": {src: "images/cueillette.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -204,9 +205,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme l’activité pratiquée par les peuples autochtones dans le document A.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cueillette.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Ils pratiquent la chasse.",
- updatedAt: "2026-08-14T13:20:42.244Z"
+ guide: "Ils pratiquent la cueillette.",
+ updatedAt: "2026-08-14T13:22:18.352Z"
 }
 ]

@@ -12,7 +12,8 @@ const REGLETTES = {
 "Q11": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q12": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q13": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q15": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -29,7 +30,8 @@ const IMAGE_DB = {
 "chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800},
 "peche_1.jpg": {src: "images/peche_1.jpg", w: 1200, h: 800},
 "cueillette.jpg": {src: "images/cueillette.jpg", w: 1200, h: 800},
-"vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960}
+"vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960},
+"vetements.jpg": {src: "images/vetements.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -242,5 +244,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La vannerie.",
  updatedAt: "2026-08-14T13:25:26.221Z"
+},
+{
+ id: "Q15",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme l’activité pratiquée par les Iroquoiens dans le document A.",
+ aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vetements.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La confection de vêtements.",
+ updatedAt: "2026-08-14T13:27:25.331Z"
 }
 ]

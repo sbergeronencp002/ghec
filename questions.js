@@ -653,12 +653,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi le canot est utile aux Iroquoiens vers 1500.",
+ enonce: "Explique pourquoi le canot est utile aux Iroquoiens en été.",
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoiens_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "canot_2.jpg"}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le canot est utile parce qu’il permet aux Iroquoiens de se déplacer sur les cours d’eau et d’accéder plus facilement aux différentes parties du territoire.",
- updatedAt: "2026-08-14T18:05:36.193Z"
+ updatedAt: "2026-08-14T18:26:39.253Z"
 },
 {
  id: "Q39",

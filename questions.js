@@ -1532,10 +1532,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme la structure politique associée à la société iroquoienne vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_femmes_chefs.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_femmes_chefs.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Matriarcat.",
- updatedAt: "2026-08-12T14:28:50.917Z"
+ updatedAt: "2026-08-14T10:27:07.035Z"
 },
 {
  id: "Q87",

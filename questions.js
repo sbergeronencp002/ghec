@@ -631,21 +631,7 @@ const QUESTIONS = [
  guide: "Les cours d'eau.",
  updatedAt: "2026-08-14T18:01:42.128Z"
 },
-{
- id: "Q37",
- niveau: 3,
- oi: "Établir des faits",
- competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme une voie de communication terrestre utilisée par les Iroquoiens vers 1500.",
- aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_sentiers.jpg"}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les sentiers forestiers.",
- updatedAt: "2026-08-14T18:02:46.860Z"
-},
+{id: "Q37", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", enonce: "Nomme une voie de communication terrestre utilisée par les Iroquoiens.", aspects: [{aspect: "Transport"}], documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_sentiers.jpg"}]}], reponse: {type: "lignes", nombre: 1}, guide: "Les sentiers forestiers.", updatedAt: "2026-08-14T18:27:01.482Z"},
 {
  id: "Q38",
  niveau: 3,

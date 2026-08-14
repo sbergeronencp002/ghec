@@ -508,12 +508,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les cours d’eau du territoire occupé par les Iroquoiens vers 1500 sont un atout.",
+ enonce: "Explique pourquoi la faune du territoire habité par les Iroquoiens est un atout.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoiens_5.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "autochtones_canot.jpg", soustitre: "Village iroquoien en hiver", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche_1.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", soustitre: "Village iroquoien en hiver", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les cours d’eau sont un atout parce qu’ils facilitent les déplacements et l’accès au territoire.",
- updatedAt: "2026-08-14T15:20:25.995Z"
+ guide: "La faune est un atout parce qu’elle fournit de la nourriture aux Iroquoiens.",
+ updatedAt: "2026-08-14T15:24:23.526Z"
 },
 {
  id: "Q30",

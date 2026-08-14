@@ -36,7 +36,8 @@ const REGLETTES = {
 "Q35": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q36": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q37": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -73,7 +74,8 @@ const IMAGE_DB = {
 "canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800},
 "raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
 "canot_2.jpg": {src: "images/canot_2.jpg", w: 1200, h: 960},
-"transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960}
+"transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
+"deplacement_raquettes_1.jpg": {src: "images/deplacement_raquettes_1.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -657,5 +659,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Le canot est utile parce qu’il permet aux Iroquoiens de se déplacer sur les cours d’eau et d’accéder plus facilement aux différentes parties du territoire.",
  updatedAt: "2026-08-14T18:05:36.193Z"
+},
+{
+ id: "Q39",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique pourquoi les raquettes sont utiles aux Iroquoiens en hiver.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "deplacement_raquettes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "es raquettes sont utiles parce qu’elles facilitent les déplacements sur la neige lorsque les conditions hivernales rendent les déplacements plus difficiles.",
+ updatedAt: "2026-08-14T18:09:15.189Z"
 }
 ]

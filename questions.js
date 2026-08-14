@@ -494,12 +494,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi le climt du territoire occupé par les Iroquoiens est un atout.",
+ enonce: "Explique pourquoi le climat du territoire habité par les Iroquoiens est une contrainte.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", soustitre: "Village iroquoien en hiver", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le climat en été est un atout parce que la température et la pluie permettent aux Iroquoiens de pratiquer l’agriculture.",
- updatedAt: "2026-08-14T15:17:47.414Z"
+ guide: "Le froid et la neige limitent les activités et les déplacements des Iroquoiens.",
+ updatedAt: "2026-08-14T15:41:08.606Z"
 },
 {
  id: "Q29",

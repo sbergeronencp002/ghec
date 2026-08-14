@@ -54,7 +54,9 @@ const IMAGE_DB = {
 "fabrication_armes.jpg": {src: "images/fabrication_armes.jpg"},
 "carte_territoires_physio.jpg": {src: "images/carte_territoires_physio.jpg"},
 "village_iroquoien_ete.jpg": {src: "images/village_iroquoien_ete.jpg"},
-"village_iroquoien_hiver.jpg": {src: "images/village_iroquoien_hiver.jpg"}
+"village_iroquoien_hiver.jpg": {src: "images/village_iroquoien_hiver.jpg"},
+"territoire_iroquoiens_5.jpg": {src: "images/territoire_iroquoiens_5.jpg", w: 1200, h: 960},
+"agriculture_2.jpg": {src: "images/agriculture_2.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -474,12 +476,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les plaines sont un atout pour les Iroquoiens vers 1500.",
+ enonce: "Explique pourquoi le relief du territoire occupé par les Iroquoiens est un atout.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_iroquoiens_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les plaines sont un atout parce qu’elles permettent aux Iroquoiens de pratiquer l’agriculture.",
- updatedAt: "2026-08-14T15:01:27.592Z"
+ updatedAt: "2026-08-14T15:16:56.910Z"
 },
 {
  id: "Q28",

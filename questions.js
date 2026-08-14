@@ -20,7 +20,8 @@ const REGLETTES = {
 "Q19": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q20": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q21": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q22": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
+"Q22": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q23": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -41,7 +42,11 @@ const IMAGE_DB = {
 "vetements.jpg": {src: "images/vetements.jpg", w: 1200, h: 800},
 "poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962},
 "autochtones_troc.jpg": {src: "images/autochtones_troc.jpg", w: 1200, h: 801},
-"ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800}
+"ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800},
+"fabrication_canot.jpg": {src: "images/fabrication_canot.jpg"},
+"construction_maison_longue.jpg": {src: "images/construction_maison_longue.jpg"},
+"construction_palissade.jpg": {src: "images/construction_palissade.jpg"},
+"fabrication_armes.jpg": {src: "images/fabrication_armes.jpg"}
 }
 
 const QUESTIONS = [
@@ -388,5 +393,25 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Confection de vêtements", "Poterie", "Vannerie"]},
  guide: {type: "grille", entetes: ["Agriculture", "Confection de vêtements", "Poterie", "Vannerie"], rangees: [["D", "A", "B", "C"]]},
  updatedAt: "2026-08-14T14:09:57.715Z"
+},
+{
+ id: "Q23",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent des activités pratiquées par les Iroquoiens vers 1500. Associe chaque document à l’activité correspondante.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "fabrication_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "construction_maison_longue.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "construction_palissade.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "fabrication_armes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Construction d'une maison longue", "Construction d'une palissade", "Fabrication d'armes", "Fabrication d'un canot d'écorce"]},
+ guide: {type: "grille", entetes: ["Construction d'une maison longue", "Construction d'une palissade", "Fabrication d'armes", "Fabrication d'un canot d'écorce"], rangees: [["B", "C", "D", "A"]]},
+ updatedAt: "2026-08-14T14:21:27.038Z"
 }
 ]

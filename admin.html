@@ -601,7 +601,7 @@ function getSelectedPeriodes() {
 // génériquement au cas où elle diffère un jour d'une société à l'autre.
 function updateAspects() {
   const periodes = getSelectedPeriodes();
-  const aspects = [...new Set(periodes.flatMap(p => ASPECTS_PAR_PERIODE[p] || []))];
+  const aspects = [...new Set(periodes.flatMap(p => ASPECTS_PAR_PERIODE[p] || []))].sort((a,b) => a.localeCompare(b,'fr'));
   const wrap = document.getElementById('aspects-list');
   wrap.innerHTML = aspects.map(a =>
     `<label style="display:flex;align-items:center;gap:.5rem;font-size:.83rem;cursor:pointer">

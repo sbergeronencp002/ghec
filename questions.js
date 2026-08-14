@@ -69,7 +69,8 @@ const IMAGE_DB = {
 "taches_hommes_2.jpg": {src: "images/taches_hommes_2.jpg", w: 1200, h: 960},
 "transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800},
 "canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800},
-"raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800}
+"raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
+"canot_2.jpg": {src: "images/canot_2.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -620,9 +621,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une voie de communication sur l’eau utilisée par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Le canot.",
- updatedAt: "2026-08-14T17:54:17.920Z"
+ guide: "Les cours d'eau.",
+ updatedAt: "2026-08-14T17:56:06.460Z"
 }
 ]

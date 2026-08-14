@@ -14,7 +14,8 @@ const REGLETTES = {
 "Q13": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q15": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q16": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q16": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q17": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -33,7 +34,8 @@ const IMAGE_DB = {
 "cueillette.jpg": {src: "images/cueillette.jpg", w: 1200, h: 800},
 "vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960},
 "vetements.jpg": {src: "images/vetements.jpg", w: 1200, h: 800},
-"poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962}
+"poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962},
+"autochtones_troc.jpg": {src: "images/autochtones_troc.jpg", w: 1200, h: 801}
 }
 
 const QUESTIONS = [
@@ -276,5 +278,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La poterie.",
  updatedAt: "2026-08-14T13:30:14.285Z"
+},
+{
+ id: "Q17",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme l’activité pratiquée par les peuples autochtones dans le document A.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le troc.",
+ updatedAt: "2026-08-14T13:38:12.749Z"
 }
 ]

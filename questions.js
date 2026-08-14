@@ -609,12 +609,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme un moyen de transport utilisé par les Iroquoiens vers 1500 pour se déplacer en hiver.",
+ enonce: "Nomme un moyen de transport utilisé par les Iroquoiens pour se déplacer en hiver.",
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La raquette.",
- updatedAt: "2026-08-14T17:52:01.125Z"
+ updatedAt: "2026-08-14T18:27:51.016Z"
 },
 {
  id: "Q36",

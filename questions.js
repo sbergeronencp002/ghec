@@ -43,7 +43,21 @@ const QUESTIONS = [
  guide: "Les Algonquiens ont un mode de vie nomade.",
  updatedAt: "2026-08-14T12:39:37.239Z"
 },
-{id: "Q3", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", enonce: "Nomme une activité pratiquée par les Iroquoiens pour se nourrir.", aspects: [{aspect: "Activités économiques"}], documents: [], reponse: {type: "lignes", nombre: 1}, guide: "L'agrilculture.", updatedAt: "2026-08-14T12:36:25.008Z"},
+{
+ id: "Q3",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme une activité pratiquée par les Iroquoiens pour se nourrir.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "L'agrilculture.\nLa chasse.\nLa pêche.\nLa cueillette.",
+ updatedAt: "2026-08-14T12:40:17.786Z"
+},
 {
  id: "Q4",
  niveau: 3,

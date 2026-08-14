@@ -689,7 +689,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones utilisent les peaux d'animaux pour fabriquer leurs vêtements.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "confection_vetements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vetements_2.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "confection_vetements.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vetements_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones utilisent les peaux d'animaux pour fabriquer leurs vêtements parce qu'elles les protègent du froid et sont disponibles dans leur environnement.",
  updatedAt: "2026-08-06T13:43:58.404Z"

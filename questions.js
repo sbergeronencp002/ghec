@@ -12,8 +12,6 @@ const REGLETTES = {
 const IMAGE_DB = {
 "activites_economiques_iroquoiens.jpg": {src: "images/activites_economiques_iroquoiens.jpg", w: 1200, h: 800},
 "activites_economiques_algonquiens.jpg": {src: "images/activites_economiques_algonquiens.jpg", w: 1200, h: 841},
-"agriculture.jpg": {src: "images/agriculture.jpg", w: 1200, h: 800},
-"chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800},
 "territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg", w: 1200, h: 960},
 "territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg", w: 1200, h: 960},
 "territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg"},

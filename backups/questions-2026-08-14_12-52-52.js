@@ -1,0 +1,111 @@
+const REGLETTES = {
+"Q1": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q2": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q3": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q4": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q5": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q6": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
+}
+
+const IMAGE_DB = {
+"activites_economiques_iroquoiens.jpg": {src: "images/activites_economiques_iroquoiens.jpg", w: 1200, h: 800},
+"activites_economiques_algonquiens.jpg": {src: "images/activites_economiques_algonquiens.jpg", w: 1200, h: 841},
+"agriculture.jpg": {src: "images/agriculture.jpg", w: 1200, h: 800},
+"chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800},
+"territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg", w: 1200, h: 960},
+"territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg", w: 1200, h: 960},
+"territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg", w: 1200, h: 800}
+}
+
+const QUESTIONS = [
+{
+ id: "Q1",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme le mode de vie des Iroquoiens vers 1500.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Iroquoiens ont un mode de vie sédentaire.",
+ updatedAt: "2026-08-14T12:39:21.893Z"
+},
+{
+ id: "Q2",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme le mode de vie des Algonquiens vers 1500.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Algonquiens ont un mode de vie nomade.",
+ updatedAt: "2026-08-14T12:39:37.239Z"
+},
+{
+ id: "Q3",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "Nomme deux activités pratiquées par les Iroquoiens pour se nourrir.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "L'agriculture.\nLa chasse.\nLa cueillette.\nLa pêche.",
+ updatedAt: "2026-08-14T12:41:17.126Z"
+},
+{
+ id: "Q4",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Algonquiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 2",
+ enonce: "Nomme deux activités pratiquées par les Algonquiens pour se nourrir.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La chasse.\nLa pêche.\nLa cueillette.",
+ updatedAt: "2026-08-14T12:40:32.725Z"
+},
+{
+ id: "Q5",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Nomme deux caractéristiques du territoire occupé par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Relief : des plaines, notamment les Basses-terres du Saint-Laurent;\nClimat : des étés assez chauds et pluvieux et des hivers froids et enneigés;\nHydrographie : présence de nombreux cours d’eau, de lacs et du fleuve Saint-Laurent;\nRessources : des forêts, de la faune et des terres propices à l’agriculture.",
+ updatedAt: "2026-08-14T12:50:29.765Z"
+},
+{
+ id: "Q6",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Nomme deux caractéristiques du territoire occupé par les Algonquiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquien_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Relief : un territoire généralement accidenté, avec des collines et des plateaux;\nClimat : des étés courts et des hivers longs et froids;\nHydrographie : présence de nombreux lacs et rivières;\nRessources : de vastes forêts ainsi qu'une faune et des ressources aquatiques abondantes.",
+ updatedAt: "2026-08-14T12:50:10.143Z"
+}
+]

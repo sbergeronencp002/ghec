@@ -773,9 +773,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l’aide du document A, nomme une forme d’art pratiquée par les Iroquoiens.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "La poterie.",
- updatedAt: "2026-08-15T17:31:36.350Z"
+ guide: "La vannerie.",
+ updatedAt: "2026-08-15T17:31:59.727Z"
 }
 ]

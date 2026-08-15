@@ -229,7 +229,7 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Nomme deux aliments que les Iroquoiens cultivent pour se nourrir.",
+ enonce: "À l'aide du document A, nomme deux aliments que les Iroquoiens cultivent pour se nourrir.",
  aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},

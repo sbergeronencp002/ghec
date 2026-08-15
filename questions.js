@@ -334,7 +334,7 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme l’activité pratiquée par les peuples autochtones dans le document A.",
+ enonce: "À l'aide du document A, nomme l’activité pratiquée par les peuples autochtones.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

@@ -803,11 +803,11 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Nomme deux formes d’art pratiquées par les Iroquoiens vers 1500.",
+ enonce: "À l'aide des documents A et B, nomme deux formes d’art pratiquées par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "poterie_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "La poterie et la vannerie.",
- updatedAt: "2026-08-15T17:38:18.091Z"
+ updatedAt: "2026-08-15T18:58:18.118Z"
 }
 ]

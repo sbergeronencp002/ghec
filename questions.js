@@ -41,7 +41,8 @@ const REGLETTES = {
 "Q40": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q41": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q42": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q43": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q43": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q44": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -82,7 +83,8 @@ const IMAGE_DB = {
 "deplacement_raquettes_1.jpg": {src: "images/deplacement_raquettes_1.jpg", w: 1200, h: 960},
 "sentiers_forestiers.jpg": {src: "images/sentiers_forestiers.jpg"},
 "rivieres.jpg": {src: "images/rivieres.jpg"},
-"mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800}
+"mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800},
+"confection_vetements.jpg": {src: "images/confection_vetements.jpg"}
 }
 
 const QUESTIONS = [
@@ -745,5 +747,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Des mocassins.",
  updatedAt: "2026-08-15T16:46:10.909Z"
+},
+{
+ id: "Q44",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ enonce: "À l'aide du document A, nomme un matériau utilisé par les Iroquoiens pour fabriquer les vêtements.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "confection_vetements.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Une peau d’animal.",
+ updatedAt: "2026-08-15T16:57:54.789Z"
 }
 ]

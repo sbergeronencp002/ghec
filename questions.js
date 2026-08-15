@@ -571,11 +571,11 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi les cours d’eau du territoire habité par les Iroquoiens sont un atout.",
- aspects: [{aspect: "Territoire"}],
+ aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_iroquoiens_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les cours d’eau sont un atout parce qu’ils facilitent l’accès au territoire et les déplacements.",
- updatedAt: "2026-08-14T15:45:19.838Z"
+ updatedAt: "2026-08-15T16:39:42.825Z"
 },
 {
  id: "Q33",

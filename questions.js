@@ -363,7 +363,7 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la façon utilisée par les peuples autochtones pour échanger des ressources vers 1500.",
+ enonce: "À l'aide du document A, nomme la façon utilisée par les peuples autochtones pour échanger des ressources vers 1500.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

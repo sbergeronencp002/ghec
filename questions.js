@@ -45,7 +45,8 @@ const REGLETTES = {
 "Q44": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q45": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q46": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q47": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q47": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q48": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -87,7 +88,8 @@ const IMAGE_DB = {
 "sentiers_forestiers.jpg": {src: "images/sentiers_forestiers.jpg"},
 "rivieres.jpg": {src: "images/rivieres.jpg"},
 "mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800},
-"confection_vetements.jpg": {src: "images/confection_vetements.jpg"}
+"confection_vetements.jpg": {src: "images/confection_vetements.jpg"},
+"poterie_argile.jpg": {src: "images/poterie_argile.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -810,5 +812,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "La poterie et la vannerie.",
  updatedAt: "2026-08-15T18:58:18.118Z"
+},
+{
+ id: "Q48",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme un matériau utilisé par les Iroquoiens pour la poterie.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_argile.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "L'argile.",
+ updatedAt: "2026-08-15T19:06:47.097Z"
 }
 ]

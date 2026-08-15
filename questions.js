@@ -601,7 +601,7 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme un moyen de transport utilisé par les Iroquoiens vers 1500 pour se déplacer sur les cours d’eau.",
+ enonce: "À l'aide du document A, nomme un moyen de transport utilisé par les Iroquoiens vers 1500 pour se déplacer sur les cours d’eau.",
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

@@ -633,7 +633,21 @@ const QUESTIONS = [
  guide: "Les cours d'eau.",
  updatedAt: "2026-08-14T21:10:35.763Z"
 },
-{id: "Q37", niveau: 3, oi: "Établir des faits", competence: "Lire l'organisation du territoire", periodes: ["Les Iroquoiens vers 1500"], points: 1, soustag: "Établir 1 fait - 1", enonce: "Nomme une voie de communication terrestre utilisée par les Iroquoiens.", aspects: [{aspect: "Transport"}], documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_sentiers.jpg"}]}], reponse: {type: "lignes", nombre: 1}, guide: "Les sentiers forestiers.", updatedAt: "2026-08-14T18:27:01.482Z"},
+{
+ id: "Q37",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme une voie de communication terrestre utilisée par les Iroquoiens.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_sentiers.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les sentiers forestiers.",
+ updatedAt: "2026-08-14T18:27:01.482Z"
+},
 {
  id: "Q38",
  niveau: 3,
@@ -687,7 +701,7 @@ const QUESTIONS = [
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présententdes voies de communication utilisés par les Iroquoiens vers 1500. Associe chaque document à l’élément correspondant.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_sentiers.jpg"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_sentiers.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Cours d'eau", "Sentiers forestiers"]},
  guide: {type: "grille", entetes: ["Cours d'eau", "Sentiers forestiers"], rangees: [["A", "B"]]},
  updatedAt: "2026-08-14T21:17:23.929Z"

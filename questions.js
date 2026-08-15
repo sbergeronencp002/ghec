@@ -40,7 +40,8 @@ const REGLETTES = {
 "Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q40": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q41": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q42": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
+"Q42": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q43": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -80,7 +81,8 @@ const IMAGE_DB = {
 "transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
 "deplacement_raquettes_1.jpg": {src: "images/deplacement_raquettes_1.jpg", w: 1200, h: 960},
 "sentiers_forestiers.jpg": {src: "images/sentiers_forestiers.jpg"},
-"rivieres.jpg": {src: "images/rivieres.jpg"}
+"rivieres.jpg": {src: "images/rivieres.jpg"},
+"mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -728,5 +730,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Moyens de transport", "Voies de communication"], double: true},
  guide: {type: "grille", entetes: ["Moyens de transport", "Voies de communication"], rangees: [["B et C", "A et D"]]},
  updatedAt: "2026-08-15T16:38:27.314Z"
+},
+{
+ id: "Q43",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme un vêtement porté par les Iroquoiens pour se déplacer en forêt.",
+ aspects: [{aspect: "Transport"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Des mocassins.",
+ updatedAt: "2026-08-15T16:46:10.909Z"
 }
 ]

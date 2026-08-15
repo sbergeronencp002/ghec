@@ -758,12 +758,13 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
+ soustag: "Établir 1 fait - 1",
  enonce: "À l'aide du document A, nomme un matériau utilisé par les Iroquoiens pour fabriquer les vêtements.",
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "confection_vetements.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 2},
- guide: "Une peau d’animal.",
- updatedAt: "2026-08-15T16:57:54.789Z"
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les peaux d'animaux.\nLes fourrures d'animaux.",
+ updatedAt: "2026-08-15T18:59:58.349Z"
 },
 {
  id: "Q45",

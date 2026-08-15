@@ -646,7 +646,7 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme une voie de communication terrestre utilisée par les Iroquoiens.",
+ enonce: "À l'aide du document A, nomme une voie de communication terrestre utilisée par les Iroquoiens.",
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "transport_sentiers.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

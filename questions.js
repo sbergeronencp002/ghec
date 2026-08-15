@@ -725,11 +725,11 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "sentiers_forestiers.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "rivieres.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document D", ref: "canot_ecorce.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Moyens de transport", "Voies de communication"], double: true},
- guide: {type: "grille", entetes: ["Moyens de transport", "Voies de communication"], rangees: [["B et C", "A et D"]]},
- updatedAt: "2026-08-15T16:38:27.314Z"
+ guide: {type: "grille", entetes: ["Moyens de transport", "Voies de communication"], rangees: [["A et D", "B et C"]]},
+ updatedAt: "2026-08-15T16:54:48.984Z"
 },
 {
  id: "Q43",

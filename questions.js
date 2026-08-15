@@ -39,7 +39,8 @@ const REGLETTES = {
 "Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q40": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q41": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q41": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q42": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -77,7 +78,9 @@ const IMAGE_DB = {
 "raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
 "canot_2.jpg": {src: "images/canot_2.jpg", w: 1200, h: 960},
 "transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
-"deplacement_raquettes_1.jpg": {src: "images/deplacement_raquettes_1.jpg", w: 1200, h: 960}
+"deplacement_raquettes_1.jpg": {src: "images/deplacement_raquettes_1.jpg", w: 1200, h: 960},
+"sentiers_forestiers.jpg": {src: "images/sentiers_forestiers.jpg"},
+"rivieres.jpg": {src: "images/rivieres.jpg"}
 }
 
 const QUESTIONS = [
@@ -705,5 +708,25 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Cours d'eau", "Sentiers forestiers"]},
  guide: {type: "grille", entetes: ["Cours d'eau", "Sentiers forestiers"], rangees: [["A", "B"]]},
  updatedAt: "2026-08-14T21:17:23.929Z"
+},
+{
+ id: "Q42",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent des moyens de transport et des voies de communication utilisés vers 1500. Associe chaque document à l’élément correspondant.",
+ aspects: [{aspect: "Transport"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "sentiers_forestiers.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "rivieres.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Moyens de transport", "Voies de communication"], double: true},
+ guide: {type: "grille", entetes: ["Moyens de transport", "Voies de communication"], rangees: [["B et C", "A et D"]]},
+ updatedAt: "2026-08-15T16:38:27.314Z"
 }
 ]

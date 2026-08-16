@@ -743,12 +743,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présententdes voies de communication utilisés par les Iroquoiens vers 1500. Associe chaque document à l’élément correspondant.",
+ enonce: "Les documents A et B présentent des voies de communication utilisés par les Iroquoiens vers 1500. Associe chaque document à l’élément correspondant.",
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_sentiers.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Cours d'eau", "Sentiers forestiers"]},
  guide: {type: "grille", entetes: ["Cours d'eau", "Sentiers forestiers"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-14T21:17:23.929Z"
+ updatedAt: "2026-08-16T18:06:30.871Z"
 },
 {
  id: "Q42",

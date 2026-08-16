@@ -49,7 +49,8 @@ const REGLETTES = {
 "Q48": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q49": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q50": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q51": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
+"Q51": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q52": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -93,7 +94,9 @@ const IMAGE_DB = {
 "mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800},
 "confection_vetements.jpg": {src: "images/confection_vetements.jpg"},
 "poterie_argile.jpg": {src: "images/poterie_argile.jpg", w: 1200, h: 960},
-"vannerie_ressources.jpg": {src: "images/vannerie_ressources.jpg", w: 1200, h: 960}
+"vannerie_ressources.jpg": {src: "images/vannerie_ressources.jpg", w: 1200, h: 960},
+"algonquiens_patriarcat.jpg": {src: "images/algonquiens_patriarcat.jpg", w: 1200, h: 900},
+"iroquoiens_matriarcat.jpg": {src: "images/iroquoiens_matriarcat.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -875,5 +878,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens sont sédentaires, tandis que les Algonquiens sont nomades.",
  updatedAt: "2026-08-16T12:46:16.094Z"
+},
+{
+ id: "Q52",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 2,
+ enonce: "Les documents A et B présentent l’organisation de la famille dans la société iroquoienne et dans la société algonquienne vers 1500. Associe chaque document à la société correspondante.",
+ aspects: [{aspect: "Gouvernement"}, {aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"]},
+ guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A", "B"]]},
+ updatedAt: "2026-08-16T12:49:29.059Z"
 }
 ]

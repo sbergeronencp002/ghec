@@ -53,7 +53,8 @@ const REGLETTES = {
 "Q52": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q53": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q54": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q55": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q55": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q56": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -100,7 +101,8 @@ const IMAGE_DB = {
 "vannerie_ressources.jpg": {src: "images/vannerie_ressources.jpg", w: 1200, h: 960},
 "algonquiens_patriarcat.jpg": {src: "images/algonquiens_patriarcat.jpg", w: 1200, h: 900},
 "iroquoiens_matriarcat.jpg": {src: "images/iroquoiens_matriarcat.jpg", w: 1200, h: 900},
-"iroquoiens_conseil_2.jpg": {src: "images/iroquoiens_conseil_2.jpg", w: 1200, h: 800}
+"iroquoiens_conseil_2.jpg": {src: "images/iroquoiens_conseil_2.jpg", w: 1200, h: 800},
+"iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -941,5 +943,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les aînées.\nLes femmes âgées.",
  updatedAt: "2026-08-16T16:32:51.290Z"
+},
+{
+ id: "Q56",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme un rôle politique des aînées chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Elles désignent les chefs.",
+ updatedAt: "2026-08-16T16:34:00.108Z"
 }
 ]

@@ -954,12 +954,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme un rôle politique des aînées chez les Iroquoiens vers 1500.",
+ enonce: "Nomme le rôle politique des aînées chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Elles désignent les chefs.",
- updatedAt: "2026-08-16T16:34:00.108Z"
+ updatedAt: "2026-08-16T16:38:13.933Z"
 },
 {
  id: "Q57",

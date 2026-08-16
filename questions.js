@@ -66,8 +66,8 @@ const REGLETTES = {
 "Q65": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q66": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q67": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q68": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q69": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q68": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q69": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -121,8 +121,7 @@ const IMAGE_DB = {
 "iroquoien_maisons_longues.jpg": {src: "images/iroquoien_maisons_longues.jpg"},
 "org_politique_matriarcat.jpg": {src: "images/org_politique_matriarcat.jpg", w: 1200, h: 800},
 "org_politique_patriarcat.jpg": {src: "images/org_politique_patriarcat.jpg", w: 1200, h: 800},
-"iroquoiens_conseil_1.jpg": {src: "images/iroquoiens_conseil_1.jpg"},
-"iroquoiens_conseil_3.jpg": {src: "images/iroquoiens_conseil_3.jpg"}
+"iroquoiens_conseil_1.jpg": {src: "images/iroquoiens_conseil_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -500,7 +499,7 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre les activités économiques pratiquées par les Iroquoiens et les Algonquiens vers 1500.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", soustitre: "Campement algonquien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", soustitre: "Village iroquoien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens pratiquent l’agriculture, tandis que les Algonquiens ne la pratiquent pas.",
  updatedAt: "2026-08-16T12:52:45.471Z"
@@ -558,7 +557,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi le climat du territoire habité par les Iroquoiens est un atout.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", soustitre: "Village iroquoien en hiver", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le climat est un atout parce qu’en été, la température et la pluie permettent aux Iroquoiens de pratiquer l’agriculture.",
  updatedAt: "2026-08-14T15:42:40.883Z"
@@ -572,7 +571,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi la faune du territoire occupé par les Iroquoiens est un atout.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche_1.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", soustitre: "Village iroquoien en hiver", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La faune est un atout parce qu’elle fournit de la nourriture aux Iroquoiens.",
  updatedAt: "2026-08-14T15:25:08.421Z"
@@ -586,7 +585,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi la forêt du territoire occupé par les Iroquoiens est un atout.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fabrication_canot.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "construction_maison_longue.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fabrication_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "construction_maison_longue.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La forêt fournit des matériaux pour construire les maisons longues et les canots.",
  updatedAt: "2026-08-14T15:30:38.344Z"
@@ -600,7 +599,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi le climat du territoire habité par les Iroquoiens est une contrainte.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", soustitre: "Village iroquoien en été", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", soustitre: "Village iroquoien en hiver", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "e climat est une contrainte parce qu’en hiver, le froid et la neige limitent les activités et les déplacements.",
  updatedAt: "2026-08-14T15:43:16.874Z"
@@ -900,7 +899,7 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre les habitations des Iroquoiens et des Algonquiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", soustitre: "Campement algonquien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", soustitre: "Village iroquoien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Algonquiens habitent dans des wigwams.",
  updatedAt: "2026-08-16T12:55:42.857Z"
@@ -930,7 +929,7 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre la structure politique des Iroquoiens et celle des Algonquiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", soustitre: "", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_matriarcat.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", soustitre: "", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens ont une structure matriarcale, tandis que les Algonquiens ont une structure patriarcale.",
  updatedAt: "2026-08-16T17:11:59.866Z"
@@ -945,7 +944,7 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre le mode de vie des Iroquoiens et des Algonquiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", soustitre: "Campement algonquien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", soustitre: "Village iroquoien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens ont un mode de vie sédentaire, tandis que les Algonquiens ont un mode de vie nomade.",
  updatedAt: "2026-08-16T12:56:25.794Z"
@@ -975,7 +974,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme le rôle politique des aînées chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Elles désignent les chefs.",
  updatedAt: "2026-08-16T16:38:13.933Z"
@@ -990,7 +989,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme la structure politique chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_matriarcat.jpg", soustitre: "", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le matriarcat.",
  updatedAt: "2026-08-16T17:05:58.278Z"
@@ -1049,7 +1048,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Les documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à l'organisation politique correspondante.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algonquiens_patriarcat.jpg", soustitre: "", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algonquiens_patriarcat.jpg", soustitre: "", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Matriarcat", "Patriarcat"]},
  guide: {type: "grille", entetes: ["Matriarcat", "Patriarcat"], rangees: [["A", "B"]]},
  updatedAt: "2026-08-16T17:08:37.282Z"
@@ -1078,7 +1077,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme la structure politique chez les Algonquiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le patriarcat.",
  updatedAt: "2026-08-16T17:05:38.971Z"
@@ -1093,7 +1092,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme la structure politique chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le matriarcat.",
  updatedAt: "2026-08-16T17:06:15.803Z"
@@ -1144,29 +1143,31 @@ const QUESTIONS = [
 {
  id: "Q68",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
- points: 2,
- enonce: "Explique pourquoi le conseil joue un rôle important chez les Iroquoiens vers 1500.",
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme la structure politique chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Le conseil joue un rôle important chez les Iroquoiens parce que les décisions importantes sont prises en conseil.",
- updatedAt: "2026-08-16T17:46:29.901Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le conseil.",
+ updatedAt: "2026-08-16T17:46:12.815Z"
 },
 {
  id: "Q69",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Les Iroquoiens vers 1500"],
- points: 2,
- enonce: "Explique pourquoi le chef iroquoien ne possède pas tous les pouvoirs.",
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme le rôle politique des aînées chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Le chef iroquoien ne possède pas tous les pouvoirs parce que les décisions importantes sont prises en conseil et que les aînées désignent les chefs.",
- updatedAt: "2026-08-16T17:48:43.932Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Elles désignent les chefs.",
+ updatedAt: "2026-08-16T17:47:16.526Z"
 }
 ]

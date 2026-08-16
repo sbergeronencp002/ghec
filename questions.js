@@ -467,14 +467,14 @@ const QUESTIONS = [
  enonce: "Les documents A à D présentent des activités pratiquées par les Iroquoiens vers 1500. Associe chaque document à l’activité correspondante.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document A", ref: "confection_vetements.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "poterie_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "vannerie.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document D", ref: "agriculture.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Confection de vêtements", "Poterie", "Vannerie"]},
  guide: {type: "grille", entetes: ["Agriculture", "Confection de vêtements", "Poterie", "Vannerie"], rangees: [["D", "A", "B", "C"]]},
- updatedAt: "2026-08-14T14:22:13.258Z"
+ updatedAt: "2026-08-16T18:54:05.275Z"
 },
 {
  id: "Q23",

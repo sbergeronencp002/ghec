@@ -1037,12 +1037,12 @@ const QUESTIONS = [
  competence: "S'ouvrir à la diversité",
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
- enonce: "es documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à la société correspondante.",
+ enonce: "Les documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à la société correspondante.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algonquiens_patriarcat.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Matriarcat", "Patriarcat"]},
  guide: {type: "grille", entetes: ["Matriarcat", "Patriarcat"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-16T16:59:35.900Z"
+ updatedAt: "2026-08-16T17:03:54.421Z"
 },
 {
  id: "Q62",

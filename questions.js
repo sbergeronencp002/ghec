@@ -904,9 +904,9 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre la structure politique des Iroquoiens et celle des Algonquiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}, {aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", soustitre: "La structure politique des Algonquiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_matriarcat.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens ont une structure matriarcale, tandis que les Algonquiens ont une structure patriarcale.",
- updatedAt: "2026-08-16T12:50:23.091Z"
+ updatedAt: "2026-08-16T12:53:41.981Z"
 }
 ]

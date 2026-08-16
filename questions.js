@@ -945,10 +945,10 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre le mode de vie des Iroquoiens et des Algonquiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquiens_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens ont un mode de vie sédentaire, tandis que les Algonquiens ont un mode de vie nomade.",
- updatedAt: "2026-08-16T12:56:25.794Z"
+ updatedAt: "2026-08-16T18:11:37.181Z"
 },
 {
  id: "Q55",

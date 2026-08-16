@@ -917,7 +917,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"]},
  guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-16T17:10:22.536Z"
+ updatedAt: "2026-08-16T18:08:54.835Z"
 },
 {
  id: "Q53",

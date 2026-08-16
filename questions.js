@@ -475,10 +475,10 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre les activités économiques pratiquées par les Iroquoiens et les Algonquiens vers 1500.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", soustitre: "Campement algonquien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", soustitre: "Village iroquoien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens pratiquent l’agriculture, tandis que les Algonquiens ne la pratiquent pas.",
- updatedAt: "2026-08-16T12:51:10.318Z"
+ updatedAt: "2026-08-16T12:52:45.471Z"
 },
 {
  id: "Q25",

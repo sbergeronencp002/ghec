@@ -72,7 +72,8 @@ const REGLETTES = {
 "Q71": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q72": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q73": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q74": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q74": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q75": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -1249,5 +1250,25 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "L'animisme.",
  updatedAt: "2026-08-16T18:46:23.597Z"
+},
+{
+ id: "Q75",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent différentes activités pratiquées par les Iroquoiens vers 1500 pour se nourrir. Associe chaque document à l’activité correspondante.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "peche_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "agriculture.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "chasse_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "cueillette.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Chasse", "Cueillette", "Pêche"]},
+ guide: {type: "grille", entetes: ["Agriculture", "Chasse", "Cueillette", "Pêche"], rangees: [["B", "C", "D", "A"]]},
+ updatedAt: "2026-08-16T18:55:55.756Z"
 }
 ]

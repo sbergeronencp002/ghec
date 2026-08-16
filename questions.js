@@ -59,7 +59,8 @@ const REGLETTES = {
 "Q58": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q59": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q60": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q61": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q61": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q62": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -110,7 +111,9 @@ const IMAGE_DB = {
 "iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg", w: 1200, h: 960},
 "iroquoiens_conseil.jpg": {src: "images/iroquoiens_conseil.jpg", w: 1200, h: 960},
 "wigwam.jpg": {src: "images/wigwam.jpg"},
-"iroquoien_maisons_longues.jpg": {src: "images/iroquoien_maisons_longues.jpg"}
+"iroquoien_maisons_longues.jpg": {src: "images/iroquoien_maisons_longues.jpg"},
+"org_politique_matriarcat.jpg": {src: "images/org_politique_matriarcat.jpg", w: 1200, h: 800},
+"org_politique_patriarcat.jpg": {src: "images/org_politique_patriarcat.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1040,5 +1043,19 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Matriarcat", "Patriarcat"]},
  guide: {type: "grille", entetes: ["Matriarcat", "Patriarcat"], rangees: [["A", "B"]]},
  updatedAt: "2026-08-16T16:59:35.900Z"
+},
+{
+ id: "Q62",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ points: 2,
+ enonce: "Les documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à la société correspondante.",
+ aspects: [{aspect: "Gouvernement"}, {aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", soustitre: "La structure politique des Algonquiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "org_politique_matriarcat.jpg", soustitre: "La structure politique des Iroquoiens", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"]},
+ guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A", "B"]]},
+ updatedAt: "2026-08-16T17:03:13.079Z"
 }
 ]

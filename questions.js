@@ -73,7 +73,8 @@ const REGLETTES = {
 "Q72": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q73": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q74": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q75": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
+"Q75": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q76": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -84,7 +85,7 @@ const IMAGE_DB = {
 "territoire_algonquiens_1.jpg": {src: "images/territoire_algonquiens_1.jpg"},
 "territoire_iroquoien_1.jpg": {src: "images/territoire_iroquoien_1.jpg"},
 "territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg", w: 1200, h: 960},
-"iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg"},
+"iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg", w: 1200, h: 800},
 "agriculture.jpg": {src: "images/agriculture.jpg", w: 1200, h: 800},
 "territoire_algonquiens_2.jpg": {src: "images/territoire_algonquiens_2.jpg", w: 1200, h: 960},
 "chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800},
@@ -129,7 +130,9 @@ const IMAGE_DB = {
 "org_politique_patriarcat.jpg": {src: "images/org_politique_patriarcat.jpg", w: 1200, h: 800},
 "iroquoiens_conseil_1.jpg": {src: "images/iroquoiens_conseil_1.jpg"},
 "chaman_animisme.jpg": {src: "images/chaman_animisme.jpg", w: 1200, h: 800},
-"chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg"}
+"chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg"},
+"village_iroquoien_1500_4.jpg": {src: "images/village_iroquoien_1500_4.jpg", w: 1200, h: 960},
+"iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1270,5 +1273,19 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Chasse", "Cueillette", "Pêche"]},
  guide: {type: "grille", entetes: ["Agriculture", "Chasse", "Cueillette", "Pêche"], rangees: [["B", "C", "D", "A"]]},
  updatedAt: "2026-08-16T18:55:55.756Z"
+},
+{
+ id: "Q76",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique comment l’agriculture contribue à l’alimentation des Iroquoiens vers 1500.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_champs.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_recoltes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "L’agriculture contribue à l’alimentation des Iroquoiens parce qu’elle leur permet de cultiver des aliments pour se nourrir.",
+ updatedAt: "2026-08-16T19:03:27.739Z"
 }
 ]

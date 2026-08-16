@@ -1055,11 +1055,11 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
  enonce: "Les documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à la société correspondante.",
- aspects: [{aspect: "Gouvernement"}, {aspect: "Population"}],
+ aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "org_politique_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"]},
  guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-16T17:04:46.051Z"
+ updatedAt: "2026-08-16T17:09:57.486Z"
 },
 {
  id: "Q63",

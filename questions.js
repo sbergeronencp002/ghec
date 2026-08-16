@@ -873,12 +873,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
  points: 2,
  soustag: "Établir une différence",
- enonce: "Nomme une différence entre le mode de vie des Iroquoiens et des Algonquiens vers 1500.",
+ enonce: "Nomme une différence entre les habitations des Iroquoiens et des Algonquiens vers 1500.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", soustitre: "Campement algonquien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", soustitre: "Village iroquoien", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens sont sédentaires, tandis que les Algonquiens sont nomades.",
- updatedAt: "2026-08-16T12:52:17.358Z"
+ guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Algonquiens habitent dans des wigwams.",
+ updatedAt: "2026-08-16T12:55:42.857Z"
 },
 {
  id: "Q52",

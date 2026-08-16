@@ -52,7 +52,8 @@ const REGLETTES = {
 "Q51": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q52": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q53": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q54": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
+"Q54": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q55": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
 }
 
 const IMAGE_DB = {
@@ -98,7 +99,8 @@ const IMAGE_DB = {
 "poterie_argile.jpg": {src: "images/poterie_argile.jpg", w: 1200, h: 960},
 "vannerie_ressources.jpg": {src: "images/vannerie_ressources.jpg", w: 1200, h: 960},
 "algonquiens_patriarcat.jpg": {src: "images/algonquiens_patriarcat.jpg", w: 1200, h: 900},
-"iroquoiens_matriarcat.jpg": {src: "images/iroquoiens_matriarcat.jpg", w: 1200, h: 900}
+"iroquoiens_matriarcat.jpg": {src: "images/iroquoiens_matriarcat.jpg", w: 1200, h: 900},
+"iroquoiens_conseil_2.jpg": {src: "images/iroquoiens_conseil_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -924,5 +926,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens ont un mode de vie sédentaire, tandis que les Algonquiens ont un mode de vie nomade.",
  updatedAt: "2026-08-16T12:56:25.794Z"
+},
+{
+ id: "Q55",
+ niveau: 3,
+ oi: "Situer dans le temps",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ enonce: "Nomme le groupe de personnes qui désigne les chefs chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Les aînées.\nLes femmes plus âgées.",
+ updatedAt: "2026-08-16T16:29:46.979Z"
 }
 ]

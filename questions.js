@@ -939,7 +939,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les aînées.\nLEs femmes âgées.",
- updatedAt: "2026-08-16T16:32:25.464Z"
+ guide: "Les aînées.\nLes femmes âgées.",
+ updatedAt: "2026-08-16T16:32:51.290Z"
 }
 ]

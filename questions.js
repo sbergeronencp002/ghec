@@ -878,7 +878,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens sont sédentaires, tandis que les Algonquiens sont nomades.",
- updatedAt: "2026-08-16T12:46:16.094Z"
+ updatedAt: "2026-08-16T12:50:49.284Z"
 },
 {
  id: "Q52",

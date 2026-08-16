@@ -74,7 +74,8 @@ const REGLETTES = {
 "Q73": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q74": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q75": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q76": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q76": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q77": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -132,7 +133,8 @@ const IMAGE_DB = {
 "chaman_animisme.jpg": {src: "images/chaman_animisme.jpg", w: 1200, h: 800},
 "chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg"},
 "village_iroquoien_1500_4.jpg": {src: "images/village_iroquoien_1500_4.jpg", w: 1200, h: 960},
-"iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800}
+"iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800},
+"ressources_iroquoiens.jpg": {src: "images/ressources_iroquoiens.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1287,5 +1289,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "L’agriculture contribue à l’alimentation des Iroquoiens parce qu’elle leur permet de cultiver des aliments pour se nourrir.",
  updatedAt: "2026-08-16T19:03:27.739Z"
+},
+{
+ id: "Q77",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique comment les activités pratiquées par les Iroquoiens vers 1500 leur permettent de se nourrir.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_iroquoiens.jpg"}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les activités pratiquées par les Iroquoiens leur permettent de se nourrir parce qu’ils cultivent des aliments, chassent, pêchent et font de la cueillette.",
+ updatedAt: "2026-08-16T19:07:29.412Z"
 }
 ]

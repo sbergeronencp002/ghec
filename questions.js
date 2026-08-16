@@ -478,7 +478,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens pratiquent l’agriculture, tandis que les Algonquiens ne la pratiquent pas.",
- updatedAt: "2026-08-14T14:45:19.198Z"
+ updatedAt: "2026-08-16T12:51:10.318Z"
 },
 {
  id: "Q25",

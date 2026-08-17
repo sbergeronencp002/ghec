@@ -66,14 +66,28 @@ un commit git risquerait le même genre d'écrasement silencieux.
 
 ---
 
-## État actuel : GHEC 3 configuré, questions à saisir
+## État actuel : GHEC 3 en saisie active
 
 `oi-config.js` (8 OI), `competences.js` (3 compétences), `contexte.js` (niveau 3 : 4
-sociétés, 10 aspects communs à toutes) sont déjà remplis — voir la section Configuration
-d'`admin.html`. `reglettes.js` (`REGLETTES_PRESET = {}`) et
-`questions.js`/`questions-index.js` sont encore vides : aucune question saisie pour
-l'instant. Les niveaux 4/5/6 restent à ajouter (mêmes compétences/OI, nouvelles
-sociétés propres à chaque niveau) via la section Configuration.
+sociétés — Les Iroquoiens vers 1500, Les Algonquiens vers 1500, Les Incas vers 1500, Les
+Iroquoiens vers 1745 — 10 aspects communs à toutes) sont configurés. `questions.js` est en
+saisie active par l'enseignant depuis admin.html (plus de 100 questions au 2026-08-17,
+en croissance continue) — vérifier `tools/validate-questions.mjs` pour le compte à jour
+plutôt que de se fier à ce nombre. Les niveaux 4/5/6 restent à ajouter (mêmes
+compétences/OI, nouvelles sociétés propres à chaque niveau) via la section Configuration.
+
+⚠️ Le 17 août 2026, une remise à zéro complète a eu lieu (doublons + questions hors PDA) :
+`questions.js`/`questions-index.js` vidés, toutes les images et tous les backups
+supprimés — voir l'historique de conversation si le contexte de cet événement est utile.
+La numérotation Q# n'a jamais été réutilisée depuis (voir section suivante).
+
+### Numérotation des questions (Q#)
+
+Les identifiants sont **permanents**, pas positionnels : supprimer Qn ne renumérote
+jamais les autres questions, et le prochain id publié est toujours `max(ids existants) +
+1` (jamais un id réutilisé, même après suppression — un trou dans la séquence est normal
+et volontaire, ça évite qu'un id déjà cité ailleurs — réglette, examen généré, notes de
+correction — se retrouve réattribué à une autre question).
 
 ---
 
@@ -105,7 +119,7 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 | `tools/smoke-test.mjs` | Tests de fumée (fonctions de rendu critiques d'app.js, entrées adverses) |
 | `tools/check-escaping.mjs` | Scanner anti-XSS (concaténations HTML non échappées) |
 | `tools/check-all.mjs` | Lance les 3 vérifications ci-dessus — c'est celle-ci qui tourne en hook SessionStart |
-| `worker/index.js` | Worker Cloudflare (`/publish`) — voie de publication rapide depuis admin.html. Contient sa propre copie du sérialiseur (**doit rester identique** à `questions-io.js`) |
+| `worker/index.js` | Worker Cloudflare (`/publish` questions, `/upload-image` images) — voie de publication rapide et de contournement réseau depuis admin.html, déployé et actif. Contient sa propre copie du sérialiseur (**doit rester identique** à `questions-io.js`) |
 | `tools/apply-mutation.mjs` | Fallback GitHub Actions (`repository_dispatch`) quand le Worker est inaccessible — même sérialiseur, même protection `editingId !== question.id` |
 | `sw.js` | Service worker : réseau-first pour les données/pages d'édition, stale-while-revalidate pour les images |
 | `style.css` | Styles du site public. 8 couleurs prédéfinies `--c-slot1` à `--c-slot8` (+ `-bg`) — la section Configuration d'admin.html en assigne une par OI |
@@ -300,10 +314,33 @@ reflète toujours l'état réel du dépôt contrairement au CDN Pages.
 
 ---
 
-## Worker Cloudflare (voie de publication rapide, optionnelle)
+## Worker Cloudflare (voie de publication rapide) — déployé et actif depuis le 2026-08-17
 
-`admin.html` peut publier via un Worker Cloudflare (`/publish`) au lieu du PUT GitHub
-direct — voie prioritaire quand configurée (champ « URL Worker » dans l'UI), avec repli
-sur PUT direct si non configurée. `workerUrl`/`workerSecret` sont stockés en clair dans
-`localStorage` du navigateur — jamais commités. Voir `.github/workflows/deploy-worker.yml`
-pour le déploiement (non automatique).
+`admin.html` publie via un Worker Cloudflare (`/publish` pour les questions, `/upload-image`
+pour les images) au lieu du PUT GitHub direct — voie prioritaire quand configurée (champs
+« URL Worker »/« Worker Secret » dans l'UI, déjà remplis chez l'enseignant), avec repli
+sur PUT direct si le Worker est indisponible. `workerUrl`/`workerSecret` sont stockés en
+clair dans `localStorage` du navigateur — jamais commités.
+
+**Pourquoi ça existe** : le réseau de l'école de l'enseignant bloque les requêtes HTTP
+d'écriture (PUT/POST authentifiées) faites en JavaScript vers `api.github.com` depuis le
+navigateur — diagnostiqué le 2026-08-17 (signature : GET simple → OK, PUT → toujours
+`net::ERR_FAILED 503` + erreur CORS incohérente, peu importe la taille du contenu ; la
+navigation normale et le formulaire d'upload natif de github.com fonctionnent, eux). Le
+Worker tourne sur l'infrastructure Cloudflare (le navigateur ne parle qu'à
+`*.workers.dev`), donc contourne ce blocage à la racine plutôt que d'attendre qu'il se
+débloque.
+
+**Déploiement** : `.github/workflows/deploy-worker.yml`, déclenché automatiquement sur push
+`worker/**`→`main`, ou manuellement (`workflow_dispatch`). Nécessite 3 secrets du dépôt
+(Settings → Secrets and variables → Actions) : `CLOUDFLARE_API_TOKEN` (modèle **« Edit
+Cloudflare Workers »** — un jeton avec des permissions personnalisées a échoué une première
+fois, code d'erreur Cloudflare 10000/Authentication error), `GH_PAT_WORKER` (PAT GitHub
+scope `repo`, distinct du token personnel utilisé pour la voie directe), `WORKER_SECRET`
+(clé partagée arbitraire). Compte Cloudflare partagé avec HQC (même `accountId` dans les
+deux dépôts). Nom du Worker : `ghec-admin` → URL `https://ghec-admin.sbergeron-ens.workers.dev`.
+
+Je (l'agent) ne peux pas lire ni modifier les secrets du dépôt ni le token de
+l'enseignant — cette action GitHub Actions/Secrets spécifique est bloquée pour mon accès
+API, contrairement aux publications de fichiers. L'enseignant doit toujours les
+créer/coller lui-même dans les paramètres du dépôt.

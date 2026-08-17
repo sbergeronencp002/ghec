@@ -174,7 +174,8 @@ const IMAGE_DB = {
 "incas_cites_2.jpg": {src: "images/incas_cites_2.jpg", w: 1200, h: 800},
 "incas_maisons_1.jpg": {src: "images/incas_maisons_1.jpg", w: 1200, h: 800},
 "incas_maisons_2.jpg": {src: "images/incas_maisons_2.jpg", w: 1200, h: 800},
-"territoire_incas_2.jpg": {src: "images/territoire_incas_2.jpg", w: 1200, h: 800}
+"territoire_incas_2.jpg": {src: "images/territoire_incas_2.jpg", w: 1200, h: 800},
+"territoire_incas_3.png": {src: "images/territoire_incas_3.png"}
 }
 
 const QUESTIONS = [
@@ -1666,10 +1667,10 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre les habitations des Iroquoiens et des Incas vers 1500.",
  aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_maisons_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_incas_3.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Incas habitent dans des maisons de pierre.",
- updatedAt: "2026-08-17T17:11:58.192Z"
+ updatedAt: "2026-08-17T17:41:23.515Z"
 },
 {
  id: "Q100",

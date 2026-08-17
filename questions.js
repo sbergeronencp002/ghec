@@ -1549,12 +1549,12 @@ const QUESTIONS = [
  periodes: ["Les Incas vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme le type d'habitation des Incas vers 1500.",
+ enonce: "À l'aide du document A, nomme le type d'établissement des Incas vers 1500.",
  aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_cites.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Des maisons de pierre.",
- updatedAt: "2026-08-17T14:53:22.676Z"
+ guide: "Une cité.",
+ updatedAt: "2026-08-17T14:55:38.216Z"
 },
 {
  id: "Q93",

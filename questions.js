@@ -136,7 +136,8 @@ const IMAGE_DB = {
 "village_iroquoien_1500_4.jpg": {src: "images/village_iroquoien_1500_4.jpg", w: 1200, h: 960},
 "iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800},
 "ressources_iroquoiens.jpg": {src: "images/ressources_iroquoiens.jpg", w: 1200, h: 800},
-"fetes_communautes_4.jpg": {src: "images/fetes_communautes_4.jpg"}
+"fetes_communautes_4.jpg": {src: "images/fetes_communautes_4.jpg"},
+"crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1316,9 +1317,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l’aide du document A, nomme un divertissement pratiqué par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_communautes_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "crosse.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les danses et les chants.",
- updatedAt: "2026-08-16T23:59:31.821Z"
+ guide: "La crosse.",
+ updatedAt: "2026-08-17T00:00:16.377Z"
 }
 ]

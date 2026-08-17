@@ -165,7 +165,7 @@ const IMAGE_DB = {
 "iroquoiens_recits_legendes_2.jpg": {src: "images/iroquoiens_recits_legendes_2.jpg", w: 1200, h: 800},
 "incas_cites.jpg": {src: "images/incas_cites.jpg", w: 1200, h: 800},
 "incas_cites_2.jpg": {src: "images/incas_cites_2.jpg", w: 1200, h: 800},
-"incas_maisons_1.jpg": {src: "images/incas_maisons_1.jpg"}
+"incas_maisons_1.jpg": {src: "images/incas_maisons_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1570,6 +1570,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_maisons_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Des maisons de pierre.",
- updatedAt: "2026-08-17T14:58:48.474Z"
+ updatedAt: "2026-08-17T15:00:48.110Z"
 }
 ]

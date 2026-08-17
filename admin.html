@@ -892,7 +892,7 @@ function filterEditList() {
     const enonce = (q.enonce||'').replace(/\*\*/g,'').slice(0, 90) + ((q.enonce||'').length > 90 ? '…' : '');
     const periodesTxt = (q.periodes||[]).join(' + ');
     return `<div class="edit-result-card${isSelected ? ' selected' : ''}${isFocused ? ' focused' : ''}"
-      data-idx="${i}" data-id="${q.id}" onclick="loadQuestion('${q.id}')" onmouseenter="editFocusIdx=${i}">
+      data-idx="${i}" data-id="${escHtml(q.id)}" onclick="${escHtml(`loadQuestion('${jsStr(q.id)}')`)}" onmouseenter="editFocusIdx=${i}">
       <div style="min-width:0;flex:1">
         <div class="edit-card-meta">
           ${noG ? '<span class="edit-card-warn">⚠ </span>' : ''}<span class="edit-card-id">${highlight(q.id, search)}</span>
@@ -2383,7 +2383,11 @@ function getRepGrilleValues() {
 
 // ── GUIDE ─────────────────────────────────────────────────────────────
 function escHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+// Échappe pour une chaîne JS entre apostrophes (ex. dans un onclick="…('…')").
+function jsStr(s) {
+  return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
 }
 
 function updateGuideUI() {
@@ -3212,7 +3216,7 @@ function refreshLivePreview() {
       ? { bg: OI_CONFIG[oi].bg || '#e8edf5', color: OI_CONFIG[oi].color || '#1B3B6F' }
       : { bg: '#e8edf5', color: '#1B3B6F' };
 
-    function esc(t) { return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function esc(t) { return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
     function fmt(t) {
       return esc(t)
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
@@ -3242,7 +3246,7 @@ function refreshLivePreview() {
               const ikey = refSel.value;
               const entry = (typeof IMAGE_DB !== 'undefined') ? IMAGE_DB[ikey] : null;
               if (entry && entry.src) {
-                docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><img class="lp-doc-img" src="${entry.src}" alt="${esc(ikey)}">`;
+                docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><img class="lp-doc-img" src="${esc(entry.src)}" alt="${esc(ikey)}">`;
               } else {
                 docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><div class="lp-doc-texte" style="color:var(--ink-3)">[image : ${esc(ikey)}]</div>`;
               }
@@ -3261,7 +3265,7 @@ function refreshLivePreview() {
         const ikey   = refSel?.value || '';
         const entry  = ikey && (typeof IMAGE_DB !== 'undefined') ? IMAGE_DB[ikey] : null;
         if (entry && entry.src) {
-          docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><img class="lp-doc-img" src="${entry.src}" alt="${esc(ikey)}">`;
+          docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><img class="lp-doc-img" src="${esc(entry.src)}" alt="${esc(ikey)}">`;
         } else if (ikey) {
           docsHtml += `<div class="lp-doc-titre">${esc(titre || ikey)}</div><div class="lp-doc-texte" style="color:var(--ink-3)">[image : ${esc(ikey)}]</div>`;
         }

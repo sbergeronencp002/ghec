@@ -26,7 +26,7 @@ const FILES = ['app.js', 'admin.html', 'documents.html', 'revision.html', 'exame
 
 // Champs de données textuelles susceptibles de contenir du HTML saisi par un humain.
 const FIELDS = ['oi','titre','soustitre','texte','auteur','source','enonce','guide',
-  'label','aspect','desc','valeur','col1','col2','col3','ref','periode'].join('|');
+  'label','aspect','desc','valeur','col1','col2','col3','ref','periode','periodes'].join('|');
 
 const ESCAPE_FNS = ['escLine','escAttr','jsStr','rvEscLine','rvEscAttr','escH','escHtml'];
 

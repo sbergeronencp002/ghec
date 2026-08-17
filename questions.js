@@ -80,7 +80,8 @@ const REGLETTES = {
 "Q79": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q80": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q81": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q82": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q82": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q83": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -144,7 +145,8 @@ const IMAGE_DB = {
 "crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800},
 "instruments_musique_iroquoiens.jpg": {src: "images/instruments_musique_iroquoiens.jpg", w: 1200, h: 800},
 "aines_3.jpg": {src: "images/aines_3.jpg"},
-"chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800}
+"chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800},
+"tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg"}
 }
 
 const QUESTIONS = [
@@ -1388,5 +1390,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens pratiquent notamment des cérémonies liées à la guérison et à leurs croyances spirituelles.",
  updatedAt: "2026-08-17T00:11:06.109Z"
+},
+{
+ id: "Q83",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Explique comment la tradition orale permet de conserver les connaissances chez les Iroquoiens.",
+ aspects: [{aspect: "Communication"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Elle permet de transmettre les connaissances d’une génération à l’autre par la parole.",
+ updatedAt: "2026-08-17T11:55:16.946Z"
 }
 ]

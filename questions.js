@@ -77,7 +77,8 @@ const REGLETTES = {
 "Q76": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q77": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q78": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q79": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q79": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q80": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -139,7 +140,8 @@ const IMAGE_DB = {
 "ressources_iroquoiens.jpg": {src: "images/ressources_iroquoiens.jpg", w: 1200, h: 800},
 "fetes_communautes_4.jpg": {src: "images/fetes_communautes_4.jpg"},
 "crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800},
-"instruments_musique_iroquoiens.jpg": {src: "images/instruments_musique_iroquoiens.jpg", w: 1200, h: 800}
+"instruments_musique_iroquoiens.jpg": {src: "images/instruments_musique_iroquoiens.jpg", w: 1200, h: 800},
+"aines_3.jpg": {src: "images/aines_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -1338,5 +1340,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens utilisent le tambour et le hochet.",
  updatedAt: "2026-08-17T00:04:32.179Z"
+},
+{
+ id: "Q80",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme une façon utilisée par les Iroquoiens pour transmettre leurs coutumes aux plus jeunes vers 1500.",
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Iroquoiens transmettent leurs coutumes aux plus jeunes en leur racontant des récits et des légendes.",
+ updatedAt: "2026-08-17T00:06:40.941Z"
 }
 ]

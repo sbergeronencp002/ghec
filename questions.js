@@ -1661,29 +1661,29 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre les habitations des Iroquoiens et des Incas vers 1500.",
- aspects: [{aspect: "Population"}],
+ aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_maisons_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Incas habitent dans des maisons de pierre.",
- updatedAt: "2026-08-17T17:01:20.226Z"
+ updatedAt: "2026-08-17T17:10:25.358Z"
 },
 {
  id: "Q100",
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Les Iroquoiens vers 1500", "Les Algonquiens vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre les établissements des Iroquoiens et des Incas vers 1500.",
- aspects: [{aspect: "Population"}],
+ aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_incas_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens habitent dans des villages, tandis que les Incas habitent dans des cités.",
- updatedAt: "2026-08-17T17:03:50.743Z"
+ updatedAt: "2026-08-17T17:11:44.607Z"
 }
 ]

@@ -156,7 +156,8 @@ const IMAGE_DB = {
 "tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg"},
 "aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960},
 "chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960},
-"chaman_ceremonie_2.jpg": {src: "images/chaman_ceremonie_2.jpg", w: 1200, h: 800}
+"chaman_ceremonie_2.jpg": {src: "images/chaman_ceremonie_2.jpg", w: 1200, h: 800},
+"chaman_ceremonie_4.jpg": {src: "images/chaman_ceremonie_4.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -1498,10 +1499,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi le chaman joue un rôle important dans la communauté iroquoienne vers 1500.",
  aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chaman_ceremonie_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le chaman joue un rôle important parce qu’il participe aux cérémonies et aide les personnes malades selon les croyances de la communauté.",
- updatedAt: "2026-08-17T12:11:46.329Z"
+ updatedAt: "2026-08-17T12:15:04.270Z"
 },
 {
  id: "Q90",

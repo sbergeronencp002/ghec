@@ -87,7 +87,8 @@ const REGLETTES = {
 "Q86": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q87": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q88": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q89": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q89": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q90": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -154,7 +155,8 @@ const IMAGE_DB = {
 "chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800},
 "tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg"},
 "aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960},
-"chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960}
+"chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960},
+"chaman_ceremonie_2.jpg": {src: "images/chaman_ceremonie_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1500,5 +1502,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Le chaman joue un rôle important parce qu’il participe aux cérémonies et aide les personnes malades selon les croyances de la communauté.",
  updatedAt: "2026-08-17T12:11:46.329Z"
+},
+{
+ id: "Q90",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l'aide du document A, nomme un élément de la spiritualité pratiqué par les Iroquoiens.",
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Iroquoiens pratiquent l'animisme.\nou\nIls croient que les êtres vivants et les éléments de la nature, comme les animaux, les plantes et les rivières, possèdent un esprit.",
+ updatedAt: "2026-08-17T12:14:16.278Z"
 }
 ]

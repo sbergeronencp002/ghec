@@ -82,7 +82,8 @@ const REGLETTES = {
 "Q81": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q82": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q83": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q84": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q84": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q85": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -147,7 +148,8 @@ const IMAGE_DB = {
 "instruments_musique_iroquoiens.jpg": {src: "images/instruments_musique_iroquoiens.jpg", w: 1200, h: 800},
 "aines_3.jpg": {src: "images/aines_3.jpg"},
 "chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800},
-"tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg"}
+"tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg"},
+"aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960}
 }
 
 const QUESTIONS = [
@@ -1419,5 +1421,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Ils racontent des récits et des légendes pour transmettre leurs connaissances, leurs croyances et leurs coutumes aux générations suivantes.",
  updatedAt: "2026-08-17T12:01:04.576Z"
+},
+{
+ id: "Q85",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme le groupe qui joue un rôle important dans la transmission des coutumes chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les aînés.",
+ updatedAt: "2026-08-17T12:02:50.209Z"
 }
 ]

@@ -1350,10 +1350,10 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une façon utilisée par les Iroquoiens pour transmettre leurs coutumes aux plus jeunes vers 1500.",
- aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Communication"}, {aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens transmettent leurs coutumes aux plus jeunes en leur racontant des récits et des légendes.",
- updatedAt: "2026-08-17T00:06:40.941Z"
+ updatedAt: "2026-08-17T00:07:48.227Z"
 }
 ]

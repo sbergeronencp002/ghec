@@ -1385,11 +1385,27 @@ async function uploadImage() {
       btn.disabled = false;
       return;
     }
-    const putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${nameEnc}`, {
-      method:'PUT',
-      headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
-      body: JSON.stringify({ message:`Ajouter image : ${name}`, content:imgInfo.b64, branch:BRANCH, ...(existingSha ? { sha: existingSha } : {}) })
-    });
+    // Contrairement à putQuestionsJsWithRetry/_putFileWithRetry (retry sur conflit 409), ce PUT
+    // n'a aucun filet — un simple blip réseau (fetch() qui rejette avant même une réponse HTTP,
+    // ex. "Failed to fetch") faisait échouer tout le téléversement d'un coup. Un seul retry
+    // automatique suffit pour ce cas, distinct d'un vrai conflit de SHA.
+    let putResp;
+    try {
+      putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${nameEnc}`, {
+        method:'PUT',
+        headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
+        body: JSON.stringify({ message:`Ajouter image : ${name}`, content:imgInfo.b64, branch:BRANCH, ...(existingSha ? { sha: existingSha } : {}) })
+      });
+    } catch(networkErr) {
+      if(networkErr.message !== 'Failed to fetch') throw networkErr;
+      statusEl.textContent = '⏳ Échec réseau, nouvel essai…';
+      await new Promise(r => setTimeout(r, 1000));
+      putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${nameEnc}`, {
+        method:'PUT',
+        headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
+        body: JSON.stringify({ message:`Ajouter image : ${name}`, content:imgInfo.b64, branch:BRANCH, ...(existingSha ? { sha: existingSha } : {}) })
+      });
+    }
     if(!putResp.ok) { const err=await putResp.json(); throw new Error(err.message||putResp.status); }
     currentImageDb[name] = { src: 'images/' + name, w: imgInfo.w, h: imgInfo.h };
     const ko = Math.round(imgInfo.b64.length * 3 / 4 / 1024);

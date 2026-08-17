@@ -1649,12 +1649,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme le type d'habitation habité par les Algonquiens.",
+ enonce: "À l'aide du document A, nomme le type d'habitation habité par les Iroquoiens.",
  aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Une maison longue.",
- updatedAt: "2026-08-17T16:59:11.608Z"
+ updatedAt: "2026-08-17T17:05:04.432Z"
 },
 {
  id: "Q99",

@@ -1630,11 +1630,11 @@ const QUESTIONS = [
  periodes: ["Les Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme le type d'établissment des Algonquiens vers 1500.",
+ enonce: "À l'aide du document A, nomme le type d'établissement des Algonquiens vers 1500.",
  aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le campement.",
- updatedAt: "2026-08-17T15:11:06.400Z"
+ updatedAt: "2026-08-17T15:13:09.215Z"
 }
 ]

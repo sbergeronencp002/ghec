@@ -1338,36 +1338,58 @@ async function uploadImage() {
   setFormLocked(true, btn);
   btn.disabled = true; statusEl.textContent = '⏳ Téléversement…';
   try {
-    // Redimensionne (max 1200 px) puis choisit le format le plus léger sans perte visible :
+    // Redimensionne puis choisit le format le plus léger sans perte visible :
     //  • transparence détectée → PNG obligatoire ;
     //  • sinon → on compare PNG vs JPEG 0.85 et on garde le plus petit. Les photos/scans
     //    pèsent ~5× moins en JPEG (c'était la cause des images à 2,5 Mo) ; les aplats et
     //    graphiques restent en PNG s'il est plus avantageux.
+    // L'API Contents de GitHub refuse au-delà d'~1 Mo (le fichier, pas le base64, ~33% plus
+    // gros) — un intermédiaire réseau peut même rejeter avant, en "Failed to fetch"/503 sans
+    // message clair (incident vécu : une carte de territoire à 4 Mo source échouait ainsi même
+    // après le redimensionnement à 1200px, une image détaillée compressant mal). Au lieu de
+    // tenter une seule taille, on réduit progressivement (1200 → … → 500px) jusqu'à repasser
+    // sous un seuil sûr ; si même la taille plancher dépasse encore, on refuse clairement plutôt
+    // que de laisser échouer le PUT avec une erreur réseau cryptique.
+    const MAX_B64_BYTES = 900 * 1024; // ~900 Ko encodé ≈ ~675 Ko réel, marge sous la limite ~1 Mo de l'API
+    const MIN_DIM = 500;
+    function encodeAt(img, MAX) {
+      const scale = Math.min(1, MAX / Math.max(img.naturalWidth, img.naturalHeight));
+      const w = Math.round(img.naturalWidth * scale);
+      const h = Math.round(img.naturalHeight * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      let hasAlpha = false;
+      try {
+        const data = ctx.getImageData(0, 0, w, h).data;
+        for(let i = 3; i < data.length; i += 4) { if(data[i] < 255) { hasAlpha = true; break; } }
+      } catch(_) { hasAlpha = true; }   // canvas inaccessible → on reste prudent en PNG
+      const pngB64 = canvas.toDataURL('image/png').split(',')[1];
+      let b64 = pngB64, ext = 'png';
+      if(!hasAlpha) {
+        const jpgB64 = canvas.toDataURL('image/jpeg', 0.85).split(',')[1];
+        if(jpgB64.length < pngB64.length) { b64 = jpgB64; ext = 'jpg'; }
+      }
+      return { b64, w, h, ext };
+    }
     const imgInfo = await new Promise((res,rej) => {
       const reader = new FileReader();
       reader.onload = e => {
         const img = new Image();
         img.onload = () => {
-          const MAX = 1200;
-          const scale = Math.min(1, MAX / Math.max(img.naturalWidth, img.naturalHeight));
-          const w = Math.round(img.naturalWidth * scale);
-          const h = Math.round(img.naturalHeight * scale);
-          const canvas = document.createElement('canvas');
-          canvas.width = w; canvas.height = h;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, w, h);
-          let hasAlpha = false;
-          try {
-            const data = ctx.getImageData(0, 0, w, h).data;
-            for(let i = 3; i < data.length; i += 4) { if(data[i] < 255) { hasAlpha = true; break; } }
-          } catch(_) { hasAlpha = true; }   // canvas inaccessible → on reste prudent en PNG
-          const pngB64 = canvas.toDataURL('image/png').split(',')[1];
-          let b64 = pngB64, ext = 'png';
-          if(!hasAlpha) {
-            const jpgB64 = canvas.toDataURL('image/jpeg', 0.85).split(',')[1];
-            if(jpgB64.length < pngB64.length) { b64 = jpgB64; ext = 'jpg'; }
+          let MAX = 1200;
+          let info = encodeAt(img, MAX);
+          while(info.b64.length * 3/4 > MAX_B64_BYTES && MAX > MIN_DIM) {
+            MAX = Math.max(MIN_DIM, Math.round(MAX * 0.8));
+            statusEl.textContent = `⏳ Image volumineuse, réduction à ${MAX}px…`;
+            info = encodeAt(img, MAX);
           }
-          res({ b64, w, h, ext });
+          if(info.b64.length * 3/4 > MAX_B64_BYTES) {
+            rej(new Error(`Image trop volumineuse même réduite à ${MIN_DIM}px (source trop détaillée). Compresse-la manuellement avant de la téléverser.`));
+            return;
+          }
+          res(info);
         };
         img.onerror = rej;
         img.src = e.target.result;

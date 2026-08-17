@@ -154,11 +154,12 @@ const IMAGE_DB = {
 "aines_3.jpg": {src: "images/aines_3.jpg"},
 "chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800},
 "tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg"},
-"aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 960},
+"aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 800},
 "chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960},
 "chaman_ceremonie_2.jpg": {src: "images/chaman_ceremonie_2.jpg", w: 1200, h: 800},
 "chaman_ceremonie_4.jpg": {src: "images/chaman_ceremonie_4.jpg", w: 1200, h: 960},
-"iroquoiens_recits_legendes_1.jpg": {src: "images/iroquoiens_recits_legendes_1.jpg", w: 1200, h: 800}
+"iroquoiens_recits_legendes_1.jpg": {src: "images/iroquoiens_recits_legendes_1.jpg", w: 1200, h: 800},
+"iroquoiens_recits_legendes_2.jpg": {src: "images/iroquoiens_recits_legendes_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1426,10 +1427,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les Iroquoiens racontent des récits et des légendes vers 1500.",
  aspects: [{aspect: "Communication"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "tradition_orale_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_recits_legendes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_recits_legendes_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Ils racontent des récits et des légendes pour transmettre leurs connaissances, leurs croyances et leurs coutumes aux générations suivantes.",
- updatedAt: "2026-08-17T12:01:04.576Z"
+ updatedAt: "2026-08-17T12:23:10.731Z"
 },
 {
  id: "Q85",

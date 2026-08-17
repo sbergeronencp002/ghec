@@ -85,7 +85,8 @@ const REGLETTES = {
 "Q84": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q85": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q86": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q87": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q87": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q88": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -1469,5 +1470,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le chaman dirige certaines cérémonies.",
  updatedAt: "2026-08-17T12:08:13.860Z"
+},
+{
+ id: "Q88",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme le rôle du chaman chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le chaman aide les malades.",
+ updatedAt: "2026-08-17T12:08:52.370Z"
 }
 ]

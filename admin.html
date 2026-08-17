@@ -1407,28 +1407,50 @@ async function uploadImage() {
       btn.disabled = false;
       return;
     }
-    // Contrairement à putQuestionsJsWithRetry/_putFileWithRetry (retry sur conflit 409), ce PUT
-    // n'avait aucun filet — un simple blip réseau (fetch() qui rejette avant même une réponse
-    // HTTP, ex. "Failed to fetch") faisait échouer tout le téléversement d'un coup. Payload plus
-    // gros qu'un PUT questions.js (image en base64) : un blip peut durer plus d'un cycle, d'où
-    // 3 tentatives à délai croissant plutôt qu'un seul retry.
-    const putImageBody = JSON.stringify({ message:`Ajouter image : ${name}`, content:imgInfo.b64, branch:BRANCH, ...(existingSha ? { sha: existingSha } : {}) });
-    let putResp;
-    for(let attempt = 0; attempt < 3; attempt++) {
+    // ── Voie Worker (contourne un réseau qui bloque les PUT vers api.github.com, voir
+    // publier()/supprimerQuestion()) — essayée en premier si configurée, avec repli sur le
+    // PUT direct GitHub existant (3 tentatives) si le Worker est indisponible ou non configuré.
+    const workerUrl    = localStorage.getItem('workerUrl') || '';
+    const workerSecret = getWorkerSecret();
+    let uploadedViaWorker = false;
+    if(workerUrl && workerSecret) {
       try {
-        putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${nameEnc}`, {
-          method:'PUT',
-          headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
-          body: putImageBody
+        const wResp = await fetch(workerUrl + '/upload-image', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ secret: workerSecret, name, contentB64: imgInfo.b64 })
         });
-        break;
-      } catch(networkErr) {
-        if(networkErr.message !== 'Failed to fetch' || attempt === 2) throw networkErr;
-        statusEl.textContent = `⏳ Échec réseau, nouvel essai (${attempt + 2}/3)…`;
-        await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+        const wData = await wResp.json().catch(() => ({ ok:false, error: wResp.status }));
+        if(!wData.ok) throw new Error(wData.error || wResp.status);
+        uploadedViaWorker = true;
+      } catch(_) {
+        statusEl.textContent = '⏳ Worker indisponible, repli sur GitHub direct…';
       }
     }
-    if(!putResp.ok) { const err=await putResp.json(); throw new Error(err.message||putResp.status); }
+    if(!uploadedViaWorker) {
+      // Contrairement à putQuestionsJsWithRetry/_putFileWithRetry (retry sur conflit 409), ce PUT
+      // n'avait aucun filet — un simple blip réseau (fetch() qui rejette avant même une réponse
+      // HTTP, ex. "Failed to fetch") faisait échouer tout le téléversement d'un coup. Payload plus
+      // gros qu'un PUT questions.js (image en base64) : un blip peut durer plus d'un cycle, d'où
+      // 3 tentatives à délai croissant plutôt qu'un seul retry.
+      const putImageBody = JSON.stringify({ message:`Ajouter image : ${name}`, content:imgInfo.b64, branch:BRANCH, ...(existingSha ? { sha: existingSha } : {}) });
+      let putResp;
+      for(let attempt = 0; attempt < 3; attempt++) {
+        try {
+          putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/images/${nameEnc}`, {
+            method:'PUT',
+            headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
+            body: putImageBody
+          });
+          break;
+        } catch(networkErr) {
+          if(networkErr.message !== 'Failed to fetch' || attempt === 2) throw networkErr;
+          statusEl.textContent = `⏳ Échec réseau, nouvel essai (${attempt + 2}/3)…`;
+          await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+        }
+      }
+      if(!putResp.ok) { const err=await putResp.json(); throw new Error(err.message||putResp.status); }
+    }
     currentImageDb[name] = { src: 'images/' + name, w: imgInfo.w, h: imgInfo.h };
     const ko = Math.round(imgInfo.b64.length * 3 / 4 / 1024);
     statusEl.textContent = `✓ ${name} téléversé (${ko} Ko) !`;

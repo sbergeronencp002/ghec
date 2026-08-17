@@ -177,6 +177,18 @@ function validateReglette(r) {
   return null;
 }
 
+// Plafond du payload image — même logique que MAX_BODY_BYTES pour les questions : l'API
+// Contents de GitHub refuse au-delà d'~1 Mo réel (~1,4 Mo encodé en base64). admin.html
+// redimensionne déjà côté client pour rester sous ce seuil, mais on revalide ici puisque cet
+// endpoint est public (protégé seulement par WORKER_SECRET).
+const MAX_IMAGE_B64_BYTES = 1_400_000;
+
+function validateImageName(name) {
+  if (typeof name !== 'string' || name.includes('..') || name.includes('/')) return 'nom de fichier invalide';
+  if (!/^[a-zA-Z0-9_.-]+\.(png|jpe?g|webp|gif)$/i.test(name)) return 'nom de fichier invalide (extension attendue : png/jpg/jpeg/webp/gif)';
+  return null;
+}
+
 // ── Fetch questions.js depuis GitHub ─────────────────────────────────────────
 
 async function fetchQuestionsRaw(token) {
@@ -414,6 +426,56 @@ async function handlePublish(request, env, ctx) {
   return jsonResp({ ok: true, sha: newSha, nextId });
 }
 
+// ── Téléversement d'image ─────────────────────────────────────────────────────
+// Contrairement à handlePublish (questions.js, ~2 Ko), une image tient rarement en une
+// seule requête sous le blocage réseau observé chez un enseignant (écritures PUT vers
+// api.github.com bloquées par un filtre réseau d'école) — server-to-server via le Worker
+// contourne ce blocage exactement comme pour la publication de questions.
+async function handleUploadImage(request, env, ctx) {
+  let body, rawText;
+  try { rawText = await request.text(); body = JSON.parse(rawText); } catch { return errResp('JSON invalide'); }
+
+  const { secret, name, contentB64 } = body;
+
+  if (!secret || !timingSafeEqual(secret, env.WORKER_SECRET)) return errResp('Non autorisé', 401);
+  if (rawText.length > MAX_IMAGE_B64_BYTES + 1000) {
+    return errResp(`Image trop volumineuse (${rawText.length} > ~${MAX_IMAGE_B64_BYTES} octets encodés)`, 413);
+  }
+  const nameErr = validateImageName(name);
+  if (nameErr) return errResp(nameErr);
+  if (typeof contentB64 !== 'string' || !contentB64) return errResp('contenu image manquant');
+
+  const token = env.GITHUB_PAT;
+  const path = `images/${name}`;
+
+  // SHA existant (pour écraser proprement) — absence de fichier n'est pas une erreur.
+  let existingSha;
+  try {
+    const r = await fetch(
+      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`,
+      { headers: { Authorization: `token ${token}`, 'User-Agent': 'ghec-worker' }, cache: 'no-store' }
+    );
+    if (r.ok) { const d = await r.json(); existingSha = d.sha; }
+  } catch (_) {}
+
+  const putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json', 'User-Agent': 'ghec-worker' },
+    body: JSON.stringify({
+      message: `Ajouter image : ${name}`,
+      content: contentB64,
+      branch: BRANCH,
+      ...(existingSha ? { sha: existingSha } : {}),
+    }),
+  });
+  if (!putResp.ok) {
+    const errData = await putResp.json().catch(() => ({}));
+    return errResp(errData.message || String(putResp.status), putResp.status);
+  }
+  const putData = await putResp.json();
+  return jsonResp({ ok: true, sha: putData.content.sha, name, overwritten: !!existingSha });
+}
+
 // ── Point d'entrée ────────────────────────────────────────────────────────────
 
 export default {
@@ -432,6 +494,14 @@ export default {
       // sur le fallback GitHub Actions, masquant le bug réel pendant le débogage.
       try {
         return await handlePublish(request, env, ctx);
+      } catch (e) {
+        return errResp('Erreur interne : ' + e.message, 500);
+      }
+    }
+
+    if (url.pathname === '/upload-image' && request.method === 'POST') {
+      try {
+        return await handleUploadImage(request, env, ctx);
       } catch (e) {
         return errResp('Erreur interne : ' + e.message, 500);
       }

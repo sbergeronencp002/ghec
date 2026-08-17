@@ -76,7 +76,8 @@ const REGLETTES = {
 "Q75": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q76": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q77": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q78": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q78": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q79": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -137,7 +138,8 @@ const IMAGE_DB = {
 "iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800},
 "ressources_iroquoiens.jpg": {src: "images/ressources_iroquoiens.jpg", w: 1200, h: 800},
 "fetes_communautes_4.jpg": {src: "images/fetes_communautes_4.jpg"},
-"crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800}
+"crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800},
+"instruments_musique_iroquoiens.jpg": {src: "images/instruments_musique_iroquoiens.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1321,5 +1323,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La crosse.",
  updatedAt: "2026-08-17T00:00:16.377Z"
+},
+{
+ id: "Q79",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l'aide du document A, nomme un instrument de musique utilisé par les Iroquoiens pour accompagner les chants et les danses.",
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "instruments_musique_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Iroquoiens utilisent le tambour et le hochet.",
+ updatedAt: "2026-08-17T00:04:32.179Z"
 }
 ]

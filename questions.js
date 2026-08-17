@@ -1669,7 +1669,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_maisons_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Incas habitent dans des maisons de pierre.",
- updatedAt: "2026-08-17T17:10:25.358Z"
+ updatedAt: "2026-08-17T17:11:58.192Z"
 },
 {
  id: "Q100",

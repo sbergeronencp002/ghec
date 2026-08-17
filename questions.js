@@ -1434,12 +1434,12 @@ const QUESTIONS = [
  periodes: ["Les Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme le groupe qui joue un rôle important dans la transmission des coutumes chez les Iroquoiens vers 1500.",
+ enonce: "Nomme le groupe de personnes qui transmet les coutumes et les traditions aux plus jeunes chez les Iroquoiens.",
  aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "aines_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les aînés.",
- updatedAt: "2026-08-17T12:02:50.209Z"
+ updatedAt: "2026-08-17T12:09:34.621Z"
 },
 {
  id: "Q86",

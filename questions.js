@@ -1568,7 +1568,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_cites_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Une cité.\nou\nDes maisons de pierre.",
- updatedAt: "2026-08-17T14:52:38.130Z"
+ guide: "Des maisons de pierre.",
+ updatedAt: "2026-08-17T14:53:37.213Z"
 }
 ]

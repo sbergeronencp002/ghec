@@ -2630,11 +2630,26 @@ async function putQuestionsJsWithRetry(token, commitMsg, mutate) {
     if(attempt > 0) await fetchFreshStateStable(token);
     mutate();
     const encoded = utf8b64(generateQuestionsJs(currentQuestions, currentReglettes, currentImageDb));
-    const putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions.js`, {
-      method: 'PUT',
-      headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: commitMsg, content: encoded, sha: questionsFileSha, branch: BRANCH })
-    });
+    let putResp;
+    try {
+      putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions.js`, {
+        method: 'PUT',
+        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: commitMsg, content: encoded, sha: questionsFileSha, branch: BRANCH })
+      });
+    } catch(networkErr) {
+      // fetch() a rejeté avant toute réponse HTTP (ex. "Failed to fetch") : mutate() vient de
+      // pousser la question en mémoire (currentQuestions) sans qu'elle soit réellement écrite sur
+      // GitHub. Sans ce catch, l'exception fuit telle quelle et laisse cette mutation fantôme en
+      // place — un nouvel essai de publication de la même question se fait alors refuser par le
+      // garde-fou "id existe déjà" (currentQuestions.find(...)) alors que le fichier distant ne
+      // contient jamais eu cette question. Traiter ce cas comme un conflit : la prochaine
+      // itération relit l'état réel (fetchFreshStateStable) et réapplique mutate() dessus, ce qui
+      // annule la mutation fantôme au passage.
+      if(networkErr.message !== 'Failed to fetch' || attempt === 2) throw networkErr;
+      await new Promise(r => setTimeout(r, 800 * (attempt + 1)));
+      continue;
+    }
     if(putResp.ok) {
       questionsFileSha = (await putResp.json()).content.sha;
       confirmedIds = new Set(currentQuestions.map(q => q.id));

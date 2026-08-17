@@ -89,7 +89,8 @@ const REGLETTES = {
 "Q88": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q89": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q90": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q91": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q91": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q92": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -160,7 +161,8 @@ const IMAGE_DB = {
 "chaman_ceremonie_2.jpg": {src: "images/chaman_ceremonie_2.jpg", w: 1200, h: 800},
 "chaman_ceremonie_4.jpg": {src: "images/chaman_ceremonie_4.jpg", w: 1200, h: 960},
 "iroquoiens_recits_legendes_1.jpg": {src: "images/iroquoiens_recits_legendes_1.jpg", w: 1200, h: 800},
-"iroquoiens_recits_legendes_2.jpg": {src: "images/iroquoiens_recits_legendes_2.jpg", w: 1200, h: 800}
+"iroquoiens_recits_legendes_2.jpg": {src: "images/iroquoiens_recits_legendes_2.jpg", w: 1200, h: 800},
+"incas_cites.jpg": {src: "images/incas_cites.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1536,5 +1538,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le wigwam.",
  updatedAt: "2026-08-17T14:42:53.078Z"
+},
+{
+ id: "Q92",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Incas vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l'aide du document A, nomme le type d'habitation des Incas vers 1500.",
+ aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_cites.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Une cité.\nou\nDes maisons de pierre.",
+ updatedAt: "2026-08-17T14:47:58.333Z"
 }
 ]

@@ -2648,40 +2648,53 @@ async function pruneBackups(token) {
 // relecture (via fetchFreshStateStable, voir plus haut) ne se produit qu'en cas de
 // conflit 409.
 async function putQuestionsJsWithRetry(token, commitMsg, mutate) {
-  for(let attempt = 0; attempt < 3; attempt++) {
-    if(attempt > 0) await fetchFreshStateStable(token);
-    mutate();
-    const encoded = utf8b64(generateQuestionsJs(currentQuestions, currentReglettes, currentImageDb));
-    let putResp;
-    try {
-      putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions.js`, {
-        method: 'PUT',
-        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: commitMsg, content: encoded, sha: questionsFileSha, branch: BRANCH })
-      });
-    } catch(networkErr) {
-      // fetch() a rejeté avant toute réponse HTTP (ex. "Failed to fetch") : mutate() vient de
-      // pousser la question en mémoire (currentQuestions) sans qu'elle soit réellement écrite sur
-      // GitHub. Sans ce catch, l'exception fuit telle quelle et laisse cette mutation fantôme en
-      // place — un nouvel essai de publication de la même question se fait alors refuser par le
-      // garde-fou "id existe déjà" (currentQuestions.find(...)) alors que le fichier distant ne
-      // contient jamais eu cette question. Traiter ce cas comme un conflit : la prochaine
-      // itération relit l'état réel (fetchFreshStateStable) et réapplique mutate() dessus, ce qui
-      // annule la mutation fantôme au passage.
-      if(networkErr.message !== 'Failed to fetch' || attempt === 2) throw networkErr;
+  // Sauvegarde de l'état avant toute mutation : si la publication échoue au final (peu importe
+  // à quelle tentative — réseau, conflit persistant, autre erreur), currentQuestions/Reglettes/
+  // ImageDb doivent revenir exactement à ce qu'ils étaient, sinon une mutation fantôme (ex. une
+  // question "ajoutée" en mémoire mais jamais écrite sur GitHub) reste en place et bloque tout
+  // nouvel essai de publication de la même question via le garde-fou "id existe déjà". Un essai
+  // précédent de ce correctif ne protégeait que les tentatives 1 et 2 (relecture avant retry),
+  // pas la 3e et dernière — l'échec y laissait quand même le fantôme.
+  const snapQuestions = currentQuestions.slice();
+  const snapReglettes = { ...currentReglettes };
+  const snapImageDb = { ...currentImageDb };
+  try {
+    for(let attempt = 0; attempt < 3; attempt++) {
+      if(attempt > 0) await fetchFreshStateStable(token);
+      mutate();
+      const encoded = utf8b64(generateQuestionsJs(currentQuestions, currentReglettes, currentImageDb));
+      let putResp;
+      try {
+        putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions.js`, {
+          method: 'PUT',
+          headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: commitMsg, content: encoded, sha: questionsFileSha, branch: BRANCH })
+        });
+      } catch(networkErr) {
+        // fetch() a rejeté avant toute réponse HTTP (ex. "Failed to fetch") : mutate() vient de
+        // pousser la question en mémoire sans qu'elle soit réellement écrite sur GitHub. Traiter
+        // ce cas comme un conflit tant qu'il reste des tentatives : la prochaine itération relit
+        // l'état réel (fetchFreshStateStable) et réapplique mutate() dessus.
+        if(networkErr.message !== 'Failed to fetch' || attempt === 2) throw networkErr;
+        await new Promise(r => setTimeout(r, 800 * (attempt + 1)));
+        continue;
+      }
+      if(putResp.ok) {
+        questionsFileSha = (await putResp.json()).content.sha;
+        confirmedIds = new Set(currentQuestions.map(q => q.id));
+        return;
+      }
+      let msg = putResp.status;
+      try { const err = await putResp.json(); msg = err.message || msg; } catch(_) {}
+      const isConflict = putResp.status === 409 || String(msg).toLowerCase().includes('fast forward') || String(msg).toLowerCase().includes('conflict');
+      if(!isConflict || attempt === 2) throw new Error(isConflict ? 'Conflit persistant après 3 tentatives. Rechargez (F5) et réessayez.' : msg);
       await new Promise(r => setTimeout(r, 800 * (attempt + 1)));
-      continue;
     }
-    if(putResp.ok) {
-      questionsFileSha = (await putResp.json()).content.sha;
-      confirmedIds = new Set(currentQuestions.map(q => q.id));
-      return;
-    }
-    let msg = putResp.status;
-    try { const err = await putResp.json(); msg = err.message || msg; } catch(_) {}
-    const isConflict = putResp.status === 409 || String(msg).toLowerCase().includes('fast forward') || String(msg).toLowerCase().includes('conflict');
-    if(!isConflict || attempt === 2) throw new Error(isConflict ? 'Conflit persistant après 3 tentatives. Rechargez (F5) et réessayez.' : msg);
-    await new Promise(r => setTimeout(r, 800 * (attempt + 1)));
+  } catch(e) {
+    currentQuestions = snapQuestions;
+    currentReglettes = snapReglettes;
+    currentImageDb = snapImageDb;
+    throw e;
   }
 }
 

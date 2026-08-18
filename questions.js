@@ -656,7 +656,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "e climat est une contrainte parce qu’en hiver, le froid et la neige limitent les activités et les déplacements.",
+ guide: "Le climat est une contrainte parce qu’en hiver, le froid et la neige limitent les activités et les déplacements.",
  updatedAt: "2026-08-14T15:43:16.874Z"
 },
 {
@@ -772,7 +772,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "deplacement_raquettes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "es raquettes sont utiles parce qu’elles facilitent les déplacements sur la neige lorsque les conditions hivernales rendent les déplacements plus difficiles.",
+ guide: "Les raquettes sont utiles parce qu’elles facilitent les déplacements sur la neige lorsque les conditions hivernales rendent les déplacements plus difficiles.",
  updatedAt: "2026-08-14T18:09:15.189Z"
 },
 {

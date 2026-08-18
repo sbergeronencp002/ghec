@@ -129,13 +129,21 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=55`, `style.css?v=32`, `filters.js?v=1`, `oi-config.js?v=1`.
-`sw.js` : `CACHE = 'ghec-v5'` (bump 2026-08-12 : ajout de `competences.js` à
+`index.html` charge `app.js?v=56`, `style.css?v=33`, `filters.js?v=1`, `oi-config.js?v=1`.
+`examen.html` charge `examen-gen.js?v=3`.
+`sw.js` : `CACHE = 'ghec-v6'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
 bump 2026-08-14 pour le remplacement du brun (`--c-slot8`) par un prune/bourgogne dans
-`style.css`).
+`style.css` ; puis bump 2026-08-18 (revue de code complète) : `oi-config.js` déplacé de
+`PRECACHE` vers `NETWORK_FIRST_PRECACHE` (même trou de fraîcheur que `competences.js`
+avait en 2026-08-12, jamais corrigé pour `oi-config.js`) ; `app.js` (échappements
+manquants, `titreWeb` incohérent, tri numérique des niveaux, nettoyage de code mort) et
+`style.css` (focus clavier visible sur les filtres, `prefers-reduced-motion`) modifiés ;
+`examen-gen.js` bumpé séparément (`?v=3`, pas dans le service worker) pour le correctif
+du piège `EX_OI_FIXED_TARGET`/`exFixedTargetLevels` et le message d'erreur d'aspect sans
+candidat.
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de

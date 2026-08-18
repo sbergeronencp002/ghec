@@ -13,13 +13,6 @@ function _isScalar(v) {
   return v === null || v === undefined || v === false || v === true || typeof v === 'number' || typeof v === 'string';
 }
 
-// Objet plat = toutes les valeurs sont scalaires (pas d'imbrication)
-function _isFlat(v) {
-  if(_isScalar(v)) return true;
-  if(Array.isArray(v) || typeof v !== 'object' || v === null) return false;
-  return Object.values(v).every(_isScalar);
-}
-
 // Sérialise récursivement une valeur JS en code source compact (sans indentation).
 // Les objets et tableaux dont la représentation tient en ≤ 500 chars sont mis sur
 // une seule ligne ; sinon ils sont éclatés avec une indentation minimale (1 espace).

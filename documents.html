@@ -358,7 +358,7 @@ function seedConfirmed() {
 // style inline (les variables --c-* sont définies dans le :root de cette page).
 function oiStyleAttr(oi) {
   const c = (typeof OI_CONFIG !== 'undefined') && OI_CONFIG[oi];
-  return c ? `color:${c.color};background:${c.bg}` : '';
+  return c ? `color:${escH(c.color)};background:${escH(c.bg)}` : '';
 }
 // Abréviations d'affichage compact par OI (facultatif — sans entrée, le nom complet de
 // l'OI est utilisé). Vide au départ pour GHEC — format : { '<OI>': '<abréviation>' }.
@@ -393,7 +393,7 @@ function renderImgGrid() {
 }
 
 function sizeBadgeHtml(img) {
-  return `<span class="size-badge loading" data-size-badge="${img}">…</span>`;
+  return `<span class="size-badge loading" data-size-badge="${escH(img)}">…</span>`;
 }
 
 function tileHtml(q) {
@@ -423,6 +423,9 @@ async function init() {
     const docImgs = [];
     (q.documents || []).forEach(doc => {
       (doc.cols || []).forEach(col => { if (col.ref) docImgs.push(col.ref); });
+      // Document à .ref de premier niveau (sans cols) — format que app.js/revision.html
+      // savent encore lire en repli ("Image simple"), même si admin.html n'en génère plus.
+      if (doc.ref) docImgs.push(doc.ref);
     });
     if (q.reponse && q.reponse.ref) docImgs.push(q.reponse.ref); // image dans l'espace réponse
     if (!docImgs.length) return;
@@ -1005,9 +1008,11 @@ function updateDomAfterRename(oldName, newName) {
   }
   // Update les refs en mémoire des questions (sinon l'édition de sous-titre casse après un rename)
   Object.values(qById).forEach(q => {
-    (q.documents || []).forEach(doc => (doc.cols || []).forEach(col => {
-      if (col.ref === oldName) col.ref = newName;
-    }));
+    (q.documents || []).forEach(doc => {
+      (doc.cols || []).forEach(col => { if (col.ref === oldName) col.ref = newName; });
+      if (doc.ref === oldName) doc.ref = newName;
+    });
+    if (q.reponse && q.reponse.ref === oldName) q.reponse.ref = newName;
   });
   // Update lightbox if open
   if (currentLbImg === oldName) {
@@ -1026,6 +1031,7 @@ function sourceAuteurFor(q, img) {
     for (const col of (doc.cols || [])) {
       if (col.ref === img) return { source: col.source || '', auteur: col.auteur || '' };
     }
+    if (doc.ref === img) return { source: doc.source || '', auteur: doc.auteur || '' };
   }
   return { source: '', auteur: '' };
 }
@@ -1053,6 +1059,10 @@ async function applySourceToAll() {
             if (auteur !== '' && col.auteur !== auteur) { col.auteur = auteur; modified = true; }
             if (source !== '' && col.source !== source) { col.source = source; modified = true; }
           }
+          if (doc.ref === img) {
+            if (auteur !== '' && doc.auteur !== auteur) { doc.auteur = auteur; modified = true; }
+            if (source !== '' && doc.source !== source) { doc.source = source; modified = true; }
+          }
         }
       }
       return modified;
@@ -1068,6 +1078,10 @@ async function applySourceToAll() {
               if (auteur !== '') col.auteur = auteur;
               if (source !== '') col.source = source;
             }
+          }
+          if (doc.ref === img) {
+            if (auteur !== '') doc.auteur = auteur;
+            if (source !== '') doc.source = source;
           }
         }
       });
@@ -1093,6 +1107,7 @@ function soustitreFor(q, img) {
     for (const col of (doc.cols || [])) {
       if (col.ref === img) return col.soustitre || '';
     }
+    if (doc.ref === img) return doc.soustitre || '';
   }
   return '';
 }
@@ -1104,6 +1119,7 @@ function setSoustitreLocal(id, img, val) {
     for (const col of (doc.cols || [])) {
       if (col.ref === img) { col.soustitre = val; return; }
     }
+    if (doc.ref === img) { doc.soustitre = val; return; }
   }
 }
 
@@ -1146,7 +1162,7 @@ async function isImageStillOrphan(img) {
     throw new Error('questions.js illisible : ' + e.message);
   }
   return !parsed.QUESTIONS.some(q =>
-    (q.documents || []).some(d => (d.cols || []).some(c => c.ref === img)) ||
+    (q.documents || []).some(d => (d.cols || []).some(c => c.ref === img) || d.ref === img) ||
     (q.reponse && q.reponse.ref === img)
   );
 }

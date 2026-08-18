@@ -24,7 +24,8 @@ function validateQuestionPayload(q) {
   if (typeof q.id !== 'string' || !/^Q\d+$/.test(q.id)) return 'question.id invalide (attendu "Q" suivi de chiffres)';
   if (typeof q.oi !== 'string' || !q.oi) return 'question.oi manquant';
   if (typeof q.niveau !== 'number' || !Number.isInteger(q.niveau) || q.niveau < 1) return 'question.niveau invalide (entier positif attendu)';
-  if (!Array.isArray(q.periodes) || !q.periodes.length || q.periodes.some(p => typeof p !== 'string' || !p)) return 'question.periodes manquant (tableau de 1 ou 2 sociétés)';
+  if (!Array.isArray(q.periodes) || !q.periodes.length || q.periodes.length > 2 || q.periodes.some(p => typeof p !== 'string' || !p)) return 'question.periodes invalide (tableau de 1 ou 2 sociétés attendu)';
+  if (typeof q.points !== 'number' || !Number.isFinite(q.points) || q.points <= 0) return 'question.points invalide (nombre positif attendu)';
   if (typeof q.enonce !== 'string') return 'question.enonce manquant';
   if (q.documents !== undefined && !Array.isArray(q.documents)) return 'question.documents doit être un tableau';
   if (q.aspects !== undefined && !Array.isArray(q.aspects)) return 'question.aspects doit être un tableau';
@@ -75,11 +76,6 @@ QUESTIONS.forEach(q => {
 //    à chaque alternance de voie de publication. Resynchronisé le 2026-07-09.) ──────────
 function _isScalar(v) {
   return v === null || v === undefined || v === false || v === true || typeof v === 'number' || typeof v === 'string';
-}
-function _isFlat(v) {
-  if(_isScalar(v)) return true;
-  if(Array.isArray(v) || typeof v !== 'object' || v === null) return false;
-  return Object.values(v).every(_isScalar);
 }
 // Voir la même garde dans worker/index.js et questions-io.js — ces trois copies doivent
 // rester identiques.

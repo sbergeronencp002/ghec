@@ -158,7 +158,7 @@ function populateFilters() {
   const periodesPresentes = new Set(QUESTIONS.flatMap(q=>q.periodes||[]));
   const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
 
-  fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort(), "Tous");
+  fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), "Tous");
   fillSelect('f-periode', periodes, "Toutes");
   fillAspectSelect('f-aspect', aspects, periodeOrder);
   fillSelect('f-oi', allOis, "Toutes");
@@ -393,7 +393,7 @@ async function openQModal(id) {
     try { await ensureDataLoaded(); } catch(e) {
       if(reqId !== _qModalReqSeq) return;
       document.getElementById('q-modal-body').innerHTML =
-        '<div style="color:red;padding:1rem">Erreur de chargement : ' + e.message + '</div>';
+        '<div style="color:red;padding:1rem">Erreur de chargement : ' + escLine(e.message) + '</div>';
       return;
     }
     // Un autre appel a été lancé entre-temps (double clic) — on abandonne ce rendu périmé
@@ -520,7 +520,7 @@ function buildTileHtml(q) {
   // (escAttr), même convention que renderDoc/openLightbox plus bas dans ce fichier.
   const openCall   = escAttr(`openQModal('${jsStr(q.id)}')`);
   const toggleCall = escAttr(`togglePanier('${jsStr(q.id)}')`);
-  return `<div class="q-tile${inPanier ? ' in-panier' : ''}" id="tile-${q.id}"
+  return `<div class="q-tile${inPanier ? ' in-panier' : ''}" id="tile-${escAttr(q.id)}"
     role="button" tabindex="0" aria-label="${escAttr(q.oi + (aspect ? ' — ' + aspect : ''))}"
     style="--tile-color:${st.color};background:#fff" onclick="${openCall}"
     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${openCall}}">
@@ -583,7 +583,6 @@ function initSite() {
     localStorage.removeItem('hqc_panier');
   }
 }
-if(typeof QUESTIONS !== 'undefined') initSite();
 
 window.addEventListener('storage', e => {
   if(e.key !== 'hqc_panier') return;
@@ -678,7 +677,7 @@ function renderDoc(d, expanded = false) {
       if(!img) return;
       html += '<div class="doc-img-tile" onclick="' + escAttr("openLightbox('" + jsStr(img.src) + "')") + '">';
       html += '<img src="' + escAttr(img.src) + '" alt="' + escAttr(col.titre||col.ref||'Document') + '">';
-      if(col.titre) html += '<div class="doc-img-tile-label">' + escLine(col.titre) + '</div>';
+      if(col.titreWeb && col.titre) html += '<div class="doc-img-tile-label">' + escLine(col.titre) + '</div>';
       if(col.soustitre) html += '<div class="doc-img-tile-sub">' + escLine(col.soustitre) + '</div>';
       html += '</div>';
     });
@@ -999,7 +998,7 @@ async function previsualiser(guideMode) {
     let previewHtml = '';
     if(examNom || showEleve || showGroupe || showDate || showScore) {
       previewHtml += '<div style="margin-bottom:1.5rem">';
-      if(examNom) previewHtml += '<div style="text-align:center;font-size:1.15rem;font-weight:700;letter-spacing:0.04em;margin-bottom:0.6rem">' + examNom.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>';
+      if(examNom) previewHtml += '<div style="text-align:center;font-size:1.15rem;font-weight:700;letter-spacing:0.04em;margin-bottom:0.6rem">' + escLine(examNom) + '</div>';
       previewHtml += '<div style="border-top:3px solid #000;margin-bottom:0.75rem"></div>';
       const hasFields = showEleve || showGroupe || showDate || showScore;
       if(hasFields) {
@@ -1609,11 +1608,6 @@ async function genererDocx(includeGuide=false) {
       })];
     }
 
-    function parseEnonce(enonce) {
-      return enonce.split('\n').map(line => {
-        return new Paragraph({ children: mkRuns(line, 'Aptos', 24) });
-      });
-    }
     function mkRuns(line, font, size) {
       const parts = line.split(/(\*\*.*?\*\*)/);
       return parts.filter(p=>p).map(p => {

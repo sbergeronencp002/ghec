@@ -54,10 +54,6 @@ const VALID_GUIDE_TYPES = new Set(['grille', 'tableau']);
 
 const oiKeys = new Set(Object.keys(OI_CONFIG));
 const competenceKeys = new Set(COMPETENCE_LIST);
-const periodeToNiveau = {};
-for (const [niv, periodes] of Object.entries(PERIODES_PAR_NIVEAU)) {
-  for (const p of periodes) periodeToNiveau[p] = niv;
-}
 
 // ── QUESTIONS ────────────────────────────────────────────────────────────────
 const seenIds = new Set();
@@ -89,10 +85,14 @@ for (const q of QUESTIONS) {
     err(`${tag} : type de guide inconnu « ${q.guide.type} »`);
   }
 
+  if (typeof q.points !== 'number' || !Number.isFinite(q.points) || q.points <= 0) {
+    err(`${tag} : points invalide « ${q.points} » (nombre positif attendu)`);
+  }
+
   const niv = String(q.niveau);
   const periodes = q.periodes || [];
   if (!periodes.length) err(`${tag} : aucune société (periodes vide ou absent)`);
-  if (periodes.length > 2) warn(`${tag} : plus de 2 sociétés (${periodes.length}) — attendu 1, ou 2 pour une comparaison`);
+  if (periodes.length > 2) err(`${tag} : plus de 2 sociétés (${periodes.length}) — attendu 1, ou 2 pour une comparaison`);
   if (!PERIODES_PAR_NIVEAU[niv]) {
     const attendus = Object.keys(PERIODES_PAR_NIVEAU).join(' ou ') || '(aucun niveau configuré)';
     err(`${tag} : niveau invalide « ${q.niveau} » (attendu ${attendus})`);

@@ -31,13 +31,6 @@ function _isScalar(v) {
   return v === null || v === undefined || v === false || v === true || typeof v === 'number' || typeof v === 'string';
 }
 
-// Objet plat = toutes les valeurs sont scalaires (pas d'imbrication)
-function _isFlat(v) {
-  if(_isScalar(v)) return true;
-  if(Array.isArray(v) || typeof v !== 'object' || v === null) return false;
-  return Object.values(v).every(_isScalar);
-}
-
 // Sérialise récursivement une valeur JS en code source compact (sans indentation).
 // Les objets et tableaux dont la représentation tient en ≤ 500 chars sont mis sur
 // une seule ligne ; sinon ils sont éclatés avec une indentation minimale (1 espace).
@@ -138,13 +131,45 @@ function errResp(msg, status = 400) {
   return jsonResp({ ok: false, error: msg }, status);
 }
 
+// Limiteur de fréquence "best-effort", en mémoire de l'isolate Worker — Cloudflare ne
+// garantit ni la persistance ni le partage de cet état entre isolates/edges (un isolate à
+// froid ou un autre edge repart de zéro), ce n'est donc PAS une protection absolue. Mais
+// avant ce correctif, aucune limite n'existait au-delà de la taille du payload : un secret
+// qui fuit permettait un flot illimité d'écritures/commits sur `main`. Ceci relève
+// significativement la barre contre un abus trivial, pour un coût d'implémentation minime.
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 30;
+const _rateLimitHits = new Map(); // clé (IP) → timestamps (ms) des requêtes récentes dans la fenêtre
+function checkRateLimit(key) {
+  const now = Date.now();
+  const recent = (_rateLimitHits.get(key) || []).filter(t => now - t < RATE_LIMIT_WINDOW_MS);
+  recent.push(now);
+  _rateLimitHits.set(key, recent);
+  if (_rateLimitHits.size > 1000) {
+    // Élagage occasionnel pour éviter une fuite mémoire d'isolate à (très) long terme.
+    for (const [k, v] of _rateLimitHits) {
+      if (!v.some(t => now - t < RATE_LIMIT_WINDOW_MS)) _rateLimitHits.delete(k);
+    }
+  }
+  return recent.length <= RATE_LIMIT_MAX;
+}
+
 // Comparaison à temps constant : le secret est statique (pas de rotation automatique,
 // voir CLAUDE.md) et cet endpoint est public (CORS *) — une comparaison `===` naïve
 // laisse fuir la longueur du préfixe correct via le temps de réponse.
 function timingSafeEqual(a, b) {
-  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
-  let diff = 0;
-  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+  // Ne PAS retourner tôt sur une longueur différente : ça fuiterait la longueur du secret
+  // via le temps de réponse (un appelant pourrait sonder longueur par longueur). On compare
+  // toujours sur `len` itérations, quelle que soit la correspondance des longueurs, et on
+  // combine le résultat de longueur dans `diff` au lieu de court-circuiter dessus.
+  const len = Math.max(a.length, b.length, 1);
+  let diff = a.length === b.length ? 0 : 1;
+  for (let i = 0; i < len; i++) {
+    const ca = i < a.length ? a.charCodeAt(i) : 0;
+    const cb = i < b.length ? b.charCodeAt(i) : 0;
+    diff |= ca ^ cb;
+  }
   return diff === 0;
 }
 
@@ -156,7 +181,8 @@ function validateQuestionPayload(q) {
   if (typeof q.id !== 'string' || !/^Q\d+$/.test(q.id)) return 'question.id invalide (attendu "Q" suivi de chiffres)';
   if (typeof q.oi !== 'string' || !q.oi) return 'question.oi manquant';
   if (typeof q.niveau !== 'number' || !Number.isInteger(q.niveau) || q.niveau < 1) return 'question.niveau invalide (entier positif attendu)';
-  if (!Array.isArray(q.periodes) || !q.periodes.length || q.periodes.some(p => typeof p !== 'string' || !p)) return 'question.periodes manquant (tableau de 1 ou 2 sociétés)';
+  if (!Array.isArray(q.periodes) || !q.periodes.length || q.periodes.length > 2 || q.periodes.some(p => typeof p !== 'string' || !p)) return 'question.periodes invalide (tableau de 1 ou 2 sociétés attendu)';
+  if (typeof q.points !== 'number' || !Number.isFinite(q.points) || q.points <= 0) return 'question.points invalide (nombre positif attendu)';
   if (typeof q.enonce !== 'string') return 'question.enonce manquant';
   if (q.documents !== undefined && !Array.isArray(q.documents)) return 'question.documents doit être un tableau';
   if (q.aspects !== undefined && !Array.isArray(q.aspects)) return 'question.aspects doit être un tableau';
@@ -282,6 +308,9 @@ async function doPublishIndex(token, questions, commitMsg) {
 // ── Handler principal ─────────────────────────────────────────────────────────
 
 async function handlePublish(request, env, ctx) {
+  if (!checkRateLimit(request.headers.get('cf-connecting-ip') || 'unknown')) {
+    return errResp('Trop de requêtes, réessayez dans une minute.', 429);
+  }
   let body, rawText;
   try { rawText = await request.text(); body = JSON.parse(rawText); } catch { return errResp('JSON invalide'); }
 
@@ -322,9 +351,6 @@ async function handlePublish(request, env, ctx) {
     return errResp('Lecture GitHub échouée : ' + e.message, 502);
   }
 
-  // 2. Backup fire-and-forget (contenu avant mutation)
-  ctx.waitUntil(doBackupAndPrune(token, content));
-
   // 3. Appliquer la mutation
   if (action === 'delete') {
     const idx = QUESTIONS.findIndex(q => q.id === question.id);
@@ -359,6 +385,7 @@ async function handlePublish(request, env, ctx) {
       try {
         let freshContent;
         ({ sha, content: freshContent } = await fetchQuestionsRaw(token));
+        content = freshContent; // garder `content` = dernier état lu, pour le backup post-succès plus bas
         const fn2 = new Function(freshContent + '\nreturn { QUESTIONS, REGLETTES, IMAGE_DB };');
         const fresh = fn2();
         // Réappliquer la même mutation sur l'état frais
@@ -403,6 +430,11 @@ async function handlePublish(request, env, ctx) {
     if (putResp.ok) {
       const putData = await putResp.json();
       newSha = putData.content.sha;
+      // Backup fire-and-forget — déclenché seulement maintenant (état d'avant cette écriture
+      // réussie), pas avant de tenter la mutation : sinon un PUT qui échoue au final (ex.
+      // conflit persistant après 2 tentatives) laisse un backup orphelin pour une mutation
+      // jamais appliquée.
+      ctx.waitUntil(doBackupAndPrune(token, content));
       ctx.waitUntil(doPublishIndex(token, QUESTIONS, commitMsg));
       break;
     }
@@ -432,6 +464,9 @@ async function handlePublish(request, env, ctx) {
 // api.github.com bloquées par un filtre réseau d'école) — server-to-server via le Worker
 // contourne ce blocage exactement comme pour la publication de questions.
 async function handleUploadImage(request, env, ctx) {
+  if (!checkRateLimit(request.headers.get('cf-connecting-ip') || 'unknown')) {
+    return errResp('Trop de requêtes, réessayez dans une minute.', 429);
+  }
   let body, rawText;
   try { rawText = await request.text(); body = JSON.parse(rawText); } catch { return errResp('JSON invalide'); }
 

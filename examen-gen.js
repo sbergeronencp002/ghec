@@ -117,6 +117,11 @@ function exFixedTargetLevels(targetMap) {
   const keys = Object.keys(targetMap);
   if (!keys.length) return [{}];
   const maxTarget = Math.max(...keys.map(k => targetMap[k]));
+  // Cible(s) déjà à 0 (ex. une OI volontairement exclue via une cible fixe à 0, voir
+  // EX_OI_FIXED_TARGET/exOiCap) : rien à dégrader plus bas, la boucle t>=1 ci-dessous ne
+  // s'exécuterait jamais et renverrait [] — ce qui empêchait exGenererExamen de tenter
+  // ne serait-ce qu'une seule fois (0 tentative, message d'échec générique trompeur).
+  if (maxTarget <= 0) return [targetMap];
   const levels = [];
   for (let t = maxTarget; t >= 1; t--) {
     const level = {};
@@ -579,6 +584,54 @@ function exGenererExamen({ questions, periode, aspects, oiList, favoriOi, maxPoi
   // (EX_OI_FIXED_TARGET_BY_PERIODE) — ex. P1 où l'enseignant a choisi une distribution
   // d'OI précise à la place de la variété générale habituelle.
   const baseFixedTarget = { ...EX_OI_FIXED_TARGET, ...(EX_OI_FIXED_TARGET_BY_PERIODE[periode] || {}) };
+
+  // Piège de configuration : une cible fixe à 0 (contrairement à favoriTarget=0, qui
+  // signifie « pas de ciblage particulier » et n'a aucun effet — voir exOiCap) est traitée
+  // comme un plafond dur à 0 pour cette OI. Mais l'exigence de variété générale (plus bas,
+  // exTryBuild) demande que CETTE MÊME OI apparaisse au moins une fois si elle n'est pas
+  // aussi listée dans EX_OI_VARIETY_EXCLUDE_BY_PERIODE — sans ça, aucune solution n'existe
+  // jamais et la génération échoue systématiquement après ~150×niveaux tentatives, avec un
+  // message générique qui ne pointe pas vers la vraie cause.
+  const zeroTargetConflicts = Object.keys(baseFixedTarget).filter(oi =>
+    baseFixedTarget[oi] === 0 && oi !== favoriOi && !varietyExclude.has(oi)
+    && oiList.includes(oi) && pool.some(q => q.oi === oi)
+  );
+  if (zeroTargetConflicts.length) {
+    return {
+      ok: false,
+      reason: 'Configuration incohérente : ' + zeroTargetConflicts.map(oi => `« ${oi} »`).join(', ')
+        + ' — cible fixe à 0 (EX_OI_FIXED_TARGET/EX_OI_FIXED_TARGET_BY_PERIODE) mais pas '
+        + "exclue de l'exigence de variété (EX_OI_VARIETY_EXCLUDE_BY_PERIODE) pour « " + periode + " ». "
+        + 'Ajoutez ' + (zeroTargetConflicts.length > 1 ? 'ces OI' : 'cette OI') + ' à EX_OI_VARIETY_EXCLUDE_BY_PERIODE pour cette société.',
+    };
+  }
+
+  // Court-circuit supplémentaire : un aspect (ou groupe d'aspects fusionnés — voir
+  // exBuildAspectSlots) sans AUCUNE question candidate dans cette société est un problème
+  // structurel qu'aucune dégradation de cible OI/budget ne peut résoudre. Sans ce
+  // court-circuit, exTryBuild (plus bas, boucle "slot sans aucun candidat exact") échoue
+  // silencieusement au même endroit à CHAQUE tentative de CHAQUE niveau (~150×niveaux
+  // tentatives pour rien), et le message final générique ne permet pas de savoir si c'est
+  // un vrai conflit budget/variété ou simplement un aspect jamais couvert par aucune
+  // question saisie — même logique que le court-circuit "société sans aucune question"
+  // ci-dessus, un cran plus précis.
+  const baseSlots = exBuildAspectSlots(pool, aspects, baseAspectRepeat, undefined);
+  const emptySlotAspects = [...new Set(
+    baseSlots
+      .filter(s => !pool.some(q => {
+        const qa = exAspectsOf(q).filter(a => aspects.includes(a));
+        return qa.length && qa.slice().sort().join('|') === s.aspects.slice().sort().join('|');
+      }))
+      .map(s => s.aspects.join(' + '))
+  )];
+  if (emptySlotAspects.length) {
+    return {
+      ok: false,
+      reason: 'Aucune question ne couvre ' + (emptySlotAspects.length > 1 ? 'les aspects suivants' : "l'aspect suivant")
+        + ' pour « ' + periode + ' » : ' + emptySlotAspects.join(', ')
+        + '. Ajoutez au moins une question pour ' + (emptySlotAspects.length > 1 ? 'chacun' : 'cet aspect') + ', ou retirez-le de la sélection.',
+    };
+  }
 
   let attemptsTotal = 0;
   let appliedTarget = 0;

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // ─────────────────────────────────────────────────────────────────────────────
-// Lance les 3 vérifications du dépôt (validateur de données, tests de fumée,
-// scanner anti-XSS) en une seule commande — évite 3 invocations séparées.
-// Sort avec le code du premier échec (mais lance quand même tout, pour avoir
-// le rapport complet en un coup d'œil).
+// Lance les 4 vérifications du dépôt (validateur de données, tests de fumée,
+// scanner anti-XSS, tests du générateur d'examens) en une seule commande —
+// évite 4 invocations séparées. Sort avec le code du premier échec (mais
+// lance quand même tout, pour avoir le rapport complet en un coup d'œil).
 //
 // Usage :  node tools/check-all.mjs
 // ─────────────────────────────────────────────────────────────────────────────
@@ -17,6 +17,7 @@ const CHECKS = [
   ['Validation des données', 'tools/validate-questions.mjs'],
   ['Tests de fumée', 'tools/smoke-test.mjs'],
   ['Scanner anti-XSS', 'tools/check-escaping.mjs'],
+  ['Générateur d\'examens', 'tools/test-examen-gen.mjs'],
 ];
 
 let failed = 0;

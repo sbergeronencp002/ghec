@@ -8,20 +8,23 @@
 // ⚠️ CACHE doit être incrémenté à chaque changement de PRECACHE (cf. CLAUDE.md, table
 // « Cache-bust actuel ») — sinon les navigateurs déjà visités gardent l'ancienne liste
 // indéfiniment (self.skipWaiting()/clients.claim() ne rechargent pas les onglets ouverts).
-const CACHE = 'ghec-v5';
+const CACHE = 'ghec-v6';
 const PRECACHE = [
-  './style.css?v=32',
-  './app.js?v=55',
+  './style.css?v=33',
+  './app.js?v=56',
   './filters.js?v=1',
-  './oi-config.js?v=1',
 ];
 // Précachés (comme repli hors-ligne) mais TOUJOURS revalidés réseau-first dans le
 // handler 'fetch' ci-dessous : leur contenu change sans que leur URL change, un
-// cache-first pur les figerait indéfiniment.
+// cache-first pur les figerait indéfiniment. oi-config.js est publié par la même
+// section Configuration d'admin.html, sans bump de version — même risque de
+// péremption que contexte.js/competences.js (corrigé 2026-08-18, il était resté
+// en cache-first pur depuis la mise en place de la section Configuration).
 const NETWORK_FIRST_PRECACHE = [
   './index.html',
   './contexte.js',
   './competences.js',
+  './oi-config.js?v=1',
 ];
 
 self.addEventListener('install', e => {
@@ -61,6 +64,7 @@ self.addEventListener('fetch', e => {
     || url.pathname.endsWith('/') // navigation vers la racine du site (ex. /ghec/) == index.html
     || url.pathname.endsWith('/contexte.js')
     || url.pathname.endsWith('/competences.js')
+    || url.pathname.endsWith('/oi-config.js')
     || url.pathname.endsWith('/admin.html')
     || url.pathname.endsWith('/documents.html')
     || url.pathname.endsWith('/revision.html')

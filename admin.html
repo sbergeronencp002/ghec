@@ -349,6 +349,7 @@ header a:hover { color: #fff; }
             <button class="btn-danger" id="btn-supprimer" onclick="supprimerQuestion()" disabled>🗑 Supprimer</button>
           </div>
         </div>
+        <div id="edit-selected-orphan-warn" style="display:none;margin-top:.5rem;padding:.6rem .85rem;background:#fbf1dc;border:1px solid #eeddb0;border-radius:6px;font-size:.8rem;color:#8a5b09"></div>
       </div>
     </div>
 
@@ -741,6 +742,13 @@ function autoFromSoustag() {
 
 function autoFromOI() {
   const oi = document.getElementById('q-oi')?.value || '';
+  // OI_AUTO est une constante héritée de hqccssbf, codée en dur (vide pour GHEC
+  // aujourd'hui) — si une future OI GHEC portait par coïncidence le même nom qu'une
+  // clé de OI_AUTO, cet appel écraserait silencieusement le réglage piloté par la
+  // section Configuration (OI_CONFIG[oi].autoReponse, appliqué juste avant par
+  // autoReponseFromOI()). La config gérée dans l'UI a toujours priorité sur ce
+  // fallback codé en dur.
+  if(OI_CONFIG[oi]?.autoReponse) return;
   applyAutoCfg(oi, OI_AUTO[oi]);
 }
 
@@ -951,6 +959,8 @@ function loadQuestion(id) {
     if(btnSuppr) btnSuppr.disabled = true;
     if(btnDupl)  btnDupl.disabled  = true;
     if(selBar)   selBar.style.display = 'none';
+    const warnEl = document.getElementById('edit-selected-orphan-warn');
+    if(warnEl) warnEl.style.display = 'none';
     return;
   }
   const q = currentQuestions.find(x => x.id === id);
@@ -987,6 +997,29 @@ function loadQuestion(id) {
   setSoustag(q.soustag || '');
   const compSel = document.getElementById('q-competence');
   if(compSel) compSel.value = q.competence || '';
+
+  // Avertir si la question référence une société, un aspect, une OI ou une compétence qui
+  // n'existe plus dans la Configuration actuelle (renommée/supprimée depuis) — sans ça, les
+  // cases/select correspondants restent silencieusement décochés/réinitialisés (aucune
+  // checkbox/option ne matche plus), et republier la question pour un correctif sans rapport
+  // perdrait silencieusement cette association.
+  {
+    const missing = [];
+    const checkedPeriodes = new Set([...document.querySelectorAll('.q-periode-cb:checked')].map(cb => cb.value));
+    (q.periodes||[]).forEach(p => { if(!checkedPeriodes.has(p)) missing.push(`société « ${p} »`); });
+    const checkedAspects = new Set([...document.querySelectorAll('#aspects-list input[type=checkbox]:checked')].map(cb => cb.value));
+    (q.aspects||[]).forEach(a => { if(!checkedAspects.has(a.aspect)) missing.push(`aspect « ${a.aspect} »`); });
+    if(document.getElementById('q-oi').value !== q.oi) missing.push(`OI « ${q.oi} »`);
+    if(q.competence && compSel && compSel.value !== q.competence) missing.push(`compétence « ${q.competence} »`);
+    const warnEl = document.getElementById('edit-selected-orphan-warn');
+    if(missing.length) {
+      warnEl.textContent = `⚠ Cette question référence ${missing.join(', ')} — absent(e) de la Configuration actuelle. Republier sans corriger perdrait silencieusement cette association.`;
+      warnEl.style.display = '';
+    } else {
+      warnEl.style.display = 'none';
+    }
+  }
+
   document.getElementById('q-enonce').value = q.enonce || '';
 
   document.getElementById('docs-list').innerHTML = '';
@@ -1106,7 +1139,22 @@ function loadQuestion(id) {
     } else {
       matchIdx = presets.findIndex(p => !p.variante && p.niveaux?.[0]?.desc === r.niveaux?.[0]?.desc);
     }
-    if(matchIdx !== -1) document.getElementById('reg-preset').value = String(matchIdx);
+    if(matchIdx !== -1) {
+      document.getElementById('reg-preset').value = String(matchIdx);
+    } else if(presets.length > 0) {
+      // La réglette existante ne correspond à aucun preset actuel (personnalisée, ou
+      // orpheline d'un preset renommé/supprimé depuis) : sans option dédiée, la règle de
+      // validation « Réglette non sélectionnée » forcerait à choisir un preset pour publier
+      // — ce qui écraserait définitivement la réglette existante pour un simple correctif
+      // sans rapport (ex. une faute dans l'énoncé). Cette option sentinelle satisfait la
+      // validation tout en laissant buildReglette() la traiter comme "aucun preset choisi"
+      // (parseInt('keep') est NaN) et donc conserver la réglette telle quelle.
+      const selEl = document.getElementById('reg-preset');
+      if(!selEl.querySelector('option[value="keep"]')) {
+        selEl.insertAdjacentHTML('afterbegin', '<option value="keep">— Conserver la réglette actuelle (personnalisée) —</option>');
+      }
+      selEl.value = 'keep';
+    }
   }
 
   if(q.guide && typeof q.guide==='string') {
@@ -1238,6 +1286,11 @@ async function supprimerQuestion() {
   if(!editingId) return;
   if(!confirm(`Supprimer ${editingId} ? (les autres questions conservent leur identifiant)`)) return;
 
+  if(await isAdminStale()) {
+    showStaleBanner();
+    if(!confirm('⚠️ Cette page a été mise à jour depuis son chargement.\n\nSupprimer avec une version obsolète risque de republier un état périmé de questions.js.\n\nRecommandé : annuler et recharger (F5).\n\nSupprimer quand même ?')) return;
+  }
+
   const btn = document.getElementById('btn-supprimer');
   setFormLocked(true, btn);
   btn.disabled = true; btn.textContent = '⏳ Suppression…';
@@ -1326,6 +1379,10 @@ async function uploadImage() {
   if(!token) { toast('Saisis ton token GitHub.', 'err'); return; }
   const file = document.getElementById('upload-file').files[0];
   if(!file) { toast('Sélectionne un fichier image.', 'err'); return; }
+  if(await isAdminStale()) {
+    showStaleBanner();
+    if(!confirm('⚠️ Cette page a été mise à jour depuis son chargement.\n\nRecommandé : annuler et recharger (F5).\n\nTéléverser quand même ?')) return;
+  }
   // Nom de base SANS extension : l'extension finale dépend du format choisi plus bas.
   const baseName = (document.getElementById('upload-name').value.trim() || file.name)
     .replace(/\.(png|jpe?g|webp|gif)$/i, '')
@@ -1423,7 +1480,8 @@ async function uploadImage() {
         const wData = await wResp.json().catch(() => ({ ok:false, error: wResp.status }));
         if(!wData.ok) throw new Error(wData.error || wResp.status);
         uploadedViaWorker = true;
-      } catch(_) {
+      } catch(we) {
+        if(we.message !== 'Failed to fetch') throw we;
         statusEl.textContent = '⏳ Worker indisponible, repli sur GitHub direct…';
       }
     }
@@ -1551,7 +1609,7 @@ function populateCompetenceSelect() {
 // Peuple les <select> niveau (formulaire + filtre de recherche) depuis les clés de
 // PERIODES_PAR_NIVEAU (contexte.js) — générique, aucun niveau codé en dur.
 function populateNiveauSelects() {
-  const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort();
+  const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b));
   const q = document.getElementById('q-niveau');
   if(q) { q.innerHTML = niveaux.map(n => `<option value="${escHtml(n)}">${escHtml(n)}</option>`).join(''); }
   const f = document.getElementById('edit-filter-niveau');
@@ -1841,7 +1899,7 @@ function cfgAddNiveau(num, periodes) {
 
 function cfgRenderNiveauxList() {
   document.getElementById('cfg-niveaux-list').innerHTML = '';
-  Object.keys(PERIODES_PAR_NIVEAU).sort().forEach(num => {
+  Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)).forEach(num => {
     const periodes = {};
     (PERIODES_PAR_NIVEAU[num] || []).forEach(p => { periodes[p] = ASPECTS_PAR_PERIODE[p] || []; });
     cfgAddNiveau(num, periodes);
@@ -1876,6 +1934,22 @@ async function cfgPublishContexte() {
     if(new Set(periodes).size !== periodes.length) {
       status.textContent = `✗ Deux sociétés du niveau ${niv} portent le même nom.`; status.style.color = 'var(--red)';
       return;
+    }
+  }
+  // ASPECTS_PAR_PERIODE est un objet global à plat, indexé par nom de société et
+  // PARTAGÉ entre tous les niveaux — une même société publiée sous deux niveaux
+  // différents écraserait silencieusement ses aspects (cfgCollectContexte fait
+  // aspectsParPeriode[nom] = ...) sans que le garde-fou ci-dessus (limité à un
+  // seul niveau) ne le détecte.
+  const niveauParSociete = {};
+  for(const niv in periodesParNiveau) {
+    for(const nom of periodesParNiveau[niv]) {
+      if(niveauParSociete[nom] !== undefined && niveauParSociete[nom] !== niv) {
+        status.textContent = `✗ La société « ${nom} » apparaît dans les niveaux ${niveauParSociete[nom]} et ${niv} — leurs aspects s'écraseraient l'un l'autre. Renommez l'une des deux.`;
+        status.style.color = 'var(--red)';
+        return;
+      }
+      niveauParSociete[nom] = niv;
     }
   }
   status.textContent = '⏳ Publication…'; status.style.color = '';
@@ -3020,6 +3094,8 @@ function resetForm(keepId=false) {
   document.getElementById('guide-type').value = 'grille';
   docCount = 0; colCount = 0;
   updateGuideUI();
+  const warnEl = document.getElementById('edit-selected-orphan-warn');
+  if(warnEl) warnEl.style.display = 'none';
 }
 
 // ── TABLEAU DE BORD ───────────────────────────────────────────────────
@@ -3044,7 +3120,7 @@ function renderDashboard() {
   // générique pour n'importe quel nombre/nom de niveaux (aucune hypothèse HQC-spécifique
   // sur le nombre total de périodes ni sur leur répartition par niveau).
   const DASH_NIV_COLORS = ['#1B3B6F', '#6B3FA0', '#3A8050', '#B03A3A', '#8A3A6A', '#2A8A8A', '#607880', '#C06030'];
-  const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort().map((num, i) => ({
+  const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)).map((num, i) => ({
     label: 'Niveau ' + num, num, color: DASH_NIV_COLORS[i % DASH_NIV_COLORS.length]
   }));
 
@@ -3231,7 +3307,6 @@ function refreshLivePreview() {
       const dtype = docDiv.dataset.type;
       if (dtype === 'textes' || dtype === 'textes-image') {
         const cols = docDiv.querySelectorAll('[id$="-texte"],[id$="-ref"]');
-        docDiv.querySelectorAll('[data-col]').length;
         // Collect col data
         const colDivs = docDiv.querySelectorAll('.col-block,[data-col]');
         if (colDivs.length) {

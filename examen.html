@@ -146,7 +146,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 <script src="oi-config.js?v=1"></script>
 <script src="competences.js"></script>
 <script src="contexte.js"></script>
-<script src="examen-gen.js?v=2"></script>
+<script src="examen-gen.js?v=3"></script>
 <script>
 'use strict';
 
@@ -194,19 +194,22 @@ let EX_FAVORI_TARGET_APPLIED = 0;
 let EX_FIXED_TARGETS_APPLIED = {};
 const EX_MAX_POINTS = 25;
 
-const PERIODES_ALL = Object.values(PERIODES_PAR_NIVEAU).flat();
-
-(function initPeriodeSelect() {
+// Reconstruit le <select> Société depuis PERIODES_PAR_NIVEAU — appelé au chargement, et de
+// nouveau par loadConfigJs() si une relecture API renvoie un contenu plus frais. Pas de
+// présélection par nom : les sociétés hqccssbf ("P5"…) n'existent pas dans GHEC (noms comme
+// "Les Iroquoiens vers 1500") — le navigateur sélectionne la première option par défaut.
+function initPeriodeSelect() {
   const sel = document.getElementById('ex-periode');
-  // Pas de présélection par nom : les sociétés hqccssbf ("P5"…) n'existent pas dans GHEC
-  // (noms comme "Les Iroquoiens vers 1500") — le navigateur sélectionne la première option
-  // par défaut, ce qui était déjà le comportement observé tant que ce test ne matchait rien.
-  PERIODES_ALL.forEach(p => {
+  const prev = sel.value;
+  sel.innerHTML = '';
+  Object.values(PERIODES_PAR_NIVEAU).flat().forEach(p => {
     const opt = document.createElement('option');
     opt.value = p; opt.textContent = p;
     sel.appendChild(opt);
   });
-})();
+  if([...sel.options].some(o => o.value === prev)) sel.value = prev;
+}
+initPeriodeSelect();
 
 const EX_REPO = 'sbergeronencp002/ghec';
 const EX_API  = 'https://api.github.com/repos/' + EX_REPO + '/contents/';
@@ -265,17 +268,64 @@ function updateFavoriOptions() {
 
 // Peuple le menu « OI à privilégier » depuis OI_LIST (oi-config.js) — toute OI configurée
 // peut être choisie comme favorite ; updateFavoriOptions() masque ensuite celles absentes
-// de la période sélectionnée.
-(function populateFavoriSelect() {
+// de la période sélectionnée. Appelé au chargement, et de nouveau par loadConfigJs().
+function populateFavoriSelect() {
   const sel = document.getElementById('ex-favori');
+  const prev = sel.value;
+  sel.innerHTML = '<option value="">Aucune préférence</option>';
   (typeof OI_LIST !== 'undefined' ? OI_LIST : []).forEach(oi => {
     const opt = document.createElement('option');
     opt.value = oi;
     opt.textContent = oi;
     sel.appendChild(opt);
   });
-})();
+  if([...sel.options].some(o => o.value === prev)) sel.value = prev;
+}
+populateFavoriSelect();
 
+// oi-config.js/competences.js/contexte.js sont chargés en <script src> statique sans
+// cache-bust (contrairement à questions.js, lu via l'API GitHub plus haut) — après une
+// publication de la section Configuration d'admin.html, cette page pouvait donc continuer
+// à proposer une liste de sociétés/OI périmée tant qu'elle n'était pas rechargée. Même
+// parade que loadConfigJs() dans admin.html : relecture anonyme (dépôt public, pas besoin
+// de token) via l'API GitHub Contents au chargement, échec silencieux (la page reste
+// utilisable avec les données du <script src> déjà peintes).
+async function _fetchFileRawAnon(path) {
+  const r = await fetch(EX_API + path + '?ref=main&t=' + Date.now(), { cache: 'no-store' });
+  if (!r.ok) throw new Error('Impossible de lire ' + path + ' : ' + r.status);
+  const data = await r.json();
+  const rawBytes = Uint8Array.from(atob(data.content.replace(/\n/g,'')), c => c.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(rawBytes);
+}
+async function loadConfigJs() {
+  try {
+    const [oiSrc, ctxSrc, compSrc] = await Promise.all([
+      _fetchFileRawAnon('oi-config.js'),
+      _fetchFileRawAnon('contexte.js'),
+      _fetchFileRawAnon('competences.js')
+    ]);
+    const fresh = new Function(
+      oiSrc + '\n' + ctxSrc + '\n' + compSrc +
+      '\n return { OI_CONFIG, OI_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, COMPETENCE_LIST };'
+    )();
+    Object.keys(OI_CONFIG).forEach(k => delete OI_CONFIG[k]);
+    Object.assign(OI_CONFIG, fresh.OI_CONFIG);
+    OI_LIST.length = 0; OI_LIST.push(...fresh.OI_LIST);
+    Object.keys(PERIODES_PAR_NIVEAU).forEach(k => delete PERIODES_PAR_NIVEAU[k]);
+    Object.assign(PERIODES_PAR_NIVEAU, fresh.PERIODES_PAR_NIVEAU);
+    Object.keys(ASPECTS_PAR_PERIODE).forEach(k => delete ASPECTS_PAR_PERIODE[k]);
+    Object.assign(ASPECTS_PAR_PERIODE, fresh.ASPECTS_PAR_PERIODE);
+    COMPETENCE_LIST.length = 0; COMPETENCE_LIST.push(...fresh.COMPETENCE_LIST);
+
+    initPeriodeSelect();
+    populateFavoriSelect();
+    updateFavoriOptions();
+  } catch(e) {
+    console.warn('Rechargement de la configuration (oi-config/contexte/competences) échoué :', e.message);
+  }
+}
+
+loadConfigJs();
 loadQuestions().then(() => {
   const btn = document.getElementById('btn-generer');
   btn.disabled = false;

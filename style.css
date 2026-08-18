@@ -117,6 +117,10 @@ select {
   cursor: pointer;
 }
 select:focus { outline: none; border-color: var(--ink-2); }
+/* Focus clavier visible (accessibilité) — même convention que .q-tile:focus-visible :
+   :focus seul ne suffit pas (déclenché aussi au clic souris, sans intérêt visuel ici et
+   supprimé ci-dessus), il faut un anneau dédié pour la navigation clavier. */
+select:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
 
 .sidebar input[type=text] {
   width: 100%;
@@ -129,6 +133,7 @@ select:focus { outline: none; border-color: var(--ink-2); }
   color: var(--ink);
 }
 .sidebar input[type=text]:focus { outline: none; border-color: var(--ink-2); }
+.sidebar input[type=text]:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
 .sidebar input[type=text]::placeholder { color: var(--ink-3); }
 
 .reset-btn {
@@ -822,4 +827,17 @@ select:focus { outline: none; border-color: var(--ink-2); }
 }
 .doc-zoom-btn:hover { background: var(--paper-2); color: var(--ink); }
 .doc-img-tile { cursor: zoom-in; }
+
+/* Accessibilité : neutralise toutes les transitions/animations (survol des tuiles,
+   ouverture du modal, panier, etc.) pour les utilisateurs ayant activé "Réduire les
+   animations" dans leur système — plutôt que de traquer chaque règle `transition`
+   individuellement, une seule règle globale couvre tout le fichier, présent et futur. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 

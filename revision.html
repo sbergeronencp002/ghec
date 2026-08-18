@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap">
-<link rel="stylesheet" href="style.css?v=32">
+<link rel="stylesheet" href="style.css?v=33">
 <style>
 header nav { display:flex; align-items:center; gap:.25rem; margin-left:auto; }
 header nav a { padding:.45rem .9rem; border-radius:6px; color:rgba(255,255,255,.75); text-decoration:none; font-size:.8rem; font-weight:500; transition:background .15s,color .15s; white-space:nowrap; cursor:pointer; }
@@ -291,10 +291,11 @@ async function rvFetchStableQuestionsJs(headers) {
   return prev;
 }
 
-// Lecture fraîche (stabilisée) de questions.js → mutation ciblée → réécriture (PUT), 1 retry sur conflit SHA
+// Lecture fraîche (stabilisée) de questions.js → mutation ciblée → réécriture (PUT), 2 retries
+// sur conflit SHA (même budget que documents.html/applyQuestionsEdit).
 async function rvApplyQuestionsEdit(mutate, commitMsg) {
   const token = rvRequireToken();
-  for(let attempt = 0; attempt < 2; attempt++) {
+  for(let attempt = 0; attempt < 3; attempt++) {
     const { content, sha } = await rvFetchStableQuestionsJs({Authorization: 'token ' + token});
     let parsed;
     try {
@@ -323,7 +324,7 @@ async function rvApplyQuestionsEdit(mutate, commitMsg) {
       rvConfirmedIds = new Set(parsed.QUESTIONS.map(q => q.id));
       return true;
     }
-    if(rp.status === 409 && attempt === 0) continue;
+    if(rp.status === 409 && attempt < 2) continue;
     throw new Error('Échec écriture questions.js (' + rp.status + ')');
   }
   throw new Error('Conflit persistant — réessayez.');
@@ -342,6 +343,16 @@ let _rvEditGen = 0;
 function rvBeginEdit(key, isDirty, cancelFn) {
   if(_rvActiveEdit && _rvActiveEdit.key !== key) {
     alert('Enregistrez ou annulez l\'édition en cours avant d\'en commencer une autre.');
+    return false;
+  }
+  // Même champ déjà en cours d'édition (ex. re-clic sur « ✏ Modifier », resté visible et
+  // cliquable pendant toute la session d'édition) : ne PAS régénérer un textarea vierge,
+  // ça effacerait silencieusement tout texte déjà tapé. On ignore simplement le re-clic —
+  // l'édition en cours continue telle quelle.
+  if(_rvActiveEdit && _rvActiveEdit.key === key) {
+    const ta = document.getElementById('rv-enonce-textarea') || document.getElementById('rv-guide-textarea')
+      || document.getElementById('rvd-texte') || document.getElementById('rvd-titre');
+    if(ta) ta.focus();
     return false;
   }
   _rvEditGen++;
@@ -395,7 +406,7 @@ function rvPopulateFilters() {
   const periodesPresentes = new Set(QUESTIONS.flatMap(q => q.periodes||[]));
   const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
 
-  fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort(), 'Tous');
+  fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), 'Tous');
   fillSelect('f-competence', allCompetences, 'Toutes');
   fillSelect('f-periode', periodes, 'Toutes');
   fillAspectSelect('f-aspect', rvAspects, periodeOrder);
@@ -713,7 +724,7 @@ function rvBuildCardHtml(q) {
   const st = rvOiStyle(q.oi);
   const aspects = (q.aspects||[]).map(a => a.aspect).join(' · ');
   let html = '<div class="rv-topline">';
-  html += `<span class="q-oi-badge" style="color:${st.color};background:${st.bg}">${rvEscLine(q.oi)}</span>`;
+  html += `<span class="q-oi-badge" style="color:${rvEscAttr(st.color)};background:${rvEscAttr(st.bg)}">${rvEscLine(q.oi)}</span>`;
   html += `<span class="rv-id">${rvEscLine(q.id)} · ${rvEscLine((q.periodes||[]).join(' + '))}</span>`;
   html += '</div>';
   if(q.competence) html += `<div class="rv-aspect" style="font-size:.78rem">${rvEscLine(q.competence)}</div>`;

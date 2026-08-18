@@ -1280,9 +1280,9 @@ const QUESTIONS = [
  enonce: "Nomme la croyance spirituelle pratiquée par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 2},
+ reponse: {type: "lignes", nombre: 1},
  guide: "L'animisme.",
- updatedAt: "2026-08-16T18:40:39.387Z"
+ updatedAt: "2026-08-18T02:12:05.208Z"
 },
 {
  id: "Q74",

@@ -109,7 +109,8 @@ const REGLETTES = {
 "Q108": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q109": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q110": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q111": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
+"Q111": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q112": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -1867,5 +1868,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire des Incas possède un relief montagneux et des ressources naturelles utilisées pour pratiquer l’agriculture et l’élevage.",
  updatedAt: "2026-08-19T13:49:16.426Z"
+},
+{
+ id: "Q112",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présentent les habitations des Iroquoiens et des Incas vers 1500. Associe chaque document à la société correspondante.",
+ aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_maisons_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
+ guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["B", "A"]]},
+ updatedAt: "2026-08-19T14:37:34.581Z"
 }
 ]

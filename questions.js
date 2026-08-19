@@ -1924,15 +1924,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
+ periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent la façon dont sont choisis les dirigeants chez les Iroquoiens et les Incas vers 1500. Associe chaque document à la société correspondante.",
+ enonce: "Les documents A et B présentent la façon dont sont choisis les dirigeants chez les Iroquoiens et les Incas vers 1500. Associe chaque document au mode de désignation correspondant.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_pouvoir_hereditaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
- guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-08-19T14:47:09.572Z"
+ reponse: {type: "mettre-en-relation", elements: ["Choisi par hérédité", "Choisi par les aînées"]},
+ guide: {type: "grille", entetes: ["Choisi par hérédité", "Choisi par les aînées"], rangees: [["B", "A"]]},
+ updatedAt: "2026-08-19T15:08:02.347Z"
 },
 {
  id: "Q116",

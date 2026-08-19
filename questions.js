@@ -186,7 +186,9 @@ const IMAGE_DB = {
 "incas_pouvoir_hereditaire.jpg": {src: "images/incas_pouvoir_hereditaire.jpg", w: 1200, h: 900},
 "incas_pouvoir_empereur.jpg": {src: "images/incas_pouvoir_empereur.jpg", w: 1200, h: 800},
 "incas_prise_decision.jpg": {src: "images/incas_prise_decision.jpg", w: 1200, h: 801},
-"iroquoiens_conseil_3.jpg": {src: "images/iroquoiens_conseil_3.jpg"}
+"iroquoiens_conseil_3.jpg": {src: "images/iroquoiens_conseil_3.jpg"},
+"incas_organisation_politique.jpg": {src: "images/incas_organisation_politique.jpg", w: 1200, h: 900},
+"iroquoiens_organisation_politique.jpg": {src: "images/iroquoiens_organisation_politique.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -1798,9 +1800,9 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre l’organisation politique des Iroquoiens et celle des Incas vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_prise_decision.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_organisation_politique.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_organisation_politique.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Chez les Iroquoiens, le pouvoir est partagé, tandis que chez les Incas, il est concentré entre les mains de l’empereur.",
- updatedAt: "2026-08-19T13:21:44.926Z"
+ updatedAt: "2026-08-19T13:40:07.713Z"
 }
 ]

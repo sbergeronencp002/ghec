@@ -104,7 +104,8 @@ const REGLETTES = {
 "Q103": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q104": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q105": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q106": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
+"Q106": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q107": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
 }
 
 const IMAGE_DB = {
@@ -184,7 +185,8 @@ const IMAGE_DB = {
 "territoire_incas_3.png": {src: "images/territoire_incas_3.png"},
 "incas_pouvoir_hereditaire.jpg": {src: "images/incas_pouvoir_hereditaire.jpg", w: 1200, h: 900},
 "incas_pouvoir_empereur.jpg": {src: "images/incas_pouvoir_empereur.jpg", w: 1200, h: 800},
-"incas_prise_decision.jpg": {src: "images/incas_prise_decision.jpg", w: 1200, h: 801}
+"incas_prise_decision.jpg": {src: "images/incas_prise_decision.jpg", w: 1200, h: 801},
+"iroquoiens_conseil_3.jpg": {src: "images/iroquoiens_conseil_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -1785,5 +1787,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Chez les Iroquoiens, les décisions sont prises en conseil, tandis que chez les Incas, l’empereur détient le pouvoir.",
  updatedAt: "2026-08-19T13:17:09.067Z"
+},
+{
+ id: "Q107",
+ niveau: 3,
+ oi: "Établir des comparaisons",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
+ points: 2,
+ soustag: "Établir une différence",
+ enonce: "Nomme une différence entre l’organisation politique des Iroquoiens et celle des Incas vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_prise_decision.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Chez les Iroquoiens, le pouvoir est partagé, tandis que chez les Incas, il est concentré entre les mains de l’empereur.",
+ updatedAt: "2026-08-19T13:21:44.926Z"
 }
 ]

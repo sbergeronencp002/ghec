@@ -1930,6 +1930,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_pouvoir_hereditaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
  guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-08-19T14:43:40.767Z"
+ updatedAt: "2026-08-19T14:47:09.572Z"
 }
 ]

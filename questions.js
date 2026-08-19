@@ -1767,6 +1767,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_pouvoir_empereur.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les chefs iroquoiens ont un pouvoir limité, tandis que l’empereur inca possède un pouvoir illimité.",
- updatedAt: "2026-08-19T13:14:08.950Z"
+ updatedAt: "2026-08-19T13:14:42.040Z"
 }
 ]

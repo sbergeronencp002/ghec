@@ -1799,7 +1799,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre l’organisation politique des Iroquoiens et celle des Incas vers 1500.",
@@ -1807,7 +1807,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_organisation_politique.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_organisation_politique.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Chez les Iroquoiens, le pouvoir est partagé, tandis que chez les Incas, il est concentré entre les mains de l’empereur.",
- updatedAt: "2026-08-19T13:40:07.713Z"
+ updatedAt: "2026-08-19T14:34:27.256Z"
 },
 {
  id: "Q108",

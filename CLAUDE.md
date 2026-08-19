@@ -143,9 +143,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=57`, `style.css?v=33`, `filters.js?v=2`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=57`, `style.css?v=33`, `filters.js?v=4`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v7'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v9'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -158,7 +158,14 @@ manquants, `titreWeb` incohérent, tri numérique des niveaux, nettoyage de code
 `examen-gen.js` bumpé séparément (`?v=3`, pas dans le service worker) pour le correctif
 du piège `EX_OI_FIXED_TARGET`/`exFixedTargetLevels` et le message d'erreur d'aspect sans
 candidat ; puis bump suivant (`app.js?v=57`, `filters.js?v=2`, `CACHE='ghec-v7'`) pour le
-filtre Société à combinaisons de comparaison (voir section suivante).
+filtre Société à combinaisons de comparaison (voir section suivante) ; puis bump
+2026-08-19 (`filters.js?v=3`→`4`, `CACHE='ghec-v8'`→`'ghec-v9'`) pour deux correctifs sur
+ce même filtre : sélectionner une société simple exclut désormais strictement les
+questions de comparaison (`matchesPeriodeFilter` exigeait auparavant seulement que la
+société soit présente via `.includes()`, comme pour Aspect — corrigé en
+`per.length === 1 && per[0] === periodeValue`), et les combinaisons de comparaison sont
+maintenant des `<option>` à plat dans le `<select>` Société plutôt que regroupées dans un
+`<optgroup label="Comparaisons">` (celui-ci indentait visuellement ces options).
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de

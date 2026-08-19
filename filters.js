@@ -36,26 +36,22 @@ function computePeriodeCombos(questions, allowedPeriodes) {
   return [...seen.values()].sort((a, b) => a.label.localeCompare(b.label, 'fr'));
 }
 
-// Peuple le <select> Société : sociétés simples en options directes, combinaisons de
-// comparaison (voir computePeriodeCombos) regroupées dans un <optgroup> séparé — même
-// convention visuelle que fillAspectSelect. Valeur d'une combinaison : "combo:" + JSON de
-// la paire (voir matchesPeriodeFilter) — un préfixe explicite, jamais ambigu avec un nom de
+// Peuple le <select> Société : sociétés simples et combinaisons de comparaison (voir
+// computePeriodeCombos) toutes en options directes à plat, sans regroupement visuel
+// (pas d'<optgroup> — celui-ci indenterait les combinaisons et afficherait un label
+// « Comparaisons » non désiré). Valeur d'une combinaison : "combo:" + JSON de la paire
+// (voir matchesPeriodeFilter) — un préfixe explicite, jamais ambigu avec un nom de
 // société réel.
 function fillPeriodeSelect(id, periodes, combos, placeholder) {
   const el = document.getElementById(id);
   el.innerHTML = `<option value="">${placeholder}</option>`;
   periodes.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; el.appendChild(o); });
-  if (combos.length) {
-    const og = document.createElement('optgroup');
-    og.label = 'Comparaisons';
-    combos.forEach(c => {
-      const o = document.createElement('option');
-      o.value = 'combo:' + JSON.stringify(c.ids);
-      o.textContent = c.label;
-      og.appendChild(o);
-    });
-    el.appendChild(og);
-  }
+  combos.forEach(c => {
+    const o = document.createElement('option');
+    o.value = 'combo:' + JSON.stringify(c.ids);
+    o.textContent = c.label;
+    el.appendChild(o);
+  });
 }
 
 // Teste si une question correspond à la valeur courante du <select> Société — soit une

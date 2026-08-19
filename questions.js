@@ -1980,4 +1980,3 @@ const QUESTIONS = [
  guide: "Les Iroquoiens occupent un territoire plutôt plat, avec des plaines et des cours d’eau, tandis que les Incas vivent dans un territoire montagneux.",
  updatedAt: "2026-08-19T15:11:36.017Z"
 }
-]PLACEHOLDER_WILL_BE_REPLACED

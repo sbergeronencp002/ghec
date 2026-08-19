@@ -1743,8 +1743,8 @@ const QUESTIONS = [
  id: "Q104",
  niveau: 3,
  oi: "Établir des comparaisons",
- competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500"],
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre la façon de choisir les dirigeants chez les Iroquoiens et chez les Incas vers 1500.",
@@ -1752,7 +1752,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_hereditaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Chez les Iroquoiens, les chefs sont choisis par les femmes aînées, tandis que chez les Incas, le pouvoir est héréditaire.",
- updatedAt: "2026-08-19T13:12:12.942Z"
+ updatedAt: "2026-08-19T13:14:30.602Z"
 },
 {
  id: "Q105",

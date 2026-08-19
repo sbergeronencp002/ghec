@@ -159,7 +159,7 @@ function populateFilters() {
   const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), "Tous");
-  fillSelect('f-periode', periodes, "Toutes");
+  fillPeriodeSelect('f-periode', periodes, computePeriodeCombos(QUESTIONS, periodeOrder), "Toutes");
   fillAspectSelect('f-aspect', aspects, periodeOrder);
   fillSelect('f-oi', allOis, "Toutes");
   fillSelect('f-competence', allCompetences, "Toutes");
@@ -169,12 +169,12 @@ function populateFilters() {
 const FILTER_IDS = { niveau: 'f-niveau', periode: 'f-periode', aspect: 'f-aspect' };
 
 function onPeriodeChange() {
-  cascadePeriodeChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU);
+  cascadePeriodeChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
   applyFilters();
 }
 
 function onNiveauChange() {
-  cascadeNiveauChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU);
+  cascadeNiveauChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
   applyFilters();
 }
 
@@ -201,7 +201,7 @@ function applyFilters() {
   const competenceSet = new Set();
   for(const q of QUESTIONS) {
     const niveauOk  = !niveau  || String(q.niveau) === niveau;
-    const periodeOk = !periode || (q.periodes||[]).includes(periode);
+    const periodeOk = matchesPeriodeFilter(q, periode);
     const aspectOk  = !aspect  || (q.aspects||[]).some(a=>a.aspect===aspect);
     if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(q.competence) competenceSet.add(q.competence); }
     if(!niveauOk || !periodeOk || !aspectOk) continue;

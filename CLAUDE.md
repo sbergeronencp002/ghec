@@ -21,10 +21,19 @@ chaîne seule — contrairement à hqccssbf où `periode` était singulier). 1 s
 une question « simple » (ex. compétence « Lire l'organisation du territoire ») ; 2 pour
 une question de comparaison (ex. « Interpréter le changement » : même société à deux
 époques ; « S'ouvrir à la diversité » : deux sociétés différentes à la même époque).
-Toute la présentation reste néanmoins des **filtres à choix unique** (`<select>` Société
-sur index.html/revision.html/examen.html) : une question de comparaison apparaît sous
-CHACUNE de ses 2 sociétés dans ces filtres (logique `.includes()`, comme le filtre
-Aspect le fait déjà avec `q.aspects`). Ne jamais réintroduire un champ `periode` singulier
+Le filtre Société d'index.html/revision.html reste un `<select>` à choix unique, mais
+depuis le 2026-08-18 sa liste d'options combine deux catégories (voir `filters.js` —
+`computePeriodeCombos`/`fillPeriodeSelect`/`matchesPeriodeFilter`, partagé par les deux
+pages) : les sociétés simples (comme avant — une question de comparaison y apparaît sous
+CHACUNE de ses 2 sociétés, logique `.includes()`, comme le filtre Aspect le fait déjà avec
+`q.aspects`), PLUS un groupe « Comparaisons » listant chaque paire de sociétés qui
+apparaît réellement ensemble dans au moins une question (jamais une paire théorique sans
+question) — sélectionner une combinaison affiche UNIQUEMENT les questions de comparaison
+entre CES deux sociétés précises (`q.periodes` égal exactement à la paire), à l'exclusion
+des questions à société unique. `examen.html` n'a pas cette liste combinée : son sélecteur
+Société sert à choisir LA société pour laquelle générer un examen, un usage différent
+d'un filtre de navigation — resté un simple choix unique de société parmi
+`PERIODES_PAR_NIVEAU`. Ne jamais réintroduire un champ `periode` singulier
 — toute la chaîne (admin.html, app.js, revision.html, documents.html, examen.html/
 examen-gen.js, worker/index.js, tools/apply-mutation.mjs, tools/validate-questions.mjs,
 questions-io.js) a été adaptée pour lire/écrire `periodes` (tableau).
@@ -129,9 +138,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=56`, `style.css?v=33`, `filters.js?v=1`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=57`, `style.css?v=33`, `filters.js?v=2`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v6'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v7'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -143,7 +152,8 @@ manquants, `titreWeb` incohérent, tri numérique des niveaux, nettoyage de code
 `style.css` (focus clavier visible sur les filtres, `prefers-reduced-motion`) modifiés ;
 `examen-gen.js` bumpé séparément (`?v=3`, pas dans le service worker) pour le correctif
 du piège `EX_OI_FIXED_TARGET`/`exFixedTargetLevels` et le message d'erreur d'aspect sans
-candidat.
+candidat ; puis bump suivant (`app.js?v=57`, `filters.js?v=2`, `CACHE='ghec-v7'`) pour le
+filtre Société à combinaisons de comparaison (voir section suivante).
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de

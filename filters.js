@@ -17,6 +17,63 @@ function fillSelect(id, vals, placeholder) {
   vals.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; el.appendChild(o); });
 }
 
+// Calcule les combinaisons de 2 sociétés qui apparaissent ENSEMBLE dans au moins une
+// question de comparaison (q.periodes de longueur 2) parmi `allowedPeriodes` (le niveau
+// courant, ou periodeOrder si aucun niveau choisi) — jamais une combinaison sans question
+// réelle. `allowedPeriodes` fixe aussi l'ordre canonique d'affichage de la paire (cohérent
+// quel que soit l'ordre saisi dans le formulaire de la question).
+function computePeriodeCombos(questions, allowedPeriodes) {
+  const allowedSet = new Set(allowedPeriodes);
+  const seen = new Map();
+  questions.forEach(q => {
+    const per = q.periodes || [];
+    if (per.length !== 2 || !allowedSet.has(per[0]) || !allowedSet.has(per[1])) return;
+    const ids = allowedPeriodes.filter(p => per.includes(p));
+    if (ids.length !== 2) return;
+    const key = ids.join('|||');
+    if (!seen.has(key)) seen.set(key, { ids, label: ids.join(' + ') });
+  });
+  return [...seen.values()].sort((a, b) => a.label.localeCompare(b.label, 'fr'));
+}
+
+// Peuple le <select> Société : sociétés simples en options directes, combinaisons de
+// comparaison (voir computePeriodeCombos) regroupées dans un <optgroup> séparé — même
+// convention visuelle que fillAspectSelect. Valeur d'une combinaison : "combo:" + JSON de
+// la paire (voir matchesPeriodeFilter) — un préfixe explicite, jamais ambigu avec un nom de
+// société réel.
+function fillPeriodeSelect(id, periodes, combos, placeholder) {
+  const el = document.getElementById(id);
+  el.innerHTML = `<option value="">${placeholder}</option>`;
+  periodes.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; el.appendChild(o); });
+  if (combos.length) {
+    const og = document.createElement('optgroup');
+    og.label = 'Comparaisons';
+    combos.forEach(c => {
+      const o = document.createElement('option');
+      o.value = 'combo:' + JSON.stringify(c.ids);
+      o.textContent = c.label;
+      og.appendChild(o);
+    });
+    el.appendChild(og);
+  }
+}
+
+// Teste si une question correspond à la valeur courante du <select> Société — soit une
+// société simple (present dans q.periodes), soit une combinaison "combo:[...]" (voir
+// fillPeriodeSelect) : dans ce cas q.periodes doit être EXACTEMENT cette paire, pas
+// seulement la contenir — une combinaison affiche uniquement les questions de comparaison
+// entre ces 2 sociétés précises, jamais les questions à une seule société parmi les deux.
+function matchesPeriodeFilter(q, periodeValue) {
+  if (!periodeValue) return true;
+  const per = q.periodes || [];
+  if (periodeValue.startsWith('combo:')) {
+    let pair;
+    try { pair = JSON.parse(periodeValue.slice(6)); } catch (e) { return false; }
+    return per.length === pair.length && pair.every(p => per.includes(p));
+  }
+  return per.includes(periodeValue);
+}
+
 function fillAspectSelect(id, aspects, periodeOrder) {
   const el = document.getElementById(id);
   el.innerHTML = '<option value="">Tous</option>';
@@ -37,31 +94,40 @@ function fillAspectSelect(id, aspects, periodeOrder) {
 // Reconstruit le <select> Période selon le niveau choisi (en conservant la
 // période courante si elle reste valide), puis le <select> Aspect en cascade.
 // ids = { niveau, periode, aspect } (ids des <select> correspondants).
-function cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU) {
+// `questions` = QUESTIONS (ou équivalent) — sert à calculer les combinaisons de
+// comparaison disponibles pour ce niveau (voir computePeriodeCombos).
+function cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions) {
   const niveau = document.getElementById(ids.niveau).value;
   const allowedPeriodes = niveau ? PERIODES_PAR_NIVEAU[niveau] : periodeOrder;
 
   const periodeEl = document.getElementById(ids.periode);
   const currentPeriode = periodeEl.value;
-  periodeEl.innerHTML = '<option value="">Toutes</option>';
-  allowedPeriodes.forEach(p => {
-    const o = document.createElement('option');
-    o.value = o.textContent = p;
-    periodeEl.appendChild(o);
-  });
-  periodeEl.value = allowedPeriodes.includes(currentPeriode) ? currentPeriode : '';
+  const combos = computePeriodeCombos(questions, allowedPeriodes);
+  fillPeriodeSelect(ids.periode, allowedPeriodes, combos, 'Toutes');
+  const validValues = new Set([...allowedPeriodes, ...combos.map(c => 'combo:' + JSON.stringify(c.ids))]);
+  periodeEl.value = validValues.has(currentPeriode) ? currentPeriode : '';
 
-  cascadePeriodeChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU);
+  cascadePeriodeChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions);
 }
 
-// Reconstruit le <select> Aspect selon le niveau + la période choisis.
-function cascadePeriodeChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU) {
+// Reconstruit le <select> Aspect selon le niveau + la société (simple ou combinaison)
+// choisie. Pour une combinaison, l'aspect peut appartenir à l'une ou l'autre des 2
+// sociétés (une question de comparaison peut être classée sous l'aspect de n'importe
+// laquelle des deux).
+function cascadePeriodeChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions) {
   const niveau  = document.getElementById(ids.niveau).value;
   const periode = document.getElementById(ids.periode).value;
   const allowedPeriodes = niveau ? PERIODES_PAR_NIVEAU[niveau] : periodeOrder;
-  const filteredAspects = periode
-    ? aspects.filter(a => a.periode === periode)
-    : aspects.filter(a => allowedPeriodes.includes(a.periode));
+  let filteredAspects;
+  if (periode.startsWith('combo:')) {
+    let pair = [];
+    try { pair = JSON.parse(periode.slice(6)); } catch (e) {}
+    filteredAspects = aspects.filter(a => pair.includes(a.periode));
+  } else if (periode) {
+    filteredAspects = aspects.filter(a => a.periode === periode);
+  } else {
+    filteredAspects = aspects.filter(a => allowedPeriodes.includes(a.periode));
+  }
   fillAspectSelect(ids.aspect, filteredAspects, periodeOrder);
   document.getElementById(ids.aspect).value = '';
 }

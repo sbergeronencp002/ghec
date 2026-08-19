@@ -158,7 +158,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 <script src="competences.js"></script>
 <script src="questions-io.js?v=3"></script>
 <script src="contexte.js"></script>
-<script src="filters.js?v=1"></script>
+<script src="filters.js?v=2"></script>
 <script>
 // Page autonome (comme documents.html) : pas de dépendance à app.js.
 // Charge oi-config.js (styles OI), questions-io.js (sérialiseur partagé pour
@@ -408,18 +408,18 @@ function rvPopulateFilters() {
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), 'Tous');
   fillSelect('f-competence', allCompetences, 'Toutes');
-  fillSelect('f-periode', periodes, 'Toutes');
+  fillPeriodeSelect('f-periode', periodes, computePeriodeCombos(QUESTIONS, periodeOrder), 'Toutes');
   fillAspectSelect('f-aspect', rvAspects, periodeOrder);
   fillSelect('f-oi', allOis, 'Toutes');
 }
 
 function rvOnNiveauChange() {
-  cascadeNiveauChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU);
+  cascadeNiveauChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
   rvApplyFilters();
 }
 
 function rvOnPeriodeChange() {
-  cascadePeriodeChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU);
+  cascadePeriodeChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
   rvApplyFilters();
 }
 
@@ -449,7 +449,7 @@ function rvApplyFilters() {
   const competenceSet = new Set();
   for(const q of QUESTIONS) {
     const niveauOk  = !niveau  || String(q.niveau) === niveau;
-    const periodeOk = !periode || (q.periodes||[]).includes(periode);
+    const periodeOk = matchesPeriodeFilter(q, periode);
     const aspectOk  = !aspect  || (q.aspects||[]).some(a => a.aspect === aspect);
     if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(q.competence) competenceSet.add(q.competence); }
     if(!niveauOk || !periodeOk || !aspectOk) continue;

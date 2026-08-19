@@ -23,18 +23,24 @@ une question de comparaison (ex. « Interpréter le changement » : même socié
 époques ; « S'ouvrir à la diversité » : deux sociétés différentes à la même époque).
 Le filtre Société d'index.html/revision.html reste un `<select>` à choix unique, mais
 depuis le 2026-08-18 sa liste d'options combine deux catégories DISJOINTES (voir
-`filters.js` — `computePeriodeCombos`/`fillPeriodeSelect`/`matchesPeriodeFilter`, partagé
-par les deux pages) : les sociétés simples — sélectionner une société simple affiche
+`filters.js` — `computePeriodeCombos`/`comboLabel`/`fillPeriodeSelect`/`matchesPeriodeFilter`,
+partagé par les deux pages) : les sociétés simples — sélectionner une société simple affiche
 UNIQUEMENT les questions à une seule société, celle-ci (`q.periodes` égal exactement
-`[société]`) — PLUS un groupe « Comparaisons » listant chaque paire de sociétés qui
-apparaît réellement ensemble dans au moins une question (jamais une paire théorique sans
-question) — sélectionner une combinaison affiche UNIQUEMENT les questions de comparaison
-entre CES deux sociétés précises (`q.periodes` égal exactement à la paire). Une question
-de comparaison n'apparaît donc plus sous ses sociétés individuelles dans ce filtre (ancien
-comportement `.includes()`, corrigé le 2026-08-18 — une société simple montrait aussi les
-comparaisons qui l'impliquaient, redondant avec la nouvelle combinaison dédiée) : elle
-n'est accessible que via sa combinaison. Le filtre Aspect, lui, continue d'utiliser
-`.includes()` sur `q.aspects` sans cette restriction — pas concerné par ce changement.
+`[société]`) — PLUS une option par paire de sociétés qui apparaît réellement ensemble dans
+au moins une question (jamais une paire théorique sans question) — sélectionner une
+combinaison affiche UNIQUEMENT les questions de comparaison entre CES deux sociétés
+précises (`q.periodes` égal exactement à la paire). Depuis le 2026-08-19 ces combinaisons
+sont des `<option>` à plat, au même niveau que les sociétés simples (pas d'`<optgroup>` —
+voir Cache-bust actuel), avec un libellé fusionné généré par `comboLabel` : repère le motif
+« <partie commune> vers <année> » (générique, aucun nom codé en dur) pour fusionner la
+partie identique — même société à 2 époques → « Ethnonyme vers 1500 et 1745 », 2 sociétés à
+la même époque → « Ethnonyme1 et Ethnonyme2 vers 1500 » — avec repli sur « A et B » si le nom
+ne suit pas ce motif. Une question de comparaison n'apparaît donc plus sous ses sociétés
+individuelles dans ce filtre (ancien comportement `.includes()`, corrigé le 2026-08-18 — une
+société simple montrait aussi les comparaisons qui l'impliquaient, redondant avec la nouvelle
+combinaison dédiée) : elle n'est accessible que via sa combinaison. Le filtre Aspect, lui,
+continue d'utiliser `.includes()` sur `q.aspects` sans cette restriction — pas concerné par
+ce changement.
 `examen.html` n'a pas cette liste combinée : son sélecteur Société sert à choisir LA
 société pour laquelle générer un examen, un usage différent d'un filtre de navigation —
 resté un simple choix unique de société parmi `PERIODES_PAR_NIVEAU`. Ne jamais
@@ -83,8 +89,9 @@ un commit git risquerait le même genre d'écrasement silencieux.
 ## État actuel : GHEC 3 en saisie active
 
 `oi-config.js` (8 OI), `competences.js` (3 compétences), `contexte.js` (niveau 3 : 4
-sociétés — Les Iroquoiens vers 1500, Les Algonquiens vers 1500, Les Incas vers 1500, Les
-Iroquoiens vers 1745 — 10 aspects communs à toutes) sont configurés. `questions.js` est en
+sociétés — Iroquoiens vers 1500, Algonquiens vers 1500, Incas vers 1500, Iroquoiens vers
+1745 — 10 aspects communs à toutes ; renommées le 2026-08-19 pour retirer le préfixe « Les »
+redondant avec l'affichage, voir section Cache-bust actuel) sont configurés. `questions.js` est en
 saisie active par l'enseignant depuis admin.html (plus de 100 questions au 2026-08-17,
 en croissance continue) — vérifier `tools/validate-questions.mjs` pour le compte à jour
 plutôt que de se fier à ce nombre. Les niveaux 4/5/6 restent à ajouter (mêmes
@@ -143,9 +150,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=57`, `style.css?v=33`, `filters.js?v=4`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=57`, `style.css?v=33`, `filters.js?v=5`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v9'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v10'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -165,7 +172,12 @@ questions de comparaison (`matchesPeriodeFilter` exigeait auparavant seulement q
 société soit présente via `.includes()`, comme pour Aspect — corrigé en
 `per.length === 1 && per[0] === periodeValue`), et les combinaisons de comparaison sont
 maintenant des `<option>` à plat dans le `<select>` Société plutôt que regroupées dans un
-`<optgroup label="Comparaisons">` (celui-ci indentait visuellement ces options).
+`<optgroup label="Comparaisons">` (celui-ci indentait visuellement ces options) ; puis bump
+suivant le même jour (`filters.js?v=4`→`5`, `CACHE='ghec-v9'`→`'ghec-v10'`) pour le libellé
+fusionné des combinaisons (`comboLabel`, voir section précédente) suite au renommage des 4
+sociétés du niveau 3 (retrait du préfixe « Les » redondant — « Les Iroquoiens vers 1500 »
+→ « Iroquoiens vers 1500 », etc. — publié directement dans `contexte.js`/`questions.js`/
+`questions-index.js` via l'API GitHub, comme pour toute donnée, jamais par git).
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de
@@ -266,8 +278,8 @@ const COMPETENCE_LIST = ["Lire l'organisation du territoire", 'Interpréter le c
 
 ### Contexte (contexte.js) — « société » à l'affichage, champ interne toujours `periode`
 ```js
-PERIODES_PAR_NIVEAU = { '3': ['Les Iroquoiens vers 1500', 'Les Algonquiens vers 1500', ...] }
-ASPECTS_PAR_PERIODE = { 'Les Iroquoiens vers 1500': ['Territoire', 'Personnages', ...], ... }
+PERIODES_PAR_NIVEAU = { '3': ['Iroquoiens vers 1500', 'Algonquiens vers 1500', ...] }
+ASPECTS_PAR_PERIODE = { 'Iroquoiens vers 1500': ['Territoire', 'Personnages', ...], ... }
 ```
 Niveau 3 : 4 sociétés, 10 aspects communs à toutes (Territoire, Personnages, Population,
 Groupes sociaux, Vie quotidienne, Culture, Activités économiques, Communication,

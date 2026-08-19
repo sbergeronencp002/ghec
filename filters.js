@@ -17,6 +17,23 @@ function fillSelect(id, vals, placeholder) {
   vals.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; el.appendChild(o); });
 }
 
+// Construit le libellé d'une combinaison de 2 sociétés. Aucun nom de société n'est codé
+// en dur (générique, comme tout le reste du fichier) : on tente juste de repérer un motif
+// "<partie commune> vers <année>" partagé par convention dans ce programme, pour fusionner
+// la partie identique plutôt que de la répéter deux fois. Même société à 2 époques (ex.
+// « Interpréter le changement ») → "Ethnonyme vers 1500 et 1745". Deux sociétés à la même
+// époque (ex. « S'ouvrir à la diversité ») → "Ethnonyme1 et Ethnonyme2 vers 1500". Si le nom
+// ne suit pas ce motif (autre programme, autre convention), repli sur "A et B".
+function comboLabel(a, b) {
+  const m = /^(.+?)\s+vers\s+(.+)$/;
+  const ma = a.match(m), mb = b.match(m);
+  if (ma && mb) {
+    if (ma[1] === mb[1]) return `${ma[1]} vers ${ma[2]} et ${mb[2]}`;
+    if (ma[2] === mb[2]) return `${ma[1]} et ${mb[1]} vers ${ma[2]}`;
+  }
+  return `${a} et ${b}`;
+}
+
 // Calcule les combinaisons de 2 sociétés qui apparaissent ENSEMBLE dans au moins une
 // question de comparaison (q.periodes de longueur 2) parmi `allowedPeriodes` (le niveau
 // courant, ou periodeOrder si aucun niveau choisi) — jamais une combinaison sans question
@@ -31,7 +48,7 @@ function computePeriodeCombos(questions, allowedPeriodes) {
     const ids = allowedPeriodes.filter(p => per.includes(p));
     if (ids.length !== 2) return;
     const key = ids.join('|||');
-    if (!seen.has(key)) seen.set(key, { ids, label: ids.join(' + ') });
+    if (!seen.has(key)) seen.set(key, { ids, label: comboLabel(ids[0], ids[1]) });
   });
   return [...seen.values()].sort((a, b) => a.label.localeCompare(b.label, 'fr'));
 }

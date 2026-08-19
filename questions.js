@@ -1954,14 +1954,14 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
+ periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent l’organisation politique des Iroquoiens et des Incas vers 1500. Associe chaque document à la société correspondante.",
+ enonce: "Les documents A et B présentent l’organisation politique des Iroquoiens et des Incas vers 1500. Associe chaque document à l'organisation politique correspondantes.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_organisation_politique.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_organisation_politique.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
- guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-08-19T14:56:01.614Z"
+ reponse: {type: "mettre-en-relation", elements: ["Communautaire", "Hirarchisée"]},
+ guide: {type: "grille", entetes: ["Communautaire", "Hirarchisée"], rangees: [["A", "B"]]},
+ updatedAt: "2026-08-19T15:03:11.719Z"
 }
 ]

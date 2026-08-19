@@ -22,18 +22,23 @@ une question « simple » (ex. compétence « Lire l'organisation du territoire 
 une question de comparaison (ex. « Interpréter le changement » : même société à deux
 époques ; « S'ouvrir à la diversité » : deux sociétés différentes à la même époque).
 Le filtre Société d'index.html/revision.html reste un `<select>` à choix unique, mais
-depuis le 2026-08-18 sa liste d'options combine deux catégories (voir `filters.js` —
-`computePeriodeCombos`/`fillPeriodeSelect`/`matchesPeriodeFilter`, partagé par les deux
-pages) : les sociétés simples (comme avant — une question de comparaison y apparaît sous
-CHACUNE de ses 2 sociétés, logique `.includes()`, comme le filtre Aspect le fait déjà avec
-`q.aspects`), PLUS un groupe « Comparaisons » listant chaque paire de sociétés qui
+depuis le 2026-08-18 sa liste d'options combine deux catégories DISJOINTES (voir
+`filters.js` — `computePeriodeCombos`/`fillPeriodeSelect`/`matchesPeriodeFilter`, partagé
+par les deux pages) : les sociétés simples — sélectionner une société simple affiche
+UNIQUEMENT les questions à une seule société, celle-ci (`q.periodes` égal exactement
+`[société]`) — PLUS un groupe « Comparaisons » listant chaque paire de sociétés qui
 apparaît réellement ensemble dans au moins une question (jamais une paire théorique sans
 question) — sélectionner une combinaison affiche UNIQUEMENT les questions de comparaison
-entre CES deux sociétés précises (`q.periodes` égal exactement à la paire), à l'exclusion
-des questions à société unique. `examen.html` n'a pas cette liste combinée : son sélecteur
-Société sert à choisir LA société pour laquelle générer un examen, un usage différent
-d'un filtre de navigation — resté un simple choix unique de société parmi
-`PERIODES_PAR_NIVEAU`. Ne jamais réintroduire un champ `periode` singulier
+entre CES deux sociétés précises (`q.periodes` égal exactement à la paire). Une question
+de comparaison n'apparaît donc plus sous ses sociétés individuelles dans ce filtre (ancien
+comportement `.includes()`, corrigé le 2026-08-18 — une société simple montrait aussi les
+comparaisons qui l'impliquaient, redondant avec la nouvelle combinaison dédiée) : elle
+n'est accessible que via sa combinaison. Le filtre Aspect, lui, continue d'utiliser
+`.includes()` sur `q.aspects` sans cette restriction — pas concerné par ce changement.
+`examen.html` n'a pas cette liste combinée : son sélecteur Société sert à choisir LA
+société pour laquelle générer un examen, un usage différent d'un filtre de navigation —
+resté un simple choix unique de société parmi `PERIODES_PAR_NIVEAU`. Ne jamais
+réintroduire un champ `periode` singulier
 — toute la chaîne (admin.html, app.js, revision.html, documents.html, examen.html/
 examen-gen.js, worker/index.js, tools/apply-mutation.mjs, tools/validate-questions.mjs,
 questions-io.js) a été adaptée pour lire/écrire `periodes` (tableau).

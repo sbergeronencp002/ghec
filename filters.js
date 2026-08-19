@@ -59,10 +59,12 @@ function fillPeriodeSelect(id, periodes, combos, placeholder) {
 }
 
 // Teste si une question correspond à la valeur courante du <select> Société — soit une
-// société simple (present dans q.periodes), soit une combinaison "combo:[...]" (voir
-// fillPeriodeSelect) : dans ce cas q.periodes doit être EXACTEMENT cette paire, pas
-// seulement la contenir — une combinaison affiche uniquement les questions de comparaison
-// entre ces 2 sociétés précises, jamais les questions à une seule société parmi les deux.
+// combinaison "combo:[...]" (voir fillPeriodeSelect) : q.periodes doit être EXACTEMENT
+// cette paire — soit une société simple : q.periodes doit être EXACTEMENT cette société
+// seule (une seule entrée, celle-ci). Une question de comparaison impliquant cette société
+// n'apparaît donc plus ici : elle n'est accessible que via sa combinaison dédiée, pour que
+// les deux catégories (société simple / comparaison) restent des vues disjointes plutôt
+// que redondantes.
 function matchesPeriodeFilter(q, periodeValue) {
   if (!periodeValue) return true;
   const per = q.periodes || [];
@@ -71,7 +73,7 @@ function matchesPeriodeFilter(q, periodeValue) {
     try { pair = JSON.parse(periodeValue.slice(6)); } catch (e) { return false; }
     return per.length === pair.length && pair.every(p => per.includes(p));
   }
-  return per.includes(periodeValue);
+  return per.length === 1 && per[0] === periodeValue;
 }
 
 function fillAspectSelect(id, aspects, periodeOrder) {

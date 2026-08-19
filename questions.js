@@ -100,7 +100,8 @@ const REGLETTES = {
 "Q99": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q100": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q101": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q102": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q102": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q103": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -178,7 +179,8 @@ const IMAGE_DB = {
 "incas_maisons_2.jpg": {src: "images/incas_maisons_2.jpg", w: 1200, h: 800},
 "territoire_incas_2.jpg": {src: "images/territoire_incas_2.jpg", w: 1200, h: 800},
 "territoire_incas_3.png": {src: "images/territoire_incas_3.png"},
-"incas_pouvoir_hereditaire.jpg": {src: "images/incas_pouvoir_hereditaire.jpg", w: 1200, h: 900}
+"incas_pouvoir_hereditaire.jpg": {src: "images/incas_pouvoir_hereditaire.jpg", w: 1200, h: 900},
+"incas_pouvoir_empereur.jpg": {src: "images/incas_pouvoir_empereur.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1719,5 +1721,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le pouvoir est héréditaire.",
  updatedAt: "2026-08-19T13:04:53.138Z"
+},
+{
+ id: "Q103",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Les Incas vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme le type de pouvoir exercé par l’empereur inca vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_empereur.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Un pouvoir illimité.",
+ updatedAt: "2026-08-19T13:08:18.642Z"
 }
 ]

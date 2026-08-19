@@ -1939,15 +1939,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Les Iroquoiens vers 1500", "Les Incas vers 1500"],
+ periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent le pouvoir des chefs iroquoiens et celui de l’empereur inca vers 1500. Associe chaque document à la société correspondante.",
+ enonce: "Les documents A et B présentent le pouvoir des chefs iroquoiens et celui de l’empereur inca vers 1500. Associe chaque document au type de pouvoir correspondant.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_empereur.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
- guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-19T14:48:51.722Z"
+ reponse: {type: "mettre-en-relation", elements: ["Pouvoir illimité", "Pouvoir partagé"]},
+ guide: {type: "grille", entetes: ["Pouvoir illimité", "Pouvoir partagé"], rangees: [["A", "B"]]},
+ updatedAt: "2026-08-19T15:04:56.670Z"
 },
 {
  id: "Q117",

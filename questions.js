@@ -1753,10 +1753,10 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Nomme une différence entre la façon de choisir les dirigeants chez les Iroquoiens et chez les Incas vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_hereditaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_pouvoir_hereditaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Chez les Iroquoiens, les chefs sont choisis par les femmes aînées, tandis que chez les Incas, le pouvoir est héréditaire.",
- updatedAt: "2026-08-19T13:14:30.602Z"
+ updatedAt: "2026-08-19T13:22:56.352Z"
 },
 {
  id: "Q105",

@@ -2054,11 +2054,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Déterminer un changement",
  enonce: "À l’aide des documents A et B, nomme un changement dans les objets utilisés par les Iroquoiens entre 1500 et 1745.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, les Iroquoiens commencent à utiliser des fusils d’origine européenne pour chasser, alors qu’en 1500 ils utilisent notamment des arcs et des flèches.",
- updatedAt: "2026-08-20T01:16:41.567Z"
+ updatedAt: "2026-08-20T02:20:49.335Z"
 },
 {
  id: "Q123",

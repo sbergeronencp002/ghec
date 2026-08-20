@@ -2119,12 +2119,13 @@ const QUESTIONS = [
  competence: "Interpréter le changement",
  periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
  points: 2,
+ soustag: "Déterminer un changement",
  enonce: "À l’aide des documents A et B, nomme un changement lié à la population iroquoienne entre 1500 et 1745.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, la population iroquoienne diminue, notamment en raison des maladies européennes.",
- updatedAt: "2026-08-20T01:38:50.460Z"
+ updatedAt: "2026-08-20T15:24:48.853Z"
 },
 {
  id: "Q126",

@@ -121,7 +121,8 @@ const REGLETTES = {
 "Q120": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q121": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q122": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
-"Q123": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]}
+"Q123": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
+"Q124": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]}
 }
 
 const IMAGE_DB = {
@@ -211,7 +212,9 @@ const IMAGE_DB = {
 "chasse_1745.jpg": {src: "images/chasse_1745.jpg", w: 1200, h: 900},
 "cuisson_1500.jpg": {src: "images/cuisson_1500.jpg", w: 1200, h: 900},
 "cuisson_1745.jpg": {src: "images/cuisson_1745.jpg", w: 1200, h: 900},
-"chasse_1500.jpg": {src: "images/chasse_1500.jpg"}
+"chasse_1500.jpg": {src: "images/chasse_1500.jpg"},
+"religion_1500.jpg": {src: "images/religion_1500.jpg"},
+"religion_1745.jpg": {src: "images/religion_1745.jpg"}
 }
 
 const QUESTIONS = [
@@ -2068,5 +2071,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, les Iroquoiens commencent à utiliser des chaudrons de métal d’origine européenne pour cuisiner, alors qu’en 1500 ils utilisent notamment des pots en terre cuite.",
  updatedAt: "2026-08-20T01:12:39.994Z"
+},
+{
+ id: "Q124",
+ niveau: 3,
+ oi: "Déterminer des changements",
+ competence: "Interpréter le changement",
+ periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
+ points: 2,
+ soustag: "Déterminer un changement",
+ enonce: "À l’aide des documents A et B, nomme un changement lié à la religion chez les Iroquoiens entre 1500 et 1745.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "religion_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "religion_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Entre 1500 et 1745, le christianisme est introduit chez les Iroquoiens par des missionnaires, alors qu’en 1500 leurs pratiques religieuses sont liées à leurs croyances traditionnelles.",
+ updatedAt: "2026-08-20T01:25:35.796Z"
 }
 ]

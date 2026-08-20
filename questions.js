@@ -1868,12 +1868,12 @@ const QUESTIONS = [
  periodes: ["Incas vers 1500"],
  points: 2,
  soustag: "Caractériser un territoire - 2",
- enonce: "Nomme deux caractéristiques du territoire occupé par les Incas vers 1500.",
+ enonce: "Nomme une caractéristique du relief du territoire occupé par les Incas vers 1500.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_incas_3.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le territoire des Incas possède un relief montagneux et des ressources naturelles utilisées pour pratiquer l’agriculture et l’élevage.",
- updatedAt: "2026-08-20T00:21:12.904Z"
+ guide: "Le territoire est montagneux.\nIl est composé de hautes montagnes.\nLe relief est accidenté.",
+ updatedAt: "2026-08-20T00:25:07.504Z"
 },
 {
  id: "Q112",

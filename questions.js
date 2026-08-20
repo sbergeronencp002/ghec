@@ -130,7 +130,8 @@ const REGLETTES = {
 "Q129": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q130": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q131": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q132": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q132": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q133": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -2231,5 +2232,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens ont commencé à utiliser des objets européens, comme la hache, le chaudron et le fusil, à la place de certains objets traditionnels qu’ils utilisaient auparavant.",
  updatedAt: "2026-08-20T15:15:38.342Z"
+},
+{
+ id: "Q133",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1745"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme un problème qui touche plusieurs Iroquoiens entre 1500 et 1745.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "maladies_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les maladies européeenes.",
+ updatedAt: "2026-08-20T15:19:12.546Z"
 }
 ]

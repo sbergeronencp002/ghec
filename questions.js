@@ -124,7 +124,8 @@ const REGLETTES = {
 "Q123": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q124": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q125": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
-"Q126": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]}
+"Q126": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
+"Q127": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -220,7 +221,8 @@ const IMAGE_DB = {
 "village_1500.jpg": {src: "images/village_1500.jpg", w: 1200, h: 900},
 "village_1745.jpg": {src: "images/village_1745.jpg", w: 1200, h: 900},
 "territoire_1500.jpg": {src: "images/territoire_1500.jpg"},
-"territoire_1745.jpg": {src: "images/territoire_1745.jpg"}
+"territoire_1745.jpg": {src: "images/territoire_1745.jpg"},
+"produits_europeens_1745.jpg": {src: "images/produits_europeens_1745.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2125,5 +2127,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, l’occupation du territoire iroquoien change avec l’installation d’Européens à proximité des villages iroquoiens",
  updatedAt: "2026-08-20T13:00:59.032Z"
+},
+{
+ id: "Q127",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1745"],
+ points: 2,
+ soustag: "Établir 1 fait - 2",
+ enonce: "À l’aide du document A, nomme deux produits européens utilisés par les Iroquoiens vers 1745.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "produits_europeens_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Une hache, un chaudron, un fusil ou de l’alcool.",
+ updatedAt: "2026-08-20T13:26:06.605Z"
 }
 ]

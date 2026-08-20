@@ -210,7 +210,8 @@ const IMAGE_DB = {
 "territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg", w: 1200, h: 960},
 "chasse_1745.jpg": {src: "images/chasse_1745.jpg", w: 1200, h: 900},
 "cuisson_1500.jpg": {src: "images/cuisson_1500.jpg", w: 1200, h: 900},
-"cuisson_1745.jpg": {src: "images/cuisson_1745.jpg", w: 1200, h: 900}
+"cuisson_1745.jpg": {src: "images/cuisson_1745.jpg", w: 1200, h: 900},
+"chasse_1500.jpg": {src: "images/chasse_1500.jpg"}
 }
 
 const QUESTIONS = [
@@ -2048,10 +2049,10 @@ const QUESTIONS = [
  soustag: "Déterminer un changement",
  enonce: "À l’aide des documents A et B, nomme un changement dans les objets utilisés par les Iroquoiens entre 1500 et 1745.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, les Iroquoiens commencent à utiliser des fusils d’origine européenne pour chasser, alors qu’en 1500 ils utilisent notamment des arcs et des flèches.",
- updatedAt: "2026-08-20T01:02:43.438Z"
+ updatedAt: "2026-08-20T01:16:41.567Z"
 },
 {
  id: "Q123",

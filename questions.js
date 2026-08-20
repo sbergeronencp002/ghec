@@ -604,7 +604,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Situer dans l'espace",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Algonquiens vers 1500"],
  points: 1,
  soustag: "Situer 1 élément dans l'espace",
  enonce: "Indique la lettre correspondant au territoire occupé par les Algonquiens vers 1500.",
@@ -612,7 +612,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: false,
  guide: "A",
- updatedAt: "2026-08-14T14:59:05.262Z"
+ updatedAt: "2026-08-20T00:34:10.524Z"
 },
 {
  id: "Q27",

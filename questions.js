@@ -981,12 +981,13 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
+ soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent deux formes d’art pratiquées par les Iroquoiens vers 1500. Associe chaque document à la forme d’art correspondante.",
  aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_argile.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vannerie_ressources.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Poterie", "Vannerie"]},
  guide: {type: "grille", entetes: ["Poterie", "Vannerie"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-15T19:09:32.005Z"
+ updatedAt: "2026-08-20T13:03:46.181Z"
 },
 {
  id: "Q51",

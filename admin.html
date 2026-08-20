@@ -685,7 +685,19 @@ const SOUSTAG_AUTO = {
   'Caractériser un territoire': {
     'Caractériser un territoire - 1': { preset: '1 pt — une caractéristique', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' },
     'Caractériser un territoire - 2': { preset: '2 pts — deux caractéristiques', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' }
+  },
+  'Établir des comparaisons': {
+    'Établir une différence': { preset: '2 pts — différence', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' },
+    'Établir une similitude': { preset: '2 pts — similitude', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' }
   }
+};
+
+// Sous-tag pré-sélectionné dès qu'on choisit l'OI (cas courant du programme).
+// L'enseignant peut toujours cliquer un autre sous-tag ensuite. Ne s'applique
+// qu'au choix MANUEL de l'OI (onOiChange), jamais au chargement d'une question
+// existante en édition — celle-ci passe par setSoustag(), qui ne fire pas onchange.
+const OI_DEFAULT_SOUSTAG = {
+  'Établir des comparaisons': 'Établir une différence'
 };
 
 // Auto-sélection au niveau de l'OI (pour les OI SANS sous-tags) : déclenchée
@@ -770,6 +782,10 @@ function onOiChange() {
   if(repSel) { repSel.value = 'none'; updateReponseUI(); }
   autoReponseFromOI();
   autoFromOI();
+  // Sous-tag par défaut de l'OI : le sélectionner puis appliquer sa config
+  // (réglette + réponse + guide), qui prime sur les réglages OI-level ci-dessus.
+  const defSoustag = OI_DEFAULT_SOUSTAG[document.getElementById('q-oi')?.value || ''];
+  if(defSoustag) { setSoustag(defSoustag); autoFromSoustag(); }
   // Guide par défaut « Texte » pour certaines OI
   const oi = document.getElementById('q-oi')?.value || '';
   const guideSel = document.getElementById('guide-type');

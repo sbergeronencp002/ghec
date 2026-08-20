@@ -1853,12 +1853,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Incas vers 1500"],
  points: 2,
- enonce: "Explique comment le pouvoir est transmis chez les Incas vers 1500.",
+ enonce: "Explique pourquoi le fils de l’empereur peut devenir le prochain dirigeant chez les Incas vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_hereditaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_pouvoir_empereur.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le pouvoir est héréditaire, car il se transmet à l’intérieur de la famille de l’empereur et un membre de cette famille lui succède pour devenir à son tour empereur.",
- updatedAt: "2026-08-19T13:47:09.317Z"
+ updatedAt: "2026-08-20T00:28:06.207Z"
 },
 {
  id: "Q111",

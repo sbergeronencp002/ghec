@@ -693,8 +693,23 @@ const SOUSTAG_AUTO = {
   'Déterminer des changements': {
     'Déterminer un changement': { preset: '2 pts — changement', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' },
     'Déterminer une continuité': { preset: '2 pts — continuité', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' }
+  },
+  // Le sous-tag porte le nombre d'éléments à apparier : il pilote à la fois la
+  // réglette et le nombre d'éléments du tableau de réponse. Pas de `guide` ici —
+  // le guide-grille se resynchronise tout seul depuis les éléments (syncGuideFromMer).
+  'Mettre en relation des faits': {
+    'Mettre en relation des faits - 2': { preset: '2 pts — 2 sur 2', reponse: { type: 'mettre-en-relation', n: 2 } },
+    'Mettre en relation des faits - 3': { preset: '2 pts — 3 sur 3', reponse: { type: 'mettre-en-relation', n: 3 } },
+    'Mettre en relation des faits - 4': { preset: '2 pts — 4 sur 4', reponse: { type: 'mettre-en-relation', n: 4 } }
   }
 };
+
+// OI pour lesquelles un sous-tag est OBLIGATOIRE : publier avec « Aucun » lève une
+// erreur de validation. À réserver aux OI dont le sous-tag pilote une config (nombre
+// d'éléments, réglette) — sans lui, la question part avec une réponse incohérente.
+const SOUSTAG_REQUIS_OIS = new Set([
+  'Mettre en relation des faits'
+]);
 
 // Sous-tag pré-sélectionné dès qu'on choisit l'OI (cas courant du programme).
 // L'enseignant peut toujours cliquer un autre sous-tag ensuite. Ne s'applique
@@ -2717,6 +2732,8 @@ const VALIDATION_RULES = [
       const oi = document.getElementById('q-oi').value;
       return (REGLETTES_PRESET[oi] || []).length === 0 || document.getElementById('reg-preset').value !== '';
     } },
+  { message: 'Sous-tag obligatoire pour cette OI',
+    check: () => !SOUSTAG_REQUIS_OIS.has(document.getElementById('q-oi').value) || !!getSoustag() },
   // Chaque bloc/colonne image doit avoir un fichier sélectionné, sinon le document publié
   // est vide (ref:'') et n'affiche rien sur le site public.
   { message: 'Image de document non sélectionnée',

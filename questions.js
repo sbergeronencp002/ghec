@@ -375,7 +375,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "À l'aide du document A, nomme l’activité pratiquée par les peuples autochtones.",
@@ -383,7 +383,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cueillette.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Ils pratiquent la cueillette.",
- updatedAt: "2026-08-14T13:22:18.352Z"
+ updatedAt: "2026-08-20T00:35:36.760Z"
 },
 {
  id: "Q13",

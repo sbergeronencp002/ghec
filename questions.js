@@ -125,7 +125,8 @@ const REGLETTES = {
 "Q124": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q125": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q126": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
-"Q127": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q127": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q128": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -222,7 +223,8 @@ const IMAGE_DB = {
 "village_1745.jpg": {src: "images/village_1745.jpg", w: 1200, h: 900},
 "territoire_1500.jpg": {src: "images/territoire_1500.jpg"},
 "territoire_1745.jpg": {src: "images/territoire_1745.jpg"},
-"produits_europeens_1745.jpg": {src: "images/produits_europeens_1745.jpg", w: 1200, h: 800}
+"produits_europeens_1745.jpg": {src: "images/produits_europeens_1745.jpg", w: 1200, h: 800},
+"groupes_1745_1.jpg": {src: "images/groupes_1745_1.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -2142,5 +2144,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "Une hache, un chaudron, un fusil ou de l’alcool.",
  updatedAt: "2026-08-20T13:26:06.605Z"
+},
+{
+ id: "Q128",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1745"],
+ points: 2,
+ soustag: "Établir 1 fait - 2",
+ enonce: "À l’aide du document A, nomme deux groupes qui jouent un rôle dans les changements vécus par les Iroquoiens entre 1500 et 1745.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "groupes_1745_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les pêcheurs, les missionnaires, les colons, les militaires et les coureurs des bois participent aux changements vécus par les Iroquoiens.",
+ updatedAt: "2026-08-20T13:30:04.528Z"
 }
 ]

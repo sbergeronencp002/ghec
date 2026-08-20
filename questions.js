@@ -123,7 +123,8 @@ const REGLETTES = {
 "Q122": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q123": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q124": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
-"Q125": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]}
+"Q125": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
+"Q126": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]}
 }
 
 const IMAGE_DB = {
@@ -217,7 +218,9 @@ const IMAGE_DB = {
 "religion_1500.jpg": {src: "images/religion_1500.jpg"},
 "religion_1745.jpg": {src: "images/religion_1745.jpg"},
 "village_1500.jpg": {src: "images/village_1500.jpg", w: 1200, h: 900},
-"village_1745.jpg": {src: "images/village_1745.jpg", w: 1200, h: 900}
+"village_1745.jpg": {src: "images/village_1745.jpg", w: 1200, h: 900},
+"territoire_1500.jpg": {src: "images/territoire_1500.jpg"},
+"territoire_1745.jpg": {src: "images/territoire_1745.jpg"}
 }
 
 const QUESTIONS = [
@@ -2103,5 +2106,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, la population iroquoienne diminue, notamment en raison des maladies européennes.",
  updatedAt: "2026-08-20T01:38:50.460Z"
+},
+{
+ id: "Q126",
+ niveau: 3,
+ oi: "Déterminer des changements",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
+ points: 2,
+ soustag: "Déterminer un changement",
+ enonce: "À l’aide des documents A et B, nomme un changement dans l’occupation du territoire iroquoien entre 1500 et 1745.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Entre 1500 et 1745, l’occupation du territoire iroquoien change avec l’installation d’Européens à proximité des villages iroquoiens",
+ updatedAt: "2026-08-20T13:00:59.032Z"
 }
 ]

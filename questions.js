@@ -116,7 +116,8 @@ const REGLETTES = {
 "Q115": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q116": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q117": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]}
+"Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q119": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
 }
 
 const IMAGE_DB = {
@@ -199,7 +200,8 @@ const IMAGE_DB = {
 "incas_prise_decision.jpg": {src: "images/incas_prise_decision.jpg", w: 1200, h: 801},
 "iroquoiens_conseil_3.jpg": {src: "images/iroquoiens_conseil_3.jpg"},
 "incas_organisation_politique.jpg": {src: "images/incas_organisation_politique.jpg", w: 1200, h: 900},
-"iroquoiens_organisation_politique.jpg": {src: "images/iroquoiens_organisation_politique.jpg", w: 1200, h: 900}
+"iroquoiens_organisation_politique.jpg": {src: "images/iroquoiens_organisation_politique.jpg", w: 1200, h: 900},
+"territoire_incas_4.jpg": {src: "images/territoire_incas_4.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -1979,5 +1981,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Iroquoiens occupent un territoire plutôt plat, avec des plaines et des cours d’eau, tandis que les Incas vivent dans un territoire montagneux.",
  updatedAt: "2026-08-19T15:11:36.017Z"
+},
+{
+ id: "Q119",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Incas vers 1500"],
+ points: 2,
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Nomme deux caractéristiques du territoire occupé par les Incas vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_incas_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Le territoire des Incas est montagneux et les climats varient selon l’altitude.",
+ updatedAt: "2026-08-20T00:31:36.200Z"
 }
 ]

@@ -465,14 +465,14 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi les peuples autochtones pratiquent le troc vers 1500.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_troc.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les peuples autochtones pratiquent le troc pour obtenir des ressources ou des objets qu’ils ne possèdent pas ou qu’ils ne produisent pas eux-mêmes.",
- updatedAt: "2026-08-14T13:40:35.437Z"
+ updatedAt: "2026-08-20T00:34:30.822Z"
 },
 {
  id: "Q19",

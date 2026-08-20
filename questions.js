@@ -126,7 +126,8 @@ const REGLETTES = {
 "Q125": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q126": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q127": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q128": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q128": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q129": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -224,7 +225,11 @@ const IMAGE_DB = {
 "territoire_1500.jpg": {src: "images/territoire_1500.jpg"},
 "territoire_1745.jpg": {src: "images/territoire_1745.jpg"},
 "produits_europeens_1745.jpg": {src: "images/produits_europeens_1745.jpg", w: 1200, h: 800},
-"groupes_1745_1.jpg": {src: "images/groupes_1745_1.jpg", w: 1200, h: 900}
+"groupes_1745_1.jpg": {src: "images/groupes_1745_1.jpg", w: 1200, h: 900},
+"groupes_coueurs_bois_1745.jpg": {src: "images/groupes_coueurs_bois_1745.jpg", w: 1200, h: 900},
+"groupes_militaires_1745.jpg": {src: "images/groupes_militaires_1745.jpg", w: 1200, h: 900},
+"groupes_missionnaires_1745.jpg": {src: "images/groupes_missionnaires_1745.jpg", w: 1200, h: 900},
+"groupes_pecheurs_1745.jpg": {src: "images/groupes_pecheurs_1745.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2159,5 +2164,25 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les pêcheurs, les missionnaires, les colons, les militaires et les coureurs des bois participent aux changements vécus par les Iroquoiens.",
  updatedAt: "2026-08-20T13:30:04.528Z"
+},
+{
+ id: "Q129",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1745"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent différents groupes qui jouent un rôle dans les changements vécus par les Iroquoiens entre 1500 et 1745. Associe chaque document au groupe correspondant.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "groupes_pecheurs_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "groupes_missionnaires_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "groupes_coueurs_bois_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "groupes_militaires_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Coureurs des bois", "Militaires", "Missionnaires", "Pêcheurs"]},
+ guide: {type: "grille", entetes: ["Coureurs des bois", "Militaires", "Missionnaires", "Pêcheurs"], rangees: [["C", "D", "B", "A"]]},
+ updatedAt: "2026-08-20T13:54:39.218Z"
 }
 ]

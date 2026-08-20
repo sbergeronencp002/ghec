@@ -1337,12 +1337,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme la croyance spirituelle pratiquée par les Iroquoiens vers 1500.",
+ enonce: "Nomme la croyance spirituelle pratiquée par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_animisme_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "L'animisme.",
- updatedAt: "2026-08-20T00:41:00.187Z"
+ updatedAt: "2026-08-20T13:02:09.113Z"
 },
 {
  id: "Q75",

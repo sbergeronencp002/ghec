@@ -689,6 +689,10 @@ const SOUSTAG_AUTO = {
   'Établir des comparaisons': {
     'Établir une différence': { preset: '2 pts — différence', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' },
     'Établir une similitude': { preset: '2 pts — similitude', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' }
+  },
+  'Déterminer des changements': {
+    'Déterminer un changement': { preset: '2 pts — changement', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' },
+    'Déterminer une continuité': { preset: '2 pts — continuité', reponse: { type: 'lignes', nombre: 3 }, guide: 'texte' }
   }
 };
 
@@ -697,7 +701,8 @@ const SOUSTAG_AUTO = {
 // qu'au choix MANUEL de l'OI (onOiChange), jamais au chargement d'une question
 // existante en édition — celle-ci passe par setSoustag(), qui ne fire pas onchange.
 const OI_DEFAULT_SOUSTAG = {
-  'Établir des comparaisons': 'Établir une différence'
+  'Établir des comparaisons': 'Établir une différence',
+  'Déterminer des changements': 'Déterminer un changement'
 };
 
 // Auto-sélection au niveau de l'OI (pour les OI SANS sous-tags) : déclenchée

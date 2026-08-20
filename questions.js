@@ -2175,7 +2175,7 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 4",
  enonce: "Les documents A à D présentent différents groupes qui jouent un rôle dans les changements vécus par les Iroquoiens entre 1500 et 1745. Associe chaque document au groupe correspondant.",
- aspects: [{aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Groupes sociaux"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "groupes_pecheurs_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "groupes_missionnaires_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -2184,7 +2184,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Coureurs des bois", "Militaires", "Missionnaires", "Pêcheurs"]},
  guide: {type: "grille", entetes: ["Coureurs des bois", "Militaires", "Missionnaires", "Pêcheurs"], rangees: [["C", "D", "B", "A"]]},
- updatedAt: "2026-08-20T13:54:39.218Z"
+ updatedAt: "2026-08-20T14:00:08.913Z"
 },
 {
  id: "Q130",

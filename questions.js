@@ -133,7 +133,8 @@ const REGLETTES = {
 "Q132": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q133": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q134": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q135": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q135": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q136": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
 }
 
 const IMAGE_DB = {
@@ -236,7 +237,9 @@ const IMAGE_DB = {
 "groupes_militaires_1745.jpg": {src: "images/groupes_militaires_1745.jpg", w: 1200, h: 900},
 "groupes_missionnaires_1745.jpg": {src: "images/groupes_missionnaires_1745.jpg", w: 1200, h: 900},
 "groupes_pecheurs_1745.jpg": {src: "images/groupes_pecheurs_1745.jpg", w: 1200, h: 800},
-"maladies_1745.jpg": {src: "images/maladies_1745.jpg", w: 1200, h: 900}
+"maladies_1745.jpg": {src: "images/maladies_1745.jpg", w: 1200, h: 900},
+"jacques_cartier_1534.jpg": {src: "images/jacques_cartier_1534.jpg", w: 1200, h: 900},
+"ligne_1490-1570.png": {src: "images/ligne_1490-1570.png", w: 1200, h: 240}
 }
 
 const QUESTIONS = [
@@ -2279,5 +2282,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le patriarcat.",
  updatedAt: "2026-08-21T02:00:48.972Z"
+},
+{
+ id: "Q136",
+ niveau: 3,
+ oi: "Situer dans le temps",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1745"],
+ points: 1,
+ enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "jacques_cartier_1534.jpg", soustitre: "La prise de possession du territoire par Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "image", ref: "ligne_1490-1570.png"},
+ guide: "C",
+ updatedAt: "2026-08-26T12:35:50.564Z"
 }
 ]

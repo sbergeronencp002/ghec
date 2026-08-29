@@ -135,7 +135,8 @@ const REGLETTES = {
 "Q134": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q135": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q136": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q137": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
+"Q137": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
+"Q138": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
 }
 
 const IMAGE_DB = {
@@ -241,7 +242,9 @@ const IMAGE_DB = {
 "maladies_1745.jpg": {src: "images/maladies_1745.jpg", w: 1200, h: 900},
 "jacques_cartier_1534.jpg": {src: "images/jacques_cartier_1534.jpg", w: 1200, h: 900},
 "ligne_1490-1570.png": {src: "images/ligne_1490-1570.png", w: 1200, h: 240},
-"territoires_incas.jpg": {src: "images/territoires_incas.jpg"}
+"territoires_incas.jpg": {src: "images/territoires_incas.jpg"},
+"fondation_quebec_1608.jpg": {src: "images/fondation_quebec_1608.jpg", w: 1200, h: 901},
+"ligne_1600-1700.png": {src: "images/ligne_1600-1700.png", w: 1200, h: 240}
 }
 
 const QUESTIONS = [
@@ -2313,5 +2316,20 @@ const QUESTIONS = [
  reponse: false,
  guide: "C",
  updatedAt: "2026-08-29T14:04:37.977Z"
+},
+{
+ id: "Q138",
+ niveau: 4,
+ oi: "Situer dans le temps",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Situer sur une ligne du temps",
+ enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_quebec_1608.jpg", soustitre: "La prise de possession du territoire par Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "image", ref: "ligne_1600-1700.png"},
+ guide: "A",
+ updatedAt: "2026-08-29T17:57:00.300Z"
 }
 ]

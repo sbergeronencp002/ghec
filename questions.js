@@ -2330,10 +2330,10 @@ const QUESTIONS = [
  soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
  aspects: [{aspect: "Personnages"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_quebec_1608.jpg", soustitre: "La prise de possession du territoire par Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_quebec_1608.jpg", soustitre: "Fondation de Québec", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "A",
- updatedAt: "2026-08-29T17:57:00.300Z"
+ updatedAt: "2026-08-29T17:58:56.207Z"
 },
 {
  id: "Q139",

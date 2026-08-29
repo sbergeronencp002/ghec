@@ -138,7 +138,8 @@ const REGLETTES = {
 "Q137": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q138": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q139": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q140": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
+"Q140": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
+"Q141": {oi: "Situer dans le temps", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
 }
 
 const IMAGE_DB = {
@@ -248,7 +249,9 @@ const IMAGE_DB = {
 "fondation_quebec_1608.jpg": {src: "images/fondation_quebec_1608.jpg", w: 1200, h: 901},
 "ligne_1600-1700.png": {src: "images/ligne_1600-1700.png", w: 1200, h: 240},
 "fondation_trois_rivieres.jpg": {src: "images/fondation_trois_rivieres.jpg", w: 1200, h: 801},
-"fondation_montreal.jpg": {src: "images/fondation_montreal.jpg"}
+"fondation_montreal.jpg": {src: "images/fondation_montreal.jpg"},
+"fondation_tadoussac.jpg": {src: "images/fondation_tadoussac.jpg", w: 1200, h: 802},
+"ligne_bcad.png": {src: "images/ligne_bcad.png", w: 1200, h: 248}
 }
 
 const QUESTIONS = [
@@ -2366,5 +2369,25 @@ const QUESTIONS = [
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "B",
  updatedAt: "2026-08-29T18:02:41.646Z"
+},
+{
+ id: "Q141",
+ niveau: 4,
+ oi: "Situer dans le temps",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Placer en ordre chronologique",
+ enonce: "Les documents A à Dfont référence à la colonisation de la Nouvelle-France. Placez-les par ordre chronologique.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières par Laviolette", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "fondation_tadoussac.jpg", soustitre: "Fondation de Tadoussac", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "fondation_quebec_1608.jpg", soustitre: "Fondation de Québec par Samuel de Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "fondation_montreal.jpg", soustitre: "Fondation de Montréal par Maisonneuve et Jeanne Mance"}]}
+ ],
+ reponse: {type: "image", ref: "ligne_bcad.png"},
+ guide: "B - C - A - D",
+ updatedAt: "2026-08-29T18:31:24.898Z"
 }
 ]

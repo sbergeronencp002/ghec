@@ -2297,12 +2297,13 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1745"],
  points: 1,
+ soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "jacques_cartier_1534.jpg", soustitre: "La prise de possession du territoire par Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1490-1570.png"},
  guide: "B",
- updatedAt: "2026-08-29T17:46:09.369Z"
+ updatedAt: "2026-08-29T17:58:32.472Z"
 },
 {
  id: "Q137",

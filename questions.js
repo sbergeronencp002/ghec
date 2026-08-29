@@ -2348,6 +2348,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "B",
- updatedAt: "2026-08-29T17:58:15.040Z"
+ updatedAt: "2026-08-29T17:59:07.267Z"
 }
 ]

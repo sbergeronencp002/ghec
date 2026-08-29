@@ -632,7 +632,7 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "Indique la lettre correspondant au territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: false,
  guide: "B",
  updatedAt: "2026-08-14T14:58:38.208Z"
@@ -647,7 +647,7 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "Indique la lettre correspondant au territoire occupé par les Algonquiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: false,
  guide: "A",
  updatedAt: "2026-08-20T00:34:10.524Z"

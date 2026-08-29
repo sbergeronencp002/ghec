@@ -136,7 +136,8 @@ const REGLETTES = {
 "Q135": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q136": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q137": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
-"Q138": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
+"Q138": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
+"Q139": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
 }
 
 const IMAGE_DB = {
@@ -244,7 +245,8 @@ const IMAGE_DB = {
 "ligne_1490-1570.png": {src: "images/ligne_1490-1570.png", w: 1200, h: 240},
 "territoires_incas.jpg": {src: "images/territoires_incas.jpg"},
 "fondation_quebec_1608.jpg": {src: "images/fondation_quebec_1608.jpg", w: 1200, h: 901},
-"ligne_1600-1700.png": {src: "images/ligne_1600-1700.png", w: 1200, h: 240}
+"ligne_1600-1700.png": {src: "images/ligne_1600-1700.png", w: 1200, h: 240},
+"fondation_trois_rivieres.jpg": {src: "images/fondation_trois_rivieres.jpg", w: 1200, h: 801}
 }
 
 const QUESTIONS = [
@@ -2331,5 +2333,20 @@ const QUESTIONS = [
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "A",
  updatedAt: "2026-08-29T17:57:00.300Z"
+},
+{
+ id: "Q139",
+ niveau: 4,
+ oi: "Situer dans le temps",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Situer sur une ligne du temps",
+ enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "image", ref: "ligne_1600-1700.png"},
+ guide: "B",
+ updatedAt: "2026-08-29T17:58:15.040Z"
 }
 ]

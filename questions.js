@@ -247,7 +247,8 @@ const IMAGE_DB = {
 "territoires_incas.jpg": {src: "images/territoires_incas.jpg"},
 "fondation_quebec_1608.jpg": {src: "images/fondation_quebec_1608.jpg", w: 1200, h: 901},
 "ligne_1600-1700.png": {src: "images/ligne_1600-1700.png", w: 1200, h: 240},
-"fondation_trois_rivieres.jpg": {src: "images/fondation_trois_rivieres.jpg", w: 1200, h: 801}
+"fondation_trois_rivieres.jpg": {src: "images/fondation_trois_rivieres.jpg", w: 1200, h: 801},
+"fondation_montreal.jpg": {src: "images/fondation_montreal.jpg"}
 }
 
 const QUESTIONS = [
@@ -2361,9 +2362,9 @@ const QUESTIONS = [
  soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
  aspects: [{aspect: "Personnages"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondaiton de Montréal par Maisonneuve et Jeanne Mance", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_montreal.jpg", soustitre: "Fondaiton de Montréal par Maisonneuve et Jeanne Mance", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "B",
- updatedAt: "2026-08-29T18:01:03.380Z"
+ updatedAt: "2026-08-29T18:02:41.646Z"
 }
 ]

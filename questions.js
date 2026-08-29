@@ -2296,8 +2296,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "jacques_cartier_1534.jpg", soustitre: "La prise de possession du territoire par Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1490-1570.png"},
- guide: "C",
- updatedAt: "2026-08-26T12:35:50.564Z"
+ guide: "B",
+ updatedAt: "2026-08-29T17:46:09.369Z"
 },
 {
  id: "Q137",

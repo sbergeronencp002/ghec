@@ -134,7 +134,8 @@ const REGLETTES = {
 "Q133": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q134": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q135": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q136": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
+"Q136": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
+"Q137": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -239,7 +240,8 @@ const IMAGE_DB = {
 "groupes_pecheurs_1745.jpg": {src: "images/groupes_pecheurs_1745.jpg", w: 1200, h: 800},
 "maladies_1745.jpg": {src: "images/maladies_1745.jpg", w: 1200, h: 900},
 "jacques_cartier_1534.jpg": {src: "images/jacques_cartier_1534.jpg", w: 1200, h: 900},
-"ligne_1490-1570.png": {src: "images/ligne_1490-1570.png", w: 1200, h: 240}
+"ligne_1490-1570.png": {src: "images/ligne_1490-1570.png", w: 1200, h: 240},
+"territoires_incas.jpg": {src: "images/territoires_incas.jpg"}
 }
 
 const QUESTIONS = [
@@ -2296,5 +2298,20 @@ const QUESTIONS = [
  reponse: {type: "image", ref: "ligne_1490-1570.png"},
  guide: "C",
  updatedAt: "2026-08-26T12:35:50.564Z"
+},
+{
+ id: "Q137",
+ niveau: 3,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Incas vers 1500"],
+ points: 1,
+ soustag: "Situer 1 élément dans l'espace",
+ enonce: "Indique la lettre correspondant au territoire occupé par les Incas vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoires_incas.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
+ reponse: false,
+ guide: "C",
+ updatedAt: "2026-08-29T14:04:37.977Z"
 }
 ]

@@ -2470,12 +2470,12 @@ const QUESTIONS = [
  enonce: "Les documents A à C présentent différents établissements de la Nouvelle-France. Associe chaque document à la personne qui a fondé l’établissement représenté.",
  aspects: [{aspect: "Personnages"}],
  documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières par Laviolette", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "fondation_quebec_1608.jpg", soustitre: "Fondation de Québec par Samuel de Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "fondation_montreal.jpg", soustitre: "Fondation de Montréal par Maisonneuve et Jeanne Mance", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "fondation_quebec_1608.jpg", soustitre: "Fondation de Québec", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "fondation_montreal.jpg", soustitre: "Fondation de Montréal", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Laviolette", "Paul de Chomedey de Maisonneuve", "Samuel de Champlain"]},
  guide: {type: "grille", entetes: ["Laviolette", "Paul de Chomedey de Maisonneuve", "Samuel de Champlain"], rangees: [["A", "C", "B"]]},
- updatedAt: "2026-08-30T19:27:00.350Z"
+ updatedAt: "2026-08-30T19:30:11.358Z"
 }
 ]

@@ -140,7 +140,8 @@ const REGLETTES = {
 "Q139": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q140": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q141": {oi: "Situer dans le temps", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q142": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q142": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q143": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -253,7 +254,8 @@ const IMAGE_DB = {
 "fondation_montreal.jpg": {src: "images/fondation_montreal.jpg"},
 "fondation_tadoussac.jpg": {src: "images/fondation_tadoussac.jpg", w: 1200, h: 802},
 "ligne_bcad.png": {src: "images/ligne_bcad.png", w: 1200, h: 248},
-"territoire_n-f_1645.jpg": {src: "images/territoire_n-f_1645.jpg", w: 1057, h: 1200}
+"territoire_n-f_1645.jpg": {src: "images/territoire_n-f_1645.jpg", w: 1057, h: 1200},
+"carte_n-f_1645_population.jpg": {src: "images/carte_n-f_1645_population.jpg", w: 1057, h: 1200}
 }
 
 const QUESTIONS = [
@@ -2406,5 +2408,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "La région de la vallée du Saint-Laurent et la région des Grands Lacs.",
  updatedAt: "2026-08-30T13:43:40.122Z"
+},
+{
+ id: "Q143",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme la région où se concentre la population de la société française vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_n-f_1645_population.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La vallée du Saint-Laurent.",
+ updatedAt: "2026-08-30T13:44:57.317Z"
 }
 ]

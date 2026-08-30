@@ -2322,8 +2322,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoires_incas.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
  reponse: false,
- guide: "C",
- updatedAt: "2026-08-29T14:04:37.977Z"
+ guide: "D",
+ updatedAt: "2026-08-30T13:33:53.602Z"
 },
 {
  id: "Q138",

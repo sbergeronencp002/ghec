@@ -2419,12 +2419,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme la région où se concentre la population de la société française vers 1645.",
+ enonce: "À l’aide du document A, nomme la région où se concentre la population de la Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_n-f_1645_population.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La vallée du Saint-Laurent.",
- updatedAt: "2026-08-30T13:44:57.317Z"
+ updatedAt: "2026-08-30T13:50:01.235Z"
 },
 {
  id: "Q144",

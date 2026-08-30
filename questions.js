@@ -2404,12 +2404,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "À l’aide du document A, nomme les deux régions de l’Amérique du Nord possédées par la France vers 1645.",
+ enonce: "À l’aide du document A, nomme deux régions de l’Amérique du Nord possédées par la France vers 1645.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_n-f_1645.jpg", soustitre: "Territoire de la Nouvelle-France en 1645", source: "Carte de l'Amérique du Nord. Adaptée d'après d-maps.com."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_n-f_1645.jpg", soustitre: "Territoire de la Nouvelle-France en 1645", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "La région de la vallée du Saint-Laurent et la région des Grands Lacs.",
- updatedAt: "2026-08-30T13:43:40.122Z"
+ updatedAt: "2026-08-30T13:49:31.203Z"
 },
 {
  id: "Q143",

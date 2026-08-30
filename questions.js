@@ -139,7 +139,8 @@ const REGLETTES = {
 "Q138": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q139": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q140": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q141": {oi: "Situer dans le temps", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
+"Q141": {oi: "Situer dans le temps", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
+"Q142": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -251,7 +252,8 @@ const IMAGE_DB = {
 "fondation_trois_rivieres.jpg": {src: "images/fondation_trois_rivieres.jpg", w: 1200, h: 801},
 "fondation_montreal.jpg": {src: "images/fondation_montreal.jpg"},
 "fondation_tadoussac.jpg": {src: "images/fondation_tadoussac.jpg", w: 1200, h: 802},
-"ligne_bcad.png": {src: "images/ligne_bcad.png", w: 1200, h: 248}
+"ligne_bcad.png": {src: "images/ligne_bcad.png", w: 1200, h: 248},
+"territoire_n-f_1645.jpg": {src: "images/territoire_n-f_1645.jpg", w: 1057, h: 1200}
 }
 
 const QUESTIONS = [
@@ -2389,5 +2391,20 @@ const QUESTIONS = [
  reponse: {type: "image", ref: "ligne_bcad.png"},
  guide: "B - C - A - D",
  updatedAt: "2026-08-29T18:31:24.898Z"
+},
+{
+ id: "Q142",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "À l’aide de la carte, nomme les deux régions de l’Amérique du Nord possédées par la France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_n-f_1645.jpg", soustitre: "Territoire de la Nouvelle-France en 1645", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "La région de la vallée du Saint-Laurent et la région des Grands Lacs.",
+ updatedAt: "2026-08-30T13:40:15.662Z"
 }
 ]

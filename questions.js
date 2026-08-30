@@ -141,7 +141,8 @@ const REGLETTES = {
 "Q140": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q141": {oi: "Situer dans le temps", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q142": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q143": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q143": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q144": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -255,7 +256,8 @@ const IMAGE_DB = {
 "fondation_tadoussac.jpg": {src: "images/fondation_tadoussac.jpg", w: 1200, h: 802},
 "ligne_bcad.png": {src: "images/ligne_bcad.png", w: 1200, h: 248},
 "territoire_n-f_1645.jpg": {src: "images/territoire_n-f_1645.jpg", w: 1057, h: 1200},
-"carte_n-f_1645_population.jpg": {src: "images/carte_n-f_1645_population.jpg", w: 1057, h: 1200}
+"carte_n-f_1645_population.jpg": {src: "images/carte_n-f_1645_population.jpg", w: 1057, h: 1200},
+"territoire_n-f_abcd.jpg": {src: "images/territoire_n-f_abcd.jpg", w: 1057, h: 1200}
 }
 
 const QUESTIONS = [
@@ -2423,5 +2425,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La vallée du Saint-Laurent.",
  updatedAt: "2026-08-30T13:44:57.317Z"
+},
+{
+ id: "Q144",
+ niveau: 4,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Situer 2 éléments dans l'espace",
+ enonce: "À l’aide du document A, indique les lettres correspondant aux territoires possédés par la France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_n-f_abcd.jpg", source: "Carte de l'Amérique du Nord. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "situer-dans-lespace", elements: ["Grands Lacs", "Vallée du Saint-Laurent"]},
+ guide: {type: "grille", entetes: ["Grands Lacs", "Vallée du Saint-Laurent"], rangees: [["A", "B"]]},
+ updatedAt: "2026-08-30T13:48:32.022Z"
 }
 ]

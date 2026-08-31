@@ -2459,7 +2459,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "population_n-f_1645_autochtones.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "population_n-f_1645_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Les Français et les Autochtones.",
- updatedAt: "2026-08-31T11:35:24.600Z"
+ updatedAt: "2026-08-31T11:36:08.021Z"
 },
 {
  id: "Q146",

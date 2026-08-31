@@ -260,7 +260,9 @@ const IMAGE_DB = {
 "territoire_n-f_1645.jpg": {src: "images/territoire_n-f_1645.jpg", w: 1057, h: 1200},
 "carte_n-f_1645_population.jpg": {src: "images/carte_n-f_1645_population.jpg", w: 1057, h: 1200},
 "territoire_n-f_abcd.jpg": {src: "images/territoire_n-f_abcd.jpg", w: 1057, h: 1200},
-"poste_traite_1645.jpg": {src: "images/poste_traite_1645.jpg", w: 1200, h: 801}
+"poste_traite_1645.jpg": {src: "images/poste_traite_1645.jpg", w: 1200, h: 801},
+"population_n-f_1645_autochtones.jpg": {src: "images/population_n-f_1645_autochtones.jpg"},
+"population_n-f_1645_francais.jpg": {src: "images/population_n-f_1645_francais.jpg"}
 }
 
 const QUESTIONS = [
@@ -2454,10 +2456,10 @@ const QUESTIONS = [
  soustag: "Établir tous les faits - 2",
  enonce: "Nomme deux groupes qui composent la population de la Nouvelle-France vers 1645.",
  aspects: [{aspect: "Groupes sociaux"}, {aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poste_traite_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "population_n-f_1645_autochtones.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "population_n-f_1645_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Les Français et les Autochtones.",
- updatedAt: "2026-08-30T14:16:17.189Z"
+ updatedAt: "2026-08-31T11:35:24.600Z"
 },
 {
  id: "Q146",

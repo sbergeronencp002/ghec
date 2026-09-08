@@ -2454,12 +2454,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Nomme deux groupes qui composent la population de la Nouvelle-France vers 1645.",
+ enonce: "Nomme deux groupes principaux qui composent la population de la Nouvelle-France vers 1645.",
  aspects: [{aspect: "Groupes sociaux"}, {aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "population_n-f_1645_autochtones.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "population_n-f_1645_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Les Français et les Autochtones.",
- updatedAt: "2026-08-31T11:36:08.021Z"
+ updatedAt: "2026-09-08T16:58:13.506Z"
 },
 {
  id: "Q146",

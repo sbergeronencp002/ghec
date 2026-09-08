@@ -144,7 +144,8 @@ const REGLETTES = {
 "Q143": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q144": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q145": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q146": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
+"Q146": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q147": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -263,7 +264,11 @@ const IMAGE_DB = {
 "poste_traite_1645.jpg": {src: "images/poste_traite_1645.jpg", w: 1200, h: 801},
 "population_n-f_1645_autochtones.jpg": {src: "images/population_n-f_1645_autochtones.jpg"},
 "population_n-f_1645_francais.jpg": {src: "images/population_n-f_1645_francais.jpg"},
-"village_iroquoien_campement_algonquien.jpg": {src: "images/village_iroquoien_campement_algonquien.jpg", w: 1200, h: 800}
+"village_iroquoien_campement_algonquien.jpg": {src: "images/village_iroquoien_campement_algonquien.jpg", w: 1200, h: 800},
+"poste_de_traite_1645_militaires.jpg": {src: "images/poste_de_traite_1645_militaires.jpg"},
+"village_iroquoien_1645.jpg": {src: "images/village_iroquoien_1645.jpg"},
+"campement_algonquien.jpg": {src: "images/campement_algonquien.jpg"},
+"colons_terre.jpg": {src: "images/colons_terre.jpg"}
 }
 
 const QUESTIONS = [
@@ -2480,5 +2485,25 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Laviolette", "Paul de Chomedey de Maisonneuve", "Samuel de Champlain"]},
  guide: {type: "grille", entetes: ["Laviolette", "Paul de Chomedey de Maisonneuve", "Samuel de Champlain"], rangees: [["A", "C", "B"]]},
  updatedAt: "2026-08-30T19:30:11.358Z"
+},
+{
+ id: "Q147",
+ niveau: 4,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présentent les deux grands groupes qui composent la population de la Nouvelle-France vers 1645. Associe chaque document au groupe correspondant.",
+ aspects: [{aspect: "Population"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "poste_de_traite_1645_militaires.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "campement_algonquien.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "colons_terre.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Autochtones", "Français"]},
+ guide: {type: "grille", entetes: ["Autochtones", "Français"], rangees: [["B et C", "A et D"]]},
+ updatedAt: "2026-09-08T17:16:08.810Z"
 }
 ]

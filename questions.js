@@ -145,7 +145,8 @@ const REGLETTES = {
 "Q144": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q145": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q146": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
-"Q147": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
+"Q147": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q148": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -268,7 +269,8 @@ const IMAGE_DB = {
 "poste_de_traite_1645_militaires.jpg": {src: "images/poste_de_traite_1645_militaires.jpg"},
 "village_iroquoien_1645.jpg": {src: "images/village_iroquoien_1645.jpg"},
 "campement_algonquien.jpg": {src: "images/campement_algonquien.jpg"},
-"colons_terre.jpg": {src: "images/colons_terre.jpg"}
+"colons_terre.jpg": {src: "images/colons_terre.jpg"},
+"cartes_etablissements.jpg": {src: "images/cartes_etablissements.jpg", w: 1200, h: 692}
 }
 
 const QUESTIONS = [
@@ -2505,5 +2507,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Autochtones", "Français"], double: true},
  guide: {type: "grille", entetes: ["Autochtones", "Français"], rangees: [["B et C", "A et D"]]},
  updatedAt: "2026-09-08T17:18:06.724Z"
+},
+{
+ id: "Q148",
+ niveau: 4,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Situer 1 élément dans l'espace",
+ enonce: "À l’aide du document A, indique la lettre qui correspond à l'établissement de Québec en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "tableau_2col"},
+ guide: "D",
+ updatedAt: "2026-09-08T18:59:40.031Z"
 }
 ]

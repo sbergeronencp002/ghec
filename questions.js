@@ -2498,7 +2498,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Mettre en relation des faits - 4",
- enonce: "Les documents A et B présentent les deux grands groupes qui composent la population de la Nouvelle-France vers 1645. Associe chaque document au groupe correspondant.",
+ enonce: "Les documents A à D présentent les deux grands groupes qui composent la population de la Nouvelle-France vers 1645. Associe chaque document au groupe correspondant.",
  aspects: [{aspect: "Population"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "poste_de_traite_1645_militaires.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -2508,7 +2508,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Autochtones", "Français"], double: true},
  guide: {type: "grille", entetes: ["Autochtones", "Français"], rangees: [["B et C", "A et D"]]},
- updatedAt: "2026-09-08T17:18:06.724Z"
+ updatedAt: "2026-09-13T13:44:47.478Z"
 },
 {
  id: "Q148",

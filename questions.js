@@ -150,7 +150,8 @@ const REGLETTES = {
 "Q149": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q150": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q151": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q152": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q152": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q153": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -274,7 +275,9 @@ const IMAGE_DB = {
 "village_iroquoien_1645.jpg": {src: "images/village_iroquoien_1645.jpg"},
 "campement_algonquien.jpg": {src: "images/campement_algonquien.jpg"},
 "colons_terre.jpg": {src: "images/colons_terre.jpg"},
-"cartes_etablissements.jpg": {src: "images/cartes_etablissements.jpg", w: 1200, h: 692}
+"cartes_etablissements.jpg": {src: "images/cartes_etablissements.jpg", w: 1200, h: 692},
+"n-f_1645.jpg": {src: "images/n-f_1645.jpg", w: 1200, h: 800},
+"poste_traite_troc.jpg": {src: "images/poste_traite_troc.jpg", w: 1200, h: 801}
 }
 
 const QUESTIONS = [
@@ -2586,5 +2589,19 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Français", "Langues autochtones"]},
  guide: {type: "grille", entetes: ["Français", "Langues autochtones"], rangees: [["B", "A"]]},
  updatedAt: "2026-09-13T14:03:44.863Z"
+},
+{
+ id: "Q153",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "À l’aide des documents A et B, explique pourquoi plusieurs langues sont parlées en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "n-f_1645.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l’aide de l’intelligence artificielle (ChatGPT/OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "poste_traite_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "La Nouvelle-France est habitée par des Français et des Autochtones, qui parlent des langues différentes.",
+ updatedAt: "2026-09-13T14:07:16.575Z"
 }
 ]

@@ -155,7 +155,8 @@ const REGLETTES = {
 "Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q155": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q156": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
-"Q157": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q157": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q158": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -288,7 +289,8 @@ const IMAGE_DB = {
 "broderie_1645.jpg": {src: "images/broderie_1645.jpg", w: 1200, h: 903},
 "art_peinture_1645.jpg": {src: "images/art_peinture_1645.jpg", w: 1200, h: 904},
 "architecture_1645.jpg": {src: "images/architecture_1645.jpg", w: 1200, h: 902},
-"alimentation_1745.jpg": {src: "images/alimentation_1745.jpg"}
+"alimentation_1745.jpg": {src: "images/alimentation_1745.jpg"},
+"habillement_1645.jpg": {src: "images/habillement_1645.jpg"}
 }
 
 const QUESTIONS = [
@@ -2678,5 +2680,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le pain de blé.",
  updatedAt: "2026-09-14T01:49:55.316Z"
+},
+{
+ id: "Q158",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique comment les colons s’adaptent aux déplacements en hiver.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "habillement_1645.jpg"}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les colons utilisent notamment des raquettes et des mocassins pour se déplacer plus facilement dans la neige.",
+ updatedAt: "2026-09-14T01:57:42.266Z"
 }
 ]

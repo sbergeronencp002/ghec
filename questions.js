@@ -2599,9 +2599,9 @@ const QUESTIONS = [
  points: 2,
  enonce: "À l’aide des documents A et B, explique pourquoi plusieurs langues sont parlées en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "n-f_1645.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l’aide de l’intelligence artificielle (ChatGPT/OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "poste_traite_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "n-f_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "poste_traite_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "La Nouvelle-France est habitée par des Français et des Autochtones, qui parlent des langues différentes.",
- updatedAt: "2026-09-13T14:07:16.575Z"
+ guide: "La Nouvelle-France est habitée par des Français et des Autochtones qui parlent des langues différentes.",
+ updatedAt: "2026-09-14T00:25:58.939Z"
 }
 ]

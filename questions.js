@@ -154,7 +154,8 @@ const REGLETTES = {
 "Q153": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q155": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q156": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
+"Q156": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q157": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -286,7 +287,8 @@ const IMAGE_DB = {
 "catholicisme_1645.jpg": {src: "images/catholicisme_1645.jpg"},
 "broderie_1645.jpg": {src: "images/broderie_1645.jpg", w: 1200, h: 903},
 "art_peinture_1645.jpg": {src: "images/art_peinture_1645.jpg", w: 1200, h: 904},
-"architecture_1645.jpg": {src: "images/architecture_1645.jpg", w: 1200, h: 902}
+"architecture_1645.jpg": {src: "images/architecture_1645.jpg", w: 1200, h: 902},
+"alimentation_1745.jpg": {src: "images/alimentation_1745.jpg"}
 }
 
 const QUESTIONS = [
@@ -2661,5 +2663,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Architecture", "Broderie", "Peinture"]},
  guide: {type: "grille", entetes: ["Architecture", "Broderie", "Peinture"], rangees: [["C", "A", "B"]]},
  updatedAt: "2026-09-14T01:44:51.253Z"
+},
+{
+ id: "Q157",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme un aliment à la base de l’alimentation des colons en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "alimentation_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le pain de blé.",
+ updatedAt: "2026-09-14T01:49:55.316Z"
 }
 ]

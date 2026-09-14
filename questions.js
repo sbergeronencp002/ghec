@@ -151,7 +151,8 @@ const REGLETTES = {
 "Q150": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q151": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q152": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q153": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q153": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -277,7 +278,8 @@ const IMAGE_DB = {
 "colons_terre.jpg": {src: "images/colons_terre.jpg"},
 "cartes_etablissements.jpg": {src: "images/cartes_etablissements.jpg", w: 1200, h: 692},
 "n-f_1645.jpg": {src: "images/n-f_1645.jpg", w: 1200, h: 800},
-"poste_traite_troc.jpg": {src: "images/poste_traite_troc.jpg", w: 1200, h: 801}
+"poste_traite_troc.jpg": {src: "images/poste_traite_troc.jpg", w: 1200, h: 801},
+"missionnaire.jpg": {src: "images/missionnaire.jpg"}
 }
 
 const QUESTIONS = [
@@ -2603,5 +2605,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les Français et les Autochtones doivent communiquer pour faire du commerce et échanger des marchandises, notamment des fourrures.",
  updatedAt: "2026-09-14T00:26:23.360Z"
+},
+{
+ id: "Q154",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "Nomme les deux formes de spiritualité ou de religion présentes en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "missionnaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Les spiritualités autochtones et le catholicisme.",
+ updatedAt: "2026-09-14T00:27:37.043Z"
 }
 ]

@@ -157,7 +157,8 @@ const REGLETTES = {
 "Q156": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q157": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q158": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q159": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q159": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q160": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -291,7 +292,8 @@ const IMAGE_DB = {
 "art_peinture_1645.jpg": {src: "images/art_peinture_1645.jpg", w: 1200, h: 904},
 "architecture_1645.jpg": {src: "images/architecture_1645.jpg", w: 1200, h: 902},
 "alimentation_1745.jpg": {src: "images/alimentation_1745.jpg"},
-"habillement_1645.jpg": {src: "images/habillement_1645.jpg"}
+"habillement_1645.jpg": {src: "images/habillement_1645.jpg"},
+"musique_chants_1645.jpg": {src: "images/musique_chants_1645.jpg", w: 1200, h: 902}
 }
 
 const QUESTIONS = [
@@ -2710,5 +2712,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les mocassins.",
  updatedAt: "2026-09-14T01:59:51.142Z"
+},
+{
+ id: "Q160",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "À l’aide du document A, nomme deux divertissements pratiqués par les colons vers 1645.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "musique_chants_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "La musique et la danse.",
+ updatedAt: "2026-09-14T11:32:47.635Z"
 }
 ]

@@ -152,7 +152,8 @@ const REGLETTES = {
 "Q151": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q152": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q153": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q155": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -279,7 +280,9 @@ const IMAGE_DB = {
 "cartes_etablissements.jpg": {src: "images/cartes_etablissements.jpg", w: 1200, h: 692},
 "n-f_1645.jpg": {src: "images/n-f_1645.jpg", w: 1200, h: 800},
 "poste_traite_troc.jpg": {src: "images/poste_traite_troc.jpg", w: 1200, h: 801},
-"missionnaire.jpg": {src: "images/missionnaire.jpg"}
+"missionnaire.jpg": {src: "images/missionnaire.jpg"},
+"ceremonie_autochtone_1645.jpg": {src: "images/ceremonie_autochtone_1645.jpg"},
+"catholicisme_1645.jpg": {src: "images/catholicisme_1645.jpg"}
 }
 
 const QUESTIONS = [
@@ -2620,5 +2623,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "Les spiritualités autochtones et le catholicisme.",
  updatedAt: "2026-09-14T00:27:37.043Z"
+},
+{
+ id: "Q155",
+ niveau: 4,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présentent deux pratiques religieuses ou spirituelles. Associe chaque document à la pratique correspondante.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "ceremonie_autochtone_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "catholicisme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Catholicisme", "Spiritualité autochtone"]},
+ guide: {type: "grille", entetes: ["Catholicisme", "Spiritualité autochtone"], rangees: [["B", "A"]]},
+ updatedAt: "2026-09-14T00:35:45.776Z"
 }
 ]

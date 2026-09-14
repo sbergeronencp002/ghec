@@ -153,7 +153,8 @@ const REGLETTES = {
 "Q152": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q153": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q155": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q155": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q156": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
 }
 
 const IMAGE_DB = {
@@ -282,7 +283,10 @@ const IMAGE_DB = {
 "poste_traite_troc.jpg": {src: "images/poste_traite_troc.jpg", w: 1200, h: 801},
 "missionnaire.jpg": {src: "images/missionnaire.jpg"},
 "ceremonie_autochtone_1645.jpg": {src: "images/ceremonie_autochtone_1645.jpg"},
-"catholicisme_1645.jpg": {src: "images/catholicisme_1645.jpg"}
+"catholicisme_1645.jpg": {src: "images/catholicisme_1645.jpg"},
+"broderie_1645.jpg": {src: "images/broderie_1645.jpg", w: 1200, h: 903},
+"art_peinture_1645.jpg": {src: "images/art_peinture_1645.jpg", w: 1200, h: 904},
+"architecture_1645.jpg": {src: "images/architecture_1645.jpg", w: 1200, h: 902}
 }
 
 const QUESTIONS = [
@@ -2638,5 +2642,24 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Catholicisme", "Spiritualité autochtone"]},
  guide: {type: "grille", entetes: ["Catholicisme", "Spiritualité autochtone"], rangees: [["B", "A"]]},
  updatedAt: "2026-09-14T00:35:45.776Z"
+},
+{
+ id: "Q156",
+ niveau: 4,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 3",
+ enonce: "À l’aide des documents A à C, associe chaque document à l’expression de l’art correspondante en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Culture"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "broderie_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "art_peinture_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "architecture_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Architecture", "Broderie", "Peinture"]},
+ guide: {type: "grille", entetes: ["Architecture", "Broderie", "Peinture"], rangees: [["C", "A", "B"]]},
+ updatedAt: "2026-09-14T01:44:51.253Z"
 }
 ]

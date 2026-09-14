@@ -203,6 +203,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 <div class="toolbar">
   <input type="search" id="search" placeholder="Rechercher…" oninput="filterAll()">
   <select id="filterOi" onchange="filterAll()"><option value="">Toutes les OI</option></select>
+  <select id="filterNiveau" onchange="filterAll()" title="Niveau — déduit des questions qui utilisent l'image"><option value="">Tous les niveaux</option></select>
   <select id="sortImg" onchange="renderImgGrid();filterAll()" title="Ordre d'affichage des images">
     <option value="usage">Partagées d'abord</option>
     <option value="alpha">A → Z</option>
@@ -384,7 +385,10 @@ function renderImgGrid() {
     '<div class="img-grid">' + groups.map(([img, ids]) => {
       const isShared = ids.length > 1;
       const oisArr = [...new Set(ids.filter(id => qById[id]).map(id => qById[id].oi))];
-      return `<div class="img-card" data-img-name="${escH(img.replace(/\.[^.]+$/i,'').toLowerCase())}" data-ois="${escH(JSON.stringify(oisArr))}" onclick="showImg(${escH(JSON.stringify(img))})">
+      // Niveau(x) déduits des questions qui emploient l'image — aucune donnée à saisir, et
+      // un nouveau niveau (GHEC 5, 6…) apparaît tout seul dès la première question publiée.
+      const nivArr = [...new Set(ids.filter(id => qById[id]).map(id => String(qById[id].niveau)))];
+      return `<div class="img-card" data-img-name="${escH(img.replace(/\.[^.]+$/i,'').toLowerCase())}" data-ois="${escH(JSON.stringify(oisArr))}" data-niveaux="${escH(JSON.stringify(nivArr))}" onclick="showImg(${escH(JSON.stringify(img))})">
         <span class="ic-count${isShared ? '' : ' single'}">${ids.length}</span>
         <img src="images/${escH(img)}" loading="lazy" alt="${escH(img)}">
         <div class="ic-label" title="${escH(img)}">${escH(img.replace(/\.[^.]+$/i,''))}</div>
@@ -409,7 +413,7 @@ function tileHtml(q) {
       ${shared ? `<span class="share-badge">${imgMap[img].length}</span>` : ''}
     </div>`;
   }).join('');
-  return `<div class="tile" data-oi="${escH(q.oi)}" data-text="${escH(q.id+' '+q.oi+' '+((q.periodes||[]).join(' + '))+' '+enonce.toLowerCase())}">
+  return `<div class="tile" data-oi="${escH(q.oi)}" data-niveau="${escH(String(q.niveau))}" data-text="${escH(q.id+' '+q.oi+' '+((q.periodes||[]).join(' + '))+' '+enonce.toLowerCase())}">
   <div class="tile-top"><span class="tile-id">${escH(q.id)}</span><span class="tile-oi-tag" style="${oiStyleAttr(q.oi)}">${escH(short)}</span></div>
   <div class="tile-periode">${escH(periodeShort)}</div>
   <div class="tile-enonce">${escH(enonceCut)}</div>
@@ -453,6 +457,14 @@ async function init() {
   const ois = [...new Set(questions.map(q=>q.oi))].sort();
   const sel = document.getElementById('filterOi');
   ois.forEach(oi => { const o = document.createElement('option'); o.value=oi; o.textContent=oi; sel.appendChild(o); });
+
+  // Niveaux présents dans les données — construit dynamiquement (tri numérique), donc
+  // GHEC 5/6 s'ajouteront d'eux-mêmes sans toucher à ce code.
+  const niveaux = [...new Set(questions.map(q => String(q.niveau)))].sort((a,b) => Number(a)-Number(b));
+  const selNiv = document.getElementById('filterNiveau');
+  if (selNiv) niveaux.forEach(n => {
+    const o = document.createElement('option'); o.value = n; o.textContent = 'GHEC ' + n; selNiv.appendChild(o);
+  });
 
   // Orphelines : images présentes sur GitHub mais non référencées dans aucune question.
   // On lit le répertoire images/ via l'API GitHub (source de vérité) — pas seulement IMAGE_DB,
@@ -574,16 +586,20 @@ function setActive(id) {
 function filterAll() {
   const s = document.getElementById('search').value.toLowerCase();
   const oi = document.getElementById('filterOi').value;
+  const niv = (document.getElementById('filterNiveau') || {}).value || '';
   // Filtrer la grille "toutes les questions"
   document.querySelectorAll('#allGrid .tile').forEach(t => {
-    const show = (!s || t.dataset.text.includes(s)) && (!oi || t.dataset.oi===oi);
+    const show = (!s || t.dataset.text.includes(s)) && (!oi || t.dataset.oi===oi)
+      && (!niv || t.dataset.niveau===niv);
     t.style.display = show ? '' : 'none';
   });
-  // Filtrer la grille d'images par nom + OI
+  // Filtrer la grille d'images par nom + OI + niveau. Une image partagée entre deux niveaux
+  // (aucune aujourd'hui, mais rien ne l'interdit) apparaît sous chacun d'eux.
   document.querySelectorAll('#shared-container .img-card').forEach(c => {
     const nameMatch = !s || c.dataset.imgName.includes(s);
     const oiMatch = !oi || (() => { try { return JSON.parse(c.dataset.ois || '[]').includes(oi); } catch(_) { return false; } })();
-    c.style.display = (nameMatch && oiMatch) ? '' : 'none';
+    const nivMatch = !niv || (() => { try { return JSON.parse(c.dataset.niveaux || '[]').includes(niv); } catch(_) { return false; } })();
+    c.style.display = (nameMatch && oiMatch && nivMatch) ? '' : 'none';
   });
 }
 

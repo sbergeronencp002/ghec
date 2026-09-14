@@ -591,6 +591,10 @@ function updatePeriodes() {
     </label>`
   ).join('');
   updateAspects();
+  // Le niveau vient de changer : re-grouper les menus d'images pour remonter en tête celles
+  // de ce niveau (buildImageOptions lit #q-niveau). Sans ça, on saisirait une question
+  // GHEC 4 avec les images GHEC 3 en tête de liste.
+  if(typeof refreshImageSelects === 'function') refreshImageSelects();
 }
 
 function getSelectedPeriodes() {
@@ -1616,15 +1620,51 @@ function addRecentImage(name) {
   RECENT_IMAGES = [name, ...RECENT_IMAGES.filter(x => x !== name)].slice(0, 3);
   try { localStorage.setItem('hqc_recent_images', JSON.stringify(RECENT_IMAGES)); } catch(_) {}
 }
+// Niveau(x) de chaque image, DÉDUITS des questions qui l'emploient — aucun champ à saisir
+// ni à stocker dans IMAGE_DB, donc rien à maintenir quand GHEC 5/6 arriveront : une image
+// se classe d'elle-même dès la première question publiée qui la référence.
+function imageNiveauxMap() {
+  const map = {};
+  const add = (ref, niv) => { if(ref) (map[ref] = map[ref] || new Set()).add(String(niv)); };
+  (currentQuestions || []).forEach(q => {
+    (q.documents || []).forEach(d => {
+      add(d.ref, q.niveau);
+      (d.cols || []).forEach(c => add(c.ref, q.niveau));
+    });
+    if(q.reponse && q.reponse.ref) add(q.reponse.ref, q.niveau);
+  });
+  return map;
+}
+
+// La banque d'images dépasse la centaine : on regroupe le menu par niveau plutôt que de
+// filtrer, pour que le niveau courant arrive en tête SANS jamais masquer une image (une
+// image d'un autre niveau reste atteignable, simplement plus bas dans la liste).
 function buildImageOptions() {
   const recent = RECENT_IMAGES.filter(r => IMAGES.includes(r)).sort((a,b) => a.localeCompare(b,'fr'));
   const rest = IMAGES.filter(i => !recent.includes(i));
   let opts = '<option value="">— Choisir une image —</option>';
   if(recent.length) {
     opts += recent.map(f => `<option value="${escHtml(f)}">⭐ ${escHtml(f)}</option>`).join('');
-    opts += '<option value="" disabled>──────────────────</option>';
   }
-  return opts + rest.map(f => `<option value="${escHtml(f)}">${escHtml(f)}</option>`).join('');
+  const nivMap = imageNiveauxMap();
+  const courant = (document.getElementById('q-niveau') || {}).value || '';
+  const groupe = {};             // niveau -> [fichiers]   ('' = pas encore utilisée)
+  rest.forEach(f => {
+    const nivs = nivMap[f] ? [...nivMap[f]] : [''];
+    nivs.forEach(n => { (groupe[n] = groupe[n] || []).push(f); });
+  });
+  // Ordre : niveau de la question en cours, puis images non utilisées (celles qu'on vient
+  // de téléverser et qu'on s'apprête justement à rattacher), puis les autres niveaux.
+  const autres = Object.keys(groupe)
+    .filter(n => n !== courant && n !== '')
+    .sort((a,b) => Number(a) - Number(b));
+  const ordre = [courant, '', ...autres].filter(n => groupe[n] && groupe[n].length);
+  const libelle = n => n === '' ? 'Non utilisées' : 'GHEC ' + n;
+  return opts + ordre.map(n =>
+    `<optgroup label="${escHtml(libelle(n))}">`
+    + groupe[n].sort((a,b) => a.localeCompare(b,'fr')).map(f => `<option value="${escHtml(f)}">${escHtml(f)}</option>`).join('')
+    + '</optgroup>'
+  ).join('');
 }
 
 // Remplit le menu OI depuis la source unique OI_CONFIG (ordre = OI_LIST).

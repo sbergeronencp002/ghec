@@ -122,7 +122,7 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 |---------|------|
 | `index.html` | Site public (filtres, cartes, panier, prévisualisation, génération DOCX) |
 | `admin.html` | Interface de saisie/modification des questions **+ section Configuration** (OI, compétences, niveaux/sociétés/aspects) — pousse via GitHub Contents API |
-| `documents.html` | Gestion Documents & Images — galerie de toutes les images, vue par question, images non utilisées. Renomme/remplace/supprime des images et édite les sous-titres directement via l'API GitHub (token partagé avec admin.html) |
+| `documents.html` | Gestion Documents & Images — galerie de toutes les images, vue par question, images non utilisées. Renomme/remplace/supprime des images et édite les sous-titres directement via l'API GitHub (token partagé avec admin.html). Filtres Recherche / OI / **Niveau** (voir « Niveau des images » plus bas) |
 | `revision.html` | Révision par cartes — parcourt les questions une à la fois, navigation clavier/tactile, tout affiché sur une carte (énoncé, documents, réglette, réponse, guide). Édition inline du guide/énoncé/documents texte via l'API GitHub |
 | `examen.html` | Générateur d'examens — sélection automatique par aspect/OI/budget de points, remplacement manuel, génération de 3 DOCX (questionnaire, dossier documentaire, guide). Lecture seule sur `questions.js`. Les tables de réglages fines (cibles par OI, scénarios par période — voir `examen-gen.js`) sont **vides par défaut** : le générateur utilise l'algorithme générique (variété + budget) tant qu'aucun réglage n'est ajouté |
 | `examen-gen.js` | Algorithme pur de sélection (exact-cover des aspects + budget de points + quota OI) et de renumérotation des documents. Aucune dépendance au DOM — testable via node |
@@ -188,6 +188,35 @@ version — répercuter aussi le nouveau `?v=N` dans `sw.js` (`PRECACHE`) et inc
 constante `CACHE` de `sw.js` (une liste `PRECACHE` changée sans bump de `CACHE` laisse les
 navigateurs déjà visités sur l'ancienne liste indéfiniment). Cette table doit être tenue à
 jour à chaque bump, sinon un futur agent repart d'un mauvais numéro de version.
+
+---
+
+## Niveau des images — déduit, jamais stocké
+
+Le niveau (GHEC 3, 4, 5, 6…) d'une image n'est **pas** un champ d'`IMAGE_DB` : il est
+**déduit à la volée des questions qui référencent l'image** (`documents[].ref`,
+`documents[].cols[].ref`, `reponse.ref` → `q.niveau`). Vérifié le 2026-09-14 : aucune
+image n'était alors employée à plus d'un niveau, mais le code gère le cas (une image
+partagée apparaît sous chacun de ses niveaux).
+
+Conséquence à préserver : **ne jamais ajouter de champ `niveau` à `IMAGE_DB`** pour
+« étiqueter » les images. Ce serait une donnée à saisir pour chaque image et à ressaisir
+à chaque nouveau niveau, qui divergerait de la réalité dès qu'une question change de
+niveau — alors que la déduction est exacte par construction et s'étend toute seule.
+
+- `documents.html` : filtre « Tous les niveaux / GHEC N » dans la barre d'outils, peuplé
+  dynamiquement depuis les niveaux réellement présents (tri numérique). Chaque `.img-card`
+  porte `data-niveaux` (tableau JSON) et chaque `.tile` de question `data-niveau`, filtrés
+  dans `filterAll()` — même mécanique que le filtre OI existant (`data-ois`).
+- `admin.html` : `buildImageOptions()` **regroupe** le menu d'images en `<optgroup>` —
+  niveau de la question en cours d'abord, puis « Non utilisées » (téléversées mais pas
+  encore rattachées), puis les autres niveaux. On regroupe plutôt qu'on ne filtre : aucune
+  image n'est jamais masquée, seulement reléguée plus bas. `updatePeriodes()` rappelle
+  `refreshImageSelects()` pour re-grouper quand le niveau de la question change.
+  `imageNiveauxMap()` calcule la table depuis `currentQuestions`.
+
+Les deux pages étant servies en réseau-first par `sw.js`, aucun cache-bust n'est requis
+pour ces changements (contrairement à `app.js`).
 
 ---
 

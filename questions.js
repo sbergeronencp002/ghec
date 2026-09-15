@@ -2795,8 +2795,8 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document B", ref: "fetes_religieuses_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "bapteme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
- reponse: {type: "mettre-en-relation", elements: ["", "", ""]},
- guide: {type: "grille", entetes: ["Élément 1", "Élément 2", "Élément 3"], rangees: [["C", "B", "A"]]},
- updatedAt: "2026-09-15T11:38:17.547Z"
+ reponse: {type: "mettre-en-relation", elements: ["Baptême", "Fête religieuse", "Mariage"]},
+ guide: {type: "grille", entetes: ["Baptême", "Fête religieuse", "Mariage"], rangees: [["C", "B", "A"]]},
+ updatedAt: "2026-09-15T11:40:48.431Z"
 }
 ]

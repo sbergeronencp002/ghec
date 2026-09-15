@@ -304,7 +304,9 @@ const IMAGE_DB = {
 "bapteme_1645.jpg": {src: "images/bapteme_1645.jpg", w: 1200, h: 800},
 "mariage_1645.jpg": {src: "images/mariage_1645.jpg", w: 1200, h: 800},
 "divertissement_theatre.jpg": {src: "images/divertissement_theatre.jpg", w: 1200, h: 800},
-"divertissement_recits_1645.jpg": {src: "images/divertissement_recits_1645.jpg", w: 1200, h: 800}
+"divertissement_recits_1645.jpg": {src: "images/divertissement_recits_1645.jpg", w: 1200, h: 800},
+"deplacement_1645_a.jpg": {src: "images/deplacement_1645_a.jpg", w: 1200, h: 800},
+"deplacement_1645_b.jpg": {src: "images/deplacement_1645_b.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2702,12 +2704,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique comment les colons s’adaptent aux déplacements en hiver.",
+ enonce: "Explique comment les colons s’adaptent aux déplacements en Nouvelle-France.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "habillement_1645.jpg"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "deplacement_1645_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "deplacement_1645_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les colons utilisent notamment des raquettes et des mocassins pour se déplacer plus facilement dans la neige.",
- updatedAt: "2026-09-14T01:57:42.266Z"
+ guide: "Les colons utilisent notamment des raquettes et des mocassins pour se déplacer plus facilement en Nouvelle-France.",
+ updatedAt: "2026-09-15T11:55:03.580Z"
 },
 {
  id: "Q159",

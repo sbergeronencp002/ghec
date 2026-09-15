@@ -159,7 +159,8 @@ const REGLETTES = {
 "Q158": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q159": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q160": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q161": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q161": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q162": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -295,7 +296,8 @@ const IMAGE_DB = {
 "alimentation_1745.jpg": {src: "images/alimentation_1745.jpg"},
 "habillement_1645.jpg": {src: "images/habillement_1645.jpg"},
 "musique_chants_1645.jpg": {src: "images/musique_chants_1645.jpg", w: 1200, h: 902},
-"chant_musique_1645.jpg": {src: "images/chant_musique_1645.jpg", w: 1200, h: 800}
+"chant_musique_1645.jpg": {src: "images/chant_musique_1645.jpg", w: 1200, h: 800},
+"fetes_religieuses_1645.jpg": {src: "images/fetes_religieuses_1645.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2744,5 +2746,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Ils se réunissent pour jouer de la musique et pour danser.",
  updatedAt: "2026-09-14T11:39:22.218Z"
+},
+{
+ id: "Q162",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme une coutume pratiquée par les colons en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_religieuses_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le mariage, le baptême ou une fête religieuse.",
+ updatedAt: "2026-09-15T11:33:58.444Z"
 }
 ]

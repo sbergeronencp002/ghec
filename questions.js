@@ -2768,17 +2768,17 @@ const QUESTIONS = [
 },
 {
  id: "Q163",
- niveau: 6,
+ niveau: 4,
  oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["La société québécoise vers 1905"],
+ periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  enonce: "À l’aide des documents A et B, explique comment la religion influence les coutumes des colons vers 1645.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "bapteme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "mariage_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La religion catholique accompagne plusieurs moments importants de la vie, comme les mariages, les baptêmes et les fêtes religieuses.",
- updatedAt: "2026-09-15T11:36:14.619Z"
+ updatedAt: "2026-09-15T11:38:56.876Z"
 },
 {
  id: "Q164",

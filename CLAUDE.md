@@ -135,7 +135,7 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 | `competences.js` | `COMPETENCE_LIST` — dimension de classement **indépendante de l'OI** (3 compétences), simple liste sans couleur/réglette associée. Géré via la section Configuration d'admin.html |
 | `questions-io.js` | Sérialiseur partagé : `serializeValue`, `ensureImageDbComplete`, `generateQuestionsJs`, `generateIndexJs`. Chargé par admin.html ET documents.html |
 | `questions-index.js` | Index allégé (champs grille seulement) chargé par index.html au démarrage. Régénéré automatiquement par admin.html à chaque publication |
-| `filters.js` | Cascade de filtres partagée niveau→période→aspect — générique, aucun niveau codé en dur (lit `PERIODES_PAR_NIVEAU`/`ASPECTS_PAR_PERIODE` dynamiquement) |
+| `filters.js` | Cascade de filtres partagée niveau + compétence → société → aspect — générique pour les valeurs internes; les pages peuvent fournir un libellé d’affichage sans modifier les données |
 | `tools/validate-questions.mjs` | Validateur de données : vérifie `questions.js` contre `oi-config.js`, `competences.js`, `contexte.js` et les fichiers `images/`. Lancé en hook SessionStart |
 | `tools/smoke-test.mjs` | Tests de fumée (fonctions de rendu critiques d'app.js, entrées adverses) |
 | `tools/check-escaping.mjs` | Scanner anti-XSS (concaténations HTML non échappées) |
@@ -150,9 +150,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=59`, `style.css?v=34`, `filters.js?v=5`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=60`, `style.css?v=34`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v13'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v14'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -181,6 +181,7 @@ sociétés du niveau 3 (retrait du préfixe « Les » redondant — « Les Iroqu
 Puis bump 2026-10-02 (`style.css?v=33`→`34`, `CACHE='ghec-v10'`→`'ghec-v11'`) pour l’ajout des quatre liens PDA (3e à 6e) dans l’en-tête public.
 Puis bump 2026-10-02 (`app.js?v=57`→`58`, `CACHE='ghec-v11'`→`'ghec-v12'`) pour afficher les compétences sous la forme C1/C2/C3 dans les interfaces, sans modifier les valeurs internes des questions.
 Puis bump 2026-10-02 (`app.js?v=58`→`59`, `CACHE='ghec-v12'`→`'ghec-v13'`) pour conserver l’ordre hiérarchique des compétences C1 → C2 → C3 dans les filtres et tableaux.
+Puis bump 2026-10-02 (`app.js?v=59`→`60`, `filters.js?v=5`→`6`, `CACHE='ghec-v13'`→`'ghec-v14'`) pour rendre le filtre Sociétés dépendant du niveau + de la compétence et afficher les libellés GHEC3 courts sans migrer les valeurs internes.
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de

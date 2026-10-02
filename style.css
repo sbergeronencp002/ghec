@@ -947,7 +947,7 @@ select:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
   header { padding: 0.9rem 1rem; align-items: flex-start; flex-wrap: wrap; }
   .header-brand { width: 100%; gap: 0.55rem; flex-wrap: wrap; }
   .header-brand span { width: 100%; }
-  .header-actions { width: 100%; margin-left: 0; justify-content: space-between; gap: 0.5rem; }
+  .header-actions { width: 100%; margin-left: 0; justify-content: flex-start; gap: 0.5rem; flex-wrap: wrap; }
   .pda-links { gap: 0.25rem; flex-wrap: wrap; }
   .pda-link { min-width: 0; padding: 0.34rem 0.58rem; font-size: 0.72rem; }
   header h1 { font-size: 1.2rem; }

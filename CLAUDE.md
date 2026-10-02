@@ -182,6 +182,7 @@ Puis bump 2026-10-02 (`style.css?v=33`→`34`, `CACHE='ghec-v10'`→`'ghec-v11'`
 Puis bump 2026-10-02 (`app.js?v=57`→`58`, `CACHE='ghec-v11'`→`'ghec-v12'`) pour afficher les compétences sous la forme C1/C2/C3 dans les interfaces, sans modifier les valeurs internes des questions.
 Puis bump 2026-10-02 (`app.js?v=58`→`59`, `CACHE='ghec-v12'`→`'ghec-v13'`) pour conserver l’ordre hiérarchique des compétences C1 → C2 → C3 dans les filtres et tableaux.
 Puis bump 2026-10-02 (`app.js?v=59`→`60`, `filters.js?v=5`→`6`, `CACHE='ghec-v13'`→`'ghec-v14'`) pour rendre le filtre Sociétés dépendant du niveau + de la compétence et afficher les libellés GHEC3 courts sans migrer les valeurs internes.
+Pour GHEC3, `app.js` et `revision.html` calculent aussi une `competenceEffective(q)` à partir de `q.periodes` : sociétés simples vers 1500 → C1; Iroquoiens 1745 / paire 1500-1745 → C2; paires Iroquoiens-Algonquiens ou Iroquoiens-Incas → C3. Cela corrige l’affichage et le filtrage de questions historiques dont le champ `competence` stocké ne suivait pas encore ce découpage, sans réécrire `questions.js`.
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de

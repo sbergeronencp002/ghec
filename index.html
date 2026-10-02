@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap">
-<link rel="stylesheet" href="style.css?v=34">
+<link rel="stylesheet" href="style.css?v=35">
 </head>
 <body>
 <noscript><div style="padding:2rem;text-align:center;font-family:sans-serif;color:#1a1814">Ce site nécessite JavaScript pour fonctionner.</div></noscript>
@@ -24,6 +24,7 @@
       <a href="https://csbf.sharepoint.com/:b:/s/CSBF-USsec/IQDlWdCYggtpQJuTGEqLONUrAaEtQJA0bg7uNnsS4jYzjwU?e=dSomyn" target="_blank" rel="noopener noreferrer" class="pda-link" title="Ouvrir la PDA de GHEC 5">PDA 5e</a>
       <a href="https://csbf.sharepoint.com/:b:/s/CSBF-USsec/IQCMK7F1B9ziQaW2maeoZG6zAdXzNgxELvOKDhDQyMk280c?e=7F51zB" target="_blank" rel="noopener noreferrer" class="pda-link" title="Ouvrir la PDA de GHEC 6">PDA 6e</a>
     </div>
+    <button type="button" class="header-link header-button" onclick="openContinuum()">▦ Continuum</button>
     <a href="examen.html" class="header-link">📝 Examen</a>
   </nav>
 </header>
@@ -60,14 +61,14 @@
 
     <div class="filter-group">
       <label class="filter-label" for="f-aspect">Aspects</label>
-      <select id="f-aspect" onchange="applyFilters()">
+      <select id="f-aspect" onchange="onAspectChange()">
         <option value="">Tous</option>
       </select>
     </div>
 
     <div class="filter-group">
       <label class="filter-label" for="f-oi">Opérations intellectuelles</label>
-      <select id="f-oi" onchange="applyFilters()">
+      <select id="f-oi" onchange="onOiChangeMain()">
         <option value="">Toutes</option>
       </select>
     </div>
@@ -82,11 +83,32 @@
   </aside>
 
   <main class="main">
+    <div class="context-toolbar">
+      <nav class="context-breadcrumb" id="context-breadcrumb" aria-label="Contexte sélectionné">
+        <span>Toutes les questions</span>
+      </nav>
+      <button type="button" class="context-all-btn" id="context-all-btn" onclick="voirToutContexte()" hidden>
+        Voir toutes les questions de ce contexte
+      </button>
+    </div>
     <div class="results-bar">
       <span id="results-label">Toutes les questions</span>
     </div>
     <div class="q-grid" id="q-list"></div>
   </main>
+</div>
+
+<div class="modal-overlay" id="continuum-modal" onclick="closeContinuum(event)">
+  <div class="modal continuum-modal" role="dialog" aria-modal="true" aria-labelledby="continuum-modal-title">
+    <div class="modal-header">
+      <div>
+        <div id="continuum-modal-title">Continuum GHEC</div>
+        <div class="continuum-subtitle">Du 2e au 3e cycle · choisissez un contexte pour afficher ses questions</div>
+      </div>
+      <button class="modal-close" id="continuum-modal-close" onclick="closeContinuumBtn()" aria-label="Fermer">×</button>
+    </div>
+    <div class="modal-body continuum-body" id="continuum-body"></div>
+  </div>
 </div>
 
 <div class="modal-overlay" id="preview-modal" onclick="closePreview(event)">
@@ -206,7 +228,7 @@
 <script src="oi-config.js?v=1"></script>
 <script src="competences.js"></script>
 <script src="filters.js?v=6"></script>
-<script src="app.js?v=60"></script>
+<script src="app.js?v=61"></script>
 <script>
   // Charge questions-index.js (~200 Ko, champs grille seulement) pour affichage immédiat.
   // Les données complètes (documents, réponse, guide, réglettes) sont chargées en lazy

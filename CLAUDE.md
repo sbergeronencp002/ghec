@@ -120,7 +120,7 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 | Fichier | Rôle |
 |---------|------|
-| `index.html` | Site public (filtres, cartes, panier, prévisualisation, génération DOCX) |
+| `index.html` | Site public (cascade Niveau → Compétence → Société → Aspect → OI avec compteurs, fil d’Ariane du contexte, modal Continuum, cartes, panier, prévisualisation, génération DOCX) |
 | `admin.html` | Interface de saisie/modification des questions **+ section Configuration** (OI, compétences, niveaux/sociétés/aspects) — pousse via GitHub Contents API |
 | `documents.html` | Gestion Documents & Images — galerie de toutes les images, vue par question, images non utilisées. Renomme/remplace/supprime des images et édite les sous-titres directement via l'API GitHub (token partagé avec admin.html). Filtres Recherche / OI / **Niveau** (voir « Niveau des images » plus bas) |
 | `revision.html` | Révision par cartes — parcourt les questions une à la fois, navigation clavier/tactile, tout affiché sur une carte (énoncé, documents, réglette, réponse, guide). Édition inline du guide/énoncé/documents texte via l'API GitHub |
@@ -150,9 +150,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=60`, `style.css?v=34`, `filters.js?v=6`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=61`, `style.css?v=35`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v14'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v15'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -183,6 +183,7 @@ Puis bump 2026-10-02 (`app.js?v=57`→`58`, `CACHE='ghec-v11'`→`'ghec-v12'`) p
 Puis bump 2026-10-02 (`app.js?v=58`→`59`, `CACHE='ghec-v12'`→`'ghec-v13'`) pour conserver l’ordre hiérarchique des compétences C1 → C2 → C3 dans les filtres et tableaux.
 Puis bump 2026-10-02 (`app.js?v=59`→`60`, `filters.js?v=5`→`6`, `CACHE='ghec-v13'`→`'ghec-v14'`) pour rendre le filtre Sociétés dépendant du niveau + de la compétence et afficher les libellés GHEC3 courts sans migrer les valeurs internes.
 Pour GHEC3, `app.js` et `revision.html` calculent aussi une `competenceEffective(q)` à partir de `q.periodes` : sociétés simples vers 1500 → C1; Iroquoiens 1745 / paire 1500-1745 → C2; paires Iroquoiens-Algonquiens ou Iroquoiens-Incas → C3. Cela corrige l’affichage et le filtrage de questions historiques dont le champ `competence` stocké ne suivait pas encore ce découpage, sans réécrire `questions.js`.
+Puis bump 2026-10-02 (`app.js?v=60`→`61`, `style.css?v=34`→`35`, `CACHE='ghec-v14'`→`'ghec-v15'`) pour les cinq améliorations de Main : cascade complète Niveau → Compétence → Société → Aspect → OI, compteurs dans les menus, fil d’Ariane du contexte, bouton « Voir toutes les questions de ce contexte » et modal Continuum GHEC3 à GHEC6.
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de

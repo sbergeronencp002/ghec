@@ -136,6 +136,23 @@ const COMPETENCE_LIBELLES = {
 function competenceLibelle(competence) {
   return COMPETENCE_LIBELLES[competence] || competence || '';
 }
+function competenceEffective(q) {
+  if(!q || Number(q.niveau) !== 3) return (q && q.competence) || '';
+  const per = q.periodes || [];
+  const has = p => per.includes(p);
+  if(per.length === 1 && (has('Iroquoiens vers 1500') || has('Algonquiens vers 1500') || has('Incas vers 1500'))) {
+    return "Lire l'organisation du territoire";
+  }
+  if((per.length === 1 && has('Iroquoiens vers 1745'))
+    || (per.length === 2 && has('Iroquoiens vers 1500') && has('Iroquoiens vers 1745'))) {
+    return 'Interpréter le changement';
+  }
+  if(per.length === 2 && has('Iroquoiens vers 1500')
+    && (has('Algonquiens vers 1500') || has('Incas vers 1500'))) {
+    return "S'ouvrir à la diversité";
+  }
+  return q.competence || '';
+}
 function competenceOrdre(a, b) {
   const ia = (typeof COMPETENCE_LIST !== 'undefined') ? COMPETENCE_LIST.indexOf(a) : -1;
   const ib = (typeof COMPETENCE_LIST !== 'undefined') ? COMPETENCE_LIST.indexOf(b) : -1;
@@ -154,10 +171,27 @@ function relabelCompetenceSelect(id) {
   });
 }
 
+function societeFilterLibelle(option) {
+  const simples = {
+    "Iroquoiens vers 1500": "Société iroquoienne vers 1500",
+    "Algonquiens vers 1500": "Société algonquienne vers 1500",
+    "Incas vers 1500": "Société inca vers 1500"
+  };
+  if(option.kind === 'single' && option.value === 'Iroquoiens vers 1745') return null;
+  if(option.kind === 'single' && simples[option.value]) return simples[option.value];
+  if(option.kind === 'combo') {
+    const key = option.ids.join('|||');
+    if(key === "Iroquoiens vers 1500|||Iroquoiens vers 1745") {
+      return "Société iroquoienne entre 1500 et 1745";
+    }
+  }
+  return option.defaultLabel;
+}
+
 function populateFilters() {
   Q_MAP = new Map(QUESTIONS.map(q => [q.id, q]));
   Q_SEARCH_IDX = new Map(QUESTIONS.map(q => [q.id,
-    fold([q.enonce||'', q.oi||'', q.competence||'', ...(q.periodes||[]), ...(q.aspects||[]).map(a=>a.aspect)].join(' '))
+    fold([q.enonce||'', q.oi||'', q.competence||'', competenceEffective(q), ...(q.periodes||[]), ...(q.aspects||[]).map(a=>a.aspect)].join(' '))
   ]));
   const sorted = [...QUESTIONS].sort((a,b) => {
     const ta = a.updatedAt || '';
@@ -167,7 +201,7 @@ function populateFilters() {
   });
   NEW_IDS = new Set(sorted.slice(0,10).map(q=>q.id));
   const allOis = [...new Set(QUESTIONS.map(q=>q.oi))].sort((a,b)=>a.localeCompare(b,'fr'));
-  const allCompetences = [...new Set(QUESTIONS.map(q=>q.competence).filter(Boolean))].sort(competenceOrdre);
+  const allCompetences = [...new Set(QUESTIONS.map(competenceEffective).filter(Boolean))].sort(competenceOrdre);
   const aspectsByPeriode = {};
   QUESTIONS.forEach(q=>{
     (q.periodes||[]).forEach(p=>{
@@ -181,11 +215,11 @@ function populateFilters() {
     if(!aspectsByPeriode[p]) return [];
     return [...aspectsByPeriode[p]].sort((a,b)=>a.localeCompare(b,'fr')).map(a=>({aspect:a, periode:p}));
   });
-  const periodesPresentes = new Set(QUESTIONS.flatMap(q=>q.periodes||[]));
-  const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
+  const periodes = computeSimplePeriodes(QUESTIONS, periodeOrder);
+  const combos = computePeriodeCombos(QUESTIONS, periodeOrder);
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), "Tous");
-  fillPeriodeSelect('f-periode', periodes, computePeriodeCombos(QUESTIONS, periodeOrder), "Toutes");
+  fillPeriodeSelect('f-periode', periodes, combos, "Toutes", societeFilterLibelle);
   fillAspectSelect('f-aspect', aspects, periodeOrder);
   fillSelect('f-oi', allOis, "Toutes");
   fillSelect('f-competence', allCompetences, "Toutes");
@@ -193,7 +227,7 @@ function populateFilters() {
 }
 
 // Ids des <select> de la cascade niveau→période→aspect (voir filters.js, chargé avant app.js).
-const FILTER_IDS = { niveau: 'f-niveau', periode: 'f-periode', aspect: 'f-aspect' };
+const FILTER_IDS = { niveau: 'f-niveau', competence: 'f-competence', periode: 'f-periode', aspect: 'f-aspect' };
 
 function onPeriodeChange() {
   cascadePeriodeChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
@@ -201,7 +235,12 @@ function onPeriodeChange() {
 }
 
 function onNiveauChange() {
-  cascadeNiveauChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
+  cascadeNiveauChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle, competenceEffective);
+  applyFilters();
+}
+
+function onCompetenceChange() {
+  cascadeCompetenceChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle, competenceEffective);
   applyFilters();
 }
 
@@ -230,10 +269,11 @@ function applyFilters() {
     const niveauOk  = !niveau  || String(q.niveau) === niveau;
     const periodeOk = matchesPeriodeFilter(q, periode);
     const aspectOk  = !aspect  || (q.aspects||[]).some(a=>a.aspect===aspect);
-    if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(q.competence) competenceSet.add(q.competence); }
+    const qCompetence = competenceEffective(q);
+    if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(qCompetence) competenceSet.add(qCompetence); }
     if(!niveauOk || !periodeOk || !aspectOk) continue;
     if(oi && q.oi !== oi) continue;
-    if(competence && q.competence !== competence) continue;
+    if(competence && qCompetence !== competence) continue;
     if(search && !(Q_SEARCH_IDX.get(q.id)||'').includes(search)) continue;
     filtered.push(q);
   }
@@ -442,7 +482,7 @@ async function openQModal(id) {
   const aspects = (q.aspects||[]).map(a => a.aspect).join(' · ');
   document.getElementById('q-modal-title').innerHTML =
     `<div class="q-oi-badge" style="color:${st.color};background:rgba(0,0,0,0.08)">${escLine(q.oi)}</div>` +
-    (q.competence ? `<div style="font-size:0.68rem;margin-top:2px;opacity:0.72;font-weight:500">${escLine(competenceLibelle(q.competence))}</div>` : '') +
+    (competenceEffective(q) ? `<div style="font-size:0.68rem;margin-top:2px;opacity:0.72;font-weight:500">${escLine(competenceLibelle(competenceEffective(q)))}</div>` : '') +
     `<div style="font-size:0.7rem;margin-top:3px;opacity:0.72">${escLine(aspects)}</div>` +
     `<div style="font-size:0.67rem;margin-top:2px;opacity:0.55;font-weight:600">${q.points}&thinsp;pt${q.points > 1 ? 's' : ''}</div>`;
 
@@ -555,7 +595,7 @@ function buildTileHtml(q) {
     <div class="q-tile-bar" style="display:none"></div>
     <div class="q-tile-content">
       <div class="q-tile-oi" style="display:block;font-size:1.1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:5px 12px;border-radius:6px;color:${st.color};background:${st.bg};line-height:1.3;word-break:break-word">${escLine(q.oi)}</div>
-      ${q.competence ? `<div style="font-size:0.72rem;font-weight:500;color:#8A8377;margin-top:4px">${escLine(competenceLibelle(q.competence))}</div>` : ''}
+      ${q.competence ? `<div style="font-size:0.72rem;font-weight:500;color:#8A8377;margin-top:4px">${escLine(competenceLibelle(competenceEffective(q)))}</div>` : ''}
       <div class="q-tile-aspect" style="font-size:0.9rem;font-weight:400;color:#6B6560;margin-top:2px">${escLine(aspect)}</div>
       ${tagsHtml}
     </div>

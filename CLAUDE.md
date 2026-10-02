@@ -150,9 +150,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=57`, `style.css?v=33`, `filters.js?v=5`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=57`, `style.css?v=34`, `filters.js?v=5`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v10'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v11'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -178,6 +178,7 @@ fusionné des combinaisons (`comboLabel`, voir section précédente) suite au re
 sociétés du niveau 3 (retrait du préfixe « Les » redondant — « Les Iroquoiens vers 1500 »
 → « Iroquoiens vers 1500 », etc. — publié directement dans `contexte.js`/`questions.js`/
 `questions-index.js` via l'API GitHub, comme pour toute donnée, jamais par git).
+Puis bump 2026-10-02 (`style.css?v=33`→`34`, `CACHE='ghec-v10'`→`'ghec-v11'`) pour l’ajout des quatre liens PDA (3e à 6e) dans l’en-tête public.
 
 ⚠️ **Incrémenter le `?v=N` d'`app.js` à chaque modification de son contenu** — sinon un
 visiteur dont le service worker (`sw.js`) a déjà précaché l'ancienne URL continue de

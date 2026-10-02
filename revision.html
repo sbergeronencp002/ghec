@@ -395,6 +395,23 @@ const COMPETENCE_LIBELLES = {
 function competenceLibelle(competence) {
   return COMPETENCE_LIBELLES[competence] || competence || '';
 }
+function competenceEffective(q) {
+  if(!q || Number(q.niveau) !== 3) return (q && q.competence) || '';
+  const per = q.periodes || [];
+  const has = p => per.includes(p);
+  if(per.length === 1 && (has('Iroquoiens vers 1500') || has('Algonquiens vers 1500') || has('Incas vers 1500'))) {
+    return "Lire l'organisation du territoire";
+  }
+  if((per.length === 1 && has('Iroquoiens vers 1745'))
+    || (per.length === 2 && has('Iroquoiens vers 1500') && has('Iroquoiens vers 1745'))) {
+    return 'Interpréter le changement';
+  }
+  if(per.length === 2 && has('Iroquoiens vers 1500')
+    && (has('Algonquiens vers 1500') || has('Incas vers 1500'))) {
+    return "S'ouvrir à la diversité";
+  }
+  return q.competence || '';
+}
 function competenceOrdre(a, b) {
   const ia = (typeof COMPETENCE_LIST !== 'undefined') ? COMPETENCE_LIST.indexOf(a) : -1;
   const ib = (typeof COMPETENCE_LIST !== 'undefined') ? COMPETENCE_LIST.indexOf(b) : -1;
@@ -419,6 +436,7 @@ function societeFilterLibelle(option) {
     "Algonquiens vers 1500": "Société algonquienne vers 1500",
     "Incas vers 1500": "Société inca vers 1500"
   };
+  if(option.kind === 'single' && option.value === 'Iroquoiens vers 1745') return null;
   if(option.kind === 'single' && simples[option.value]) return simples[option.value];
   if(option.kind === 'combo') {
     const key = option.ids.join('|||');
@@ -431,7 +449,7 @@ function societeFilterLibelle(option) {
 
 function rvPopulateFilters() {
   const allOis = [...new Set(QUESTIONS.map(q => q.oi))].sort((a,b) => a.localeCompare(b,'fr'));
-  const allCompetences = [...new Set(QUESTIONS.map(q => q.competence).filter(Boolean))].sort(competenceOrdre);
+  const allCompetences = [...new Set(QUESTIONS.map(competenceEffective).filter(Boolean))].sort(competenceOrdre);
   const aspectsByPeriode = {};
   QUESTIONS.forEach(q => {
     (q.periodes||[]).forEach(p => {
@@ -457,12 +475,12 @@ function rvPopulateFilters() {
 }
 
 function rvOnNiveauChange() {
-  cascadeNiveauChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle);
+  cascadeNiveauChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle, competenceEffective);
   rvApplyFilters();
 }
 
 function rvOnCompetenceChange() {
-  cascadeCompetenceChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle);
+  cascadeCompetenceChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle, competenceEffective);
   rvApplyFilters();
 }
 
@@ -499,12 +517,13 @@ function rvApplyFilters() {
     const niveauOk  = !niveau  || String(q.niveau) === niveau;
     const periodeOk = matchesPeriodeFilter(q, periode);
     const aspectOk  = !aspect  || (q.aspects||[]).some(a => a.aspect === aspect);
-    if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(q.competence) competenceSet.add(q.competence); }
+    const qCompetence = competenceEffective(q);
+    if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(qCompetence) competenceSet.add(qCompetence); }
     if(!niveauOk || !periodeOk || !aspectOk) continue;
     if(oi && q.oi !== oi) continue;
-    if(competence && q.competence !== competence) continue;
+    if(competence && qCompetence !== competence) continue;
     if(search) {
-      const idx = rvFold([q.enonce||'', q.oi||'', q.competence||'', ...(q.periodes||[]), ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
+      const idx = rvFold([q.enonce||'', q.oi||'', q.competence||'', competenceEffective(q), ...(q.periodes||[]), ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
       if(!idx.includes(search)) continue;
     }
     filtered.push(q);
@@ -776,7 +795,7 @@ function rvBuildCardHtml(q) {
   html += `<span class="q-oi-badge" style="color:${rvEscAttr(st.color)};background:${rvEscAttr(st.bg)}">${rvEscLine(q.oi)}</span>`;
   html += `<span class="rv-id">${rvEscLine(q.id)} · ${rvEscLine((q.periodes||[]).join(' + '))}</span>`;
   html += '</div>';
-  if(q.competence) html += `<div class="rv-aspect" style="font-size:.78rem">${rvEscLine(competenceLibelle(q.competence))}</div>`;
+  if(competenceEffective(q)) html += `<div class="rv-aspect" style="font-size:.78rem">${rvEscLine(competenceLibelle(competenceEffective(q)))}</div>`;
   if(aspects) html += `<div class="rv-aspect">${rvEscLine(aspects)}</div>`;
   html += `<div class="rv-points">${q.points}&thinsp;pt${q.points > 1 ? 's' : ''}</div>`;
 

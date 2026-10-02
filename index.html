@@ -46,7 +46,7 @@
 
     <div class="filter-group">
       <label class="filter-label" for="f-competence">Compétences</label>
-      <select id="f-competence" onchange="applyFilters()">
+      <select id="f-competence" onchange="onCompetenceChange()">
         <option value="">Toutes</option>
       </select>
     </div>
@@ -205,8 +205,8 @@
 <script src="contexte.js"></script>
 <script src="oi-config.js?v=1"></script>
 <script src="competences.js"></script>
-<script src="filters.js?v=5"></script>
-<script src="app.js?v=59"></script>
+<script src="filters.js?v=6"></script>
+<script src="app.js?v=60"></script>
 <script>
   // Charge questions-index.js (~200 Ko, champs grille seulement) pour affichage immédiat.
   // Les données complètes (documents, réponse, guide, réglettes) sont chargées en lazy

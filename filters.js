@@ -77,20 +77,28 @@ function computeSimplePeriodes(questions, allowedPeriodes, predicate) {
 function fillPeriodeSelect(id, periodes, combos, placeholder, labeler) {
   const el = document.getElementById(id);
   el.innerHTML = `<option value="">${placeholder}</option>`;
+  const visibleValues = [];
   periodes.forEach(p => {
     const o = document.createElement('option');
     o.value = p;
     const meta = { kind: 'single', ids: [p], value: p, defaultLabel: p };
-    o.textContent = labeler ? labeler(meta) : p;
+    const label = labeler ? labeler(meta) : p;
+    if(label == null || label === false) return;
+    o.textContent = label;
     el.appendChild(o);
+    visibleValues.push(o.value);
   });
   combos.forEach(c => {
     const o = document.createElement('option');
     o.value = 'combo:' + JSON.stringify(c.ids);
     const meta = { kind: 'combo', ids: c.ids, value: o.value, defaultLabel: c.label };
-    o.textContent = labeler ? labeler(meta) : c.label;
+    const label = labeler ? labeler(meta) : c.label;
+    if(label == null || label === false) return;
+    o.textContent = label;
     el.appendChild(o);
+    visibleValues.push(o.value);
   });
+  return visibleValues;
 }
 
 // Teste si une question correspond à la valeur courante du <select> Société — soit une
@@ -133,7 +141,7 @@ function fillAspectSelect(id, aspects, periodeOrder) {
 // ids = { niveau, periode, aspect } (ids des <select> correspondants).
 // `questions` = QUESTIONS (ou équivalent) — sert à calculer les combinaisons de
 // comparaison disponibles pour ce niveau (voir computePeriodeCombos).
-function cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler) {
+function cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler, competenceResolver) {
   const niveau = document.getElementById(ids.niveau).value;
   const allowedPeriodes = niveau ? PERIODES_PAR_NIVEAU[niveau] : periodeOrder;
 
@@ -143,7 +151,8 @@ function cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, qu
     const candidate = compEl ? compEl.value : '';
     if(candidate) {
       const exists = questions.some(q =>
-        (!niveau || String(q.niveau) === String(niveau)) && q.competence === candidate
+        (!niveau || String(q.niveau) === String(niveau))
+        && (competenceResolver ? competenceResolver(q) : q.competence) === candidate
       );
       if(exists) competence = candidate;
     }
@@ -151,22 +160,22 @@ function cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, qu
 
   const predicate = q =>
     (!niveau || String(q.niveau) === String(niveau))
-    && (!competence || q.competence === competence);
+    && (!competence || (competenceResolver ? competenceResolver(q) : q.competence) === competence);
 
   const simplePeriodes = computeSimplePeriodes(questions, allowedPeriodes, predicate);
   const combos = computePeriodeCombos(questions, allowedPeriodes, predicate);
 
   const periodeEl = document.getElementById(ids.periode);
   const currentPeriode = periodeEl.value;
-  fillPeriodeSelect(ids.periode, simplePeriodes, combos, 'Toutes', labeler);
-  const validValues = new Set([...simplePeriodes, ...combos.map(c => 'combo:' + JSON.stringify(c.ids))]);
+  const visibleValues = fillPeriodeSelect(ids.periode, simplePeriodes, combos, 'Toutes', labeler);
+  const validValues = new Set(visibleValues);
   periodeEl.value = validValues.has(currentPeriode) ? currentPeriode : '';
 
   cascadePeriodeChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions);
 }
 
-function cascadeCompetenceChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler) {
-  cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler);
+function cascadeCompetenceChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler, competenceResolver) {
+  cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler, competenceResolver);
 }
 
 // Reconstruit le <select> Aspect selon le niveau + la société (simple ou combinaison)

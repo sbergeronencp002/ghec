@@ -154,6 +154,22 @@ function relabelCompetenceSelect(id) {
   });
 }
 
+function societeFilterLibelle(option) {
+  const simples = {
+    "Iroquoiens vers 1500": "Société iroquoienne vers 1500",
+    "Algonquiens vers 1500": "Société algonquienne vers 1500",
+    "Incas vers 1500": "Société inca vers 1500"
+  };
+  if(option.kind === 'single' && simples[option.value]) return simples[option.value];
+  if(option.kind === 'combo') {
+    const key = option.ids.join('|||');
+    if(key === "Iroquoiens vers 1500|||Iroquoiens vers 1745") {
+      return "Société iroquoienne entre 1500 et 1745";
+    }
+  }
+  return option.defaultLabel;
+}
+
 function populateFilters() {
   Q_MAP = new Map(QUESTIONS.map(q => [q.id, q]));
   Q_SEARCH_IDX = new Map(QUESTIONS.map(q => [q.id,
@@ -181,11 +197,11 @@ function populateFilters() {
     if(!aspectsByPeriode[p]) return [];
     return [...aspectsByPeriode[p]].sort((a,b)=>a.localeCompare(b,'fr')).map(a=>({aspect:a, periode:p}));
   });
-  const periodesPresentes = new Set(QUESTIONS.flatMap(q=>q.periodes||[]));
-  const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
+  const periodes = computeSimplePeriodes(QUESTIONS, periodeOrder);
+  const combos = computePeriodeCombos(QUESTIONS, periodeOrder);
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), "Tous");
-  fillPeriodeSelect('f-periode', periodes, computePeriodeCombos(QUESTIONS, periodeOrder), "Toutes");
+  fillPeriodeSelect('f-periode', periodes, combos, "Toutes", societeFilterLibelle);
   fillAspectSelect('f-aspect', aspects, periodeOrder);
   fillSelect('f-oi', allOis, "Toutes");
   fillSelect('f-competence', allCompetences, "Toutes");
@@ -193,7 +209,7 @@ function populateFilters() {
 }
 
 // Ids des <select> de la cascade niveau→période→aspect (voir filters.js, chargé avant app.js).
-const FILTER_IDS = { niveau: 'f-niveau', periode: 'f-periode', aspect: 'f-aspect' };
+const FILTER_IDS = { niveau: 'f-niveau', competence: 'f-competence', periode: 'f-periode', aspect: 'f-aspect' };
 
 function onPeriodeChange() {
   cascadePeriodeChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
@@ -201,7 +217,12 @@ function onPeriodeChange() {
 }
 
 function onNiveauChange() {
-  cascadeNiveauChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
+  cascadeNiveauChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle);
+  applyFilters();
+}
+
+function onCompetenceChange() {
+  cascadeCompetenceChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle);
   applyFilters();
 }
 

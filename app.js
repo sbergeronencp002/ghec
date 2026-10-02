@@ -128,6 +128,22 @@ async function ensureDataLoaded() {
   return _dataLoadPromise;
 }
 
+const COMPETENCE_LIBELLES = {
+  "Lire l'organisation du territoire": "C1 — Lire l’organisation",
+  "Interpréter le changement": "C2 — Interpréter le changement",
+  "S'ouvrir à la diversité": "C3 — S’ouvrir à la diversité"
+};
+function competenceLibelle(competence) {
+  return COMPETENCE_LIBELLES[competence] || competence || '';
+}
+function relabelCompetenceSelect(id) {
+  const sel = document.getElementById(id);
+  if(!sel) return;
+  [...sel.options].forEach(opt => {
+    if(opt.value) opt.textContent = competenceLibelle(opt.value);
+  });
+}
+
 function populateFilters() {
   Q_MAP = new Map(QUESTIONS.map(q => [q.id, q]));
   Q_SEARCH_IDX = new Map(QUESTIONS.map(q => [q.id,
@@ -163,6 +179,7 @@ function populateFilters() {
   fillAspectSelect('f-aspect', aspects, periodeOrder);
   fillSelect('f-oi', allOis, "Toutes");
   fillSelect('f-competence', allCompetences, "Toutes");
+  relabelCompetenceSelect('f-competence');
 }
 
 // Ids des <select> de la cascade niveau→période→aspect (voir filters.js, chargé avant app.js).
@@ -226,6 +243,7 @@ function applyFilters() {
 
   const relevantCompetences = [...competenceSet].sort((a,b)=>a.localeCompare(b,'fr'));
   fillSelect('f-competence', relevantCompetences, "Toutes");
+  relabelCompetenceSelect('f-competence');
   if(relevantCompetences.includes(currentCompetence)) document.getElementById('f-competence').value = currentCompetence;
 
   const totalPtsFilt = filtered.reduce((s,q)=>s+(q.points||0), 0);
@@ -414,7 +432,7 @@ async function openQModal(id) {
   const aspects = (q.aspects||[]).map(a => a.aspect).join(' · ');
   document.getElementById('q-modal-title').innerHTML =
     `<div class="q-oi-badge" style="color:${st.color};background:rgba(0,0,0,0.08)">${escLine(q.oi)}</div>` +
-    (q.competence ? `<div style="font-size:0.68rem;margin-top:2px;opacity:0.72;font-weight:500">${escLine(q.competence)}</div>` : '') +
+    (q.competence ? `<div style="font-size:0.68rem;margin-top:2px;opacity:0.72;font-weight:500">${escLine(competenceLibelle(q.competence))}</div>` : '') +
     `<div style="font-size:0.7rem;margin-top:3px;opacity:0.72">${escLine(aspects)}</div>` +
     `<div style="font-size:0.67rem;margin-top:2px;opacity:0.55;font-weight:600">${q.points}&thinsp;pt${q.points > 1 ? 's' : ''}</div>`;
 
@@ -527,7 +545,7 @@ function buildTileHtml(q) {
     <div class="q-tile-bar" style="display:none"></div>
     <div class="q-tile-content">
       <div class="q-tile-oi" style="display:block;font-size:1.1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:5px 12px;border-radius:6px;color:${st.color};background:${st.bg};line-height:1.3;word-break:break-word">${escLine(q.oi)}</div>
-      ${q.competence ? `<div style="font-size:0.72rem;font-weight:500;color:#8A8377;margin-top:4px">${escLine(q.competence)}</div>` : ''}
+      ${q.competence ? `<div style="font-size:0.72rem;font-weight:500;color:#8A8377;margin-top:4px">${escLine(competenceLibelle(q.competence))}</div>` : ''}
       <div class="q-tile-aspect" style="font-size:0.9rem;font-weight:400;color:#6B6560;margin-top:2px">${escLine(aspect)}</div>
       ${tagsHtml}
     </div>

@@ -387,6 +387,22 @@ let rvIndex = 0;
 // Ids des <select> de la cascade niveau→période→aspect (voir filters.js, chargé plus haut).
 const RV_FILTER_IDS = { niveau: 'f-niveau', periode: 'f-periode', aspect: 'f-aspect' };
 
+const COMPETENCE_LIBELLES = {
+  "Lire l'organisation du territoire": "C1 — Lire l’organisation",
+  "Interpréter le changement": "C2 — Interpréter le changement",
+  "S'ouvrir à la diversité": "C3 — S’ouvrir à la diversité"
+};
+function competenceLibelle(competence) {
+  return COMPETENCE_LIBELLES[competence] || competence || '';
+}
+function relabelCompetenceSelect(id) {
+  const sel = document.getElementById(id);
+  if(!sel) return;
+  [...sel.options].forEach(opt => {
+    if(opt.value) opt.textContent = competenceLibelle(opt.value);
+  });
+}
+
 function rvPopulateFilters() {
   const allOis = [...new Set(QUESTIONS.map(q => q.oi))].sort((a,b) => a.localeCompare(b,'fr'));
   const allCompetences = [...new Set(QUESTIONS.map(q => q.competence).filter(Boolean))].sort((a,b) => a.localeCompare(b,'fr'));
@@ -408,6 +424,7 @@ function rvPopulateFilters() {
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), 'Tous');
   fillSelect('f-competence', allCompetences, 'Toutes');
+  relabelCompetenceSelect('f-competence');
   fillPeriodeSelect('f-periode', periodes, computePeriodeCombos(QUESTIONS, periodeOrder), 'Toutes');
   fillAspectSelect('f-aspect', rvAspects, periodeOrder);
   fillSelect('f-oi', allOis, 'Toutes');
@@ -470,6 +487,7 @@ function rvApplyFilters() {
 
   const relevantCompetences = [...competenceSet].sort((a,b) => a.localeCompare(b,'fr'));
   fillSelect('f-competence', relevantCompetences, 'Toutes');
+  relabelCompetenceSelect('f-competence');
   if(relevantCompetences.includes(currentCompetence)) document.getElementById('f-competence').value = currentCompetence;
 
   rvList = filtered;
@@ -727,7 +745,7 @@ function rvBuildCardHtml(q) {
   html += `<span class="q-oi-badge" style="color:${rvEscAttr(st.color)};background:${rvEscAttr(st.bg)}">${rvEscLine(q.oi)}</span>`;
   html += `<span class="rv-id">${rvEscLine(q.id)} · ${rvEscLine((q.periodes||[]).join(' + '))}</span>`;
   html += '</div>';
-  if(q.competence) html += `<div class="rv-aspect" style="font-size:.78rem">${rvEscLine(q.competence)}</div>`;
+  if(q.competence) html += `<div class="rv-aspect" style="font-size:.78rem">${rvEscLine(competenceLibelle(q.competence))}</div>`;
   if(aspects) html += `<div class="rv-aspect">${rvEscLine(aspects)}</div>`;
   html += `<div class="rv-points">${q.points}&thinsp;pt${q.points > 1 ? 's' : ''}</div>`;
 

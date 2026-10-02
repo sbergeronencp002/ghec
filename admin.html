@@ -1674,12 +1674,23 @@ function populateOiSelect() {
   sel.innerHTML = OI_LIST.map(oi => `<option>${escHtml(oi)}</option>`).join('');
 }
 
+// Libellés courts affichés dans l'interface. Les valeurs internes restent inchangées
+// afin de préserver les références q.competence déjà enregistrées.
+const COMPETENCE_LIBELLES = {
+  "Lire l'organisation du territoire": "C1 — Lire l’organisation",
+  "Interpréter le changement": "C2 — Interpréter le changement",
+  "S'ouvrir à la diversité": "C3 — S’ouvrir à la diversité"
+};
+function competenceLibelle(competence) {
+  return COMPETENCE_LIBELLES[competence] || competence || '';
+}
+
 // Compétence : dimension indépendante de l'OI (competences.js) — pas de couleur/réglette
 // associée, juste un menu déroulant simple.
 function populateCompetenceSelect() {
   const sel = document.getElementById('q-competence');
   if(!sel || typeof COMPETENCE_LIST === 'undefined') return;
-  sel.innerHTML = COMPETENCE_LIST.map(c => `<option>${escHtml(c)}</option>`).join('');
+  sel.innerHTML = COMPETENCE_LIST.map(c => `<option value="${escHtml(c)}">${escHtml(competenceLibelle(c))}</option>`).join('');
 }
 
 // Peuple les <select> niveau (formulaire + filtre de recherche) depuis les clés de
@@ -1899,7 +1910,9 @@ function cfgAddCompetence(nom) {
     <button class="btn-move btn-move-up" onclick="moveDoc('comp-${id}',-1)" title="Monter">↑</button>
     <button class="btn-move btn-move-dn" onclick="moveDoc('comp-${id}',1)" title="Descendre">↓</button>
     <button class="btn-remove" onclick="removeEl('comp-${id}')">✕</button>
-    <div class="field"><label>Nom de la compétence</label><input type="text" class="cfg-comp-nom" value="${escHtml(nom||'')}" placeholder="ex. : Interroger les réalités sociales"></div>`;
+    <div class="field"><label>Nom de la compétence</label>
+      ${nom ? `<div style="font-size:.74rem;font-weight:600;color:var(--accent);margin-bottom:.35rem">${escHtml(competenceLibelle(nom))}</div>` : ''}
+      <input type="text" class="cfg-comp-nom" value="${escHtml(nom||'')}" placeholder="ex. : Interroger les réalités sociales"></div>`;
   document.getElementById('cfg-competence-list').appendChild(div);
 }
 
@@ -3278,7 +3291,7 @@ function renderDashboard() {
   const compRows = compList.map(([comp, val]) => {
     const pct = Math.round(val.q / maxCompQ * 100);
     return `<div class="dash-oi-row">
-      <div class="dash-oi-label" title="${escHtml(comp)}">${escHtml(comp)}</div>
+      <div class="dash-oi-label" title="${escHtml(competenceLibelle(comp))}">${escHtml(competenceLibelle(comp))}</div>
       <div class="dash-bar-wrap" style="max-width:120px"><div class="dash-bar" style="width:${pct}%;background:#888"></div></div>
       <div class="dash-oi-count">${val.q}q · ${val.pts}pts</div>
     </div>`;

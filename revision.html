@@ -111,7 +111,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
   </div>
   <div class="rv-field">
     <label for="f-competence">Compétence</label>
-    <select id="f-competence" onchange="rvApplyFilters()">
+    <select id="f-competence" onchange="rvOnCompetenceChange()">
       <option value="">Toutes</option>
     </select>
   </div>
@@ -158,7 +158,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 <script src="competences.js"></script>
 <script src="questions-io.js?v=3"></script>
 <script src="contexte.js"></script>
-<script src="filters.js?v=5"></script>
+<script src="filters.js?v=6"></script>
 <script>
 // Page autonome (comme documents.html) : pas de dépendance à app.js.
 // Charge oi-config.js (styles OI), questions-io.js (sérialiseur partagé pour
@@ -385,7 +385,7 @@ let rvList = [];
 let rvIndex = 0;
 
 // Ids des <select> de la cascade niveau→période→aspect (voir filters.js, chargé plus haut).
-const RV_FILTER_IDS = { niveau: 'f-niveau', periode: 'f-periode', aspect: 'f-aspect' };
+const RV_FILTER_IDS = { niveau: 'f-niveau', competence: 'f-competence', periode: 'f-periode', aspect: 'f-aspect' };
 
 const COMPETENCE_LIBELLES = {
   "Lire l'organisation du territoire": "C1 — Lire l’organisation",
@@ -413,6 +413,22 @@ function relabelCompetenceSelect(id) {
   });
 }
 
+function societeFilterLibelle(option) {
+  const simples = {
+    "Iroquoiens vers 1500": "Société iroquoienne vers 1500",
+    "Algonquiens vers 1500": "Société algonquienne vers 1500",
+    "Incas vers 1500": "Société inca vers 1500"
+  };
+  if(option.kind === 'single' && simples[option.value]) return simples[option.value];
+  if(option.kind === 'combo') {
+    const key = option.ids.join('|||');
+    if(key === "Iroquoiens vers 1500|||Iroquoiens vers 1745") {
+      return "Société iroquoienne entre 1500 et 1745";
+    }
+  }
+  return option.defaultLabel;
+}
+
 function rvPopulateFilters() {
   const allOis = [...new Set(QUESTIONS.map(q => q.oi))].sort((a,b) => a.localeCompare(b,'fr'));
   const allCompetences = [...new Set(QUESTIONS.map(q => q.competence).filter(Boolean))].sort(competenceOrdre);
@@ -429,19 +445,24 @@ function rvPopulateFilters() {
     if(!aspectsByPeriode[p]) return [];
     return [...aspectsByPeriode[p]].sort((a,b) => a.localeCompare(b,'fr')).map(a => ({aspect:a, periode:p}));
   });
-  const periodesPresentes = new Set(QUESTIONS.flatMap(q => q.periodes||[]));
-  const periodes = periodeOrder.filter(p => periodesPresentes.has(p));
+  const periodes = computeSimplePeriodes(QUESTIONS, periodeOrder);
+  const combos = computePeriodeCombos(QUESTIONS, periodeOrder);
 
   fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), 'Tous');
   fillSelect('f-competence', allCompetences, 'Toutes');
   relabelCompetenceSelect('f-competence');
-  fillPeriodeSelect('f-periode', periodes, computePeriodeCombos(QUESTIONS, periodeOrder), 'Toutes');
+  fillPeriodeSelect('f-periode', periodes, combos, 'Toutes', societeFilterLibelle);
   fillAspectSelect('f-aspect', rvAspects, periodeOrder);
   fillSelect('f-oi', allOis, 'Toutes');
 }
 
 function rvOnNiveauChange() {
-  cascadeNiveauChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
+  cascadeNiveauChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle);
+  rvApplyFilters();
+}
+
+function rvOnCompetenceChange() {
+  cascadeCompetenceChange(RV_FILTER_IDS, rvAspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle);
   rvApplyFilters();
 }
 

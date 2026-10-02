@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────
-// Cascade de filtres partagée : niveau → période → aspect.
+// Cascade de filtres partagée : niveau + compétence → société → aspect.
 //
 // Chargée par index.html (app.js) ET revision.html : les deux pages ont la
-// même hiérarchie de filtres. Ce code vivait dupliqué dans chaque page ;
+// même logique réactive de filtres. Ce code vivait dupliqué dans chaque page ;
 // il vit désormais ici uniquement (même principe que questions-io.js pour
 // le sérialiseur). L'application des filtres et le rendu des résultats
 // restent propres à chaque page (tri et affichage différents).
@@ -39,10 +39,11 @@ function comboLabel(a, b) {
 // courant, ou periodeOrder si aucun niveau choisi) — jamais une combinaison sans question
 // réelle. `allowedPeriodes` fixe aussi l'ordre canonique d'affichage de la paire (cohérent
 // quel que soit l'ordre saisi dans le formulaire de la question).
-function computePeriodeCombos(questions, allowedPeriodes) {
+function computePeriodeCombos(questions, allowedPeriodes, predicate) {
   const allowedSet = new Set(allowedPeriodes);
   const seen = new Map();
   questions.forEach(q => {
+    if (predicate && !predicate(q)) return;
     const per = q.periodes || [];
     if (per.length !== 2 || !allowedSet.has(per[0]) || !allowedSet.has(per[1])) return;
     const ids = allowedPeriodes.filter(p => per.includes(p));
@@ -59,14 +60,35 @@ function computePeriodeCombos(questions, allowedPeriodes) {
 // « Comparaisons » non désiré). Valeur d'une combinaison : "combo:" + JSON de la paire
 // (voir matchesPeriodeFilter) — un préfixe explicite, jamais ambigu avec un nom de
 // société réel.
-function fillPeriodeSelect(id, periodes, combos, placeholder) {
+// Retourne uniquement les sociétés qui existent comme objet autonome (q.periodes de
+// longueur 1) dans les questions correspondant au contexte courant.
+function computeSimplePeriodes(questions, allowedPeriodes, predicate) {
+  const present = new Set();
+  questions.forEach(q => {
+    if (predicate && !predicate(q)) return;
+    const per = q.periodes || [];
+    if (per.length === 1) present.add(per[0]);
+  });
+  return allowedPeriodes.filter(p => present.has(p));
+}
+
+// labeler est optionnel et ne modifie jamais les valeurs internes : il ne sert qu'au
+// libellé visible. Signature : ({ kind, ids, value, defaultLabel }) => string.
+function fillPeriodeSelect(id, periodes, combos, placeholder, labeler) {
   const el = document.getElementById(id);
   el.innerHTML = `<option value="">${placeholder}</option>`;
-  periodes.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; el.appendChild(o); });
+  periodes.forEach(p => {
+    const o = document.createElement('option');
+    o.value = p;
+    const meta = { kind: 'single', ids: [p], value: p, defaultLabel: p };
+    o.textContent = labeler ? labeler(meta) : p;
+    el.appendChild(o);
+  });
   combos.forEach(c => {
     const o = document.createElement('option');
     o.value = 'combo:' + JSON.stringify(c.ids);
-    o.textContent = c.label;
+    const meta = { kind: 'combo', ids: c.ids, value: o.value, defaultLabel: c.label };
+    o.textContent = labeler ? labeler(meta) : c.label;
     el.appendChild(o);
   });
 }
@@ -111,18 +133,40 @@ function fillAspectSelect(id, aspects, periodeOrder) {
 // ids = { niveau, periode, aspect } (ids des <select> correspondants).
 // `questions` = QUESTIONS (ou équivalent) — sert à calculer les combinaisons de
 // comparaison disponibles pour ce niveau (voir computePeriodeCombos).
-function cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions) {
+function cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler) {
   const niveau = document.getElementById(ids.niveau).value;
   const allowedPeriodes = niveau ? PERIODES_PAR_NIVEAU[niveau] : periodeOrder;
 
+  let competence = '';
+  if(ids.competence) {
+    const compEl = document.getElementById(ids.competence);
+    const candidate = compEl ? compEl.value : '';
+    if(candidate) {
+      const exists = questions.some(q =>
+        (!niveau || String(q.niveau) === String(niveau)) && q.competence === candidate
+      );
+      if(exists) competence = candidate;
+    }
+  }
+
+  const predicate = q =>
+    (!niveau || String(q.niveau) === String(niveau))
+    && (!competence || q.competence === competence);
+
+  const simplePeriodes = computeSimplePeriodes(questions, allowedPeriodes, predicate);
+  const combos = computePeriodeCombos(questions, allowedPeriodes, predicate);
+
   const periodeEl = document.getElementById(ids.periode);
   const currentPeriode = periodeEl.value;
-  const combos = computePeriodeCombos(questions, allowedPeriodes);
-  fillPeriodeSelect(ids.periode, allowedPeriodes, combos, 'Toutes');
-  const validValues = new Set([...allowedPeriodes, ...combos.map(c => 'combo:' + JSON.stringify(c.ids))]);
+  fillPeriodeSelect(ids.periode, simplePeriodes, combos, 'Toutes', labeler);
+  const validValues = new Set([...simplePeriodes, ...combos.map(c => 'combo:' + JSON.stringify(c.ids))]);
   periodeEl.value = validValues.has(currentPeriode) ? currentPeriode : '';
 
   cascadePeriodeChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions);
+}
+
+function cascadeCompetenceChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler) {
+  cascadeNiveauChange(ids, aspects, periodeOrder, PERIODES_PAR_NIVEAU, questions, labeler);
 }
 
 // Reconstruit le <select> Aspect selon le niveau + la société (simple ou combinaison)

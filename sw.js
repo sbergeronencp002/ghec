@@ -8,10 +8,10 @@
 // ⚠️ CACHE doit être incrémenté à chaque changement de PRECACHE (cf. CLAUDE.md, table
 // « Cache-bust actuel ») — sinon les navigateurs déjà visités gardent l'ancienne liste
 // indéfiniment (self.skipWaiting()/clients.claim() ne rechargent pas les onglets ouverts).
-const CACHE = 'ghec-v11';
+const CACHE = 'ghec-v12';
 const PRECACHE = [
   './style.css?v=34',
-  './app.js?v=57',
+  './app.js?v=58',
   './filters.js?v=5',
 ];
 // Précachés (comme repli hors-ligne) mais TOUJOURS revalidés réseau-first dans le

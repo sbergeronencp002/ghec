@@ -395,6 +395,16 @@ const COMPETENCE_LIBELLES = {
 function competenceLibelle(competence) {
   return COMPETENCE_LIBELLES[competence] || competence || '';
 }
+function competenceOrdre(a, b) {
+  const ia = (typeof COMPETENCE_LIST !== 'undefined') ? COMPETENCE_LIST.indexOf(a) : -1;
+  const ib = (typeof COMPETENCE_LIST !== 'undefined') ? COMPETENCE_LIST.indexOf(b) : -1;
+  if(ia !== -1 || ib !== -1) {
+    if(ia === -1) return 1;
+    if(ib === -1) return -1;
+    return ia - ib;
+  }
+  return String(a).localeCompare(String(b), 'fr');
+}
 function relabelCompetenceSelect(id) {
   const sel = document.getElementById(id);
   if(!sel) return;
@@ -405,7 +415,7 @@ function relabelCompetenceSelect(id) {
 
 function rvPopulateFilters() {
   const allOis = [...new Set(QUESTIONS.map(q => q.oi))].sort((a,b) => a.localeCompare(b,'fr'));
-  const allCompetences = [...new Set(QUESTIONS.map(q => q.competence).filter(Boolean))].sort((a,b) => a.localeCompare(b,'fr'));
+  const allCompetences = [...new Set(QUESTIONS.map(q => q.competence).filter(Boolean))].sort(competenceOrdre);
   const aspectsByPeriode = {};
   QUESTIONS.forEach(q => {
     (q.periodes||[]).forEach(p => {
@@ -485,7 +495,7 @@ function rvApplyFilters() {
   fillSelect('f-oi', relevantOis, 'Toutes');
   if(relevantOis.includes(currentOi)) document.getElementById('f-oi').value = currentOi;
 
-  const relevantCompetences = [...competenceSet].sort((a,b) => a.localeCompare(b,'fr'));
+  const relevantCompetences = [...competenceSet].sort(competenceOrdre);
   fillSelect('f-competence', relevantCompetences, 'Toutes');
   relabelCompetenceSelect('f-competence');
   if(relevantCompetences.includes(currentCompetence)) document.getElementById('f-competence').value = currentCompetence;

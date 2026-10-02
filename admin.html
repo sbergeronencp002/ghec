@@ -1684,6 +1684,16 @@ const COMPETENCE_LIBELLES = {
 function competenceLibelle(competence) {
   return COMPETENCE_LIBELLES[competence] || competence || '';
 }
+function competenceOrdre(a, b) {
+  const ia = (typeof COMPETENCE_LIST !== 'undefined') ? COMPETENCE_LIST.indexOf(a) : -1;
+  const ib = (typeof COMPETENCE_LIST !== 'undefined') ? COMPETENCE_LIST.indexOf(b) : -1;
+  if(ia !== -1 || ib !== -1) {
+    if(ia === -1) return 1;
+    if(ib === -1) return -1;
+    return ia - ib;
+  }
+  return String(a).localeCompare(String(b), 'fr');
+}
 
 // Compétence : dimension indépendante de l'OI (competences.js) — pas de couleur/réglette
 // associée, juste un menu déroulant simple.
@@ -3286,7 +3296,7 @@ function renderDashboard() {
     compMap[q.competence].q++;
     compMap[q.competence].pts += q.points||0;
   });
-  const compList = Object.entries(compMap).sort((a,b) => a[0].localeCompare(b[0], 'fr'));
+  const compList = Object.entries(compMap).sort((a,b) => competenceOrdre(a[0], b[0]));
   const maxCompQ = Math.max(...compList.map(e => e[1].q), 1);
   const compRows = compList.map(([comp, val]) => {
     const pct = Math.round(val.q / maxCompQ * 100);

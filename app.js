@@ -188,6 +188,221 @@ function societeFilterLibelle(option) {
   return option.defaultLabel;
 }
 
+function mainOrderIndex(list, value) {
+  const i = list.indexOf(value);
+  return i === -1 ? Number.MAX_SAFE_INTEGER : i;
+}
+
+const MAIN_ASPECT_ORDER = (() => {
+  const seen = new Set(), out = [];
+  if(typeof ASPECTS_PAR_PERIODE !== 'undefined') {
+    Object.values(ASPECTS_PAR_PERIODE).forEach(list => (list || []).forEach(a => {
+      if(!seen.has(a)) { seen.add(a); out.push(a); }
+    }));
+  }
+  return out;
+})();
+
+const MAIN_OI_ORDER = (typeof OI_LIST !== 'undefined') ? [...OI_LIST] : [];
+
+function fillCountedSelect(id, entries, placeholder, total, currentValue) {
+  const el = document.getElementById(id);
+  if(!el) return '';
+  el.innerHTML = '';
+  const all = document.createElement('option');
+  all.value = '';
+  all.textContent = placeholder + ' (' + total + ')';
+  all.dataset.label = placeholder;
+  el.appendChild(all);
+  entries.forEach(entry => {
+    const opt = document.createElement('option');
+    opt.value = entry.value;
+    opt.textContent = entry.label + ' (' + entry.count + ')';
+    opt.dataset.label = entry.label;
+    el.appendChild(opt);
+  });
+  const keep = entries.some(e => e.value === currentValue) ? currentValue : '';
+  el.value = keep;
+  return keep;
+}
+
+function canonicalPeriodes(periodes) {
+  const unique = [...new Set(periodes || [])];
+  return unique.sort((a, b) => {
+    const ia = periodeOrder.indexOf(a), ib = periodeOrder.indexOf(b);
+    if(ia === -1 && ib === -1) return a.localeCompare(b, 'fr');
+    if(ia === -1) return 1;
+    if(ib === -1) return -1;
+    return ia - ib;
+  });
+}
+
+function societeContextForQuestion(q) {
+  const per = canonicalPeriodes(q.periodes || []);
+  const comp = competenceEffective(q);
+  const has = p => per.includes(p);
+
+  if(Number(q.niveau) === 3) {
+    if(comp === 'Interpréter le changement'
+      && (has('Iroquoiens vers 1745') || (has('Iroquoiens vers 1500') && has('Iroquoiens vers 1745')))) {
+      return {
+        value: 'ctx:g3:c2:iroquoiens-1500-1745',
+        label: 'Société iroquoienne entre 1500 et 1745',
+        order: 40,
+        competence: comp
+      };
+    }
+    if(comp === "S'ouvrir à la diversité" && has('Iroquoiens vers 1500') && has('Algonquiens vers 1500')) {
+      return {
+        value: 'ctx:g3:c3:iroquoiens-algonquiens-1500',
+        label: 'Iroquoiens et Algonquiens vers 1500',
+        order: 50,
+        competence: comp
+      };
+    }
+    if(comp === "S'ouvrir à la diversité" && has('Iroquoiens vers 1500') && has('Incas vers 1500')) {
+      return {
+        value: 'ctx:g3:c3:iroquoiens-incas-1500',
+        label: 'Iroquoiens et Incas vers 1500',
+        order: 60,
+        competence: comp
+      };
+    }
+    if(comp === "Lire l'organisation du territoire" && per.length === 1) {
+      const g3Order = {
+        'Iroquoiens vers 1500': 10,
+        'Algonquiens vers 1500': 20,
+        'Incas vers 1500': 30
+      };
+      if(g3Order[per[0]]) {
+        const label = societeFilterLibelle({ kind:'single', ids:[per[0]], value:per[0], defaultLabel:per[0] }) || per[0];
+        return { value: per[0], label, order: g3Order[per[0]], competence: comp };
+      }
+    }
+  }
+
+  if(per.length === 1) {
+    const label = societeFilterLibelle({ kind:'single', ids:per, value:per[0], defaultLabel:per[0] }) || per[0];
+    return {
+      value: per[0],
+      label,
+      order: 100 + mainOrderIndex(periodeOrder, per[0]),
+      competence: comp
+    };
+  }
+
+  if(per.length === 2) {
+    const value = 'combo:' + JSON.stringify(per);
+    const defaultLabel = comboLabel(per[0], per[1]);
+    const label = societeFilterLibelle({ kind:'combo', ids:per, value, defaultLabel }) || defaultLabel;
+    return {
+      value,
+      label,
+      order: 100 + Math.min(mainOrderIndex(periodeOrder, per[0]), mainOrderIndex(periodeOrder, per[1])),
+      competence: comp
+    };
+  }
+  return null;
+}
+
+function questionMatchesSocietyContext(q, value) {
+  if(!value) return true;
+  const ctx = societeContextForQuestion(q);
+  return !!ctx && ctx.value === value;
+}
+
+function societyEntriesForQuestions(list) {
+  const map = new Map();
+  list.forEach(q => {
+    const ctx = societeContextForQuestion(q);
+    if(!ctx) return;
+    if(!map.has(ctx.value)) map.set(ctx.value, { ...ctx, count: 0 });
+    map.get(ctx.value).count++;
+  });
+  return [...map.values()].sort((a, b) => {
+    const comp = competenceOrdre(a.competence || '', b.competence || '');
+    if(comp) return comp;
+    if(a.order !== b.order) return a.order - b.order;
+    return a.label.localeCompare(b.label, 'fr');
+  });
+}
+
+function selectedFilterLabel(id) {
+  const el = document.getElementById(id);
+  const opt = el && el.selectedOptions ? el.selectedOptions[0] : null;
+  return opt ? (opt.dataset.label || opt.textContent || '') : '';
+}
+
+function rebuildMainCascade() {
+  const current = {
+    niveau: document.getElementById('f-niveau')?.value || '',
+    competence: document.getElementById('f-competence')?.value || '',
+    periode: document.getElementById('f-periode')?.value || '',
+    aspect: document.getElementById('f-aspect')?.value || '',
+    oi: document.getElementById('f-oi')?.value || ''
+  };
+
+  const levelCounts = new Map();
+  QUESTIONS.forEach(q => {
+    const key = String(q.niveau);
+    levelCounts.set(key, (levelCounts.get(key) || 0) + 1);
+  });
+  const levelEntries = Object.keys(PERIODES_PAR_NIVEAU)
+    .sort((a, b) => Number(a) - Number(b))
+    .map(n => ({ value:n, label:'GHEC ' + n, count:levelCounts.get(n) || 0 }));
+  const niveau = fillCountedSelect('f-niveau', levelEntries, 'Tous', QUESTIONS.length, current.niveau);
+
+  const byLevel = QUESTIONS.filter(q => !niveau || String(q.niveau) === niveau);
+  const compCounts = new Map();
+  byLevel.forEach(q => {
+    const comp = competenceEffective(q);
+    if(comp) compCounts.set(comp, (compCounts.get(comp) || 0) + 1);
+  });
+  const compEntries = [...compCounts.entries()]
+    .sort((a, b) => competenceOrdre(a[0], b[0]))
+    .map(([value, count]) => ({ value, label:competenceLibelle(value), count }));
+  const competence = fillCountedSelect('f-competence', compEntries, 'Toutes', byLevel.length, current.competence);
+
+  const byCompetence = byLevel.filter(q => !competence || competenceEffective(q) === competence);
+  const societyEntries = societyEntriesForQuestions(byCompetence);
+  const periode = fillCountedSelect('f-periode', societyEntries, 'Toutes', byCompetence.length, current.periode);
+
+  const bySociety = byCompetence.filter(q => questionMatchesSocietyContext(q, periode));
+  const aspectCounts = new Map();
+  bySociety.forEach(q => {
+    const seen = new Set();
+    (q.aspects || []).forEach(a => {
+      if(!a || !a.aspect || seen.has(a.aspect)) return;
+      seen.add(a.aspect);
+      aspectCounts.set(a.aspect, (aspectCounts.get(a.aspect) || 0) + 1);
+    });
+  });
+  const aspectEntries = [...aspectCounts.entries()]
+    .sort((a, b) => {
+      const ia = mainOrderIndex(MAIN_ASPECT_ORDER, a[0]);
+      const ib = mainOrderIndex(MAIN_ASPECT_ORDER, b[0]);
+      return ia === ib ? a[0].localeCompare(b[0], 'fr') : ia - ib;
+    })
+    .map(([value, count]) => ({ value, label:value, count }));
+  const aspect = fillCountedSelect('f-aspect', aspectEntries, 'Tous', bySociety.length, current.aspect);
+
+  const byAspect = bySociety.filter(q => !aspect || (q.aspects || []).some(a => a.aspect === aspect));
+  const oiCounts = new Map();
+  byAspect.forEach(q => {
+    if(q.oi) oiCounts.set(q.oi, (oiCounts.get(q.oi) || 0) + 1);
+  });
+  const oiEntries = [...oiCounts.entries()]
+    .sort((a, b) => {
+      const ia = mainOrderIndex(MAIN_OI_ORDER, a[0]);
+      const ib = mainOrderIndex(MAIN_OI_ORDER, b[0]);
+      return ia === ib ? a[0].localeCompare(b[0], 'fr') : ia - ib;
+    })
+    .map(([value, count]) => ({ value, label:value, count }));
+  const oi = fillCountedSelect('f-oi', oiEntries, 'Toutes', byAspect.length, current.oi);
+
+  return { niveau, competence, periode, aspect, oi };
+}
+
 function populateFilters() {
   Q_MAP = new Map(QUESTIONS.map(q => [q.id, q]));
   Q_SEARCH_IDX = new Map(QUESTIONS.map(q => [q.id,
@@ -200,83 +415,110 @@ function populateFilters() {
     return (parseInt(b.id.replace(/\D/g,''))||0) - (parseInt(a.id.replace(/\D/g,''))||0);
   });
   NEW_IDS = new Set(sorted.slice(0,10).map(q=>q.id));
-  const allOis = [...new Set(QUESTIONS.map(q=>q.oi))].sort((a,b)=>a.localeCompare(b,'fr'));
-  const allCompetences = [...new Set(QUESTIONS.map(competenceEffective).filter(Boolean))].sort(competenceOrdre);
-  const aspectsByPeriode = {};
-  QUESTIONS.forEach(q=>{
-    (q.periodes||[]).forEach(p=>{
-      (q.aspects||[]).forEach(a=>{
-        if(!aspectsByPeriode[p]) aspectsByPeriode[p]=new Set();
-        aspectsByPeriode[p].add(a.aspect);
-      });
-    });
-  });
-  aspects = periodeOrder.flatMap(p=>{
-    if(!aspectsByPeriode[p]) return [];
-    return [...aspectsByPeriode[p]].sort((a,b)=>a.localeCompare(b,'fr')).map(a=>({aspect:a, periode:p}));
-  });
-  const periodes = computeSimplePeriodes(QUESTIONS, periodeOrder);
-  const combos = computePeriodeCombos(QUESTIONS, periodeOrder);
-
-  fillSelect('f-niveau', Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b)), "Tous");
-  fillPeriodeSelect('f-periode', periodes, combos, "Toutes", societeFilterLibelle);
-  fillAspectSelect('f-aspect', aspects, periodeOrder);
-  fillSelect('f-oi', allOis, "Toutes");
-  fillSelect('f-competence', allCompetences, "Toutes");
-  relabelCompetenceSelect('f-competence');
-}
-
-// Ids des <select> de la cascade niveau→période→aspect (voir filters.js, chargé avant app.js).
-const FILTER_IDS = { niveau: 'f-niveau', competence: 'f-competence', periode: 'f-periode', aspect: 'f-aspect' };
-
-function onPeriodeChange() {
-  cascadePeriodeChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS);
-  applyFilters();
+  rebuildMainCascade();
 }
 
 function onNiveauChange() {
-  cascadeNiveauChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle, competenceEffective);
+  rebuildMainCascade();
   applyFilters();
 }
-
 function onCompetenceChange() {
-  cascadeCompetenceChange(FILTER_IDS, aspects, periodeOrder, PERIODES_PAR_NIVEAU, QUESTIONS, societeFilterLibelle, competenceEffective);
+  rebuildMainCascade();
+  applyFilters();
+}
+function onPeriodeChange() {
+  rebuildMainCascade();
+  applyFilters();
+}
+function onAspectChange() {
+  rebuildMainCascade();
+  applyFilters();
+}
+function onOiChangeMain() {
   applyFilters();
 }
 
-// Debounce uniquement pour la frappe de recherche
+// Debounce uniquement pour la frappe de recherche.
 let _searchTimer = 0;
 function debouncedApplyFilters() {
   clearTimeout(_searchTimer);
   _searchTimer = setTimeout(applyFilters, 280);
 }
 
-function applyFilters() {
-  const oi         = document.getElementById('f-oi').value;
-  const competence = document.getElementById('f-competence').value;
-  const aspect  = document.getElementById('f-aspect').value;
-  const periode = document.getElementById('f-periode').value;
-  const niveau  = document.getElementById('f-niveau').value;
-  const search  = fold((document.getElementById('f-search')?.value || '').trim());
-  const currentOi = oi;
-  const currentCompetence = competence;
+function getMainFilterValues() {
+  return {
+    niveau: document.getElementById('f-niveau')?.value || '',
+    competence: document.getElementById('f-competence')?.value || '',
+    periode: document.getElementById('f-periode')?.value || '',
+    aspect: document.getElementById('f-aspect')?.value || '',
+    oi: document.getElementById('f-oi')?.value || '',
+    search: fold((document.getElementById('f-search')?.value || '').trim())
+  };
+}
 
-  // Parcours unique : construit filtered + relevantOis en même passe
-  const filtered = [];
-  const oiSet = new Set();
-  const competenceSet = new Set();
-  for(const q of QUESTIONS) {
-    const niveauOk  = !niveau  || String(q.niveau) === niveau;
-    const periodeOk = matchesPeriodeFilter(q, periode);
-    const aspectOk  = !aspect  || (q.aspects||[]).some(a=>a.aspect===aspect);
-    const qCompetence = competenceEffective(q);
-    if(niveauOk && periodeOk && aspectOk) { oiSet.add(q.oi); if(qCompetence) competenceSet.add(qCompetence); }
-    if(!niveauOk || !periodeOk || !aspectOk) continue;
-    if(oi && q.oi !== oi) continue;
-    if(competence && qCompetence !== competence) continue;
-    if(search && !(Q_SEARCH_IDX.get(q.id)||'').includes(search)) continue;
-    filtered.push(q);
+function questionMatchesMainFilters(q, f, includeFineFilters = true) {
+  if(f.niveau && String(q.niveau) !== f.niveau) return false;
+  if(f.competence && competenceEffective(q) !== f.competence) return false;
+  if(f.periode && !questionMatchesSocietyContext(q, f.periode)) return false;
+  if(includeFineFilters) {
+    if(f.aspect && !(q.aspects || []).some(a => a.aspect === f.aspect)) return false;
+    if(f.oi && q.oi !== f.oi) return false;
+    if(f.search && !(Q_SEARCH_IDX.get(q.id) || '').includes(f.search)) return false;
   }
+  return true;
+}
+
+function updateContextUi(filters) {
+  const nav = document.getElementById('context-breadcrumb');
+  if(nav) {
+    nav.innerHTML = '';
+    const segments = [];
+    if(filters.niveau) segments.push(selectedFilterLabel('f-niveau'));
+    if(filters.competence) segments.push(selectedFilterLabel('f-competence'));
+    if(filters.periode) segments.push(selectedFilterLabel('f-periode'));
+    if(filters.aspect) segments.push(selectedFilterLabel('f-aspect'));
+    if(filters.oi) segments.push(selectedFilterLabel('f-oi'));
+
+    if(!segments.length) {
+      const span = document.createElement('span');
+      span.className = 'context-home';
+      span.textContent = 'Toutes les questions';
+      nav.appendChild(span);
+    } else {
+      segments.forEach((label, i) => {
+        if(i) {
+          const sep = document.createElement('span');
+          sep.className = 'context-sep';
+          sep.textContent = '›';
+          nav.appendChild(sep);
+        }
+        const span = document.createElement('span');
+        span.className = i === segments.length - 1 ? 'context-current' : 'context-segment';
+        span.textContent = label;
+        nav.appendChild(span);
+      });
+    }
+  }
+
+  const btn = document.getElementById('context-all-btn');
+  if(btn) {
+    if(!filters.periode) {
+      btn.hidden = true;
+    } else {
+      const contextCount = QUESTIONS.filter(q => questionMatchesMainFilters(q, filters, false)).length;
+      const hasFine = !!(filters.aspect || filters.oi || filters.search);
+      btn.hidden = false;
+      btn.disabled = !hasFine;
+      btn.textContent = hasFine
+        ? 'Voir toutes les questions de ce contexte (' + contextCount + ')'
+        : 'Contexte complet · ' + contextCount + ' question' + (contextCount !== 1 ? 's' : '');
+    }
+  }
+}
+
+function applyFilters() {
+  const filters = getMainFilterValues();
+  const filtered = QUESTIONS.filter(q => questionMatchesMainFilters(q, filters, true));
 
   filtered.sort((a, b) => {
     const ta = a.updatedAt || '';
@@ -287,25 +529,28 @@ function applyFilters() {
     return nB - nA;
   });
 
-  const relevantOis = [...oiSet].sort((a,b)=>a.localeCompare(b,'fr'));
-  fillSelect('f-oi', relevantOis, "Toutes");
-  if(relevantOis.includes(currentOi)) document.getElementById('f-oi').value = currentOi;
-
-  const relevantCompetences = [...competenceSet].sort(competenceOrdre);
-  fillSelect('f-competence', relevantCompetences, "Toutes");
-  relabelCompetenceSelect('f-competence');
-  if(relevantCompetences.includes(currentCompetence)) document.getElementById('f-competence').value = currentCompetence;
-
   const totalPtsFilt = filtered.reduce((s,q)=>s+(q.points||0), 0);
   document.getElementById('stat-num').textContent = filtered.length;
   const statPts = document.getElementById('stat-pts');
   if(statPts) statPts.textContent = totalPtsFilt + ' pt' + (totalPtsFilt!==1?'s':'') + ' disponibles';
   document.getElementById('results-label').textContent =
     filtered.length === QUESTIONS.length
-      ? `Toutes les questions (${filtered.length})`
-      : `${filtered.length} question${filtered.length!==1?'s':''} · ${totalPtsFilt} pt${totalPtsFilt!==1?'s':''}`;
+      ? 'Toutes les questions (' + filtered.length + ')'
+      : filtered.length + ' question' + (filtered.length!==1?'s':'') + ' · ' + totalPtsFilt + ' pt' + (totalPtsFilt!==1?'s':'');
 
+  updateContextUi(filters);
   render(filtered);
+}
+
+function voirToutContexte() {
+  const aspect = document.getElementById('f-aspect');
+  const oi = document.getElementById('f-oi');
+  const search = document.getElementById('f-search');
+  if(aspect) aspect.value = '';
+  if(oi) oi.value = '';
+  if(search) search.value = '';
+  rebuildMainCascade();
+  applyFilters();
 }
 
 function resetFilters() {
@@ -313,7 +558,95 @@ function resetFilters() {
     const el = document.getElementById(id);
     if(el) el.value = '';
   });
-  onNiveauChange();
+  rebuildMainCascade();
+  applyFilters();
+}
+
+function renderContinuum() {
+  const body = document.getElementById('continuum-body');
+  if(!body) return;
+  const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b));
+  let html = '<div class="continuum-grid">';
+
+  niveaux.forEach(niveau => {
+    const levelQuestions = QUESTIONS.filter(q => String(q.niveau) === String(niveau));
+    html += '<section class="continuum-level">';
+    html += '<div class="continuum-level-head"><div><span class="continuum-level-kicker">Niveau</span><h3>GHEC ' + escLine(niveau) + '</h3></div>'
+      + '<span class="continuum-level-count">' + levelQuestions.length + ' question' + (levelQuestions.length !== 1 ? 's' : '') + '</span></div>';
+
+    (typeof COMPETENCE_LIST !== 'undefined' ? COMPETENCE_LIST : []).forEach(comp => {
+      const compQuestions = levelQuestions.filter(q => competenceEffective(q) === comp);
+      const contexts = societyEntriesForQuestions(compQuestions);
+      html += '<div class="continuum-comp">';
+      html += '<div class="continuum-comp-head"><span>' + escLine(competenceLibelle(comp)) + '</span>'
+        + '<span>' + compQuestions.length + '</span></div>';
+      if(contexts.length) {
+        html += '<div class="continuum-contexts">';
+        contexts.forEach(ctx => {
+          html += '<button type="button" class="continuum-context-btn"'
+            + ' data-niveau="' + escAttr(niveau) + '"'
+            + ' data-competence="' + escAttr(comp) + '"'
+            + ' data-periode="' + escAttr(ctx.value) + '"'
+            + ' onclick="selectContinuumContext(this)">'
+            + '<span>' + escLine(ctx.label) + '</span>'
+            + '<strong>' + ctx.count + '</strong>'
+            + '</button>';
+        });
+        html += '</div>';
+      } else {
+        html += '<div class="continuum-empty">Aucune question pour le moment.</div>';
+      }
+      html += '</div>';
+    });
+    html += '</section>';
+  });
+
+  html += '</div>';
+  body.innerHTML = html;
+}
+
+function openContinuum() {
+  renderContinuum();
+  const modal = document.getElementById('continuum-modal');
+  if(modal) {
+    modal.classList.add('open');
+    setTimeout(() => document.getElementById('continuum-modal-close')?.focus(), 0);
+  }
+}
+function closeContinuum(event) {
+  const modal = document.getElementById('continuum-modal');
+  if(event && event.target !== modal) return;
+  modal?.classList.remove('open');
+}
+function closeContinuumBtn() {
+  document.getElementById('continuum-modal')?.classList.remove('open');
+}
+function selectContinuumContext(btn) {
+  const niveau = btn.dataset.niveau || '';
+  const competence = btn.dataset.competence || '';
+  const periode = btn.dataset.periode || '';
+
+  const n = document.getElementById('f-niveau');
+  if(n) n.value = niveau;
+  rebuildMainCascade();
+
+  const c = document.getElementById('f-competence');
+  if(c) c.value = competence;
+  rebuildMainCascade();
+
+  const p = document.getElementById('f-periode');
+  if(p) p.value = periode;
+  const a = document.getElementById('f-aspect');
+  const o = document.getElementById('f-oi');
+  const s = document.getElementById('f-search');
+  if(a) a.value = '';
+  if(o) o.value = '';
+  if(s) s.value = '';
+
+  rebuildMainCascade();
+  applyFilters();
+  closeContinuumBtn();
+  document.querySelector('.main')?.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
 function buildReglettHTML(q) {
@@ -674,7 +1007,7 @@ document.addEventListener('keydown', e => {
     }
     return;
   }
-  if(e.key === 'Escape') { closeQModal(); closePreviewBtn(); closeTextZoomBtn(); }
+  if(e.key === 'Escape') { closeQModal(); closePreviewBtn(); closeTextZoomBtn(); closeContinuumBtn(); }
 });
 
 // ===== PANIER =====

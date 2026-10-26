@@ -2620,7 +2620,7 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "À l’aide du document A, indique la lettre qui correspond à l'établissement de Québec en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "tableau_2col"},
  guide: "D",
  updatedAt: "2026-10-26T14:23:17.824Z"
@@ -2635,7 +2635,7 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "À l’aide du document A, indique la lettre qui correspond à l'établissement de Trois-Rivières en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "tableau_2col"},
  guide: "C",
  updatedAt: "2026-09-08T19:00:02.377Z"
@@ -2650,7 +2650,7 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "À l’aide du document A, indique la lettre qui correspond à l'établissement de Ville-Marie en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "tableau_2col"},
  guide: "A",
  updatedAt: "2026-09-08T19:00:26.702Z"

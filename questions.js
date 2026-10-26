@@ -290,7 +290,7 @@ const IMAGE_DB = {
 "village_iroquoien_1645.jpg": {src: "images/village_iroquoien_1645.jpg"},
 "campement_algonquien.jpg": {src: "images/campement_algonquien.jpg"},
 "colons_terre.jpg": {src: "images/colons_terre.jpg"},
-"cartes_etablissements.jpg": {src: "images/cartes_etablissements.jpg", w: 1200, h: 692},
+"cartes_etablissements.jpg": {src: "images/cartes_etablissements.jpg", w: 1200, h: 922},
 "n-f_1645.jpg": {src: "images/n-f_1645.jpg", w: 1200, h: 800},
 "poste_traite_troc.jpg": {src: "images/poste_traite_troc.jpg", w: 1200, h: 801},
 "missionnaire.jpg": {src: "images/missionnaire.jpg"},
@@ -2562,7 +2562,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "tableau_2col"},
  guide: "D",
- updatedAt: "2026-09-08T18:59:40.031Z"
+ updatedAt: "2026-10-26T14:23:17.824Z"
 },
 {
  id: "Q149",

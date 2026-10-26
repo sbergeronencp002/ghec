@@ -175,7 +175,8 @@ const REGLETTES = {
 "Q174": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q175": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q176": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q177": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q177": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q178": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -327,7 +328,8 @@ const IMAGE_DB = {
 "charrette_boeuf.jpg": {src: "images/charrette_boeuf.jpg", w: 1200, h: 800},
 "navire_francais.jpg": {src: "images/navire_francais.jpg", w: 1200, h: 800},
 "voies_communication_3.jpg": {src: "images/voies_communication_3.jpg", w: 1200, h: 800},
-"voies_communication_2.jpg": {src: "images/voies_communication_2.jpg", w: 1200, h: 800}
+"voies_communication_2.jpg": {src: "images/voies_communication_2.jpg", w: 1200, h: 800},
+"regime_seigneurial.jpg": {src: "images/regime_seigneurial.jpg"}
 }
 
 const QUESTIONS = [
@@ -3026,5 +3028,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La charrette.\nAccepter aussi « une charrette tirée par un bœuf ».",
  updatedAt: "2026-10-26T15:28:47.822Z"
+},
+{
+ id: "Q178",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme la région où les premières seigneuries sont concédées en Nouvelle-France.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La vallée du Saint-Laurent.",
+ updatedAt: "2026-10-26T15:42:33.620Z"
 }
 ]

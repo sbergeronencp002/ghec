@@ -163,7 +163,8 @@ const REGLETTES = {
 "Q162": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q163": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q164": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
-"Q165": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
+"Q165": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q166": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -306,7 +307,8 @@ const IMAGE_DB = {
 "divertissement_theatre.jpg": {src: "images/divertissement_theatre.jpg", w: 1200, h: 800},
 "divertissement_recits_1645.jpg": {src: "images/divertissement_recits_1645.jpg", w: 1200, h: 800},
 "deplacement_1645_a.jpg": {src: "images/deplacement_1645_a.jpg", w: 1200, h: 800},
-"deplacement_1645_b.jpg": {src: "images/deplacement_1645_b.jpg", w: 1200, h: 800}
+"deplacement_1645_b.jpg": {src: "images/deplacement_1645_b.jpg", w: 1200, h: 800},
+"troc_1.jpg": {src: "images/troc_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2822,5 +2824,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Le théâtre", "Les chants et musique", "Les récits"]},
  guide: {type: "grille", entetes: ["Le théâtre", "Les chants et musique", "Les récits"], rangees: [["C", "A", "B"]]},
  updatedAt: "2026-09-15T11:48:29.986Z"
+},
+{
+ id: "Q166",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme l’activité économique représentée.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "troc_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le commerce des fourrures.",
+ updatedAt: "2026-10-26T13:42:14.392Z"
 }
 ]

@@ -13,16 +13,16 @@
 <script src="questions-io.js?v=3"></script>
 <style>
 :root {
-  --ink: #1a1814; --ink-2: #4a4740; --ink-3: #8a8680;
-  --paper: #f7f4ef; --paper-2: #ede9e2; --paper-3: #e2ddd5;
-  --accent: #1B3B6F; --border: rgba(26,24,20,0.15);
+  --ink: #1f2937; --ink-2: #5b6676; --ink-3: #5b6676;
+  --paper: #f5f7fa; --paper-2: #eaf1f8; --paper-3: #d6e4f0;
+  --accent: #1e3358; --border: #dde3ec;
   --green: #1a5c3a; --red: #c0392b;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'DM Sans','Segoe UI',Helvetica,Arial,sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
 
 /* ── HEADER ── */
-header { background: var(--accent); color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+header { background: #1e3358; color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
 header h1 { font-size: 1.2rem; font-weight: 500; }
 header a { color: rgba(255,255,255,.7); font-size: .8rem; text-decoration: none; }
 header a:hover { color: #fff; }
@@ -108,7 +108,7 @@ header a:hover { color: #fff; }
 .guide-grille-num { width: 26px; text-align: center; font-size: .68rem; color: var(--ink-3); background: var(--paper-2); padding: 0 4px; }
 .guide-grille th { background: var(--paper-2); }
 .guide-grille input { width: 100%; border: none; padding: .34rem .55rem; font-size: .82rem; background: transparent; font-family: inherit; color: var(--ink); min-width: 80px; }
-.guide-grille input:focus { outline: none; background: rgba(27,59,111,0.05); }
+.guide-grille input:focus { outline: none; background: rgba(30,51,88,0.05); }
 .guide-grille-entete { font-weight: 600; }
 
 .soustag-pill {
@@ -121,7 +121,7 @@ header a:hover { color: #fff; }
   background:var(--paper);
 }
 .soustag-pill input { position:absolute; opacity:0; width:0; height:0; pointer-events:none; }
-.soustag-pill:has(input:checked) { background:#1B3B6F; color:#fff; border-color:#1B3B6F; }
+.soustag-pill:has(input:checked) { background:#1e3358; color:#fff; border-color:#1e3358; }
 .soustag-pill:hover:not(:has(input:checked)) { border-color:var(--ink-2); color:var(--ink); }
 .dash-grid { display:flex; gap:1.25rem; margin-bottom:1.25rem; align-items:flex-start; }
 .dash-col { flex:1; min-width:0; }
@@ -163,17 +163,17 @@ header a:hover { color: #fff; }
 .edit-result-card { padding:.55rem .85rem; cursor:pointer; border-bottom:1px solid var(--border); display:flex; align-items:baseline; gap:.5rem; transition:background .1s; }
 .edit-result-card:last-child { border-bottom:none; }
 .edit-result-card:hover { background:var(--paper-2); }
-.edit-result-card.selected { background:rgba(27,59,111,0.07); }
+.edit-result-card.selected { background:rgba(30,51,88,0.07); }
 .edit-card-id { font-size:.8rem; font-weight:700; color:var(--ink); white-space:nowrap; }
 .edit-card-warn { color:#c0392b; font-size:.75rem; }
 .edit-card-meta { font-size:.78rem; color:var(--ink-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .edit-card-enonce { font-size:.76rem; color:var(--ink-3); margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-style:italic; }
 .edit-card-sub { font-size:.72rem; color:var(--ink-3); margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.edit-result-card.focused { background:var(--paper-2); outline:2px solid rgba(27,59,111,0.25); outline-offset:-2px; }
+.edit-result-card.focused { background:var(--paper-2); outline:2px solid rgba(30,51,88,0.25); outline-offset:-2px; }
 .edit-results-empty { padding:.75rem 1rem; font-size:.82rem; color:var(--ink-3); font-style:italic; }
 
-.edit-selected-bar { margin-top:.75rem; padding:.6rem .85rem; background:rgba(27,59,111,0.06); border:1px solid rgba(27,59,111,0.18); border-radius:6px; display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap; }
-.edit-selected-label { font-size:.82rem; font-weight:600; color:#1B3B6F; }
+.edit-selected-bar { margin-top:.75rem; padding:.6rem .85rem; background:rgba(30,51,88,0.06); border:1px solid rgba(30,51,88,0.18); border-radius:6px; display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap; }
+.edit-selected-label { font-size:.82rem; font-weight:600; color:#1e3358; }
 
 /* ── ANCHOR NAV ── */
 .anchor-nav { position:sticky; top:0; z-index:20; background:var(--paper-2); border-bottom:1px solid var(--border); margin:0 -1.5rem 1.5rem; padding:.4rem 1.5rem; display:flex; gap:.25rem; flex-wrap:wrap; }

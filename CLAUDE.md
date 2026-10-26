@@ -150,9 +150,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=61`, `style.css?v=35`, `filters.js?v=6`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=61`, `style.css?v=36`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v15'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v16'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -421,3 +421,5 @@ Je (l'agent) ne peux pas lire ni modifier les secrets du dépôt ni le token de
 l'enseignant — cette action GitHub Actions/Secrets spécifique est bloquée pour mon accès
 API, contrairement aux publications de fichiers. L'enseignant doit toujours les
 créer/coller lui-même dans les paramètres du dépôt.
+
+Palette harmonisée avec Robotique le 2026-10-26 : marine #1e3358, accent #2f6fb0, fonds #f5f7fa / #eaf1f8 / #d6e4f0. Styles v36 et cache ghec-v16. Couleurs des OI conservées.

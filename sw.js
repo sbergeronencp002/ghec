@@ -8,9 +8,9 @@
 // ⚠️ CACHE doit être incrémenté à chaque changement de PRECACHE (cf. CLAUDE.md, table
 // « Cache-bust actuel ») — sinon les navigateurs déjà visités gardent l'ancienne liste
 // indéfiniment (self.skipWaiting()/clients.claim() ne rechargent pas les onglets ouverts).
-const CACHE = 'ghec-v15';
+const CACHE = 'ghec-v16';
 const PRECACHE = [
-  './style.css?v=35',
+  './style.css?v=36',
   './app.js?v=61',
   './filters.js?v=6',
 ];

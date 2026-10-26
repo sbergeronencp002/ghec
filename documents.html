@@ -11,14 +11,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap">
 <style>
 :root {
-  --ink:   #1A1714;
-  --ink-2: #4A453E;
-  --ink-3: #9A938A;
-  --paper:   #F8F5F0;
-  --paper-2: #EDE9E2;
-  --paper-3: #E2DDD5;
-  --accent:  #1D4E9F;
-  --border:  rgba(0,0,0,0.09);
+  --ink:   #1f2937;
+  --ink-2: #5b6676;
+  --ink-3: #5b6676;
+  --paper:   #f5f7fa;
+  --paper-2: #eaf1f8;
+  --paper-3: #d6e4f0;
+  --accent:  #2f6fb0;
+  --border: #dde3ec;
   --c-slot1: #3A6FA8; --c-slot1-bg: #E4EDF8;
   --c-slot2: #3A8050; --c-slot2-bg: #E2F0E6;
   --c-slot3: #C06030; --c-slot3-bg: #F8EBE0;
@@ -32,7 +32,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans','Segoe UI',Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);min-height:100vh}
 
-header{background:#1B3B6F;color:var(--paper);padding:0 1.5rem;display:flex;align-items:stretch;min-height:52px}
+header{background:#1e3358;color:var(--paper);padding:0 1.5rem;display:flex;align-items:stretch;min-height:52px}
 .header-brand{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.25rem .75rem 0;border-right:1px solid rgba(255,255,255,.15);margin-right:1rem}
 .header-brand h1{font-family:'DM Serif Display',Georgia,serif;font-size:1.4rem;font-weight:400}
 .header-brand small{font-size:.65rem;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:1px}
@@ -57,7 +57,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 .img-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-2px)}
 .img-card img{display:block;width:100%;height:150px;object-fit:cover;background:#fff}
 .img-card .ic-label{font-size:.72rem;color:var(--ink-2);padding:.45rem .55rem;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-top:1px solid var(--border)}
-.img-card .ic-count{position:absolute;top:.4rem;right:.4rem;background:#1B3B6F;color:#fff;border-radius:20px;padding:.1rem .5rem;font-size:.68rem;font-weight:600}
+.img-card .ic-count{position:absolute;top:.4rem;right:.4rem;background:#1e3358;color:#fff;border-radius:20px;padding:.1rem .5rem;font-size:.68rem;font-weight:600}
 .img-card .ic-count.single{background:rgba(255,255,255,.92);color:var(--ink-3)}
 
 .orphan-row{display:flex;align-items:center;gap:.9rem;padding:.65rem 1rem;background:#fff;border:1px solid #f5c6c6;border-radius:8px;margin-bottom:.5rem}
@@ -118,7 +118,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 .lbq-source.ok{color:#2a8a4a}
 .lbq-source.diff{color:#c06030}
 /* Panneau propagation source */
-#lb-source-panel{background:#f8f5f0;border-top:1px solid var(--border);padding:.8rem 1rem;margin:.75rem -1rem -1rem;border-radius:0 0 10px 10px}
+#lb-source-panel{background:#f5f7fa;border-top:1px solid var(--border);padding:.8rem 1rem;margin:.75rem -1rem -1rem;border-radius:0 0 10px 10px}
 #lb-source-panel h4{font-size:.75rem;font-weight:700;color:var(--ink-2);margin-bottom:.6rem;letter-spacing:.04em;text-transform:uppercase}
 .lb-src-field{display:flex;flex-direction:column;gap:.2rem;margin-bottom:.5rem}
 .lb-src-field label{font-size:.67rem;color:var(--ink-3);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
@@ -167,7 +167,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 .rename-actions button{padding:.42rem .95rem;border-radius:7px;font-family:inherit;font-size:.8rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:background .15s}
 .btn-cancel{background:var(--paper-2);color:var(--ink-2);border-color:var(--border)}
 .btn-cancel:hover{background:var(--paper-3)}
-.btn-confirm{background:#1B3B6F;color:#fff}
+.btn-confirm{background:#1e3358;color:#fff}
 .btn-confirm:hover{background:#163264}
 .btn-confirm:disabled{opacity:.5;cursor:not-allowed}
 .rename-status{font-size:.78rem;margin-top:.6rem;min-height:1.2em;text-align:right}
@@ -176,7 +176,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 .rename-status.warn{color:#856404}
 .page-lock-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(255,255,255,.55);cursor:wait;align-items:center;justify-content:center}
 .page-lock-overlay.show{display:flex}
-.page-lock-badge{background:#1B3B6F;color:#fff;padding:.6rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:500;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.page-lock-badge{background:#1e3358;color:#fff;padding:.6rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:500;box-shadow:0 4px 16px rgba(0,0,0,.25)}
 </style>
 </head>
 <body>

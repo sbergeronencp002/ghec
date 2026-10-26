@@ -3365,7 +3365,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l'aide du document A, nomme un mammifère à fourrure recherché par les Français.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_2.jpg"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le castor.",
  updatedAt: "2026-10-26T17:23:21.761Z"

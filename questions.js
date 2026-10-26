@@ -369,7 +369,8 @@ const IMAGE_DB = {
 "regime_seigneurial_2.jpg": {src: "images/regime_seigneurial_2.jpg", w: 1200, h: 800},
 "commerce_fourures_1.jpg": {src: "images/commerce_fourures_1.jpg", w: 1200, h: 800},
 "portage_1645.jpg": {src: "images/portage_1645.jpg", w: 1200, h: 800},
-"commerce_fourures_2.jpg": {src: "images/commerce_fourures_2.jpg", w: 1200, h: 800}
+"commerce_fourures_2.jpg": {src: "images/commerce_fourures_2.jpg", w: 1200, h: 800},
+"bataille_lac_champlain.jpg": {src: "images/bataille_lac_champlain.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3377,10 +3378,10 @@ const QUESTIONS = [
  soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
  aspects: [{aspect: "Personnages"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Bataille du lac Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "bataille_lac_champlain.jpg", soustitre: "Bataille du lac Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "A",
- updatedAt: "2026-10-26T17:30:51.406Z"
+ updatedAt: "2026-10-26T17:34:03.186Z"
 },
 {
  id: "Q199",

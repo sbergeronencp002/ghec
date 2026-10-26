@@ -2993,6 +2993,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "navire_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le bateau. \nAccepter aussi « un navire » ou « un bateau à voiles ».",
- updatedAt: "2026-10-26T15:26:09.116Z"
+ updatedAt: "2026-10-26T15:27:09.269Z"
 }
 ]

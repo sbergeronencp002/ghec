@@ -2775,8 +2775,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_religieuses_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Le mariage, le baptême ou une fête religieuse.",
- updatedAt: "2026-09-15T11:33:58.444Z"
+ guide: "Les habitants célèbrent les fêtes religieuses.",
+ updatedAt: "2026-10-26T14:53:22.000Z"
 },
 {
  id: "Q163",

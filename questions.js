@@ -3224,8 +3224,8 @@ const QUESTIONS = [
  enonce: "Les documents A et B présentent une obligation et un privilège de la Compagnie des Cent-Associés vers 1645. Associe chaque document à l’énoncé correspondant.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Le monopole sur le commerce des fourrures", "Le peuplement de la Nouvelle-France"]},
+ reponse: {type: "mettre-en-relation", elements: ["Obligation", "Privilège"]},
  guide: {type: "grille", entetes: ["Obligation", "Privilège"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-26T16:36:33.723Z"
+ updatedAt: "2026-10-26T16:38:03.364Z"
 }
 ]

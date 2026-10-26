@@ -193,7 +193,8 @@ const REGLETTES = {
 "Q192": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q193": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q194": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q195": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q195": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q196": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -364,7 +365,8 @@ const IMAGE_DB = {
 "agriculture_4.jpg": {src: "images/agriculture_4.jpg", w: 1200, h: 800},
 "regime_seigneurial_2.jpg": {src: "images/regime_seigneurial_2.jpg", w: 1200, h: 800},
 "commerce_fourures_1.jpg": {src: "images/commerce_fourures_1.jpg", w: 1200, h: 800},
-"portage_1645.jpg": {src: "images/portage_1645.jpg", w: 1200, h: 800}
+"portage_1645.jpg": {src: "images/portage_1645.jpg", w: 1200, h: 800},
+"commerce_fourures_2.jpg": {src: "images/commerce_fourures_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3332,5 +3334,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les rapides rendent la navigation difficile et dangereuse, ce qui oblige parfois les voyageurs à transporter leur canot et leurs marchandises par voie terrestre pour les contourner.",
  updatedAt: "2026-10-26T17:14:00.725Z"
+},
+{
+ id: "Q196",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique pourquoi le commerce des fourrures se développe en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_1.jpg"}]}, {type: "textes", cols: [{titre: "Document B", ref: "commerce_fourures_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "L’abondance de castors sur le territoire favorise le développement du commerce des fourrures.",
+ updatedAt: "2026-10-26T17:20:46.797Z"
 }
 ]

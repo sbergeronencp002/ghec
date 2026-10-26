@@ -192,7 +192,8 @@ const REGLETTES = {
 "Q191": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q192": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q193": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q194": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q194": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q195": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -362,7 +363,8 @@ const IMAGE_DB = {
 "groupe_4.jpg": {src: "images/groupe_4.jpg", w: 1200, h: 800},
 "agriculture_4.jpg": {src: "images/agriculture_4.jpg", w: 1200, h: 800},
 "regime_seigneurial_2.jpg": {src: "images/regime_seigneurial_2.jpg", w: 1200, h: 800},
-"commerce_fourures_1.jpg": {src: "images/commerce_fourures_1.jpg", w: 1200, h: 800}
+"commerce_fourures_1.jpg": {src: "images/commerce_fourures_1.jpg", w: 1200, h: 800},
+"portage_1645.jpg": {src: "images/portage_1645.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3316,5 +3318,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Les cours d’eau permettent de transporter les fourrures et les marchandises en canot ou en bateau, ce qui facilite les échanges.",
  updatedAt: "2026-10-26T17:11:06.049Z"
+},
+{
+ id: "Q195",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique comment les rapides limitent les déplacements sur les cours d’eau en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "portage_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les rapides rendent la navigation difficile et dangereuse, ce qui oblige parfois les voyageurs à transporter leur canot et leurs marchandises par voie terrestre pour les contourner.",
+ updatedAt: "2026-10-26T17:14:00.725Z"
 }
 ]

@@ -194,7 +194,8 @@ const REGLETTES = {
 "Q193": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q194": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q195": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q196": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q196": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q197": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -3348,5 +3349,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "L’abondance de castors sur le territoire favorise le développement du commerce des fourrures.",
  updatedAt: "2026-10-26T17:20:46.797Z"
+},
+{
+ id: "Q197",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l'aide du document A, nomme un mammifère à fourrure recherché par les Français.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_2.jpg"}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le castor.",
+ updatedAt: "2026-10-26T17:23:21.761Z"
 }
 ]

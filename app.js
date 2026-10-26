@@ -1394,6 +1394,7 @@ async function previsualiser(guideMode) {
     const showDate   = !!document.getElementById('exam-date')?.checked;
     const showScore  = !!document.getElementById('exam-score')?.checked;
     const showComm   = !!document.getElementById('exam-commentaires')?.checked;
+    const showImageSources = document.getElementById('exam-sources-images')?.checked !== false;
     const totalPrevPts = panier.reduce((s,id) => { const q=Q_MAP.get(id); return s+(q?.points||0); }, 0);
 
     let previewHtml = '';
@@ -1449,7 +1450,7 @@ async function previsualiser(guideMode) {
                 h += '<img src="' + escAttr(img.src) + '" alt="' + escAttr(col.titre||col.ref||'Document') + '" style="max-width:100%;max-height:100px;object-fit:contain;cursor:pointer" onclick="' + escAttr("openLightbox('" + jsStr(img.src) + "')") + '">';
               }
               if(col.auteur) h += '<div style="font-size:0.7rem;color:var(--ink-2);margin-top:4px;font-style:italic">' + escLine(col.auteur) + '</div>';
-              if(col.source) h += '<div style="font-size:0.65rem;color:var(--ink-3);margin-top:2px;font-style:italic">' + escLine(col.source) + '</div>';
+              if(col.source && (!col.ref || col.texte || showImageSources)) h += '<div style="font-size:0.65rem;color:var(--ink-3);margin-top:2px;font-style:italic">' + escLine(col.source) + '</div>';
               h += '</td>';
               return h;
             };
@@ -1802,6 +1803,7 @@ let _docxLoadPromise = null;
 async function genererDocx(includeGuide=false) {
   if(panier.length === 0) return;
   await ensureDataLoaded();
+  const showImageSources = document.getElementById('exam-sources-images')?.checked !== false;
   const btn = includeGuide ? document.getElementById('btn-generer-guide') : document.getElementById('btn-generer');
   const btnOther = includeGuide ? document.getElementById('btn-generer') : document.getElementById('btn-generer-guide');
   if(btn) { btn.disabled = true; btn.textContent = '⏳ Génération…'; }
@@ -2205,7 +2207,7 @@ async function genererDocx(includeGuide=false) {
               if(col.auteur) {
                 cellChildren.push(new Paragraph({ children: [new TextRun({ text: col.auteur, font: 'Aptos', size: 16, italics: true })] }));
               }
-              if(col.source) {
+              if(col.source && (!col.ref || col.texte || showImageSources)) {
                 col.source.split('\n').forEach(line => {
                   cellChildren.push(new Paragraph({ children: [new TextRun({ text: line, font: 'Aptos', size: 12, italics: true })] }));
                 });

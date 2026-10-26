@@ -178,7 +178,8 @@ const REGLETTES = {
 "Q177": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q178": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q179": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q180": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q180": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q181": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -333,7 +334,8 @@ const IMAGE_DB = {
 "voies_communication_2.jpg": {src: "images/voies_communication_2.jpg", w: 1200, h: 800},
 "regime_seigneurial.jpg": {src: "images/regime_seigneurial.jpg"},
 "roi_1645.jpg": {src: "images/roi_1645.jpg", w: 1200, h: 800},
-"roi_decision_1645.jpg": {src: "images/roi_decision_1645.jpg"}
+"roi_decision_1645.jpg": {src: "images/roi_decision_1645.jpg"},
+"gouverneur_missive.jpg": {src: "images/gouverneur_missive.jpg"}
 }
 
 const QUESTIONS = [
@@ -3076,5 +3078,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Le gouverneur et la compagnie doivent appliquer les décisions du roi parce qu’il détient l’autorité sur la colonie.",
  updatedAt: "2026-10-26T15:57:24.231Z"
+},
+{
+ id: "Q181",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l'aide du document A, nomme la façon dont le roi prend les décisions concernant la colonie vers 1645.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "gouverneur_missive.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "De manière autoritaire.\nAccepter aussi « Il impose ses décisions ».",
+ updatedAt: "2026-10-26T16:05:38.503Z"
 }
 ]

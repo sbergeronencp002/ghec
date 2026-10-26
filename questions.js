@@ -167,7 +167,8 @@ const REGLETTES = {
 "Q166": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q167": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q168": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q169": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q169": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q170": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -313,7 +314,8 @@ const IMAGE_DB = {
 "deplacement_1645_b.jpg": {src: "images/deplacement_1645_b.jpg", w: 1200, h: 800},
 "troc_1.jpg": {src: "images/troc_1.jpg", w: 1200, h: 800},
 "agriculture_3.jpg": {src: "images/agriculture_3.jpg", w: 1200, h: 800},
-"toboggan_1645.jpg": {src: "images/toboggan_1645.jpg"}
+"toboggan_1645.jpg": {src: "images/toboggan_1645.jpg"},
+"voies_communication_1.jpg": {src: "images/voies_communication_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2889,5 +2891,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "L'animisme.",
  updatedAt: "2026-10-26T14:33:26.877Z"
+},
+{
+ id: "Q170",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme une voie de communication utilisée en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Un cours d’eau. Accepter aussi « un sentier forestier » ou « un chemin », tous visibles dans le document. Une seule réponse suffit.",
+ updatedAt: "2026-10-26T15:12:18.435Z"
 }
 ]

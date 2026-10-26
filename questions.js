@@ -177,7 +177,8 @@ const REGLETTES = {
 "Q176": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q177": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q178": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q179": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q179": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q180": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -331,7 +332,8 @@ const IMAGE_DB = {
 "voies_communication_3.jpg": {src: "images/voies_communication_3.jpg", w: 1200, h: 800},
 "voies_communication_2.jpg": {src: "images/voies_communication_2.jpg", w: 1200, h: 800},
 "regime_seigneurial.jpg": {src: "images/regime_seigneurial.jpg"},
-"roi_1645.jpg": {src: "images/roi_1645.jpg", w: 1200, h: 800}
+"roi_1645.jpg": {src: "images/roi_1645.jpg", w: 1200, h: 800},
+"roi_decision_1645.jpg": {src: "images/roi_decision_1645.jpg"}
 }
 
 const QUESTIONS = [
@@ -3060,5 +3062,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le roi de France.",
  updatedAt: "2026-10-26T15:52:31.265Z"
+},
+{
+ id: "Q180",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "À l’aide du document A, explique pourquoi le gouverneur et la compagnie doivent appliquer les décisions du roi de France vers 1645.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "roi_decision_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Le gouverneur et la compagnie doivent appliquer les décisions du roi parce qu’il détient l’autorité sur la colonie.",
+ updatedAt: "2026-10-26T15:57:24.231Z"
 }
 ]

@@ -182,7 +182,8 @@ const REGLETTES = {
 "Q181": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q182": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q183": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q184": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q184": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q185": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -341,7 +342,8 @@ const IMAGE_DB = {
 "gouverneur_missive.jpg": {src: "images/gouverneur_missive.jpg"},
 "gouverneur_defense.jpg": {src: "images/gouverneur_defense.jpg", w: 1200, h: 800},
 "gouverneur_admin.jpg": {src: "images/gouverneur_admin.jpg", w: 1200, h: 800},
-"compagnies_100_1.jpg": {src: "images/compagnies_100_1.jpg", w: 1200, h: 800}
+"compagnies_100_1.jpg": {src: "images/compagnies_100_1.jpg", w: 1200, h: 800},
+"compagnies_100_2.jpg": {src: "images/compagnies_100_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3144,5 +3146,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La Compagnie des Cent-Associés. \nAccepter aussi « la Compagnie de la Nouvelle-France ».",
  updatedAt: "2026-10-26T16:21:36.251Z"
+},
+{
+ id: "Q185",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme le privilège accordé à la Compagnie des Cent-Associés par le roi de France vers 1645.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le monopole du commerce des fourrures. \nAccepter aussi « le droit exclusif de faire le commerce des fourrures ».",
+ updatedAt: "2026-10-26T16:23:51.041Z"
 }
 ]

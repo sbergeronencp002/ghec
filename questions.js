@@ -180,7 +180,8 @@ const REGLETTES = {
 "Q179": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q180": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q181": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q182": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q182": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q183": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -337,7 +338,8 @@ const IMAGE_DB = {
 "roi_1645.jpg": {src: "images/roi_1645.jpg", w: 1200, h: 800},
 "roi_decision_1645.jpg": {src: "images/roi_decision_1645.jpg"},
 "gouverneur_missive.jpg": {src: "images/gouverneur_missive.jpg"},
-"gouverneur_defense.jpg": {src: "images/gouverneur_defense.jpg", w: 1200, h: 800}
+"gouverneur_defense.jpg": {src: "images/gouverneur_defense.jpg", w: 1200, h: 800},
+"gouverneur_admin.jpg": {src: "images/gouverneur_admin.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3110,5 +3112,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Organiser la défense de la colonie. \nAccepter aussi « protéger la colonie ».",
  updatedAt: "2026-10-26T16:11:34.514Z"
+},
+{
+ id: "Q183",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "À l’aide du document A, nomme un rôle du gouverneur en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "gouverneur_admin.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Administrer la colonie. \nAccepter aussi faire appliquer les décisions du roi.",
+ updatedAt: "2026-10-26T16:12:50.514Z"
 }
 ]

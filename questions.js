@@ -2518,7 +2518,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Mettre en relation des faits - 3",
- enonce: "Les documents A à C présentent différents établissements de la Nouvelle-France. Associe chaque document à la personne qui a fondé l’établissement représenté.",
+ enonce: "Les documents A à C présentent des établissements de la Nouvelle-France. Associe chaque document au fondateur de l’établissement représenté.",
  aspects: [{aspect: "Personnages"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -2527,7 +2527,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Laviolette", "Maisonneuve", "Samuel de Champlain"]},
  guide: {type: "grille", entetes: ["Laviolette", "Maisonneuve", "Samuel de Champlain"], rangees: [["A", "C", "B"]]},
- updatedAt: "2026-10-26T14:14:19.678Z"
+ updatedAt: "2026-10-26T14:15:48.460Z"
 },
 {
  id: "Q147",

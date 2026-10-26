@@ -2505,7 +2505,7 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières par Laviolette", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "fondation_tadoussac.jpg", soustitre: "Fondation de Tadoussac par de Tonnetuit", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "fondation_quebec_1608.jpg", soustitre: "Fondation de Québec par Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "fondation_montreal.jpg", soustitre: "Fondation de Montréal par Maisonneuve"}]}
+  {type: "textes", cols: [{titre: "Document D", ref: "fondation_montreal.jpg", soustitre: "Fondation de Montréal par Maisonneuve", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "image", ref: "ligne_bcad.png"},
  guide: "B - C - A - D",

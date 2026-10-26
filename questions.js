@@ -197,7 +197,8 @@ const REGLETTES = {
 "Q196": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q197": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q198": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q199": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
+"Q199": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
+"Q200": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
 }
 
 const IMAGE_DB = {
@@ -370,7 +371,8 @@ const IMAGE_DB = {
 "commerce_fourures_1.jpg": {src: "images/commerce_fourures_1.jpg", w: 1200, h: 800},
 "portage_1645.jpg": {src: "images/portage_1645.jpg", w: 1200, h: 800},
 "commerce_fourures_2.jpg": {src: "images/commerce_fourures_2.jpg", w: 1200, h: 800},
-"bataille_lac_champlain.jpg": {src: "images/bataille_lac_champlain.jpg", w: 1200, h: 800}
+"bataille_lac_champlain.jpg": {src: "images/bataille_lac_champlain.jpg", w: 1200, h: 800},
+"voyages_champlain.jpg": {src: "images/voyages_champlain.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3397,5 +3399,20 @@ const QUESTIONS = [
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "B",
  updatedAt: "2026-10-26T17:32:22.392Z"
+},
+{
+ id: "Q200",
+ niveau: 4,
+ oi: "Situer dans le temps",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Situer sur une ligne du temps",
+ enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "voyages_champlain.jpg", soustitre: "Les voyages d'exploration de Samuel de Champlain en Huronie", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "image", ref: "ligne_1600-1700.png"},
+ guide: "A",
+ updatedAt: "2026-10-26T17:40:19.697Z"
 }
 ]

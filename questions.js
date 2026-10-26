@@ -185,7 +185,8 @@ const REGLETTES = {
 "Q184": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q185": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q186": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q187": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q187": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q188": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -3196,5 +3197,19 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Le monopole sur le commerce des fourrures", "Le peuplement de la Nouvelle-France"]},
  guide: {type: "grille", entetes: ["Obligation", "Privilège"], rangees: [["A", "B"]]},
  updatedAt: "2026-10-26T16:34:01.161Z"
+},
+{
+ id: "Q188",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique pourquoi la Compagnie des Cent-Associés fait venir des colons en Nouvelle-France.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "La Compagnie des Cent-Associés fait venir des colons parce que le roi lui impose l’obligation de peupler la colonie en échange du monopole du commerce des fourrures.",
+ updatedAt: "2026-10-26T16:35:18.674Z"
 }
 ]

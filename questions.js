@@ -3194,7 +3194,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Le monopole sur le commerce des fourrures", "Le peuplement de la Nouvelle-France"]},
- guide: {type: "grille", entetes: ["Le monopole sur le commerce des fourrures", "Le peuplement de la Nouvelle-France"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-26T16:32:24.491Z"
+ guide: {type: "grille", entetes: ["Obligation", "Privilège"], rangees: [["A", "B"]]},
+ updatedAt: "2026-10-26T16:34:01.161Z"
 }
 ]

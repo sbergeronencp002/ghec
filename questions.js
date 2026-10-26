@@ -2677,7 +2677,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Mettre en relation des faits - 3",
- enonce: "À l’aide des documents A à C, associe chaque document à l’expression de l’art correspondante en Nouvelle-France vers 1645.",
+ enonce: "À l’aide des documents A à C, associe chaque document à la forme d'art qu’il présente en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "broderie_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -2686,7 +2686,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Architecture", "Broderie", "Peinture"]},
  guide: {type: "grille", entetes: ["Architecture", "Broderie", "Peinture"], rangees: [["C", "A", "B"]]},
- updatedAt: "2026-09-14T01:44:51.253Z"
+ updatedAt: "2026-10-26T14:34:50.794Z"
 },
 {
  id: "Q157",

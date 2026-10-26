@@ -168,7 +168,8 @@ const REGLETTES = {
 "Q167": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q168": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q169": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q170": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q170": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q171": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]}
 }
 
 const IMAGE_DB = {
@@ -315,7 +316,10 @@ const IMAGE_DB = {
 "troc_1.jpg": {src: "images/troc_1.jpg", w: 1200, h: 800},
 "agriculture_3.jpg": {src: "images/agriculture_3.jpg", w: 1200, h: 800},
 "toboggan_1645.jpg": {src: "images/toboggan_1645.jpg"},
-"voies_communication_1.jpg": {src: "images/voies_communication_1.jpg", w: 1200, h: 800}
+"voies_communication_1.jpg": {src: "images/voies_communication_1.jpg", w: 1200, h: 800},
+"canot_ecorce_1.jpg": {src: "images/canot_ecorce_1.jpg", w: 1200, h: 800},
+"charrette_boeuf.jpg": {src: "images/charrette_boeuf.jpg", w: 1200, h: 800},
+"navire_francais.jpg": {src: "images/navire_francais.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2906,5 +2910,24 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Un cours d’eau. Accepter aussi « un sentier forestier » ou « un chemin », tous visibles dans le document. Une seule réponse suffit.",
  updatedAt: "2026-10-26T15:12:18.435Z"
+},
+{
+ id: "Q171",
+ niveau: 4,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 3",
+ enonce: "Les documents A à C présentent des moyens de transport utilisés en Nouvelle-France vers 1645. Associe chaque document au moyen de transport correspondant.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "navire_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "canot_ecorce_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "charrette_boeuf.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["", "", ""]},
+ guide: {type: "grille", entetes: ["Élément 1", "Élément 2", "Élément 3"], rangees: [["B", "C", "A"]]},
+ updatedAt: "2026-10-26T15:17:34.093Z"
 }
 ]

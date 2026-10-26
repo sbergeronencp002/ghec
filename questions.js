@@ -181,7 +181,8 @@ const REGLETTES = {
 "Q180": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q181": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q182": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q183": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q183": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q184": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -339,7 +340,8 @@ const IMAGE_DB = {
 "roi_decision_1645.jpg": {src: "images/roi_decision_1645.jpg"},
 "gouverneur_missive.jpg": {src: "images/gouverneur_missive.jpg"},
 "gouverneur_defense.jpg": {src: "images/gouverneur_defense.jpg", w: 1200, h: 800},
-"gouverneur_admin.jpg": {src: "images/gouverneur_admin.jpg", w: 1200, h: 800}
+"gouverneur_admin.jpg": {src: "images/gouverneur_admin.jpg", w: 1200, h: 800},
+"compagnies_100_1.jpg": {src: "images/compagnies_100_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3127,5 +3129,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Administrer la colonie. \nAccepter aussi faire appliquer les décisions du roi.",
  updatedAt: "2026-10-26T16:12:50.514Z"
+},
+{
+ id: "Q184",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme la compagnie chargée par le roi de France d’administrer la colonie vers 1645.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La Compagnie des Cent-Associés. \nAccepter aussi « la Compagnie de la Nouvelle-France ».",
+ updatedAt: "2026-10-26T16:21:36.251Z"
 }
 ]

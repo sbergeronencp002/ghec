@@ -187,7 +187,8 @@ const REGLETTES = {
 "Q186": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q187": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q188": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q189": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q189": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q190": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -350,7 +351,11 @@ const IMAGE_DB = {
 "compagnies_100_2.jpg": {src: "images/compagnies_100_2.jpg"},
 "compagnies_100_3.jpg": {src: "images/compagnies_100_3.jpg", w: 1200, h: 800},
 "compagnies_100_4.jpg": {src: "images/compagnies_100_4.jpg", w: 1200, h: 800},
-"compagnies_100_5.jpg": {src: "images/compagnies_100_5.jpg", w: 1200, h: 800}
+"compagnies_100_5.jpg": {src: "images/compagnies_100_5.jpg", w: 1200, h: 800},
+"groupe_1.jpg": {src: "images/groupe_1.jpg", w: 1200, h: 800},
+"groupe_2.jpg": {src: "images/groupe_2.jpg", w: 1200, h: 800},
+"groupe_3.jpg": {src: "images/groupe_3.jpg", w: 1200, h: 800},
+"groupe_4.jpg": {src: "images/groupe_4.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3227,5 +3232,25 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Obligation", "Privilège"]},
  guide: {type: "grille", entetes: ["Obligation", "Privilège"], rangees: [["B", "A"]]},
  updatedAt: "2026-10-26T16:38:03.364Z"
+},
+{
+ id: "Q190",
+ niveau: 4,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent des groupes qui jouent un rôle important en Nouvelle-France vers 1645. Associe chaque document au groupe correspondant.",
+ aspects: [{aspect: "Groupes sociaux"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "groupe_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "groupe_2.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "groupe_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "groupe_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Autochtones", "Coureurs des bois", "Compagnies", "Religieux"]},
+ guide: {type: "grille", entetes: ["Autochtones", "Coureurs des bois", "Compagnies", "Religieux"], rangees: [["C", "D", "A", "B"]]},
+ updatedAt: "2026-10-26T16:48:54.172Z"
 }
 ]

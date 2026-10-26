@@ -2617,12 +2617,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent des personnes qui parlent différentes langues en Nouvelle-France vers 1645. Associe chaque document au type de langue correspondant.",
+ enonce: "Les documents A et B présentent des groupes qui parlent différentes langues en Nouvelle-France vers 1645. Associe chaque document au type de langue correspondant.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "population_n-f_1645_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Français", "Langues autochtones"]},
- guide: {type: "grille", entetes: ["Français", "Langues autochtones"], rangees: [["B", "A"]]},
- updatedAt: "2026-09-13T14:03:44.863Z"
+ reponse: {type: "mettre-en-relation", elements: ["Le français", "Les langues autochtones"]},
+ guide: {type: "grille", entetes: ["Le français", "Les langues autochtones"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-26T14:26:06.077Z"
 },
 {
  id: "Q153",

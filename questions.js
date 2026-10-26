@@ -2631,12 +2631,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "À l’aide des documents A et B, explique pourquoi les Français et les Autochtones doivent communiquer malgré leurs langues différentes.",
+ enonce: "À l’aide des documents A et B, explique pourquoi le commerce des fourrures amène les Français et les Autochtones à communiquer malgré leurs langues différentes.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "n-f_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "poste_traite_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Français et les Autochtones doivent communiquer pour faire du commerce et échanger des marchandises, notamment des fourrures.",
- updatedAt: "2026-09-14T00:26:23.360Z"
+ guide: "Ils doivent se comprendre pour échanger des fourrures contre des produits européens et s’entendre sur les échanges.",
+ updatedAt: "2026-10-26T14:27:20.527Z"
 },
 {
  id: "Q154",

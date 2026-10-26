@@ -184,7 +184,8 @@ const REGLETTES = {
 "Q183": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q184": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q185": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q186": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q186": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q187": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -345,7 +346,9 @@ const IMAGE_DB = {
 "gouverneur_admin.jpg": {src: "images/gouverneur_admin.jpg", w: 1200, h: 800},
 "compagnies_100_1.jpg": {src: "images/compagnies_100_1.jpg", w: 1200, h: 800},
 "compagnies_100_2.jpg": {src: "images/compagnies_100_2.jpg"},
-"compagnies_100_3.jpg": {src: "images/compagnies_100_3.jpg", w: 1200, h: 800}
+"compagnies_100_3.jpg": {src: "images/compagnies_100_3.jpg", w: 1200, h: 800},
+"compagnies_100_4.jpg": {src: "images/compagnies_100_4.jpg", w: 1200, h: 800},
+"compagnies_100_5.jpg": {src: "images/compagnies_100_5.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3178,5 +3181,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Peupler la colonie. \nAccepter aussi « faire venir des colons pour qu’ils s’établissent en Nouvelle-France ».",
  updatedAt: "2026-10-26T16:25:32.785Z"
+},
+{
+ id: "Q187",
+ niveau: 4,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présentent une obligation et un privilège de la Compagnie des Cent-Associés vers 1645. Associe chaque document à l’énoncé correspondant.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Le monopole sur le commerce des fourrures", "Le peuplement de la Nouvelle-France"]},
+ guide: {type: "grille", entetes: ["Le monopole sur le commerce des fourrures", "Le peuplement de la Nouvelle-France"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-26T16:32:24.491Z"
 }
 ]

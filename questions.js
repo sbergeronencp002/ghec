@@ -170,7 +170,8 @@ const REGLETTES = {
 "Q169": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q170": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q171": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
-"Q172": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q172": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q173": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -320,7 +321,9 @@ const IMAGE_DB = {
 "voies_communication_1.jpg": {src: "images/voies_communication_1.jpg", w: 1200, h: 800},
 "canot_ecorce_1.jpg": {src: "images/canot_ecorce_1.jpg", w: 1200, h: 800},
 "charrette_boeuf.jpg": {src: "images/charrette_boeuf.jpg", w: 1200, h: 800},
-"navire_francais.jpg": {src: "images/navire_francais.jpg", w: 1200, h: 800}
+"navire_francais.jpg": {src: "images/navire_francais.jpg", w: 1200, h: 800},
+"voies_communication_3.jpg": {src: "images/voies_communication_3.jpg", w: 1200, h: 800},
+"voies_communication_2.jpg": {src: "images/voies_communication_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2945,5 +2948,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les sentiers forestiers.",
  updatedAt: "2026-10-26T15:21:27.736Z"
+},
+{
+ id: "Q173",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique pourquoi les cours d’eau favorisent le commerce en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "voies_communication_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les cours d’eau permettent de transporter les marchandises en canot ou en bateau ce qui facilite les échanges entre les établissements.",
+ updatedAt: "2026-10-26T15:22:46.176Z"
 }
 ]

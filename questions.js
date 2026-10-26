@@ -2545,9 +2545,9 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document C", ref: "campement_algonquien.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document D", ref: "colons_terre.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
- reponse: {type: "mettre-en-relation", elements: ["Autochtones", "Français"], double: true},
- guide: {type: "grille", entetes: ["Autochtones", "Français"], rangees: [["B et C", "A et D"]]},
- updatedAt: "2026-09-13T13:44:47.478Z"
+ reponse: {type: "mettre-en-relation", elements: ["Les Autochtones", "Les Français"], double: true},
+ guide: {type: "grille", entetes: ["Les Autochtones", "Les Français"], rangees: [["B et C", "A et D"]]},
+ updatedAt: "2026-10-26T14:16:27.520Z"
 },
 {
  id: "Q148",

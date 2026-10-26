@@ -1543,7 +1543,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment les activités pratiquées par les Iroquoiens vers 1500 leur permettent de se nourrir.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_iroquoiens.jpg"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_iroquoiens.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les activités pratiquées par les Iroquoiens leur permettent de se nourrir parce qu’ils cultivent des aliments, chassent, pêchent et font de la cueillette.",
  updatedAt: "2026-08-16T19:07:29.412Z"

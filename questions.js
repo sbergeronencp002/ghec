@@ -2843,7 +2843,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "troc_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le commerce des fourrures.",
- updatedAt: "2026-10-26T13:42:14.392Z"
+ updatedAt: "2026-10-26T15:09:48.188Z"
 },
 {
  id: "Q167",

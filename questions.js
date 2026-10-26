@@ -2726,12 +2726,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme un élément de l’habillement autochtone adopté par certains colons en Nouvelle-France.",
+ enonce: "Nomme un élément de l’habillement autochtone adopté par certains colons en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "habillement_1645.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "deplacement_1645_a.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les mocassins, les raquettes ou les jambières.",
- updatedAt: "2026-09-15T11:56:28.984Z"
+ guide: "Les mocassins.",
+ updatedAt: "2026-10-26T14:46:45.839Z"
 },
 {
  id: "Q160",

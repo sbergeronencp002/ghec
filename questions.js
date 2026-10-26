@@ -3108,7 +3108,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "gouverneur_defense.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Il doit organiser la défense de la colonie.",
- updatedAt: "2026-10-26T16:10:04.099Z"
+ guide: "Organiser la défense de la colonie. \nAccepter aussi « protéger la colonie ».",
+ updatedAt: "2026-10-26T16:11:34.514Z"
 }
 ]

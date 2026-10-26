@@ -2789,8 +2789,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "bapteme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "mariage_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "La religion catholique accompagne plusieurs moments importants de la vie, comme les mariages, les baptêmes et les fêtes religieuses.",
- updatedAt: "2026-10-26T14:55:58.710Z"
+ guide: "La religion catholique encadre plusieurs moments importants de la vie des colons : ils font baptiser leurs enfants, se marient devant un prêtre et célèbrent des fêtes religieuses.",
+ updatedAt: "2026-10-26T14:58:07.359Z"
 },
 {
  id: "Q164",

@@ -3192,12 +3192,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent une obligation et un privilège de la Compagnie des Cent-Associés vers 1645. Associe chaque document à l’énoncé correspondant.",
+ enonce: "Les documents A et B présentent un privilège et une obligation de la Compagnie des Cent-Associés vers 1645. Associe chaque document à l’énoncé correspondant.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Le monopole sur le commerce des fourrures", "Le peuplement de la Nouvelle-France"]},
- guide: {type: "grille", entetes: ["Obligation", "Privilège"], rangees: [["A", "B"]]},
- updatedAt: "2026-10-26T16:34:01.161Z"
+ reponse: {type: "mettre-en-relation", elements: ["Privilège", "Obligation"]},
+ guide: {type: "grille", entetes: ["Privilège", "Obligation"], rangees: [["A", "B"]]},
+ updatedAt: "2026-10-26T16:37:29.767Z"
 },
 {
  id: "Q188",

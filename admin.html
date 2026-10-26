@@ -1704,11 +1704,14 @@ function populateCompetenceSelect() {
 }
 
 // Peuple les <select> niveau (formulaire + filtre de recherche) depuis les clés de
-// PERIODES_PAR_NIVEAU (contexte.js) — générique, aucun niveau codé en dur.
+// PERIODES_PAR_NIVEAU (contexte.js). Le formulaire privilégie le niveau 4.
 function populateNiveauSelects() {
   const niveaux = Object.keys(PERIODES_PAR_NIVEAU).sort((a, b) => Number(a) - Number(b));
   const q = document.getElementById('q-niveau');
-  if(q) { q.innerHTML = niveaux.map(n => `<option value="${escHtml(n)}">${escHtml(n)}</option>`).join(''); }
+  if(q) {
+    q.innerHTML = niveaux.map(n => `<option value="${escHtml(n)}">${escHtml(n)}</option>`).join('');
+    if(niveaux.includes('4')) q.value = '4';
+  }
   const f = document.getElementById('edit-filter-niveau');
   if(f) { f.innerHTML = '<option value="">Tous les niveaux</option>' + niveaux.map(n => `<option value="${escHtml(n)}">Niveau ${escHtml(n)}</option>`).join(''); }
 }
@@ -3179,7 +3182,8 @@ function resetForm(keepId=false) {
   if(newRadio) { newRadio.checked = true; document.getElementById('edit-select-wrap').style.display='none'; }
   if(!keepId) document.getElementById('q-id').value = '';
   const nivOptions = document.getElementById('q-niveau').options;
-  if(nivOptions.length) document.getElementById('q-niveau').value = nivOptions[nivOptions.length-1].value;
+  if(nivOptions.length) document.getElementById('q-niveau').value =
+    [...nivOptions].some(o => o.value === '4') ? '4' : nivOptions[0].value;
   document.getElementById('q-oi').value = document.getElementById('q-oi').options[0]?.value || '';
   const compSel = document.getElementById('q-competence');
   if(compSel && compSel.options.length) compSel.value = compSel.options[0].value;

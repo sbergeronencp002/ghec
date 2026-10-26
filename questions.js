@@ -312,7 +312,8 @@ const IMAGE_DB = {
 "deplacement_1645_a.jpg": {src: "images/deplacement_1645_a.jpg", w: 1200, h: 800},
 "deplacement_1645_b.jpg": {src: "images/deplacement_1645_b.jpg", w: 1200, h: 800},
 "troc_1.jpg": {src: "images/troc_1.jpg", w: 1200, h: 800},
-"agriculture_3.jpg": {src: "images/agriculture_3.jpg", w: 1200, h: 800}
+"agriculture_3.jpg": {src: "images/agriculture_3.jpg", w: 1200, h: 800},
+"toboggan_1645.jpg": {src: "images/toboggan_1645.jpg"}
 }
 
 const QUESTIONS = [
@@ -2710,12 +2711,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique comment les colons s’adaptent aux déplacements en Nouvelle-France.",
+ enonce: "Explique comment les colons adaptent leurs déplacements à la neige en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "deplacement_1645_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "deplacement_1645_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "toboggan_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les colons utilisent notamment des raquettes et des mocassins pour se déplacer plus facilement en Nouvelle-France.",
- updatedAt: "2026-09-15T11:55:03.580Z"
+ guide: "Ils adoptent les raquettes pour marcher sans trop s’enfoncer dans la neige et le toboggan pour transporter des charges.\nAccepter un seul moyen accompagné de son utilité, puisque la question n’en exige pas deux.",
+ updatedAt: "2026-10-26T14:42:29.287Z"
 },
 {
  id: "Q159",

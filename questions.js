@@ -191,7 +191,8 @@ const REGLETTES = {
 "Q190": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q191": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q192": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q193": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q193": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q194": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -360,7 +361,8 @@ const IMAGE_DB = {
 "groupe_3.jpg": {src: "images/groupe_3.jpg", w: 1200, h: 800},
 "groupe_4.jpg": {src: "images/groupe_4.jpg", w: 1200, h: 800},
 "agriculture_4.jpg": {src: "images/agriculture_4.jpg", w: 1200, h: 800},
-"regime_seigneurial_2.jpg": {src: "images/regime_seigneurial_2.jpg", w: 1200, h: 800}
+"regime_seigneurial_2.jpg": {src: "images/regime_seigneurial_2.jpg", w: 1200, h: 800},
+"commerce_fourures_1.jpg": {src: "images/commerce_fourures_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3300,5 +3302,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "En hiver, le froid et la neige empêchent de cultiver les champs ce qui limite les cultures à la saison chaude.",
  updatedAt: "2026-10-26T17:01:58.938Z"
+},
+{
+ id: "Q194",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique comment les cours d’eau favorisent le commerce des fourrures en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}, {type: "textes", cols: [{titre: "Document B", ref: "commerce_fourures_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les cours d’eau permettent de transporter les fourrures et les marchandises en canot ou en bateau, ce qui facilite les échanges.",
+ updatedAt: "2026-10-26T17:11:06.049Z"
 }
 ]

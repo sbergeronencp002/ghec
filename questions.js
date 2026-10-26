@@ -3350,7 +3350,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi le commerce des fourrures se développe en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_1.jpg"}]}, {type: "textes", cols: [{titre: "Document B", ref: "commerce_fourures_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "commerce_fourures_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "L’abondance de castors sur le territoire favorise le développement du commerce des fourrures.",
  updatedAt: "2026-10-26T17:20:46.797Z"

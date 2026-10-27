@@ -3084,7 +3084,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l’aide du document A, nomme la région de la Nouvelle-France où les premières seigneuries sont concédées.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La vallée du Saint-Laurent.",
  updatedAt: "2026-10-27T02:44:56.651Z"
@@ -3282,7 +3282,7 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 2",
  enonce: "Nomme deux caractéristiques du territoire occupé par la société française en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire comprend des plaines et de nombreux cours d’eau.",
  updatedAt: "2026-10-26T16:52:17.663Z"
@@ -3296,7 +3296,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi le relief de la vallée du Saint-Laurent favorise l’agriculture en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "agriculture_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "agriculture_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La vallée du Saint-Laurent comprend des plaines dont le relief plat et fertile facilite la culture des terres.",
  updatedAt: "2026-10-26T16:57:32.105Z"
@@ -3310,7 +3310,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique comment le climat limite les activités agricoles en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "regime_seigneurial_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "regime_seigneurial_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "En hiver, le froid et la neige empêchent de cultiver les champs ce qui limite les cultures à la saison chaude.",
  updatedAt: "2026-10-26T17:01:58.938Z"
@@ -3397,7 +3397,7 @@ const QUESTIONS = [
  soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", soustitre: "Les débuts du régime seigneurial en Nouvelle-France", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", soustitre: "Les débuts du régime seigneurial en Nouvelle-France", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "B",
  updatedAt: "2026-10-26T17:32:22.392Z"

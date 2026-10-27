@@ -3081,12 +3081,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme la région où les premières seigneuries sont concédées en Nouvelle-France.",
+ enonce: "À l’aide du document A, nomme la région de la Nouvelle-France où les premières seigneuries sont concédées.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La vallée du Saint-Laurent.",
- updatedAt: "2026-10-26T15:42:33.620Z"
+ updatedAt: "2026-10-27T02:44:56.651Z"
 },
 {
  id: "Q179",

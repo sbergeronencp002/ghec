@@ -2978,7 +2978,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "navire_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "canot_ecorce_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "canot_ecorce_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "charrette_boeuf.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["", "", ""]},
@@ -3024,7 +3024,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l’aide du document A, nomme un moyen de transport utilisé sur les cours d’eau vers 1645.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le canot d'écorce.",
  updatedAt: "2026-10-26T15:23:59.978Z"
@@ -3054,7 +3054,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l’aide du document A, nomme le moyen de transport utilisé sur les cours d’eau en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_ecorce_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le canot.\nAccepter aussi « le canot d’écorce ».",
  updatedAt: "2026-10-26T15:27:54.473Z"

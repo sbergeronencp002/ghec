@@ -3412,7 +3412,7 @@ const QUESTIONS = [
  soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
  aspects: [{aspect: "Personnages"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "voyages_champlain.jpg", soustitre: "Les voyages d'exploration de Samuel de Champlain en Huronie", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "voyages_champlain.jpg", soustitre: "Les voyages d'exploration de Samuel de Champlain en Huronie", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "A",
  updatedAt: "2026-10-26T17:40:19.697Z"

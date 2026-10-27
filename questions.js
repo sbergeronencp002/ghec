@@ -373,7 +373,8 @@ const IMAGE_DB = {
 "commerce_fourures_2.jpg": {src: "images/commerce_fourures_2.jpg", w: 1200, h: 800},
 "bataille_lac_champlain.jpg": {src: "images/bataille_lac_champlain.jpg", w: 1200, h: 800},
 "voyages_champlain.jpg": {src: "images/voyages_champlain.jpg", w: 1200, h: 800},
-"sceau_royal.jpg": {src: "images/sceau_royal.jpg"}
+"sceau_royal.jpg": {src: "images/sceau_royal.jpg"},
+"commerce_fourures_3.jpg": {src: "images/commerce_fourures_3.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3366,10 +3367,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l'aide du document A, nomme un mammifère à fourrure recherché par les Français.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le castor.",
- updatedAt: "2026-10-26T17:23:21.761Z"
+ updatedAt: "2026-10-27T02:47:03.698Z"
 },
 {
  id: "Q198",

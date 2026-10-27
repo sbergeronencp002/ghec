@@ -372,7 +372,8 @@ const IMAGE_DB = {
 "portage_1645.jpg": {src: "images/portage_1645.jpg", w: 1200, h: 800},
 "commerce_fourures_2.jpg": {src: "images/commerce_fourures_2.jpg", w: 1200, h: 800},
 "bataille_lac_champlain.jpg": {src: "images/bataille_lac_champlain.jpg", w: 1200, h: 800},
-"voyages_champlain.jpg": {src: "images/voyages_champlain.jpg", w: 1200, h: 800}
+"voyages_champlain.jpg": {src: "images/voyages_champlain.jpg", w: 1200, h: 800},
+"sceau_royal.jpg": {src: "images/sceau_royal.jpg"}
 }
 
 const QUESTIONS = [
@@ -3109,12 +3110,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "À l’aide du document A, explique pourquoi le gouverneur et la compagnie doivent appliquer les décisions du roi de France vers 1645.",
+ enonce: "Explique pourquoi le gouverneur et la compagnie doivent appliquer les décisions du roi de France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "roi_decision_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "roi_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "sceau_royal.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le gouverneur et la compagnie doivent appliquer les décisions du roi parce qu’il détient l’autorité sur la colonie.",
- updatedAt: "2026-10-26T15:57:24.231Z"
+ updatedAt: "2026-10-27T02:43:31.691Z"
 },
 {
  id: "Q181",

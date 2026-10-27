@@ -3173,7 +3173,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme la compagnie chargée par le roi de France d’administrer la colonie vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La Compagnie des Cent-Associés. \nAccepter aussi « la Compagnie de la Nouvelle-France ».",
  updatedAt: "2026-10-26T16:21:36.251Z"
@@ -3232,7 +3232,7 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi la Compagnie des Cent-Associés fait venir des colons en Nouvelle-France.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La Compagnie des Cent-Associés fait venir des colons parce que le roi lui impose l’obligation de peupler la colonie en échange du monopole du commerce des fourrures.",
  updatedAt: "2026-10-26T16:35:18.674Z"
@@ -3247,7 +3247,7 @@ const QUESTIONS = [
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent une obligation et un privilège de la Compagnie des Cent-Associés vers 1645. Associe chaque document à l’énoncé correspondant.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Obligation", "Privilège"]},
  guide: {type: "grille", entetes: ["Obligation", "Privilège"], rangees: [["B", "A"]]},
  updatedAt: "2026-10-26T16:38:03.364Z"

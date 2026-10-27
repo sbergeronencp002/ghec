@@ -3128,7 +3128,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l'aide du document A, nomme la façon dont le roi prend les décisions concernant la colonie vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "gouverneur_missive.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "gouverneur_missive.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "De manière autoritaire.\nAccepter aussi « Il impose ses décisions ».",
  updatedAt: "2026-10-26T16:05:38.503Z"

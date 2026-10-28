@@ -379,7 +379,8 @@ const IMAGE_DB = {
 "vill_iro_a.jpg": {src: "images/vill_iro_a.jpg", w: 1200, h: 800},
 "cam_alg_a.jpg": {src: "images/cam_alg_a.jpg", w: 1200, h: 800},
 "vill_iro_b.jpg": {src: "images/vill_iro_b.jpg", w: 1200, h: 800},
-"cam_alg_b.jpg": {src: "images/cam_alg_b.jpg", w: 1200, h: 800}
+"cam_alg_b.jpg": {src: "images/cam_alg_b.jpg", w: 1200, h: 800},
+"cam_alg_c.jpg": {src: "images/cam_alg_c.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -408,10 +409,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme le mode de vie des Algonquiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "cam_alg_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cam_alg_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Algonquiens ont un mode de vie nomade.\n\nAccepter « nomade » ainsi que toute formulation indiquant que les Algonquiens se déplacent selon les saisons, changent de campement ou ne vivent pas toujours au même endroit.",
- updatedAt: "2026-10-28T20:17:08.867Z"
+ updatedAt: "2026-10-28T20:18:28.662Z"
 },
 {
  id: "Q3",

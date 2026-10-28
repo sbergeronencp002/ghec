@@ -2130,7 +2130,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_empereur.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Pouvoir illimité", "Pouvoir partagé"]},
  guide: {type: "grille", entetes: ["Pouvoir illimité", "Pouvoir partagé"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-19T15:04:56.670Z"
+ updatedAt: "2026-10-28T02:32:18.249Z"
 },
 {
  id: "Q117",

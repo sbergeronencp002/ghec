@@ -3,7 +3,7 @@ const REGLETTES = {
 "Q2": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q3": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q4": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q5": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q5": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q6": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q7": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q8": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
@@ -380,7 +380,8 @@ const IMAGE_DB = {
 "cam_alg_a.jpg": {src: "images/cam_alg_a.jpg", w: 1200, h: 800},
 "vill_iro_b.jpg": {src: "images/vill_iro_b.jpg", w: 1200, h: 800},
 "cam_alg_b.jpg": {src: "images/cam_alg_b.jpg", w: 1200, h: 800},
-"cam_alg_c.jpg": {src: "images/cam_alg_c.jpg", w: 1200, h: 800}
+"cam_alg_c.jpg": {src: "images/cam_alg_c.jpg", w: 1200, h: 800},
+"vill_iro_c.jpg": {src: "images/vill_iro_c.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -447,17 +448,16 @@ const QUESTIONS = [
 {
  id: "Q5",
  niveau: 3,
- oi: "Caractériser un territoire",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- soustag: "Caractériser un territoire - 2",
- enonce: "Nomme deux caractéristiques du territoire occupé par les Iroquoiens vers 1500.",
+ enonce: "Explique pourquoi les plaines favorisent l'agriculture chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Relief : des plaines, notamment les Basses-terres du Saint-Laurent;\nClimat : des étés assez chauds et pluvieux et des hivers froids et enneigés;\nHydrographie : présence de nombreux cours d’eau, de lacs et du fleuve Saint-Laurent;\nRessources : des forêts, de la faune et des terres propices à l’agriculture.",
- updatedAt: "2026-08-14T12:50:29.765Z"
+ guide: "Vers 1500, les plaines favorisent l'agriculture chez les Iroquoiens, car les terrains plats facilitent la culture de la terre.\n\nAccepter toute réponse indiquant que les plaines ou les terrains plats facilitent l'aménagement des champs et la culture des plantes. L'élève n'a pas besoin d'utiliser le mot « plaine » si son explication établit clairement le lien entre le relief plat et l'agriculture.",
+ updatedAt: "2026-10-28T20:25:28.377Z"
 },
 {
  id: "Q6",

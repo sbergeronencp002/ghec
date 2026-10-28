@@ -410,8 +410,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cam_alg_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les Algonquiens ont un mode de vie nomade.",
- updatedAt: "2026-10-28T19:43:15.127Z"
+ guide: "Vers 1500, les Algonquiens ont un mode de vie nomade.\n\nAccepter « nomade » ainsi que toute formulation indiquant que les Algonquiens se déplacent selon les saisons, changent de campement ou ne vivent pas toujours au même endroit.",
+ updatedAt: "2026-10-28T20:17:08.867Z"
 },
 {
  id: "Q3",

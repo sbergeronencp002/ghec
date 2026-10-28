@@ -1410,8 +1410,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Le conseil.",
- updatedAt: "2026-08-16T17:46:12.815Z"
+ guide: "Le matriarcat.",
+ updatedAt: "2026-10-28T02:27:28.056Z"
 },
 {
  id: "Q69",

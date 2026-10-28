@@ -425,8 +425,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "L'élève doit nommer deux activités distinctes parmi les suivantes :\nAgriculture - Cultiver la terre, faire pousser du maïs, cultiver des légumes\nChasse - Chasser des animaux, capturer du gibier\nPêche - Pêcher, attraper des poissons\nCueillette - Cueillir des petits fruits, ramasser des plantes comestibles",
- updatedAt: "2026-10-28T20:07:37.451Z"
+ guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture et la pêche pour se procurer de la nourriture.\n\nAccepter deux activités différentes parmi l'agriculture, la chasse, la pêche et la cueillette. Les formulations équivalentes, comme « cultiver du maïs », « chasser des animaux », « attraper des poissons » ou « ramasser des petits fruits », sont également acceptées.",
+ updatedAt: "2026-10-28T20:18:04.967Z"
 },
 {
  id: "Q4",

@@ -378,7 +378,8 @@ const IMAGE_DB = {
 "q1.jpg": {src: "images/q1.jpg"},
 "vill_iro_a.jpg": {src: "images/vill_iro_a.jpg", w: 1200, h: 800},
 "cam_alg_a.jpg": {src: "images/cam_alg_a.jpg", w: 1200, h: 800},
-"vill_iro_b.jpg": {src: "images/vill_iro_b.jpg", w: 1200, h: 800}
+"vill_iro_b.jpg": {src: "images/vill_iro_b.jpg", w: 1200, h: 800},
+"cam_alg_b.jpg": {src: "images/cam_alg_b.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -437,10 +438,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 2",
  enonce: "Nomme deux activités pratiquées par les Algonquiens pour se nourrir.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cam_alg_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "La chasse.\nLa pêche.\nLa cueillette.",
- updatedAt: "2026-08-14T12:40:32.725Z"
+ guide: "Vers 1500, les Algonquiens pratiquent la chasse et la pêche pour se procurer de la nourriture.\n\nAccepter deux activités différentes parmi la chasse, la pêche et la cueillette. Les formulations équivalentes, comme « chasser des animaux », « attraper des poissons » ou « ramasser des petits fruits », sont également acceptées.",
+ updatedAt: "2026-10-28T20:13:07.496Z"
 },
 {
  id: "Q5",

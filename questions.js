@@ -442,7 +442,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cam_alg_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Algonquiens pratiquent la chasse et la pêche pour se procurer de la nourriture.\n\nAccepter deux activités différentes parmi la chasse, la pêche et la cueillette. Les formulations équivalentes, comme « chasser des animaux », « attraper des poissons » ou « ramasser des petits fruits », sont également acceptées.",
- updatedAt: "2026-10-28T20:13:07.496Z"
+ updatedAt: "2026-10-28T20:18:44.337Z"
 },
 {
  id: "Q5",

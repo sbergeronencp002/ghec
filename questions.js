@@ -1578,8 +1578,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "instruments_musique_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les Iroquoiens utilisent le tambour et le hochet.",
- updatedAt: "2026-08-17T00:04:32.179Z"
+ guide: "Les Iroquoiens utilisent le tambour ou le hochet.",
+ updatedAt: "2026-10-28T02:28:14.861Z"
 },
 {
  id: "Q80",

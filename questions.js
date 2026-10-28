@@ -377,7 +377,8 @@ const IMAGE_DB = {
 "commerce_fourures_3.jpg": {src: "images/commerce_fourures_3.jpg", w: 1200, h: 800},
 "q1.jpg": {src: "images/q1.jpg"},
 "vill_iro_a.jpg": {src: "images/vill_iro_a.jpg", w: 1200, h: 800},
-"cam_alg_a.jpg": {src: "images/cam_alg_a.jpg", w: 1200, h: 800}
+"cam_alg_a.jpg": {src: "images/cam_alg_a.jpg", w: 1200, h: 800},
+"vill_iro_b.jpg": {src: "images/vill_iro_b.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -419,12 +420,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Nomme deux activités pratiquées par les Iroquoiens pour se nourrir.",
+ enonce: "Nomme deux activités pratiquées par les Iroquoiens vers 1500 pour se procurer de la nourriture.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "L'agriculture.\nLa chasse.\nLa cueillette.\nLa pêche.",
- updatedAt: "2026-08-14T12:41:17.126Z"
+ guide: "L'élève doit nommer deux activités distinctes parmi les suivantes :\nAgriculture - Cultiver la terre, faire pousser du maïs, cultiver des légumes\nChasse - Chasser des animaux, capturer du gibier\nPêche - Pêcher, attraper des poissons\nCueillette - Cueillir des petits fruits, ramasser des plantes comestibles",
+ updatedAt: "2026-10-28T20:07:37.451Z"
 },
 {
  id: "Q4",

@@ -1329,7 +1329,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
+ periodes: ["Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme la structure politique chez les Algonquiens vers 1500.",
@@ -1337,7 +1337,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le patriarcat.",
- updatedAt: "2026-08-16T17:05:38.971Z"
+ updatedAt: "2026-10-28T02:26:31.916Z"
 },
 {
  id: "Q64",

@@ -375,7 +375,8 @@ const IMAGE_DB = {
 "voyages_champlain.jpg": {src: "images/voyages_champlain.jpg", w: 1200, h: 800},
 "sceau_royal.jpg": {src: "images/sceau_royal.jpg"},
 "commerce_fourures_3.jpg": {src: "images/commerce_fourures_3.jpg", w: 1200, h: 800},
-"q1.jpg": {src: "images/q1.jpg"}
+"q1.jpg": {src: "images/q1.jpg"},
+"vill_iro_a.jpg": {src: "images/vill_iro_a.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -389,10 +390,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme le mode de vie des Iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "q1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens ont un mode de vie sédentaire.",
- updatedAt: "2026-10-28T02:24:34.005Z"
+ updatedAt: "2026-10-28T19:33:52.752Z"
 },
 {
  id: "Q2",

@@ -376,7 +376,8 @@ const IMAGE_DB = {
 "sceau_royal.jpg": {src: "images/sceau_royal.jpg"},
 "commerce_fourures_3.jpg": {src: "images/commerce_fourures_3.jpg", w: 1200, h: 800},
 "q1.jpg": {src: "images/q1.jpg"},
-"vill_iro_a.jpg": {src: "images/vill_iro_a.jpg", w: 1200, h: 800}
+"vill_iro_a.jpg": {src: "images/vill_iro_a.jpg", w: 1200, h: 800},
+"cam_alg_a.jpg": {src: "images/cam_alg_a.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -405,10 +406,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme le mode de vie des Algonquiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_algonquiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cam_alg_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Algonquiens ont un mode de vie nomade.",
- updatedAt: "2026-08-16T16:09:43.546Z"
+ updatedAt: "2026-10-28T19:43:15.127Z"
 },
 {
  id: "Q3",

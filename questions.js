@@ -986,8 +986,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "canot_ecorce.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Canot", "Raquettes"]},
- guide: {type: "grille", entetes: ["Canot", "Raquettes"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-14T21:15:53.771Z"
+ guide: {type: "grille", entetes: ["Canot", "Raquettes"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-28T02:26:00.091Z"
 },
 {
  id: "Q41",

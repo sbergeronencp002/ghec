@@ -29,7 +29,7 @@ const REGLETTES = {
 "Q28": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q29": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q30": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
-"Q31": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q31": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q32": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q33": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q34": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -864,16 +864,17 @@ const QUESTIONS = [
 {
  id: "Q31",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Situer dans l'espace",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 2,
- enonce: "Explique pourquoi le climat du territoire habité par les Iroquoiens est une contrainte.",
+ points: 1,
+ soustag: "Situer 1 élément dans l'espace",
+ enonce: "Observe la carte. Indique la lettre qui correspond à la région des Grands Lacs.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Le climat est une contrainte parce qu’en hiver, le froid et la neige limitent les activités et les déplacements.",
- updatedAt: "2026-08-14T15:43:16.874Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_b.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "tableau_2col"},
+ guide: "La lettre A correspond à la région des Grands Lacs.",
+ updatedAt: "2026-10-29T15:41:23.418Z"
 },
 {
  id: "Q32",

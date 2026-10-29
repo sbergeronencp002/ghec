@@ -27,7 +27,7 @@ const REGLETTES = {
 "Q26": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q27": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q28": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q29": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q29": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q30": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q31": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q32": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -230,7 +230,7 @@ const IMAGE_DB = {
 "transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800},
 "canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800},
 "raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
-"canot_2.jpg": {src: "images/canot_2.jpg", w: 1200, h: 960},
+"canot_2.jpg": {src: "images/canot_2.jpg", w: 1200, h: 800},
 "transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
 "deplacement_raquettes_1.jpg": {src: "images/deplacement_raquettes_1.jpg", w: 1200, h: 960},
 "sentiers_forestiers.jpg": {src: "images/sentiers_forestiers.jpg"},
@@ -395,7 +395,10 @@ const IMAGE_DB = {
 "canot_1.jpg": {src: "images/canot_1.jpg", w: 1200, h: 800},
 "mocassins_1.jpg": {src: "images/mocassins_1.jpg", w: 1200, h: 800},
 "toboggan_1.jpg": {src: "images/toboggan_1.jpg", w: 1200, h: 800},
-"raquettes_1.jpg": {src: "images/raquettes_1.jpg"}
+"raquettes_1.jpg": {src: "images/raquettes_1.jpg"},
+"toboggan_2.jpg": {src: "images/toboggan_2.jpg", w: 1200, h: 800},
+"raquettes_2.jpg": {src: "images/raquettes_2.jpg", w: 1200, h: 800},
+"mocassins_2.jpg": {src: "images/mocassins_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -825,16 +828,22 @@ const QUESTIONS = [
 {
  id: "Q29",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi la faune du territoire occupé par les Iroquoiens est un atout.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "La faune est un atout parce qu’elle fournit de la nourriture aux Iroquoiens.",
- updatedAt: "2026-08-14T15:25:08.421Z"
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent différents objets utilisés par les Iroquoiens vers 1500 pour faciliter leurs déplacements. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Transport"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "toboggan_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "mocassins_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "raquettes_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Canot d'écorce", "Moccassins", "Raquettes", "Toboggan"]},
+ guide: {type: "grille", entetes: ["Canot d'écorce", "Moccassins", "Raquettes", "Toboggan"], rangees: [["C", "B", "D", "A"]]},
+ updatedAt: "2026-10-29T15:36:00.912Z"
 },
 {
  id: "Q30",

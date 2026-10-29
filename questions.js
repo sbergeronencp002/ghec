@@ -28,7 +28,7 @@ const REGLETTES = {
 "Q27": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q28": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q29": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q30": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q30": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q31": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q32": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q33": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -398,7 +398,8 @@ const IMAGE_DB = {
 "raquettes_1.jpg": {src: "images/raquettes_1.jpg"},
 "toboggan_2.jpg": {src: "images/toboggan_2.jpg", w: 1200, h: 800},
 "raquettes_2.jpg": {src: "images/raquettes_2.jpg", w: 1200, h: 800},
-"mocassins_2.jpg": {src: "images/mocassins_2.jpg", w: 1200, h: 800}
+"mocassins_2.jpg": {src: "images/mocassins_2.jpg", w: 1200, h: 800},
+"territoire_iro_b.jpg": {src: "images/territoire_iro_b.jpg"}
 }
 
 const QUESTIONS = [
@@ -848,16 +849,17 @@ const QUESTIONS = [
 {
  id: "Q30",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Situer dans l'espace",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 2,
- enonce: "Explique pourquoi la forêt du territoire occupé par les Iroquoiens est un atout.",
+ points: 1,
+ soustag: "Situer 1 élément dans l'espace",
+ enonce: "Observe la carte. Indique la lettre qui correspond à la région des Basses-terres du Saint-Laurent.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "fabrication_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "construction_maison_longue.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "La forêt fournit des matériaux pour construire les maisons longues et les canots.",
- updatedAt: "2026-08-14T15:30:38.344Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_b.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "tableau_2col"},
+ guide: "Accepter uniquement la lettre B, qui correspond à la région demandée.",
+ updatedAt: "2026-10-29T15:39:49.090Z"
 },
 {
  id: "Q31",

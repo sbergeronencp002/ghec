@@ -1087,3 +1087,23 @@ header, .panier-bar { color: #fff; }
 .sidebar select, .sidebar input[type=text] { background-color: #fff; }
 .cfb-primary, #q-modal-panier-btn, .btn-projeter { background: #2f6fb0; border-color: #2f6fb0; }
 .cfb-primary:hover, #q-modal-panier-btn:hover:not(.in-panier), .btn-projeter:hover { background: #2c4675; }
+
+/* Aperçu des questions au survol, également accessible au focus clavier. */
+.tile-preview {
+  position: fixed;
+  z-index: 900;
+  box-sizing: border-box;
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 12px 38px rgba(30, 51, 88, 0.22);
+}
+.tile-preview[hidden] { display: none; }
+.tile-preview-label { font-size: .72rem; color: var(--ink-3); margin-bottom: 8px; }
+.tile-preview-question { font-size: .95rem; line-height: 1.5; margin-bottom: 16px; white-space: pre-line; }
+.tile-preview img { max-width: 100%; object-fit: contain; }
+.tile-preview .doc-img-tiles { flex-wrap: wrap; }

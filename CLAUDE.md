@@ -150,9 +150,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=63`, `style.css?v=36`, `filters.js?v=6`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=64`, `style.css?v=37`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v18'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v19'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -427,3 +427,5 @@ Palette harmonisée avec Robotique le 2026-10-26 : marine #1e3358, accent #2f6fb
 Le 26 octobre 2026, ajout de l’option « Sources des images » au cahier : cochée par défaut, elle contrôle l’aperçu et le DOCX ; les sources des documents texte restent affichées. Cache app.js v62 et ghec-v17.
 
 Le 29 octobre 2026, largeur par défaut des images des documents du cahier DOCX : 6 cm, hauteur proportionnelle (types tableau et textes). App v63, cache ghec-v18.
+
+Le 29 octobre 2026, aperçu au survol et au focus clavier des tuiles : énoncé et documents complets après 350 ms, chargement partagé, fermeture Échap/défilement/clic. App v64, style v37, cache ghec-v19.

@@ -776,6 +776,7 @@ function buildReglettHTML(q) {
 
 let _qModalReqSeq = 0;
 async function openQModal(id) {
+  hideTilePreview();
   const reqId = ++_qModalReqSeq;
   _tzStore.length = 0;
   const q = Q_MAP.get(id);
@@ -904,6 +905,81 @@ function togglePanierModal() {
   if(!wasInPanier && panier.includes(id)) closeQModal();
 }
 
+// Aperçu différé : les déplacements rapides entre tuiles ne chargent pas les documents.
+let tilePreviewTimer, tilePreviewCloseTimer, tilePreviewSeq = 0;
+let tilePreviewAnchor = null;
+function getTilePreview() {
+  let panel = document.getElementById('tile-preview');
+  if(!panel) {
+    panel = document.createElement('aside');
+    panel.id = 'tile-preview';
+    panel.className = 'tile-preview';
+    panel.setAttribute('aria-label', 'Aperçu de la question');
+    panel.hidden = true;
+    panel.addEventListener('mouseenter', () => clearTimeout(tilePreviewCloseTimer));
+    panel.addEventListener('mouseleave', leaveTilePreview);
+    document.body.appendChild(panel);
+  }
+  return panel;
+}
+function hideTilePreview() {
+  clearTimeout(tilePreviewTimer);
+  clearTimeout(tilePreviewCloseTimer);
+  tilePreviewSeq++;
+  if(tilePreviewAnchor) tilePreviewAnchor.removeAttribute('aria-describedby');
+  tilePreviewAnchor = null;
+  const panel = document.getElementById('tile-preview');
+  if(panel) panel.hidden = true;
+}
+function leaveTilePreview() {
+  clearTimeout(tilePreviewTimer);
+  tilePreviewCloseTimer = setTimeout(hideTilePreview, 180);
+}
+function positionTilePreview(panel, tile) {
+  const rect = tile.getBoundingClientRect();
+  const gap = 12, margin = 12;
+  const width = Math.min(500, window.innerWidth - margin * 2);
+  panel.style.width = width + 'px';
+  let left = rect.right + gap;
+  if(left + width > window.innerWidth - margin) left = rect.left - gap - width;
+  if(left < margin) left = Math.max(margin, Math.min(rect.left, window.innerWidth - width - margin));
+  panel.style.left = left + 'px';
+  panel.style.top = Math.max(margin, Math.min(rect.top, window.innerHeight - panel.offsetHeight - margin)) + 'px';
+}
+function scheduleTilePreview(tile, keyboard = false) {
+  if(!keyboard && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  hideTilePreview();
+  tilePreviewAnchor = tile;
+  const seq = tilePreviewSeq;
+  tilePreviewTimer = setTimeout(async () => {
+    if(seq !== tilePreviewSeq || !tile.isConnected) return;
+    const panel = getTilePreview();
+    panel.textContent = 'Chargement de la question…';
+    panel.hidden = false;
+    tile.setAttribute('aria-describedby', 'tile-preview');
+    positionTilePreview(panel, tile);
+    try {
+      await ensureDataLoaded();
+      if(seq !== tilePreviewSeq || !tile.isConnected) return;
+      const q = Q_MAP.get(tile.id.slice(5));
+      if(!q) { hideTilePreview(); return; }
+      panel.innerHTML = '<div class="tile-preview-label">' + escLine(q.id) + ' · Aperçu</div>' +
+        '<div class="tile-preview-question">' + formatTexte(q.enonce || '') + '</div>' +
+        docsForRender(q.documents || []).map(d => renderDoc(d, true)).join('');
+      positionTilePreview(panel, tile);
+    } catch(e) {
+      if(seq !== tilePreviewSeq) return;
+      panel.textContent = 'Aperçu indisponible. Clique sur la tuile pour réessayer.';
+    }
+  }, 350);
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') hideTilePreview(); });
+window.addEventListener('resize', hideTilePreview);
+document.addEventListener('scroll', e => {
+  const panel = document.getElementById('tile-preview');
+  if(!panel || !panel.contains(e.target)) hideTilePreview();
+}, true);
+
 const PAGE_SIZE = 50;
 let currentFiltered = [];
 
@@ -922,6 +998,7 @@ function buildTileHtml(q) {
   const openCall   = escAttr(`openQModal('${jsStr(q.id)}')`);
   const toggleCall = escAttr(`togglePanier('${jsStr(q.id)}')`);
   return `<div class="q-tile${inPanier ? ' in-panier' : ''}" id="tile-${escAttr(q.id)}"
+    onmouseenter="scheduleTilePreview(this)" onmouseleave="leaveTilePreview()" onfocus="scheduleTilePreview(this, true)" onblur="leaveTilePreview()"
     role="button" tabindex="0" aria-label="${escAttr(q.oi + (aspect ? ' — ' + aspect : ''))}"
     style="--tile-color:${st.color};background:#fff" onclick="${openCall}"
     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${openCall}}">
@@ -939,6 +1016,7 @@ function buildTileHtml(q) {
 }
 
 function render(list) {
+  hideTilePreview();
   currentFiltered = list;
   const container = document.getElementById('q-list');
   if(!list.length) {

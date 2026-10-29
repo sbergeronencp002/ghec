@@ -26,7 +26,7 @@ const REGLETTES = {
 "Q25": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q26": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q27": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q28": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q28": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q29": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q30": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q31": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -394,7 +394,8 @@ const IMAGE_DB = {
 "ressources_a.jpg": {src: "images/ressources_a.jpg", w: 1200, h: 800},
 "canot_1.jpg": {src: "images/canot_1.jpg", w: 1200, h: 800},
 "mocassins_1.jpg": {src: "images/mocassins_1.jpg", w: 1200, h: 800},
-"toboggan_1.jpg": {src: "images/toboggan_1.jpg", w: 1200, h: 800}
+"toboggan_1.jpg": {src: "images/toboggan_1.jpg", w: 1200, h: 800},
+"raquettes_1.jpg": {src: "images/raquettes_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -809,16 +810,17 @@ const QUESTIONS = [
 {
  id: "Q28",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 2,
- enonce: "Explique pourquoi le climat du territoire habité par les Iroquoiens est un atout.",
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme le moyen utilisé par les Iroquoiens pour se déplacer dans la neige vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "village_iroquoien_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Le climat est un atout parce qu’en été, la température et la pluie permettent aux Iroquoiens de pratiquer l’agriculture.",
- updatedAt: "2026-08-14T15:42:40.883Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens utilisent des raquettes pour se déplacer dans la neige.\n\nAccepter « raquettes » ou « raquettes à neige », ainsi que les formulations équivalentes.",
+ updatedAt: "2026-10-29T15:25:55.943Z"
 },
 {
  id: "Q29",

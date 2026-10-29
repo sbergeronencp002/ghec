@@ -1473,6 +1473,7 @@ async function previsualiser(guideMode) {
     const showScore  = !!document.getElementById('exam-score')?.checked;
     const showComm   = !!document.getElementById('exam-commentaires')?.checked;
     const showImageSources = document.getElementById('exam-sources-images')?.checked !== false;
+  const showDocumentTitles = document.getElementById('exam-titres-documents')?.checked !== false;
     const totalPrevPts = panier.reduce((s,id) => { const q=Q_MAP.get(id); return s+(q?.points||0); }, 0);
 
     let previewHtml = '';
@@ -1508,7 +1509,7 @@ async function previsualiser(guideMode) {
               const img = IMAGE_DB[col.ref];
               const titre = (col.titreWeb && col.titre) ? col.titre : col.ref;
               docsHtml += '<td style="width:' + Math.floor(100/d.cols.length) + '%;padding:6px;vertical-align:top;border:0.5px solid var(--border)">';
-              docsHtml += '<div style="font-size:0.75rem;font-style:italic;margin-bottom:4px;color:var(--ink-2)">' + escLine(titre) + '</div>';
+              if(showDocumentTitles) docsHtml += '<div style="font-size:0.75rem;font-style:italic;margin-bottom:4px;color:var(--ink-2)">' + escLine(titre) + '</div>';
               if(img) docsHtml += '<img src="' + escAttr(img.src) + '" alt="' + escAttr(col.titre||col.ref||'Document') + '" style="max-width:100%;max-height:100px;object-fit:contain;cursor:pointer" onclick="' + escAttr("openLightbox('" + jsStr(img.src) + "')") + '">';
               docsHtml += '</td>';
             });
@@ -1519,7 +1520,7 @@ async function previsualiser(guideMode) {
             const renderCol = function(col) {
               const img = IMAGE_DB[col.ref];
               let h = '<td style="width:' + colW + '%;padding:6px;vertical-align:top;border:0.5px solid var(--border)">';
-              h += '<div style="font-size:0.75rem;font-weight:600;color:var(--ink)">' + escLine(col.titre||'') + '</div>';
+              if(showDocumentTitles) h += '<div style="font-size:0.75rem;font-weight:600;color:var(--ink)">' + escLine(col.titre||'') + '</div>';
               if(col.soustitre) h += '<div style="font-size:0.7rem;font-style:italic;color:var(--ink-2);margin-bottom:4px">' + escLine(col.soustitre) + '</div>';
               else h += '<div style="margin-bottom:4px"></div>';
               if(col.texte) {
@@ -1882,6 +1883,7 @@ async function genererDocx(includeGuide=false) {
   if(panier.length === 0) return;
   await ensureDataLoaded();
   const showImageSources = document.getElementById('exam-sources-images')?.checked !== false;
+  const showDocumentTitles = document.getElementById('exam-titres-documents')?.checked !== false;
   const btn = includeGuide ? document.getElementById('btn-generer-guide') : document.getElementById('btn-generer');
   const btnOther = includeGuide ? document.getElementById('btn-generer') : document.getElementById('btn-generer-guide');
   if(btn) { btn.disabled = true; btn.textContent = '⏳ Génération…'; }
@@ -2238,7 +2240,7 @@ async function genererDocx(includeGuide=false) {
             const tableCells = d.cols.map(col => {
               const imgData = imgR(col.ref);
               const cellChildren = [];
-              if(col.titreDocx && col.titre) cellChildren.push(new Paragraph({ alignment: AlignmentType.LEFT, children: [new TextRun({ text: col.titre, font: 'Aptos', size: 20 })] }));
+              if(showDocumentTitles && col.titreDocx && col.titre) cellChildren.push(new Paragraph({ alignment: AlignmentType.LEFT, children: [new TextRun({ text: col.titre, font: 'Aptos', size: 20 })] }));
               if(imgData && imgData.src) {
                 const bytes = b64ToBytes(imgData.src);
                 if(bytes) {
@@ -2264,7 +2266,7 @@ async function genererDocx(includeGuide=false) {
             const colW2 = Math.floor(PAGE_W / cpr);
             const makeCell = col => {
               const cellChildren = [];
-              cellChildren.push(new Paragraph({ children: [new TextRun({ text: col.titre || '', font: 'Aptos', size: 20, bold: true })] }));
+              if(showDocumentTitles && col.titre) cellChildren.push(new Paragraph({ children: [new TextRun({ text: col.titre, font: 'Aptos', size: 20, bold: true })] }));
               if(col.soustitre) cellChildren.push(new Paragraph({ children: [new TextRun({ text: col.soustitre, font: 'Aptos', size: 18, italics: true })] }));
               if(col.texte) {
                 col.texte.split('\n').forEach(line => { cellChildren.push(mkLine(line, 'Aptos', 20)); });

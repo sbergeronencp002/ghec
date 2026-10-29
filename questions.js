@@ -11,7 +11,7 @@ const REGLETTES = {
 "Q10": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q11": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q12": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
-"Q13": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q13": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q15": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q16": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -390,7 +390,11 @@ const IMAGE_DB = {
 "peche_a.jpg": {src: "images/peche_a.jpg", w: 1200, h: 800},
 "agriculture_d.jpg": {src: "images/agriculture_d.jpg", w: 1200, h: 800},
 "agriculture_c.jpg": {src: "images/agriculture_c.jpg", w: 1200, h: 800},
-"agriculture_e.jpg": {src: "images/agriculture_e.jpg", w: 1200, h: 800}
+"agriculture_e.jpg": {src: "images/agriculture_e.jpg", w: 1200, h: 800},
+"chasse_b.jpg": {src: "images/chasse_b.jpg"},
+"agriculture_b.jpg": {src: "images/agriculture_b.jpg"},
+"peche_b.jpg": {src: "images/peche_b.jpg"},
+"cueillette_b.jpg": {src: "images/cueillette_b.jpg"}
 }
 
 const QUESTIONS = [
@@ -580,17 +584,22 @@ const QUESTIONS = [
 {
  id: "Q13",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme l’activité pratiquée par les Iroquoiens.",
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent quatre activités économiques pratiquées par les Iroquoiens vers 1500. Associe chaque activité économique au document correspondant.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Ils pratiquent l'agriculture.",
- updatedAt: "2026-08-14T13:22:50.346Z"
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "chasse_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "agriculture_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "peche_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "cueillette_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Chasse", "Cueillette", "Pêche"]},
+ guide: {type: "grille", entetes: ["Agriculture", "Chasse", "Cueillette", "Pêche"], rangees: [["B", "A", "D", "C"]]},
+ updatedAt: "2026-10-29T02:12:43.824Z"
 },
 {
  id: "Q14",

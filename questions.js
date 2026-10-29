@@ -385,7 +385,8 @@ const IMAGE_DB = {
 "territoire_iro_a.jpg": {src: "images/territoire_iro_a.jpg"},
 "vill_iro_d.jpg": {src: "images/vill_iro_d.jpg", w: 1200, h: 800},
 "agriculture_a.jpg": {src: "images/agriculture_a.jpg", w: 1200, h: 800},
-"chasse_a.jpg": {src: "images/chasse_a.jpg", w: 1200, h: 800}
+"chasse_a.jpg": {src: "images/chasse_a.jpg", w: 1200, h: 800},
+"cueillette_a.jpg": {src: "images/cueillette_a.jpg"}
 }
 
 const QUESTIONS = [
@@ -518,10 +519,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme l'activité économique pratiquée par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_recoltes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cueillette_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens pratiquent la cueillette.\n\nAccepter « cueillette » ainsi que toute formulation indiquant que les Iroquoiens ramassent ou cueillent des petits fruits, des baies ou des plantes comestibles dans la nature.",
- updatedAt: "2026-10-29T01:56:35.916Z"
+ updatedAt: "2026-10-29T01:58:49.831Z"
 },
 {
  id: "Q10",

@@ -858,8 +858,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_b.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "tableau_2col"},
- guide: "Accepter uniquement la lettre B, qui correspond à la région demandée.",
- updatedAt: "2026-10-29T15:39:49.090Z"
+ guide: "La lettre B correspond à la région des Basses-terres du Saint-Laurent.",
+ updatedAt: "2026-10-29T15:41:45.354Z"
 },
 {
  id: "Q31",

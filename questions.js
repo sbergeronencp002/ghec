@@ -523,7 +523,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cueillette_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens pratiquent la cueillette.\n\nAccepter « cueillette » ainsi que toute formulation indiquant que les Iroquoiens ramassent ou cueillent des petits fruits, des baies ou des plantes comestibles dans la nature.",
- updatedAt: "2026-10-29T02:00:09.493Z"
+ updatedAt: "2026-10-29T02:01:31.800Z"
 },
 {
  id: "Q10",

@@ -202,200 +202,803 @@ const REGLETTES = {
 }
 
 const IMAGE_DB = {
-"activites_economiques_iroquoiens.jpg": {src: "images/activites_economiques_iroquoiens.jpg", w: 1200, h: 800},
-"activites_economiques_algonquiens.jpg": {src: "images/activites_economiques_algonquiens.jpg", w: 1200, h: 841},
-"territoire_algonquien_1.jpg": {src: "images/territoire_algonquien_1.jpg", w: 1200, h: 960},
-"campement_algonquien_4.jpg": {src: "images/campement_algonquien_4.jpg", w: 1200, h: 900},
-"territoire_algonquiens_1.jpg": {src: "images/territoire_algonquiens_1.jpg"},
-"territoire_iroquoien_1.jpg": {src: "images/territoire_iroquoien_1.jpg"},
-"territoire_iroquoien_2.jpg": {src: "images/territoire_iroquoien_2.jpg", w: 1200, h: 960},
-"iroquoiens_recoltes.jpg": {src: "images/iroquoiens_recoltes.jpg", w: 1200, h: 800},
-"agriculture.jpg": {src: "images/agriculture.jpg", w: 1200, h: 800},
-"territoire_algonquiens_2.jpg": {src: "images/territoire_algonquiens_2.jpg", w: 1200, h: 960},
-"chasse_1.jpg": {src: "images/chasse_1.jpg", w: 1200, h: 800},
-"peche_1.jpg": {src: "images/peche_1.jpg", w: 1200, h: 800},
-"cueillette.jpg": {src: "images/cueillette.jpg", w: 1200, h: 800},
-"vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960},
-"vetements.jpg": {src: "images/vetements.jpg", w: 1200, h: 800},
-"poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962},
-"autochtones_troc.jpg": {src: "images/autochtones_troc.jpg", w: 1200, h: 801},
-"ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800},
-"fabrication_canot.jpg": {src: "images/fabrication_canot.jpg"},
-"construction_maison_longue.jpg": {src: "images/construction_maison_longue.jpg"},
-"construction_palissade.jpg": {src: "images/construction_palissade.jpg"},
-"fabrication_armes.jpg": {src: "images/fabrication_armes.jpg"},
-"carte_territoires_physio.jpg": {src: "images/carte_territoires_physio.jpg"},
-"village_iroquoien_ete.jpg": {src: "images/village_iroquoien_ete.jpg"},
-"village_iroquoien_hiver.jpg": {src: "images/village_iroquoien_hiver.jpg"},
-"territoire_iroquoiens_5.jpg": {src: "images/territoire_iroquoiens_5.jpg", w: 1200, h: 960},
-"agriculture_2.jpg": {src: "images/agriculture_2.jpg", w: 1200, h: 960},
-"autochtones_canot.jpg": {src: "images/autochtones_canot.jpg", w: 1200, h: 801},
-"taches_hommes_2.jpg": {src: "images/taches_hommes_2.jpg", w: 1200, h: 960},
-"transport_portage.jpg": {src: "images/transport_portage.jpg", w: 1200, h: 800},
-"canot_ecorce.jpg": {src: "images/canot_ecorce.jpg", w: 1200, h: 800},
-"raquettes.jpg": {src: "images/raquettes.jpg", w: 1200, h: 800},
-"canot_2.jpg": {src: "images/canot_2.jpg", w: 1200, h: 960},
-"transport_sentiers.jpg": {src: "images/transport_sentiers.jpg", w: 1200, h: 960},
-"deplacement_raquettes_1.jpg": {src: "images/deplacement_raquettes_1.jpg", w: 1200, h: 960},
-"sentiers_forestiers.jpg": {src: "images/sentiers_forestiers.jpg"},
-"rivieres.jpg": {src: "images/rivieres.jpg"},
-"mocassins.jpg": {src: "images/mocassins.jpg", w: 1200, h: 800},
-"confection_vetements.jpg": {src: "images/confection_vetements.jpg"},
-"poterie_argile.jpg": {src: "images/poterie_argile.jpg", w: 1200, h: 960},
-"vannerie_ressources.jpg": {src: "images/vannerie_ressources.jpg", w: 1200, h: 960},
-"algonquiens_patriarcat.jpg": {src: "images/algonquiens_patriarcat.jpg", w: 1200, h: 900},
-"iroquoiens_matriarcat.jpg": {src: "images/iroquoiens_matriarcat.jpg", w: 1200, h: 900},
-"iroquoiens_conseil_2.jpg": {src: "images/iroquoiens_conseil_2.jpg", w: 1200, h: 800},
-"iroquoiens_conseil_femmes.jpg": {src: "images/iroquoiens_conseil_femmes.jpg", w: 1200, h: 960},
-"iroquoiens_conseil.jpg": {src: "images/iroquoiens_conseil.jpg", w: 1200, h: 960},
-"wigwam.jpg": {src: "images/wigwam.jpg"},
-"iroquoien_maisons_longues.jpg": {src: "images/iroquoien_maisons_longues.jpg"},
-"org_politique_matriarcat.jpg": {src: "images/org_politique_matriarcat.jpg", w: 1200, h: 800},
-"org_politique_patriarcat.jpg": {src: "images/org_politique_patriarcat.jpg", w: 1200, h: 800},
-"iroquoiens_conseil_1.jpg": {src: "images/iroquoiens_conseil_1.jpg"},
-"chaman_animisme.jpg": {src: "images/chaman_animisme.jpg", w: 1200, h: 800},
-"chaman_animisme_2.jpg": {src: "images/chaman_animisme_2.jpg"},
-"village_iroquoien_1500_4.jpg": {src: "images/village_iroquoien_1500_4.jpg", w: 1200, h: 960},
-"iroquoiens_champs.jpg": {src: "images/iroquoiens_champs.jpg", w: 1200, h: 800},
-"ressources_iroquoiens.jpg": {src: "images/ressources_iroquoiens.jpg", w: 1200, h: 800},
-"fetes_communautes_4.jpg": {src: "images/fetes_communautes_4.jpg"},
-"crosse.jpg": {src: "images/crosse.jpg", w: 1200, h: 800},
-"instruments_musique_iroquoiens.jpg": {src: "images/instruments_musique_iroquoiens.jpg", w: 1200, h: 800},
-"aines_3.jpg": {src: "images/aines_3.jpg"},
-"chaman_ceremonie_1.jpg": {src: "images/chaman_ceremonie_1.jpg", w: 1200, h: 800},
-"tradition_orale_4.jpg": {src: "images/tradition_orale_4.jpg"},
-"aines_1.jpg": {src: "images/aines_1.jpg", w: 1200, h: 800},
-"chaman_animisme_3.jpg": {src: "images/chaman_animisme_3.jpg", w: 1200, h: 960},
-"chaman_ceremonie_2.jpg": {src: "images/chaman_ceremonie_2.jpg", w: 1200, h: 800},
-"chaman_ceremonie_4.jpg": {src: "images/chaman_ceremonie_4.jpg", w: 1200, h: 960},
-"iroquoiens_recits_legendes_1.jpg": {src: "images/iroquoiens_recits_legendes_1.jpg", w: 1200, h: 800},
-"iroquoiens_recits_legendes_2.jpg": {src: "images/iroquoiens_recits_legendes_2.jpg", w: 1200, h: 800},
-"incas_cites.jpg": {src: "images/incas_cites.jpg", w: 1200, h: 800},
-"incas_cites_2.jpg": {src: "images/incas_cites_2.jpg", w: 1200, h: 800},
-"incas_maisons_1.jpg": {src: "images/incas_maisons_1.jpg", w: 1200, h: 800},
-"incas_maisons_2.jpg": {src: "images/incas_maisons_2.jpg", w: 1200, h: 800},
-"territoire_incas_2.jpg": {src: "images/territoire_incas_2.jpg", w: 1200, h: 800},
-"territoire_incas_3.png": {src: "images/territoire_incas_3.png"},
-"incas_pouvoir_hereditaire.jpg": {src: "images/incas_pouvoir_hereditaire.jpg", w: 1200, h: 900},
-"incas_pouvoir_empereur.jpg": {src: "images/incas_pouvoir_empereur.jpg", w: 1200, h: 800},
-"incas_prise_decision.jpg": {src: "images/incas_prise_decision.jpg", w: 1200, h: 801},
-"iroquoiens_conseil_3.jpg": {src: "images/iroquoiens_conseil_3.jpg"},
-"incas_organisation_politique.jpg": {src: "images/incas_organisation_politique.jpg", w: 1200, h: 900},
-"iroquoiens_organisation_politique.jpg": {src: "images/iroquoiens_organisation_politique.jpg", w: 1200, h: 900},
-"territoire_incas_4.jpg": {src: "images/territoire_incas_4.jpg", w: 1200, h: 900},
-"territoire_incas_5.jpg": {src: "images/territoire_incas_5.jpg", w: 1200, h: 900},
-"territoire_iroquoien_3.jpg": {src: "images/territoire_iroquoien_3.jpg", w: 1200, h: 960},
-"chasse_1745.jpg": {src: "images/chasse_1745.jpg", w: 1200, h: 900},
-"cuisson_1500.jpg": {src: "images/cuisson_1500.jpg", w: 1200, h: 900},
-"cuisson_1745.jpg": {src: "images/cuisson_1745.jpg", w: 1200, h: 900},
-"chasse_1500.jpg": {src: "images/chasse_1500.jpg"},
-"religion_1500.jpg": {src: "images/religion_1500.jpg"},
-"religion_1745.jpg": {src: "images/religion_1745.jpg"},
-"village_1500.jpg": {src: "images/village_1500.jpg", w: 1200, h: 900},
-"village_1745.jpg": {src: "images/village_1745.jpg", w: 1200, h: 900},
-"territoire_1500.jpg": {src: "images/territoire_1500.jpg"},
-"territoire_1745.jpg": {src: "images/territoire_1745.jpg"},
-"produits_europeens_1745.jpg": {src: "images/produits_europeens_1745.jpg", w: 1200, h: 800},
-"groupes_1745_1.jpg": {src: "images/groupes_1745_1.jpg", w: 1200, h: 900},
-"groupes_coueurs_bois_1745.jpg": {src: "images/groupes_coueurs_bois_1745.jpg", w: 1200, h: 900},
-"groupes_militaires_1745.jpg": {src: "images/groupes_militaires_1745.jpg", w: 1200, h: 900},
-"groupes_missionnaires_1745.jpg": {src: "images/groupes_missionnaires_1745.jpg", w: 1200, h: 900},
-"groupes_pecheurs_1745.jpg": {src: "images/groupes_pecheurs_1745.jpg", w: 1200, h: 800},
-"maladies_1745.jpg": {src: "images/maladies_1745.jpg", w: 1200, h: 900},
-"jacques_cartier_1534.jpg": {src: "images/jacques_cartier_1534.jpg", w: 1200, h: 900},
-"ligne_1490-1570.png": {src: "images/ligne_1490-1570.png", w: 1200, h: 240},
-"territoires_incas.jpg": {src: "images/territoires_incas.jpg"},
-"fondation_quebec_1608.jpg": {src: "images/fondation_quebec_1608.jpg", w: 1200, h: 901},
-"ligne_1600-1700.png": {src: "images/ligne_1600-1700.png", w: 1200, h: 240},
-"fondation_trois_rivieres.jpg": {src: "images/fondation_trois_rivieres.jpg", w: 1200, h: 801},
-"fondation_montreal.jpg": {src: "images/fondation_montreal.jpg"},
-"fondation_tadoussac.jpg": {src: "images/fondation_tadoussac.jpg", w: 1200, h: 802},
-"ligne_bcad.png": {src: "images/ligne_bcad.png", w: 1200, h: 248},
-"territoire_n-f_1645.jpg": {src: "images/territoire_n-f_1645.jpg", w: 1057, h: 1200},
-"carte_n-f_1645_population.jpg": {src: "images/carte_n-f_1645_population.jpg", w: 1057, h: 1200},
-"territoire_n-f_abcd.jpg": {src: "images/territoire_n-f_abcd.jpg", w: 1057, h: 1200},
-"poste_traite_1645.jpg": {src: "images/poste_traite_1645.jpg", w: 1200, h: 801},
-"population_n-f_1645_autochtones.jpg": {src: "images/population_n-f_1645_autochtones.jpg"},
-"population_n-f_1645_francais.jpg": {src: "images/population_n-f_1645_francais.jpg"},
-"village_iroquoien_campement_algonquien.jpg": {src: "images/village_iroquoien_campement_algonquien.jpg", w: 1200, h: 800},
-"poste_de_traite_1645_militaires.jpg": {src: "images/poste_de_traite_1645_militaires.jpg"},
-"village_iroquoien_1645.jpg": {src: "images/village_iroquoien_1645.jpg"},
-"campement_algonquien.jpg": {src: "images/campement_algonquien.jpg"},
-"colons_terre.jpg": {src: "images/colons_terre.jpg"},
-"cartes_etablissements.jpg": {src: "images/cartes_etablissements.jpg", w: 1200, h: 922},
-"n-f_1645.jpg": {src: "images/n-f_1645.jpg", w: 1200, h: 800},
-"poste_traite_troc.jpg": {src: "images/poste_traite_troc.jpg", w: 1200, h: 801},
-"missionnaire.jpg": {src: "images/missionnaire.jpg"},
-"ceremonie_autochtone_1645.jpg": {src: "images/ceremonie_autochtone_1645.jpg"},
-"catholicisme_1645.jpg": {src: "images/catholicisme_1645.jpg"},
-"broderie_1645.jpg": {src: "images/broderie_1645.jpg", w: 1200, h: 903},
-"art_peinture_1645.jpg": {src: "images/art_peinture_1645.jpg", w: 1200, h: 904},
-"architecture_1645.jpg": {src: "images/architecture_1645.jpg", w: 1200, h: 902},
-"alimentation_1745.jpg": {src: "images/alimentation_1745.jpg"},
-"habillement_1645.jpg": {src: "images/habillement_1645.jpg"},
-"musique_chants_1645.jpg": {src: "images/musique_chants_1645.jpg", w: 1200, h: 902},
-"chant_musique_1645.jpg": {src: "images/chant_musique_1645.jpg", w: 1200, h: 800},
-"fetes_religieuses_1645.jpg": {src: "images/fetes_religieuses_1645.jpg", w: 1200, h: 800},
-"bapteme_1645.jpg": {src: "images/bapteme_1645.jpg", w: 1200, h: 800},
-"mariage_1645.jpg": {src: "images/mariage_1645.jpg", w: 1200, h: 800},
-"divertissement_theatre.jpg": {src: "images/divertissement_theatre.jpg", w: 1200, h: 800},
-"divertissement_recits_1645.jpg": {src: "images/divertissement_recits_1645.jpg", w: 1200, h: 800},
-"deplacement_1645_a.jpg": {src: "images/deplacement_1645_a.jpg", w: 1200, h: 800},
-"deplacement_1645_b.jpg": {src: "images/deplacement_1645_b.jpg", w: 1200, h: 800},
-"troc_1.jpg": {src: "images/troc_1.jpg", w: 1200, h: 800},
-"agriculture_3.jpg": {src: "images/agriculture_3.jpg", w: 1200, h: 800},
-"toboggan_1645.jpg": {src: "images/toboggan_1645.jpg"},
-"voies_communication_1.jpg": {src: "images/voies_communication_1.jpg", w: 1200, h: 800},
-"canot_ecorce_1.jpg": {src: "images/canot_ecorce_1.jpg", w: 1200, h: 800},
-"charrette_boeuf.jpg": {src: "images/charrette_boeuf.jpg", w: 1200, h: 800},
-"navire_francais.jpg": {src: "images/navire_francais.jpg", w: 1200, h: 800},
-"voies_communication_3.jpg": {src: "images/voies_communication_3.jpg", w: 1200, h: 800},
-"voies_communication_2.jpg": {src: "images/voies_communication_2.jpg", w: 1200, h: 800},
-"regime_seigneurial.jpg": {src: "images/regime_seigneurial.jpg"},
-"roi_1645.jpg": {src: "images/roi_1645.jpg", w: 1200, h: 800},
-"roi_decision_1645.jpg": {src: "images/roi_decision_1645.jpg"},
-"gouverneur_missive.jpg": {src: "images/gouverneur_missive.jpg"},
-"gouverneur_defense.jpg": {src: "images/gouverneur_defense.jpg", w: 1200, h: 800},
-"gouverneur_admin.jpg": {src: "images/gouverneur_admin.jpg", w: 1200, h: 800},
-"compagnies_100_1.jpg": {src: "images/compagnies_100_1.jpg", w: 1200, h: 800},
-"compagnies_100_2.jpg": {src: "images/compagnies_100_2.jpg"},
-"compagnies_100_3.jpg": {src: "images/compagnies_100_3.jpg", w: 1200, h: 800},
-"compagnies_100_4.jpg": {src: "images/compagnies_100_4.jpg", w: 1200, h: 800},
-"compagnies_100_5.jpg": {src: "images/compagnies_100_5.jpg", w: 1200, h: 800},
-"groupe_1.jpg": {src: "images/groupe_1.jpg", w: 1200, h: 800},
-"groupe_2.jpg": {src: "images/groupe_2.jpg", w: 1200, h: 800},
-"groupe_3.jpg": {src: "images/groupe_3.jpg", w: 1200, h: 800},
-"groupe_4.jpg": {src: "images/groupe_4.jpg", w: 1200, h: 800},
-"agriculture_4.jpg": {src: "images/agriculture_4.jpg", w: 1200, h: 800},
-"regime_seigneurial_2.jpg": {src: "images/regime_seigneurial_2.jpg", w: 1200, h: 800},
-"commerce_fourures_1.jpg": {src: "images/commerce_fourures_1.jpg", w: 1200, h: 800},
-"portage_1645.jpg": {src: "images/portage_1645.jpg", w: 1200, h: 800},
-"commerce_fourures_2.jpg": {src: "images/commerce_fourures_2.jpg", w: 1200, h: 800},
-"bataille_lac_champlain.jpg": {src: "images/bataille_lac_champlain.jpg", w: 1200, h: 800},
-"voyages_champlain.jpg": {src: "images/voyages_champlain.jpg", w: 1200, h: 800},
-"sceau_royal.jpg": {src: "images/sceau_royal.jpg"},
-"commerce_fourures_3.jpg": {src: "images/commerce_fourures_3.jpg", w: 1200, h: 800},
-"q1.jpg": {src: "images/q1.jpg"},
-"vill_iro_a.jpg": {src: "images/vill_iro_a.jpg", w: 1200, h: 800},
-"cam_alg_a.jpg": {src: "images/cam_alg_a.jpg", w: 1200, h: 800},
-"vill_iro_b.jpg": {src: "images/vill_iro_b.jpg", w: 1200, h: 800},
-"cam_alg_b.jpg": {src: "images/cam_alg_b.jpg", w: 1200, h: 800},
-"cam_alg_c.jpg": {src: "images/cam_alg_c.jpg", w: 1200, h: 800},
-"vill_iro_c.jpg": {src: "images/vill_iro_c.jpg", w: 1200, h: 800},
-"territoire_iro_a.jpg": {src: "images/territoire_iro_a.jpg"},
-"vill_iro_d.jpg": {src: "images/vill_iro_d.jpg", w: 1200, h: 800},
-"agriculture_a.jpg": {src: "images/agriculture_a.jpg", w: 1200, h: 800},
-"chasse_a.jpg": {src: "images/chasse_a.jpg", w: 1200, h: 800},
-"cueillette_a.jpg": {src: "images/cueillette_a.jpg"},
-"peche_a.jpg": {src: "images/peche_a.jpg", w: 1200, h: 800},
-"agriculture_d.jpg": {src: "images/agriculture_d.jpg", w: 1200, h: 800},
-"agriculture_c.jpg": {src: "images/agriculture_c.jpg", w: 1200, h: 800},
-"agriculture_e.jpg": {src: "images/agriculture_e.jpg", w: 1200, h: 800},
-"chasse_b.jpg": {src: "images/chasse_b.jpg"},
-"agriculture_b.jpg": {src: "images/agriculture_b.jpg"},
-"peche_b.jpg": {src: "images/peche_b.jpg"},
-"cueillette_b.jpg": {src: "images/cueillette_b.jpg"}
-}
+  "activites_economiques_iroquoiens.jpg": {
+    "src": "images/activites_economiques_iroquoiens.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "activites_economiques_algonquiens.jpg": {
+    "src": "images/activites_economiques_algonquiens.jpg",
+    "w": 1200,
+    "h": 841
+  },
+  "campement_algonquien_4.jpg": {
+    "src": "images/campement_algonquien_4.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "territoire_algonquiens_1.jpg": {
+    "src": "images/territoire_algonquiens_1.jpg"
+  },
+  "territoire_iroquoien_1.jpg": {
+    "src": "images/territoire_iroquoien_1.jpg"
+  },
+  "iroquoiens_recoltes.jpg": {
+    "src": "images/iroquoiens_recoltes.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "agriculture.jpg": {
+    "src": "images/agriculture.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "chasse_1.jpg": {
+    "src": "images/chasse_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "peche_1.jpg": {
+    "src": "images/peche_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "cueillette.jpg": {
+    "src": "images/cueillette.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "vannerie.jpg": {
+    "src": "images/vannerie.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "vetements.jpg": {
+    "src": "images/vetements.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "poterie_b.jpg": {
+    "src": "images/poterie_b.jpg",
+    "w": 1200,
+    "h": 962
+  },
+  "autochtones_troc.jpg": {
+    "src": "images/autochtones_troc.jpg",
+    "w": 1200,
+    "h": 801
+  },
+  "ressources_troc.jpg": {
+    "src": "images/ressources_troc.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "fabrication_canot.jpg": {
+    "src": "images/fabrication_canot.jpg"
+  },
+  "construction_maison_longue.jpg": {
+    "src": "images/construction_maison_longue.jpg"
+  },
+  "construction_palissade.jpg": {
+    "src": "images/construction_palissade.jpg"
+  },
+  "fabrication_armes.jpg": {
+    "src": "images/fabrication_armes.jpg"
+  },
+  "carte_territoires_physio.jpg": {
+    "src": "images/carte_territoires_physio.jpg"
+  },
+  "village_iroquoien_ete.jpg": {
+    "src": "images/village_iroquoien_ete.jpg"
+  },
+  "village_iroquoien_hiver.jpg": {
+    "src": "images/village_iroquoien_hiver.jpg"
+  },
+  "territoire_iroquoiens_5.jpg": {
+    "src": "images/territoire_iroquoiens_5.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "agriculture_2.jpg": {
+    "src": "images/agriculture_2.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "autochtones_canot.jpg": {
+    "src": "images/autochtones_canot.jpg",
+    "w": 1200,
+    "h": 801
+  },
+  "transport_portage.jpg": {
+    "src": "images/transport_portage.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "canot_ecorce.jpg": {
+    "src": "images/canot_ecorce.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "raquettes.jpg": {
+    "src": "images/raquettes.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "canot_2.jpg": {
+    "src": "images/canot_2.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "transport_sentiers.jpg": {
+    "src": "images/transport_sentiers.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "deplacement_raquettes_1.jpg": {
+    "src": "images/deplacement_raquettes_1.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "sentiers_forestiers.jpg": {
+    "src": "images/sentiers_forestiers.jpg"
+  },
+  "rivieres.jpg": {
+    "src": "images/rivieres.jpg"
+  },
+  "mocassins.jpg": {
+    "src": "images/mocassins.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "confection_vetements.jpg": {
+    "src": "images/confection_vetements.jpg"
+  },
+  "poterie_argile.jpg": {
+    "src": "images/poterie_argile.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "vannerie_ressources.jpg": {
+    "src": "images/vannerie_ressources.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "algonquiens_patriarcat.jpg": {
+    "src": "images/algonquiens_patriarcat.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "iroquoiens_matriarcat.jpg": {
+    "src": "images/iroquoiens_matriarcat.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "iroquoiens_conseil_2.jpg": {
+    "src": "images/iroquoiens_conseil_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "iroquoiens_conseil_femmes.jpg": {
+    "src": "images/iroquoiens_conseil_femmes.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "iroquoiens_conseil.jpg": {
+    "src": "images/iroquoiens_conseil.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "wigwam.jpg": {
+    "src": "images/wigwam.jpg"
+  },
+  "iroquoien_maisons_longues.jpg": {
+    "src": "images/iroquoien_maisons_longues.jpg"
+  },
+  "org_politique_matriarcat.jpg": {
+    "src": "images/org_politique_matriarcat.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "org_politique_patriarcat.jpg": {
+    "src": "images/org_politique_patriarcat.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "iroquoiens_conseil_1.jpg": {
+    "src": "images/iroquoiens_conseil_1.jpg"
+  },
+  "chaman_animisme.jpg": {
+    "src": "images/chaman_animisme.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "chaman_animisme_2.jpg": {
+    "src": "images/chaman_animisme_2.jpg"
+  },
+  "iroquoiens_champs.jpg": {
+    "src": "images/iroquoiens_champs.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "ressources_iroquoiens.jpg": {
+    "src": "images/ressources_iroquoiens.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "fetes_communautes_4.jpg": {
+    "src": "images/fetes_communautes_4.jpg"
+  },
+  "crosse.jpg": {
+    "src": "images/crosse.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "instruments_musique_iroquoiens.jpg": {
+    "src": "images/instruments_musique_iroquoiens.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "aines_3.jpg": {
+    "src": "images/aines_3.jpg"
+  },
+  "chaman_ceremonie_1.jpg": {
+    "src": "images/chaman_ceremonie_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "tradition_orale_4.jpg": {
+    "src": "images/tradition_orale_4.jpg"
+  },
+  "aines_1.jpg": {
+    "src": "images/aines_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "chaman_animisme_3.jpg": {
+    "src": "images/chaman_animisme_3.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "chaman_ceremonie_2.jpg": {
+    "src": "images/chaman_ceremonie_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "chaman_ceremonie_4.jpg": {
+    "src": "images/chaman_ceremonie_4.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "iroquoiens_recits_legendes_1.jpg": {
+    "src": "images/iroquoiens_recits_legendes_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "iroquoiens_recits_legendes_2.jpg": {
+    "src": "images/iroquoiens_recits_legendes_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "incas_cites.jpg": {
+    "src": "images/incas_cites.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "incas_maisons_2.jpg": {
+    "src": "images/incas_maisons_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "territoire_incas_2.jpg": {
+    "src": "images/territoire_incas_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "territoire_incas_3.png": {
+    "src": "images/territoire_incas_3.png"
+  },
+  "incas_pouvoir_hereditaire.jpg": {
+    "src": "images/incas_pouvoir_hereditaire.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "incas_pouvoir_empereur.jpg": {
+    "src": "images/incas_pouvoir_empereur.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "incas_prise_decision.jpg": {
+    "src": "images/incas_prise_decision.jpg",
+    "w": 1200,
+    "h": 801
+  },
+  "incas_organisation_politique.jpg": {
+    "src": "images/incas_organisation_politique.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "iroquoiens_organisation_politique.jpg": {
+    "src": "images/iroquoiens_organisation_politique.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "territoire_incas_4.jpg": {
+    "src": "images/territoire_incas_4.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "territoire_incas_5.jpg": {
+    "src": "images/territoire_incas_5.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "territoire_iroquoien_3.jpg": {
+    "src": "images/territoire_iroquoien_3.jpg",
+    "w": 1200,
+    "h": 960
+  },
+  "chasse_1745.jpg": {
+    "src": "images/chasse_1745.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "cuisson_1500.jpg": {
+    "src": "images/cuisson_1500.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "cuisson_1745.jpg": {
+    "src": "images/cuisson_1745.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "chasse_1500.jpg": {
+    "src": "images/chasse_1500.jpg"
+  },
+  "religion_1500.jpg": {
+    "src": "images/religion_1500.jpg"
+  },
+  "religion_1745.jpg": {
+    "src": "images/religion_1745.jpg"
+  },
+  "village_1500.jpg": {
+    "src": "images/village_1500.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "village_1745.jpg": {
+    "src": "images/village_1745.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "territoire_1500.jpg": {
+    "src": "images/territoire_1500.jpg"
+  },
+  "territoire_1745.jpg": {
+    "src": "images/territoire_1745.jpg"
+  },
+  "produits_europeens_1745.jpg": {
+    "src": "images/produits_europeens_1745.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "groupes_1745_1.jpg": {
+    "src": "images/groupes_1745_1.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "groupes_coueurs_bois_1745.jpg": {
+    "src": "images/groupes_coueurs_bois_1745.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "groupes_militaires_1745.jpg": {
+    "src": "images/groupes_militaires_1745.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "groupes_missionnaires_1745.jpg": {
+    "src": "images/groupes_missionnaires_1745.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "groupes_pecheurs_1745.jpg": {
+    "src": "images/groupes_pecheurs_1745.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "maladies_1745.jpg": {
+    "src": "images/maladies_1745.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "jacques_cartier_1534.jpg": {
+    "src": "images/jacques_cartier_1534.jpg",
+    "w": 1200,
+    "h": 900
+  },
+  "ligne_1490-1570.png": {
+    "src": "images/ligne_1490-1570.png",
+    "w": 1200,
+    "h": 240
+  },
+  "territoires_incas.jpg": {
+    "src": "images/territoires_incas.jpg"
+  },
+  "fondation_quebec_1608.jpg": {
+    "src": "images/fondation_quebec_1608.jpg",
+    "w": 1200,
+    "h": 901
+  },
+  "ligne_1600-1700.png": {
+    "src": "images/ligne_1600-1700.png",
+    "w": 1200,
+    "h": 240
+  },
+  "fondation_trois_rivieres.jpg": {
+    "src": "images/fondation_trois_rivieres.jpg",
+    "w": 1200,
+    "h": 801
+  },
+  "fondation_montreal.jpg": {
+    "src": "images/fondation_montreal.jpg"
+  },
+  "fondation_tadoussac.jpg": {
+    "src": "images/fondation_tadoussac.jpg",
+    "w": 1200,
+    "h": 802
+  },
+  "ligne_bcad.png": {
+    "src": "images/ligne_bcad.png",
+    "w": 1200,
+    "h": 248
+  },
+  "territoire_n-f_1645.jpg": {
+    "src": "images/territoire_n-f_1645.jpg",
+    "w": 1057,
+    "h": 1200
+  },
+  "carte_n-f_1645_population.jpg": {
+    "src": "images/carte_n-f_1645_population.jpg",
+    "w": 1057,
+    "h": 1200
+  },
+  "territoire_n-f_abcd.jpg": {
+    "src": "images/territoire_n-f_abcd.jpg",
+    "w": 1057,
+    "h": 1200
+  },
+  "poste_traite_1645.jpg": {
+    "src": "images/poste_traite_1645.jpg",
+    "w": 1200,
+    "h": 801
+  },
+  "population_n-f_1645_francais.jpg": {
+    "src": "images/population_n-f_1645_francais.jpg"
+  },
+  "village_iroquoien_campement_algonquien.jpg": {
+    "src": "images/village_iroquoien_campement_algonquien.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "poste_de_traite_1645_militaires.jpg": {
+    "src": "images/poste_de_traite_1645_militaires.jpg"
+  },
+  "village_iroquoien_1645.jpg": {
+    "src": "images/village_iroquoien_1645.jpg"
+  },
+  "campement_algonquien.jpg": {
+    "src": "images/campement_algonquien.jpg"
+  },
+  "colons_terre.jpg": {
+    "src": "images/colons_terre.jpg"
+  },
+  "cartes_etablissements.jpg": {
+    "src": "images/cartes_etablissements.jpg",
+    "w": 1200,
+    "h": 922
+  },
+  "n-f_1645.jpg": {
+    "src": "images/n-f_1645.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "poste_traite_troc.jpg": {
+    "src": "images/poste_traite_troc.jpg",
+    "w": 1200,
+    "h": 801
+  },
+  "missionnaire.jpg": {
+    "src": "images/missionnaire.jpg"
+  },
+  "ceremonie_autochtone_1645.jpg": {
+    "src": "images/ceremonie_autochtone_1645.jpg"
+  },
+  "catholicisme_1645.jpg": {
+    "src": "images/catholicisme_1645.jpg"
+  },
+  "broderie_1645.jpg": {
+    "src": "images/broderie_1645.jpg",
+    "w": 1200,
+    "h": 903
+  },
+  "art_peinture_1645.jpg": {
+    "src": "images/art_peinture_1645.jpg",
+    "w": 1200,
+    "h": 904
+  },
+  "architecture_1645.jpg": {
+    "src": "images/architecture_1645.jpg",
+    "w": 1200,
+    "h": 902
+  },
+  "alimentation_1745.jpg": {
+    "src": "images/alimentation_1745.jpg"
+  },
+  "musique_chants_1645.jpg": {
+    "src": "images/musique_chants_1645.jpg",
+    "w": 1200,
+    "h": 902
+  },
+  "chant_musique_1645.jpg": {
+    "src": "images/chant_musique_1645.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "fetes_religieuses_1645.jpg": {
+    "src": "images/fetes_religieuses_1645.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "bapteme_1645.jpg": {
+    "src": "images/bapteme_1645.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "mariage_1645.jpg": {
+    "src": "images/mariage_1645.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "divertissement_theatre.jpg": {
+    "src": "images/divertissement_theatre.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "divertissement_recits_1645.jpg": {
+    "src": "images/divertissement_recits_1645.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "deplacement_1645_a.jpg": {
+    "src": "images/deplacement_1645_a.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "troc_1.jpg": {
+    "src": "images/troc_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "agriculture_3.jpg": {
+    "src": "images/agriculture_3.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "toboggan_1645.jpg": {
+    "src": "images/toboggan_1645.jpg"
+  },
+  "voies_communication_1.jpg": {
+    "src": "images/voies_communication_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "canot_ecorce_1.jpg": {
+    "src": "images/canot_ecorce_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "charrette_boeuf.jpg": {
+    "src": "images/charrette_boeuf.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "navire_francais.jpg": {
+    "src": "images/navire_francais.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "voies_communication_3.jpg": {
+    "src": "images/voies_communication_3.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "voies_communication_2.jpg": {
+    "src": "images/voies_communication_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "regime_seigneurial.jpg": {
+    "src": "images/regime_seigneurial.jpg"
+  },
+  "roi_1645.jpg": {
+    "src": "images/roi_1645.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "gouverneur_missive.jpg": {
+    "src": "images/gouverneur_missive.jpg"
+  },
+  "gouverneur_defense.jpg": {
+    "src": "images/gouverneur_defense.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "gouverneur_admin.jpg": {
+    "src": "images/gouverneur_admin.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "compagnies_100_1.jpg": {
+    "src": "images/compagnies_100_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "compagnies_100_2.jpg": {
+    "src": "images/compagnies_100_2.jpg"
+  },
+  "compagnies_100_3.jpg": {
+    "src": "images/compagnies_100_3.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "compagnies_100_4.jpg": {
+    "src": "images/compagnies_100_4.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "compagnies_100_5.jpg": {
+    "src": "images/compagnies_100_5.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "groupe_1.jpg": {
+    "src": "images/groupe_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "groupe_2.jpg": {
+    "src": "images/groupe_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "groupe_3.jpg": {
+    "src": "images/groupe_3.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "groupe_4.jpg": {
+    "src": "images/groupe_4.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "agriculture_4.jpg": {
+    "src": "images/agriculture_4.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "regime_seigneurial_2.jpg": {
+    "src": "images/regime_seigneurial_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "commerce_fourures_1.jpg": {
+    "src": "images/commerce_fourures_1.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "portage_1645.jpg": {
+    "src": "images/portage_1645.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "commerce_fourures_2.jpg": {
+    "src": "images/commerce_fourures_2.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "bataille_lac_champlain.jpg": {
+    "src": "images/bataille_lac_champlain.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "voyages_champlain.jpg": {
+    "src": "images/voyages_champlain.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "sceau_royal.jpg": {
+    "src": "images/sceau_royal.jpg"
+  },
+  "commerce_fourures_3.jpg": {
+    "src": "images/commerce_fourures_3.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "vill_iro_a.jpg": {
+    "src": "images/vill_iro_a.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "vill_iro_b.jpg": {
+    "src": "images/vill_iro_b.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "cam_alg_c.jpg": {
+    "src": "images/cam_alg_c.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "vill_iro_c.jpg": {
+    "src": "images/vill_iro_c.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "territoire_iro_a.jpg": {
+    "src": "images/territoire_iro_a.jpg"
+  },
+  "vill_iro_d.jpg": {
+    "src": "images/vill_iro_d.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "agriculture_a.jpg": {
+    "src": "images/agriculture_a.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "chasse_a.jpg": {
+    "src": "images/chasse_a.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "cueillette_a.jpg": {
+    "src": "images/cueillette_a.jpg"
+  },
+  "peche_a.jpg": {
+    "src": "images/peche_a.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "agriculture_d.jpg": {
+    "src": "images/agriculture_d.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "agriculture_c.jpg": {
+    "src": "images/agriculture_c.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "agriculture_e.jpg": {
+    "src": "images/agriculture_e.jpg",
+    "w": 1200,
+    "h": 800
+  },
+  "chasse_b.jpg": {
+    "src": "images/chasse_b.jpg"
+  },
+  "agriculture_b.jpg": {
+    "src": "images/agriculture_b.jpg"
+  },
+  "peche_b.jpg": {
+    "src": "images/peche_b.jpg"
+  },
+  "cueillette_b.jpg": {
+    "src": "images/cueillette_b.jpg"
+  }
+};
 
 const QUESTIONS = [
 {

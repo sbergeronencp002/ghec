@@ -534,11 +534,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme l'activité économique pratiquée par les Iroquoiens vers 1500.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens pratiquent la pêche.\n\nAccepter « pêche » ainsi que toute formulation indiquant que les Iroquoiens attrapent ou capturent des poissons. Les réponses mentionnant la pêche au filet ou à l'aide d'un harpon sont également acceptées.",
- updatedAt: "2026-10-29T01:59:26.653Z"
+ updatedAt: "2026-10-29T01:59:50.528Z"
 },
 {
  id: "Q11",

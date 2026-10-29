@@ -405,7 +405,8 @@ const IMAGE_DB = {
 "vannerie_a.jpg": {src: "images/vannerie_a.jpg", w: 1200, h: 800},
 "poterie_vannerie_a.jpg": {src: "images/poterie_vannerie_a.jpg"},
 "vannerie_b.jpg": {src: "images/vannerie_b.jpg", w: 1200, h: 900},
-"animisme_a.jpg": {src: "images/animisme_a.jpg", w: 1200, h: 800}
+"animisme_a.jpg": {src: "images/animisme_a.jpg", w: 1200, h: 800},
+"animisme_c.jpg": {src: "images/animisme_c.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -952,10 +953,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme un élément de la spiritualité des Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "animisme_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "animisme_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens pratiquent l'animisme.\n\nAccepter « animisme » ou une formulation décrivant correctement cette croyance, notamment la présence d'esprits dans les êtres et les éléments de la nature.",
- updatedAt: "2026-10-29T20:09:48.395Z"
+ updatedAt: "2026-10-29T20:14:50.788Z"
 },
 {
  id: "Q37",

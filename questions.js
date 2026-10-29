@@ -382,7 +382,8 @@ const IMAGE_DB = {
 "cam_alg_b.jpg": {src: "images/cam_alg_b.jpg", w: 1200, h: 800},
 "cam_alg_c.jpg": {src: "images/cam_alg_c.jpg", w: 1200, h: 800},
 "vill_iro_c.jpg": {src: "images/vill_iro_c.jpg", w: 1200, h: 800},
-"territoire_iro_a.jpg": {src: "images/territoire_iro_a.jpg"}
+"territoire_iro_a.jpg": {src: "images/territoire_iro_a.jpg"},
+"vill_iro_d.jpg": {src: "images/vill_iro_d.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -470,10 +471,10 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 1",
  enonce: "Nomme un élément du territoire qui influence l'emplacement des villages iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Iroquoiens établissent leurs villages près des cours d'eau.\n\nAccepter toute réponse indiquant que les villages iroquoiens sont établis près des cours d'eau (fleuves, rivières ou lacs) ou près des terres cultivables favorables à l'agriculture.",
- updatedAt: "2026-10-29T00:10:33.012Z"
+ updatedAt: "2026-10-29T00:15:35.694Z"
 },
 {
  id: "Q7",

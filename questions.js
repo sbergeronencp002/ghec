@@ -13,7 +13,7 @@ const REGLETTES = {
 "Q12": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q13": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q14": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
-"Q15": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q15": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q16": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q17": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q18": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -380,7 +380,8 @@ const IMAGE_DB = {
 "agriculture_b.jpg": {src: "images/agriculture_b.jpg"},
 "peche_b.jpg": {src: "images/peche_b.jpg"},
 "cueillette_b.jpg": {src: "images/cueillette_b.jpg"},
-"vill_iro_g.jpg": {src: "images/vill_iro_g.jpg"}
+"vill_iro_g.jpg": {src: "images/vill_iro_g.jpg"},
+"vill_iro_f.jpg": {src: "images/vill_iro_f.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -605,17 +606,17 @@ const QUESTIONS = [
 {
  id: "Q15",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Caractériser un territoire",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme l’activité pratiquée par les Iroquoiens.",
- aspects: [{aspect: "Vie quotidienne"}, {aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "vetements.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "La confection de vêtements.",
- updatedAt: "2026-08-14T13:27:25.331Z"
+ soustag: "Caractériser un territoire - 1",
+ enonce: "Observe l'illustration. Nomme un élément naturel lié à l'eau que l'on retrouve sur le territoire des Iroquoiens vers 1500.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1500, on retrouve de grands cours d'eau sur le territoire occupé par les Iroquoiens.\n\nAccepter toute réponse mentionnant un fleuve, une rivière, un lac ou un cours d'eau. Les formulations équivalentes sont acceptées, mais l'identification précise du fleuve Saint-Laurent ou des Grands Lacs ne doit pas être exigée à partir de cette illustration seule.",
+ updatedAt: "2026-10-29T02:30:08.924Z"
 },
 {
  id: "Q16",

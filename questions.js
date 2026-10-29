@@ -2,7 +2,7 @@ const REGLETTES = {
 "Q1": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q2": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q3": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q4": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q4": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q5": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q6": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q7": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -439,14 +439,14 @@ const QUESTIONS = [
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
+ points: 2,
+ soustag: "Établir 1 fait - 2",
  enonce: "Nomme les deux régions occupées par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_a.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens occupent les Basses-terres du Saint-Laurent ou la région des Grands Lacs.\n\nAccepter toute réponse mentionnant les Basses-terres du Saint-Laurent et la région des Grands Lacs. Les formulations « près du fleuve Saint-Laurent et des Grands Lacs » ou « dans la vallée du Saint-Laurent et autour des Grands Lacs » peuvent également être acceptées.",
- updatedAt: "2026-10-29T00:04:23.763Z"
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Vers 1500, les villages iroquoiens sont principalement établis près du fleuve Saint-Laurent et des Grands Lacs.\n\nAccepter toute réponse indiquant que les villages iroquoiens sont situés en bordure du fleuve Saint-Laurent et des Grands Lacs. Les formulations équivalentes, comme « près du Saint-Laurent et des Grands Lacs » ou « le long du fleuve et autour des Grands Lacs », sont également acceptées.",
+ updatedAt: "2026-10-29T00:22:04.800Z"
 },
 {
  id: "Q5",

@@ -2166,8 +2166,8 @@ async function genererDocx(includeGuide=false) {
                 if(bytes) {
                   const ext = col.ref.split('.').pop().toLowerCase();
                   const imgType = (ext === 'jpg' || ext === 'jpeg') ? 'jpg' : 'png';
-                  const docW = Math.min(200, imgData.w);
-                  const docH = Math.round(docW / (imgData.w / imgData.h));
+                  const docW = 6 * 96 / 2.54; // Largeur par défaut : 6 cm (96 px par pouce).
+                  const docH = docW * imgData.h / imgData.w;
                   cellChildren.push(imgWithBorder(bytes, imgType, docW, docH));
                 }
               }
@@ -2198,8 +2198,8 @@ async function genererDocx(includeGuide=false) {
                   if(bytes) {
                     const ext = col.ref.split('.').pop().toLowerCase();
                     const imgType = (ext === 'jpg' || ext === 'jpeg') ? 'jpg' : 'png';
-                    const docW = Math.min(180, imgData.w);
-                    const docH = Math.round(docW / (imgData.w / imgData.h));
+                    const docW = 6 * 96 / 2.54; // Largeur par défaut : 6 cm (96 px par pouce).
+                    const docH = docW * imgData.h / imgData.w;
                     cellChildren.push(imgWithBorder(bytes, imgType, docW, docH));
                   }
                 }

@@ -920,11 +920,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent deux expressions de l'art pratiquées par les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
- aspects: [{aspect: "Culture"}],
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "poterie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["", ""]},
  guide: {type: "grille", entetes: ["Élément 1", "Élément 2"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-29T20:02:36.390Z"
+ updatedAt: "2026-10-29T20:05:34.978Z"
 },
 {
  id: "Q35",

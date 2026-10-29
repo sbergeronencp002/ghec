@@ -9,7 +9,7 @@ const REGLETTES = {
 "Q8": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q9": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q10": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q11": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q11": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q12": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q13": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -387,7 +387,8 @@ const IMAGE_DB = {
 "agriculture_a.jpg": {src: "images/agriculture_a.jpg", w: 1200, h: 800},
 "chasse_a.jpg": {src: "images/chasse_a.jpg", w: 1200, h: 800},
 "cueillette_a.jpg": {src: "images/cueillette_a.jpg"},
-"peche_a.jpg": {src: "images/peche_a.jpg", w: 1200, h: 800}
+"peche_a.jpg": {src: "images/peche_a.jpg", w: 1200, h: 800},
+"agriculture_d.jpg": {src: "images/agriculture_d.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -546,14 +547,14 @@ const QUESTIONS = [
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme l’activité pratiquée par les peuples autochtones.",
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "Nomme deux plantes cultivées par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Ils pratiquent la pêche.",
- updatedAt: "2026-08-20T00:35:54.447Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Vers 1500, les Iroquoiens cultivent du maïs, des courges et des haricots.\n\nAccepter deux plantes différentes parmi le maïs, les haricots et les courges. Les formulations équivalentes, comme « blé d'Inde » pour le maïs ou « citrouille » pour une variété de courge, sont également acceptées.",
+ updatedAt: "2026-10-29T02:04:13.527Z"
 },
 {
  id: "Q12",

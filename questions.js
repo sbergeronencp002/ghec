@@ -23,7 +23,7 @@ const REGLETTES = {
 "Q22": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q23": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q24": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q25": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
+"Q25": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q26": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q27": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q28": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -391,7 +391,8 @@ const IMAGE_DB = {
 "riviere_3.jpg": {src: "images/riviere_3.jpg"},
 "riviere_4.jpg": {src: "images/riviere_4.jpg", w: 1200, h: 800},
 "maison_longue_1.jpg": {src: "images/maison_longue_1.jpg"},
-"ressources_a.jpg": {src: "images/ressources_a.jpg", w: 1200, h: 800}
+"ressources_a.jpg": {src: "images/ressources_a.jpg", w: 1200, h: 800},
+"canot_1.jpg": {src: "images/canot_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -761,17 +762,17 @@ const QUESTIONS = [
 {
  id: "Q25",
  niveau: 3,
- oi: "Situer dans l'espace",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
- soustag: "Situer 1 élément dans l'espace",
- enonce: "Indique la lettre correspondant au territoire occupé par les Iroquoiens vers 1500.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoires_physio.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
- reponse: false,
- guide: "B",
- updatedAt: "2026-08-14T14:58:38.208Z"
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme le moyen de transport utilisé par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_1.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens utilisent le canot pour se déplacer.\n\nAccepter « canot » ou « canot d'écorce », ainsi que les formulations équivalentes.",
+ updatedAt: "2026-10-29T15:17:49.332Z"
 },
 {
  id: "Q26",

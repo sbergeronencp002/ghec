@@ -405,9 +405,9 @@ const IMAGE_DB = {
 "vannerie_a.jpg": {src: "images/vannerie_a.jpg", w: 1200, h: 800},
 "poterie_vannerie_a.jpg": {src: "images/poterie_vannerie_a.jpg"},
 "vannerie_b.jpg": {src: "images/vannerie_b.jpg", w: 1200, h: 900},
-"animisme_a.jpg": {src: "images/animisme_a.jpg", w: 1200, h: 800},
 "animisme_c.jpg": {src: "images/animisme_c.jpg", w: 1200, h: 800},
-"tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800}
+"tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800},
+"tradition_orale_2.jpg": {src: "images/tradition_orale_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -969,7 +969,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un moyen utilisé par les Iroquoiens vers 1500 pour transmettre leurs connaissances et leurs traditions.",
  aspects: [{aspect: "Communication"}, {aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "animisme_a.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens transmettent leurs connaissances et leurs traditions par la parole, grâce à la tradition orale.\n\nAccepter « tradition orale », « transmission orale » ou toute formulation indiquant que les connaissances, les histoires et les coutumes sont transmises verbalement, notamment par les récits des aînés.",
  updatedAt: "2026-10-29T20:17:11.257Z"

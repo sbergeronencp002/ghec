@@ -17,7 +17,7 @@ const REGLETTES = {
 "Q16": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q17": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q18": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q19": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q19": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q20": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q21": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q22": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
@@ -386,7 +386,8 @@ const IMAGE_DB = {
 "vil_iro_hiver.jpg": {src: "images/vil_iro_hiver.jpg", w: 1200, h: 800},
 "vil_iro_ete_2.jpg": {src: "images/vil_iro_ete_2.jpg"},
 "vil_iro_hiver_2.jpg": {src: "images/vil_iro_hiver_2.jpg"},
-"riviere_1.jpg": {src: "images/riviere_1.jpg", w: 1200, h: 800}
+"riviere_1.jpg": {src: "images/riviere_1.jpg", w: 1200, h: 800},
+"riviere_2.jpg": {src: "images/riviere_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -671,17 +672,17 @@ const QUESTIONS = [
 {
  id: "Q19",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme la façon utilisée par les peuples autochtones pour échanger des ressources vers 1500.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Le troc.",
- updatedAt: "2026-08-20T00:35:04.606Z"
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B illustrent des atouts et des contraintes des cours d'eau pour les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "riviere_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "riviere_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Atout", "Contrainte"]},
+ guide: {type: "grille", entetes: ["Atout", "Contrainte"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-29T11:41:32.647Z"
 },
 {
  id: "Q20",

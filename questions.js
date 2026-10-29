@@ -198,7 +198,8 @@ const REGLETTES = {
 "Q197": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q198": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q199": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q200": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]}
+"Q200": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
+"Q201": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -400,7 +401,8 @@ const IMAGE_DB = {
 "raquettes_2.jpg": {src: "images/raquettes_2.jpg", w: 1200, h: 800},
 "mocassins_2.jpg": {src: "images/mocassins_2.jpg", w: 1200, h: 800},
 "territoire_iro_b.jpg": {src: "images/territoire_iro_b.jpg"},
-"poterie_a.jpg": {src: "images/poterie_a.jpg"}
+"poterie_a.jpg": {src: "images/poterie_a.jpg"},
+"vannerie_a.jpg": {src: "images/vannerie_a.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -3437,5 +3439,20 @@ const QUESTIONS = [
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "A",
  updatedAt: "2026-10-26T17:40:19.697Z"
+},
+{
+ id: "Q201",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme une expression de l’art pratiquée par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie_a.jpg", soustitre: "Bataille du lac Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "« Vers 1500, les Iroquoiens pratiquent la vannerie. »\n\nRéponses acceptées :\n- Le tressage de paniers.\n- La fabrication de paniers tressés.",
+ updatedAt: "2026-10-29T15:48:37.527Z"
 }
 ]

@@ -6,7 +6,7 @@ const REGLETTES = {
 "Q5": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q6": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q7": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q8": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q8": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q9": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q10": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q11": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -384,7 +384,8 @@ const IMAGE_DB = {
 "vill_iro_c.jpg": {src: "images/vill_iro_c.jpg", w: 1200, h: 800},
 "territoire_iro_a.jpg": {src: "images/territoire_iro_a.jpg"},
 "vill_iro_d.jpg": {src: "images/vill_iro_d.jpg", w: 1200, h: 800},
-"agriculture_a.jpg": {src: "images/agriculture_a.jpg", w: 1200, h: 800}
+"agriculture_a.jpg": {src: "images/agriculture_a.jpg", w: 1200, h: 800},
+"chasse_a.jpg": {src: "images/chasse_a.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -495,17 +496,17 @@ const QUESTIONS = [
 {
  id: "Q8",
  niveau: 3,
- oi: "Caractériser un territoire",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Algonquiens vers 1500"],
- points: 2,
- soustag: "Caractériser un territoire - 2",
- enonce: "Nomme deux caractéristiques du territoire occupé par les Algonquiens vers 1500.",
- aspects: [{aspect: "Territoire"}],
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme l'activité économique pratiquée par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquiens_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Relief : un territoire généralement accidenté, avec des collines et des plateaux;\nClimat : des étés courts et des hivers longs et froids;\nHydrographie : présence de nombreux lacs et rivières;\nRessources : de vastes forêts ainsi qu'une faune et des ressources aquatiques abondantes.",
- updatedAt: "2026-08-14T13:14:21.418Z"
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens pratiquent la chasse.\n\nAccepter « chasse » ainsi que toute formulation indiquant que les Iroquoiens chassent des animaux pour se nourrir. Les réponses comme « chasser l'orignal » ou « chasser avec des arcs et des flèches » sont également acceptées.",
+ updatedAt: "2026-10-29T01:51:19.790Z"
 },
 {
  id: "Q9",

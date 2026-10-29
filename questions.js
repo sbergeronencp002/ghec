@@ -21,7 +21,7 @@ const REGLETTES = {
 "Q20": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q21": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q22": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q23": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q23": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q24": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q25": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q26": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
@@ -389,7 +389,8 @@ const IMAGE_DB = {
 "riviere_1.jpg": {src: "images/riviere_1.jpg", w: 1200, h: 800},
 "riviere_2.jpg": {src: "images/riviere_2.jpg"},
 "riviere_3.jpg": {src: "images/riviere_3.jpg"},
-"riviere_4.jpg": {src: "images/riviere_4.jpg", w: 1200, h: 800}
+"riviere_4.jpg": {src: "images/riviere_4.jpg", w: 1200, h: 800},
+"maison_longue_1.jpg": {src: "images/maison_longue_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -731,22 +732,16 @@ const QUESTIONS = [
 {
  id: "Q23",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- soustag: "Mettre en relation des faits - 4",
- enonce: "Les documents A à D présentent des activités pratiquées par les Iroquoiens vers 1500. Associe chaque document à l’activité correspondante.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
- documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "fabrication_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "construction_maison_longue.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "construction_palissade.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "fabrication_armes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
- ],
- reponse: {type: "mettre-en-relation", elements: ["Construction d'une maison longue", "Construction d'une palissade", "Fabrication d'armes", "Fabrication d'un canot d'écorce"]},
- guide: {type: "grille", entetes: ["Construction d'une maison longue", "Construction d'une palissade", "Fabrication d'armes", "Fabrication d'un canot d'écorce"], rangees: [["B", "C", "D", "A"]]},
- updatedAt: "2026-08-14T14:21:27.038Z"
+ enonce: "Explique pourquoi les forêts du territoire favorisent la construction des maisons longues chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "maison_longue_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1500, les forêts favorisent la construction des maisons longues, car elles fournissent le bois nécessaire à leur construction.\n\nAccepter toute réponse établissant un lien entre la présence de forêts et la disponibilité du bois ou de l'écorce utilisés pour construire les maisons longues.",
+ updatedAt: "2026-10-29T14:42:22.457Z"
 },
 {
  id: "Q24",

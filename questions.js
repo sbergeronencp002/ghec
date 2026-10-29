@@ -19,7 +19,7 @@ const REGLETTES = {
 "Q18": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q19": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q20": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q21": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q21": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q22": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q23": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q24": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
@@ -387,7 +387,8 @@ const IMAGE_DB = {
 "vil_iro_ete_2.jpg": {src: "images/vil_iro_ete_2.jpg"},
 "vil_iro_hiver_2.jpg": {src: "images/vil_iro_hiver_2.jpg"},
 "riviere_1.jpg": {src: "images/riviere_1.jpg", w: 1200, h: 800},
-"riviere_2.jpg": {src: "images/riviere_2.jpg"}
+"riviere_2.jpg": {src: "images/riviere_2.jpg"},
+"riviere_3.jpg": {src: "images/riviere_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -701,22 +702,16 @@ const QUESTIONS = [
 {
  id: "Q21",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- soustag: "Mettre en relation des faits - 4",
- enonce: "Les documents A à D présentent des activités pratiquées par les Iroquoiens vers 1500. Associe chaque document à l’activité correspondante.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "chasse_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "peche_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "cueillette.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "autochtones_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
- ],
- reponse: {type: "mettre-en-relation", elements: ["Chasse", "Cueillette", "Pêche", "Troc"]},
- guide: {type: "grille", entetes: ["Chasse", "Cueillette", "Pêche", "Troc"], rangees: [["A", "C", "B", "D"]]},
- updatedAt: "2026-08-14T14:52:23.253Z"
+ enonce: "Explique pourquoi les cours d'eau facilitent les déplacements des Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "riviere_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1500, les cours d'eau facilitent les déplacements des Iroquoiens, car ils leur permettent de voyager en canot sur le territoire.\n\nAccepter toute réponse indiquant que les fleuves, les rivières ou les lacs permettent aux Iroquoiens de se déplacer en canot et d'accéder à différentes parties du territoire.",
+ updatedAt: "2026-10-29T14:33:17.777Z"
 },
 {
  id: "Q22",

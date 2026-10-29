@@ -3452,10 +3452,10 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l’illustration. Nomme une expression de l’art pratiquée par les Iroquoiens vers 1500.",
- aspects: [{aspect: "Culture"}],
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie_a.jpg", soustitre: "Bataille du lac Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "« Vers 1500, les Iroquoiens pratiquent la vannerie. »\n\nRéponses acceptées :\n- Le tressage de paniers.\n- La fabrication de paniers tressés.",
- updatedAt: "2026-10-29T15:48:37.527Z"
+ updatedAt: "2026-10-29T20:05:59.430Z"
 }
 ]

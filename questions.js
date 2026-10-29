@@ -461,11 +461,11 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi les plaines favorisent l'agriculture chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Territoire"}],
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les plaines favorisent l'agriculture chez les Iroquoiens, car les terrains plats facilitent la culture de la terre.\n\nAccepter toute réponse indiquant que les plaines ou les terrains plats facilitent l'aménagement des champs et la culture des plantes. L'élève n'a pas besoin d'utiliser le mot « plaine » si son explication établit clairement le lien entre le relief plat et l'agriculture.",
- updatedAt: "2026-10-28T20:25:28.377Z"
+ updatedAt: "2026-10-29T14:37:34.001Z"
 },
 {
  id: "Q6",

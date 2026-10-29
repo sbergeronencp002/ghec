@@ -150,9 +150,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=65`, `style.css?v=37`, `filters.js?v=6`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=66`, `style.css?v=37`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v20'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v21'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -431,3 +431,5 @@ Le 29 octobre 2026, largeur par défaut des images des documents du cahier DOCX 
 Le 29 octobre 2026, aperçu au survol et au focus clavier des tuiles : énoncé et documents complets après 350 ms, chargement partagé, fermeture Échap/défilement/clic. App v64, style v37, cache ghec-v19.
 
 Le 29 octobre 2026, option « Titres des documents » du cahier, cochée par défaut, appliquée à l’aperçu et au DOCX. Elle masque les titres principaux sans supprimer les sous-titres ni les sources. App v65, cache ghec-v20.
+
+Le 29 octobre 2026, marges DOCX de 1 cm sur les quatre côtés, pour cahier et guide; largeur utile des tableaux recalculée sur le format Lettre. App v66, cache ghec-v21.

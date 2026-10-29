@@ -1925,7 +1925,8 @@ async function genererDocx(includeGuide=false) {
     const BORDER = { style: BorderStyle.SINGLE, size: 4, color: '000000' };
     const BORDERS = { top: BORDER, bottom: BORDER, left: BORDER, right: BORDER };
     const CELL_MARGINS = { top: 60, bottom: 60, left: 80, right: 80 };
-    const PAGE_W = 9360; // 6.5 inches content width in DXA
+    const PAGE_MARGIN = Math.round(1440 / 2.54); // 1 cm en DXA (twips).
+    const PAGE_W = 12240 - 2 * PAGE_MARGIN; // Largeur utile de la page Lettre.
     const COL_2CM = 1134; // 2 cm in DXA
 
     // DrawingML ellipse shape: injects raw wp:inline XML into a w:r run
@@ -2554,7 +2555,7 @@ async function genererDocx(includeGuide=false) {
         properties: {
           page: {
             size: { width: 12240, height: 15840 },
-            margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 }
+            margin: { top: PAGE_MARGIN, right: PAGE_MARGIN, bottom: PAGE_MARGIN, left: PAGE_MARGIN }
           }
         },
         children

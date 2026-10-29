@@ -905,11 +905,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Établir 1 fait - 2",
  enonce: "Observe l’illustration. Nomme deux expressions de l’art pratiquées par les Iroquoiens vers 1500.",
- aspects: [{aspect: "Culture"}],
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_vannerie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens pratiquent la poterie et la vannerie.\n\nAccepter « poterie » et « vannerie », ainsi que les formulations équivalentes comme « fabrication de pots en argile » et « fabrication de paniers tressés ». Les deux pratiques doivent être correctement identifiées; deux objets relevant d'une même pratique ne constituent pas deux réponses distinctes.",
- updatedAt: "2026-10-29T19:58:41.075Z"
+ updatedAt: "2026-10-29T20:06:30.487Z"
 },
 {
  id: "Q34",

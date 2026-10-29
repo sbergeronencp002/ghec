@@ -680,11 +680,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent des atouts et des contraintes des cours d'eau pour les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
- aspects: [{aspect: "Territoire"}],
+ aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "riviere_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "riviere_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Atout", "Contrainte"]},
  guide: {type: "grille", entetes: ["Atout", "Contrainte"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-29T11:41:32.647Z"
+ updatedAt: "2026-10-29T14:36:48.633Z"
 },
 {
  id: "Q20",

@@ -544,12 +544,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Nomme deux plantes cultivées par les Iroquoiens vers 1500.",
+ enonce: "Observe l'illustration. Nomme deux plantes cultivées par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Vers 1500, les Iroquoiens cultivent du maïs, des courges et des haricots.\n\nAccepter deux plantes différentes parmi le maïs, les haricots et les courges. Les formulations équivalentes, comme « blé d'Inde » pour le maïs ou « citrouille » pour une variété de courge, sont également acceptées.",
- updatedAt: "2026-10-29T02:04:13.527Z"
+ updatedAt: "2026-10-29T10:16:15.866Z"
 },
 {
  id: "Q12",

@@ -33,7 +33,7 @@ const REGLETTES = {
 "Q32": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q33": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q34": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q35": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q35": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q36": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q37": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -215,7 +215,7 @@ const IMAGE_DB = {
 "cueillette.jpg": {src: "images/cueillette.jpg", w: 1200, h: 800},
 "vannerie.jpg": {src: "images/vannerie.jpg", w: 1200, h: 960},
 "vetements.jpg": {src: "images/vetements.jpg", w: 1200, h: 800},
-"poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 962},
+"poterie_b.jpg": {src: "images/poterie_b.jpg", w: 1200, h: 900},
 "autochtones_troc.jpg": {src: "images/autochtones_troc.jpg", w: 1200, h: 801},
 "ressources_troc.jpg": {src: "images/ressources_troc.jpg", w: 1200, h: 800},
 "fabrication_canot.jpg": {src: "images/fabrication_canot.jpg"},
@@ -403,7 +403,8 @@ const IMAGE_DB = {
 "territoire_iro_b.jpg": {src: "images/territoire_iro_b.jpg"},
 "poterie_a.jpg": {src: "images/poterie_a.jpg"},
 "vannerie_a.jpg": {src: "images/vannerie_a.jpg", w: 1200, h: 800},
-"poterie_vannerie_a.jpg": {src: "images/poterie_vannerie_a.jpg"}
+"poterie_vannerie_a.jpg": {src: "images/poterie_vannerie_a.jpg"},
+"vannerie_b.jpg": {src: "images/vannerie_b.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -928,17 +929,17 @@ const QUESTIONS = [
 {
  id: "Q35",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme un moyen de transport utilisé par les Iroquoiens pour se déplacer en hiver.",
- aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "La raquette.",
- updatedAt: "2026-08-14T18:27:51.016Z"
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B illustrent deux expressions de l'art pratiquées par les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vannerie_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Poterie", "Vannerie"]},
+ guide: {type: "grille", entetes: ["Poterie", "Vannerie"], rangees: [["A", "B"]]},
+ updatedAt: "2026-10-29T20:04:17.118Z"
 },
 {
  id: "Q36",

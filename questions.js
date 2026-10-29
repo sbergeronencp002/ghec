@@ -406,7 +406,8 @@ const IMAGE_DB = {
 "poterie_vannerie_a.jpg": {src: "images/poterie_vannerie_a.jpg"},
 "vannerie_b.jpg": {src: "images/vannerie_b.jpg", w: 1200, h: 900},
 "animisme_a.jpg": {src: "images/animisme_a.jpg", w: 1200, h: 800},
-"animisme_c.jpg": {src: "images/animisme_c.jpg", w: 1200, h: 800}
+"animisme_c.jpg": {src: "images/animisme_c.jpg", w: 1200, h: 800},
+"tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -980,12 +981,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi le canot est utile aux Iroquoiens en été.",
- aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoiens_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Explique comment les Iroquoiens transmettent leurs connaissances et leurs traditions aux enfants vers 1500.",
+ aspects: [{aspect: "Communication"}, {aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le canot est utile parce qu’il permet aux Iroquoiens de se déplacer sur les cours d’eau et d’accéder plus facilement aux différentes parties du territoire.",
- updatedAt: "2026-08-14T18:26:39.253Z"
+ guide: "Vers 1500, les Iroquoiens transmettent leurs connaissances et leurs traditions oralement, notamment lorsque les aînés racontent des histoires et partagent leurs savoirs avec les plus jeunes.\n\nAccepter toute réponse indiquant que les connaissances et les traditions sont transmises par la parole, notamment grâce aux récits, aux histoires, aux enseignements des aînés ou aux échanges entre les générations. L'expression « tradition orale » n'est pas obligatoire si le moyen de transmission est clairement expliqué.",
+ updatedAt: "2026-10-29T20:23:01.748Z"
 },
 {
  id: "Q39",

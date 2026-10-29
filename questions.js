@@ -386,7 +386,8 @@ const IMAGE_DB = {
 "vill_iro_d.jpg": {src: "images/vill_iro_d.jpg", w: 1200, h: 800},
 "agriculture_a.jpg": {src: "images/agriculture_a.jpg", w: 1200, h: 800},
 "chasse_a.jpg": {src: "images/chasse_a.jpg", w: 1200, h: 800},
-"cueillette_a.jpg": {src: "images/cueillette_a.jpg"}
+"cueillette_a.jpg": {src: "images/cueillette_a.jpg"},
+"peche_a.jpg": {src: "images/peche_a.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -534,10 +535,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme l'activité économique pratiquée par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "peche_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens pratiquent la pêche.\n\nAccepter « pêche » ainsi que toute formulation indiquant que les Iroquoiens attrapent ou capturent des poissons. Les réponses mentionnant la pêche au filet ou à l'aide d'un harpon sont également acceptées.",
- updatedAt: "2026-10-29T01:57:41.554Z"
+ updatedAt: "2026-10-29T01:59:26.653Z"
 },
 {
  id: "Q11",

@@ -381,7 +381,8 @@ const IMAGE_DB = {
 "vill_iro_b.jpg": {src: "images/vill_iro_b.jpg", w: 1200, h: 800},
 "cam_alg_b.jpg": {src: "images/cam_alg_b.jpg", w: 1200, h: 800},
 "cam_alg_c.jpg": {src: "images/cam_alg_c.jpg", w: 1200, h: 800},
-"vill_iro_c.jpg": {src: "images/vill_iro_c.jpg", w: 1200, h: 800}
+"vill_iro_c.jpg": {src: "images/vill_iro_c.jpg", w: 1200, h: 800},
+"territoire_iro_a.jpg": {src: "images/territoire_iro_a.jpg"}
 }
 
 const QUESTIONS = [
@@ -435,15 +436,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Algonquiens vers 1500"],
+ periodes: ["Iroquoiens vers 1500"],
  points: 1,
- soustag: "Établir 1 fait - 2",
- enonce: "Nomme deux activités pratiquées par les Algonquiens pour se nourrir.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "cam_alg_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme les deux régions occupées par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_a.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Algonquiens pratiquent la chasse et la pêche pour se procurer de la nourriture.\n\nAccepter deux activités différentes parmi la chasse, la pêche et la cueillette. Les formulations équivalentes, comme « chasser des animaux », « attraper des poissons » ou « ramasser des petits fruits », sont également acceptées.",
- updatedAt: "2026-10-28T20:18:44.337Z"
+ guide: "Vers 1500, les Iroquoiens occupent les Basses-terres du Saint-Laurent ou la région des Grands Lacs.\n\nAccepter toute réponse mentionnant les Basses-terres du Saint-Laurent et la région des Grands Lacs. Les formulations « près du fleuve Saint-Laurent et des Grands Lacs » ou « dans la vallée du Saint-Laurent et autour des Grands Lacs » peuvent également être acceptées.",
+ updatedAt: "2026-10-29T00:04:23.763Z"
 },
 {
  id: "Q5",

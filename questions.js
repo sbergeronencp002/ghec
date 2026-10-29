@@ -30,7 +30,7 @@ const REGLETTES = {
 "Q29": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q30": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q31": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
-"Q32": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q32": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q33": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q34": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q35": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -399,7 +399,8 @@ const IMAGE_DB = {
 "toboggan_2.jpg": {src: "images/toboggan_2.jpg", w: 1200, h: 800},
 "raquettes_2.jpg": {src: "images/raquettes_2.jpg", w: 1200, h: 800},
 "mocassins_2.jpg": {src: "images/mocassins_2.jpg", w: 1200, h: 800},
-"territoire_iro_b.jpg": {src: "images/territoire_iro_b.jpg"}
+"territoire_iro_b.jpg": {src: "images/territoire_iro_b.jpg"},
+"poterie_a.jpg": {src: "images/poterie_a.jpg"}
 }
 
 const QUESTIONS = [
@@ -879,16 +880,17 @@ const QUESTIONS = [
 {
  id: "Q32",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 2,
- enonce: "Explique pourquoi les cours d’eau du territoire habité par les Iroquoiens sont un atout.",
- aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_canot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_iroquoiens_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les cours d’eau sont un atout parce qu’ils facilitent l’accès au territoire et les déplacements.",
- updatedAt: "2026-08-15T16:39:42.825Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme une expression de l’art pratiquée par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "« Vers 1500, les Iroquoiens pratiquent la poterie. »\n\nRéponses acceptées :\n- La fabrication de poteries.\n- La fabrication de pots en argile.",
+ updatedAt: "2026-10-29T15:46:53.035Z"
 },
 {
  id: "Q33",

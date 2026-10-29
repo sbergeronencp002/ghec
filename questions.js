@@ -16,7 +16,7 @@ const REGLETTES = {
 "Q15": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q16": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q17": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q18": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q18": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q19": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q20": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q21": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
@@ -383,7 +383,9 @@ const IMAGE_DB = {
 "vill_iro_g.jpg": {src: "images/vill_iro_g.jpg"},
 "vill_iro_f.jpg": {src: "images/vill_iro_f.jpg", w: 1200, h: 800},
 "vil_iro_ete.jpg": {src: "images/vil_iro_ete.jpg", w: 1200, h: 800},
-"vil_iro_hiver.jpg": {src: "images/vil_iro_hiver.jpg", w: 1200, h: 800}
+"vil_iro_hiver.jpg": {src: "images/vil_iro_hiver.jpg", w: 1200, h: 800},
+"vil_iro_ete_2.jpg": {src: "images/vil_iro_ete_2.jpg"},
+"vil_iro_hiver_2.jpg": {src: "images/vil_iro_hiver_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -653,16 +655,17 @@ const QUESTIONS = [
 {
  id: "Q18",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les peuples autochtones pratiquent le troc vers 1500.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "autochtones_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "ressources_troc.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les peuples autochtones pratiquent le troc pour obtenir des ressources ou des objets qu’ils ne possèdent pas ou qu’ils ne produisent pas eux-mêmes.",
- updatedAt: "2026-08-20T00:34:30.822Z"
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B illustrent des atouts et des contraintes du climat pour les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vil_iro_ete_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vil_iro_hiver_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Atout", "Contrainte"]},
+ guide: {type: "grille", entetes: ["Atout", "Contrainte"], rangees: [["A", "B"]]},
+ updatedAt: "2026-10-29T10:19:28.041Z"
 },
 {
  id: "Q19",

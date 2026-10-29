@@ -694,11 +694,11 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi le climat limite la pratique de l'agriculture chez les Iroquoiens en hiver vers 1500.",
- aspects: [{aspect: "Territoire"}],
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vil_iro_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vil_iro_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "En hiver, les Iroquoiens ne peuvent pas cultiver leurs champs, car le froid et la neige empêchent la croissance des plantes.\n\nRéponses acceptées : Accepter toute réponse établissant un lien entre le froid, la neige ou le gel du sol et l'impossibilité de pratiquer l'agriculture pendant l'hiver.",
- updatedAt: "2026-10-29T11:46:04.600Z"
+ updatedAt: "2026-10-29T14:36:13.631Z"
 },
 {
  id: "Q21",

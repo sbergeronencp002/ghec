@@ -10,7 +10,7 @@ const REGLETTES = {
 "Q9": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q10": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q11": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q12": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q12": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q13": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q14": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q15": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -388,7 +388,9 @@ const IMAGE_DB = {
 "chasse_a.jpg": {src: "images/chasse_a.jpg", w: 1200, h: 800},
 "cueillette_a.jpg": {src: "images/cueillette_a.jpg"},
 "peche_a.jpg": {src: "images/peche_a.jpg", w: 1200, h: 800},
-"agriculture_d.jpg": {src: "images/agriculture_d.jpg", w: 1200, h: 800}
+"agriculture_d.jpg": {src: "images/agriculture_d.jpg", w: 1200, h: 800},
+"agriculture_c.jpg": {src: "images/agriculture_c.jpg", w: 1200, h: 800},
+"agriculture_e.jpg": {src: "images/agriculture_e.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -559,17 +561,21 @@ const QUESTIONS = [
 {
  id: "Q12",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme l’activité pratiquée par les peuples autochtones.",
+ points: 2,
+ soustag: "Mettre en relation des faits - 3",
+ enonce: "Les documents A à C présentent trois plantes cultivées par les Iroquoiens vers 1500. Associe chaque plante au document correspondant.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "cueillette.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Ils pratiquent la cueillette.",
- updatedAt: "2026-08-20T00:35:36.760Z"
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "agriculture_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "agriculture_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "agriculture_e.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Courge", "Haricot", "Maïs"]},
+ guide: {type: "grille", entetes: ["Courge", "Haricot", "Maïs"], rangees: [["B", "C", "A"]]},
+ updatedAt: "2026-10-29T02:07:59.924Z"
 },
 {
  id: "Q13",

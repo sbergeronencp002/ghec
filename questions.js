@@ -385,7 +385,8 @@ const IMAGE_DB = {
 "vil_iro_ete.jpg": {src: "images/vil_iro_ete.jpg", w: 1200, h: 800},
 "vil_iro_hiver.jpg": {src: "images/vil_iro_hiver.jpg", w: 1200, h: 800},
 "vil_iro_ete_2.jpg": {src: "images/vil_iro_ete_2.jpg"},
-"vil_iro_hiver_2.jpg": {src: "images/vil_iro_hiver_2.jpg"}
+"vil_iro_hiver_2.jpg": {src: "images/vil_iro_hiver_2.jpg"},
+"riviere_1.jpg": {src: "images/riviere_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -661,11 +662,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent des atouts et des contraintes du climat pour les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vil_iro_ete_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vil_iro_hiver_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Atout", "Contrainte"]},
  guide: {type: "grille", entetes: ["Atout", "Contrainte"], rangees: [["A", "B"]]},
- updatedAt: "2026-10-29T10:19:28.041Z"
+ updatedAt: "2026-10-29T11:39:27.869Z"
 },
 {
  id: "Q19",

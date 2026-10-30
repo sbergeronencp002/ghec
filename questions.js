@@ -40,7 +40,7 @@ const REGLETTES = {
 "Q39": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q40": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q41": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q42": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q42": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q43": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q44": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q45": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -411,7 +411,8 @@ const IMAGE_DB = {
 "coutume_1.jpg": {src: "images/coutume_1.jpg", w: 1200, h: 800},
 "vetements_1.jpg": {src: "images/vetements_1.jpg", w: 1200, h: 900},
 "aliments_2.jpg": {src: "images/aliments_2.jpg", w: 1200, h: 900},
-"aliments_1.jpg": {src: "images/aliments_1.jpg"}
+"aliments_1.jpg": {src: "images/aliments_1.jpg"},
+"chaman_1.jpg": {src: "images/chaman_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1040,22 +1041,17 @@ const QUESTIONS = [
 {
  id: "Q42",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 4",
- enonce: "Les documents A à D présentent des moyens de transport et des voies de communication utilisés vers 1500. Associe chaque document à l’élément correspondant.",
- aspects: [{aspect: "Transport"}],
- documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "sentiers_forestiers.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "rivieres.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "canot_ecorce.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
- ],
- reponse: {type: "mettre-en-relation", elements: ["Moyens de transport", "Voies de communication"], double: true},
- guide: {type: "grille", entetes: ["Moyens de transport", "Voies de communication"], rangees: [["A et D", "B et C"]]},
- updatedAt: "2026-08-15T16:54:48.984Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Nomme la personne qui joue un rôle d’intermédiaire entre les humains et les esprits lors de certains rituels chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, le chaman peut servir d’intermédiaire entre les humains et les esprits lors de certains rituels.\n\nAccepter « chaman » ou « chamane », ainsi que les formulations équivalentes. Ne pas accepter uniquement « guérisseur », car ce terme ne précise pas nécessairement le rôle spirituel.",
+ updatedAt: "2026-10-30T01:12:36.375Z"
 },
 {
  id: "Q43",

@@ -37,7 +37,7 @@ const REGLETTES = {
 "Q36": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q37": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q39": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q39": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q40": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q41": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q42": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
@@ -407,7 +407,9 @@ const IMAGE_DB = {
 "vannerie_b.jpg": {src: "images/vannerie_b.jpg", w: 1200, h: 900},
 "animisme_c.jpg": {src: "images/animisme_c.jpg", w: 1200, h: 800},
 "tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800},
-"tradition_orale_2.jpg": {src: "images/tradition_orale_2.jpg", w: 1200, h: 800}
+"tradition_orale_2.jpg": {src: "images/tradition_orale_2.jpg", w: 1200, h: 800},
+"coutume_1.jpg": {src: "images/coutume_1.jpg", w: 1200, h: 800},
+"vetements_1.jpg": {src: "images/vetements_1.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -991,16 +993,17 @@ const QUESTIONS = [
 {
  id: "Q39",
  niveau: 3,
- oi: "Établir des liens de causalité",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 2,
- enonce: "Explique pourquoi les raquettes sont utiles aux Iroquoiens en hiver.",
- aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "raquettes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "deplacement_raquettes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les raquettes sont utiles parce qu’elles facilitent les déplacements sur la neige lorsque les conditions hivernales rendent les déplacements plus difficiles.",
- updatedAt: "2026-08-14T18:09:15.189Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme un matériau utilisé par les Iroquoiens pour fabriquer leurs vêtements vers 1500.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vetements_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens utilisent des peaux d'animaux pour fabriquer leurs vêtements.\n\nAccepter « peaux d'animaux », « cuir » ou « fourrure », ainsi que toute formul",
+ updatedAt: "2026-10-30T00:59:06.794Z"
 },
 {
  id: "Q40",

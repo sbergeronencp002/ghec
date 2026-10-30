@@ -75,6 +75,35 @@ let IMAGE_DB = {};
 let _dataLoaded = false;
 let _dataLoadPromise = null;
 
+// Le délai couvre la réponse et son corps, pour atteindre le repli même sur réseau lent.
+async function fetchQuestionData(url, format = 'text', timeoutMs = 8000) {
+  const controller = new AbortController();
+  let timer;
+  try {
+    return await Promise.race([
+      (async () => {
+        const response = await fetch(url, { cache: 'no-store', signal: controller.signal });
+        if(!response.ok) throw new Error('Chargement des questions (' + response.status + ')');
+        return format === 'json' ? response.json() : response.text();
+      })(),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => {
+          controller.abort();
+          reject(new Error('Le chargement des questions a dépassé le délai prévu. Réessaie.'));
+        }, timeoutMs);
+      })
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// Le cahier et son aperçu utilisent les mêmes règles de titre.
+function cahierDocumentTitle(col, type, enabled) {
+  if(!enabled || (type === 'tableau' && !col.titreDocx)) return '';
+  return col.titre || '';
+}
+
 async function ensureDataLoaded() {
   if (_dataLoaded) return;
   if (_dataLoadPromise) return _dataLoadPromise;
@@ -88,24 +117,18 @@ async function ensureDataLoaded() {
     // d'échec (hors ligne, quota dépassé), repli silencieux sur le site statique.
     let src;
     try {
-      const r = await fetch('https://api.github.com/repos/sbergeronencp002/ghec/contents/questions.js?ref=main&t=' + Date.now(), { cache: 'no-store' });
-      if (!r.ok) throw new Error(String(r.status));
-      const d = await r.json();
+      const d = await fetchQuestionData('https://api.github.com/repos/sbergeronencp002/ghec/contents/questions.js?ref=main&t=' + Date.now(), 'json');
       if (d.content) {
         const rawBytes = Uint8Array.from(atob(d.content.replace(/\n/g,'')), c => c.charCodeAt(0));
         src = new TextDecoder('utf-8').decode(rawBytes);
       } else if (d.download_url) {
         const dlUrl = d.download_url + (d.download_url.includes('?') ? '&' : '?') + 't=' + Date.now();
-        const raw = await fetch(dlUrl, { cache: 'no-store' });
-        if (!raw.ok) throw new Error('download_url ' + raw.status);
-        src = await raw.text();
+        src = await fetchQuestionData(dlUrl);
       } else {
         throw new Error("Réponse API inattendue");
       }
     } catch (e) {
-      const r2 = await fetch('questions.js?t=' + Date.now(), { cache: 'no-store' });
-      if (!r2.ok) throw new Error('Impossible de charger les données complètes (' + r2.status + ')');
-      src = await r2.text();
+      src = await fetchQuestionData('questions.js?t=' + Date.now());
     }
     const result = new Function(src + '\nreturn{REGLETTES,IMAGE_DB,QUESTIONS}')();
     REGLETTES = result.REGLETTES;
@@ -916,7 +939,10 @@ function getTilePreview() {
     panel.className = 'tile-preview';
     panel.setAttribute('aria-label', 'Aperçu de la question');
     panel.hidden = true;
-    panel.addEventListener('mouseenter', () => clearTimeout(tilePreviewCloseTimer));
+    panel.addEventListener('mouseenter', () => {
+      clearTimeout(tilePreviewCloseTimer);
+      clearTimeout(tilePreviewTimer); // Rejoindre l’aperçu annule le changement de tuile en attente.
+    });
     panel.addEventListener('mouseleave', leaveTilePreview);
     document.body.appendChild(panel);
   }
@@ -933,7 +959,7 @@ function hideTilePreview() {
 }
 function leaveTilePreview() {
   clearTimeout(tilePreviewTimer);
-  tilePreviewCloseTimer = setTimeout(hideTilePreview, 180);
+  tilePreviewCloseTimer = setTimeout(hideTilePreview, 350);
 }
 function positionTilePreview(panel, tile) {
   const rect = tile.getBoundingClientRect();
@@ -948,12 +974,16 @@ function positionTilePreview(panel, tile) {
 }
 function scheduleTilePreview(tile, keyboard = false) {
   if(!keyboard && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  hideTilePreview();
-  tilePreviewAnchor = tile;
-  const seq = tilePreviewSeq;
+  clearTimeout(tilePreviewTimer);
+  clearTimeout(tilePreviewCloseTimer);
+  const currentPanel = document.getElementById('tile-preview');
+  const switching = currentPanel && !currentPanel.hidden;
+  const seq = ++tilePreviewSeq;
   tilePreviewTimer = setTimeout(async () => {
     if(seq !== tilePreviewSeq || !tile.isConnected) return;
     const panel = getTilePreview();
+    if(tilePreviewAnchor) tilePreviewAnchor.removeAttribute('aria-describedby');
+    tilePreviewAnchor = tile;
     panel.textContent = 'Chargement de la question…';
     panel.hidden = false;
     tile.setAttribute('aria-describedby', 'tile-preview');
@@ -971,7 +1001,7 @@ function scheduleTilePreview(tile, keyboard = false) {
       if(seq !== tilePreviewSeq) return;
       panel.textContent = 'Aperçu indisponible. Clique sur la tuile pour réessayer.';
     }
-  }, 350);
+  }, switching && !keyboard ? 650 : 350);
 }
 document.addEventListener('keydown', e => { if(e.key === 'Escape') hideTilePreview(); });
 window.addEventListener('resize', hideTilePreview);
@@ -1051,6 +1081,9 @@ function initSite() {
   // prévisualisation ou DOCX.
   populateFilters();
   applyFilters();
+  const preload = () => { ensureDataLoaded().catch(() => {}); };
+  if(window.requestIdleCallback) window.requestIdleCallback(preload, { timeout: 2000 });
+  else setTimeout(preload, 1000);
   try {
     const saved = localStorage.getItem('hqc_panier');
     if(saved) {
@@ -1507,9 +1540,9 @@ async function previsualiser(guideMode) {
             docsHtml += '<table style="width:100%;border-collapse:collapse;margin-bottom:8px"><tr>';
             d.cols.forEach(function(col) {
               const img = IMAGE_DB[col.ref];
-              const titre = (col.titreWeb && col.titre) ? col.titre : col.ref;
+              const titre = cahierDocumentTitle(col, d.type, showDocumentTitles);
               docsHtml += '<td style="width:' + Math.floor(100/d.cols.length) + '%;padding:6px;vertical-align:top;border:0.5px solid var(--border)">';
-              if(showDocumentTitles) docsHtml += '<div style="font-size:0.75rem;font-style:italic;margin-bottom:4px;color:var(--ink-2)">' + escLine(titre) + '</div>';
+              if(titre) docsHtml += '<div style="font-size:0.75rem;font-style:italic;margin-bottom:4px;color:var(--ink-2)">' + escLine(titre) + '</div>';
               if(img) docsHtml += '<img src="' + escAttr(img.src) + '" alt="' + escAttr(col.titre||col.ref||'Document') + '" style="max-width:100%;max-height:100px;object-fit:contain;cursor:pointer" onclick="' + escAttr("openLightbox('" + jsStr(img.src) + "')") + '">';
               docsHtml += '</td>';
             });
@@ -1520,7 +1553,8 @@ async function previsualiser(guideMode) {
             const renderCol = function(col) {
               const img = IMAGE_DB[col.ref];
               let h = '<td style="width:' + colW + '%;padding:6px;vertical-align:top;border:0.5px solid var(--border)">';
-              if(showDocumentTitles) h += '<div style="font-size:0.75rem;font-weight:600;color:var(--ink)">' + escLine(col.titre||'') + '</div>';
+              const titre = cahierDocumentTitle(col, d.type, showDocumentTitles);
+              if(titre) h += '<div style="font-size:0.75rem;font-weight:600;color:var(--ink)">' + escLine(titre) + '</div>';
               if(col.soustitre) h += '<div style="font-size:0.7rem;font-style:italic;color:var(--ink-2);margin-bottom:4px">' + escLine(col.soustitre) + '</div>';
               else h += '<div style="margin-bottom:4px"></div>';
               if(col.texte) {
@@ -1881,7 +1915,6 @@ async function resolveImages(neededKeys) {
 let _docxLoadPromise = null;
 async function genererDocx(includeGuide=false) {
   if(panier.length === 0) return;
-  await ensureDataLoaded();
   const showImageSources = document.getElementById('exam-sources-images')?.checked !== false;
   const showDocumentTitles = document.getElementById('exam-titres-documents')?.checked !== false;
   const btn = includeGuide ? document.getElementById('btn-generer-guide') : document.getElementById('btn-generer');
@@ -1890,6 +1923,7 @@ async function genererDocx(includeGuide=false) {
   if(btnOther) btnOther.disabled = true;
 
   try {
+    await ensureDataLoaded();
     if(typeof docx === 'undefined') {
       if(!_docxLoadPromise) {
         _docxLoadPromise = new Promise((res, rej) => {
@@ -2241,7 +2275,7 @@ async function genererDocx(includeGuide=false) {
             const tableCells = d.cols.map(col => {
               const imgData = imgR(col.ref);
               const cellChildren = [];
-              if(showDocumentTitles && col.titreDocx && col.titre) cellChildren.push(new Paragraph({ alignment: AlignmentType.LEFT, children: [new TextRun({ text: col.titre, font: 'Aptos', size: 20 })] }));
+              if(cahierDocumentTitle(col, d.type, showDocumentTitles)) cellChildren.push(new Paragraph({ alignment: AlignmentType.LEFT, children: [new TextRun({ text: col.titre, font: 'Aptos', size: 20 })] }));
               if(imgData && imgData.src) {
                 const bytes = b64ToBytes(imgData.src);
                 if(bytes) {
@@ -2267,7 +2301,7 @@ async function genererDocx(includeGuide=false) {
             const colW2 = Math.floor(PAGE_W / cpr);
             const makeCell = col => {
               const cellChildren = [];
-              if(showDocumentTitles && col.titre) cellChildren.push(new Paragraph({ children: [new TextRun({ text: col.titre, font: 'Aptos', size: 20, bold: true })] }));
+              if(cahierDocumentTitle(col, d.type, showDocumentTitles)) cellChildren.push(new Paragraph({ children: [new TextRun({ text: col.titre, font: 'Aptos', size: 20, bold: true })] }));
               if(col.soustitre) cellChildren.push(new Paragraph({ children: [new TextRun({ text: col.soustitre, font: 'Aptos', size: 18, italics: true })] }));
               if(col.texte) {
                 col.texte.split('\n').forEach(line => { cellChildren.push(mkLine(line, 'Aptos', 20)); });

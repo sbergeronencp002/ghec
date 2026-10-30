@@ -50,7 +50,7 @@ const REGLETTES = {
 "Q49": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q50": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q51": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q52": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q52": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q53": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q54": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q55": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -398,7 +398,8 @@ const IMAGE_DB = {
 "divertissement_2.jpg": {src: "images/divertissement_2.jpg", w: 1200, h: 900},
 "agriculture_f.jpg": {src: "images/agriculture_f.jpg"},
 "cartier_a.jpg": {src: "images/cartier_a.jpg", w: 1200, h: 800},
-"colomb_a.jpg": {src: "images/colomb_a.jpg"}
+"colomb_a.jpg": {src: "images/colomb_a.jpg"},
+"jean_cabot_a.jpg": {src: "images/jean_cabot_a.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1177,17 +1178,17 @@ const QUESTIONS = [
 {
  id: "Q52",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Situer dans le temps",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à la société correspondante.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"]},
- guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-16T18:08:54.835Z"
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Situer sur une ligne du temps",
+ enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "jean_cabot_a.jpg", soustitre: "Le voyage de Jean Cabot vers les côtes de l’Amérique du Nord", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "image", ref: "ligne_1490-1570.png"},
+ guide: "A",
+ updatedAt: "2026-10-30T04:11:37.152Z"
 },
 {
  id: "Q53",

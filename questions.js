@@ -395,7 +395,8 @@ const IMAGE_DB = {
 "voie_communication_1.jpg": {src: "images/voie_communication_1.jpg"},
 "voie_communication_2.jpg": {src: "images/voie_communication_2.jpg"},
 "divertissement_1.jpg": {src: "images/divertissement_1.jpg"},
-"divertissement_2.jpg": {src: "images/divertissement_2.jpg", w: 1200, h: 900}
+"divertissement_2.jpg": {src: "images/divertissement_2.jpg", w: 1200, h: 900},
+"agriculture_f.jpg": {src: "images/agriculture_f.jpg"}
 }
 
 const QUESTIONS = [
@@ -1119,12 +1120,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme un matériau utilisé par les Iroquoiens pour la vannerie.",
- aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie_ressources.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Nomme une tâche accomplie principalement par les femmes chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Des fibres végétales ou des tiges végétales.",
- updatedAt: "2026-08-15T19:07:24.686Z"
+ guide: "Vers 1500, les femmes iroquoiennes pratiquent l'agriculture et fabriquent des objets artisanaux, notamment des poteries.\n\nAccepter deux tâches distinctes parmi la culture de la terre, la préparation des aliments et certaines activités artisanales, comme la poterie ou la vannerie.",
+ updatedAt: "2026-10-30T03:54:20.760Z"
 },
 {
  id: "Q49",

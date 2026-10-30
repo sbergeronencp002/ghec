@@ -412,7 +412,8 @@ const IMAGE_DB = {
 "vetements_1.jpg": {src: "images/vetements_1.jpg", w: 1200, h: 900},
 "aliments_2.jpg": {src: "images/aliments_2.jpg", w: 1200, h: 900},
 "aliments_1.jpg": {src: "images/aliments_1.jpg"},
-"chaman_1.jpg": {src: "images/chaman_1.jpg", w: 1200, h: 800}
+"chaman_1.jpg": {src: "images/chaman_1.jpg", w: 1200, h: 800},
+"population_1.png": {src: "images/population_1.png", w: 1150, h: 410}
 }
 
 const QUESTIONS = [
@@ -1061,12 +1062,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme un vêtement porté par les Iroquoiens pour se déplacer.",
+ enonce: "Observe le tableau. Nomme le nombre approximatif d'habitants de la société iroquoienne vers 1500.",
  aspects: [{aspect: "Transport"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "population_1.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Des mocassins.",
- updatedAt: "2026-08-15T16:46:10.909Z"
+ guide: "Vers 1500, la population iroquoienne compte environ 100 000 habitants.\n\nAccepter « environ 100 000 habitants », « près de 100 000 personnes » ou toute formulation équivalente indiquant un ordre de grandeur d'environ 100 000 habitants.",
+ updatedAt: "2026-10-30T02:10:54.453Z"
 },
 {
  id: "Q44",

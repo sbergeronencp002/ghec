@@ -42,7 +42,7 @@ const REGLETTES = {
 "Q41": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q42": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q43": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q44": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q44": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q45": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q46": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q47": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
@@ -413,7 +413,9 @@ const IMAGE_DB = {
 "aliments_2.jpg": {src: "images/aliments_2.jpg", w: 1200, h: 900},
 "aliments_1.jpg": {src: "images/aliments_1.jpg"},
 "chaman_1.jpg": {src: "images/chaman_1.jpg", w: 1200, h: 800},
-"population_1.png": {src: "images/population_1.png", w: 1150, h: 410}
+"population_1.png": {src: "images/population_1.png", w: 1150, h: 410},
+"voie_communication_1.jpg": {src: "images/voie_communication_1.jpg"},
+"voie_communication_2.jpg": {src: "images/voie_communication_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1072,17 +1074,17 @@ const QUESTIONS = [
 {
  id: "Q44",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme un matériau utilisé par les Iroquoiens pour fabriquer les vêtements.",
- aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "confection_vetements.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les peaux d'animaux.\nLes fourrures d'animaux.",
- updatedAt: "2026-08-15T18:59:58.349Z"
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présentent deux types de voies de communication utilisées par les Iroquoiens vers 1500. Associe chaque élément au document correspondant.",
+ aspects: [{aspect: "Communication"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "voie_communication_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "voie_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Voie fluviale", "Voie terrestre"]},
+ guide: {type: "grille", entetes: ["Voie fluviale", "Voie terrestre"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-30T02:14:53.052Z"
 },
 {
  id: "Q45",

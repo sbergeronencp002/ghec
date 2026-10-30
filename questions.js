@@ -48,7 +48,7 @@ const REGLETTES = {
 "Q47": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q48": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q49": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q50": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q50": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q51": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q52": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q53": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
@@ -396,7 +396,8 @@ const IMAGE_DB = {
 "voie_communication_2.jpg": {src: "images/voie_communication_2.jpg"},
 "divertissement_1.jpg": {src: "images/divertissement_1.jpg"},
 "divertissement_2.jpg": {src: "images/divertissement_2.jpg", w: 1200, h: 900},
-"agriculture_f.jpg": {src: "images/agriculture_f.jpg"}
+"agriculture_f.jpg": {src: "images/agriculture_f.jpg"},
+"cartier_a.jpg": {src: "images/cartier_a.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1145,17 +1146,17 @@ const QUESTIONS = [
 {
  id: "Q50",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Situer dans le temps",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent deux formes d’art pratiquées par les Iroquoiens vers 1500. Associe chaque document à la forme d’art correspondante.",
- aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_argile.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vannerie_ressources.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Poterie", "Vannerie"]},
- guide: {type: "grille", entetes: ["Poterie", "Vannerie"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-20T13:03:46.181Z"
+ points: 1,
+ soustag: "Situer sur une ligne du temps",
+ enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartier_a.jpg", soustitre: "Jacques Cartier prend possession du territoire au nom du roi de France", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "image", ref: "ligne_1490-1570.png"},
+ guide: "C",
+ updatedAt: "2026-10-30T04:07:46.606Z"
 },
 {
  id: "Q51",

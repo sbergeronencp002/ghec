@@ -1135,12 +1135,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme un matériau utilisé par les Iroquoiens pour la poterie.",
- aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_argile.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l'illustration. Nomme une tâche accomplie principalement par les hommes chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "peche_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "L'argile.",
- updatedAt: "2026-08-15T19:07:44.310Z"
+ guide: "Vers 1500, les hommes iroquoiens s'occupent principalement de la chasse.\n\nAccepter « chasse », « pêche » ou toute formulation indiquant que les hommes chassent des animaux ou pêchent pour se procurer de la nourriture. La construction d'habitations et certaines activités de défense peuvent également être historiquement pertinentes, si elles ont été enseignées.",
+ updatedAt: "2026-10-30T04:02:08.073Z"
 },
 {
  id: "Q50",

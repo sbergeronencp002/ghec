@@ -39,7 +39,7 @@ const REGLETTES = {
 "Q38": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q39": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q40": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q41": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q41": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q42": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q43": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q44": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -409,7 +409,8 @@ const IMAGE_DB = {
 "tradition_orale_1.jpg": {src: "images/tradition_orale_1.jpg", w: 1200, h: 800},
 "tradition_orale_2.jpg": {src: "images/tradition_orale_2.jpg", w: 1200, h: 800},
 "coutume_1.jpg": {src: "images/coutume_1.jpg", w: 1200, h: 800},
-"vetements_1.jpg": {src: "images/vetements_1.jpg", w: 1200, h: 900}
+"vetements_1.jpg": {src: "images/vetements_1.jpg", w: 1200, h: 900},
+"aliments_2.jpg": {src: "images/aliments_2.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -1023,17 +1024,17 @@ const QUESTIONS = [
 {
  id: "Q41",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent des voies de communication utilisés par les Iroquoiens vers 1500. Associe chaque document à l’élément correspondant.",
- aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "canot_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "transport_sentiers.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Cours d'eau", "Sentiers forestiers"]},
- guide: {type: "grille", entetes: ["Cours d'eau", "Sentiers forestiers"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-16T18:06:30.871Z"
+ soustag: "Établir tous les faits - 2",
+ enonce: "Observe l'illustration. Nomme deux aliments consommés par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "aliments_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Vers 1500, les Iroquoiens consomment de la viande d'animaux sauvages et du poisson.\n\nAccepter « viande », « gibier » et « poisson », ainsi que les formulations équivalentes comme « viande de cerf », « viande d'orignal » ou « poissons pêchés ». Deux types de viande ne devraient pas compter comme deux catégories distinctes si l'objectif est d'identifier le gibier et le poisson.",
+ updatedAt: "2026-10-30T01:03:32.591Z"
 },
 {
  id: "Q42",

@@ -1144,7 +1144,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "peche_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les hommes iroquoiens s'occupent principalement de la chasse.\n\nAccepter « chasse », « pêche » ou toute formulation indiquant que les hommes chassent des animaux ou pêchent pour se procurer de la nourriture. La construction d'habitations et certaines activités de défense peuvent également être historiquement pertinentes, si elles ont été enseignées.",
- updatedAt: "2026-10-30T04:17:22.243Z"
+ updatedAt: "2026-10-30T04:18:16.974Z"
 },
 {
  id: "Q50",

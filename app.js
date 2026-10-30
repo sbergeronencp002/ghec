@@ -785,12 +785,11 @@ async function openQModal(id) {
 
   // Ouvrir le modal tout de suite avec un spinner, puis remplir après chargement des données
   if(!_dataLoaded) {
-    const modal = document.getElementById('q-modal');
+    const modal = document.getElementById('q-modal-overlay');
     if(modal) {
       document.getElementById('q-modal-body').innerHTML =
         '<div style="text-align:center;padding:2rem;color:var(--ink-3)">Chargement…</div>';
       modal.classList.add('open');
-      document.body.classList.add('modal-open');
     }
     try { await ensureDataLoaded(); } catch(e) {
       if(reqId !== _qModalReqSeq) return;
@@ -858,6 +857,7 @@ async function openQModal(id) {
 }
 
 function closeQModal() {
+  ++_qModalReqSeq; // Une fermeture pendant le chargement doit rester effective.
   document.getElementById('q-modal-overlay').classList.remove('open');
 }
 

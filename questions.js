@@ -1097,11 +1097,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme un jeu pratiqué par les Iroquoiens pour se divertir vers 1500.",
- aspects: [{aspect: "Culture"}],
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "divertissement_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens pratiquent le jeu de crosse pour se divertir.\n\nAccepter « jeu de crosse », « crosse » ou « jeu de balle avec des bâtons munis de filets ». Les réponses décrivant clairement ce jeu sont acceptées, même si l'élève ne connaît pas le terme précis.",
- updatedAt: "2026-10-30T03:43:14.184Z"
+ updatedAt: "2026-10-30T03:45:35.308Z"
 },
 {
  id: "Q46",

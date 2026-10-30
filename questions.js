@@ -44,7 +44,7 @@ const REGLETTES = {
 "Q43": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q44": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q45": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q46": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q46": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q47": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q48": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q49": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -416,7 +416,8 @@ const IMAGE_DB = {
 "population_1.png": {src: "images/population_1.png", w: 1150, h: 410},
 "voie_communication_1.jpg": {src: "images/voie_communication_1.jpg"},
 "voie_communication_2.jpg": {src: "images/voie_communication_2.jpg"},
-"divertissement_1.jpg": {src: "images/divertissement_1.jpg"}
+"divertissement_1.jpg": {src: "images/divertissement_1.jpg"},
+"divertissement_2.jpg": {src: "images/divertissement_2.jpg", w: 1200, h: 900}
 }
 
 const QUESTIONS = [
@@ -1108,14 +1109,14 @@ const QUESTIONS = [
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme une forme d’art pratiquée par les Iroquoiens.",
- aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "poterie_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "La poterie.",
- updatedAt: "2026-08-15T17:35:52.553Z"
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "Observe l’illustration. Nomme deux activités pratiquées par les Iroquoiens lors de rassemblements vers 1500.",
+ aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "divertissement_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Vers 1500, les Iroquoiens pratiquent des chants et des danses lors de rassemblements.\n\nAccepter « chants » et « danses », ainsi que les formulations équivalentes comme « chanter » et « danser ». La pratique du tambour peut également être acceptée comme activité musicale si l'élève la décrit clairement; le simple mot « tambour » désigne toutefois un instrument plutôt qu'une activité.",
+ updatedAt: "2026-10-30T03:45:01.334Z"
 },
 {
  id: "Q47",

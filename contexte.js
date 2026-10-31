@@ -8,20 +8,20 @@ const PERIODES_PAR_NIVEAU = {
 }
 
 const ASPECTS_PAR_PERIODE = {
-"Iroquoiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"Algonquiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"Incas vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"Iroquoiens vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"Société française en Nouvelle-France vers 1645": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"Société canadienne en Nouvelle-France vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"Treize colonies vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"Nouvelle-France et Treize colonies vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"La société canadienne vers 1820": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"La société québécoise vers 1905": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"La société canadienne des Prairies vers 1905": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"La société canadienne de la Côte Ouest vers 1905": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"La société québécoise vers 1980": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"La société de l'Afrique du Sud vers 1980": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"La société des Micmacs vers 1980": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"],
-"La société des Inuits vers 1980": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement"]
+"Iroquoiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"Algonquiens vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"Incas vers 1500": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"Iroquoiens vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"Société française en Nouvelle-France vers 1645": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"Société canadienne en Nouvelle-France vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"Treize colonies vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"Nouvelle-France et Treize colonies vers 1745": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"La société canadienne vers 1820": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"La société québécoise vers 1905": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"La société canadienne des Prairies vers 1905": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"La société canadienne de la Côte Ouest vers 1905": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"La société québécoise vers 1980": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"La société de l'Afrique du Sud vers 1980": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"La société des Micmacs vers 1980": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"],
+"La société des Inuits vers 1980": ["Territoire", "Personnages", "Population", "Groupes sociaux", "Vie quotidienne", "Culture", "Activités économiques", "Communication", "Transport", "Gouvernement", "Traces du passé"]
 }

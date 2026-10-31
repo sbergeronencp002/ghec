@@ -1282,12 +1282,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme le type d’organisation politique des Iroquoiens vers 1500.",
+ enonce: "Nomme le type de structure politique de la société iroquoienne vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_conseil_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, la société iroquoienne possède une organisation politique matriarcale.\n\nRéponses acceptées : Matriarcale, matriarcat ou organisation matriarcale.",
- updatedAt: "2026-10-31T13:26:09.493Z"
+ updatedAt: "2026-10-31T13:40:07.155Z"
 },
 {
  id: "Q58",

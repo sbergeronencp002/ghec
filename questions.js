@@ -1489,12 +1489,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B illustrent le type d'habitation des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ enonce: "Les documents A et B présentent le type d'habitation des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algon_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algon_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Algonquiens", "Iroquoiens"]},
  guide: {type: "grille", entetes: ["Algonquiens", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-31T16:09:12.464Z"
+ updatedAt: "2026-10-31T18:07:44.987Z"
 },
 {
  id: "Q72",

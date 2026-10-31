@@ -1146,8 +1146,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les femmes iroquoiennes pratiquent l'agriculture et fabriquent des objets artisanaux, notamment des poteries.\n\nAccepter deux tâches distinctes parmi la culture de la terre, la préparation des aliments et certaines activités artisanales, comme la poterie ou la vannerie.",
- updatedAt: "2026-10-30T03:54:20.760Z"
+ guide: "Vers 1500, les femmes iroquoiennes s'occupent principalement de l'agriculture, notamment de la culture du maïs, des haricots et des courges.",
+ updatedAt: "2026-10-31T13:27:42.258Z"
 },
 {
  id: "Q49",

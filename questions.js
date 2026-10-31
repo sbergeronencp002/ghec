@@ -1654,7 +1654,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_d.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "situer-dans-lespace", elements: ["Algonquiens", "Iroquoiens"]},
  guide: {type: "grille", entetes: ["Algonquiens", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-31T20:40:48.999Z"
+ updatedAt: "2026-10-31T23:59:32.715Z"
 },
 {
  id: "Q83",

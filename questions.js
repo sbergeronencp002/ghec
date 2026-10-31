@@ -808,12 +808,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme un vêtement porté par les Iroquoiens vers 1500 pour se déplacer.",
+ enonce: "Observe l’illustration. Nomme une chaussure portée par les Iroquoiens vers 1500 pour se déplacer à pied.",
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "mocassins_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens portent des mocassins pour se déplacer.\n\nAccepter « mocassins » ainsi que les formulations équivalentes, comme « chaussures en peau » ou « chaussures en cuir ».",
- updatedAt: "2026-10-29T15:20:19.975Z"
+ updatedAt: "2026-10-31T13:23:38.346Z"
 },
 {
  id: "Q27",

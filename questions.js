@@ -80,7 +80,7 @@ const REGLETTES = {
 "Q79": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q80": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q81": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q82": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q82": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q83": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q84": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q85": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -406,7 +406,8 @@ const IMAGE_DB = {
 "algon_iro_4.jpg": {src: "images/algon_iro_4.jpg", w: 1200, h: 800},
 "algon_iro_5.jpg": {src: "images/algon_iro_5.jpg"},
 "algon_iro_6.jpg": {src: "images/algon_iro_6.jpg"},
-"cam_alg_a.jpg": {src: "images/cam_alg_a.jpg"}
+"cam_alg_a.jpg": {src: "images/cam_alg_a.jpg"},
+"territoire_iro_d.jpg": {src: "images/territoire_iro_d.jpg"}
 }
 
 const QUESTIONS = [
@@ -1638,17 +1639,17 @@ const QUESTIONS = [
 {
  id: "Q82",
  niveau: 3,
- oi: "Établir des faits",
- competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, décris une coutume pratiquée par les Iroquoiens vers 1500.",
- aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les Iroquoiens pratiquent notamment des cérémonies liées à la guérison et à leurs croyances spirituelles.",
- updatedAt: "2026-08-17T00:11:06.109Z"
+ oi: "Situer dans l'espace",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Situer 2 éléments dans l'espace",
+ enonce: "Observe la carte. Indique les lettres qui correspondent aux territoires occupés par les Algonquiens et les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_d.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "situer-dans-lespace", elements: ["Algonquiens", "Iroquoiens"]},
+ guide: {type: "grille", entetes: ["Algonquiens", "Iroquoiens"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-31T20:40:48.999Z"
 },
 {
  id: "Q83",

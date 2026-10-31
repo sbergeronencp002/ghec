@@ -70,7 +70,7 @@ const REGLETTES = {
 "Q69": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q70": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q71": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q72": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q72": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q73": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q74": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q75": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
@@ -413,7 +413,9 @@ const IMAGE_DB = {
 "voie_communication_3.jpg": {src: "images/voie_communication_3.jpg"},
 "vill_iro_h.jpg": {src: "images/vill_iro_h.jpg"},
 "algon_iro_1.jpg": {src: "images/algon_iro_1.jpg", w: 1200, h: 800},
-"algon_iro_2.jpg": {src: "images/algon_iro_2.jpg", w: 1200, h: 800}
+"algon_iro_2.jpg": {src: "images/algon_iro_2.jpg", w: 1200, h: 800},
+"algon_iro_3.jpg": {src: "images/algon_iro_3.jpg", w: 1200, h: 800},
+"algon_iro_4.jpg": {src: "images/algon_iro_4.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1495,17 +1497,17 @@ const QUESTIONS = [
 {
  id: "Q72",
  niveau: 3,
- oi: "Établir des comparaisons",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
- points: 2,
- soustag: "Établir une différence",
- enonce: "Nomme une différence entre les habitations des Iroquoiens et des Algonquiens vers 1500.",
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe le document A. Nomme le type d'habitation utilisé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "wigwam.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Algonquiens habitent dans des wigwams.",
- updatedAt: "2026-08-16T18:19:28.435Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algon_iro_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens habitent dans des maisons longues.\n\nRéponses acceptées\nLes Iroquoiens vivent dans des maisons longues vers 1500.\t\nLa maison longue est le type d'habitation utilisé par les Iroquoiens vers 1500.",
+ updatedAt: "2026-10-31T16:11:10.122Z"
 },
 {
  id: "Q73",

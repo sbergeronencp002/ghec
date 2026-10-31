@@ -1457,12 +1457,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
  points: 2,
  soustag: "Établir une différence",
- enonce: "Nomme une différence entre le mode de vie des Algonquiens et des Iroquoiens vers 1500.",
+ enonce: "Observe les documents A et B. Nomme une différence entre le mode de vie des Algonquiens et des Iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algon_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algon_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Algonquiens ont un mode de vie nomade, tandis que les Iroquoiens ont un mode de vie sédentaire.",
- updatedAt: "2026-10-31T16:07:15.073Z"
+ updatedAt: "2026-10-31T16:17:05.222Z"
 },
 {
  id: "Q70",

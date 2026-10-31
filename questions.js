@@ -51,7 +51,7 @@ const REGLETTES = {
 "Q50": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q51": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q52": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q53": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q53": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q54": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q55": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q56": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -401,7 +401,8 @@ const IMAGE_DB = {
 "colomb_a.jpg": {src: "images/colomb_a.jpg"},
 "jean_cabot_a.jpg": {src: "images/jean_cabot_a.jpg", w: 1200, h: 800},
 "chasse_c.jpg": {src: "images/chasse_c.jpg", w: 1200, h: 900},
-"peche_c.jpg": {src: "images/peche_c.jpg", w: 1200, h: 800}
+"peche_c.jpg": {src: "images/peche_c.jpg", w: 1200, h: 800},
+"iro_conseil_1.jpg": {src: "images/iro_conseil_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1195,17 +1196,17 @@ const QUESTIONS = [
 {
  id: "Q53",
  niveau: 3,
- oi: "Établir des comparaisons",
+ oi: "Établir des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
- points: 2,
- soustag: "Établir une différence",
- enonce: "Nomme une différence entre la structure politique des Iroquoiens et celle des Algonquiens vers 1500.",
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme le groupe qui joue un rôle important dans le choix des chefs chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", soustitre: "", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens ont une structure matriarcale, tandis que les Algonquiens ont une structure patriarcale.",
- updatedAt: "2026-08-16T17:11:59.866Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_conseil_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les femmes aînées jouent un rôle important dans le choix des chefs chez les Iroquoiens.\n\nRéponses acceptées : « Les femmes aînées », « les aînées » ou « les mères de clan », si cette dernière notion a été enseignée. « Les femmes » seul est trop imprécis pour la connaissance ciblée.",
+ updatedAt: "2026-10-31T00:35:48.327Z"
 },
 {
  id: "Q54",

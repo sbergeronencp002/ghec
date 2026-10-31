@@ -1594,12 +1594,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent les structures politiques des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ enonce: "Les documents A et B présentent les structures politiques matriarcale et patriarcale vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algon_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algon_iro_5.jpg"}]}],
  reponse: {type: "mettre-en-relation", elements: ["Algonquiens", "Iroquoiens"]},
  guide: {type: "grille", entetes: ["Algonquiens", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-31T18:16:34.667Z"
+ updatedAt: "2026-10-31T18:17:45.802Z"
 },
 {
  id: "Q79",

@@ -52,7 +52,7 @@ const REGLETTES = {
 "Q51": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q52": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q53": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q54": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q54": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q55": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q56": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q57": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -402,7 +402,8 @@ const IMAGE_DB = {
 "jean_cabot_a.jpg": {src: "images/jean_cabot_a.jpg", w: 1200, h: 800},
 "chasse_c.jpg": {src: "images/chasse_c.jpg", w: 1200, h: 900},
 "peche_c.jpg": {src: "images/peche_c.jpg", w: 1200, h: 800},
-"iro_conseil_1.jpg": {src: "images/iro_conseil_1.jpg", w: 1200, h: 800}
+"iro_conseil_1.jpg": {src: "images/iro_conseil_1.jpg", w: 1200, h: 800},
+"iro_conseil_2.jpg": {src: "images/iro_conseil_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1211,17 +1212,17 @@ const QUESTIONS = [
 {
  id: "Q54",
  niveau: 3,
- oi: "Établir des comparaisons",
+ oi: "Établir des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
- points: 2,
- soustag: "Établir une différence",
- enonce: "Nomme une différence entre le mode de vie des Iroquoiens et des Algonquiens vers 1500.",
- aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_algonquiens_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_iroquoien_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens ont un mode de vie sédentaire, tandis que les Algonquiens ont un mode de vie nomade.",
- updatedAt: "2026-08-16T18:11:37.181Z"
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme le mode de prise de décisions utilisé chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_conseil_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les décisions politiques chez les Iroquoiens sont prises en conseil.\n\nRéponses acceptées : Accepter « en conseil », « lors de conseils » ou toute formulation indiquant que les dirigeants discutent collectivement des décisions en conseil.",
+ updatedAt: "2026-10-31T00:37:28.198Z"
 },
 {
  id: "Q55",

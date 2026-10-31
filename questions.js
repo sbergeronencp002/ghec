@@ -63,7 +63,7 @@ const REGLETTES = {
 "Q62": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q63": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q64": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q65": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q65": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q66": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q67": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q68": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -416,7 +416,8 @@ const IMAGE_DB = {
 "troc_3.jpg": {src: "images/troc_3.jpg", w: 1200, h: 800},
 "traces_iro_1.jpg": {src: "images/traces_iro_1.jpg", w: 1200, h: 800},
 "traces_iro_2.jpg": {src: "images/traces_iro_2.jpg", w: 1200, h: 800},
-"traces_iro_3.jpg": {src: "images/traces_iro_3.jpg", w: 1200, h: 800}
+"traces_iro_3.jpg": {src: "images/traces_iro_3.jpg", w: 1200, h: 800},
+"voie_communication_4.jpg": {src: "images/voie_communication_4.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1394,17 +1395,17 @@ const QUESTIONS = [
 {
  id: "Q65",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à l'organisation politique correspondante.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "org_politique_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Matriarcat", "Patriarcat"]},
- guide: {type: "grille", entetes: ["Matriarcat", "Patriarcat"], rangees: [["B", "A"]]},
- updatedAt: "2026-08-20T13:05:35.876Z"
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme une voie de communication utilisée par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "voie_communication_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens utilisent les cours d'eau comme voies de communication pour se déplacer en canot.",
+ updatedAt: "2026-10-31T13:17:13.998Z"
 },
 {
  id: "Q66",

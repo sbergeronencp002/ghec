@@ -728,7 +728,23 @@ async function deleteOrphan(img) {
   } catch(error) {
     if (removed) {
       document.getElementById('orphan-'+CSS.escape(img))?.remove();
-      alert('Fichier supprimé. Le nettoyage du catalogue reste à reprendre : '+error.message);
+      const notice=document.createElement('div'); notice.setAttribute('role','status');
+      notice.textContent='Fichier supprimé. Nettoyage du catalogue à reprendre : '+error.message+' ';
+      const retry=document.createElement('button'); retry.textContent='Reprendre le nettoyage';
+      retry.onclick=async()=>{
+        if(pageBusy)return;
+        setPageLocked(true,'Nettoyage du catalogue…');retry.disabled=true;
+        try {
+          await applyQuestionsEdit(parsed=>{
+            if(GHECDocuments.used(parsed.QUESTIONS,img))throw new Error('Image réutilisée : catalogue conservé.');
+            if(!(img in parsed.IMAGE_DB))return false;
+            delete parsed.IMAGE_DB[img];return true;
+          },'Nettoyer le catalogue après suppression de '+img);
+          notice.remove();
+        } catch(e) { alert(e.message);retry.disabled=false; }
+        finally { setPageLocked(false); }
+      };
+      notice.appendChild(retry);document.getElementById('stat-chip').appendChild(notice);
     } else {
       if (btn) btn.disabled = false;
       alert('Suppression non effectuée : '+error.message);
@@ -743,9 +759,11 @@ let replaceB64 = '';
 let replaceBytes = 0;
 let replaceExpectedIds = [];
 let replaceExpectedSha = null;
+let replaceFileSequence = 0;
 
 function openReplace(img) {
   replaceTarget = img;
+  replaceFileSequence++;
   replaceB64 = '';
   const ids = GHECDocuments.users(QUESTIONS, img);
   document.getElementById('replace-old-label').textContent = 'Image actuelle : '+img+
@@ -775,6 +793,9 @@ function closeReplaceModal(e) {
 }
 
 function handleReplaceFile(file) {
+  const sequence = ++replaceFileSequence;
+  replaceB64 = '';
+  document.getElementById('replace-confirm-btn').disabled = true;
   if (!file) return;
   const status = document.getElementById('replace-status');
   status.textContent = '';
@@ -790,11 +811,11 @@ function handleReplaceFile(file) {
   const failed = () => { status.className='replace-status err'; status.textContent='Image illisible : choisissez un autre fichier.'; };
   reader.onerror = failed;
   reader.onload = function(ev) {
-    if (target !== replaceTarget) return;
+    if (target !== replaceTarget || sequence !== replaceFileSequence) return;
     const img = new Image();
     img.onerror = failed;
     img.onload = function() {
-      if (target !== replaceTarget) return;
+      if (target !== replaceTarget || sequence !== replaceFileSequence) return;
       const MAX = 1200;
       let w = img.width, h = img.height;
       if (w > MAX || h > MAX) {

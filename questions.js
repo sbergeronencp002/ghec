@@ -983,12 +983,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique comment les Iroquoiens transmettent leurs connaissances et leurs traditions aux enfants vers 1500.",
+ enonce: "Explique comment les Iroquoiens transmettent leurs connaissances et leurs traditions aux jeunes vers 1500.",
  aspects: [{aspect: "Communication"}, {aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Iroquoiens transmettent leurs connaissances et leurs traditions oralement, notamment lorsque les aînés racontent des histoires et partagent leurs savoirs avec les plus jeunes.\n\nAccepter toute réponse indiquant que les connaissances et les traditions sont transmises par la parole, notamment grâce aux récits, aux histoires, aux enseignements des aînés ou aux échanges entre les générations. L'expression « tradition orale » n'est pas obligatoire si le moyen de transmission est clairement expliqué.",
- updatedAt: "2026-10-29T20:23:01.748Z"
+ updatedAt: "2026-10-31T01:09:23.512Z"
 },
 {
  id: "Q39",

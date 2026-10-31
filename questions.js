@@ -1132,7 +1132,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les aînés jouent un rôle important dans la transmission des connaissances et des traditions aux enfants iroquoiens.\n\nAccepter « les aînés », « les anciens de la communauté » ou « les personnes âgées de la communauté ».",
- updatedAt: "2026-10-30T03:51:07.068Z"
+ updatedAt: "2026-10-31T13:28:13.441Z"
 },
 {
  id: "Q48",

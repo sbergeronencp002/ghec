@@ -3453,10 +3453,10 @@ const QUESTIONS = [
 },
 {
  id: "Q201",
- niveau: 4,
+ niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Société française en Nouvelle-France vers 1645"],
+ periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l’illustration. Nomme une expression de l’art pratiquée par les Iroquoiens vers 1500.",
@@ -3464,6 +3464,6 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie_a.jpg", soustitre: "Bataille du lac Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "« Vers 1500, les Iroquoiens pratiquent la vannerie. »\n\nRéponses acceptées :\n- Le tressage de paniers.\n- La fabrication de paniers tressés.",
- updatedAt: "2026-10-29T20:05:59.430Z"
+ updatedAt: "2026-10-31T01:19:14.096Z"
 }
 ]

@@ -150,9 +150,9 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 ### Cache-bust actuel
 
-`index.html` charge `app.js?v=69`, `style.css?v=37`, `filters.js?v=6`, `oi-config.js?v=1`.
+`index.html` charge `app.js?v=70`, `style.css?v=38`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v24'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v25'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -439,3 +439,6 @@ Le 30 octobre 2026, correction du modal au premier clic : identifiant q-modal-ov
 Le 30 octobre 2026, chargement Word protégé par le traitement d’erreur, requêtes de données bornées à 8 s par requête avec repli statique, préchargement à l’inactivité, titres du cahier et aperçu unifiés via cahierDocumentTitle, aperçu existant conservé pendant 650 ms au passage sur une autre tuile et changement annulé en rejoignant le panneau. App v68, cache ghec-v23.
 
 Le 31 octobre 2026, Main et Révision incluent les aspects configurés même sans question, notamment Traces du passé. Main affiche leur compteur à zéro. App v69, cache ghec-v24.
+
+Le 31 octobre 2026, synchronisation commune via sync-data.js v1 dans Main/Admin/Révision/Documents : lecture questions.js liée au commit de main, absence de réinjection des questions supprimées, fusion à trois versions des écritures directes et refus des conflits. Index régénéré depuis la version actuelle après les sauvegardes; avertissement persistant avec nouvelle tentative en cas d’échec partiel. Les pages d’édition partagent lecture, délai, sauvegarde et publication de l’index. Les routes Worker/Actions vérifient la question attendue avant de modifier ou supprimer. Configuration : conflit distant refusé plutôt que republier le formulaire périmé.
+Main : réconciliation complète de la liste et de la recherche, images téléchargées à quatre simultanément avec délai, chargement de docx.js limité, choix Réessayer/Générer quand même/Annuler pour les images manquantes, main-ui.js v1 pour mémoriser les options et gérer le focus et Échap dans les fenêtres. App v70, style v38, cache ghec-v25. Aucun changement au stockage du jeton ou du secret Worker.

@@ -310,6 +310,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 
 <script src="oi-config.js?v=1"></script>
 <script src="questions-io.js?v=3"></script>
+<script src="sync-data.js?v=1"></script>
 <script>
 // Un navigateur ne revérifie sw.js qu'au plus une fois par 24h par défaut (throttle du
 // navigateur, indépendant de tout cache-bust côté serveur) — un F5 ou même fermer/rouvrir
@@ -1144,22 +1145,7 @@ function setSoustitreLocal(id, img, val) {
 // et isImageStillOrphan() ne puissent pas diverger (l'une décodait mal la réponse JSON avant
 // ce correctif, ce qui faisait échouer systématiquement la revérification de fraîcheur).
 async function fetchQuestionsJsSource(headers) {
-  const rq = await fetch(API + 'questions.js?t=' + Date.now(), { headers, cache: 'no-store' });
-  if (!rq.ok) throw new Error('Lecture questions.js (' + rq.status + ')');
-  const dq = await rq.json();
-  let content;
-  if (dq.content) {
-    const rawBytes = Uint8Array.from(atob(dq.content.replace(/\n/g,'')), c => c.charCodeAt(0));
-    content = new TextDecoder('utf-8').decode(rawBytes);
-  } else if (dq.download_url) {
-    const dlUrl = dq.download_url.includes('?') ? dq.download_url + '&t=' + Date.now() : dq.download_url + '?t=' + Date.now();
-    const raw = await fetch(dlUrl, {cache: 'no-store'});
-    if (!raw.ok) throw new Error('Impossible de télécharger questions.js : ' + raw.status);
-    content = await raw.text();
-  } else {
-    throw new Error("Réponse inattendue de l'API GitHub pour questions.js");
-  }
-  return { content, sha: dq.sha };
+  return GHECSync.readFile('questions.js', headers);
 }
 
 // Relit questions.js à l'instant présent et retourne vrai si aucune question ne
@@ -1196,53 +1182,18 @@ const STABLE_READ_POLL_MS = 3000;
 const STABLE_READ_MAX_WAIT_MS = 45000;
 
 async function fetchStableQuestionsJs(headers) {
-  const start = Date.now();
-  let prev = await fetchQuestionsJsSource(headers);
-  while (Date.now() - start < STABLE_READ_MAX_WAIT_MS) {
-    await new Promise(r => setTimeout(r, STABLE_READ_POLL_MS));
-    const next = await fetchQuestionsJsSource(headers);
-    if (next.sha === prev.sha) return next;
-    prev = next;
-  }
-  console.warn('questions.js : lectures instables après ' + STABLE_READ_MAX_WAIT_MS + ' ms — poursuite avec la dernière lecture disponible.');
-  return prev;
+  return GHECSync.stableRead(headers);
 }
 
 async function applyQuestionsEdit(mutate, commitMsg) {
-  const token = requireToken();
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const { content, sha } = await fetchStableQuestionsJs({Authorization: 'token ' + token});
-    let parsed;
-    try {
-      parsed = new Function(content + '\n return { REGLETTES, IMAGE_DB, QUESTIONS };')();
-    } catch(e) {
-      throw new Error('questions.js illisible : ' + e.message);
-    }
-    const freshIds = new Set(parsed.QUESTIONS.map(q => q.id));
-    const missing = confirmedQuestions.filter(q => confirmedIds.has(q.id) && !freshIds.has(q.id));
-    if (missing.length) {
-      console.warn('questions.js : relecture en retard détectée — réinjection de ' + missing.length + ' question(s) connue(s) localement : ' + missing.map(q=>q.id).join(', '));
-      parsed.QUESTIONS = parsed.QUESTIONS.concat(missing);
-    }
-    const changed = mutate(parsed);
-    if (!changed) return false;
-    const out = generateQuestionsJs(parsed.QUESTIONS, parsed.REGLETTES, parsed.IMAGE_DB);
-    const enc = new TextEncoder().encode(out);
-    let binary = ''; enc.forEach(b => binary += String.fromCharCode(b));
-    const rp = await fetch(API + 'questions.js', {
-      method: 'PUT',
-      headers: {Authorization: 'token ' + token, 'Content-Type': 'application/json'},
-      body: JSON.stringify({message: commitMsg, content: btoa(binary), sha: sha})
-    });
-    if (rp.ok) {
-      confirmedQuestions = parsed.QUESTIONS;
-      confirmedIds = new Set(parsed.QUESTIONS.map(q => q.id));
-      return true;
-    }
-    if (rp.status === 409 && attempt < 2) continue; // conflit SHA → on relit et on réessaie
-    throw new Error('Échec écriture questions.js (' + rp.status + ')');
-  }
-  throw new Error('Conflit persistant — réessayez.');
+  const headers={Authorization:'token '+requireToken()};
+  const base=GHECSync.clone({QUESTIONS:confirmedQuestions,REGLETTES,IMAGE_DB});
+  const result=await GHECSync.edit({base,mutate,headers,message:commitMsg});
+  if(!result) { await GHECSync.finishIndex(headers,commitMsg); return false; }
+  confirmedQuestions=result.state.QUESTIONS;
+  confirmedIds=new Set(confirmedQuestions.map(q=>q.id));
+  await GHECSync.finishIndex(headers,commitMsg);
+  return true;
 }
 
 let subTargetId = '';

@@ -77,25 +77,7 @@ let _dataLoadPromise = null;
 
 // Le délai couvre la réponse et son corps, pour atteindre le repli même sur réseau lent.
 async function fetchQuestionData(url, format = 'text', timeoutMs = 8000) {
-  const controller = new AbortController();
-  let timer;
-  try {
-    return await Promise.race([
-      (async () => {
-        const response = await fetch(url, { cache: 'no-store', signal: controller.signal });
-        if(!response.ok) throw new Error('Chargement des questions (' + response.status + ')');
-        return format === 'json' ? response.json() : response.text();
-      })(),
-      new Promise((_, reject) => {
-        timer = setTimeout(() => {
-          controller.abort();
-          reject(new Error('Le chargement des questions a dépassé le délai prévu. Réessaie.'));
-        }, timeoutMs);
-      })
-    ]);
-  } finally {
-    clearTimeout(timer);
-  }
+  return GHECSync.request(url,{},format,timeoutMs);
 }
 
 // Le cahier et son aperçu utilisent les mêmes règles de titre.
@@ -117,29 +99,22 @@ async function ensureDataLoaded() {
     // d'échec (hors ligne, quota dépassé), repli silencieux sur le site statique.
     let src;
     try {
-      const d = await fetchQuestionData('https://api.github.com/repos/sbergeronencp002/ghec/contents/questions.js?ref=main&t=' + Date.now(), 'json');
-      if (d.content) {
-        const rawBytes = Uint8Array.from(atob(d.content.replace(/\n/g,'')), c => c.charCodeAt(0));
-        src = new TextDecoder('utf-8').decode(rawBytes);
-      } else if (d.download_url) {
-        const dlUrl = d.download_url + (d.download_url.includes('?') ? '&' : '?') + 't=' + Date.now();
-        src = await fetchQuestionData(dlUrl);
-      } else {
-        throw new Error("Réponse API inattendue");
-      }
+      src = (await GHECSync.readFile('questions.js')).content;
     } catch (e) {
       src = await fetchQuestionData('questions.js?t=' + Date.now());
     }
     const result = new Function(src + '\nreturn{REGLETTES,IMAGE_DB,QUESTIONS}')();
     REGLETTES = result.REGLETTES;
     IMAGE_DB  = result.IMAGE_DB;
-    // Enrichir les objets slim déjà dans Q_MAP avec les champs complets
-    for (const q of result.QUESTIONS) {
-      const slim = Q_MAP.get(q.id);
-      if (slim) Object.assign(slim, q);
-      else Q_MAP.set(q.id, q);
-    }
+    // Réconcilier la liste entière : ajouts, modifications, suppressions et recherche.
+    const previewId=tilePreviewAnchor?.id;
+    QUESTIONS.splice(0,QUESTIONS.length,...result.QUESTIONS);
+    populateFilters();
+    panier=panier.filter(id=>Q_MAP.has(id));
+    applyFilters();
+    updatePanierBar();
     _dataLoaded = true;
+    if(previewId) { const tile=document.getElementById(previewId); if(tile) scheduleTilePreview(tile); }
   })().catch(e => {
     // Ne PAS garder une promesse rejetée en cache indéfiniment : sans ce reset, un seul
     // échec réseau transitoire (API GitHub down/quota dépassé ET repli statique en échec)
@@ -1880,23 +1855,26 @@ function cahierDragEnd() {
 }
 
 // ===== RÉSOLUTION DES IMAGES (fetch → base64 + dimensions) =====
-async function resolveImages(neededKeys) {
+async function resolveImages(neededKeys, progress = () => {}) {
   const MAX_PX = 1200;
   const JPEG_Q = 0.78;
   const failed = [];
 
-  const promises = neededKeys.map(async key => {
+  let completed=0;
+  const load = async key => {
     const entry = IMAGE_DB[key];
-    if (!entry || _imgDocxCache[key]) return;
+    if (!entry || _imgDocxCache[key]) {progress(++completed,neededKeys.length);return;}
     try {
-      const resp = await fetch(entry.src);
-      const blob = await resp.blob();
+      const blob = await GHECSync.request(entry.src, {}, 'blob');
       const isJpeg = blob.type === 'image/jpeg' || key.match(/\.(jpg|jpeg)$/i);
       const dataUrl = await new Promise((res, rej) => {
         const img = new Image();
         const blobUrl = URL.createObjectURL(blob);
+        const timer=setTimeout(()=>{img.onload=null;img.onerror=null;img.src='';URL.revokeObjectURL(blobUrl);rej(new Error('Décodage image trop long'));},12000);
         img.onload = () => {
+          clearTimeout(timer);
           URL.revokeObjectURL(blobUrl);
+          try {
           const scale = Math.min(1, MAX_PX / Math.max(img.naturalWidth, img.naturalHeight));
           const w = Math.round(img.naturalWidth * scale);
           const h = Math.round(img.naturalHeight * scale);
@@ -1904,17 +1882,22 @@ async function resolveImages(neededKeys) {
           canvas.width = w; canvas.height = h;
           canvas.getContext('2d').drawImage(img, 0, 0, w, h);
           res({ url: canvas.toDataURL(isJpeg ? 'image/jpeg' : 'image/png', isJpeg ? JPEG_Q : undefined), w, h });
+          } catch(error) {rej(error);}
         };
-        img.onerror = () => { URL.revokeObjectURL(blobUrl); rej(); };
+        img.onerror = () => { clearTimeout(timer); URL.revokeObjectURL(blobUrl); rej(new Error('Image illisible')); };
         img.src = blobUrl;
       });
       _imgDocxCache[key] = { src: dataUrl.url, w: dataUrl.w, h: dataUrl.h };
     } catch(e) {
       failed.push(key);
       console.warn('Impossible de charger l\'image :', key, e);
-    }
-  });
-  await Promise.all(promises);
+    } finally { progress(++completed, neededKeys.length); }
+  };
+  // Limiter la concurrence pour éviter de saturer le réseau et la mémoire.
+  let next=0;
+  await Promise.all(Array.from({length:Math.min(4,neededKeys.length)},async()=>{
+    while(next<neededKeys.length)await load(neededKeys[next++]);
+  }));
   return failed;
 }
 
@@ -1936,8 +1919,9 @@ async function genererDocx(includeGuide=false) {
         _docxLoadPromise = new Promise((res, rej) => {
           const s = document.createElement('script');
           s.src = 'docx.js';
-          s.onload = res;
-          s.onerror = () => { _docxLoadPromise = null; rej(new Error('Impossible de charger docx.js')); };
+          const timer=setTimeout(()=>{s.remove();_docxLoadPromise=null;rej(new Error('Chargement Word trop long. Réessaie.'));},15000);
+          s.onload = () => {clearTimeout(timer);res();};
+          s.onerror = () => { clearTimeout(timer);s.remove();_docxLoadPromise = null; rej(new Error('Impossible de charger docx.js')); };
           document.head.appendChild(s);
         });
       }
@@ -1955,9 +1939,18 @@ async function genererDocx(includeGuide=false) {
       });
       if(q.reponse) track(q.reponse.ref);
     });
-    const failedImgs = await resolveImages([...neededKeys]);
-    const allMissing = [...missingFromDb, ...failedImgs];
-    if(allMissing.length) showWarn('Images introuvables dans le DOCX : ' + allMissing.join(', '));
+    while(true) {
+      const failedImgs = await resolveImages([...neededKeys],(done,total)=>{if(btn)btn.textContent='⏳ Images '+done+' / '+total;});
+      const allMissing = [...missingFromDb, ...failedImgs];
+      if(!allMissing.length)break;
+      const choice=await GHECMain.missingImages(allMissing);
+      if(choice==='retry')continue;
+      if(choice==='continue')break;
+      if(btn){btn.disabled=false;btn.textContent=includeGuide?'⬇ Guide':'⬇ Cahier';}
+      if(btnOther)btnOther.disabled=false;
+      return;
+    }
+    if(btn)btn.textContent='⏳ Mise en page…';
     const {
       Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
       AlignmentType, BorderStyle, WidthType, VerticalAlign, XmlComponent

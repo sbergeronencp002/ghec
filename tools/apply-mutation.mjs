@@ -4,7 +4,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 
 const payload = JSON.parse(process.env.PAYLOAD);
-const { action, question, reglette, editingId } = payload;
+const { action, question, reglette, editingId, expectedQuestion } = payload;
 
 if (!question?.id) { console.error('question.id manquant'); process.exit(1); }
 // Voir le commentaire équivalent dans worker/index.js : editingId et question.id ne devraient
@@ -43,6 +43,10 @@ try {
   const fn = new Function(content + '\nreturn { QUESTIONS, REGLETTES, IMAGE_DB };');
   ({ QUESTIONS, REGLETTES, IMAGE_DB } = fn());
 } catch(e) { console.error('Parse error:', e.message); process.exit(1); }
+
+if(expectedQuestion && JSON.stringify(QUESTIONS.find(q=>q.id===expectedQuestion.id)) !== JSON.stringify(expectedQuestion)) {
+  console.error('Question modifiée ou supprimée ailleurs. Recharge avant de publier.'); process.exit(1);
+}
 
 // ── Appliquer la mutation ────────────────────────────────────────────────────
 if (action === 'delete') {
@@ -110,4 +114,6 @@ out += QUESTIONS.map(q => serializeValue(q,0)).join(',\n');
 out += '\n]\n';
 
 writeFileSync('questions.js', out, 'utf-8');
+const buildIndex=new Function(readFileSync('questions-io.js','utf-8')+'\nreturn generateIndexJs;')();
+writeFileSync('questions-index.js',buildIndex(QUESTIONS),'utf-8');
 console.log(`✓ ${action} ${question.id} appliqué — questions.js mis à jour`);

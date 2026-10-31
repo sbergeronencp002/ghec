@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name "Admin GHEC"
           git config user.email "noreply@hqc-cssbf.ca"
-          git add questions.js
+          git add questions.js questions-index.js
           git diff --staged --quiet && echo "Aucun changement à committer" || \
             git commit -m "$COMMIT_MSG"
           # La concurrency queue ci-dessus protège contre deux jobs de CETTE Action qui se

@@ -157,6 +157,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 <script src="oi-config.js?v=1"></script>
 <script src="competences.js"></script>
 <script src="questions-io.js?v=3"></script>
+<script src="sync-data.js?v=1"></script>
 <script src="contexte.js"></script>
 <script src="filters.js?v=6"></script>
 <script>
@@ -248,22 +249,7 @@ function rvSeedConfirmed() {
 // Lit questions.js depuis l'API GitHub Contents et décode son contenu source (base64
 // inline si ≤ 1 Mo, sinon téléchargement via download_url). Retourne { content, sha }.
 async function rvFetchQuestionsJsSource(headers) {
-  const rq = await fetch(RV_API + 'questions.js?t=' + Date.now(), { headers, cache: 'no-store' });
-  if(!rq.ok) throw new Error('Lecture questions.js (' + rq.status + ')');
-  const dq = await rq.json();
-  let content;
-  if(dq.content) {
-    const rawBytes = Uint8Array.from(atob(dq.content.replace(/\n/g,'')), c => c.charCodeAt(0));
-    content = new TextDecoder('utf-8').decode(rawBytes);
-  } else if(dq.download_url) {
-    const dlUrl = dq.download_url.includes('?') ? dq.download_url + '&t=' + Date.now() : dq.download_url + '?t=' + Date.now();
-    const raw = await fetch(dlUrl, {cache: 'no-store'});
-    if(!raw.ok) throw new Error('Impossible de télécharger questions.js : ' + raw.status);
-    content = await raw.text();
-  } else {
-    throw new Error("Réponse inattendue de l'API GitHub pour questions.js");
-  }
-  return { content, sha: dq.sha };
+  return GHECSync.readFile('questions.js', headers);
 }
 
 // GitHub peut mettre plusieurs dizaines de secondes à propager un commit sur tous ses
@@ -279,55 +265,20 @@ const RV_STABLE_READ_POLL_MS = 3000;
 const RV_STABLE_READ_MAX_WAIT_MS = 45000;
 
 async function rvFetchStableQuestionsJs(headers) {
-  const start = Date.now();
-  let prev = await rvFetchQuestionsJsSource(headers);
-  while(Date.now() - start < RV_STABLE_READ_MAX_WAIT_MS) {
-    await new Promise(r => setTimeout(r, RV_STABLE_READ_POLL_MS));
-    const next = await rvFetchQuestionsJsSource(headers);
-    if(next.sha === prev.sha) return next;
-    prev = next;
-  }
-  console.warn('questions.js : lectures instables après ' + RV_STABLE_READ_MAX_WAIT_MS + ' ms — poursuite avec la dernière lecture disponible.');
-  return prev;
+  return GHECSync.stableRead(headers);
 }
 
 // Lecture fraîche (stabilisée) de questions.js → mutation ciblée → réécriture (PUT), 2 retries
 // sur conflit SHA (même budget que documents.html/applyQuestionsEdit).
 async function rvApplyQuestionsEdit(mutate, commitMsg) {
-  const token = rvRequireToken();
-  for(let attempt = 0; attempt < 3; attempt++) {
-    const { content, sha } = await rvFetchStableQuestionsJs({Authorization: 'token ' + token});
-    let parsed;
-    try {
-      parsed = new Function(content + '\n return { REGLETTES, IMAGE_DB, QUESTIONS };')();
-    } catch(e) {
-      throw new Error('questions.js illisible : ' + e.message);
-    }
-    const freshIds = new Set(parsed.QUESTIONS.map(q => q.id));
-    const missing = rvConfirmedQuestions.filter(q => rvConfirmedIds.has(q.id) && !freshIds.has(q.id));
-    if(missing.length) {
-      console.warn('questions.js : relecture en retard détectée — réinjection de ' + missing.length + ' question(s) connue(s) localement : ' + missing.map(q=>q.id).join(', '));
-      parsed.QUESTIONS = parsed.QUESTIONS.concat(missing);
-    }
-    const changed = mutate(parsed);
-    if(!changed) return false;
-    const out = generateQuestionsJs(parsed.QUESTIONS, parsed.REGLETTES, parsed.IMAGE_DB);
-    const enc = new TextEncoder().encode(out);
-    let binary = ''; enc.forEach(b => binary += String.fromCharCode(b));
-    const rp = await fetch(RV_API + 'questions.js', {
-      method: 'PUT',
-      headers: {Authorization: 'token ' + token, 'Content-Type': 'application/json'},
-      body: JSON.stringify({message: commitMsg, content: btoa(binary), sha: sha})
-    });
-    if(rp.ok) {
-      rvConfirmedQuestions = parsed.QUESTIONS;
-      rvConfirmedIds = new Set(parsed.QUESTIONS.map(q => q.id));
-      return true;
-    }
-    if(rp.status === 409 && attempt < 2) continue;
-    throw new Error('Échec écriture questions.js (' + rp.status + ')');
-  }
-  throw new Error('Conflit persistant — réessayez.');
+  const headers={Authorization:'token '+rvRequireToken()};
+  const base=GHECSync.clone({QUESTIONS:rvConfirmedQuestions,REGLETTES,IMAGE_DB});
+  const result=await GHECSync.edit({base,mutate,headers,message:commitMsg});
+  if(!result) { await GHECSync.finishIndex(headers,commitMsg); return false; }
+  rvConfirmedQuestions=result.state.QUESTIONS;
+  rvConfirmedIds=new Set(rvConfirmedQuestions.map(q=>q.id));
+  await GHECSync.finishIndex(headers,commitMsg);
+  return true;
 }
 // Un seul champ éditable à la fois sur la carte (guide, énoncé, ou un document) : plus
 // simple à raisonner que plusieurs éditions concurrentes, et suffisant en pratique.

@@ -218,8 +218,12 @@ function validateImageName(name) {
 // ── Fetch questions.js depuis GitHub ─────────────────────────────────────────
 
 async function fetchQuestionsRaw(token) {
+  const hr=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/git/ref/heads/${BRANCH}`, {
+    headers:{Authorization:`token ${token}`,'User-Agent':'ghec-worker'},cache:'no-store'});
+  if(!hr.ok)throw new Error('Lecture de la branche : '+hr.status);
+  const commit=(await hr.json()).object.sha;
   const resp = await fetch(
-    `https://api.github.com/repos/${OWNER}/${REPO}/contents/${QUESTIONS_PATH}`,
+    `https://api.github.com/repos/${OWNER}/${REPO}/contents/${QUESTIONS_PATH}?ref=${commit}`,
     { headers: { Authorization: `token ${token}`, 'User-Agent': 'ghec-worker' }, cache: 'no-store' }
   );
   if (!resp.ok) throw new Error('GitHub fetch ' + resp.status);
@@ -235,7 +239,7 @@ async function fetchQuestionsRaw(token) {
   } else {
     throw new Error('Réponse inattendue de GitHub');
   }
-  return { sha, content };
+  return { sha, content, commit };
 }
 
 // ── Backup + élagage (fire-and-forget via ctx.waitUntil) ─────────────────────
@@ -288,22 +292,25 @@ async function doBackupAndPrune(token, content) {
 // Worker. En le publiant nous-mêmes ici avec GITHUB_PAT (déjà en main côté serveur), la
 // voie Worker n'a plus besoin d'un token client pour rester cohérente.
 async function doPublishIndex(token, questions, commitMsg) {
-  try {
-    let sha;
-    const r1 = await fetch(
-      `https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js?ref=${BRANCH}&t=${Date.now()}`,
-      { headers: { Authorization: `token ${token}`, 'User-Agent': 'ghec-worker' }, cache: 'no-store' }
-    );
-    if (r1.ok) { const d1 = await r1.json(); sha = d1.sha; }
-    const body = { message: commitMsg + ' [index]', content: utf8b64(generateIndexJs(questions)), branch: BRANCH };
-    if (sha) body.sha = sha;
-    await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js`, {
-      method: 'PUT',
-      headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json', 'User-Agent': 'ghec-worker' },
-      body: JSON.stringify(body),
-    });
-  } catch (_) {}
+  for(let attempt=0;attempt<3;attempt++) {
+    try {
+      // Toujours reconstruire depuis les données actuelles, pas le snapshot de la publication.
+      const snapshot=await fetchQuestionsRaw(token);
+      const fresh=new Function(snapshot.content+'\nreturn QUESTIONS;')();
+      const headers={Authorization:`token ${token}`,'User-Agent':'ghec-worker'};
+      const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js?ref=${snapshot.commit}`,{headers,cache:'no-store'});
+      if(!r.ok)throw new Error('Lecture index '+r.status);
+      const index=await r.json();
+      const result=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js`,{
+        method:'PUT',headers:{...headers,'Content-Type':'application/json'},
+        body:JSON.stringify({message:commitMsg+' [index]',content:utf8b64(generateIndexJs(fresh)),sha:index.sha,branch:BRANCH})});
+      if(!result.ok) { if(result.status===409)continue;throw new Error('Publication index '+result.status); }
+      if((await fetchQuestionsRaw(token)).sha===snapshot.sha)return true;
+    } catch(e) { if(attempt===2)console.error('Index non synchronisé',e); }
+  }
+  return false;
 }
+
 
 // ── Handler principal ─────────────────────────────────────────────────────────
 
@@ -314,7 +321,7 @@ async function handlePublish(request, env, ctx) {
   let body, rawText;
   try { rawText = await request.text(); body = JSON.parse(rawText); } catch { return errResp('JSON invalide'); }
 
-  const { secret, action, question, reglette, editingId } = body;
+  const { secret, action, question, reglette, editingId, expectedQuestion } = body;
 
   if (!secret || !timingSafeEqual(secret, env.WORKER_SECRET)) return errResp('Non autorisé', 401);
   // Plafond APRÈS l'authentification : un appelant non authentifié n'a aucune raison de
@@ -351,6 +358,10 @@ async function handlePublish(request, env, ctx) {
     return errResp('Lecture GitHub échouée : ' + e.message, 502);
   }
 
+  if(expectedQuestion && JSON.stringify(QUESTIONS.find(q => q.id === expectedQuestion.id)) !== JSON.stringify(expectedQuestion)) {
+    return errResp('Cette question a été modifiée ou supprimée ailleurs. Recharge avant de publier.', 409);
+  }
+
   // 3. Appliquer la mutation
   if (action === 'delete') {
     const idx = QUESTIONS.findIndex(q => q.id === question.id);
@@ -378,7 +389,7 @@ async function handlePublish(request, env, ctx) {
     : (editingId ? `Modifier ${question.id} — ${question.oi}` : `Ajouter ${question.id} — ${question.oi} (${(question.periodes||[]).join(' + ')})`);
 
   // 5. PUT vers GitHub (jusqu'à 2 tentatives sur conflit SHA)
-  let newSha;
+  let newSha, indexSynced = false;
   for (let attempt = 0; attempt < 2; attempt++) {
     if (attempt > 0) {
       // Le SHA a changé depuis qu'on a lu : on relit et on réapplique
@@ -388,6 +399,9 @@ async function handlePublish(request, env, ctx) {
         content = freshContent; // garder `content` = dernier état lu, pour le backup post-succès plus bas
         const fn2 = new Function(freshContent + '\nreturn { QUESTIONS, REGLETTES, IMAGE_DB };');
         const fresh = fn2();
+        if(expectedQuestion && JSON.stringify(fresh.QUESTIONS.find(q => q.id === expectedQuestion.id)) !== JSON.stringify(expectedQuestion)) {
+          return errResp('Cette question a été modifiée ou supprimée ailleurs. Recharge avant de publier.', 409);
+        }
         // Réappliquer la même mutation sur l'état frais
         if (action === 'delete') {
           const idx = fresh.QUESTIONS.findIndex(q => q.id === question.id);
@@ -435,7 +449,7 @@ async function handlePublish(request, env, ctx) {
       // conflit persistant après 2 tentatives) laisse un backup orphelin pour une mutation
       // jamais appliquée.
       ctx.waitUntil(doBackupAndPrune(token, content));
-      ctx.waitUntil(doPublishIndex(token, QUESTIONS, commitMsg));
+      indexSynced = await doPublishIndex(token, QUESTIONS, commitMsg);
       break;
     }
 
@@ -455,7 +469,7 @@ async function handlePublish(request, env, ctx) {
     nextId = 'Q' + (nums.length ? Math.max(...nums) + 1 : 1);
   } catch (_) {}
 
-  return jsonResp({ ok: true, sha: newSha, nextId });
+  return jsonResp({ ok: true, sha: newSha, nextId, indexSynced });
 }
 
 // ── Téléversement d'image ─────────────────────────────────────────────────────

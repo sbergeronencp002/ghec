@@ -9,13 +9,14 @@ const sandbox = {console:{...console,error(){}},setTimeout,clearTimeout,AbortCon
   document:{getElementById:id=>elements[id]||null,addEventListener(){},createElement:element,body:{appendChild:e=>elements[e.id]=e}},
   window:{innerWidth:1400,innerHeight:900,matchMedia:()=>({matches:true}),addEventListener(){}},localStorage:{getItem:()=>null}};
 vm.createContext(sandbox);
-for(const f of ['oi-config.js','contexte.js','app.js']) vm.runInContext(fs.readFileSync(root+f,'utf8'),sandbox);
+for(const f of ['oi-config.js','contexte.js','sync-data.js','app.js']) vm.runInContext(fs.readFileSync(root+f,'utf8'),sandbox);
 let aborted=false;
 sandbox.fetch=(_url,opts)=>{opts.signal.addEventListener('abort',()=>aborted=true);return new Promise(()=>{});};
 await assert.rejects(sandbox.fetchQuestionData('test','text',10),/délai/);
 assert(aborted);
 sandbox.fetch=async()=>({ok:true,text:()=>new Promise(()=>{})});
 await assert.rejects(sandbox.fetchQuestionData('test','text',10),/délai/);
+vm.runInContext("const QUESTIONS=[{id:'Q99'}];populateFilters=()=>{Q_MAP=new Map(QUESTIONS.map(q=>[q.id,q]))};applyFilters=()=>{};updatePanierBar=()=>{}",sandbox);
 let urls=[];
 sandbox.fetch=async url=>{urls.push(url);if(url.startsWith('https:'))throw Error('API hors ligne');return {ok:true,text:async()=>"const QUESTIONS=[{id:'Q1',enonce:'Une question',documents:[]}];const IMAGE_DB={};const REGLETTES={};"};};
 await sandbox.ensureDataLoaded();assert.equal(urls.length,2);assert(urls[1].startsWith('questions.js?'));

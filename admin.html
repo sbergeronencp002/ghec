@@ -11,6 +11,7 @@
 <script src="oi-config.js?v=1"></script>
 <script src="competences.js"></script>
 <script src="questions-io.js?v=3"></script>
+<script src="sync-data.js?v=1"></script>
 <style>
 :root {
   --ink: #1f2937; --ink-2: #5b6676; --ink-3: #5b6676;
@@ -818,10 +819,12 @@ function onOiChange() {
 
 // ── MODE ÉDITION ──────────────────────────────────────────────────────
 let editingId = null;
+let editingBaseQuestion = null;
 // Verrouille #q-id pendant l'édition : évite qu'un rechargement de questions.js
 // (ex. token relu) n'écrase silencieusement l'id de la question en cours d'édition.
 function setEditingId(id) {
   editingId = id;
+  editingBaseQuestion = id ? GHECSync.clone(currentQuestions.find(q=>q.id===id)) : null;
   const qidEl = document.getElementById('q-id');
   if(qidEl) qidEl.disabled = !!id;
 }
@@ -1222,31 +1225,7 @@ function loadQuestion(id) {
 // Lit questions.js via l'API Contents (avec fallback download_url si > 1 Mo).
 // Retourne { sha, content (texte JS brut) }.
 async function _fetchQuestionsRaw(headers) {
-  const r = await fetch(
-    `https://api.github.com/repos/${OWNER}/${REPO}/contents/questions.js?ref=${BRANCH}&t=${Date.now()}`,
-    { headers, cache: 'no-store' }
-  );
-  if(!r.ok) throw new Error('Impossible de lire questions.js : ' + r.status);
-  const data = await r.json();
-  const sha = data.sha;
-  let content;
-  if(data.content) {
-    // Fichier ≤ 1 Mo : contenu inline base64
-    const rawB64 = data.content.replace(/\n/g,'');
-    const binary = atob(rawB64);
-    const bytes = new Uint8Array(binary.length);
-    for(let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-    content = new TextDecoder('utf-8').decode(bytes);
-  } else if(data.download_url) {
-    // Fichier > 1 Mo : téléchargement direct
-    const dlUrl = data.download_url.includes('?') ? data.download_url + '&t=' + Date.now() : data.download_url + '?t=' + Date.now();
-    const raw = await fetch(dlUrl, { cache: 'no-store' });
-    if(!raw.ok) throw new Error('Impossible de télécharger questions.js : ' + raw.status);
-    content = await raw.text();
-  } else {
-    throw new Error("Réponse inattendue de l'API GitHub pour questions.js");
-  }
-  return { sha, content };
+  return GHECSync.readFile('questions.js', headers);
 }
 
 // IDs déjà confirmés par un PUT GitHub réussi dans CETTE session (contrairement à
@@ -1266,21 +1245,7 @@ function _assignFreshState(sha, content) {
   } catch(e) {
     throw new Error('questions.js est invalide ou corrompu : ' + e.message);
   }
-  // Garde-fou anti-régression : un réplica de l'API GitHub peut sembler « stable »
-  // (deux lectures consécutives identiques dans fetchFreshStateStable) tout en étant EN
-  // RETARD sur le vrai HEAD (§ Latence de propagation plus haut). Sans cette fusion, une
-  // relecture qui atterrit sur un tel réplica écraserait silencieusement une question que
-  // CETTE session vient elle-même de publier avec succès un instant plus tôt — vécu avec
-  // Q712/Q738/Q745/Q767/Q772/Q779 (2026-07-16 au 18) : chacune committée avec succès, puis
-  // effacée par la publication suivante qui a relu un état antérieur sans avertissement ni
-  // conflit 409. Toute question déjà CONFIRMÉE localement (confirmedIds) et absente de la
-  // relecture est réinjectée plutôt que perdue.
-  const freshIds = new Set(result.QUESTIONS.map(q => q.id));
-  const missing = currentQuestions.filter(q => confirmedIds.has(q.id) && !freshIds.has(q.id));
-  if(missing.length) {
-    console.warn('questions.js : relecture en retard détectée — réinjection de ' + missing.length + ' question(s) connue(s) localement : ' + missing.map(q=>q.id).join(', '));
-    result.QUESTIONS = result.QUESTIONS.concat(missing);
-  }
+  // Le contenu appartient à un commit précis : respecter ses suppressions.
   questionsFileSha = sha;
   currentQuestions = result.QUESTIONS;
   currentReglettes = result.REGLETTES;
@@ -1309,17 +1274,8 @@ const QJS_STABLE_READ_POLL_MS = 3000;
 const QJS_STABLE_READ_MAX_WAIT_MS = 45000;
 
 async function fetchFreshStateStable(token) {
-  const headers = { Authorization: `token ${token}` };
-  const start = Date.now();
-  let prev = await _fetchQuestionsRaw(headers);
-  while(Date.now() - start < QJS_STABLE_READ_MAX_WAIT_MS) {
-    await new Promise(r => setTimeout(r, QJS_STABLE_READ_POLL_MS));
-    const next = await _fetchQuestionsRaw(headers);
-    if(next.sha === prev.sha) return _assignFreshState(next.sha, next.content);
-    prev = next;
-  }
-  console.warn('questions.js : lectures instables après ' + QJS_STABLE_READ_MAX_WAIT_MS + ' ms — poursuite avec la dernière lecture disponible.');
-  return _assignFreshState(prev.sha, prev.content);
+  const fresh = await GHECSync.stableRead({Authorization: 'token ' + token});
+  return _assignFreshState(fresh.sha, fresh.content);
 }
 
 async function supprimerQuestion() {
@@ -1348,13 +1304,14 @@ async function supprimerQuestion() {
         const resp = await fetch(workerUrl + '/publish', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ secret: workerSecret, action: 'delete', question: { id: idSupp } })
+          body: JSON.stringify({ secret: workerSecret, action: 'delete', expectedQuestion: editingBaseQuestion, question: { id: idSupp } })
         });
         const data = await resp.json().catch(() => ({ ok: false, error: resp.status }));
-        if(!data.ok) throw new Error(data.error || resp.status);
+        if(!data.ok) { const error=new Error(data.error || resp.status); error.status=resp.status; throw error; }
         currentQuestions = currentQuestions.filter(q => q.id !== idSupp);
         delete currentReglettes[idSupp];
         questionsFileSha = data.sha;
+      if(data.indexSynced === false) toast('Question enregistrée, mais index à resynchroniser depuis Admin.', 'err');
         confirmedIds = new Set(currentQuestions.map(q => q.id));
         workerOk = true;
         // Voie Worker : le Worker republie lui-même questions-index.js (voir même
@@ -1367,7 +1324,7 @@ async function supprimerQuestion() {
         const statusEl = { textContent: '' };
         await publierViaDispatch(token, 'delete', { id: idSupp }, null, null, `Supprimer ${idSupp}`, btn, statusEl);
         await fetchFreshState(token);
-        publishIndex(token, `Supprimer ${idSupp}`);  // fire-and-forget — apply-mutation.mjs ne touche pas questions-index.js
+        await publishIndex(token, `Supprimer ${idSupp}`);  // fire-and-forget — apply-mutation.mjs ne touche pas questions-index.js
         workerOk = true;
       }
       if(!workerOk) return;
@@ -1382,7 +1339,7 @@ async function supprimerQuestion() {
         currentQuestions = currentQuestions.filter(q => q.id !== idSupp);
         delete currentReglettes[idSupp];
       });
-      publishIndex(token, `Supprimer ${idSupp}`);  // fire-and-forget
+      await publishIndex(token, `Supprimer ${idSupp}`);  // fire-and-forget
     }
 
     toast(`${idSupp} supprimé.`, 'ok');
@@ -1576,22 +1533,7 @@ let indexFileSha = '';  // SHA de questions-index.js (mis à jour après chaque 
 
 // Publie questions-index.js en fire-and-forget après une publication réussie de questions.js.
 async function publishIndex(token, commitMsg) {
-  try {
-    if(!indexFileSha) {
-      const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js?ref=${BRANCH}&t=${Date.now()}`,
-        { headers:{ Authorization:`token ${token}` }, cache:'no-store' });
-      if(r.ok) { const d = await r.json(); indexFileSha = d.sha; }
-    }
-    const content = utf8b64(generateIndexJs(currentQuestions));
-    const body = { message: commitMsg + ' [index]', content, branch: BRANCH };
-    if(indexFileSha) body.sha = indexFileSha;
-    const r2 = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions-index.js`, {
-      method:'PUT', headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
-      body: JSON.stringify(body)
-    });
-    if(r2.ok) { const d2 = await r2.json(); indexFileSha = d2.content.sha; }
-    else indexFileSha = '';  // sha probablement obsolète (409) — force un refetch au prochain appel plutôt que d'échouer indéfiniment
-  } catch(_) { indexFileSha = ''; }  // fire-and-forget : une erreur ici ne bloque pas la publication de questions.js
+  await GHECSync.finishIndex({Authorization: 'token ' + token}, commitMsg);
 }
 
 async function loadRecentImages() {
@@ -1750,7 +1692,7 @@ async function _putFileWithRetry(path, message, build) {
   const token = getToken();
   if(!token) throw new Error('Saisis ton token GitHub.');
   const headers = { Authorization: `token ${token}` };
-  let { sha } = await _fetchFileRaw(path, headers);
+  let { sha, content: initialContent } = await _fetchFileRaw(path, headers);
   for(let attempt = 0; attempt < 2; attempt++) {
     const content = build();
     const encoded = utf8b64(content);
@@ -1765,7 +1707,9 @@ async function _putFileWithRetry(path, message, build) {
       try { const err = await putResp.json(); msg = err.message || msg; } catch(_) {}
       throw new Error(`Échec écriture ${path} : ` + msg);
     }
-    ({ sha } = await _fetchFileRaw(path, headers)); // conflit : on relit le SHA et on réessaie
+    const fresh = await _fetchFileRaw(path, headers);
+    if(fresh.content !== initialContent) throw new Error('Configuration modifiée ailleurs. Recharge avant de republier.');
+    sha = fresh.sha;
   }
 }
 
@@ -2852,52 +2796,23 @@ async function pruneBackups(token) {
 // relecture (via fetchFreshStateStable, voir plus haut) ne se produit qu'en cas de
 // conflit 409.
 async function putQuestionsJsWithRetry(token, commitMsg, mutate) {
-  // Sauvegarde de l'état avant toute mutation : si la publication échoue au final (peu importe
-  // à quelle tentative — réseau, conflit persistant, autre erreur), currentQuestions/Reglettes/
-  // ImageDb doivent revenir exactement à ce qu'ils étaient, sinon une mutation fantôme (ex. une
-  // question "ajoutée" en mémoire mais jamais écrite sur GitHub) reste en place et bloque tout
-  // nouvel essai de publication de la même question via le garde-fou "id existe déjà". Un essai
-  // précédent de ce correctif ne protégeait que les tentatives 1 et 2 (relecture avant retry),
-  // pas la 3e et dernière — l'échec y laissait quand même le fantôme.
-  const snapQuestions = currentQuestions.slice();
-  const snapReglettes = { ...currentReglettes };
-  const snapImageDb = { ...currentImageDb };
+  const base=GHECSync.clone({QUESTIONS:currentQuestions,REGLETTES:currentReglettes,IMAGE_DB:currentImageDb});
   try {
-    for(let attempt = 0; attempt < 3; attempt++) {
-      if(attempt > 0) await fetchFreshStateStable(token);
-      mutate();
-      const encoded = utf8b64(generateQuestionsJs(currentQuestions, currentReglettes, currentImageDb));
-      let putResp;
-      try {
-        putResp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/questions.js`, {
-          method: 'PUT',
-          headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: commitMsg, content: encoded, sha: questionsFileSha, branch: BRANCH })
-        });
-      } catch(networkErr) {
-        // fetch() a rejeté avant toute réponse HTTP (ex. "Failed to fetch") : mutate() vient de
-        // pousser la question en mémoire sans qu'elle soit réellement écrite sur GitHub. Traiter
-        // ce cas comme un conflit tant qu'il reste des tentatives : la prochaine itération relit
-        // l'état réel (fetchFreshStateStable) et réapplique mutate() dessus.
-        if(networkErr.message !== 'Failed to fetch' || attempt === 2) throw networkErr;
-        await new Promise(r => setTimeout(r, 800 * (attempt + 1)));
-        continue;
-      }
-      if(putResp.ok) {
-        questionsFileSha = (await putResp.json()).content.sha;
-        confirmedIds = new Set(currentQuestions.map(q => q.id));
-        return;
-      }
-      let msg = putResp.status;
-      try { const err = await putResp.json(); msg = err.message || msg; } catch(_) {}
-      const isConflict = putResp.status === 409 || String(msg).toLowerCase().includes('fast forward') || String(msg).toLowerCase().includes('conflict');
-      if(!isConflict || attempt === 2) throw new Error(isConflict ? 'Conflit persistant après 3 tentatives. Rechargez (F5) et réessayez.' : msg);
-      await new Promise(r => setTimeout(r, 800 * (attempt + 1)));
+    mutate();
+    if(editingBaseQuestion) {
+      const i=base.QUESTIONS.findIndex(q=>q.id===editingBaseQuestion.id);
+      if(i!==-1)base.QUESTIONS[i]=GHECSync.clone(editingBaseQuestion);
     }
+    const desired=GHECSync.clone({QUESTIONS:currentQuestions,REGLETTES:currentReglettes,IMAGE_DB:currentImageDb});
+    const result=await GHECSync.edit({base,headers:{Authorization:'token '+token},message:commitMsg,
+      mutate: state => Object.assign(state,desired)});
+    currentQuestions=result.state.QUESTIONS;
+    currentReglettes=result.state.REGLETTES;
+    currentImageDb=result.state.IMAGE_DB;
+    questionsFileSha=result.sha;
+    confirmedIds=new Set(currentQuestions.map(q=>q.id));
   } catch(e) {
-    currentQuestions = snapQuestions;
-    currentReglettes = snapReglettes;
-    currentImageDb = snapImageDb;
+    currentQuestions=base.QUESTIONS;currentReglettes=base.REGLETTES;currentImageDb=base.IMAGE_DB;
     throw e;
   }
 }
@@ -2958,10 +2873,10 @@ async function publier() {
       const resp = await fetch(workerUrl + '/publish', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ secret: workerSecret, action: 'upsert', question: q, reglette: r ?? currentReglettes[q.id] ?? { oi: q.oi, colonnes:[], niveaux:[] }, editingId })
+        body: JSON.stringify({ secret: workerSecret, action: 'upsert', expectedQuestion: editingBaseQuestion, question: q, reglette: r ?? currentReglettes[q.id] ?? { oi: q.oi, colonnes:[], niveaux:[] }, editingId })
       });
       const data = await resp.json().catch(() => ({ ok: false, error: resp.status }));
-      if(!data.ok) throw new Error(data.error || resp.status);
+      if(!data.ok) { const error=new Error(data.error || resp.status); error.status=resp.status; throw error; }
 
       // Mettre à jour l'état local
       const refsUsed = new Set();
@@ -2976,6 +2891,7 @@ async function publier() {
       }
       if(r != null) currentReglettes[q.id] = r;
       questionsFileSha = data.sha;
+      if(data.indexSynced === false) toast('Question enregistrée, mais index à resynchroniser depuis Admin.', 'err');
       confirmedIds = new Set(currentQuestions.map(x => x.id));
       // Voie Worker : le Worker republie lui-même questions-index.js server-to-server
       // (avec GITHUB_PAT, sans dépendre d'un token client) — voir doPublishIndex dans
@@ -2998,6 +2914,7 @@ async function publier() {
       resetForm(true);
 
     } catch(e) {
+      if(e.status === 409) { toast(e.message, 'err'); return; }
       // Worker inaccessible (réseau) OU erreur applicative → basculer sur GitHub Actions
       const token = getToken();
       if(!token) { toast('Worker indisponible : ' + e.message, 'err'); btn.disabled=false; btn.textContent='Publier sur GitHub'; return; }
@@ -3008,7 +2925,7 @@ async function publier() {
         const cm = editingId ? `Modifier ${q2.id} — ${q2.oi}` : `Ajouter ${q2.id} — ${q2.oi} (${(q2.periodes||[]).join(' + ')})`;
         await publierViaDispatch(token, 'upsert', q2, r2, editingId, cm, btn, status);
         await fetchFreshState(token);
-        publishIndex(token, cm);  // fire-and-forget — apply-mutation.mjs ne touche pas questions-index.js
+        await publishIndex(token, cm);  // fire-and-forget — apply-mutation.mjs ne touche pas questions-index.js
         const nums2 = currentQuestions.map(x=>parseInt(x.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
         const nid2 = 'Q'+(nums2.length?Math.max(...nums2)+1:1);
         document.getElementById('q-id').value = nid2;
@@ -3092,7 +3009,7 @@ async function publier() {
       refsUsed.forEach(ref => { if(!currentImageDb[ref]) currentImageDb[ref] = { src: 'images/' + ref }; });
     });
 
-    publishIndex(token, commitMsg);  // fire-and-forget
+    await publishIndex(token, commitMsg);  // fire-and-forget
 
     const nums = currentQuestions.map(q=>parseInt(q.id.replace(/\D/g,''))).filter(n=>!isNaN(n));
     const nextId = 'Q' + (nums.length ? Math.max(...nums)+1 : 1);
@@ -3138,7 +3055,7 @@ async function publierViaDispatch(token, action, question, reglette, editingId, 
       headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         event_type: 'publish-question',
-        client_payload: { action, question, reglette, editingId, commitMsg }
+        client_payload: { action, question, reglette, editingId, commitMsg, expectedQuestion: editingBaseQuestion }
       })
     }
   );

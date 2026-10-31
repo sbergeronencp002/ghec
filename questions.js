@@ -58,7 +58,7 @@ const REGLETTES = {
 "Q57": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q58": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q59": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q60": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q60": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q61": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q62": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q63": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -411,7 +411,8 @@ const IMAGE_DB = {
 "donnacona_1.jpg": {src: "images/donnacona_1.jpg", w: 1200, h: 800},
 "iro_conseil_3.jpg": {src: "images/iro_conseil_3.jpg", w: 1200, h: 800},
 "territoire_iro_c.jpg": {src: "images/territoire_iro_c.jpg", w: 1200, h: 1015},
-"fabrication_canot_1.jpg": {src: "images/fabrication_canot_1.jpg", w: 1200, h: 800}
+"fabrication_canot_1.jpg": {src: "images/fabrication_canot_1.jpg", w: 1200, h: 800},
+"troc_2.jpg": {src: "images/troc_2.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1314,17 +1315,17 @@ const QUESTIONS = [
 {
  id: "Q60",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent les habitations des Iroquoiens et des Algonquiens vers 1500. Associe chaque document à la société correspondante.",
- aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "wigwam.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Algonquiens", "Iroquoiens"]},
- guide: {type: "grille", entetes: ["Algonquiens", "Iroquoiens"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-16T16:43:30.313Z"
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme l'activité économique pratiquée par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "troc_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens pratiquent le troc pour échanger différents produits.\n\nRéponses acceptées : « Le troc », « les échanges de biens » ou « les échanges commerciaux sans utilisation de monnaie ».",
+ updatedAt: "2026-10-31T01:18:38.529Z"
 },
 {
  id: "Q61",

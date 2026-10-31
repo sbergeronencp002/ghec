@@ -88,7 +88,7 @@ const REGLETTES = {
 "Q87": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q88": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q89": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
-"Q90": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q90": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q91": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q92": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q93": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -411,7 +411,8 @@ const IMAGE_DB = {
 "incas_iro_2.jpg": {src: "images/incas_iro_2.jpg"},
 "incas_iro_1.jpg": {src: "images/incas_iro_1.jpg"},
 "incas_iro_3.jpg": {src: "images/incas_iro_3.jpg"},
-"incas_iro_4.jpg": {src: "images/incas_iro_4.jpg"}
+"incas_iro_4.jpg": {src: "images/incas_iro_4.jpg"},
+"territoire_iro_e.png": {src: "images/territoire_iro_e.png"}
 }
 
 const QUESTIONS = [
@@ -1762,17 +1763,17 @@ const QUESTIONS = [
 {
  id: "Q90",
  niveau: 3,
- oi: "Établir des faits",
- competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme un élément de la spiritualité pratiqué par les Iroquoiens.",
- aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_ceremonie_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les Iroquoiens pratiquent l'animisme.\nou\nIls croient que les êtres vivants et les éléments de la nature, comme les animaux, les plantes et les rivières, possèdent un esprit.",
- updatedAt: "2026-08-17T12:14:16.278Z"
+ oi: "Situer dans l'espace",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Situer 2 éléments dans l'espace",
+ enonce: "Observe la carte. Indique les lettres qui correspondent aux territoires occupés par les Algonquiens et les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_e.png", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "situer-dans-lespace", elements: ["Appalaches", "Grands Lacs"]},
+ guide: {type: "grille", entetes: ["Appalaches", "Grands Lacs"], rangees: [["D", "A"]]},
+ updatedAt: "2026-10-31T23:59:08.546Z"
 },
 {
  id: "Q91",

@@ -1366,15 +1366,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Algonquiens vers 1500"],
+ periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la structure politique chez les Algonquiens vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l'illustration. Nomme une trace laissée par la société iroquoienne que l'on peut encore observer aujourd'hui.",
+ aspects: [{aspect: "Traces du passé"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "traces_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Le patriarcat.",
- updatedAt: "2026-10-28T02:26:31.916Z"
+ guide: "Des vestiges d’anciens villages iroquoiens constituent une trace de cette société que l’on peut encore observer aujourd’hui.\n\nAccepter « les vestiges d’anciens villages ».",
+ updatedAt: "2026-10-31T13:12:36.307Z"
 },
 {
  id: "Q64",

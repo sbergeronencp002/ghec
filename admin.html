@@ -12,6 +12,7 @@
 <script src="competences.js"></script>
 <script src="questions-io.js?v=3"></script>
 <script src="sync-data.js?v=1"></script>
+<script src="admin-tools.js?v=1"></script>
 <style>
 :root {
   --ink: #1f2937; --ink-2: #5b6676; --ink-3: #5b6676;
@@ -354,6 +355,17 @@ header a:hover { color: #fff; }
       </div>
     </div>
 
+    <div class="section" id="admin-drafts" hidden>
+      <div class="section-title">Brouillons locaux</div>
+      <p style="font-size:.82rem;color:var(--ink-2)">Sauvegardés automatiquement dans ce navigateur. Ils ne sont pas publiés sur le site.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
+        <select id="draft-select" aria-label="Brouillon à restaurer" style="flex:1;min-width:200px"></select>
+        <button type="button" class="btn-secondary" onclick="GHECAdmin.restoreSelected()">Restaurer</button>
+        <button type="button" class="btn-secondary" onclick="GHECAdmin.discardSelected()">Supprimer le brouillon</button>
+      </div>
+      <p id="draft-status" role="status" aria-live="polite" style="font-size:.8rem;margin:.5rem 0 0"></p>
+    </div>
+
     <!-- IDENTIFIANT -->
     <div class="section">
       <div class="section-title">Identifiant</div>
@@ -490,7 +502,7 @@ header a:hover { color: #fff; }
     <div class="actions" id="section-actions">
       <button class="btn-primary" id="btn-publier" onclick="publier()">Publier sur GitHub</button>
       <button class="btn-secondary" onclick="resetForm()">Réinitialiser</button>
-      <span id="publish-status" style="font-size:.82rem;color:var(--ink-3)"></span>
+      <span id="publish-status" role="status" aria-live="polite" style="font-size:.82rem;color:var(--ink-3)"></span>
     </div>
 
   </div><!-- /container -->
@@ -1533,6 +1545,7 @@ let indexFileSha = '';  // SHA de questions-index.js (mis à jour après chaque 
 
 // Publie questions-index.js en fire-and-forget après une publication réussie de questions.js.
 async function publishIndex(token, commitMsg) {
+  GHECAdmin.stage('3/4 — Synchronisation de la liste principale…');
   await GHECSync.finishIndex({Authorization: 'token ' + token}, commitMsg);
 }
 
@@ -1674,25 +1687,19 @@ function toggleConfigSection() {
 }
 
 async function _fetchFileRaw(path, headers) {
-  const r = await fetch(
-    `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`,
-    { headers, cache: 'no-store' }
-  );
-  if(!r.ok) throw new Error(`Impossible de lire ${path} : ` + r.status);
-  const data = await r.json();
-  const rawB64 = data.content.replace(/\n/g,'');
-  const binary = atob(rawB64);
-  const bytes = new Uint8Array(binary.length);
-  for(let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-  return { sha: data.sha, content: new TextDecoder('utf-8').decode(bytes) };
+  return GHECSync.readFile(path,headers);
 }
 
 // PUT avec 1 retry sur conflit SHA (refetch + réapplication de `build`).
+const cfgLoadedSources = {};
 async function _putFileWithRetry(path, message, build) {
   const token = getToken();
   if(!token) throw new Error('Saisis ton token GitHub.');
   const headers = { Authorization: `token ${token}` };
+  const baseline=cfgLoadedSources[path];
+  if(baseline===undefined)throw new Error('Configuration non chargée : recharge Admin avant de publier la configuration.');
   let { sha, content: initialContent } = await _fetchFileRaw(path, headers);
+  if(initialContent!==baseline)throw new Error('Configuration modifiée ailleurs depuis son chargement. Ta saisie est conservée; recharge avant de republier.');
   for(let attempt = 0; attempt < 2; attempt++) {
     const content = build();
     const encoded = utf8b64(content);
@@ -1701,7 +1708,7 @@ async function _putFileWithRetry(path, message, build) {
       headers: { ...headers, 'Content-Type': 'application/json' },
       body: JSON.stringify({ message, content: encoded, sha, branch: BRANCH })
     });
-    if(putResp.ok) return;
+    if(putResp.ok) {cfgLoadedSources[path]=content;return;}
     if(putResp.status !== 409 || attempt === 1) {
       let msg = putResp.status;
       try { const err = await putResp.json(); msg = err.message || msg; } catch(_) {}
@@ -1737,6 +1744,10 @@ async function loadConfigJs() {
       oiSrc.content + '\n' + ctxSrc.content + '\n' + compSrc.content +
       '\n return { OI_CONFIG, OI_LIST, PERIODES_PAR_NIVEAU, ASPECTS_PAR_PERIODE, COMPETENCE_LIST };'
     )();
+
+    cfgLoadedSources['oi-config.js']=oiSrc.content;
+    cfgLoadedSources['contexte.js']=ctxSrc.content;
+    cfgLoadedSources['competences.js']=compSrc.content;
 
     Object.keys(OI_CONFIG).forEach(k => delete OI_CONFIG[k]);
     Object.assign(OI_CONFIG, fresh.OI_CONFIG);
@@ -2044,6 +2055,7 @@ async function init() {
   await Promise.all([loadConfigJs(), loadQuestionsJs(), loadImages(), loadReglettesJs(), loadRecentImages()]);
   // Rafraîchit les selects après que loadRecentImages ait rempli RECENT_IMAGES
   refreshImageSelects();
+  initAdminDrafts();
   if(await isAdminStale()) showStaleBanner();
   setInterval(async () => { if(await isAdminStale()) showStaleBanner(); }, 5 * 60 * 1000);
 }
@@ -2821,6 +2833,14 @@ async function putQuestionsJsWithRetry(token, commitMsg, mutate) {
 async function publier() {
   const errors = validateForm();
   if(errors.length) { toast('Champs manquants : ' + errors.join(', '), 'err'); return; }
+  const preflight=buildQuestion();
+  const warnings=GHECAdmin.warnings(preflight,currentQuestions,currentImageDb);
+  if(document.getElementById('rep-type').value==='grille' && preflight.reponse===false)
+    warnings.push('Le tableau de réponse est vide.');
+  if(warnings.length && !confirm('Vérifications avant publication :\n\n'+warnings.map(w=>'• '+w).join('\n')+'\n\nPublier quand même ?'))return;
+  GHECAdmin.save();
+  GHECAdmin.stage('1/4 — Vérification des données…');
+
 
   // Verrouiller tout de suite, avant le fetch réseau de isAdminStale() ci-dessous :
   // sans ça, un clic sur Dupliquer/Réinitialiser/une autre question pendant cette
@@ -2847,7 +2867,7 @@ async function publier() {
     setFormLocked(true, btn);
     btn.disabled = true;
     btn.textContent = '⏳ Publication…';
-    status.textContent = '';
+    GHECAdmin.stage('1/4 — Vérification des données…');
 
     try {
       const q = buildQuestion();
@@ -2865,11 +2885,7 @@ async function publier() {
         return;
       }
 
-      const wPubWarnings = [];
-      if(!q.guide) wPubWarnings.push('• Cette question n\'a pas de guide de correction.');
-      if(document.getElementById('rep-type').value === 'grille' && q.reponse === false) wPubWarnings.push('• Le tableau (grille) de réponse est vide — aucune réponse ne sera affichée.');
-      if(wPubWarnings.length && !confirm('⚠️ Avertissements avant publication :\n\n' + wPubWarnings.join('\n') + '\n\nPublier quand même ?')) return;
-
+      GHECAdmin.stage('2/4 — Publication de la question…');
       const resp = await fetch(workerUrl + '/publish', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -2904,20 +2920,16 @@ async function publier() {
       document.getElementById('next-id-badge').textContent = data.nextId;
       toast(editingId ? `${q.id} modifié !` : `${q.id} publié !`, 'ok');
       renderDashboard();
-      const statusMsg = `✓ ${q.id} ${editingId ? 'modifié' : 'ajouté'}`;
-      let secs = 30;
-      const cd = setInterval(() => {
-        status.textContent = secs > 0 ? `${statusMsg} — visible dans ${secs}s` : `${statusMsg} — visible maintenant`;
-        if(secs-- <= 0) clearInterval(cd);
-      }, 1000);
+      GHECAdmin.published(q.id);
+      status.textContent = data.indexSynced===false?'Question enregistrée — synchronisation de la liste à vérifier.':'4/4 — Question et liste principale enregistrées. Le site se met à jour.';
       setEditingId(null);
       resetForm(true);
 
     } catch(e) {
-      if(e.status === 409) { toast(e.message, 'err'); return; }
+      if(e.status === 409) { GHECAdmin.stage('Publication arrêtée — '+e.message);toast(e.message, 'err'); return; }
       // Worker inaccessible (réseau) OU erreur applicative → basculer sur GitHub Actions
       const token = getToken();
-      if(!token) { toast('Worker indisponible : ' + e.message, 'err'); btn.disabled=false; btn.textContent='Publier sur GitHub'; return; }
+      if(!token) {GHECAdmin.stage('Échec de publication — '+e.message+' Le brouillon est conservé.'); toast('Worker indisponible : ' + e.message, 'err'); btn.disabled=false; btn.textContent='Publier sur GitHub'; return; }
       toast('Worker indisponible — bascule sur GitHub…', 'err');
       try {
         const q2 = buildQuestion();
@@ -2932,10 +2944,12 @@ async function publier() {
         document.getElementById('next-id-badge').textContent = nid2;
         toast(`${q2.id} publié via GitHub Actions !`, 'ok');
         renderDashboard();
-        status.textContent = `✓ ${q2.id} publié — visible maintenant`;
+        GHECAdmin.published(q2.id);
+        status.textContent = `4/4 — ${q2.id} enregistré. Le site se met à jour.`;
         setEditingId(null);
         resetForm(true);
       } catch(e2) {
+        GHECAdmin.stage('Échec de publication — '+e2.message+' Le brouillon est conservé.');
         toast('Erreur : ' + e2.message, 'err');
         console.error(e2);
       }
@@ -2949,14 +2963,14 @@ async function publier() {
 
   // ── Voie directe GitHub (fallback si Worker non configuré) ────────────
   const token = getToken();
-  if(!token) { toast('Saisis ton token GitHub (ou configure le Worker).', 'err'); return; }
+  if(!token) {GHECAdmin.stage('Publication arrêtée — accès non configuré. Brouillon conservé.');toast('Saisis ton token GitHub (ou configure le Worker).', 'err');return;}
 
   const btn = document.getElementById('btn-publier');
   const status = document.getElementById('publish-status');
   setFormLocked(true, btn);
   btn.disabled = true;
   btn.textContent = '⏳ Publication…';
-  status.textContent = '';
+  GHECAdmin.stage('1/4 — Vérification des données…');
 
   try {
     // Backup automatique (fire-and-forget)
@@ -2983,19 +2997,13 @@ async function publier() {
       return;
     }
 
-    const pubWarnings = [];
-    if(!q.guide) pubWarnings.push('• Cette question n\'a pas de guide de correction.');
-    if(document.getElementById('rep-type').value === 'grille' && q.reponse === false) pubWarnings.push('• Le tableau (grille) de réponse est vide — aucune réponse ne sera affichée.');
-    if(pubWarnings.length && !confirm('⚠️ Avertissements avant publication :\n\n' + pubWarnings.join('\n') + '\n\nPublier quand même ?')) {
-      btn.disabled = false; btn.textContent = 'Publier sur GitHub'; return;
-    }
-
     const refsUsed = new Set();
     q.documents.forEach(d => d.cols?.forEach(c => { if(c.ref) refsUsed.add(c.ref); }));
     if(q.reponse?.ref) refsUsed.add(q.reponse.ref);
 
     const commitMsg = editingId ? `Modifier ${q.id} — ${q.oi}` : `Ajouter ${q.id} — ${q.oi} (${(q.periodes||[]).join(' + ')})`;
 
+    GHECAdmin.stage('2/4 — Publication de la question…');
     await putQuestionsJsWithRetry(token, commitMsg, () => {
       if(editingId) {
         const idx = currentQuestions.findIndex(x => x.id === editingId);
@@ -3018,16 +3026,13 @@ async function publier() {
 
     toast(editingId ? `${q.id} modifié !` : `${q.id} publié !`, 'ok');
     renderDashboard();
-    const statusMsg = `✓ ${q.id} ${editingId?'modifié':'ajouté'}`;
-    let secs = 30;
-    const cd = setInterval(() => {
-      status.textContent = secs > 0 ? `${statusMsg} — visible dans ${secs}s` : `${statusMsg} — visible maintenant`;
-      if(secs-- <= 0) clearInterval(cd);
-    }, 1000);
+    GHECAdmin.published(q.id);
+    status.textContent='4/4 — Question enregistrée. Le site se met à jour.';
     setEditingId(null);
     resetForm(true);
 
   } catch(e) {
+    GHECAdmin.stage('Échec de publication — '+e.message+' Le brouillon est conservé.');
     toast('Erreur : ' + e.message, 'err');
     console.error(e);
   } finally {
@@ -3065,12 +3070,12 @@ async function publierViaDispatch(token, action, question, reglette, editingId, 
   }
 
   // 2. Attendre et sonder le statut de l'Action (max 90 s)
-  status.textContent = '⏳ Action GitHub déclenchée…';
+  status.textContent = '2/4 — Publication de secours déclenchée…';
   await new Promise(r => setTimeout(r, 4000));
 
   for (let i = 0; i < 25; i++) {
     const elapsed = Math.round((Date.now() - dispatchTime) / 1000);
-    status.textContent = `⏳ Action GitHub en cours… (${elapsed}s)`;
+    status.textContent = `2/4 — Publication de secours en cours… (${elapsed}s)`;
 
     const runsResp = await fetch(
       `https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/publish-question.yml/runs?per_page=5`,
@@ -3092,6 +3097,90 @@ async function publierViaDispatch(token, action, question, reglette, editingId, 
 }
 
 // ── RESET ─────────────────────────────────────────────────────────────
+// Sérialise uniquement les contrôles du formulaire de question, jamais ceux des accès.
+function draftFields(root, excludeColumns=false) {
+  return [...root.querySelectorAll('input,select,textarea')]
+    .filter(el=>el.type!=='file' && (!excludeColumns || !el.closest('.col-block')))
+    .map((el,index)=>({id:(el.id||'').replace(/^(?:doc|col)-\d+-/,''),index,type:el.type,value:el.value,checked:el.checked}));
+}
+function restoreDraftFields(root, fields) {
+  const controls=[...root.querySelectorAll('input,select,textarea')].filter(el=>el.type!=='file');
+  for(const field of fields||[]) {
+    const at=controls[field.index];
+    const normalized=el=>(el.id||'').replace(/^(?:doc|col)-\d+-/,'');
+    const el=at && normalized(at)===field.id ? at : controls.find(x=>field.id && normalized(x)===field.id);
+    if(!el)continue;
+    if(field.type==='checkbox'||field.type==='radio')el.checked=!!field.checked;
+    else {
+      if(el.tagName==='SELECT' && field.value && ![...el.options].some(o=>o.value===field.value)) {const option=document.createElement('option');option.value=field.value;option.textContent=field.value+' (à vérifier)';el.appendChild(option);}
+      el.value=field.value??'';
+    }
+  }
+}
+function captureAdminDraft() {
+  const fields=GHECAdmin.fixed.map(id=>{const el=document.getElementById(id);return {id,value:el?.value||''};});
+  const documents=[...document.querySelectorAll('#docs-list > .block')].map(block=>({
+    type:block.dataset.type,fields:draftFields(block,true),
+    cols:[...block.querySelectorAll('.col-block')].map(col=>({type:col.dataset.type,fields:draftFields(col)}))
+  }));
+  return {version:1,editingId,baseQuestion:GHECSync.clone(editingBaseQuestion),fields,
+    periodes:getSelectedPeriodes(),aspects:[...document.querySelectorAll('#aspects-list input:checked')].map(el=>el.value),
+    soustag:getSoustag(),documents,response:draftFields(document.getElementById('rep-extra')),
+    guide:draftFields(document.getElementById('guide-extra'))};
+}
+function restoreAdminDraft(snapshot) {
+  if(snapshot.version!==1)throw new Error('Version de brouillon inconnue');
+  const values=Object.fromEntries(snapshot.fields.map(x=>[x.id,x.value]));
+  const set=(id,value)=>{const el=document.getElementById(id);if(!el)return;if(el.tagName==='SELECT' && value && ![...el.options].some(o=>o.value===value)) {const option=document.createElement('option');option.value=value;option.textContent=value+' (à vérifier)';el.appendChild(option);}el.value=value??'';};
+  resetForm(false);
+  set('q-niveau',values['q-niveau']);updatePeriodes();
+  document.querySelectorAll('.q-periode-cb').forEach(el=>el.checked=(snapshot.periodes||[]).includes(el.value));updateAspects();
+  document.querySelectorAll('#aspects-list input[type=checkbox]').forEach(el=>el.checked=(snapshot.aspects||[]).includes(el.value));
+  set('q-oi',values['q-oi']);updatePresets();updateSoustag();setSoustag(snapshot.soustag||'');
+  set('q-competence',values['q-competence']);set('q-id',values['q-id']);set('q-enonce',values['q-enonce']);
+  for(const saved of snapshot.documents||[]) {
+    if(!['textes','image','textes-image'].includes(saved.type))throw new Error('Type de document inconnu');
+    addDoc(saved.type);
+    const block=document.getElementById('doc-'+docCount);
+    for(const col of saved.cols||[]) {
+      if(!['texte','image'].includes(col.type))throw new Error('Type de colonne inconnu');
+      addCol(docCount,col.type);restoreDraftFields(document.getElementById('col-'+colCount),col.fields);
+    }
+    restoreDraftFields(block,saved.fields);
+    block.querySelectorAll('select[id$="-ref"]').forEach(updateImgPreview);
+  }
+  set('rep-type',values['rep-type']);updateReponseUI();
+  restoreDraftFields(document.getElementById('rep-extra'),snapshot.response);
+  // Les paramètres de taille recréent les cellules; réappliquer ensuite les valeurs.
+  if(values['rep-type']==='grille')updateRepGrille();
+  else if(values['rep-type']==='mettre-en-relation')updateReponseUI();
+  restoreDraftFields(document.getElementById('rep-extra'),snapshot.response);
+  set('reg-preset',values['reg-preset']);set('guide-type',values['guide-type']);updateGuideUI();
+  restoreDraftFields(document.getElementById('guide-extra'),snapshot.guide);
+  if(values['guide-type']==='grille') {updateGrille();restoreDraftFields(document.getElementById('guide-extra'),snapshot.guide);}
+  setEditingId(snapshot.editingId||null);editingBaseQuestion=GHECSync.clone(snapshot.baseQuestion)||null;
+  const mode=document.querySelector('input[name="mode"][value="'+(editingId?'edit':'new')+'"]');if(mode)mode.checked=true;
+  document.getElementById('edit-select-wrap').style.display=editingId?'':'none';
+  document.getElementById('btn-dupliquer').disabled=!editingId;
+  document.getElementById('btn-supprimer').disabled=!editingId;
+  formDirty=true;
+}
+let adminDraftsReady=false;
+let adminQuestionDirty=false;
+function initAdminDrafts() {
+  if(adminDraftsReady)return;adminDraftsReady=true;
+  GHECAdmin.init({capture:captureAdminDraft,restore:restoreAdminDraft,dirty:()=>adminQuestionDirty,markDirty:()=>{formDirty=true;adminQuestionDirty=true;},clean:()=>{formDirty=false;adminQuestionDirty=false;}});
+  // Les actions structurelles ne déclenchent pas toujours input/change.
+  for(const name of ['addDoc','addCol','removeEl','moveDoc','insertBold','insertBullet','setSoustag','updateReponseUI','updateGuideUI','updateRepGrille','updateGrille']) {
+    const original=window[name];if(typeof original!=='function')continue;
+    window[name]=function(...args){const relevant=!['removeEl','moveDoc'].includes(name)||!!document.getElementById(args[0])?.closest('#docs-list');const result=original.apply(this,args);if(relevant)GHECAdmin.mark();return result;};
+  }
+  for(const name of ['loadQuestion','resetForm','dupliquerQuestion']) {
+    const original=window[name];
+    window[name]=function(...args){GHECAdmin.save();const result=GHECAdmin.quiet(()=>original.apply(this,args));adminQuestionDirty=false;GHECAdmin.navigated();if(name==='dupliquerQuestion')GHECAdmin.mark();return result;};
+  }
+}
+
 function resetForm(keepId=false) {
   setEditingId(null);
   formDirty = false;

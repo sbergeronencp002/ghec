@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // ─────────────────────────────────────────────────────────────────────────────
-// Lance les 7 vérifications du dépôt (validateur de données, tests de fumée,
+// Lance les 8 vérifications du dépôt (validateur de données, tests de fumée,
 // scanner anti-XSS, tests du générateur d'examens) en une seule commande —
 // évite 4 invocations séparées. Sort avec le code du premier échec (mais
 // lance quand même tout, pour avoir le rapport complet en un coup d'œil).
@@ -14,6 +14,7 @@ import { dirname, join } from 'node:path';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 const CHECKS = [
+  ['Brouillons et publication Admin', 'tools/test-admin-tools.mjs'],
   ['Interactions de Main', 'tools/test-main-ui.mjs'],
   ['Synchronisation et conflits', 'tools/test-sync-data.mjs'],
   ['Chargement et aperçus', 'tools/test-loading-preview.mjs'],

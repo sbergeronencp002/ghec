@@ -152,7 +152,7 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 `index.html` charge `app.js?v=70`, `style.css?v=38`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v25'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v26'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -442,3 +442,5 @@ Le 31 octobre 2026, Main et Révision incluent les aspects configurés même san
 
 Le 31 octobre 2026, synchronisation commune via sync-data.js v1 dans Main/Admin/Révision/Documents : lecture questions.js liée au commit de main, absence de réinjection des questions supprimées, fusion à trois versions des écritures directes et refus des conflits. Index régénéré depuis la version actuelle après les sauvegardes; avertissement persistant avec nouvelle tentative en cas d’échec partiel. Les pages d’édition partagent lecture, délai, sauvegarde et publication de l’index. Les routes Worker/Actions vérifient la question attendue avant de modifier ou supprimer. Configuration : conflit distant refusé plutôt que republier le formulaire périmé.
 Main : réconciliation complète de la liste et de la recherche, images téléchargées à quatre simultanément avec délai, chargement de docx.js limité, choix Réessayer/Générer quand même/Annuler pour les images manquantes, main-ui.js v1 pour mémoriser les options et gérer le focus et Échap dans les fenêtres. App v70, style v38, cache ghec-v25. Aucun changement au stockage du jeton ou du secret Worker.
+
+Le 31 octobre 2026, Admin : module admin-tools.js v1 pour les brouillons locaux par question (données structurées et champs bruts, jamais les accès), restauration explicite après rechargement, suppression du brouillon après publication réussie. Les manipulations structurelles et la fermeture de page déclenchent aussi la sauvegarde. Les conflits de configuration sont comparés à la version chargée dans le formulaire avant toute écriture. Vérifications préalables non bloquantes : guide vide, documents cités sans titre correspondant, documents vides, images absentes et énoncés en doublon. Statut de publication en étapes et erreurs persistantes; aucun compte à rebours ne prétend garantir la propagation Pages. Cache ghec-v26. Tests Admin ajoutés au lanceur (8 vérifications).

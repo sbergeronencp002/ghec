@@ -60,7 +60,7 @@ const REGLETTES = {
 "Q59": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q60": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q61": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q62": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q62": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q63": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q64": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q65": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
@@ -413,7 +413,10 @@ const IMAGE_DB = {
 "territoire_iro_c.jpg": {src: "images/territoire_iro_c.jpg", w: 1200, h: 1015},
 "fabrication_canot_1.jpg": {src: "images/fabrication_canot_1.jpg", w: 1200, h: 800},
 "troc_2.jpg": {src: "images/troc_2.jpg", w: 1200, h: 800},
-"troc_3.jpg": {src: "images/troc_3.jpg", w: 1200, h: 800}
+"troc_3.jpg": {src: "images/troc_3.jpg", w: 1200, h: 800},
+"traces_iro_1.jpg": {src: "images/traces_iro_1.jpg", w: 1200, h: 800},
+"traces_iro_2.jpg": {src: "images/traces_iro_2.jpg", w: 1200, h: 800},
+"traces_iro_3.jpg": {src: "images/traces_iro_3.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1346,17 +1349,17 @@ const QUESTIONS = [
 {
  id: "Q62",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à la société correspondante.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "org_politique_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Société algonquienne", "Société iroquoienne"]},
- guide: {type: "grille", entetes: ["Société algonquienne", "Société iroquoienne"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-20T13:04:20.412Z"
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme une trace laissée par la société iroquoienne que l'on peut encore observer aujourd'hui.",
+ aspects: [{aspect: "Traces du passé"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "traces_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Une trace laissée par la société iroquoienne que l'on peut encore observer aujourd'hui est la présence d'artéfacts, comme des poteries anciennes retrouvées lors de fouilles archéologiques.",
+ updatedAt: "2026-10-31T13:09:31.558Z"
 },
 {
  id: "Q63",

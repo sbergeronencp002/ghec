@@ -1451,7 +1451,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_a.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La population iroquoienne est principalement répartie en bordure du fleuve Saint-Laurent et des Grands Lacs.",
- updatedAt: "2026-10-31T13:45:58.491Z"
+ updatedAt: "2026-10-31T13:46:16.424Z"
 },
 {
  id: "Q69",

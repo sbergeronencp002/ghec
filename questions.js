@@ -1451,7 +1451,7 @@ const QUESTIONS = [
  id: "Q69",
  niveau: 3,
  oi: "Établir des comparaisons",
- competence: "Interpréter le changement",
+ competence: "S'ouvrir à la diversité",
  periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
  points: 2,
  soustag: "Établir une différence",
@@ -1460,7 +1460,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algon_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algon_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Algonquiens ont un mode de vie nomade, tandis que les Iroquoiens ont un mode de vie sédentaire.",
- updatedAt: "2026-10-31T16:06:10.249Z"
+ updatedAt: "2026-10-31T16:07:15.073Z"
 },
 {
  id: "Q70",

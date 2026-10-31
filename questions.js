@@ -2481,12 +2481,12 @@ const QUESTIONS = [
  periodes: ["Incas vers 1500"],
  points: 1,
  soustag: "Situer 1 élément dans l'espace",
- enonce: "Indique la lettre correspondant au territoire occupé par les Incas vers 1500.",
+ enonce: "Observe la carte. Indique la lettre correspondant au territoire occupé par les Incas vers 1500.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoires_incas.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
  reponse: false,
  guide: "D",
- updatedAt: "2026-08-30T13:33:53.602Z"
+ updatedAt: "2026-10-31T13:21:08.457Z"
 },
 {
  id: "Q138",

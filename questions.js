@@ -53,7 +53,7 @@ const REGLETTES = {
 "Q52": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q53": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q54": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q55": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q55": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q56": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q57": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q58": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -403,7 +403,11 @@ const IMAGE_DB = {
 "chasse_c.jpg": {src: "images/chasse_c.jpg", w: 1200, h: 900},
 "peche_c.jpg": {src: "images/peche_c.jpg", w: 1200, h: 800},
 "iro_conseil_1.jpg": {src: "images/iro_conseil_1.jpg", w: 1200, h: 800},
-"iro_conseil_2.jpg": {src: "images/iro_conseil_2.jpg"}
+"iro_conseil_2.jpg": {src: "images/iro_conseil_2.jpg"},
+"agriculture_g.jpg": {src: "images/agriculture_g.jpg", w: 1200, h: 800},
+"aliments_3.jpg": {src: "images/aliments_3.jpg", w: 1200, h: 800},
+"troc_a.jpg": {src: "images/troc_a.jpg", w: 1200, h: 800},
+"iro_guerre_1.jpg": {src: "images/iro_guerre_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1227,17 +1231,22 @@ const QUESTIONS = [
 {
  id: "Q55",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme le groupe de personnes qui désigne les chefs chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les aînées.\nLes femmes âgées.",
- updatedAt: "2026-08-16T16:32:51.290Z"
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A à D illustrent différentes activités pratiquées chez les Iroquoiens vers 1500. Indique si chaque activité est principalement accomplie par les femmes ou par les hommes.",
+ aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "agriculture_g.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "iro_guerre_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "troc_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "aliments_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Femmes", "Hommes"], double: true},
+ guide: {type: "grille", entetes: ["Femmes", "Hommes"], rangees: [["A et D", "B et C"]]},
+ updatedAt: "2026-10-31T00:50:38.016Z"
 },
 {
  id: "Q56",

@@ -260,6 +260,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
   <div class="replace-box" role="dialog" aria-modal="true" aria-label="Remplacer l'image" onclick="event.stopPropagation()">
     <h3>Remplacer l'image</h3>
     <p id="replace-old-label"></p>
+    <select id="replace-scope" aria-label="Portée du remplacement" style="width:100%;margin-bottom:1rem"></select>
     <div class="replace-drop" id="replace-drop" onclick="document.getElementById('replace-file').click()"
          ondragover="event.preventDefault();this.classList.add('drag')"
          ondragleave="this.classList.remove('drag')"
@@ -311,6 +312,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 <script src="oi-config.js?v=1"></script>
 <script src="questions-io.js?v=3"></script>
 <script src="sync-data.js?v=1"></script>
+<script src="documents-tools.js?v=1"></script>
 <script>
 // Un navigateur ne revérifie sw.js qu'au plus une fois par 24h par défaut (throttle du
 // navigateur, indépendant de tout cache-bust côté serveur) — un F5 ou même fermer/rouvrir
@@ -350,7 +352,7 @@ let confirmedQuestions = [];
 let confirmedIds = new Set();
 function seedConfirmed() {
   if (typeof QUESTIONS !== 'undefined') {
-    confirmedQuestions = QUESTIONS;
+    confirmedQuestions = GHECSync.clone(QUESTIONS);
     confirmedIds = new Set(QUESTIONS.map(q => q.id));
   }
 }
@@ -369,6 +371,9 @@ const OI_SHORT = {
 
 function escH(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
+let QUESTIONS = [], REGLETTES = {}, IMAGE_DB = {};
+let inventoryComplete = false;
+let pageBusy = false;
 let imgMap = {};
 let allImgGroups = []; // [img, ids][] — global pour permettre le re-tri
 let qById = {};        // id -> question (global, utilisé par la lightbox)
@@ -423,6 +428,7 @@ function tileHtml(q) {
 }
 
 async function init() {
+  imgMap = {}; qById = {};
   const questions = [];
   QUESTIONS.forEach(q => {
     const docImgs = [];
@@ -457,12 +463,14 @@ async function init() {
 
   const ois = [...new Set(questions.map(q=>q.oi))].sort();
   const sel = document.getElementById('filterOi');
+  sel.length = 1;
   ois.forEach(oi => { const o = document.createElement('option'); o.value=oi; o.textContent=oi; sel.appendChild(o); });
 
   // Niveaux présents dans les données — construit dynamiquement (tri numérique), donc
   // GHEC 5/6 s'ajouteront d'eux-mêmes sans toucher à ce code.
   const niveaux = [...new Set(questions.map(q => String(q.niveau)))].sort((a,b) => Number(a)-Number(b));
   const selNiv = document.getElementById('filterNiveau');
+  if (selNiv) selNiv.length = 1;
   if (selNiv) niveaux.forEach(n => {
     const o = document.createElement('option'); o.value = n; o.textContent = 'GHEC ' + n; selNiv.appendChild(o);
   });
@@ -472,21 +480,20 @@ async function init() {
   // ce qui permet de voir les images uploadées mais pas encore liées à une question.
   const usedImgs = new Set(Object.keys(imgMap));
   let orphans = [];
+  let inventoryWarning = '';
   try {
     const headers = getToken() ? { Authorization: 'token ' + getToken() } : {};
-    const r = await fetch(API + 'images?ref=main&t=' + Date.now(), { headers, cache: 'no-store' });
-    if (r.ok) {
-      const files = await r.json();
-      if (Array.isArray(files)) {
-        orphans = files
-          .map(f => f.name)
-          .filter(name => name !== '.gitkeep' && !usedImgs.has(name))
-          .sort();
-      }
-    }
-  } catch(_) {
-    // Repli sur IMAGE_DB si l'API est inaccessible
+    const commit = await GHECSync.head(headers);
+    const files = await GHECSync.request(API + 'images?ref=' + commit, {headers});
+    if (!Array.isArray(files) || files.length >= 1000) throw new Error('Inventaire incomplet');
+    inventoryComplete = true;
+    files.filter(f => f.type === 'file').forEach(f => { sizeCache[f.name] = f.size; });
+    orphans = files.filter(f => f.type === 'file' && /\.(png|jpe?g|webp|gif|svg)$/i.test(f.name))
+      .map(f => f.name).filter(name => !usedImgs.has(name)).sort();
+  } catch(error) {
+    inventoryComplete = false;
     orphans = Object.keys(IMAGE_DB).filter(img => !usedImgs.has(img)).sort();
+    inventoryWarning = 'Inventaire partiel : ' + error.message + '. Suppression désactivée. ';
   }
 
   if (orphans.length) {
@@ -495,7 +502,7 @@ async function init() {
         <img src="images/${escH(img)}" loading="lazy" title="${escH(img)}" onclick="showImg(${escH(JSON.stringify(img))})">
         <span class="img-label">${escH(img.replace(/\.[^.]+$/, ''))}</span>
         ${sizeBadgeHtml(img)}
-        <button class="btn-delete" onclick="deleteOrphan(${escH(JSON.stringify(img))})">🗑 Supprimer</button>
+        <button class="btn-delete" ${inventoryComplete ? '' : 'disabled'} onclick="deleteOrphan(${escH(JSON.stringify(img))})">🗑 Supprimer</button>
       </div>`).join('');
     document.getElementById('nav-orphans').style.display = '';
     fetchSizes(orphans);
@@ -506,7 +513,15 @@ async function init() {
   document.getElementById('stat-chip').innerHTML =
     `<b>${Object.keys(imgMap).length}</b> images · <b>${sharedCount}</b> partagées · <b>${questions.length}</b> questions${orphans.length ? ` · <b style="color:#842029">${orphans.length} non utilisée${orphans.length>1?'s':''}</b>` : ''}`;
 
+  if (inventoryWarning) {
+    const notice = document.createElement('div'); notice.setAttribute('role', 'status');
+    notice.textContent = inventoryWarning;
+    const retry = document.createElement('button'); retry.textContent = 'Réessayer';
+    retry.onclick = () => loadDocuments(); notice.appendChild(retry);
+    document.getElementById('stat-chip').appendChild(notice);
+  }
   fetchSizes(Object.keys(imgMap));
+  filterAll();
 }
 
 // Charge questions.js via l'API GitHub en priorité plutôt que le site statique : GitHub
@@ -515,41 +530,43 @@ async function init() {
 // peut ignorer la query string pour la clé de cache) — l'API GitHub, elle, reflète toujours
 // l'état réel du dépôt (voir fetchQuestionsJsSource, déjà utilisée pour les éditions).
 // Repli sur le site statique puis sur une balise <script> si l'API échoue.
-(function loadQuestionsThenInit() {
-  function runSource(src) {
-    try {
-      const s = document.createElement('script');
-      s.textContent = src;
-      document.head.appendChild(s);
-      return typeof QUESTIONS !== 'undefined';
-    } catch (e) { return false; }
-  }
-  function scriptTagFallback() {
-    const qs = document.createElement('script');
-    qs.src = 'questions.js?v=1&t=' + Date.now();
-    qs.onload = () => { seedConfirmed(); init(); };
-    document.head.appendChild(qs);
-  }
-  function staticFetchFallback() {
-    fetch('questions.js?t=' + Date.now(), { cache: 'no-store' })
-      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(src => { if (runSource(src)) { seedConfirmed(); init(); } else scriptTagFallback(); })
-      .catch(scriptTagFallback);
-  }
-  const token = getToken();
-  fetchQuestionsJsSource(token ? {Authorization: 'token ' + token} : undefined)
-    .then(({content}) => { if (runSource(content)) { seedConfirmed(); init(); } else staticFetchFallback(); })
-    .catch(staticFetchFallback);
-})();
+let documentsLoading = false;
+async function loadDocuments() {
+  if (documentsLoading || pageBusy) return;
+  documentsLoading = true;
+  const chip = document.getElementById('stat-chip');
+  chip.textContent = 'Chargement…';
+  try {
+    const headers = getToken() ? {Authorization:'token '+getToken()} : {};
+    let source, fallback = false;
+    try { source = (await fetchQuestionsJsSource(headers)).content; }
+    catch (_) { fallback = true; source = await GHECSync.request('questions.js?t='+Date.now(), {cache:'no-store'}, 'text'); }
+    const state = GHECSync.parse(source);
+    QUESTIONS = state.QUESTIONS; REGLETTES = state.REGLETTES; IMAGE_DB = state.IMAGE_DB;
+    seedConfirmed(); await init();
+    if (fallback) {
+      inventoryComplete = false;
+      document.querySelectorAll('.btn-delete').forEach(b => b.disabled = true);
+      const note = document.createElement('div');
+      note.textContent = 'Données de secours : suppression désactivée. Actualisez avant de modifier.';
+      chip.appendChild(note);
+    }
+  } catch (error) {
+    chip.textContent = 'Chargement impossible : '+error.message+' ';
+    const retry = document.createElement('button'); retry.textContent='Réessayer';
+    retry.onclick=loadDocuments; chip.appendChild(retry);
+  } finally { documentsLoading = false; }
+}
+loadDocuments();
 
-function fetchSizes(imgs) {
-  imgs.forEach(async img => {
+async function fetchSizes(imgs) {
+  await GHECDocuments.pool(imgs, 4, async img => {
+    if (sizeCache[img] !== undefined) { applySizeBadge(img, sizeCache[img]); return; }
     try {
-      const r = await fetch('images/' + img, {method:'HEAD'});
-      const bytes = parseInt(r.headers.get('content-length') || '0');
-      sizeCache[img] = bytes;
-      applySizeBadge(img, bytes);
-    } catch(e) { /* silently skip */ }
+      // Les tailles viennent normalement de l'inventaire GitHub; repli limité à quatre requêtes.
+      const bytes = (await GHECSync.request('images/'+encodeURIComponent(img), {}, 'blob')).size;
+      sizeCache[img] = bytes; applySizeBadge(img, bytes);
+    } catch (_) { applySizeBadge(img, 0); }
   });
 }
 
@@ -680,6 +697,7 @@ document.addEventListener('keydown', e => { if (e.key==='Escape') { closeLb(); c
 // empêche de lancer une 2e opération concurrente sur la même image ou une autre
 // pendant qu'une écriture est en cours.
 function setPageLocked(locked, msg) {
+  pageBusy = locked;
   const el = document.getElementById('page-lock-overlay');
   if (!el) return;
   el.classList.toggle('show', locked);
@@ -689,54 +707,33 @@ function setPageLocked(locked, msg) {
 // ── Delete orphan ────────────────────────────────────────────────────────────
 
 async function deleteOrphan(img) {
-  if (!confirm(`Supprimer définitivement « ${img} » du dépôt GitHub ?\nCette action est irréversible (hors historique git).`)) return;
-  const btn = document.querySelector(`#orphan-${CSS.escape(img)} .btn-delete`);
-  if (btn) { btn.disabled = true; btn.textContent = '⏳…'; }
-  setPageLocked(true, 'Suppression de ' + img + '…');
+  if (pageBusy || !inventoryComplete) return;
+  if (!confirm('Supprimer « '+img+' » ? Les références seront revérifiées avant la suppression.')) return;
+  const btn = document.querySelector('#orphan-'+CSS.escape(img)+' .btn-delete');
+  if (btn) btn.disabled = true;
+  setPageLocked(true, 'Vérification et suppression de '+img+'…');
+  let removed = false;
   try {
-    // 0. Revérifier sur l'état FRAIS de questions.js (pas l'instantané figé au chargement
-    //    de la page) qu'aucune question n'a été publiée entre-temps avec cette image.
-    if (!(await isImageStillOrphan(img))) {
-      throw new Error(img + ' est maintenant utilisée par une question — rafraîchissez la page.');
-    }
-
-    // 1. Get SHA of image file
-    const r1 = await fetch(API + 'images/' + encodeURIComponent(img), {
-      headers: {Authorization: 'token ' + requireToken()}
-    });
-    if (!r1.ok) throw new Error('Impossible de lire ' + img + ' (' + r1.status + ')');
-    const d1 = await r1.json();
-
-    // 2. Delete image file
-    const r2 = await fetch(API + 'images/' + encodeURIComponent(img), {
-      method: 'DELETE',
-      headers: {Authorization: 'token ' + requireToken(), 'Content-Type': 'application/json'},
-      body: JSON.stringify({message: 'Supprimer image orpheline ' + img, sha: d1.sha})
-    });
-    if (!r2.ok) throw new Error('Échec suppression (' + r2.status + ')');
-
-    // 3. Remove from IMAGE_DB in questions.js — édition STRUCTURÉE (parse → mutation →
-    //    re-sérialisation) avec retry SHA, plutôt qu'un remplacement regex fragile qui
-    //    pouvait corrompre le fichier si une entrée IMAGE_DB contenait des accolades.
+    await GHECDocuments.deleteUnused(img, {Authorization:'token '+requireToken()});
+    removed = true;
+    // Le fichier est supprimé avec une mise à jour conditionnelle de main. Une erreur
+    // de catalogue ne remet pas un bouton de suppression sur un fichier déjà absent.
     await applyQuestionsEdit(parsed => {
-      if (!parsed.IMAGE_DB || !(img in parsed.IMAGE_DB)) return false; // déjà absente
-      delete parsed.IMAGE_DB[img];
-      return true;
-    }, 'Retirer ' + img + ' de IMAGE_DB');
-
-    // Remove row from DOM
-    document.getElementById('orphan-' + CSS.escape(img))?.remove();
-    if (!document.querySelector('#orphans-container .orphan-row')) {
-      document.getElementById('sec-orphans').style.display = 'none';
-      document.getElementById('nav-orphans').style.display = 'none';
-      setActive('shared');
+      if (GHECDocuments.used(parsed.QUESTIONS, img)) throw new Error('Image réutilisée : catalogue conservé.');
+      if (!(img in parsed.IMAGE_DB)) return false;
+      delete parsed.IMAGE_DB[img]; return true;
+    }, 'Retirer '+img+' de IMAGE_DB');
+    document.getElementById('orphan-'+CSS.escape(img))?.remove();
+    delete IMAGE_DB[img];
+  } catch(error) {
+    if (removed) {
+      document.getElementById('orphan-'+CSS.escape(img))?.remove();
+      alert('Fichier supprimé. Le nettoyage du catalogue reste à reprendre : '+error.message);
+    } else {
+      if (btn) btn.disabled = false;
+      alert('Suppression non effectuée : '+error.message);
     }
-  } catch(err) {
-    if (btn) { btn.disabled = false; btn.textContent = '🗑 Supprimer'; }
-    alert('Erreur : ' + err.message);
-  } finally {
-    setPageLocked(false);
-  }
+  } finally { setPageLocked(false); }
 }
 
 // ── Replace ─────────────────────────────────────────────────────────────────
@@ -744,11 +741,24 @@ async function deleteOrphan(img) {
 let replaceTarget = '';
 let replaceB64 = '';
 let replaceBytes = 0;
+let replaceExpectedIds = [];
+let replaceExpectedSha = null;
 
 function openReplace(img) {
   replaceTarget = img;
   replaceB64 = '';
-  document.getElementById('replace-old-label').textContent = 'Image actuelle : ' + img;
+  const ids = GHECDocuments.users(QUESTIONS, img);
+  document.getElementById('replace-old-label').textContent = 'Image actuelle : '+img+
+    '. Questions concernées : '+(ids.join(', ') || 'aucune')+'.';
+  const scope = document.getElementById('replace-scope'); scope.innerHTML = '';
+  const all = document.createElement('option'); all.value=''; all.textContent='Remplacer pour toutes les questions'; scope.appendChild(all);
+  ids.forEach(id => { const opt=document.createElement('option'); opt.value=id; opt.textContent='Créer une copie pour '+id+' seulement'; scope.appendChild(opt); });
+  scope.hidden = ids.length < 2;
+  replaceExpectedIds = ids;
+  replaceExpectedSha = null;
+  GHECDocuments.imageInfo(img, getToken()?{Authorization:'token '+getToken()}:{}).then(file => {
+    if (replaceTarget === img) replaceExpectedSha=file.sha;
+  }).catch(() => {});
   document.getElementById('replace-file').value = '';
   document.getElementById('replace-preview').classList.remove('show');
   document.getElementById('replace-preview-img').src = '';
@@ -773,10 +783,18 @@ function handleReplaceFile(file) {
     status.textContent = '✗ Fichier non pris en charge — déposez une image PNG ou JPEG.';
     return;
   }
+  replaceB64 = '';
+  document.getElementById('replace-confirm-btn').disabled = true;
+  const target = replaceTarget;
   const reader = new FileReader();
+  const failed = () => { status.className='replace-status err'; status.textContent='Image illisible : choisissez un autre fichier.'; };
+  reader.onerror = failed;
   reader.onload = function(ev) {
+    if (target !== replaceTarget) return;
     const img = new Image();
+    img.onerror = failed;
     img.onload = function() {
+      if (target !== replaceTarget) return;
       const MAX = 1200;
       let w = img.width, h = img.height;
       if (w > MAX || h > MAX) {
@@ -807,7 +825,7 @@ function handleReplaceFile(file) {
 }
 
 async function confirmReplace() {
-  if (!replaceB64) return;
+  if (pageBusy || !replaceB64) return;
   const btn = document.getElementById('replace-confirm-btn');
   const status = document.getElementById('replace-status');
   btn.disabled = true;
@@ -815,21 +833,39 @@ async function confirmReplace() {
   status.className = 'replace-status';
   status.textContent = 'Récupération du SHA…';
   try {
-    const r = await fetch(API + 'images/' + encodeURIComponent(replaceTarget), {
-      headers: {Authorization: 'token ' + requireToken()}
-    });
-    if (!r.ok) throw new Error('Impossible de lire ' + replaceTarget + ' (' + r.status + ')');
-    const d = await r.json();
+    const headers = {Authorization:'token '+requireToken()};
+    const current = GHECSync.parse((await GHECSync.stableRead(headers)).content);
+    const ids = GHECDocuments.users(current.QUESTIONS, replaceTarget);
+    if (JSON.stringify(ids) !== JSON.stringify(replaceExpectedIds)) throw new Error('Les usages ont changé. Fermez et rouvrez cette fenêtre pour vérifier les questions concernées.');
+    const onlyId = document.getElementById('replace-scope').value;
+    if (onlyId) {
+      const copyName = replaceTarget.replace(/(\.[^.]+)$/, '_'+onlyId+'_'+Date.now()+'$1');
+      await GHECSync.request(API+'images/'+encodeURIComponent(copyName), {
+        method:'PUT', headers:{...headers,'Content-Type':'application/json'},
+        body:JSON.stringify({message:'Copie image pour '+onlyId,content:replaceB64})
+      });
+      try {
+        await applyQuestionsEdit(parsed => {
+          const q = parsed.QUESTIONS.find(q => q.id === onlyId);
+          if (!q || !GHECDocuments.used([q], replaceTarget)) throw new Error('La question a changé.');
+          GHECDocuments.renameRefs([q], replaceTarget, copyName);
+          parsed.IMAGE_DB[copyName] = {...parsed.IMAGE_DB[replaceTarget],src:'images/'+copyName};
+          return true;
+        }, 'Image distincte pour '+onlyId);
+      } catch(error) { throw new Error(error.message+' La copie '+copyName+' reste disponible dans les images non utilisées.'); }
+      status.textContent='✓ Copie publiée pour '+onlyId+'.';
+      setPageLocked(false); await loadDocuments(); return;
+    }
+    if (!confirm('Remplacer cette image pour '+(ids.join(', ') || 'aucune question')+' ?')) { btn.disabled=false; return; }
+    const d = await GHECDocuments.imageInfo(replaceTarget, headers);
+    if (!replaceExpectedSha || d.sha !== replaceExpectedSha) throw new Error('L’image a changé ou sa version n’est pas disponible. Rouvrez cette fenêtre.');
     status.textContent = 'Envoi…';
-    const rp = await fetch(API + 'images/' + encodeURIComponent(replaceTarget), {
-      method: 'PUT',
-      headers: {Authorization: 'token ' + requireToken(), 'Content-Type': 'application/json'},
-      body: JSON.stringify({message: 'Remplacer ' + replaceTarget, content: replaceB64, sha: d.sha})
-    });
-    if (!rp.ok) throw new Error('Échec de l\'envoi (' + rp.status + ')');
+    replaceExpectedSha = await GHECDocuments.replaceShared(replaceTarget, replaceB64,
+      replaceExpectedSha, replaceExpectedIds, headers);
+
     // Update DOM
     const newSrc = document.getElementById('replace-preview-img').src;
-    document.querySelectorAll(`img[src="images/${replaceTarget}"], img[src^="images/${replaceTarget}?"]`).forEach(el => {
+    document.querySelectorAll(`img[src="images/${CSS.escape(replaceTarget)}"], img[src^="images/${CSS.escape(replaceTarget)}?"]`).forEach(el => {
       el.src = newSrc;
     });
     if (currentLbImg === replaceTarget) document.getElementById('lb-img').src = newSrc;
@@ -870,13 +906,14 @@ function closeRenameModal(e) {
 }
 
 async function confirmRename() {
+  if (pageBusy) return;
   const btn = document.getElementById('rename-confirm-btn');
   const status = document.getElementById('rename-status');
   // Même assainissement qu'admin.html (uploadImage) : pas d'espaces, ni \ ' " ` < > &
   // — ces caractères cassent les attributs HTML / onclick et pourraient corrompre questions.js.
   // Retirer toute extension que l'utilisateur aurait laissée, puis re-ajouter l'extension d'origine
   const raw = document.getElementById('rename-input').value.trim()
-    .replace(/\.[^.]+$/i, '').replace(/\s+/g, '_').replace(/[\\'"`<>&]/g, '');
+    .replace(/\.[^.]+$/i, '').replace(/\s+/g, '_').replace(/[\\/:'"`<>&?#%]/g, '');
   if (!raw) { status.className = 'rename-status err'; status.textContent = '✗ Nom vide ou invalide.'; return; }
   const newName = raw + renameExt;
   if (newName === renameTarget) { closeRenameModal(); return; }
@@ -895,20 +932,21 @@ async function confirmRename() {
   const oldNameForDelete = renameTarget;
   try {
     // 1. Get old file (SHA + content)
-    const r1 = await fetch(API + 'images/' + encodeURIComponent(renameTarget), {
-      headers: {Authorization: 'token ' + requireToken()}
+    const headers = {Authorization:'token '+requireToken()};
+    const d1 = await GHECDocuments.imageInfo(renameTarget, headers);
+    let content = d1.content;
+    if (!content) {
+      if (!d1.download_url) throw new Error('Contenu image indisponible.');
+      const blob = await GHECSync.request(d1.download_url, {}, 'blob');
+      const bytes = new Uint8Array(await blob.arrayBuffer());
+      let binary = ''; for (let i=0;i<bytes.length;i+=32768) binary+=String.fromCharCode(...bytes.subarray(i,i+32768));
+      content = btoa(binary);
+    }
+    status.textContent = 'Création de '+newName+'…';
+    await GHECSync.request(API+'images/'+encodeURIComponent(newName), {
+      method:'PUT',headers:{...headers,'Content-Type':'application/json'},
+      body:JSON.stringify({message:'Rename '+renameTarget+' → '+newName,content})
     });
-    if (!r1.ok) throw new Error('Impossible de lire ' + renameTarget + ' (' + r1.status + ')');
-    const d1 = await r1.json();
-
-    // 2. Create new file
-    status.textContent = 'Création de ' + newName + '…';
-    const r2 = await fetch(API + 'images/' + encodeURIComponent(newName), {
-      method: 'PUT',
-      headers: {Authorization: 'token ' + requireToken(), 'Content-Type': 'application/json'},
-      body: JSON.stringify({message: 'Rename ' + renameTarget + ' → ' + newName, content: d1.content})
-    });
-    if (!r2.ok) throw new Error('Échec création ' + newName + ' (' + r2.status + ')');
 
     // 3. Mettre à jour les refs de questions.js AVANT de supprimer l'ancien fichier.
     //    Si cette étape échoue, l'ancien fichier existe toujours et les refs restent
@@ -917,10 +955,7 @@ async function confirmRename() {
     const refsChanged = await applyQuestionsEdit(parsed => {
       let did = false;
       parsed.QUESTIONS.forEach(q => {
-        (q.documents || []).forEach(d => (d.cols || []).forEach(c => {
-          if (c.ref === renameTarget) { c.ref = newName; did = true; }
-        }));
-        if (q.reponse && q.reponse.ref === renameTarget) { q.reponse.ref = newName; did = true; }
+        if (GHECDocuments.renameRefs([q], renameTarget, newName)) did = true;
       });
       if (parsed.IMAGE_DB[renameTarget]) {
         const entry = parsed.IMAGE_DB[renameTarget];
@@ -950,14 +985,9 @@ async function confirmRename() {
       return;
     }
 
-    // 4. Supprimer l'ancien fichier image (en dernier).
-    status.textContent = 'Suppression de ' + oldNameForDelete + '…';
-    const r3 = await fetch(API + 'images/' + encodeURIComponent(oldNameForDelete), {
-      method: 'DELETE',
-      headers: {Authorization: 'token ' + requireToken(), 'Content-Type': 'application/json'},
-      body: JSON.stringify({message: 'Rename ' + oldNameForDelete + ' → ' + newName, sha: d1.sha})
-    });
-    if (!r3.ok) throw new Error('Fichier renommé, mais échec de suppression de l\'ancien ' + oldNameForDelete + ' (' + r3.status + ') — orphelin à nettoyer manuellement.');
+    // Suppression conditionnelle : aucune publication intermédiaire n'est écrasée.
+    status.textContent = 'Suppression de '+oldNameForDelete+'…';
+    await GHECDocuments.deleteUnused(oldNameForDelete, {Authorization:'token '+requireToken()});
 
     if (refsChanged) {
       status.className = 'rename-status ok';
@@ -978,10 +1008,6 @@ async function confirmRename() {
 }
 
 function updateDomAfterRename(oldName, newName) {
-  // Update all img src attributes
-  document.querySelectorAll(`img[src="images/${oldName}"]`).forEach(el => {
-    el.src = 'images/' + newName;
-  });
   // Update data-size-badge attributes
   document.querySelectorAll(`[data-size-badge="${CSS.escape(oldName)}"]`).forEach(el => {
     el.dataset.sizeBadge = newName;
@@ -992,10 +1018,10 @@ function updateDomAfterRename(oldName, newName) {
     if (!im || im.getAttribute('src') !== 'images/' + oldName) return;
     im.src = 'images/' + newName;
     im.alt = newName;
-    card.dataset.imgName = newName.replace('.png','').toLowerCase();
+    card.dataset.imgName = newName.replace(/\.[^.]+$/, '').toLowerCase();
     card.setAttribute('onclick', 'showImg(' + JSON.stringify(newName) + ')');
     const label = card.querySelector('.ic-label');
-    if (label) { label.textContent = newName.replace('.png',''); label.title = newName; }
+    if (label) { label.textContent = newName.replace(/\.[^.]+$/, ''); label.title = newName; }
   });
   // Update tile img-wraps (vue "toutes les questions")
   document.querySelectorAll('.img-wrap').forEach(wrap => {
@@ -1004,7 +1030,7 @@ function updateDomAfterRename(oldName, newName) {
       im.title = newName;
       im.setAttribute('onclick', 'showImg(' + JSON.stringify(newName) + ')');
       const nameSpan = wrap.querySelector('.img-name');
-      if (nameSpan) nameSpan.textContent = newName.replace('.png','');
+      if (nameSpan) nameSpan.textContent = newName.replace(/\.[^.]+$/, '');
     }
   });
   // Update imgMap
@@ -1031,6 +1057,11 @@ function updateDomAfterRename(oldName, newName) {
     });
     if (q.reponse && q.reponse.ref === oldName) q.reponse.ref = newName;
   });
+  document.querySelectorAll('img').forEach(el => {
+    if (el.getAttribute('src') === 'images/'+oldName) el.src='images/'+newName;
+  });
+  QUESTIONS.forEach(q => { if (q._imgs) q._imgs=q._imgs.map(img => img===oldName?newName:img); });
+  if (IMAGE_DB[oldName]) { IMAGE_DB[newName]={...IMAGE_DB[oldName],src:'images/'+newName}; delete IMAGE_DB[oldName]; }
   // Update lightbox if open
   if (currentLbImg === oldName) {
     currentLbImg = newName;
@@ -1191,6 +1222,8 @@ async function applyQuestionsEdit(mutate, commitMsg) {
   const result=await GHECSync.edit({base,mutate,headers,message:commitMsg});
   if(!result) { await GHECSync.finishIndex(headers,commitMsg); return false; }
   confirmedQuestions=result.state.QUESTIONS;
+  QUESTIONS = GHECSync.clone(confirmedQuestions);
+  REGLETTES = result.state.REGLETTES; IMAGE_DB = result.state.IMAGE_DB;
   confirmedIds=new Set(confirmedQuestions.map(q=>q.id));
   await GHECSync.finishIndex(headers,commitMsg);
   return true;

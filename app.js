@@ -392,6 +392,13 @@ function rebuildMainCascade() {
 
   const bySociety = byCompetence.filter(q => questionMatchesSocietyContext(q, periode));
   const aspectCounts = new Map();
+  // Inclure les aspects configurés, même avant leur première question.
+  const configuredSocieties = niveau
+    ? (PERIODES_PAR_NIVEAU[niveau] || [])
+    : Object.values(PERIODES_PAR_NIVEAU).flat();
+  if(typeof ASPECTS_PAR_PERIODE !== 'undefined') {
+    configuredSocieties.forEach(p => (ASPECTS_PAR_PERIODE[p] || []).forEach(a => aspectCounts.set(a, 0)));
+  }
   bySociety.forEach(q => {
     const seen = new Set();
     (q.aspects || []).forEach(a => {

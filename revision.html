@@ -451,6 +451,11 @@ function rvPopulateFilters() {
   const allOis = [...new Set(QUESTIONS.map(q => q.oi))].sort((a,b) => a.localeCompare(b,'fr'));
   const allCompetences = [...new Set(QUESTIONS.map(competenceEffective).filter(Boolean))].sort(competenceOrdre);
   const aspectsByPeriode = {};
+  if(typeof ASPECTS_PAR_PERIODE !== 'undefined') {
+    Object.entries(ASPECTS_PAR_PERIODE).forEach(([p, list]) => {
+      aspectsByPeriode[p] = new Set(list || []);
+    });
+  }
   QUESTIONS.forEach(q => {
     (q.periodes||[]).forEach(p => {
       (q.aspects||[]).forEach(a => {

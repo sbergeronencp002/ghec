@@ -152,7 +152,7 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 `index.html` charge `app.js?v=70`, `style.css?v=38`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v28'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v29'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -448,3 +448,5 @@ Le 31 octobre 2026, Admin : module admin-tools.js v1 pour les brouillons locaux 
 Le 31 octobre 2026, Révision : module revision-tools.js v1. Restauration complète des filtres et de leurs options après annulation d’un changement; protection avant fermeture/rechargement; brouillons locaux par question et champ, restaurables et retirés après enregistrement réussi. Les conflits utilisent la version du champ au début de l’édition, même si l’état confirmé a changé entre-temps. Pendant l’enregistrement, l’éditeur et la navigation sont protégés; les contrôles ne sont pas réactivés avant le rendu de confirmation en cas de succès. Chargement initial borné via sync-data.js, repli statique et bouton Réessayer. Édition des cellules et en-têtes des guides grille et des cellules des guides tableau, avec préservation du format et des métadonnées. Cache ghec-v27. Ne modifie ni les accès ni les données publiées lors du déploiement. Lanceur : 9 vérifications.
 
 Le 31 octobre 2026, Documents : inventaire borné et explicitement partiel en cas d’échec, tailles depuis GitHub et repli à quatre requêtes simultanées. Renommage de toutes les références (y compris documents.ref), tuiles et état local synchronisés. Remplacement partagé : liste des Q concernés, confirmation et copie réservée à une question. Suppression des images liée à un commit avec refus de déplacement concurrent de main et contrôle des références du code; nettoyage du catalogue séparé et erreurs partielles explicites. Module documents-tools.js v1, cache ghec-v28. Les remplacements partagés refusent également toute publication concurrente et toute version d’image périmée. Lanceur : 10 vérifications. Accès et secrets inchangés.
+
+Le 31 octobre 2026, correctif Documents : export de head dans sync-data.js v2 (utilisé par l’inventaire et les opérations images), références v2 dans les quatre pages et cache ghec-v29. Test du contrat réel des exports ajouté.

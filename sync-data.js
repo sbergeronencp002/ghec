@@ -113,5 +113,5 @@ const GHECSync = (() => {
     }
   }
 
-  return {request,readFile,stableRead,merge,mergeState,clone,parse,edit,publishIndex,finishIndex};
+  return {request,head,readFile,stableRead,merge,mergeState,clone,parse,edit,publishIndex,finishIndex};
 })();

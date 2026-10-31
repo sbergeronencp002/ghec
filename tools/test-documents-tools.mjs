@@ -63,3 +63,9 @@ assert.equal(imageWrites.length,4);
 assert.equal(imageWrites.at(-1).force,false);
 assert.equal(imageWrites[1].tree[0].path,'images/a.png');
 console.log('✓ Remplacement partagé : usages et version vérifiés, écriture conditionnelle.');
+
+// Vérifie le contrat réel entre le module partagé et Documents, sans mock de son export.
+const integration=vm.createContext({});
+vm.runInContext(fs.readFileSync('sync-data.js','utf8')+';globalThis.sync=GHECSync',integration);
+for(const name of ['head','readFile','request','stableRead'])assert.equal(typeof integration.sync[name],'function',name+' doit être accessible');
+console.log('✓ Contrat réel Documents/synchronisation : head accessible.');

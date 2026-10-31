@@ -648,12 +648,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Observe l'illustration. Nomme un élément naturel lié à l'eau que l'on retrouve sur le territoire des Iroquoiens vers 1500.",
+ enonce: "Nomme une caractéristique de l'hydrographie du territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, on retrouve de grands cours d'eau sur le territoire occupé par les Iroquoiens.\n\nAccepter toute réponse mentionnant un fleuve, une rivière, un lac ou un cours d'eau. Les formulations équivalentes sont acceptées, mais l'identification précise du fleuve Saint-Laurent ou des Grands Lacs ne doit pas être exigée à partir de cette illustration seule.",
- updatedAt: "2026-10-29T11:39:44.486Z"
+ updatedAt: "2026-10-31T13:36:26.444Z"
 },
 {
  id: "Q16",

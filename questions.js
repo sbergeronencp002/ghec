@@ -59,7 +59,7 @@ const REGLETTES = {
 "Q58": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q59": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q60": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q61": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q61": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q62": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q63": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q64": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -412,7 +412,8 @@ const IMAGE_DB = {
 "iro_conseil_3.jpg": {src: "images/iro_conseil_3.jpg", w: 1200, h: 800},
 "territoire_iro_c.jpg": {src: "images/territoire_iro_c.jpg", w: 1200, h: 1015},
 "fabrication_canot_1.jpg": {src: "images/fabrication_canot_1.jpg", w: 1200, h: 800},
-"troc_2.jpg": {src: "images/troc_2.jpg", w: 1200, h: 800}
+"troc_2.jpg": {src: "images/troc_2.jpg", w: 1200, h: 800},
+"troc_3.jpg": {src: "images/troc_3.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1330,17 +1331,17 @@ const QUESTIONS = [
 {
  id: "Q61",
  niveau: 3,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "S'ouvrir à la diversité",
  periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent la structure politique des sociétés iroquoienne et algonquienne vers 1500. Associe chaque document à l'organisation politique correspondante.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Matriarcat", "Patriarcat"]},
- guide: {type: "grille", entetes: ["Matriarcat", "Patriarcat"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-20T13:04:05.691Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme deux produits échangés par les Iroquoiens lors du troc vers 1500.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "troc_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens échangent notamment des peaux d'animaux et du maïs.\n\nRéponses acceptées : Accepter « peaux de castor », « fourrures » et « maïs », ainsi que les formulations équivalentes correspondant aux objets clairement représentés.",
+ updatedAt: "2026-10-31T12:33:35.096Z"
 },
 {
  id: "Q62",

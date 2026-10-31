@@ -57,7 +57,7 @@ const REGLETTES = {
 "Q56": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q57": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q58": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q59": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q59": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q60": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q61": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q62": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
@@ -410,7 +410,8 @@ const IMAGE_DB = {
 "iro_guerre_1.jpg": {src: "images/iro_guerre_1.jpg", w: 1200, h: 800},
 "donnacona_1.jpg": {src: "images/donnacona_1.jpg", w: 1200, h: 800},
 "iro_conseil_3.jpg": {src: "images/iro_conseil_3.jpg", w: 1200, h: 800},
-"territoire_iro_c.jpg": {src: "images/territoire_iro_c.jpg", w: 1200, h: 1015}
+"territoire_iro_c.jpg": {src: "images/territoire_iro_c.jpg", w: 1200, h: 1015},
+"fabrication_canot_1.jpg": {src: "images/fabrication_canot_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1299,17 +1300,16 @@ const QUESTIONS = [
 {
  id: "Q59",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme le moyen par lequel les Iroquoiens prennent les décisions importantes vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "En conseil.",
- updatedAt: "2026-08-16T16:39:39.105Z"
+ points: 2,
+ enonce: "Explique comment la forêt favorise la fabrication des canots chez les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "fabrication_canot_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "La forêt favorise la fabrication des canots chez les Iroquoiens vers 1500, car elle fournit du bois et de l'écorce qui servent à les construire.\n\nAccepter toute réponse établissant clairement le lien entre les ressources fournies par les arbres et la fabrication des canots. La mention du bois, de l'écorce ou de matériaux provenant des arbres est pertinente.",
+ updatedAt: "2026-10-31T01:15:31.891Z"
 },
 {
  id: "Q60",

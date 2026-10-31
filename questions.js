@@ -409,7 +409,8 @@ const IMAGE_DB = {
 "troc_a.jpg": {src: "images/troc_a.jpg", w: 1200, h: 800},
 "iro_guerre_1.jpg": {src: "images/iro_guerre_1.jpg", w: 1200, h: 800},
 "donnacona_1.jpg": {src: "images/donnacona_1.jpg", w: 1200, h: 800},
-"iro_conseil_3.jpg": {src: "images/iro_conseil_3.jpg", w: 1200, h: 800}
+"iro_conseil_3.jpg": {src: "images/iro_conseil_3.jpg", w: 1200, h: 800},
+"territoire_iro_c.jpg": {src: "images/territoire_iro_c.jpg", w: 1200, h: 1015}
 }
 
 const QUESTIONS = [
@@ -1285,15 +1286,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Algonquiens vers 1500"],
+ periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la structure politique chez les Algonquiens vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "algonquiens_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe la carte. Indique la lettre qui correspond au territoire occupé par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Le patriarcat.",
- updatedAt: "2026-08-16T18:07:02.627Z"
+ guide: "Les Iroquoiens occupent notamment la région des Grands Lacs et les Basses-terres du Saint-Laurent, représentées par la lettre C.",
+ updatedAt: "2026-10-31T01:12:33.472Z"
 },
 {
  id: "Q59",

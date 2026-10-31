@@ -1475,7 +1475,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "algon_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algon_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Nomade", "Sédentaire"]},
  guide: {type: "grille", entetes: ["Nomade", "Sédentaire"], rangees: [["A", "B"]]},
- updatedAt: "2026-10-31T16:05:17.449Z"
+ updatedAt: "2026-10-31T16:06:32.262Z"
 },
 {
  id: "Q71",

@@ -930,9 +930,9 @@ const QUESTIONS = [
  enonce: "Les documents A et B illustrent deux expressions de l'art pratiquées par les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vannerie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "poterie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["", ""]},
- guide: {type: "grille", entetes: ["Élément 1", "Élément 2"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-29T20:05:34.978Z"
+ reponse: {type: "mettre-en-relation", elements: ["Poterie", "Vannerie"]},
+ guide: {type: "grille", entetes: ["Poterie", "Vannerie"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-31T12:30:53.629Z"
 },
 {
  id: "Q35",

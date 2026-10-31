@@ -1384,12 +1384,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la structure politique chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_matriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l'illustration. Nomme une trace laissée par la société iroquoienne que l'on peut encore observer aujourd'hui.",
+ aspects: [{aspect: "Traces du passé"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "traces_iro_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Le matriarcat.",
- updatedAt: "2026-08-16T17:06:15.803Z"
+ guide: "Les toponymes d’origine iroquoienne, comme Hochelaga, constituent des traces de la société iroquoienne que l’on peut encore observer aujourd’hui.",
+ updatedAt: "2026-10-31T13:15:08.815Z"
 },
 {
  id: "Q65",

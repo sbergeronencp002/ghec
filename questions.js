@@ -504,12 +504,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Nomme un élément du territoire qui influence l'emplacement des villages iroquoiens vers 1500.",
+ enonce: "Nomme une caractéristique du territoire qui favorise l'établissement des villages iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Iroquoiens établissent leurs villages près des cours d'eau.\n\nAccepter toute réponse indiquant que les villages iroquoiens sont établis près des cours d'eau (fleuves, rivières ou lacs) ou près des terres cultivables favorables à l'agriculture.",
- updatedAt: "2026-10-29T00:15:35.694Z"
+ updatedAt: "2026-10-31T13:36:01.823Z"
 },
 {
  id: "Q7",

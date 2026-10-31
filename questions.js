@@ -66,7 +66,7 @@ const REGLETTES = {
 "Q65": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q66": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q67": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q68": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q68": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q69": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q70": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q71": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
@@ -1433,17 +1433,17 @@ const QUESTIONS = [
 {
  id: "Q68",
  niveau: 3,
- oi: "Caractériser un territoire",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
- soustag: "Caractériser un territoire - 1",
- enonce: "Observe la carte. Décris la répartition de la population iroquoienne vers 1500 sur le territoire.",
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe la carte. Décris la répartition de la population iroquoienne vers 1500.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_a.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "La population iroquoienne est principalement répartie en bordure du fleuve Saint-Laurent et des Grands Lacs.",
- updatedAt: "2026-10-31T13:46:16.424Z"
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, la population iroquoienne est principalement établie en bordure du fleuve Saint-Laurent et des Grands Lacs.",
+ updatedAt: "2026-10-31T13:47:54.983Z"
 },
 {
  id: "Q69",

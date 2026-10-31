@@ -74,7 +74,7 @@ const REGLETTES = {
 "Q73": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q74": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q75": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q76": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q76": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q77": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q78": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q79": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -415,7 +415,9 @@ const IMAGE_DB = {
 "algon_iro_1.jpg": {src: "images/algon_iro_1.jpg", w: 1200, h: 800},
 "algon_iro_2.jpg": {src: "images/algon_iro_2.jpg", w: 1200, h: 800},
 "algon_iro_3.jpg": {src: "images/algon_iro_3.jpg", w: 1200, h: 800},
-"algon_iro_4.jpg": {src: "images/algon_iro_4.jpg", w: 1200, h: 800}
+"algon_iro_4.jpg": {src: "images/algon_iro_4.jpg", w: 1200, h: 800},
+"algon_iro_5.jpg": {src: "images/algon_iro_5.jpg"},
+"algon_iro_6.jpg": {src: "images/algon_iro_6.jpg"}
 }
 
 const QUESTIONS = [
@@ -1557,16 +1559,17 @@ const QUESTIONS = [
 {
  id: "Q76",
  niveau: 3,
- oi: "Établir des liens de causalité",
- competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
+ oi: "Mettre en relation des faits",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
  points: 2,
- enonce: "Explique comment l’agriculture contribue à l’alimentation des Iroquoiens vers 1500.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_champs.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_recoltes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "L’agriculture contribue à l’alimentation des Iroquoiens parce qu’elle leur permet de cultiver des aliments pour se nourrir.",
- updatedAt: "2026-08-16T19:03:27.739Z"
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présentent les structures politiques des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "algon_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "algon_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Matriarcat", "Patriarcat"]},
+ guide: {type: "grille", entetes: ["Matriarcat", "Patriarcat"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-31T18:05:16.294Z"
 },
 {
  id: "Q77",

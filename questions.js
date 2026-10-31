@@ -418,7 +418,8 @@ const IMAGE_DB = {
 "traces_iro_2.jpg": {src: "images/traces_iro_2.jpg", w: 1200, h: 800},
 "traces_iro_3.jpg": {src: "images/traces_iro_3.jpg", w: 1200, h: 800},
 "voie_communication_4.jpg": {src: "images/voie_communication_4.jpg", w: 1200, h: 800},
-"voie_communication_3.jpg": {src: "images/voie_communication_3.jpg"}
+"voie_communication_3.jpg": {src: "images/voie_communication_3.jpg"},
+"vill_iro_h.jpg": {src: "images/vill_iro_h.jpg"}
 }
 
 const QUESTIONS = [
@@ -1430,12 +1431,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les aînées jouent un rôle important chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Nomme le mode de vie des Iroquoiens vers 1500.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_h.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les aînées jouent un rôle important chez les Iroquoiens parce qu’elles désignent les chefs.",
- updatedAt: "2026-08-16T17:44:51.982Z"
+ guide: "Vers 1500, les Iroquoiens ont un mode de vie sédentaire, puisqu'ils habitent dans des villages relativement stables et pratiquent l'agriculture.",
+ updatedAt: "2026-10-31T13:42:59.674Z"
 },
 {
  id: "Q68",

@@ -430,15 +430,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Algonquiens vers 1500"],
+ periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme le mode de vie des Algonquiens vers 1500.",
+ enonce: "Nomme le mode de vie des Iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "cam_alg_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Algonquiens ont un mode de vie nomade.\n\nAccepter « nomade » ainsi que toute formulation indiquant que les Algonquiens se déplacent selon les saisons, changent de campement ou ne vivent pas toujours au même endroit.",
- updatedAt: "2026-10-28T20:18:28.662Z"
+ guide: "Vers 1500, les Iroquoiens ont un mode de vie sédentaire.\n\nRéponses acceptées\nLes Iroquoiens sont sédentaires vers 1500.\t\nVers 1500, les Iroquoiens vivent dans des villages relativement stables.\t\nLes Iroquoiens demeurent au même endroit pendant plusieurs années avant de déplacer leur village.",
+ updatedAt: "2026-10-31T18:34:55.580Z"
 },
 {
  id: "Q3",

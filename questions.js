@@ -81,7 +81,7 @@ const REGLETTES = {
 "Q80": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q81": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q82": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
-"Q83": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q83": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q84": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q85": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q86": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -407,7 +407,9 @@ const IMAGE_DB = {
 "algon_iro_5.jpg": {src: "images/algon_iro_5.jpg"},
 "algon_iro_6.jpg": {src: "images/algon_iro_6.jpg"},
 "cam_alg_a.jpg": {src: "images/cam_alg_a.jpg"},
-"territoire_iro_d.jpg": {src: "images/territoire_iro_d.jpg"}
+"territoire_iro_d.jpg": {src: "images/territoire_iro_d.jpg"},
+"incas_iro_2.jpg": {src: "images/incas_iro_2.jpg"},
+"incas_iro_1.jpg": {src: "images/incas_iro_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1654,16 +1656,17 @@ const QUESTIONS = [
 {
  id: "Q83",
  niveau: 3,
- oi: "Établir des liens de causalité",
- competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
+ oi: "Mettre en relation des faits",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
  points: 2,
- enonce: "Explique comment la tradition orale permet de conserver les connaissances chez les Iroquoiens.",
- aspects: [{aspect: "Communication"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "tradition_orale_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "aines_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Elle permet de transmettre les connaissances d’une génération à l’autre par la parole.",
- updatedAt: "2026-08-17T11:55:16.946Z"
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présent le pouvoir des chefs chez les Iroquoiens et les Incas vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
+ guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-31T23:18:07.640Z"
 },
 {
  id: "Q84",

@@ -152,7 +152,7 @@ Site statique GitHub Pages — aucun backend. Tout tourne dans le navigateur.
 
 `index.html` charge `app.js?v=70`, `style.css?v=38`, `filters.js?v=6`, `oi-config.js?v=1`.
 `examen.html` charge `examen-gen.js?v=3`.
-`sw.js` : `CACHE = 'ghec-v26'` (bump 2026-08-12 : ajout de `competences.js` à
+`sw.js` : `CACHE = 'ghec-v27'` (bump 2026-08-12 : ajout de `competences.js` à
 `NETWORK_FIRST_PRECACHE`, absent depuis la mise en place de la section Configuration —
 il restait donc en cache-first indéfiniment après une publication Configuration ; puis
 bump suivant pour la justification des énoncés dans le cahier DOCX, voir plus bas ; puis
@@ -444,3 +444,5 @@ Le 31 octobre 2026, synchronisation commune via sync-data.js v1 dans Main/Admin/
 Main : réconciliation complète de la liste et de la recherche, images téléchargées à quatre simultanément avec délai, chargement de docx.js limité, choix Réessayer/Générer quand même/Annuler pour les images manquantes, main-ui.js v1 pour mémoriser les options et gérer le focus et Échap dans les fenêtres. App v70, style v38, cache ghec-v25. Aucun changement au stockage du jeton ou du secret Worker.
 
 Le 31 octobre 2026, Admin : module admin-tools.js v1 pour les brouillons locaux par question (données structurées et champs bruts, jamais les accès), restauration explicite après rechargement, suppression du brouillon après publication réussie. Les manipulations structurelles et la fermeture de page déclenchent aussi la sauvegarde. Les conflits de configuration sont comparés à la version chargée dans le formulaire avant toute écriture. Vérifications préalables non bloquantes : guide vide, documents cités sans titre correspondant, documents vides, images absentes et énoncés en doublon. Statut de publication en étapes et erreurs persistantes; aucun compte à rebours ne prétend garantir la propagation Pages. Cache ghec-v26. Tests Admin ajoutés au lanceur (8 vérifications).
+
+Le 31 octobre 2026, Révision : module revision-tools.js v1. Restauration complète des filtres et de leurs options après annulation d’un changement; protection avant fermeture/rechargement; brouillons locaux par question et champ, restaurables et retirés après enregistrement réussi. Les conflits utilisent la version du champ au début de l’édition, même si l’état confirmé a changé entre-temps. Pendant l’enregistrement, l’éditeur et la navigation sont protégés; les contrôles ne sont pas réactivés avant le rendu de confirmation en cas de succès. Chargement initial borné via sync-data.js, repli statique et bouton Réessayer. Édition des cellules et en-têtes des guides grille et des cellules des guides tableau, avec préservation du format et des métadonnées. Cache ghec-v27. Ne modifie ni les accès ni les données publiées lors du déploiement. Lanceur : 9 vérifications.

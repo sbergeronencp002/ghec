@@ -84,6 +84,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
   .rv-card { padding:1.1rem; }
   .rv-toolbar select, .rv-toolbar input[type=search] { width:140px; }
 }
+.rv-guide-edit-table{width:100%;border-collapse:collapse}.rv-guide-edit-table th,.rv-guide-edit-table td{border:1px solid var(--border);padding:6px}.rv-guide-edit-table input,.rv-guide-edit-table textarea{width:100%;box-sizing:border-box;min-width:90px;font:inherit;padding:6px}.rv-guide-edit-table textarea{min-height:65px}
 </style>
 </head>
 <body>
@@ -139,6 +140,13 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 
 <div class="rv-stage">
   <button class="rv-arrow" id="rv-prev" onclick="rvNav(-1)" aria-label="Question précédente">‹</button>
+  <div id="rv-recovery" style="margin-bottom:1rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
+    <select id="rv-draft-select" aria-label="Brouillon de Révision"></select>
+    <button type="button" onclick="GHECRevision.restore()">Restaurer le brouillon</button>
+    <button type="button" onclick="GHECRevision.discard()">Supprimer le brouillon</button>
+    <span id="rv-draft-status" role="status" aria-live="polite"></span>
+  </div>
+  <div id="rv-load-status" role="status" aria-live="polite"></div>
   <div class="rv-card-wrap" id="rv-card-wrap">
     <div class="rv-card" id="rv-card"></div>
   </div>
@@ -158,6 +166,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 <script src="competences.js"></script>
 <script src="questions-io.js?v=3"></script>
 <script src="sync-data.js?v=1"></script>
+<script src="revision-tools.js?v=1"></script>
 <script src="contexte.js"></script>
 <script src="filters.js?v=6"></script>
 <script>
@@ -237,6 +246,7 @@ const RV_API  = 'https://api.github.com/repos/' + RV_REPO + '/contents/';
 // sur un réplica GitHub en retard (ex. une question publiée par admin.html dans un autre
 // onglet juste avant) ferait disparaître cette question lors de la réécriture complète du
 // fichier par rvApplyQuestionsEdit, sans erreur ni conflit 409.
+let QUESTIONS = [], REGLETTES = {}, IMAGE_DB = {};
 let rvConfirmedQuestions = [];
 let rvConfirmedIds = new Set();
 function rvSeedConfirmed() {
@@ -273,6 +283,10 @@ async function rvFetchStableQuestionsJs(headers) {
 async function rvApplyQuestionsEdit(mutate, commitMsg) {
   const headers={Authorization:'token '+rvRequireToken()};
   const base=GHECSync.clone({QUESTIONS:rvConfirmedQuestions,REGLETTES,IMAGE_DB});
+  if(_rvActiveEdit?.baseQuestion) {
+    const at=base.QUESTIONS.findIndex(q=>q.id===_rvActiveEdit.id);
+    if(at!==-1)base.QUESTIONS[at]=GHECSync.clone(_rvActiveEdit.baseQuestion);
+  }
   const result=await GHECSync.edit({base,mutate,headers,message:commitMsg});
   if(!result) { await GHECSync.finishIndex(headers,commitMsg); return false; }
   rvConfirmedQuestions=result.state.QUESTIONS;
@@ -284,6 +298,7 @@ async function rvApplyQuestionsEdit(mutate, commitMsg) {
 // simple à raisonner que plusieurs éditions concurrentes, et suffisant en pratique.
 // `isDirty()` compare le DOM courant à la valeur chargée à l'ouverture de l'édition.
 let _rvActiveEdit = null;
+let rvSaving = false;
 // Incrémenté à chaque nouvelle session d'édition — permet au setTimeout différé de
 // rvSave* (voir plus bas) de détecter qu'un champ a été rouvert pour édition avant
 // que le rendu différé de l'ancienne sauvegarde ne s'applique, et de s'abstenir
@@ -292,6 +307,7 @@ let _rvActiveEdit = null;
 // vérification à elle seule ne suffit donc pas).
 let _rvEditGen = 0;
 function rvBeginEdit(key, isDirty, cancelFn) {
+  if(rvSaving){alert("Enregistrement en cours. Patiente un instant.");return false;}
   if(_rvActiveEdit && _rvActiveEdit.key !== key) {
     alert('Enregistrez ou annulez l\'édition en cours avant d\'en commencer une autre.');
     return false;
@@ -307,14 +323,16 @@ function rvBeginEdit(key, isDirty, cancelFn) {
     return false;
   }
   _rvEditGen++;
-  _rvActiveEdit = { key, isDirty, cancel: cancelFn };
+  const q=rvList[rvIndex];
+  _rvActiveEdit = { key, isDirty, cancel: cancelFn, id:q.id, baseQuestion:GHECSync.clone(q) };
   return true;
 }
-function rvEndEdit() { _rvActiveEdit = null; }
+function rvEndEdit() { if(!_rvActiveEdit?.persisted)GHECRevision.save(); _rvActiveEdit = null; }
 function hasUnsavedEdit() { return !!_rvActiveEdit && _rvActiveEdit.isDirty(); }
 // À appeler avant toute navigation/changement de filtre qui régénère la carte :
 // demande confirmation si une édition non enregistrée serait perdue.
 function confirmDiscardEdit() {
+  if(rvSaving){alert("Enregistrement en cours. Patiente un instant.");return false;}
   if(!hasUnsavedEdit()) return true;
   return confirm('Des modifications non enregistrées seraient perdues. Continuer ?');
 }
@@ -455,7 +473,7 @@ function rvApplyFilters() {
   // Empêche de perdre une édition non enregistrée en changeant de filtre : le
   // <select>/l'input a déjà pris sa nouvelle valeur au moment du onchange/oninput (on ne
   // la remet pas en arrière si l'utilisateur annule), mais la carte n'est pas régénérée.
-  if(!confirmDiscardEdit()) return;
+  if(!confirmDiscardEdit()) {rvRestoreFilterSnapshot();return;}
   rvEndEdit();
   const oi         = document.getElementById('f-oi').value;
   const competence = document.getElementById('f-competence').value;
@@ -504,6 +522,7 @@ function rvApplyFilters() {
       ? `<b>${filtered.length}</b> questions`
       : `<b>${filtered.length}</b> question${filtered.length!==1?'s':''} · ${totalPts} pt${totalPts!==1?'s':''}`;
   rvRenderCard();
+  rvRememberFilters();
 }
 
 function rvResetFilters() {
@@ -783,32 +802,44 @@ function rvBuildCardHtml(q) {
 
   const isTextGuide = q.guide === undefined || q.guide === false || typeof q.guide === 'string';
   html += '<div class="q-section-label rv-guide-label">📘 Guide de correction'
-    + (isTextGuide ? '<button class="rv-guide-edit-btn" onclick="rvEditGuide()">✏ Modifier</button>' : '')
+    + ((isTextGuide || GHECRevision.matrix(q.guide)) ? '<button class="rv-guide-edit-btn" onclick="rvEditGuide()">✏ Modifier</button>' : '')
     + '</div>';
   html += '<div class="rv-guide-box" id="rv-guide-box">' + rvRenderGuide(q) + '</div>';
-  if(!isTextGuide) html += '<div class="rv-note" style="margin-top:.35rem">Guide en tableau — modifiable dans admin.html.</div>';
+
 
   return html;
 }
 
+let rvGuideOriginal = null;
+function rvReadGuideEditor() {
+  const grid=GHECRevision.matrix(rvGuideOriginal);
+  if(!grid)return document.getElementById('rv-guide-textarea')?.value||'';
+  const width=Math.max(grid.headers.length,...grid.rows.map(r=>r.length),1);
+  const headers=Array.from({length:width},(_,c)=>document.getElementById('rvg-h-'+c)?.value||'');
+  const rows=grid.rows.map((row,r)=>Array.from({length:width},(_,c)=>document.getElementById('rvg-'+r+'-'+c)?.value||''));
+  return GHECRevision.fromMatrix(rvGuideOriginal,headers,rows);
+}
 function rvEditGuide() {
-  const q = rvList[rvIndex];
-  if(!q) return;
-  const current = typeof q.guide === 'string' ? q.guide : '';
-  if(!rvBeginEdit('guide', () => {
-    const ta = document.getElementById('rv-guide-textarea');
-    return !!ta && ta.value !== current;
-  }, rvCancelGuideEdit)) return;
-  const box = document.getElementById('rv-guide-box');
-  box.innerHTML = '<textarea id="rv-guide-textarea" class="rv-guide-textarea"></textarea>'
-    + '<div class="rv-guide-edit-actions">'
-    + '<span class="rv-guide-status" id="rv-guide-status"></span>'
-    + '<button class="rv-guide-btn-cancel" onclick="rvCancelGuideEdit()">Annuler</button>'
-    + '<button class="rv-guide-btn-save" id="rv-guide-save-btn" onclick="rvSaveGuide()">Enregistrer</button>'
-    + '</div>';
-  const ta = document.getElementById('rv-guide-textarea');
-  ta.value = current;
-  ta.focus();
+  const q=rvList[rvIndex];if(!q)return;
+  const original=GHECSync.clone(q.guide)||'';
+  if(!rvBeginEdit('guide',()=>JSON.stringify(rvReadGuideEditor())!==JSON.stringify(original),rvCancelGuideEdit))return;
+  rvGuideOriginal=original;
+  const grid=GHECRevision.matrix(original);
+  let html='';
+  if(grid) {
+    const width=Math.max(grid.headers.length,...grid.rows.map(r=>r.length),1);
+    html='<div style="overflow-x:auto"><table class="rv-guide-edit-table"><thead><tr>';
+    for(let c=0;c<width;c++)html+='<th><input id="rvg-h-'+c+'" aria-label="En-tête '+(c+1)+'" value="'+rvEscAttr(grid.headers[c]??'')+'"'+(original.type==='tableau'?' readonly':'')+'></th>';
+    html+='</tr></thead><tbody>';
+    grid.rows.forEach((row,r)=>{html+='<tr>';for(let c=0;c<width;c++)html+='<td><textarea id="rvg-'+r+'-'+c+'" aria-label="Rangée '+(r+1)+' colonne '+(c+1)+'">'+rvEscLine(row[c]??'')+'</textarea></td>';html+='</tr>';});
+    html+='</tbody></table></div>';
+  } else html='<textarea id="rv-guide-textarea" class="rv-guide-textarea"></textarea>';
+  html+='<div class="rv-guide-edit-actions"><span class="rv-guide-status" id="rv-guide-status" role="status"></span>'+
+    '<button class="rv-guide-btn-cancel" onclick="rvCancelGuideEdit()">Annuler</button>'+
+    '<button class="rv-guide-btn-save" id="rv-guide-save-btn" onclick="rvSaveGuide()">Enregistrer</button></div>';
+  document.getElementById('rv-guide-box').innerHTML=html;
+  if(!grid)document.getElementById('rv-guide-textarea').value=typeof original==='string'?original:'';
+  document.querySelector('#rv-guide-box textarea,#rv-guide-box input')?.focus();
 }
 
 function rvCancelGuideEdit() {
@@ -826,7 +857,7 @@ async function rvSaveGuide() {
   // autre carte) pendant la sauvegarde, _rvEditGen avance et cette session de sauvegarde ne
   // doit plus toucher _rvActiveEdit ni le DOM d'une carte qui n'est plus celle affichée.
   const gen = _rvEditGen;
-  const newVal = document.getElementById('rv-guide-textarea').value;
+  const newVal = rvReadGuideEditor();
   const btn = document.getElementById('rv-guide-save-btn');
   const status = document.getElementById('rv-guide-status');
   btn.disabled = true;
@@ -836,10 +867,7 @@ async function rvSaveGuide() {
     const changed = await rvApplyQuestionsEdit(parsed => {
       const target = parsed.QUESTIONS.find(x => x.id === id);
       if(!target) throw new Error('Question ' + id + ' introuvable');
-      if(typeof target.guide !== 'string' && target.guide !== false && target.guide !== undefined) {
-        throw new Error('Ce guide est un tableau — non modifiable ici.');
-      }
-      if((target.guide || '') === newVal) return false;
+      if(JSON.stringify(target.guide||'') === JSON.stringify(newVal)) return false;
       target.guide = newVal;
       return true;
     }, 'Modifier le guide de correction — ' + id);
@@ -847,7 +875,7 @@ async function rvSaveGuide() {
     // Ne libérer/rafraîchir l'édition active que si elle appartient encore à CETTE session
     // (voir commentaire sur `gen` ci-dessus) — sinon une sauvegarde lente pourrait effacer
     // le suivi « non enregistré » d'une édition plus récente démarrée entre-temps ailleurs.
-    if(_rvEditGen === gen) rvEndEdit();
+    if(_rvEditGen === gen) {GHECRevision.saved(id,_rvActiveEdit?.key);if(_rvActiveEdit)_rvActiveEdit.persisted=true;rvEndEdit();}
     status.className = 'rv-guide-status ok';
     status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
     const box = document.getElementById('rv-guide-box');
@@ -918,7 +946,7 @@ async function rvSaveEnonce() {
       return true;
     }, 'Modifier l\'énoncé — ' + id);
     q.enonce = newVal;
-    if(_rvEditGen === gen) rvEndEdit();
+    if(_rvEditGen === gen) {GHECRevision.saved(id,_rvActiveEdit?.key);if(_rvActiveEdit)_rvActiveEdit.persisted=true;rvEndEdit();}
     status.className = 'rv-guide-status ok';
     status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
     const box = document.getElementById('rv-enonce-box');
@@ -1021,7 +1049,7 @@ async function rvSaveDocEdit(docIdx, colIdx) {
       return JSON.stringify(tCol) !== before;
     }, 'Modifier un document — ' + id);
     rvApplyDocFields(col, fields);
-    if(_rvEditGen === gen) rvEndEdit();
+    if(_rvEditGen === gen) {GHECRevision.saved(id,_rvActiveEdit?.key);if(_rvActiveEdit)_rvActiveEdit.persisted=true;rvEndEdit();}
     status.className = 'rv-guide-status ok';
     status.textContent = changed ? '✓ Enregistré.' : 'Aucun changement.';
     const cell = document.getElementById('rv-doc-cell-' + docIdx + '-' + colIdx);
@@ -1116,56 +1144,90 @@ document.addEventListener('keydown', e => {
 // Charge questions.js avec cache-bust (timestamp) plutôt qu'un <script src="?v=1">
 // statique : sinon le navigateur peut servir indéfiniment une copie mise en cache
 // sous cette URL fixe, masquant les questions ajoutées/modifiées depuis.
-(function loadQuestionsThenInit() {
-  function runSource(src) {
-    try {
-      const s = document.createElement('script');
-      s.textContent = src;
-      document.head.appendChild(s);
-      return typeof QUESTIONS !== 'undefined';
-    } catch (e) { return false; }
+const RV_FILTER_FIELDS=['f-niveau','f-competence','f-periode','f-aspect','f-oi','f-search'];
+let rvFilterSnapshot=[];
+function rvRememberFilters() {
+  rvFilterSnapshot=RV_FILTER_FIELDS.map(id=>{
+    const el=document.getElementById(id);
+    return {id,value:el.value,children:el.tagName==='SELECT'?[...el.childNodes].map(node=>node.cloneNode(true)):null};
+  });
+}
+function rvRestoreFilterSnapshot() {
+  clearTimeout(_rvSearchTimer);
+  for(const saved of rvFilterSnapshot) {
+    const el=document.getElementById(saved.id);if(!el)continue;
+    if(saved.children)el.replaceChildren(...saved.children.map(node=>node.cloneNode(true)));
+    el.value=saved.value;
   }
-  function scriptTagFallback() {
-    const qs = document.createElement('script');
-    qs.src = 'questions.js?v=1&t=' + Date.now();
-    qs.onload = () => { rvSeedConfirmed(); rvPopulateFilters(); rvApplyFilters(); };
-    document.head.appendChild(qs);
+}
+function rvCaptureDraft() {
+  if(!_rvActiveEdit || _rvActiveEdit.persisted || !hasUnsavedEdit())return null;
+  return {version:1,id:_rvActiveEdit.id,key:_rvActiveEdit.key,baseQuestion:GHECSync.clone(_rvActiveEdit.baseQuestion),
+    fields:[...document.querySelectorAll('#rv-card input,#rv-card textarea,#rv-card select')].filter(el=>el.id)
+      .map(el=>({id:el.id,value:el.value,checked:el.checked}))};
+}
+function rvRestoreDraft(draft) {
+  if(draft.version!==1)throw new Error('Version de brouillon inconnue');
+  const q=QUESTIONS.find(q=>q.id===draft.id);if(!q)throw new Error('La question a été supprimée du site');
+  rvEndEdit();rvPopulateFilters();rvApplyFilters();
+  rvIndex=rvList.findIndex(q=>q.id===draft.id);if(rvIndex<0)throw new Error('Question introuvable dans la liste');
+  rvRenderCard();
+  if(draft.key==='enonce')rvEditEnonce();
+  else if(draft.key==='guide') {
+    const current=q.guide;
+    try {q.guide=GHECSync.clone(draft.baseQuestion.guide);rvEditGuide();}finally {q.guide=current;}
+  } else if(/^doc:\d+:\d+$/.test(draft.key)) {
+    const [,di,ci]=draft.key.split(':').map((x,i)=>i?Number(x):x);
+    rvEditDoc(di,ci);
+  } else throw new Error('Type de brouillon inconnu');
+  if(!_rvActiveEdit)throw new Error('Ce document n’existe plus ou sa structure a changé');
+  _rvActiveEdit.baseQuestion=GHECSync.clone(draft.baseQuestion);
+  for(const field of draft.fields||[]) {
+    const el=document.getElementById(field.id);
+    if(el && el.closest('#rv-card')) {el.value=field.value;if(el.type==='checkbox'||el.type==='radio')el.checked=!!field.checked;}
   }
-  function staticFetchFallback() {
-    fetch('questions.js?t=' + Date.now(), { cache: 'no-store' })
-      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .then(src => { if (runSource(src)) { rvSeedConfirmed(); rvPopulateFilters(); rvApplyFilters(); } else scriptTagFallback(); })
-      .catch(scriptTagFallback);
+}
+function initRevisionTools() {
+  GHECRevision.init({capture:rvCaptureDraft,restore:rvRestoreDraft,dirty:()=>hasUnsavedEdit()||rvSaving,
+    canRestore:()=>!rvLoading && confirmDiscardEdit()});
+  for(const name of ['rvSaveGuide','rvSaveEnonce','rvSaveDocEdit']) {
+    const original=window[name];
+    window[name]=async function(...args) {
+      if(rvSaving || !_rvActiveEdit)return;
+      GHECRevision.save();rvSaving=true;
+      const key=_rvActiveEdit.key;
+      const scope=document.getElementById(key==='guide'?'rv-guide-box':key==='enonce'?'rv-enonce-box':'rv-doc-cell-'+key.split(':').slice(1).join('-'));
+      const locked=[...(scope?.querySelectorAll('input,textarea,select,button')||[])].map(el=>({el,disabled:el.disabled}));
+      locked.forEach(({el})=>el.disabled=true);
+      try {return await original.apply(this,args);}
+      finally {if(_rvActiveEdit)locked.forEach(({el,disabled})=>{if(el.isConnected)el.disabled=disabled;});rvSaving=false;}
+    };
   }
-  // Lit d'abord via l'API GitHub (comme admin.html) plutôt que le site statique : GitHub
-  // Pages est servi derrière un CDN qui peut continuer à servir une ancienne version de
-  // questions.js pendant un moment après une publication, même avec le cache-bust par
-  // timestamp sur l'URL (le CDN peut ignorer la query string pour la clé de cache).
-  // L'API GitHub, elle, reflète toujours l'état réel du dépôt. Repli sur le site statique
-  // si l'API échoue (hors ligne, quota anonyme de 60 req/h dépassé, etc.).
-  const token = rvGetToken();
-  fetch(RV_API + 'questions.js?ref=main&t=' + Date.now(), {
-    headers: token ? {Authorization: 'token ' + token} : {},
-    cache: 'no-store'
-  })
-    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(d => {
-      if (d.content) {
-        const rawBytes = Uint8Array.from(atob(d.content.replace(/\n/g,'')), c => c.charCodeAt(0));
-        return new TextDecoder('utf-8').decode(rawBytes);
-      }
-      if (d.download_url) {
-        const dlUrl = d.download_url + (d.download_url.includes('?') ? '&' : '?') + 't=' + Date.now();
-        return fetch(dlUrl, { cache: 'no-store' }).then(raw => {
-          if (!raw.ok) throw new Error('download_url ' + raw.status);
-          return raw.text();
-        });
-      }
-      throw new Error('Réponse API inattendue');
-    })
-    .then(src => { if (runSource(src)) { rvSeedConfirmed(); rvPopulateFilters(); rvApplyFilters(); } else staticFetchFallback(); })
-    .catch(staticFetchFallback);
-})();
+  for(const name of ['rvCancelGuideEdit','rvCancelEnonceEdit','rvCancelDocEdit']) {
+    const original=window[name];window[name]=function(...args){if(rvSaving)return;return original.apply(this,args);};
+  }
+}
+
+let rvLoading=false;
+async function rvLoadQuestions() {
+  if(rvLoading || !confirmDiscardEdit())return;
+  rvEndEdit();if(rvList.length)rvRenderCard();rvLoading=true;
+  const status=document.getElementById('rv-load-status');status.textContent='Chargement des questions…';
+  try {
+    let source,fallback=false;
+    try {source=(await GHECSync.readFile('questions.js',rvGetToken()?{Authorization:'token '+rvGetToken()}:{})).content;}
+    catch(_) {source=await GHECSync.request('questions.js?t='+Date.now(),{},'text');fallback=true;}
+    const parsed=GHECSync.parse(source);
+    QUESTIONS.splice(0,QUESTIONS.length,...parsed.QUESTIONS);REGLETTES=parsed.REGLETTES;IMAGE_DB=parsed.IMAGE_DB;
+    rvSeedConfirmed();rvPopulateFilters();rvApplyFilters();
+    status.textContent=fallback?'Version de secours chargée. Les dernières publications peuvent mettre un moment à apparaître.':'';
+  } catch(error) {
+    status.textContent='Chargement impossible : '+error.message+' ';
+    const retry=document.createElement('button');retry.type='button';retry.textContent='Réessayer';retry.onclick=rvLoadQuestions;status.appendChild(retry);
+  } finally {rvLoading=false;}
+}
+initRevisionTools();
+rvLoadQuestions();
 </script>
 </body>
 </html>

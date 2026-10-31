@@ -77,7 +77,7 @@ const REGLETTES = {
 "Q76": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q77": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q78": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q79": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q79": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q80": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q81": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q82": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -417,7 +417,8 @@ const IMAGE_DB = {
 "algon_iro_3.jpg": {src: "images/algon_iro_3.jpg", w: 1200, h: 800},
 "algon_iro_4.jpg": {src: "images/algon_iro_4.jpg", w: 1200, h: 800},
 "algon_iro_5.jpg": {src: "images/algon_iro_5.jpg"},
-"algon_iro_6.jpg": {src: "images/algon_iro_6.jpg"}
+"algon_iro_6.jpg": {src: "images/algon_iro_6.jpg"},
+"cam_alg_a.jpg": {src: "images/cam_alg_a.jpg"}
 }
 
 const QUESTIONS = [
@@ -1604,17 +1605,17 @@ const QUESTIONS = [
 {
  id: "Q79",
  niveau: 3,
- oi: "Établir des faits",
- competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme un instrument de musique utilisé par les Iroquoiens pour accompagner les chants et les danses.",
- aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "instruments_musique_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les Iroquoiens utilisent le tambour ou le hochet.",
- updatedAt: "2026-10-28T02:28:14.861Z"
+ oi: "Mettre en relation des faits",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B illustrent les principales activités économiques des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cam_alg_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Algonquiens", "Iroquoiens"]},
+ guide: {type: "grille", entetes: ["Algonquiens", "Iroquoiens"], rangees: [["B", "A"]]},
+ updatedAt: "2026-10-31T18:21:57.363Z"
 },
 {
  id: "Q80",

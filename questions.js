@@ -1282,7 +1282,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe la carte. Indique la lettre qui correspond au territoire occupé par les Iroquoiens vers 1500.",
@@ -1290,7 +1290,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Iroquoiens occupent notamment la région des Grands Lacs et les Basses-terres du Saint-Laurent, représentées par la lettre C.",
- updatedAt: "2026-10-31T01:12:33.472Z"
+ updatedAt: "2026-10-31T18:37:15.122Z"
 },
 {
  id: "Q59",

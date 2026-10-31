@@ -1260,10 +1260,10 @@ const QUESTIONS = [
  soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
  aspects: [{aspect: "Personnages"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "donnacona_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "donnacona_1.jpg", soustitre: "Rencontre entre Donnacona et Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1490-1570.png"},
  guide: "La lettre B\n\nLa rencontre entre Jacques Cartier et Donnacona à Stadaconé se déroule en 1535.",
- updatedAt: "2026-10-31T00:55:41.470Z"
+ updatedAt: "2026-10-31T01:09:44.167Z"
 },
 {
  id: "Q57",

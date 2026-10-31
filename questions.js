@@ -1325,8 +1325,8 @@ const QUESTIONS = [
  id: "Q61",
  niveau: 3,
  oi: "Établir des faits",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme deux produits échangés par les Iroquoiens lors du troc vers 1500.",
@@ -1334,7 +1334,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "troc_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens échangent notamment des peaux d'animaux et du maïs.\n\nRéponses acceptées : Accepter « peaux de castor », « fourrures » et « maïs », ainsi que les formulations équivalentes correspondant aux objets clairement représentés.",
- updatedAt: "2026-10-31T12:33:35.096Z"
+ updatedAt: "2026-10-31T18:36:51.678Z"
 },
 {
  id: "Q62",

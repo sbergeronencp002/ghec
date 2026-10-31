@@ -54,7 +54,7 @@ const REGLETTES = {
 "Q53": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q54": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q55": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q56": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q56": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q57": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q58": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q59": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -407,7 +407,8 @@ const IMAGE_DB = {
 "agriculture_g.jpg": {src: "images/agriculture_g.jpg", w: 1200, h: 800},
 "aliments_3.jpg": {src: "images/aliments_3.jpg", w: 1200, h: 800},
 "troc_a.jpg": {src: "images/troc_a.jpg", w: 1200, h: 800},
-"iro_guerre_1.jpg": {src: "images/iro_guerre_1.jpg", w: 1200, h: 800}
+"iro_guerre_1.jpg": {src: "images/iro_guerre_1.jpg", w: 1200, h: 800},
+"donnacona_1.jpg": {src: "images/donnacona_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -1251,17 +1252,17 @@ const QUESTIONS = [
 {
  id: "Q56",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Situer dans le temps",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme le rôle politique des aînées chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_femmes.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Elles désignent les chefs.",
- updatedAt: "2026-08-16T16:38:13.933Z"
+ soustag: "Situer sur une ligne du temps",
+ enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
+ aspects: [{aspect: "Personnages"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "donnacona_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "image", ref: "ligne_1490-1570.png"},
+ guide: "La lettre B\n\nLa rencontre entre Jacques Cartier et Donnacona à Stadaconé se déroule en 1535.",
+ updatedAt: "2026-10-31T00:55:41.470Z"
 },
 {
  id: "Q57",

@@ -412,7 +412,9 @@ const IMAGE_DB = {
 "incas_iro_1.jpg": {src: "images/incas_iro_1.jpg"},
 "incas_iro_3.jpg": {src: "images/incas_iro_3.jpg"},
 "incas_iro_4.jpg": {src: "images/incas_iro_4.jpg"},
-"territoire_iro_e.png": {src: "images/territoire_iro_e.png"}
+"territoire_iro_e.png": {src: "images/territoire_iro_e.png"},
+"incas_iro_5.jpg": {src: "images/incas_iro_5.jpg"},
+"incas_iro_6.jpg": {src: "images/incas_iro_6.jpg"}
 }
 
 const QUESTIONS = [
@@ -1616,15 +1618,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
- enonce: "Observe les documents A et B. Nomme une différence entre les activités économiques pratiquées par les Algonquiens et les Iroquoiens vers 1500.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "vill_iro_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cam_alg_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe les documents A et B. Nomme une différence entre la structure sociale des Iroquoiens et celle des Incas vers 1500.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les Algonquiens ne pratiquent pas l'agriculture tandis que les Iroquoiens pratiquent principalement l'agriculture.\n\nRéponses acceptées\n\nLes Algonquiens tirent principalement leur nourriture de la chasse, de la pêche et de la cueillette, tandis que les Iroquoiens cultivent surtout la terre.\nVers 1500, l'agriculture occupe une place importante chez les Iroquoiens, contrairement aux Algonquiens, qui dépendent davantage de la chasse, de la pêche et de la cueillette.\nLes Iroquoiens cultivent du maïs, alors que les Algonquiens se procurent principalement leur nourriture en chassant, en pêchant et en cueillant des plantes sauvages.",
- updatedAt: "2026-10-31T18:24:26.356Z"
+ guide: "Vers 1500, la société iroquoienne possède une structure sociale communautaire, tandis que la société inca possède une structure sociale hiérarchisée.\n\nRéponses acceptées\nChez les Iroquoiens, la structure sociale est communautaire, tandis que chez les Incas, elle est hiérarchisée.\t\nVers 1500, la société iroquoienne est organisée de façon communautaire, alors que la société inca est organisée selon une hiérarchie sociale.\nChez les Iroquoiens, l'organisation sociale repose davantage sur la vie communautaire, tandis que chez les Incas, les groupes occupent différents rangs dans la société.",
+ updatedAt: "2026-11-01T13:57:14.924Z"
 },
 {
  id: "Q81",

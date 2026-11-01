@@ -92,7 +92,7 @@ const REGLETTES = {
 "Q91": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q92": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q93": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q94": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q94": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q95": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q96": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q97": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -414,7 +414,9 @@ const IMAGE_DB = {
 "incas_iro_4.jpg": {src: "images/incas_iro_4.jpg"},
 "territoire_iro_e.png": {src: "images/territoire_iro_e.png"},
 "incas_iro_5.jpg": {src: "images/incas_iro_5.jpg"},
-"incas_iro_6.jpg": {src: "images/incas_iro_6.jpg"}
+"incas_iro_6.jpg": {src: "images/incas_iro_6.jpg"},
+"incas_iro_7.jpg": {src: "images/incas_iro_7.jpg"},
+"incas_iro_8.jpg": {src: "images/incas_iro_8.jpg"}
 }
 
 const QUESTIONS = [
@@ -1826,17 +1828,17 @@ const QUESTIONS = [
 {
  id: "Q94",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Établir des comparaisons",
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme le type d'habitation des Iroquoiens vers 1500.",
- aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les maisons longues.",
- updatedAt: "2026-08-17T15:09:25.470Z"
+ points: 2,
+ soustag: "Établir une différence",
+ enonce: "Observe les documents A et B. Nomme une différence entre le relief du territoire occupé par les Iroquoiens et celui occupé par les Incas vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1500, les Iroquoiens occupent un territoire principalement composé de plaines, tandis que les Incas occupent un territoire montagneux situé dans la cordillère des Andes.\n\nRéponses acceptées\nLe territoire iroquoien est principalement constitué de plaines, alors que celui des Incas comprend de hautes montagnes.\t\nVers 1500, les Iroquoiens vivent sur un territoire au relief relativement plat, tandis que les Incas vivent dans les montagnes des Andes.\t\nLes Iroquoiens occupent des plaines, contrairement aux Incas, qui occupent un territoire montagneux.",
+ updatedAt: "2026-11-01T14:09:45.677Z"
 },
 {
  id: "Q95",

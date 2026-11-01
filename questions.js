@@ -1896,9 +1896,9 @@ const QUESTIONS = [
  enonce: "Les documents A et B illustrent les caractéristiques des territoires occupés par les Iroquoiens et les Incas vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
- guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-11-01T14:36:05.257Z"
+ reponse: {type: "mettre-en-relation", elements: ["Territoire occupé par les Incas", "Territoire occupé par les Iroquoiens"]},
+ guide: {type: "grille", entetes: ["Territoire occupé par les Incas", "Territoire occupé par les Iroquoiens"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-01T15:09:33.173Z"
 },
 {
  id: "Q99",

@@ -1882,8 +1882,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les Iroquoiens disposent de ressources provenant de la forêt et de la faune, tandis que les Incas disposent notamment de métaux et de lamas et d'alpagas.\n\nRéponse formulée\t\nLes Iroquoiens exploitent principalement les ressources forestières, tandis que les Incas disposent notamment de ressources minières.\t\nChez les Iroquoiens, on trouve des animaux sauvages comme le castor, tandis que chez les Incas, on trouve des lamas et des alpagas.\t\nLe territoire iroquoien possède d'importantes ressources forestières, alors que le territoire inca possède notamment des métaux.\t\nLes Iroquoiens utilisent les ressources de la forêt, tandis que les Incas utilisent notamment les lamas et les alpagas.",
- updatedAt: "2026-11-01T14:33:19.828Z"
+ guide: "Vers 1500, les Iroquoiens disposent de ressources provenant de la forêt et de la faune, tandis que les Incas disposent notamment de métaux et de lamas et d'alpagas.\n\nRéponse formulée\t\nLes Iroquoiens exploitent principalement les ressources forestières, tandis que les Incas disposent notamment de ressources minières.\t\nChez les Iroquoiens, on trouve des animaux sauvages comme le castor, tandis que chez les Incas, on trouve des lamas et des alpagas.\t\nLe territoire iroquoien possède d'importantes ressources forestières, alors que le territoire inca possède notamment des métaux.",
+ updatedAt: "2026-11-01T14:33:50.743Z"
 },
 {
  id: "Q98",

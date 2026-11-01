@@ -1829,8 +1829,8 @@ const QUESTIONS = [
  id: "Q94",
  niveau: 3,
  oi: "Établir des comparaisons",
- competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre le relief du territoire occupé par les Iroquoiens et celui occupé par les Incas vers 1500.",
@@ -1838,7 +1838,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Iroquoiens occupent un territoire principalement composé de plaines, tandis que les Incas occupent un territoire montagneux situé dans la cordillère des Andes.\n\nRéponses acceptées\nLe territoire iroquoien est principalement constitué de plaines, alors que celui des Incas comprend de hautes montagnes.\t\nVers 1500, les Iroquoiens vivent sur un territoire au relief relativement plat, tandis que les Incas vivent dans les montagnes des Andes.\t\nLes Iroquoiens occupent des plaines, contrairement aux Incas, qui occupent un territoire montagneux.",
- updatedAt: "2026-11-01T14:09:45.677Z"
+ updatedAt: "2026-11-01T14:10:04.473Z"
 },
 {
  id: "Q95",

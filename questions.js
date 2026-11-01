@@ -1755,10 +1755,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Observe la carte. Indique les lettres qui correspondent aux territoires occupés par les Algonquiens et les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_e.png", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "situer-dans-lespace", elements: ["Basses-terres du Saint-Laurent", "Bouclier canadien"]},
  guide: {type: "grille", entetes: ["Basses-terres du Saint-Laurent", "Bouclier canadien"], rangees: [["C", "B"]]},
- updatedAt: "2026-10-31T23:57:33.110Z"
+ updatedAt: "2026-11-01T00:00:01.278Z"
 },
 {
  id: "Q90",

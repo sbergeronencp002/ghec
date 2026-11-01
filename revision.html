@@ -578,7 +578,7 @@ function rvRenderReponse(q) {
     const {entetes=[], rangees=[]} = q.reponse;
     const TH = 'border:0.5px solid var(--border);padding:4px 8px;background:var(--paper-2);text-align:center;font-weight:600;font-size:0.8rem';
     const TD = 'border:0.5px solid var(--border);padding:4px 8px;font-size:0.8rem';
-    let html = '<table style="border-collapse:collapse;margin:8px 0;">';
+    let html = '<table style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0;">';
     html += '<tr>' + entetes.map(h => `<th style="${TH}">${rvEscLine(h)}</th>`).join('') + '</tr>';
     rangees.forEach(row => {
       html += '<tr>' + row.map((cell, ci) => `<td style="${TD}${ci===0?';font-weight:500':';min-width:60px;height:24px'}">${rvEscLine(cell)}</td>`).join('') + '</tr>';
@@ -629,7 +629,7 @@ function rvRenderReponse(q) {
         + els.map(e => '<tr><td style="' + TH + ';white-space:nowrap">' + rvEscLine(e) + '</td><td style="' + TC + ';text-align:center;padding:8px 16px">' + circle + '</td></tr>').join('')
         + '</table>';
     }
-    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin:8px 0">'
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
       + '<tr>' + els.map(e => '<td style="' + TH + ';width:' + colPct + '">' + rvEscLine(e) + '</td>').join('') + '</tr>'
       + '<tr>' + els.map(() => '<td style="' + TC + ';text-align:center">' + circle + '</td>').join('') + '</tr>'
       + '</table>';
@@ -640,7 +640,7 @@ function rvRenderReponse(q) {
     const TH = B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem';
     const TC = B + ';text-align:center;padding:12px 16px';
     const circle = '<span style="display:inline-block;width:1.25cm;height:1.25cm;border-radius:50%;border:1.5px solid #000"></span>';
-    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0">'
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
       + '<tr>' + els.map(e => '<td style="' + TH + '">' + rvEscLine(e) + '</td>').join('') + '</tr>'
       + '<tr>' + els.map(() => '<td style="' + TC + '">' + circle + '</td>').join('') + '</tr>'
       + '</table>';
@@ -650,7 +650,7 @@ function rvRenderReponse(q) {
     const B = 'border:1px solid var(--ink-2)';
     const circle = '<span style="display:inline-block;width:2cm;height:2cm;border-radius:50%;border:1.5px solid #000"></span>';
     const sideCell = '<div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 4px">' + circle + '<span style="font-size:0.8rem">et</span>' + circle + '</div>';
-    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin:8px 0">'
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
       + '<tr>'
       + '<td style="' + B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem;width:33%">Avant</td>'
       + '<td style="' + B + ';text-align:center;font-weight:700;padding:8px;font-size:0.85rem;width:34%;vertical-align:middle" rowspan="2">' + rvEscLine(lbl) + '</td>'

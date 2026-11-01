@@ -85,6 +85,26 @@ check('tableau vide → tableau vide (pas de crash)', Array.isArray(sandbox.docs
 
 // ── Rapport ────────────────────────────────────────────────────────────────
 console.log('');
+section('Largeurs des colonnes des espaces réponse');
+for (const type of ['situer-dans-lespace','grille']) {
+  const html=sandbox.renderReponse({reponse:{type,elements:['Basses-terres du Saint-Laurent','Bouclier canadien'],entetes:['Titre très long','Court'],rangees:[['','']]}});
+  check(type+' : largeur répartie indépendamment du texte',html.includes('table-layout:fixed;width:100%'));
+}
+const appSource=read('app.js');
+const start=appSource.indexOf('          const CIRC_SDE');
+const end=appSource.indexOf("        } else if(q.reponse.type === 'avant-apres')",start);
+const tables=[];
+class Node { constructor(options){this.options=options;this.root=[];} }
+vm.runInNewContext(appSource.slice(start,end),{
+ q:{reponse:{elements:['Basses-terres du Saint-Laurent','Bouclier canadien']}},
+ PAGE_W:11106, BORDERS:{}, CELL_MARGINS:{}, WidthType:{DXA:'dxa'},
+ VerticalAlign:{CENTER:'center'},AlignmentType:{CENTER:'center'},
+ docx:{TableLayoutType:{FIXED:'fixed'}},TableCell:Node,Paragraph:Node,TextRun:Node,EllipseRun:Node,TableRow:Node,
+ Table:class extends Node {constructor(options){super(options);tables.push(options);}}, children:[]
+});
+check('Word : deux colonnes égales et disposition fixe',tables[0].layout==='fixed' && tables[0].columnWidths.every(w=>w===5553));
+check('Word : cellules et colonnes ont la même largeur',tables[0].rows.every(row=>row.options.children.every(cell=>cell.options.width.size===5553)));
+
 if (failed) {
   console.log(`✗ ${failed} test(s) de fumée en échec.`);
   process.exit(1);

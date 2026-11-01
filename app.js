@@ -1234,7 +1234,7 @@ function renderReponse(q) {
     const {entetes=[], rangees=[]} = q.reponse;
     const TH = 'border:0.5px solid var(--border);padding:4px 8px;background:var(--paper-2);text-align:center;font-weight:600;font-size:0.8rem';
     const TD = 'border:0.5px solid var(--border);padding:4px 8px;font-size:0.8rem';
-    let html = '<table style="border-collapse:collapse;margin:8px 0;">';
+    let html = '<table style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0;">';
     html += '<tr>' + entetes.map(h => `<th style="${TH}">${escLine(h)}</th>`).join('') + '</tr>';
     rangees.forEach(row => {
       html += '<tr>' + row.map((cell, ci) => `<td style="${TD}${ci===0?';font-weight:500':';min-width:60px;height:24px'}">${escLine(cell)}</td>`).join('') + '</tr>';
@@ -1285,7 +1285,7 @@ function renderReponse(q) {
         + els.map(e => '<tr><td style="' + TH + ';white-space:nowrap">' + escLine(e) + '</td><td style="' + TC + ';text-align:center;padding:8px 16px">' + circle + '</td></tr>').join('')
         + '</table>';
     }
-    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin:8px 0">'
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
       + '<tr>' + els.map(e => '<td style="' + TH + ';width:' + colPct + '">' + escLine(e) + '</td>').join('') + '</tr>'
       + '<tr>' + els.map(() => '<td style="' + TC + ';text-align:center">' + circle + '</td>').join('') + '</tr>'
       + '</table>';
@@ -1296,7 +1296,7 @@ function renderReponse(q) {
     const TH = B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem';
     const TC = B + ';text-align:center;padding:12px 16px';
     const circle = '<span style="display:inline-block;width:1.25cm;height:1.25cm;border-radius:50%;border:1.5px solid #000"></span>';
-    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0">'
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
       + '<tr>' + els.map(e => '<td style="' + TH + '">' + escLine(e) + '</td>').join('') + '</tr>'
       + '<tr>' + els.map(() => '<td style="' + TC + '">' + circle + '</td>').join('') + '</tr>'
       + '</table>';
@@ -1306,7 +1306,7 @@ function renderReponse(q) {
     const B = 'border:1px solid var(--ink-2)';
     const circle = '<span style="display:inline-block;width:2cm;height:2cm;border-radius:50%;border:1.5px solid #000"></span>';
     const sideCell = '<div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 4px">' + circle + '<span style="font-size:0.8rem">et</span>' + circle + '</div>';
-    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin:8px 0">'
+    return '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
       + '<tr>'
       + '<td style="' + B + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.8rem;width:33%">Avant</td>'
       + '<td style="' + B + ';text-align:center;font-weight:700;padding:8px;font-size:0.85rem;width:34%;vertical-align:middle" rowspan="2">' + escLine(lbl) + '</td>'
@@ -1599,7 +1599,7 @@ async function previsualiser(guideMode) {
           const {entetes=[], rangees=[]} = q.reponse;
           const TH2 = 'border:0.5px solid #ccc;padding:4px 8px;background:#f5f5f5;text-align:center;font-weight:600;font-size:0.8rem';
           const TD2 = 'border:0.5px solid #ccc;padding:4px 8px;font-size:0.8rem';
-          previewReponse = '<table style="border-collapse:collapse;margin:8px 0;">';
+          previewReponse = '<table style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0;">';
           previewReponse += '<tr>' + entetes.map(h => `<th style="${TH2}">${escLine(h)}</th>`).join('') + '</tr>';
           rangees.forEach(row => {
             previewReponse += '<tr>' + row.map((cell, ci) => `<td style="${TD2}${ci===0?';font-weight:500':';min-width:60px;height:24px'}">${escLine(cell)}</td>`).join('') + '</tr>';
@@ -1645,7 +1645,7 @@ async function previsualiser(guideMode) {
               + els.map(e => '<tr><td style="' + THM + ';white-space:nowrap">' + escLine(e) + '</td><td style="' + TCM + ';text-align:center;padding:8px 16px">' + circle3 + '</td></tr>').join('')
               + '</table>';
           } else {
-            previewReponse = '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin:8px 0">'
+            previewReponse = '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
               + '<tr>' + els.map(e => '<td style="' + THM + ';width:' + colPctM + '">' + escLine(e) + '</td>').join('') + '</tr>'
               + '<tr>' + els.map(() => '<td style="' + TCM + ';text-align:center">' + circle3 + '</td>').join('') + '</tr>'
               + '</table>';
@@ -1656,7 +1656,7 @@ async function previsualiser(guideMode) {
           const THSde = BSde + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.75rem';
           const TCSde = BSde + ';text-align:center;padding:12px 16px';
           const circleSde = '<span style="display:inline-block;width:1.25cm;height:1.25cm;border-radius:50%;border:1.5px solid #000"></span>';
-          previewReponse = '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin:8px 0">'
+          previewReponse = '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
             + '<tr>' + elsS.map(e => '<td style="' + THSde + '">' + escLine(e) + '</td>').join('') + '</tr>'
             + '<tr>' + elsS.map(() => '<td style="' + TCSde + '">' + circleSde + '</td>').join('') + '</tr>'
             + '</table>';
@@ -1665,7 +1665,7 @@ async function previsualiser(guideMode) {
           const B2 = 'border:1px solid #999';
           const circle2 = '<span style="display:inline-block;width:2cm;height:2cm;border-radius:50%;border:1.5px solid #000"></span>';
           const sideCell2 = '<div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 4px">' + circle2 + '<span style="font-size:0.75rem">et</span>' + circle2 + '</div>';
-          previewReponse = '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;margin:8px 0">'
+          previewReponse = '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;table-layout:fixed;width:100%;overflow-wrap:anywhere;margin:8px 0">'
             + '<tr>'
             + '<td style="' + B2 + ';text-align:center;font-weight:600;padding:6px 8px;font-size:0.75rem;width:33%">Avant</td>'
             + '<td style="' + B2 + ';text-align:center;font-weight:700;padding:8px;font-size:0.8rem;width:34%;vertical-align:middle" rowspan="2">' + escLine(lbl) + '</td>'
@@ -2449,7 +2449,7 @@ async function genererDocx(includeGuide=false) {
               ...(entetes.length ? [new TableRow({ children: entetes.map(h => mkGCell(h, true)) })] : []),
               ...rangees.map(row => new TableRow({ children: (row||[]).map((cell, ci) => mkGCell(cell, ci===0)) }))
             ];
-            children.push(new Table({ width:{size:PAGE_W, type:WidthType.DXA}, columnWidths:Array(nCols).fill(gColW), rows:gRows }));
+            children.push(new Table({ layout:docx.TableLayoutType.FIXED, width:{size:gColW*nCols, type:WidthType.DXA}, columnWidths:Array(nCols).fill(gColW), rows:gRows }));
           }
         } else if(q.reponse.type === 'cause-consequence') {
           const CIRC_CC = 450000;
@@ -2508,16 +2508,17 @@ async function genererDocx(includeGuide=false) {
           // 2 colonnes : row 1 = labels, row 2 = cercles (comme MER horizontal n=2)
           const CIRC_SDE = 450000; // 1.25cm
           const elsS = (q.reponse.elements||[]).length ? q.reponse.elements : ['Élément 1','Élément 2'];
+          const sdeColW = Math.floor(PAGE_W / elsS.length);
           const mkSdeLbl = (text) => new TableCell({
-            borders: BORDERS, margins: CELL_MARGINS, verticalAlign: VerticalAlign.CENTER,
+            borders: BORDERS, margins: CELL_MARGINS, verticalAlign: VerticalAlign.CENTER, width:{size:sdeColW,type:WidthType.DXA},
             children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text, font: 'Aptos', size: 20, bold: true })] })]
           });
           const mkSdeCirc = () => {
             const para = new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 80, after: 80 }, children: [] });
             para.root.push(new EllipseRun(CIRC_SDE, CIRC_SDE));
-            return new TableCell({ borders: BORDERS, margins: CELL_MARGINS, verticalAlign: VerticalAlign.CENTER, children: [para] });
+            return new TableCell({ borders: BORDERS, margins: CELL_MARGINS, verticalAlign: VerticalAlign.CENTER, width:{size:sdeColW,type:WidthType.DXA}, children: [para] });
           };
-          children.push(new Table({ width: { size: 0, type: WidthType.AUTO }, rows: [
+          children.push(new Table({ layout:docx.TableLayoutType.FIXED, width: { size: sdeColW * elsS.length, type: WidthType.DXA }, columnWidths:Array(elsS.length).fill(sdeColW), rows: [
             new TableRow({ children: elsS.map(e => mkSdeLbl(e)) }),
             new TableRow({ height: { value: 800, rule: 'atLeast' }, children: elsS.map(() => mkSdeCirc()) })
           ]}));

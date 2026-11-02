@@ -413,7 +413,8 @@ const IMAGE_DB = {
 "terr_incas_iro_9.jpg": {src: "images/terr_incas_iro_9.jpg"},
 "terr_incas_iro_10.jpg": {src: "images/terr_incas_iro_10.jpg"},
 "cam_alg_b.jpg": {src: "images/cam_alg_b.jpg"},
-"cam_alg_c.jpg": {src: "images/cam_alg_c.jpg"}
+"cam_alg_c.jpg": {src: "images/cam_alg_c.jpg"},
+"iro_fran_1500_a.jpg": {src: "images/iro_fran_1500_a.jpg"}
 }
 
 const QUESTIONS = [
@@ -1901,16 +1902,16 @@ const QUESTIONS = [
  id: "Q99",
  niveau: 3,
  oi: "Établir des comparaisons",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ competence: "Interpréter le changement",
+ periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
  points: 2,
  soustag: "Établir une différence",
- enonce: "Nomme une différence entre les habitations des Iroquoiens et des Incas vers 1500.",
- aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_incas_3.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe les documents A et B. Nomme un changement dans l'occupation du territoire iroquoien entre 1500 et 1745.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_1500_a.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "religion_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Incas habitent dans des maisons de pierre.",
- updatedAt: "2026-08-17T17:41:23.515Z"
+ guide: "Entre 1500 et 1745, des Français s'établissent sur des territoires occupés par les Iroquoiens, et certaines communautés iroquoiennes vivent désormais à proximité des établissements français.\n\nRéponses acceptées\nEntre 1500 et 1745, des établissements français apparaissent à proximité des villages iroquoiens.\t\nVers 1500, les Iroquoiens vivent sans établissements français à proximité, tandis que vers 1745, certaines communautés habitent près des Français.\t\nEntre 1500 et 1745, des Européens viennent s'établir dans des régions également occupées par les Iroquoiens.",
+ updatedAt: "2026-11-02T13:18:41.181Z"
 },
 {
  id: "Q100",

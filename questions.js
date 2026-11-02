@@ -3301,13 +3301,13 @@ const QUESTIONS = [
  aspects: [{aspect: "Groupes sociaux"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "groupe_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "groupe_2.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "groupe_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "groupe_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document D", ref: "groupe_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Autochtones", "Coureurs des bois", "Compagnies", "Religieux"]},
  guide: {type: "grille", entetes: ["Autochtones", "Coureurs des bois", "Compagnies", "Religieux"], rangees: [["C", "D", "A", "B"]]},
- updatedAt: "2026-10-26T16:48:54.172Z"
+ updatedAt: "2026-11-02T14:26:58.228Z"
 },
 {
  id: "Q191",

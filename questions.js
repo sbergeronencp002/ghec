@@ -420,7 +420,9 @@ const IMAGE_DB = {
 "terr_incas_iro_1.jpg": {src: "images/terr_incas_iro_1.jpg"},
 "terr_incas_iro_2.jpg": {src: "images/terr_incas_iro_2.jpg"},
 "terr_incas_iro_3.jpg": {src: "images/terr_incas_iro_3.jpg"},
-"terr_incas_iro_4.jpg": {src: "images/terr_incas_iro_4.jpg"}
+"terr_incas_iro_4.jpg": {src: "images/terr_incas_iro_4.jpg"},
+"terr_incas_iro_5.jpg": {src: "images/terr_incas_iro_5.jpg"},
+"terr_incas_iro_6.jpg": {src: "images/terr_incas_iro_6.jpg"}
 }
 
 const QUESTIONS = [
@@ -1869,10 +1871,10 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre le climat du territoire occupé par les Iroquoiens et celui occupé par les Incas vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "terr_incas_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "terr_incas_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, le territoire occupé par les Iroquoiens connaît des étés chauds et des hivers froids, tandis que celui des Incas présente des températures qui varient selon l’altitude.\n\nRéponse formulée\t\nChez les Iroquoiens, les températures changent selon les saisons, tandis que chez les Incas, elles varient selon l'altitude.\t\nLe territoire iroquoien connaît des étés chauds et des hivers froids, alors que les températures du territoire inca dépendent de l'altitude.\t\nVers 1500, les Iroquoiens vivent dans une région où les saisons influencent les températures, tandis que les Incas vivent dans une région où l'altitude influence les températures.",
- updatedAt: "2026-11-01T14:31:39.275Z"
+ updatedAt: "2026-11-02T00:57:51.213Z"
 },
 {
  id: "Q97",

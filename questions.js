@@ -414,7 +414,8 @@ const IMAGE_DB = {
 "terr_incas_iro_10.jpg": {src: "images/terr_incas_iro_10.jpg"},
 "cam_alg_b.jpg": {src: "images/cam_alg_b.jpg"},
 "cam_alg_c.jpg": {src: "images/cam_alg_c.jpg"},
-"iro_fran_1500_a.jpg": {src: "images/iro_fran_1500_a.jpg"}
+"iro_fran_1500_a.jpg": {src: "images/iro_fran_1500_a.jpg"},
+"iro_fran_1745_a.jpg": {src: "images/iro_fran_1745_a.jpg"}
 }
 
 const QUESTIONS = [
@@ -1906,12 +1907,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
  points: 2,
  soustag: "Établir une différence",
- enonce: "Observe les documents A et B. Nomme un changement dans l'occupation du territoire iroquoien entre 1500 et 1745.",
+ enonce: "Observe les documents A et B. Nomme un changement dans l'occupation du territoire représenté entre 1500 et 1745.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_1500_a.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "religion_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_1500_a.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_1745_a.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, des Français s'établissent sur des territoires occupés par les Iroquoiens, et certaines communautés iroquoiennes vivent désormais à proximité des établissements français.\n\nRéponses acceptées\nEntre 1500 et 1745, des établissements français apparaissent à proximité des villages iroquoiens.\t\nVers 1500, les Iroquoiens vivent sans établissements français à proximité, tandis que vers 1745, certaines communautés habitent près des Français.\t\nEntre 1500 et 1745, des Européens viennent s'établir dans des régions également occupées par les Iroquoiens.",
- updatedAt: "2026-11-02T13:18:41.181Z"
+ updatedAt: "2026-11-02T13:20:41.741Z"
 },
 {
  id: "Q100",

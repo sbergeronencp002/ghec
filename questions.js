@@ -409,7 +409,9 @@ const IMAGE_DB = {
 "terr_incas_iro_5.jpg": {src: "images/terr_incas_iro_5.jpg"},
 "terr_incas_iro_6.jpg": {src: "images/terr_incas_iro_6.jpg"},
 "terr_incas_iro_7.jpg": {src: "images/terr_incas_iro_7.jpg"},
-"terr_incas_iro_8.jpg": {src: "images/terr_incas_iro_8.jpg"}
+"terr_incas_iro_8.jpg": {src: "images/terr_incas_iro_8.jpg"},
+"terr_incas_iro_9.jpg": {src: "images/terr_incas_iro_9.jpg"},
+"terr_incas_iro_10.jpg": {src: "images/terr_incas_iro_10.jpg"}
 }
 
 const QUESTIONS = [
@@ -1828,10 +1830,10 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre le relief du territoire occupé par les Iroquoiens et celui occupé par les Incas vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "terr_incas_iro_9.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "terr_incas_iro_10.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Iroquoiens occupent un territoire principalement composé de plaines, tandis que les Incas occupent un territoire montagneux situé dans la cordillère des Andes.\n\nRéponses acceptées\nLe territoire iroquoien est principalement constitué de plaines, alors que celui des Incas comprend de hautes montagnes.\t\nVers 1500, les Iroquoiens vivent sur un territoire au relief relativement plat, tandis que les Incas vivent dans les montagnes des Andes.\t\nLes Iroquoiens occupent des plaines, contrairement aux Incas, qui occupent un territoire montagneux.",
- updatedAt: "2026-11-01T14:10:04.473Z"
+ updatedAt: "2026-11-02T01:05:17.949Z"
 },
 {
  id: "Q95",

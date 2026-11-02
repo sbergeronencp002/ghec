@@ -422,7 +422,9 @@ const IMAGE_DB = {
 "terr_incas_iro_3.jpg": {src: "images/terr_incas_iro_3.jpg"},
 "terr_incas_iro_4.jpg": {src: "images/terr_incas_iro_4.jpg"},
 "terr_incas_iro_5.jpg": {src: "images/terr_incas_iro_5.jpg"},
-"terr_incas_iro_6.jpg": {src: "images/terr_incas_iro_6.jpg"}
+"terr_incas_iro_6.jpg": {src: "images/terr_incas_iro_6.jpg"},
+"terr_incas_iro_7.jpg": {src: "images/terr_incas_iro_7.jpg"},
+"terr_incas_iro_8.jpg": {src: "images/terr_incas_iro_8.jpg"}
 }
 
 const QUESTIONS = [
@@ -1856,10 +1858,10 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre l’hydrographie du territoire occupé par les Iroquoiens et celle du territoire occupé par les Incas vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "terr_incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "terr_incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, le territoire occupé par les Iroquoiens comprend le fleuve Saint-Laurent, des rivières et des lacs, tandis que celui des Incas comprend des cours d’eau qui descendent des montagnes des Andes.\n\nRéponse formulée\t\nChez les Iroquoiens, on trouve le fleuve Saint-Laurent et plusieurs lacs, tandis que chez les Incas, les cours d’eau descendent des Andes.\t\nLe territoire iroquoien comprend de nombreux lacs et rivières, alors que le territoire inca est traversé par des cours d’eau provenant des montagnes.\t\nVers 1500, les Iroquoiens vivent près du fleuve Saint-Laurent, tandis que les Incas occupent un territoire où les rivières descendent des montagnes.",
- updatedAt: "2026-11-01T14:29:54.789Z"
+ updatedAt: "2026-11-02T00:59:06.882Z"
 },
 {
  id: "Q96",

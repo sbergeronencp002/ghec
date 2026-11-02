@@ -416,7 +416,9 @@ const IMAGE_DB = {
 "incas_iro_5.jpg": {src: "images/incas_iro_5.jpg"},
 "incas_iro_6.jpg": {src: "images/incas_iro_6.jpg"},
 "incas_iro_7.jpg": {src: "images/incas_iro_7.jpg"},
-"incas_iro_8.jpg": {src: "images/incas_iro_8.jpg"}
+"incas_iro_8.jpg": {src: "images/incas_iro_8.jpg"},
+"terr_incas_iro_1.jpg": {src: "images/terr_incas_iro_1.jpg"},
+"terr_incas_iro_2.jpg": {src: "images/terr_incas_iro_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1895,10 +1897,10 @@ const QUESTIONS = [
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent les caractéristiques des territoires occupés par les Iroquoiens et les Incas vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_iro_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_iro_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "terr_incas_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "terr_incas_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Territoire occupé par les Incas", "Territoire occupé par les Iroquoiens"]},
  guide: {type: "grille", entetes: ["Territoire occupé par les Incas", "Territoire occupé par les Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-11-01T15:09:33.173Z"
+ updatedAt: "2026-11-02T00:55:33.298Z"
 },
 {
  id: "Q99",

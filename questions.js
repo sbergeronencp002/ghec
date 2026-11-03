@@ -126,7 +126,7 @@ const REGLETTES = {
 "Q125": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q126": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q127": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q128": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q128": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q129": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q130": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q131": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -453,7 +453,8 @@ const IMAGE_DB = {
 "nouvelle-france_religion_pratiquee_1.jpg": {src: "images/nouvelle-france_religion_pratiquee_1.jpg"},
 "forme_arts_1.jpg": {src: "images/forme_arts_1.jpg"},
 "forme_arts_2.jpg": {src: "images/forme_arts_2.jpg"},
-"forme_arts_3.jpg": {src: "images/forme_arts_3.jpg"}
+"forme_arts_3.jpg": {src: "images/forme_arts_3.jpg"},
+"habillement_1.jpg": {src: "images/habillement_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -2369,18 +2370,17 @@ const QUESTIONS = [
 },
 {
  id: "Q128",
- niveau: 3,
- oi: "Établir des faits",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1745"],
+ periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- soustag: "Établir 1 fait - 2",
- enonce: "À l’aide du document A, nomme deux groupes qui jouent un rôle dans les changements vécus par les Iroquoiens entre 1500 et 1745.",
+ enonce: "Observe l’illustration. Explique comment les colons français adaptent leur habillement aux conditions de vie en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "groupes_1745_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les pêcheurs, les missionnaires, les colons, les militaires et les coureurs des bois participent aux changements vécus par les Iroquoiens.",
- updatedAt: "2026-08-20T13:30:04.528Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "habillement_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les colons français adoptent certains vêtements d'inspiration autochtone, comme les mocassins et les mitasses, car ils sont adaptés aux déplacements sur le territoire.",
+ updatedAt: "2026-11-03T20:46:59.464Z"
 },
 {
  id: "Q129",

@@ -428,7 +428,8 @@ const IMAGE_DB = {
 "iro_fran_e_1745.jpg": {src: "images/iro_fran_e_1745.jpg"},
 "agriculture_2.jpg": {src: "images/agriculture_2.jpg"},
 "iro_fran_f_1500.jpg": {src: "images/iro_fran_f_1500.jpg"},
-"iro_fran_f_1745.jpg": {src: "images/iro_fran_f_1745.jpg"}
+"iro_fran_f_1745.jpg": {src: "images/iro_fran_f_1745.jpg"},
+"cencives_1.jpg": {src: "images/cencives_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1997,10 +1998,10 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 1",
  enonce: "Nomme une caractéristique du relief du territoire occupé par la société française en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cencives_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire occupé présente des plaines dans la vallée du Saint-Laurent.\nRéponses acceptées.\nLe territoire comprend des plaines.\nLa vallée du Saint-Laurent présente un relief relativement plat.",
- updatedAt: "2026-11-03T15:10:49.774Z"
+ updatedAt: "2026-11-03T15:17:05.377Z"
 },
 {
  id: "Q105",

@@ -2829,11 +2829,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un aliment à la base de l’alimentation des colons en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Culture"}],
+ aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "alimentation_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le pain de blé.",
- updatedAt: "2026-10-26T14:35:25.192Z"
+ updatedAt: "2026-11-03T20:44:20.665Z"
 },
 {
  id: "Q158",

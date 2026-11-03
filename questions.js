@@ -444,7 +444,8 @@ const IMAGE_DB = {
 "territoire_1645_ressources_3.jpg": {src: "images/territoire_1645_ressources_3.jpg"},
 "1645_traces_passe_2.jpg": {src: "images/1645_traces_passe_2.jpg"},
 "1645_traces_passe_3.jpg": {src: "images/1645_traces_passe_3.jpg"},
-"1645_traces_passe_1.jpg": {src: "images/1645_traces_passe_1.jpg"}
+"1645_traces_passe_1.jpg": {src: "images/1645_traces_passe_1.jpg"},
+"1645_traces_passe_4.jpg": {src: "images/1645_traces_passe_4.jpg"}
 }
 
 const QUESTIONS = [
@@ -2201,12 +2202,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme un site historique du Québec qui conserve des traces de la Nouvelle-France.",
+ enonce: "Observe les illustrations. Nomme un site historique du Québec qui conserve des traces de la Nouvelle-France.",
  aspects: [{aspect: "Traces du passé"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_traces_passe_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "La place Royale, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.",
- updatedAt: "2026-11-03T19:29:59.184Z"
+ guide: "La place Royale, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.\nLa porte-Saint-Louis, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.",
+ updatedAt: "2026-11-03T19:35:43.735Z"
 },
 {
  id: "Q118",

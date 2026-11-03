@@ -103,7 +103,7 @@ const REGLETTES = {
 "Q102": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q103": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q104": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
-"Q105": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q105": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q106": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q107": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q108": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -426,7 +426,9 @@ const IMAGE_DB = {
 "iro_fran_a_1745.jpg": {src: "images/iro_fran_a_1745.jpg"},
 "iro_fran_e_1500.jpg": {src: "images/iro_fran_e_1500.jpg"},
 "iro_fran_e_1745.jpg": {src: "images/iro_fran_e_1745.jpg"},
-"agriculture_2.jpg": {src: "images/agriculture_2.jpg"}
+"agriculture_2.jpg": {src: "images/agriculture_2.jpg"},
+"iro_fran_f_1500.jpg": {src: "images/iro_fran_f_1500.jpg"},
+"iro_fran_f_1745.jpg": {src: "images/iro_fran_f_1745.jpg"}
 }
 
 const QUESTIONS = [
@@ -2003,17 +2005,17 @@ const QUESTIONS = [
 {
  id: "Q105",
  niveau: 3,
- oi: "Établir des comparaisons",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ oi: "Déterminer des changements",
+ competence: "Interpréter le changement",
+ periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
  points: 2,
- soustag: "Établir une différence",
- enonce: "Nomme une différence entre le pouvoir des chefs iroquoiens et celui de l’empereur inca vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_pouvoir_empereur.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ soustag: "Déterminer un changement",
+ enonce: "Observe les documents A et B. Nomme un changement dans l'emplacement de certaines communautés iroquoiennes entre 1500 et 1745.",
+ aspects: [{aspect: "Population"}, {aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_f_1500.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_f_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les chefs iroquoiens ont un pouvoir limité, tandis que l’empereur inca possède un pouvoir illimité.",
- updatedAt: "2026-08-19T13:14:42.040Z"
+ guide: "Entre 1500 et 1745, certaines communautés iroquoiennes s'établissent dans des villages domiciliés à proximité des établissements français.\nRéponses acceptées\nVers 1745, certaines communautés iroquoiennes vivent dans des villages domiciliés près des établissements français.\nEntre 1500 et 1745, certains Iroquoiens s'installent dans des villages situés à proximité des établissements français.\nCertaines communautés iroquoiennes se regroupent dans des villages domiciliés liés aux missions françaises.",
+ updatedAt: "2026-11-03T15:14:43.226Z"
 },
 {
  id: "Q106",

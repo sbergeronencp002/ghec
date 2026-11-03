@@ -2012,12 +2012,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Nomme une caractéristique du relief du territoire occupé par la société française en Nouvelle-France vers 1645.",
+ enonce: "Observe l’illustration. Nomme une caractéristique du relief en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cencives_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire occupé présente des plaines dans la vallée du Saint-Laurent.\nRéponses acceptées.\nLe territoire comprend des plaines.\nLa vallée du Saint-Laurent présente un relief relativement plat.",
- updatedAt: "2026-11-03T15:17:05.377Z"
+ updatedAt: "2026-11-03T19:51:13.900Z"
 },
 {
  id: "Q105",

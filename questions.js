@@ -1200,11 +1200,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
- aspects: [{aspect: "Personnages"}],
+ aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "jean_cabot_a.jpg", soustitre: "Le voyage de Jean Cabot vers les côtes de l’Amérique du Nord", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1490-1570.png"},
  guide: "A",
- updatedAt: "2026-10-30T04:11:37.152Z"
+ updatedAt: "2026-11-03T01:28:05.009Z"
 },
 {
  id: "Q53",

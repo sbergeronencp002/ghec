@@ -2326,7 +2326,7 @@ const QUESTIONS = [
  id: "Q125",
  niveau: 4,
  oi: "Établir des faits",
- competence: "Interpréter le changement",
+ competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
@@ -2335,7 +2335,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "forme_arts_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La broderie est une forme d’art pratiquée par les habitants français en Nouvelle-France vers 1645.",
- updatedAt: "2026-11-03T20:35:50.413Z"
+ updatedAt: "2026-11-03T20:43:37.446Z"
 },
 {
  id: "Q126",

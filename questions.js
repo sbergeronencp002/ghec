@@ -124,7 +124,7 @@ const REGLETTES = {
 "Q123": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q124": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q125": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q126": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
+"Q126": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q127": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q128": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q129": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
@@ -451,7 +451,8 @@ const IMAGE_DB = {
 "carte_territoire_1645_c.jpg": {src: "images/carte_territoire_1645_c.jpg"},
 "nouvelle-france_langue_parlee_1.jpg": {src: "images/nouvelle-france_langue_parlee_1.jpg"},
 "nouvelle-france_religion_pratiquee_1.jpg": {src: "images/nouvelle-france_religion_pratiquee_1.jpg"},
-"forme_arts_1.jpg": {src: "images/forme_arts_1.jpg"}
+"forme_arts_1.jpg": {src: "images/forme_arts_1.jpg"},
+"forme_arts_2.jpg": {src: "images/forme_arts_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2337,18 +2338,18 @@ const QUESTIONS = [
 },
 {
  id: "Q126",
- niveau: 3,
- oi: "Déterminer des changements",
+ niveau: 4,
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
- points: 2,
- soustag: "Déterminer un changement",
- enonce: "À l’aide des documents A et B, nomme un changement dans l’occupation du territoire iroquoien entre 1500 et 1745.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Entre 1500 et 1745, l’occupation du territoire iroquoien change avec l’installation d’Européens à proximité des villages iroquoiens",
- updatedAt: "2026-08-20T13:00:59.032Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme une forme d’art pratiquée par les habitants français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "forme_arts_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "L’architecture est une forme d’art pratiquée en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-03T20:37:29.839Z"
 },
 {
  id: "Q127",

@@ -1935,7 +1935,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_b_1500.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_b_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, les Iroquoiens commencent à utiliser des fusils d'origine européenne pour chasser, alors qu'ils utilisaient principalement des arcs et des flèches vers 1500.\nRéponses acceptées\nVers 1500, les Iroquoiens chassent avec des arcs et des flèches, tandis que vers 1745, ils utilisent aussi des fusils.\t\nEntre 1500 et 1745, les Iroquoiens adoptent de nouvelles armes européennes, notamment les fusils.\t\nVers 1745, les fusils s'ajoutent aux armes traditionnelles utilisées par les Iroquoiens pour la chasse.",
- updatedAt: "2026-11-03T11:52:57.248Z"
+ updatedAt: "2026-11-03T12:07:11.525Z"
 },
 {
  id: "Q101",

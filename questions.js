@@ -111,7 +111,7 @@ const REGLETTES = {
 "Q110": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q111": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q112": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
-"Q113": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q113": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q114": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q115": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q116": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
@@ -438,7 +438,8 @@ const IMAGE_DB = {
 "rapides_1.jpg": {src: "images/rapides_1.jpg"},
 "rapides_2.jpg": {src: "images/rapides_2.jpg"},
 "territoire_iro_incas_1500.jpg": {src: "images/territoire_iro_incas_1500.jpg"},
-"territoire_iro_f.jpg": {src: "images/territoire_iro_f.jpg"}
+"territoire_iro_f.jpg": {src: "images/territoire_iro_f.jpg"},
+"territoire_1645_ressources_1.jpg": {src: "images/territoire_1645_ressources_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -2130,18 +2131,17 @@ const QUESTIONS = [
 },
 {
  id: "Q113",
- niveau: 3,
- oi: "Mettre en relation des faits",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent les établissements des Iroquoiens et des Incas vers 1500. Associe chaque document à la société correspondante.",
- aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_incas_3.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
- guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["A", "B"]]},
- updatedAt: "2026-08-19T14:38:16.646Z"
+ enonce: "Explique comment les ressources naturelles du territoire favorisent le développement du commerce des fourrures en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1645_ressources_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "L'abondance de castors permet d'obtenir de nombreuses peaux recherchées, ce qui favorise le développement du commerce des fourrures.\nRéponses acceptées \nL'abondance de castors permet d'obtenir de nombreuses peaux qui peuvent être échangées contre des marchandises.\nLes castors sont nombreux et leurs peaux sont recherchées, ce qui favorise le commerce des fourrures.\nLes castors fournissent des fourrures qui peuvent être vendues aux marchands, ce qui favorise le commerce",
+ updatedAt: "2026-11-03T19:00:02.632Z"
 },
 {
  id: "Q114",

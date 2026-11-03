@@ -125,7 +125,7 @@ const REGLETTES = {
 "Q124": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q125": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q126": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q127": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q127": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q128": {oi: "Établir des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q129": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q130": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -452,7 +452,8 @@ const IMAGE_DB = {
 "nouvelle-france_langue_parlee_1.jpg": {src: "images/nouvelle-france_langue_parlee_1.jpg"},
 "nouvelle-france_religion_pratiquee_1.jpg": {src: "images/nouvelle-france_religion_pratiquee_1.jpg"},
 "forme_arts_1.jpg": {src: "images/forme_arts_1.jpg"},
-"forme_arts_2.jpg": {src: "images/forme_arts_2.jpg"}
+"forme_arts_2.jpg": {src: "images/forme_arts_2.jpg"},
+"forme_arts_3.jpg": {src: "images/forme_arts_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -2353,18 +2354,18 @@ const QUESTIONS = [
 },
 {
  id: "Q127",
- niveau: 3,
+ niveau: 4,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1745"],
- points: 2,
- soustag: "Établir 1 fait - 2",
- enonce: "À l’aide du document A, nomme deux produits européens utilisés par les Iroquoiens vers 1745.",
- aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "produits_europeens_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 2},
- guide: "Une hache, un chaudron, un fusil ou de l’alcool.",
- updatedAt: "2026-08-20T13:26:06.605Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme une forme d’art pratiquée par les habitants français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "forme_arts_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La peinture est une forme d’art pratiquée par les habitants français en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-03T20:39:33.713Z"
 },
 {
  id: "Q128",

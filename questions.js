@@ -106,7 +106,7 @@ const REGLETTES = {
 "Q105": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q106": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q107": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q108": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q108": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q109": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q110": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q111": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
@@ -431,7 +431,9 @@ const IMAGE_DB = {
 "iro_fran_f_1745.jpg": {src: "images/iro_fran_f_1745.jpg"},
 "cencives_1.jpg": {src: "images/cencives_1.jpg"},
 "cencives_2.jpg": {src: "images/cencives_2.jpg"},
-"cencives_3.jpg": {src: "images/cencives_3.jpg"}
+"cencives_3.jpg": {src: "images/cencives_3.jpg"},
+"cencives_4.jpg": {src: "images/cencives_4.jpg"},
+"cencives_5.jpg": {src: "images/cencives_5.jpg"}
 }
 
 const QUESTIONS = [
@@ -2051,18 +2053,17 @@ const QUESTIONS = [
 },
 {
  id: "Q108",
- niveau: 3,
- oi: "Établir des faits",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Incas vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme le type d'établissement des Incas vers 1500.",
- aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_incas_3.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Une cité.",
- updatedAt: "2026-08-19T13:43:23.362Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique comment le climat hivernal limite les activités agricoles en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cencives_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cencives_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les températures froides et le gel du sol empêchent généralement de cultiver les terres en hiver.\nRéponses acceptées.\nLe sol gelé empêche les habitants de cultiver leurs champs pendant l'hiver.\nLes températures trop froides empêchent la croissance des plantes cultivées pendant l'hiver.",
+ updatedAt: "2026-11-03T15:31:17.908Z"
 },
 {
  id: "Q109",

@@ -100,7 +100,7 @@ const REGLETTES = {
 "Q99": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q100": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q101": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
-"Q102": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q102": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q103": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q104": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q105": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
@@ -419,7 +419,9 @@ const IMAGE_DB = {
 "iro_fran_b_1500.jpg": {src: "images/iro_fran_b_1500.jpg"},
 "iro_fran_b_1745.jpg": {src: "images/iro_fran_b_1745.jpg"},
 "iro_fran_c_1700.jpg": {src: "images/iro_fran_c_1700.jpg"},
-"iro_fran_c_1745.jpg": {src: "images/iro_fran_c_1745.jpg"}
+"iro_fran_c_1745.jpg": {src: "images/iro_fran_c_1745.jpg"},
+"iro_fran_d_1500.jpg": {src: "images/iro_fran_d_1500.jpg"},
+"iro_fran_d_1745.jpg": {src: "images/iro_fran_d_1745.jpg"}
 }
 
 const QUESTIONS = [
@@ -1951,17 +1953,17 @@ const QUESTIONS = [
 {
  id: "Q102",
  niveau: 3,
- oi: "Établir des faits",
- competence: "Lire l'organisation du territoire",
- periodes: ["Incas vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme la façon dont le pouvoir est transmis chez les Incas vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_hereditaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Le pouvoir est héréditaire.",
- updatedAt: "2026-08-19T13:04:53.138Z"
+ oi: "Déterminer des changements",
+ competence: "Interpréter le changement",
+ periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
+ points: 2,
+ soustag: "Déterminer un changement",
+ enonce: "Observe les documents A et B. Nomme un changement concernant la population iroquoienne entre 1500 et 1745.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_d_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_d_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Entre 1500 et 1745, la population de certaines communautés iroquoiennes diminue considérablement en raison des épidémies.\nRéponses acceptées\nEntre 1500 et 1745, certaines communautés iroquoiennes connaissent une diminution de leur population.\t\nVers 1745, certaines communautés iroquoiennes comptent moins d'habitants qu'auparavant à cause des épidémies.\nEntre 1500 et 1745, les épidémies provoquent de nombreux décès dans certaines communautés iroquoiennes.",
+ updatedAt: "2026-11-03T11:58:49.011Z"
 },
 {
  id: "Q103",

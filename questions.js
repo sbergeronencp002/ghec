@@ -120,7 +120,7 @@ const REGLETTES = {
 "Q119": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q120": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q121": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
-"Q122": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
+"Q122": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q123": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q124": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q125": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
@@ -447,7 +447,8 @@ const IMAGE_DB = {
 "1645_traces_passe_1.jpg": {src: "images/1645_traces_passe_1.jpg"},
 "1645_traces_passe_4.jpg": {src: "images/1645_traces_passe_4.jpg"},
 "carte_territoire_1645_a.jpg": {src: "images/carte_territoire_1645_a.jpg"},
-"carte_territoire_1645_b.jpg": {src: "images/carte_territoire_1645_b.jpg"}
+"carte_territoire_1645_b.jpg": {src: "images/carte_territoire_1645_b.jpg"},
+"carte_territoire_1645_c.jpg": {src: "images/carte_territoire_1645_c.jpg"}
 }
 
 const QUESTIONS = [
@@ -2273,18 +2274,18 @@ const QUESTIONS = [
 },
 {
  id: "Q122",
- niveau: 3,
- oi: "Déterminer des changements",
+ niveau: 4,
+ oi: "Situer dans l'espace",
  competence: "Interpréter le changement",
- periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
- points: 2,
- soustag: "Déterminer un changement",
- enonce: "À l’aide des documents A et B, nomme un changement dans les objets utilisés par les Iroquoiens entre 1500 et 1745.",
- aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chasse_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "chasse_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Entre 1500 et 1745, les Iroquoiens commencent à utiliser des fusils d’origine européenne pour chasser, alors qu’en 1500 ils utilisent notamment des arcs et des flèches.",
- updatedAt: "2026-08-20T02:20:49.335Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Situer 1 élément dans l'espace",
+ enonce: "Observe la carte. Indique la lettre correspondant au territoire occupé par la société française en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoire_1645_c.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "tableau_2col"},
+ guide: "B",
+ updatedAt: "2026-11-03T20:11:28.376Z"
 },
 {
  id: "Q123",

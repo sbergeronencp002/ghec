@@ -433,7 +433,8 @@ const IMAGE_DB = {
 "cencives_2.jpg": {src: "images/cencives_2.jpg"},
 "cencives_3.jpg": {src: "images/cencives_3.jpg"},
 "cencives_4.jpg": {src: "images/cencives_4.jpg"},
-"cencives_5.jpg": {src: "images/cencives_5.jpg"}
+"cencives_5.jpg": {src: "images/cencives_5.jpg"},
+"confluents_1.jpg": {src: "images/confluents_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -2082,17 +2083,17 @@ const QUESTIONS = [
 },
 {
  id: "Q110",
- niveau: 3,
+ niveau: 4,
  oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Incas vers 1500"],
+ periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique pourquoi le fils de l’empereur peut devenir le prochain dirigeant chez les Incas vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_hereditaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_pouvoir_empereur.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Explique pourquoi les confluents favorisent l'établissement de postes de traite en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "confluents_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le pouvoir est héréditaire, car il se transmet à l’intérieur de la famille de l’empereur et un membre de cette famille lui succède pour devenir à son tour empereur.",
- updatedAt: "2026-08-20T00:28:06.207Z"
+ guide: "Les confluents favorisent l'établissement de postes de traite, car ils permettent aux commerçants et aux Autochtones d'accéder à un même lieu par différentes voies navigables pour échanger des marchandises.\nRéponses acceptées.\nLes confluents facilitent les échanges commerciaux, car plusieurs cours d'eau s'y rejoignent.\nLes confluents permettent aux commerçants et aux Autochtones de se rencontrer plus facilement parce qu'ils sont accessibles par plusieurs cours d'eau.",
+ updatedAt: "2026-11-03T15:51:22.657Z"
 },
 {
  id: "Q111",

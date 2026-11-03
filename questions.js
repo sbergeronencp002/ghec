@@ -135,7 +135,7 @@ const REGLETTES = {
 "Q134": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q135": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q136": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q137": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
+"Q137": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q138": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q139": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q140": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
@@ -436,7 +436,8 @@ const IMAGE_DB = {
 "cencives_5.jpg": {src: "images/cencives_5.jpg"},
 "confluents_1.jpg": {src: "images/confluents_1.jpg"},
 "rapides_1.jpg": {src: "images/rapides_1.jpg"},
-"rapides_2.jpg": {src: "images/rapides_2.jpg"}
+"rapides_2.jpg": {src: "images/rapides_2.jpg"},
+"territoire_iro_incas_1500.jpg": {src: "images/territoire_iro_incas_1500.jpg"}
 }
 
 const QUESTIONS = [
@@ -2491,16 +2492,16 @@ const QUESTIONS = [
  id: "Q137",
  niveau: 3,
  oi: "Situer dans l'espace",
- competence: "Lire l'organisation du territoire",
- periodes: ["Incas vers 1500"],
- points: 1,
- soustag: "Situer 1 élément dans l'espace",
- enonce: "Observe la carte. Indique la lettre correspondant au territoire occupé par les Incas vers 1500.",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ points: 2,
+ soustag: "Situer 2 éléments dans l'espace",
+ enonce: "Observe la carte. Indique les lettres qui correspondent aux territoires occupés par les Iroquoiens et les Incas vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoires_incas.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
- reponse: false,
- guide: "D",
- updatedAt: "2026-10-31T13:21:08.457Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_incas_1500.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "situer-dans-lespace", elements: ["Incas", "Iroquoiens"]},
+ guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["D", "B"]]},
+ updatedAt: "2026-11-03T17:37:58.249Z"
 },
 {
  id: "Q138",

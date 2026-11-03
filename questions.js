@@ -115,7 +115,7 @@ const REGLETTES = {
 "Q114": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q115": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q116": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q117": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q117": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q119": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q120": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
@@ -442,7 +442,8 @@ const IMAGE_DB = {
 "territoire_1645_ressources_1.jpg": {src: "images/territoire_1645_ressources_1.jpg"},
 "territoire_1645_ressources_2.jpg": {src: "images/territoire_1645_ressources_2.jpg"},
 "territoire_1645_ressources_3.jpg": {src: "images/territoire_1645_ressources_3.jpg"},
-"1645_traces_passe_2.jpg": {src: "images/1645_traces_passe_2.jpg"}
+"1645_traces_passe_2.jpg": {src: "images/1645_traces_passe_2.jpg"},
+"1645_traces_passe_3.jpg": {src: "images/1645_traces_passe_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -2193,18 +2194,18 @@ const QUESTIONS = [
 },
 {
  id: "Q117",
- niveau: 3,
- oi: "Mettre en relation des faits",
+ niveau: 4,
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent l’organisation politique des Iroquoiens et des Incas vers 1500. Associe chaque document à l'organisation politique correspondante.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_organisation_politique.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_organisation_politique.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Matriarcale", "Hirarchisée"]},
- guide: {type: "grille", entetes: ["Matriarcale", "Hirarchisée"], rangees: [["A", "B"]]},
- updatedAt: "2026-10-28T02:30:26.484Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme un site historique du Québec qui conserve des traces de la Nouvelle-France.",
+ aspects: [{aspect: "Traces du passé"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La place Royale, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.",
+ updatedAt: "2026-11-03T19:29:59.184Z"
 },
 {
  id: "Q118",

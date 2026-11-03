@@ -2172,12 +2172,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Observe l'illustration. Nomme une caractéristique du territoire occupé par la société française en Nouvelle-France vers 1645 en lien avec les ressources naturelles.",
+ enonce: "Observe l’illustration. Nomme une caractéristique des ressources naturelles présentes en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1645_ressources_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire possède des ressources animales comme les castors.\nRéponses acceptées.\nLe territoire abrite des castors.\nLe territoire possède des ressources animales comme les castors.\nLe territoire possède des forêts qui fournissent du bois.",
- updatedAt: "2026-11-03T19:08:55.477Z"
+ updatedAt: "2026-11-03T19:50:15.826Z"
 },
 {
  id: "Q116",

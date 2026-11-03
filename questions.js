@@ -1038,8 +1038,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vetements_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens utilisent des peaux d'animaux pour fabriquer leurs vêtements.\n\nAccepter « peaux d'animaux », « cuir » ou « fourrure », ainsi que toute formul",
- updatedAt: "2026-10-30T00:59:06.794Z"
+ guide: "Vers 1500, les Iroquoiens utilisent des peaux d'animaux pour fabriquer leurs vêtements.\n\nAccepter « peaux d'animaux », « cuir » ou « fourrure », ainsi que toute formulation équivalente.",
+ updatedAt: "2026-11-03T19:43:54.628Z"
 },
 {
  id: "Q40",

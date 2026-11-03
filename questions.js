@@ -117,7 +117,7 @@ const REGLETTES = {
 "Q116": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q117": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q119": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q119": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q120": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q121": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q122": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
@@ -437,7 +437,8 @@ const IMAGE_DB = {
 "confluents_1.jpg": {src: "images/confluents_1.jpg"},
 "rapides_1.jpg": {src: "images/rapides_1.jpg"},
 "rapides_2.jpg": {src: "images/rapides_2.jpg"},
-"territoire_iro_incas_1500.jpg": {src: "images/territoire_iro_incas_1500.jpg"}
+"territoire_iro_incas_1500.jpg": {src: "images/territoire_iro_incas_1500.jpg"},
+"territoire_iro_f.jpg": {src: "images/territoire_iro_f.jpg"}
 }
 
 const QUESTIONS = [
@@ -2220,17 +2221,17 @@ const QUESTIONS = [
 {
  id: "Q119",
  niveau: 3,
- oi: "Caractériser un territoire",
+ oi: "Situer dans l'espace",
  competence: "Lire l'organisation du territoire",
- periodes: ["Incas vers 1500"],
- points: 2,
- soustag: "Caractériser un territoire - 2",
- enonce: "Nomme deux caractéristiques du territoire occupé par les Incas vers 1500.",
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Situer 1 élément dans l'espace",
+ enonce: "Observe la carte. Indique la lettre qui correspond à la région des Basses-terres du Saint-Laurent.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_incas_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Le territoire des Incas est montagneux et les climats varient selon l’altitude.",
- updatedAt: "2026-08-20T00:31:36.200Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "tableau_2col"},
+ guide: "B",
+ updatedAt: "2026-11-03T17:50:17.952Z"
 },
 {
  id: "Q120",

@@ -97,7 +97,7 @@ const REGLETTES = {
 "Q96": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q97": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q98": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
-"Q99": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q99": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q100": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q101": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q102": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
@@ -421,7 +421,9 @@ const IMAGE_DB = {
 "iro_fran_c_1745.jpg": {src: "images/iro_fran_c_1745.jpg"},
 "iro_fran_d_1500.jpg": {src: "images/iro_fran_d_1500.jpg"},
 "iro_fran_d_1745.jpg": {src: "images/iro_fran_d_1745.jpg"},
-"iro_fran_c_1500.jpg": {src: "images/iro_fran_c_1500.jpg"}
+"iro_fran_c_1500.jpg": {src: "images/iro_fran_c_1500.jpg"},
+"iro_fran_a_1500.jpg": {src: "images/iro_fran_a_1500.jpg"},
+"iro_fran_a_1745.jpg": {src: "images/iro_fran_a_1745.jpg"}
 }
 
 const QUESTIONS = [
@@ -1908,17 +1910,17 @@ const QUESTIONS = [
 {
  id: "Q99",
  niveau: 3,
- oi: "Établir des comparaisons",
+ oi: "Déterminer des changements",
  competence: "Interpréter le changement",
  periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
  points: 2,
- soustag: "Établir une différence",
+ soustag: "Déterminer un changement",
  enonce: "Observe les documents A et B. Nomme un changement dans l'occupation du territoire représenté entre 1500 et 1745.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_1500_a.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_1745_a.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_a_1500.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_a_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Entre 1500 et 1745, des Français s'établissent sur des territoires occupés par les Iroquoiens, et certaines communautés iroquoiennes vivent désormais à proximité des établissements français.\n\nRéponses acceptées\nEntre 1500 et 1745, des établissements français apparaissent à proximité des villages iroquoiens.\t\nVers 1500, les Iroquoiens vivent sans établissements français à proximité, tandis que vers 1745, certaines communautés habitent près des Français.\t\nEntre 1500 et 1745, des Européens viennent s'établir dans des régions également occupées par les Iroquoiens.",
- updatedAt: "2026-11-02T13:20:41.741Z"
+ guide: "Entre 1500 et 1745, des Français viennent s'établir à proximité de certaines communautés iroquoiennes.\nRéponses acceptées\nVers 1500, aucun établissement français n'est représenté près du village iroquoien, tandis que vers 1745, un établissement français apparaît à proximité.\t\nEntre 1500 et 1745, des établissements français sont construits près de certains villages iroquoiens.\t\nVers 1745, certaines communautés iroquoiennes vivent près des établissements français.",
+ updatedAt: "2026-11-03T12:06:54.464Z"
 },
 {
  id: "Q100",

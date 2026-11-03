@@ -104,7 +104,7 @@ const REGLETTES = {
 "Q103": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q104": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q105": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
-"Q106": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q106": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q107": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q108": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q109": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -429,7 +429,9 @@ const IMAGE_DB = {
 "agriculture_2.jpg": {src: "images/agriculture_2.jpg"},
 "iro_fran_f_1500.jpg": {src: "images/iro_fran_f_1500.jpg"},
 "iro_fran_f_1745.jpg": {src: "images/iro_fran_f_1745.jpg"},
-"cencives_1.jpg": {src: "images/cencives_1.jpg"}
+"cencives_1.jpg": {src: "images/cencives_1.jpg"},
+"cencives_2.jpg": {src: "images/cencives_2.jpg"},
+"cencives_3.jpg": {src: "images/cencives_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -2020,18 +2022,18 @@ const QUESTIONS = [
 },
 {
  id: "Q106",
- niveau: 3,
- oi: "Établir des comparaisons",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ niveau: 4,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- soustag: "Établir une différence",
- enonce: "Nomme une différence entre la prise de décisions chez les Iroquoiens et chez les Incas vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoiens_conseil_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_prise_decision.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ soustag: "Caractériser un territoire - 2",
+ enonce: "Observer les documents A et B. Nomme deux caractéristiques du climat en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "cencives_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cencives_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Chez les Iroquoiens, les décisions sont prises en conseil, tandis que chez les Incas, l’empereur détient le pouvoir.",
- updatedAt: "2026-08-19T13:17:09.067Z"
+ guide: "En Nouvelle-France vers 1645, les étés sont chauds et pluvieux, tandis que les hivers sont froids et neigeux.\nRéponses acceptées.\nLes étés sont chauds et les hivers sont froids.\nIl pleut en été et il neige en hiver.\nLes hivers sont froids et neigeux.",
+ updatedAt: "2026-11-03T15:23:13.187Z"
 },
 {
  id: "Q107",

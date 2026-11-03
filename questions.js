@@ -2460,10 +2460,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi les plaines de la vallée du Saint-Laurent favorisent l'agriculture en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "regime_seigneurial.jpg", soustitre: "Les débuts du régime seigneurial en Nouvelle-France", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les plaines favorisent l'agriculture, car leur relief relativement plat facilite la culture des terres.\nRéponses acceptées.\nLes plaines favorisent l'agriculture parce que le terrain plat facilite le travail de la terre.\nLes plaines facilitent l'agriculture, car elles offrent de grandes surfaces relativement plates pour cultiver.",
- updatedAt: "2026-11-03T15:04:49.003Z"
+ updatedAt: "2026-11-03T15:11:11.862Z"
 },
 {
  id: "Q136",

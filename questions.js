@@ -1261,7 +1261,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Situer dans le temps",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
+ periodes: ["Iroquoiens vers 1745"],
  points: 1,
  soustag: "Situer sur une ligne du temps",
  enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
@@ -1269,7 +1269,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "donnacona_1.jpg", soustitre: "Rencontre entre Donnacona et Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1490-1570.png"},
  guide: "La lettre B\n\nLa rencontre entre Jacques Cartier et Donnacona à Stadaconé se déroule en 1535.",
- updatedAt: "2026-10-31T01:09:44.167Z"
+ updatedAt: "2026-11-03T01:27:30.841Z"
 },
 {
  id: "Q57",

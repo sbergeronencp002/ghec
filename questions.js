@@ -98,7 +98,7 @@ const REGLETTES = {
 "Q97": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q98": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q99": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q100": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q100": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q101": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q102": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q103": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -415,7 +415,9 @@ const IMAGE_DB = {
 "cam_alg_b.jpg": {src: "images/cam_alg_b.jpg"},
 "cam_alg_c.jpg": {src: "images/cam_alg_c.jpg"},
 "iro_fran_1500_a.jpg": {src: "images/iro_fran_1500_a.jpg"},
-"iro_fran_1745_a.jpg": {src: "images/iro_fran_1745_a.jpg"}
+"iro_fran_1745_a.jpg": {src: "images/iro_fran_1745_a.jpg"},
+"iro_fran_b_1500.jpg": {src: "images/iro_fran_b_1500.jpg"},
+"iro_fran_b_1745.jpg": {src: "images/iro_fran_b_1745.jpg"}
 }
 
 const QUESTIONS = [
@@ -1917,17 +1919,17 @@ const QUESTIONS = [
 {
  id: "Q100",
  niveau: 3,
- oi: "Établir des comparaisons",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ oi: "Déterminer des changements",
+ competence: "Interpréter le changement",
+ periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
  points: 2,
- soustag: "Établir une différence",
- enonce: "Nomme une différence entre les établissements des Iroquoiens et des Incas vers 1500.",
- aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_incas_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ soustag: "Déterminer un changement",
+ enonce: "Observe les documents A et B. Nomme un changement dans les armes utilisées par les Iroquoiens pour chasser entre 1500 et 1745.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_b_1500.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_b_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens habitent dans des villages, tandis que les Incas habitent dans des cités.",
- updatedAt: "2026-08-17T17:11:44.607Z"
+ guide: "Entre 1500 et 1745, les Iroquoiens commencent à utiliser des fusils d'origine européenne pour chasser, alors qu'ils utilisaient principalement des arcs et des flèches vers 1500.\nRéponses acceptées\nVers 1500, les Iroquoiens chassent avec des arcs et des flèches, tandis que vers 1745, ils utilisent aussi des fusils.\t\nEntre 1500 et 1745, les Iroquoiens adoptent de nouvelles armes européennes, notamment les fusils.\t\nVers 1745, les fusils s'ajoutent aux armes traditionnelles utilisées par les Iroquoiens pour la chasse.",
+ updatedAt: "2026-11-03T11:52:57.248Z"
 },
 {
  id: "Q101",

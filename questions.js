@@ -1962,10 +1962,10 @@ const QUESTIONS = [
  soustag: "Déterminer un changement",
  enonce: "Observe les documents A et B. Nomme un changement concernant la population iroquoienne entre 1500 et 1745.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_d_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_d_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_d_1500.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_d_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, la population de certaines communautés iroquoiennes diminue considérablement en raison des épidémies.\nRéponses acceptées\nEntre 1500 et 1745, certaines communautés iroquoiennes connaissent une diminution de leur population.\t\nVers 1745, certaines communautés iroquoiennes comptent moins d'habitants qu'auparavant à cause des épidémies.\nEntre 1500 et 1745, les épidémies provoquent de nombreux décès dans certaines communautés iroquoiennes.",
- updatedAt: "2026-11-03T11:58:49.011Z"
+ updatedAt: "2026-11-03T12:09:28.888Z"
 },
 {
  id: "Q103",

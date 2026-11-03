@@ -3035,9 +3035,9 @@ const QUESTIONS = [
   {type: "textes", cols: [{titre: "Document B", ref: "canot_ecorce_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document C", ref: "charrette_boeuf.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
- reponse: {type: "mettre-en-relation", elements: ["", "", ""]},
- guide: {type: "grille", entetes: ["Élément 1", "Élément 2", "Élément 3"], rangees: [["B", "C", "A"]]},
- updatedAt: "2026-10-26T15:17:34.093Z"
+ reponse: {type: "mettre-en-relation", elements: ["Canot d'écorce", "Charette", "Navire"]},
+ guide: {type: "grille", entetes: ["Canot d'écorce", "Charette", "Navire"], rangees: [["B", "C", "A"]]},
+ updatedAt: "2026-11-03T17:13:11.685Z"
 },
 {
  id: "Q172",

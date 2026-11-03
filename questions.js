@@ -116,7 +116,7 @@ const REGLETTES = {
 "Q115": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q116": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q117": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q118": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q119": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q120": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q121": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
@@ -443,7 +443,8 @@ const IMAGE_DB = {
 "territoire_1645_ressources_2.jpg": {src: "images/territoire_1645_ressources_2.jpg"},
 "territoire_1645_ressources_3.jpg": {src: "images/territoire_1645_ressources_3.jpg"},
 "1645_traces_passe_2.jpg": {src: "images/1645_traces_passe_2.jpg"},
-"1645_traces_passe_3.jpg": {src: "images/1645_traces_passe_3.jpg"}
+"1645_traces_passe_3.jpg": {src: "images/1645_traces_passe_3.jpg"},
+"1645_traces_passe_1.jpg": {src: "images/1645_traces_passe_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -2209,18 +2210,18 @@ const QUESTIONS = [
 },
 {
  id: "Q118",
- niveau: 3,
- oi: "Établir des comparaisons",
+ niveau: 4,
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
- points: 2,
- soustag: "Établir une différence",
- enonce: "À l’aide des documents A et B, nomme une différence entre le territoire occupé par les Iroquoiens et celui occupé par les Incas vers 1500.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "activites_economiques_iroquoiens.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_incas_3.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens occupent un territoire plutôt plat, avec des plaines et des cours d’eau, tandis que les Incas vivent dans un territoire montagneux.",
- updatedAt: "2026-08-19T15:11:36.017Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme un lieu actuel dont le nom témoigne de la présence française en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Traces du passé"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Québec et Trois-Rivières sont deux lieux dont les noms étaient déjà utilisés à l'époque de la Nouvelle-France.",
+ updatedAt: "2026-11-03T19:32:07.956Z"
 },
 {
  id: "Q119",

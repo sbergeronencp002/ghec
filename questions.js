@@ -2776,10 +2776,10 @@ const QUESTIONS = [
  soustag: "Établir tous les faits - 2",
  enonce: "Nomme les deux formes de spiritualité ou de religion présentes en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "missionnaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chaman_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "missionnaire.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Les spiritualités autochtones et le catholicisme.",
- updatedAt: "2026-09-14T00:27:37.043Z"
+ updatedAt: "2026-11-03T20:19:12.295Z"
 },
 {
  id: "Q155",

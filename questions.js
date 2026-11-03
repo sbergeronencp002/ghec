@@ -119,7 +119,7 @@ const REGLETTES = {
 "Q118": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q119": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q120": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
-"Q121": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q121": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q122": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q123": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q124": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
@@ -446,7 +446,8 @@ const IMAGE_DB = {
 "1645_traces_passe_3.jpg": {src: "images/1645_traces_passe_3.jpg"},
 "1645_traces_passe_1.jpg": {src: "images/1645_traces_passe_1.jpg"},
 "1645_traces_passe_4.jpg": {src: "images/1645_traces_passe_4.jpg"},
-"carte_territoire_1645_a.jpg": {src: "images/carte_territoire_1645_a.jpg"}
+"carte_territoire_1645_a.jpg": {src: "images/carte_territoire_1645_a.jpg"},
+"carte_territoire_1645_b.jpg": {src: "images/carte_territoire_1645_b.jpg"}
 }
 
 const QUESTIONS = [
@@ -2257,18 +2258,18 @@ const QUESTIONS = [
 },
 {
  id: "Q121",
- niveau: 3,
- oi: "Établir des comparaisons",
+ niveau: 4,
+ oi: "Situer dans l'espace",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
- points: 2,
- soustag: "Établir une différence",
- enonce: "Nomme une différence entre le territoire occupé par les Iroquoiens et celui occupé par les Incas vers 1500.",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Situer 1 élément dans l'espace",
+ enonce: "Observe la carte. Indique la lettre correspondant au territoire occupé par la société française en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iroquoien_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "territoire_incas_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Le territoire occupé par les Iroquoiens est généralement moins montagneux et très boisé, tandis que celui occupé par les Incas est très montagneux et accidenté.",
- updatedAt: "2026-08-20T00:39:37.094Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoire_1645_b.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "tableau_2col"},
+ guide: "B",
+ updatedAt: "2026-11-03T20:06:38.248Z"
 },
 {
  id: "Q122",

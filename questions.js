@@ -709,8 +709,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vil_iro_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vil_iro_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Atout", "Contrainte"]},
- guide: {type: "grille", entetes: ["Atout", "Contrainte"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-29T10:14:59.284Z"
+ guide: {type: "grille", entetes: ["Atout", "Contrainte"], rangees: [["A", "B"]]},
+ updatedAt: "2026-11-03T19:37:08.400Z"
 },
 {
  id: "Q18",

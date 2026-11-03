@@ -2123,10 +2123,10 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "Observe la carte. Indique la lettre qui correspond à la région des Grands Lacs.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_f.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_f.jpg", source: "Carte de l'Amérique du Nord. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "tableau_2col"},
  guide: "A",
- updatedAt: "2026-11-03T17:52:15.121Z"
+ updatedAt: "2026-11-03T17:53:37.008Z"
 },
 {
  id: "Q113",

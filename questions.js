@@ -133,7 +133,7 @@ const REGLETTES = {
 "Q132": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q133": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q134": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q135": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q135": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q136": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q137": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q138": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
@@ -425,7 +425,8 @@ const IMAGE_DB = {
 "iro_fran_a_1500.jpg": {src: "images/iro_fran_a_1500.jpg"},
 "iro_fran_a_1745.jpg": {src: "images/iro_fran_a_1745.jpg"},
 "iro_fran_e_1500.jpg": {src: "images/iro_fran_e_1500.jpg"},
-"iro_fran_e_1745.jpg": {src: "images/iro_fran_e_1745.jpg"}
+"iro_fran_e_1745.jpg": {src: "images/iro_fran_e_1745.jpg"},
+"agriculture_2.jpg": {src: "images/agriculture_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2452,18 +2453,17 @@ const QUESTIONS = [
 },
 {
  id: "Q135",
- niveau: 3,
- oi: "Établir des faits",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Algonquiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme la structure politique chez les Algonquiens vers 1500.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "org_politique_patriarcat.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Le patriarcat.",
- updatedAt: "2026-08-21T02:00:48.972Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique pourquoi les plaines de la vallée du Saint-Laurent favorisent l'agriculture en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "regime_seigneurial.jpg", soustitre: "Les débuts du régime seigneurial en Nouvelle-France", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les plaines favorisent l'agriculture, car leur relief relativement plat facilite la culture des terres.\nRéponses acceptées.\nLes plaines favorisent l'agriculture parce que le terrain plat facilite le travail de la terre.\nLes plaines facilitent l'agriculture, car elles offrent de grandes surfaces relativement plates pour cultiver.",
+ updatedAt: "2026-11-03T15:04:49.003Z"
 },
 {
  id: "Q136",

@@ -2296,7 +2296,7 @@ const QUESTIONS = [
  id: "Q123",
  niveau: 4,
  oi: "Établir des faits",
- competence: "Interpréter le changement",
+ competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
@@ -2305,7 +2305,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "nouvelle-france_langue_parlee_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les colons français parlent le français.",
- updatedAt: "2026-11-03T20:27:14.890Z"
+ updatedAt: "2026-11-03T20:42:20.418Z"
 },
 {
  id: "Q124",

@@ -109,7 +109,7 @@ const REGLETTES = {
 "Q108": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q109": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q110": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q111": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q111": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q112": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q113": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q114": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
@@ -434,7 +434,9 @@ const IMAGE_DB = {
 "cencives_3.jpg": {src: "images/cencives_3.jpg"},
 "cencives_4.jpg": {src: "images/cencives_4.jpg"},
 "cencives_5.jpg": {src: "images/cencives_5.jpg"},
-"confluents_1.jpg": {src: "images/confluents_1.jpg"}
+"confluents_1.jpg": {src: "images/confluents_1.jpg"},
+"rapides_1.jpg": {src: "images/rapides_1.jpg"},
+"rapides_2.jpg": {src: "images/rapides_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2097,18 +2099,17 @@ const QUESTIONS = [
 },
 {
  id: "Q111",
- niveau: 3,
- oi: "Caractériser un territoire",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Incas vers 1500"],
+ periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- soustag: "Caractériser un territoire - 2",
- enonce: "Nomme une caractéristique du relief du territoire occupé par les Incas vers 1500.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_incas_3.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Explique comment les rapides compliquent le transport des marchandises en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "rapides_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "rapides_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le territoire est montagneux.\nIl est composé de hautes montagnes.\nLe relief est accidenté.",
- updatedAt: "2026-08-20T00:25:07.504Z"
+ guide: "Les rapides compliquent le transport des marchandises, car ils peuvent obliger les voyageurs à effectuer un portage pour les contourner.\nRéponses acceptées.\nLes rapides obligent parfois les voyageurs à transporter leurs marchandises sur la terre ferme pour les contourner.\nLes rapides rendent la navigation dangereuse, ce qui complique le transport des marchandises.\nLes voyageurs doivent parfois contourner les rapides à pied avec leurs marchandises, ce qui ralentit leur déplacement.",
+ updatedAt: "2026-11-03T16:21:33.949Z"
 },
 {
  id: "Q112",

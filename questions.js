@@ -2228,10 +2228,10 @@ const QUESTIONS = [
  soustag: "Situer 1 élément dans l'espace",
  enonce: "Observe la carte. Indique la lettre qui correspond à la région des Basses-terres du Saint-Laurent.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_iro_f.jpg", source: "Carte de l'Amérique du Nord. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "tableau_2col"},
  guide: "B",
- updatedAt: "2026-11-03T17:50:17.952Z"
+ updatedAt: "2026-11-03T17:53:01.857Z"
 },
 {
  id: "Q120",

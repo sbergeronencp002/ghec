@@ -2693,8 +2693,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cartes_etablissements.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "tableau_2col"},
- guide: "C",
- updatedAt: "2026-09-08T19:00:02.377Z"
+ guide: "B",
+ updatedAt: "2026-11-03T17:03:47.275Z"
 },
 {
  id: "Q150",

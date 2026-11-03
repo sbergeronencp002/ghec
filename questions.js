@@ -2085,12 +2085,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Nomme une caractéristique de l'hydrographie du territoire occupé par la société française en Nouvelle-France vers 1645.",
+ enonce: "Nomme une caractéristique de l'hydrographie en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Le territoire est traversé par de nombreux cours d'eau, dont le fleuve Saint-Laurent et plusieurs rivières.\nRéponses acceptées.\nLe territoire possède de nombreux cours d'eau.\nPlusieurs rivières se rejoignent à des confluents.\nCertains cours d'eau comportent des rapides.",
- updatedAt: "2026-11-03T15:38:57.408Z"
+ updatedAt: "2026-11-03T19:52:02.870Z"
 },
 {
  id: "Q110",

@@ -2858,11 +2858,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un élément de l’habillement autochtone adopté par certains colons en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Culture"}],
+ aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "deplacement_1645_a.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les mocassins.",
- updatedAt: "2026-10-26T14:46:45.839Z"
+ updatedAt: "2026-11-03T20:44:52.799Z"
 },
 {
  id: "Q160",

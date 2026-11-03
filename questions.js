@@ -99,7 +99,7 @@ const REGLETTES = {
 "Q98": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q99": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q100": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
-"Q101": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
+"Q101": {oi: "Déterminer des changements", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève détermine le changement."}, {pts: 1, desc: "L'élève détermine plus ou moins le changement."}, {pts: 0, desc: "L'élève ne détermine pas le changement."}]},
 "Q102": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q103": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q104": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
@@ -417,7 +417,9 @@ const IMAGE_DB = {
 "iro_fran_1500_a.jpg": {src: "images/iro_fran_1500_a.jpg"},
 "iro_fran_1745_a.jpg": {src: "images/iro_fran_1745_a.jpg"},
 "iro_fran_b_1500.jpg": {src: "images/iro_fran_b_1500.jpg"},
-"iro_fran_b_1745.jpg": {src: "images/iro_fran_b_1745.jpg"}
+"iro_fran_b_1745.jpg": {src: "images/iro_fran_b_1745.jpg"},
+"iro_fran_c_1700.jpg": {src: "images/iro_fran_c_1700.jpg"},
+"iro_fran_c_1745.jpg": {src: "images/iro_fran_c_1745.jpg"}
 }
 
 const QUESTIONS = [
@@ -1934,17 +1936,17 @@ const QUESTIONS = [
 {
  id: "Q101",
  niveau: 3,
- oi: "Établir des comparaisons",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ oi: "Déterminer des changements",
+ competence: "Interpréter le changement",
+ periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
  points: 2,
- soustag: "Établir une différence",
- enonce: "Nomme une différence entre les habitations des Iroquoiens et des Incas vers 1500.",
- aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iroquoien_maisons_longues.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "incas_maisons_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ soustag: "Déterminer un changement",
+ enonce: "Observe les documents A et B. Nomme un changement dans les objets utilisés par les Iroquoiens pour préparer leurs aliments entre 1500 et 1745.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_c_1700.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_c_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens habitent dans des maisons longues, tandis que les Incas habitent dans des maisons de pierre.",
- updatedAt: "2026-08-17T23:23:29.006Z"
+ guide: "Entre 1500 et 1745, les Iroquoiens commencent à utiliser des chaudrons en métal obtenus des Européens pour préparer leurs aliments, alors qu'ils utilisaient notamment des récipients en poterie auparavant.\nRéponses acceptées\nVers 1500, les Iroquoiens utilisent des pots en poterie pour cuisiner, tandis que vers 1745, ils utilisent aussi des chaudrons en métal.\nEntre 1500 et 1745, les Iroquoiens adoptent des chaudrons métalliques provenant des Européens pour faire cuire leurs aliments.\nLes Iroquoiens commencent à cuisiner avec des chaudrons en métal, alors qu'ils utilisaient auparavant des récipients en terre cuite.",
+ updatedAt: "2026-11-03T11:56:12.543Z"
 },
 {
  id: "Q102",

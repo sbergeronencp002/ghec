@@ -1096,10 +1096,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe le tableau. Nomme le nombre approximatif d'habitants de la société iroquoienne vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "population_1.png", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "population_1.png", source: "Adapté de Jacques Lacoursière, Histoire populaire du Québec, tome 1, Québec Amérique, 1995."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, la population iroquoienne compte environ 100 000 habitants.\n\nAccepter « environ 100 000 habitants », « près de 100 000 personnes » ou toute formulation équivalente indiquant un ordre de grandeur d'environ 100 000 habitants.",
- updatedAt: "2026-10-30T02:12:00.352Z"
+ updatedAt: "2026-11-03T19:45:46.217Z"
 },
 {
  id: "Q44",

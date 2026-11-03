@@ -2187,12 +2187,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe le document B. Nomme un objet ancien qui témoigne de la présence française en Nouvelle-France.",
+ enonce: "Observe l'illustration. Nomme un objet ancien qui témoigne de la présence française en Nouvelle-France.",
  aspects: [{aspect: "Traces du passé"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Une pièce de monnaie portant les symboles de la monarchie française témoigne de la présence française en Nouvelle-France.\nRéponses acceptées.\nUne pièce de monnaie française est un objet ancien qui témoigne de la présence française.\nUne pièce portant des fleurs de lys constitue une trace matérielle de la présence française.",
- updatedAt: "2026-11-03T19:28:01.466Z"
+ updatedAt: "2026-11-03T19:56:07.976Z"
 },
 {
  id: "Q117",

@@ -3008,10 +3008,10 @@ const QUESTIONS = [
 },
 {
  id: "Q169",
- niveau: 4,
+ niveau: 3,
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Société française en Nouvelle-France vers 1645"],
+ periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme la croyance selon lesquelles des esprits sont présents dans les éléments de la nature chez les peuples autochtones vers 1645.",
@@ -3019,7 +3019,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "ceremonie_autochtone_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "L'animisme.",
- updatedAt: "2026-10-26T14:33:26.877Z"
+ updatedAt: "2026-11-03T20:45:20.496Z"
 },
 {
  id: "Q170",

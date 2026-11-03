@@ -1947,10 +1947,10 @@ const QUESTIONS = [
  soustag: "Déterminer un changement",
  enonce: "Observe les documents A et B. Nomme un changement dans les objets utilisés par les Iroquoiens pour préparer leurs aliments entre 1500 et 1745.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_c_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_c_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "iro_fran_c_1500.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iro_fran_c_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Entre 1500 et 1745, les Iroquoiens commencent à utiliser des chaudrons en métal obtenus des Européens pour préparer leurs aliments, alors qu'ils utilisaient notamment des récipients en poterie auparavant.\nRéponses acceptées\nVers 1500, les Iroquoiens utilisent des pots en poterie pour cuisiner, tandis que vers 1745, ils utilisent aussi des chaudrons en métal.\nEntre 1500 et 1745, les Iroquoiens adoptent des chaudrons métalliques provenant des Européens pour faire cuire leurs aliments.\nLes Iroquoiens commencent à cuisiner avec des chaudrons en métal, alors qu'ils utilisaient auparavant des récipients en terre cuite.",
- updatedAt: "2026-11-03T11:56:12.543Z"
+ updatedAt: "2026-11-03T12:08:53.382Z"
 },
 {
  id: "Q102",

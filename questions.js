@@ -723,9 +723,9 @@ const QUESTIONS = [
  enonce: "Les documents A et B illustrent des atouts et des contraintes du climat pour les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "vil_iro_ete_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "vil_iro_hiver_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Atout", "Contrainte"]},
- guide: {type: "grille", entetes: ["Atout", "Contrainte"], rangees: [["A", "B"]]},
- updatedAt: "2026-10-29T11:39:27.869Z"
+ reponse: {type: "mettre-en-relation", elements: ["Un atout du climat pour les déplacements", "Une contrainte du climat pour les déplacements"]},
+ guide: {type: "grille", entetes: ["Un atout du climat pour les déplacements", "Une contrainte du climat pour les déplacements"], rangees: [["A", "B"]]},
+ updatedAt: "2026-11-03T19:43:12.711Z"
 },
 {
  id: "Q19",

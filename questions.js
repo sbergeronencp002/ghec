@@ -2276,7 +2276,7 @@ const QUESTIONS = [
  id: "Q122",
  niveau: 4,
  oi: "Situer dans l'espace",
- competence: "Interpréter le changement",
+ competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Situer 1 élément dans l'espace",
@@ -2285,7 +2285,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoire_1645_c.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "tableau_2col"},
  guide: "B",
- updatedAt: "2026-11-03T20:11:28.376Z"
+ updatedAt: "2026-11-03T20:14:37.483Z"
 },
 {
  id: "Q123",

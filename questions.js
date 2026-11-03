@@ -114,7 +114,7 @@ const REGLETTES = {
 "Q113": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q114": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q115": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
-"Q116": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q116": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q117": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q118": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q119": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
@@ -441,7 +441,8 @@ const IMAGE_DB = {
 "territoire_iro_f.jpg": {src: "images/territoire_iro_f.jpg"},
 "territoire_1645_ressources_1.jpg": {src: "images/territoire_1645_ressources_1.jpg"},
 "territoire_1645_ressources_2.jpg": {src: "images/territoire_1645_ressources_2.jpg"},
-"territoire_1645_ressources_3.jpg": {src: "images/territoire_1645_ressources_3.jpg"}
+"territoire_1645_ressources_3.jpg": {src: "images/territoire_1645_ressources_3.jpg"},
+"1645_traces_passe_2.jpg": {src: "images/1645_traces_passe_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2177,18 +2178,18 @@ const QUESTIONS = [
 },
 {
  id: "Q116",
- niveau: 3,
- oi: "Mettre en relation des faits",
- competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent le pouvoir des chefs iroquoiens et celui de l’empereur inca vers 1500. Associe chaque document au type de pouvoir correspondant.",
- aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "incas_pouvoir_empereur.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "iroquoiens_conseil.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Pouvoir illimité", "Pouvoir partagé"]},
- guide: {type: "grille", entetes: ["Pouvoir illimité", "Pouvoir partagé"], rangees: [["A", "B"]]},
- updatedAt: "2026-10-28T02:32:18.249Z"
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe le document B. Nomme un objet ancien qui témoigne de la présence française en Nouvelle-France.",
+ aspects: [{aspect: "Traces du passé"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Une pièce de monnaie portant les symboles de la monarchie française témoigne de la présence française en Nouvelle-France.\nRéponses acceptées.\nUne pièce de monnaie française est un objet ancien qui témoigne de la présence française.\nUne pièce portant des fleurs de lys constitue une trace matérielle de la présence française.",
+ updatedAt: "2026-11-03T19:28:01.466Z"
 },
 {
  id: "Q117",

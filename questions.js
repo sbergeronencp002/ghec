@@ -457,7 +457,8 @@ const IMAGE_DB = {
 "habillement_1.jpg": {src: "images/habillement_1.jpg"},
 "1645_traces_passe_5.jpg": {src: "images/1645_traces_passe_5.jpg"},
 "1645_roi_decision_1.jpg": {src: "images/1645_roi_decision_1.jpg"},
-"1645_compagnies_monopole_1.jpg": {src: "images/1645_compagnies_monopole_1.jpg"}
+"1645_compagnies_monopole_1.jpg": {src: "images/1645_compagnies_monopole_1.jpg"},
+"1645_compagnies_obligation_1.jpg": {src: "images/1645_compagnies_obligation_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3280,10 +3281,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme une obligation imposée à la Compagnie des Cent-Associés par le roi de France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_compagnies_obligation_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La Compagnie des Cent-Associés a l'obligation de peupler la Nouvelle-France.\nRéponses acceptées.\nLa compagnie doit peupler la colonie.\nLa Compagnie des Cent-Associés doit faire venir des colons français pour peupler la Nouvelle-France.\nLa compagnie doit favoriser l'établissement de nouveaux habitants dans la colonie.",
- updatedAt: "2026-11-04T13:36:32.620Z"
+ updatedAt: "2026-11-04T13:38:36.295Z"
 },
 {
  id: "Q187",

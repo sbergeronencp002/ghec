@@ -130,7 +130,7 @@ const REGLETTES = {
 "Q129": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q130": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q131": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q132": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q132": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q133": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q134": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q135": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -428,7 +428,8 @@ const IMAGE_DB = {
 "1645_compagnies_obligation_1.jpg": {src: "images/1645_compagnies_obligation_1.jpg"},
 "1645_postes_traite_1.jpg": {src: "images/1645_postes_traite_1.jpg"},
 "1645_activite_subsistance_1.jpg": {src: "images/1645_activite_subsistance_1.jpg"},
-"1645_postes_traite_2.jpg": {src: "images/1645_postes_traite_2.jpg"}
+"1645_postes_traite_2.jpg": {src: "images/1645_postes_traite_2.jpg"},
+"1645_activite_subsistance_3.jpg": {src: "images/1645_activite_subsistance_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -2406,17 +2407,18 @@ const QUESTIONS = [
 },
 {
  id: "Q132",
- niveau: 3,
- oi: "Établir des liens de causalité",
+ niveau: 4,
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1745"],
- points: 2,
- enonce: "Explique comment les objets européens ont remplacés les objets traditionnels chez les Iroquoiens entre 1500 et 1745.",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme une activité de subsistance pratiquée par les colons français en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "cuisson_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cuisson_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Les Iroquoiens ont commencé à utiliser des objets européens, comme la hache, le chaudron et le fusil, à la place de certains objets traditionnels qu’ils utilisaient auparavant.",
- updatedAt: "2026-08-20T15:15:38.342Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_activite_subsistance_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les colons français pratiquent la pêche pour se nourrir.",
+ updatedAt: "2026-11-04T14:04:31.053Z"
 },
 {
  id: "Q133",

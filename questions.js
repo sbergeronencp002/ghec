@@ -2149,8 +2149,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1645_ressources_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Le territoire possède des ressources animales, notamment des castors.\nRéponses acceptées.\nLe territoire abrite des castors.\nLe territoire possède des ressources animales comme les castors.\nLe territoire possède de nombreuses forêts.",
- updatedAt: "2026-11-03T20:15:02.167Z"
+ guide: "Le territoire possède des ressources animales, notamment des castors.\nLe territoire possède de nombreuses forêts.",
+ updatedAt: "2026-11-04T14:39:28.528Z"
 },
 {
  id: "Q115",

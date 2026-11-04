@@ -431,7 +431,8 @@ const IMAGE_DB = {
 "1645_postes_traite_2.jpg": {src: "images/1645_postes_traite_2.jpg"},
 "1645_activite_subsistance_3.jpg": {src: "images/1645_activite_subsistance_3.jpg"},
 "1645_climat_agriculture_1.jpg": {src: "images/1645_climat_agriculture_1.jpg"},
-"1645_climat_agriculture_2.jpg": {src: "images/1645_climat_agriculture_2.jpg"}
+"1645_climat_agriculture_2.jpg": {src: "images/1645_climat_agriculture_2.jpg"},
+"1645_roi_decision_2.jpg": {src: "images/1645_roi_decision_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3157,12 +3158,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique pourquoi le gouverneur et la compagnie doivent appliquer les décisions du roi de France vers 1645.",
+ enonce: "Explique pourquoi la Compagnie des Cent-Associés doit appliquer les décisions du roi de France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "roi_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "sceau_royal.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_roi_decision_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le gouverneur et la compagnie doivent appliquer les décisions du roi parce qu’il détient l’autorité sur la colonie.",
- updatedAt: "2026-10-27T02:43:31.691Z"
+ guide: "La Compagnie des Cent-Associés doit appliquer les décisions du roi de France, car celui-ci détient l'autorité sur la colonie et lui accorde ses pouvoirs.",
+ updatedAt: "2026-11-04T14:29:18.189Z"
 },
 {
  id: "Q181",

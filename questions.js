@@ -3189,12 +3189,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme un rôle du gouverneur en Nouvelle-France vers 1645.",
+ enonce: "Observe l'illustration. Nomme un rôle du gouverneur en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "gouverneur_defense.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Organiser la défense de la colonie. \nAccepter aussi « protéger la colonie ».",
- updatedAt: "2026-10-26T16:11:34.514Z"
+ guide: "Le gouverneur est responsable de la défense de la colonie.\nLe gouverneur dirige les affaires militaires de la colonie.",
+ updatedAt: "2026-11-04T14:35:30.198Z"
 },
 {
  id: "Q183",

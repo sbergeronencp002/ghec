@@ -3204,12 +3204,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme un rôle du gouverneur en Nouvelle-France vers 1645.",
+ enonce: "Observe l'illustration. Nomme un rôle du gouverneur en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "gouverneur_admin.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Administrer la colonie. \nAccepter aussi faire appliquer les décisions du roi.",
- updatedAt: "2026-10-26T16:12:50.514Z"
+ guide: "Le gouverneur représente l'autorité du roi de France dans la colonie et veille à l'application de ses décisions.",
+ updatedAt: "2026-11-04T14:37:17.811Z"
 },
 {
  id: "Q184",

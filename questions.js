@@ -455,7 +455,8 @@ const IMAGE_DB = {
 "forme_arts_2.jpg": {src: "images/forme_arts_2.jpg"},
 "forme_arts_3.jpg": {src: "images/forme_arts_3.jpg"},
 "habillement_1.jpg": {src: "images/habillement_1.jpg"},
-"1645_traces_passe_5.jpg": {src: "images/1645_traces_passe_5.jpg"}
+"1645_traces_passe_5.jpg": {src: "images/1645_traces_passe_5.jpg"},
+"1645_roi_decision_1.jpg": {src: "images/1645_roi_decision_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3203,10 +3204,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme la façon dont le roi prend les décisions concernant la colonie vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "gouverneur_missive.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le roi de France prend les décisions de manière autoritaire.",
- updatedAt: "2026-11-04T13:29:22.324Z"
+ updatedAt: "2026-11-04T13:31:50.641Z"
 },
 {
  id: "Q182",

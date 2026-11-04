@@ -3348,7 +3348,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Autochtones", "Coureurs des bois", "Compagnies", "Religieux"]},
  guide: {type: "grille", entetes: ["Autochtones", "Coureurs des bois", "Compagnies", "Religieux"], rangees: [["C", "D", "A", "B"]]},
- updatedAt: "2026-11-02T14:26:58.228Z"
+ updatedAt: "2026-11-04T13:40:05.342Z"
 },
 {
  id: "Q191",

@@ -2550,8 +2550,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières par Laviolette", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
- guide: "B",
- updatedAt: "2026-10-26T17:28:50.901Z"
+ guide: "B\n\n1634",
+ updatedAt: "2026-11-04T01:52:04.140Z"
 },
 {
  id: "Q140",

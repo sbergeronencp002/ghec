@@ -2854,8 +2854,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "toboggan_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Ils adoptent les raquettes pour marcher sans trop s’enfoncer dans la neige et le toboggan pour transporter des charges.\nAccepter un seul moyen accompagné de son utilité, puisque la question n’en exige pas deux.",
- updatedAt: "2026-10-26T14:42:29.287Z"
+ guide: "Les colons utilisent des raquettes pour marcher sur la neige et des traîneaux (toboggan) pour transporter leurs marchandises plus facilement en hiver.",
+ updatedAt: "2026-11-04T13:41:29.723Z"
 },
 {
  id: "Q159",

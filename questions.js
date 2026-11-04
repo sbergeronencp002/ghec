@@ -3474,8 +3474,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", soustitre: "Les débuts du régime seigneurial en Nouvelle-France", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
- guide: "B",
- updatedAt: "2026-10-26T17:32:22.392Z"
+ guide: "B\n1627-1628",
+ updatedAt: "2026-11-04T01:54:04.816Z"
 },
 {
  id: "Q200",

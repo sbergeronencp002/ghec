@@ -2571,7 +2571,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Placer en ordre chronologique",
- enonce: "Les documents A à D font référence à la colonisation de la Nouvelle-France. Placez-les par ordre chronologique.",
+ enonce: "Les documents A à D font référence à la colonisation de la Nouvelle-France. Place-les par ordre chronologique.",
  aspects: [{aspect: "Personnages"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "fondation_trois_rivieres.jpg", soustitre: "Fondation de Trois-Rivières par Laviolette", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -2581,7 +2581,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "image", ref: "ligne_bcad.png"},
  guide: "B - C - A - D",
- updatedAt: "2026-08-30T19:29:40.511Z"
+ updatedAt: "2026-11-04T00:39:51.654Z"
 },
 {
  id: "Q142",

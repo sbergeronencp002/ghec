@@ -434,7 +434,8 @@ const IMAGE_DB = {
 "1645_climat_agriculture_2.jpg": {src: "images/1645_climat_agriculture_2.jpg"},
 "1645_roi_decision_2.jpg": {src: "images/1645_roi_decision_2.jpg"},
 "1645_roi_decision_3.jpg": {src: "images/1645_roi_decision_3.jpg"},
-"1645_activite_subsistance_2.jpg": {src: "images/1645_activite_subsistance_2.jpg"}
+"1645_activite_subsistance_2.jpg": {src: "images/1645_activite_subsistance_2.jpg"},
+"1645_gouverneur_2.jpg": {src: "images/1645_gouverneur_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3211,10 +3212,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme un rôle du gouverneur en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_gouverneur_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le gouverneur représente l'autorité du roi de France dans la colonie et veille à l'application de ses décisions.",
- updatedAt: "2026-11-04T14:37:17.811Z"
+ updatedAt: "2026-11-04T15:11:29.875Z"
 },
 {
  id: "Q184",

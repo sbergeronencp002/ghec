@@ -199,7 +199,8 @@ const REGLETTES = {
 "Q198": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q199": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q200": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
-"Q201": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q201": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q202": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -425,7 +426,8 @@ const IMAGE_DB = {
 "1645_roi_decision_1.jpg": {src: "images/1645_roi_decision_1.jpg"},
 "1645_compagnies_monopole_1.jpg": {src: "images/1645_compagnies_monopole_1.jpg"},
 "1645_compagnies_obligation_1.jpg": {src: "images/1645_compagnies_obligation_1.jpg"},
-"1645_postes_traite_1.jpg": {src: "images/1645_postes_traite_1.jpg"}
+"1645_postes_traite_1.jpg": {src: "images/1645_postes_traite_1.jpg"},
+"1645_activite_subsistance_1.jpg": {src: "images/1645_activite_subsistance_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3470,5 +3472,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "« Vers 1500, les Iroquoiens pratiquent la vannerie. »\n\nRéponses acceptées :\n- Le tressage de paniers.\n- La fabrication de paniers tressés.",
  updatedAt: "2026-10-31T01:19:14.096Z"
+},
+{
+ id: "Q202",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme une activité de subsistance pratiquée par les colons français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_activite_subsistance_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les colons français pratiquent la chasse pour se nourrir.",
+ updatedAt: "2026-11-04T13:56:16.462Z"
 }
 ]

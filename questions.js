@@ -2891,8 +2891,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "chant_musique_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Le chat, la musique et la dance.",
- updatedAt: "2026-10-26T14:51:59.994Z"
+ guide: "Le chant, la musique et la dance.",
+ updatedAt: "2026-11-04T00:37:36.461Z"
 },
 {
  id: "Q162",

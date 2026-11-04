@@ -3368,8 +3368,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "agriculture_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "La vallée du Saint-Laurent comprend des plaines dont le relief plat et fertile facilite la culture des terres.",
- updatedAt: "2026-10-26T16:57:32.105Z"
+ guide: "La vallée du Saint-Laurent comprend des plaines dont le relief plat facilite le travail de la terre et l'aménagement des champs.",
+ updatedAt: "2026-11-04T00:38:19.794Z"
 },
 {
  id: "Q193",

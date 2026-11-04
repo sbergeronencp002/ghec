@@ -2838,7 +2838,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "alimentation_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le pain de blé.",
- updatedAt: "2026-11-03T20:44:20.665Z"
+ updatedAt: "2026-11-04T13:30:04.629Z"
 },
 {
  id: "Q158",

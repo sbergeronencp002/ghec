@@ -2855,12 +2855,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "À l’aide du document A, nomme deux divertissements pratiqués par les colons en Nouvelle-France vers 1645.",
+ enonce: "Observe l'illustration. Nomme deux divertissements pratiqués par les colons français en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "musique_chants_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "La musique, le chant et la danse.",
- updatedAt: "2026-10-26T14:49:59.640Z"
+ guide: "Les colons français se divertissent en dansant et en jouant de la musique.",
+ updatedAt: "2026-11-04T14:47:47.678Z"
 },
 {
  id: "Q161",

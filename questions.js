@@ -456,7 +456,8 @@ const IMAGE_DB = {
 "forme_arts_3.jpg": {src: "images/forme_arts_3.jpg"},
 "habillement_1.jpg": {src: "images/habillement_1.jpg"},
 "1645_traces_passe_5.jpg": {src: "images/1645_traces_passe_5.jpg"},
-"1645_roi_decision_1.jpg": {src: "images/1645_roi_decision_1.jpg"}
+"1645_roi_decision_1.jpg": {src: "images/1645_roi_decision_1.jpg"},
+"1645_compagnies_monopole_1.jpg": {src: "images/1645_compagnies_monopole_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3264,10 +3265,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme le privilège accordé à la Compagnie des Cent-Associés par le roi de France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_compagnies_monopole_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La Compagnie des Cent-Associés obtient le monopole du commerce des fourrures.\nRéponses acceptées.\nLa compagnie possède le droit exclusif de pratiquer le commerce des fourrures.\nLe roi accorde à la compagnie le privilège d'être la seule compagnie autorisée à faire le commerce des fourrures.",
- updatedAt: "2026-11-04T13:34:25.147Z"
+ updatedAt: "2026-11-04T13:37:55.411Z"
 },
 {
  id: "Q186",

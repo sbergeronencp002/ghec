@@ -3262,12 +3262,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme le privilège accordé à la Compagnie des Cent-Associés par le roi de France vers 1645.",
+ enonce: "Observe l'illustration. Nomme le privilège accordé à la Compagnie des Cent-Associés par le roi de France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Le monopole du commerce des fourrures. \nAccepter aussi « le droit exclusif de faire le commerce des fourrures ».",
- updatedAt: "2026-10-26T16:23:51.041Z"
+ guide: "La Compagnie des Cent-Associés obtient le monopole du commerce des fourrures.\nRéponses acceptées.\nLa compagnie possède le droit exclusif de pratiquer le commerce des fourrures.\nLe roi accorde à la compagnie le privilège d'être la seule compagnie autorisée à faire le commerce des fourrures.",
+ updatedAt: "2026-11-04T13:34:25.147Z"
 },
 {
  id: "Q186",

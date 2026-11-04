@@ -2536,7 +2536,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_quebec_1608.jpg", soustitre: "Fondation de Québec par Samuel de Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
  guide: "A",
- updatedAt: "2026-08-29T18:01:45.436Z"
+ updatedAt: "2026-11-04T01:51:05.431Z"
 },
 {
  id: "Q139",

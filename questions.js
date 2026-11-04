@@ -2735,12 +2735,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Nommes les deux langues parlées en Nouvelle-France vers 1645.",
+ enonce: "Nommes les deux grands ensembles linguistiques présents en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "poste_traite_1645.jpg", source: "Reconstitution historique à des fins pédagogiques réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Les langues autochtones et le français.",
- updatedAt: "2026-10-26T14:24:46.539Z"
+ updatedAt: "2026-11-04T00:36:50.216Z"
 },
 {
  id: "Q152",

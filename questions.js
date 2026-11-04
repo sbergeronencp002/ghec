@@ -2215,8 +2215,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Traces du passé"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_traces_passe_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "La place Royale, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.\nLa porte-Saint-Louis, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.",
- updatedAt: "2026-11-03T19:35:43.735Z"
+ guide: "La place Royale, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.\nLe monastère des Ursulines, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.",
+ updatedAt: "2026-11-04T00:51:52.567Z"
 },
 {
  id: "Q118",

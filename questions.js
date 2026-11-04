@@ -127,7 +127,7 @@ const REGLETTES = {
 "Q126": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q127": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q128": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q129": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q129": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q130": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q131": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q132": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -458,7 +458,8 @@ const IMAGE_DB = {
 "1645_traces_passe_5.jpg": {src: "images/1645_traces_passe_5.jpg"},
 "1645_roi_decision_1.jpg": {src: "images/1645_roi_decision_1.jpg"},
 "1645_compagnies_monopole_1.jpg": {src: "images/1645_compagnies_monopole_1.jpg"},
-"1645_compagnies_obligation_1.jpg": {src: "images/1645_compagnies_obligation_1.jpg"}
+"1645_compagnies_obligation_1.jpg": {src: "images/1645_compagnies_obligation_1.jpg"},
+"1645_postes_traite_1.jpg": {src: "images/1645_postes_traite_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -2392,23 +2393,18 @@ const QUESTIONS = [
 },
 {
  id: "Q129",
- niveau: 3,
- oi: "Mettre en relation des faits",
+ niveau: 4,
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1745"],
- points: 2,
- soustag: "Mettre en relation des faits - 4",
- enonce: "Les documents A à D présentent différents groupes qui jouent un rôle dans les changements vécus par les Iroquoiens entre 1500 et 1745. Associe chaque document au groupe correspondant.",
- aspects: [{aspect: "Groupes sociaux"}],
- documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "groupes_pecheurs_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "groupes_missionnaires_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "groupes_coueurs_bois_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document D", ref: "groupes_militaires_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
- ],
- reponse: {type: "mettre-en-relation", elements: ["Coureurs des bois", "Militaires", "Missionnaires", "Pêcheurs"]},
- guide: {type: "grille", entetes: ["Coureurs des bois", "Militaires", "Missionnaires", "Pêcheurs"], rangees: [["C", "D", "B", "A"]]},
- updatedAt: "2026-08-20T14:00:08.913Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme une activité économique qui favorise l'établissement de postes de traite en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_postes_traite_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le commerce des fourrures favorise l'établissement de postes de traite en Nouvelle-France.",
+ updatedAt: "2026-11-04T13:49:32.489Z"
 },
 {
  id: "Q130",

@@ -3489,8 +3489,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "voyages_champlain.jpg", soustitre: "Les voyages d'exploration de Samuel de Champlain en Huronie", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
- guide: "A",
- updatedAt: "2026-10-26T17:40:19.697Z"
+ guide: "A\n1615",
+ updatedAt: "2026-11-04T01:56:11.406Z"
 },
 {
  id: "Q201",

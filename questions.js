@@ -2135,8 +2135,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1645_ressources_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "L'abondance de castors permet d'obtenir de nombreuses peaux recherchées, ce qui favorise le développement du commerce des fourrures.\nRéponses acceptées \nL'abondance de castors permet d'obtenir de nombreuses peaux qui peuvent être échangées contre des marchandises.\nLes castors sont nombreux et leurs peaux sont recherchées, ce qui favorise le commerce des fourrures.\nLes castors fournissent des fourrures qui peuvent être vendues aux marchands, ce qui favorise le commerce",
- updatedAt: "2026-11-03T19:00:02.632Z"
+ guide: "L'abondance de castors permet d'obtenir de nombreuses peaux recherchées, ce qui favorise le développement du commerce des fourrures.",
+ updatedAt: "2026-11-04T14:51:00.517Z"
 },
 {
  id: "Q114",

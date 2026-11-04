@@ -432,7 +432,8 @@ const IMAGE_DB = {
 "1645_activite_subsistance_3.jpg": {src: "images/1645_activite_subsistance_3.jpg"},
 "1645_climat_agriculture_1.jpg": {src: "images/1645_climat_agriculture_1.jpg"},
 "1645_climat_agriculture_2.jpg": {src: "images/1645_climat_agriculture_2.jpg"},
-"1645_roi_decision_2.jpg": {src: "images/1645_roi_decision_2.jpg"}
+"1645_roi_decision_2.jpg": {src: "images/1645_roi_decision_2.jpg"},
+"1645_roi_decision_3.jpg": {src: "images/1645_roi_decision_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -2439,17 +2440,17 @@ const QUESTIONS = [
 },
 {
  id: "Q134",
- niveau: 3,
+ niveau: 4,
  oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1745"],
+ periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique comment les pratiques spirituelles des Iroquoiens évoluent entre 1500 et 1745.",
- aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "religion_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "religion_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Explique pourquoi le gouverneur de la Nouvelle-France doit appliquer les décisions du roi de France vers 1645.",
+ aspects: [{aspect: "Gouvernement"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_roi_decision_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Entre 1500 et 1745, les pratiques spirituelles des Iroquoiens se transforment avec l’arrivée des missionnaires européens. Le christianisme est introduit et certains Iroquoiens adoptent de nouvelles croyances et pratiques religieuses, tandis que des pratiques spirituelles traditionnelles demeurent présentes.",
- updatedAt: "2026-08-20T15:21:54.495Z"
+ guide: "Le gouverneur doit appliquer les décisions du roi de France, car celui-ci le désigne et détient l'autorité sur la colonie.",
+ updatedAt: "2026-11-04T14:33:29.447Z"
 },
 {
  id: "Q135",

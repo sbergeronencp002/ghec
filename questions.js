@@ -3459,8 +3459,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "bataille_lac_champlain.jpg", soustitre: "Bataille du lac Champlain", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
- guide: "A",
- updatedAt: "2026-10-26T17:34:03.186Z"
+ guide: "A\n1609",
+ updatedAt: "2026-11-04T01:53:40.830Z"
 },
 {
  id: "Q199",

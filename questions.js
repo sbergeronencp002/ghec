@@ -2794,12 +2794,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la religion pratiquée par les Français en en Nouvelle-France vers 1645.",
+ enonce: "Nomme la religion pratiquée par les Français en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "catholicisme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le catholicisme.",
- updatedAt: "2026-10-26T14:29:48.616Z"
+ updatedAt: "2026-11-04T00:37:20.072Z"
 },
 {
  id: "Q156",

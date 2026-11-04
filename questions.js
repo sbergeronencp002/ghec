@@ -131,7 +131,7 @@ const REGLETTES = {
 "Q130": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q131": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q132": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q133": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q133": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q134": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q135": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q136": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
@@ -429,7 +429,9 @@ const IMAGE_DB = {
 "1645_postes_traite_1.jpg": {src: "images/1645_postes_traite_1.jpg"},
 "1645_activite_subsistance_1.jpg": {src: "images/1645_activite_subsistance_1.jpg"},
 "1645_postes_traite_2.jpg": {src: "images/1645_postes_traite_2.jpg"},
-"1645_activite_subsistance_3.jpg": {src: "images/1645_activite_subsistance_3.jpg"}
+"1645_activite_subsistance_3.jpg": {src: "images/1645_activite_subsistance_3.jpg"},
+"1645_climat_agriculture_1.jpg": {src: "images/1645_climat_agriculture_1.jpg"},
+"1645_climat_agriculture_2.jpg": {src: "images/1645_climat_agriculture_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2422,18 +2424,17 @@ const QUESTIONS = [
 },
 {
  id: "Q133",
- niveau: 3,
- oi: "Établir des faits",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1745"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme un problème qui touche plusieurs Iroquoiens entre 1500 et 1745.",
- aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "maladies_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les maladies européeenes.",
- updatedAt: "2026-08-20T15:19:12.546Z"
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Explique comment le climat en été favorise l’agriculture en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_climat_agriculture_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_climat_agriculture_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les températures chaudes et les précipitations en été favorisent l’agriculture, car elles permettent aux plantes cultivées de pousser.",
+ updatedAt: "2026-11-04T14:13:09.861Z"
 },
 {
  id: "Q134",

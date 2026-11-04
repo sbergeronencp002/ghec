@@ -112,7 +112,7 @@ const REGLETTES = {
 "Q111": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q112": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q113": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q114": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q114": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q115": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q116": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q117": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -433,7 +433,8 @@ const IMAGE_DB = {
 "1645_climat_agriculture_1.jpg": {src: "images/1645_climat_agriculture_1.jpg"},
 "1645_climat_agriculture_2.jpg": {src: "images/1645_climat_agriculture_2.jpg"},
 "1645_roi_decision_2.jpg": {src: "images/1645_roi_decision_2.jpg"},
-"1645_roi_decision_3.jpg": {src: "images/1645_roi_decision_3.jpg"}
+"1645_roi_decision_3.jpg": {src: "images/1645_roi_decision_3.jpg"},
+"1645_activite_subsistance_2.jpg": {src: "images/1645_activite_subsistance_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2140,17 +2141,21 @@ const QUESTIONS = [
 {
  id: "Q114",
  niveau: 4,
- oi: "Établir des faits",
+ oi: "Mettre en relation des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme une caractéristique des ressources naturelles du territoire occupé par la société française en Nouvelle-France vers 1645.",
+ points: 2,
+ soustag: "Mettre en relation des faits - 3",
+ enonce: "Les documents A à C présentent des activités de subsistance pratiquées par les colons en Nouvelle-France vers 1645. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1645_ressources_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Le territoire possède des ressources animales, notamment des castors.\nLe territoire possède de nombreuses forêts.",
- updatedAt: "2026-11-04T14:39:28.528Z"
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "1645_activite_subsistance_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "1645_activite_subsistance_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "1645_activite_subsistance_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Chasse", "Pêche"]},
+ guide: {type: "grille", entetes: ["Agriculture", "Chasse", "Pêche"], rangees: [["C", "A", "B"]]},
+ updatedAt: "2026-11-04T14:44:48.319Z"
 },
 {
  id: "Q115",

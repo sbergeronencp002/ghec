@@ -3277,12 +3277,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, indique l’obligation imposée à la Compagnie des Cent-Associés par le roi de France vers 1645.",
+ enonce: "Observe l'illustration. Nomme une obligation imposée à la Compagnie des Cent-Associés par le roi de France vers 1645.",
  aspects: [{aspect: "Gouvernement"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Peupler la colonie. \nAccepter aussi « faire venir des colons pour qu’ils s’établissent en Nouvelle-France ».",
- updatedAt: "2026-10-26T16:25:32.785Z"
+ guide: "La Compagnie des Cent-Associés a l'obligation de peupler la Nouvelle-France.\nRéponses acceptées.\nLa compagnie doit peupler la colonie.\nLa Compagnie des Cent-Associés doit faire venir des colons français pour peupler la Nouvelle-France.\nLa compagnie doit favoriser l'établissement de nouveaux habitants dans la colonie.",
+ updatedAt: "2026-11-04T13:36:32.620Z"
 },
 {
  id: "Q187",

@@ -454,7 +454,8 @@ const IMAGE_DB = {
 "forme_arts_1.jpg": {src: "images/forme_arts_1.jpg"},
 "forme_arts_2.jpg": {src: "images/forme_arts_2.jpg"},
 "forme_arts_3.jpg": {src: "images/forme_arts_3.jpg"},
-"habillement_1.jpg": {src: "images/habillement_1.jpg"}
+"habillement_1.jpg": {src: "images/habillement_1.jpg"},
+"1645_traces_passe_5.jpg": {src: "images/1645_traces_passe_5.jpg"}
 }
 
 const QUESTIONS = [
@@ -2213,10 +2214,14 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe les illustrations. Nomme un site historique du Québec qui conserve des traces de la Nouvelle-France.",
  aspects: [{aspect: "Traces du passé"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_traces_passe_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "1645_traces_passe_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "1645_traces_passe_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
  reponse: {type: "lignes", nombre: 1},
- guide: "La place Royale, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.\nLe monastère des Ursulines, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.",
- updatedAt: "2026-11-04T00:51:52.567Z"
+ guide: "La place Royale, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.\nLe monastère des Ursulines, à Québec, est un site historique qui conserve des traces de la Nouvelle-France.\nLes fortifications coloniales, à Québec, sont un site historieque qui conserve des traces de la Nouvelle-France.",
+ updatedAt: "2026-11-04T00:53:08.688Z"
 },
 {
  id: "Q118",

@@ -427,7 +427,8 @@ const IMAGE_DB = {
 "1645_compagnies_monopole_1.jpg": {src: "images/1645_compagnies_monopole_1.jpg"},
 "1645_compagnies_obligation_1.jpg": {src: "images/1645_compagnies_obligation_1.jpg"},
 "1645_postes_traite_1.jpg": {src: "images/1645_postes_traite_1.jpg"},
-"1645_activite_subsistance_1.jpg": {src: "images/1645_activite_subsistance_1.jpg"}
+"1645_activite_subsistance_1.jpg": {src: "images/1645_activite_subsistance_1.jpg"},
+"1645_postes_traite_2.jpg": {src: "images/1645_postes_traite_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2383,10 +2384,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi des postes de traite sont établis en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_postes_traite_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_postes_traite_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Des postes de traite sont établis pour faciliter les échanges de fourrures contre des marchandises entre les Autochtones et les commerçants français.",
- updatedAt: "2026-11-04T13:52:53.784Z"
+ updatedAt: "2026-11-04T13:56:58.160Z"
 },
 {
  id: "Q131",

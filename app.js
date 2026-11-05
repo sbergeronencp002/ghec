@@ -839,9 +839,8 @@ async function openQModal(id) {
   hideTilePreview();
   const reqId = ++_qModalReqSeq;
   _tzStore.length = 0;
-  const q = Q_MAP.get(id);
+  let q = Q_MAP.get(id);
   if(!q) return;
-  const st = oiStyle(q.oi);
 
   // Ouvrir le modal tout de suite avec un spinner, puis remplir après chargement des données
   if(!_dataLoaded) {
@@ -859,7 +858,14 @@ async function openQModal(id) {
     }
     // Un autre appel a été lancé entre-temps (double clic) — on abandonne ce rendu périmé
     if(reqId !== _qModalReqSeq) return;
+    // Les données complètes remplacent l'objet allégé de questions-index.js.
+    q = Q_MAP.get(id);
+    if(!q) {
+      document.getElementById('q-modal-body').textContent = 'Cette question n’est plus disponible.';
+      return;
+    }
   }
+  const st = oiStyle(q.oi);
 
   const header = document.getElementById('q-modal-header');
   header.style.background = st.bg;

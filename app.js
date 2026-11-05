@@ -138,6 +138,8 @@ function competenceEffective(q) {
   if(!q || Number(q.niveau) !== 3) return (q && q.competence) || '';
   const per = q.periodes || [];
   const has = p => per.includes(p);
+  if(has('Société iroquoienne entre 1500 et 1745')) return 'Interpréter le changement';
+  if(has('Iroquoiens et Algonquiens vers 1500') || has('Iroquoiens et Incas vers 1500')) return "S'ouvrir à la diversité";
   if(per.length === 1 && (has('Iroquoiens vers 1500') || has('Algonquiens vers 1500') || has('Incas vers 1500'))) {
     return "Lire l'organisation du territoire";
   }
@@ -241,6 +243,14 @@ function societeContextForQuestion(q) {
   const has = p => per.includes(p);
 
   if(Number(q.niveau) === 3) {
+    const canonical = [
+      ['Société iroquoienne entre 1500 et 1745', 'ctx:g3:c2:iroquoiens-1500-1745', 40],
+      ['Iroquoiens et Algonquiens vers 1500', 'ctx:g3:c3:iroquoiens-algonquiens-1500', 50],
+      ['Iroquoiens et Incas vers 1500', 'ctx:g3:c3:iroquoiens-incas-1500', 60]
+    ];
+    for(const [label, value, order] of canonical) {
+      if(per.length === 1 && per[0] === label) return { value, label, order, competence: comp };
+    }
     if(comp === 'Interpréter le changement'
       && (has('Iroquoiens vers 1745') || (has('Iroquoiens vers 1500') && has('Iroquoiens vers 1745')))) {
       return {

@@ -391,7 +391,7 @@ header a:hover { color: #fff; }
         </div>
       </div>
       <div class="field">
-        <label>Société(s) <span style="font-weight:400;color:var(--ink-3)">(2 pour une question de comparaison)</span></label>
+        <label>Société <span style="font-weight:400;color:var(--ink-3)">(un seul regroupement par question)</span></label>
         <div id="periodes-list" style="display:flex;flex-direction:column;gap:.3rem;margin-top:.3rem;padding:.5rem;background:var(--paper);border:1px solid var(--border);border-radius:5px;max-height:180px;overflow-y:auto"></div>
       </div>
       <div class="field">
@@ -565,7 +565,7 @@ const BRANCH = 'main';
 // jour-là venaient d'un onglet obsolète). ADMIN_BUILD doit être incrémenté à
 // chaque modification d'admin.html ; isAdminStale() compare avec la version
 // réellement déployée avant chaque publication.
-const ADMIN_BUILD = '2026-07-19-1';
+const ADMIN_BUILD = '2026-11-04-g3-societes-1';
 async function isAdminStale() {
   try {
     const r = await fetch(`admin.html?t=${Date.now()}`, { cache: 'no-store' });
@@ -600,7 +600,7 @@ function updatePeriodes() {
   const wrap = document.getElementById('periodes-list');
   wrap.innerHTML = periodes.map((p,i) =>
     `<label style="display:flex;align-items:center;gap:.5rem;font-size:.83rem;cursor:pointer">
-      <input type="checkbox" class="q-periode-cb" value="${escHtml(p)}" onchange="updateAspects();scheduleLivePreview()" style="width:auto;cursor:pointer"${i===0?' checked':''}> ${escHtml(p)}
+      <input type="radio" name="q-periode" class="q-periode-cb" value="${escHtml(p)}" onchange="updateAspects();scheduleLivePreview()" style="width:auto;cursor:pointer"${i===0?' checked':''}> ${escHtml(p)}
     </label>`
   ).join('');
   updateAspects();
@@ -608,6 +608,20 @@ function updatePeriodes() {
   // de ce niveau (buildImageOptions lit #q-niveau). Sans ça, on saisirait une question
   // GHEC 4 avec les images GHEC 3 en tête de liste.
   if(typeof refreshImageSelects === 'function') refreshImageSelects();
+}
+
+// Compatibilité : anciennes associations à deux cases → regroupement unique GHEC3.
+// Les données historiques restent lisibles; une question éditée est enregistrée sous le nouveau nom.
+function societeG3Canonique(periodes, competence) {
+  const p = new Set(periodes || []);
+  if(p.has('Iroquoiens vers 1500') && p.has('Algonquiens vers 1500')) return 'Iroquoiens et Algonquiens vers 1500';
+  if(p.has('Iroquoiens vers 1500') && p.has('Incas vers 1500')) return 'Iroquoiens et Incas vers 1500';
+  if(p.has('Iroquoiens vers 1745')) return 'Société iroquoienne entre 1500 et 1745';
+  if(p.has('Iroquoiens et Algonquiens vers 1500')) return 'Iroquoiens et Algonquiens vers 1500';
+  if(p.has('Iroquoiens et Incas vers 1500')) return 'Iroquoiens et Incas vers 1500';
+  if(p.has('Société iroquoienne entre 1500 et 1745')) return 'Société iroquoienne entre 1500 et 1745';
+  if(p.has('Iroquoiens vers 1500')) return 'Iroquoiens vers 1500';
+  return null;
 }
 
 function getSelectedPeriodes() {
@@ -1042,7 +1056,8 @@ function loadQuestion(id) {
   document.getElementById('q-niveau').value = String(q.niveau);
   updatePeriodes();
   const periodeValues = new Set(q.periodes||[]);
-  document.querySelectorAll('.q-periode-cb').forEach(cb => { cb.checked = periodeValues.has(cb.value); });
+  const societeEditee = Number(q.niveau) === 3 ? societeG3Canonique(q.periodes, q.competence) : null;
+  document.querySelectorAll('.q-periode-cb').forEach(cb => { cb.checked = societeEditee ? cb.value === societeEditee : periodeValues.has(cb.value); });
   updateAspects();
   const aspectValues = new Set((q.aspects||[]).map(a=>a.aspect));
   document.querySelectorAll('#aspects-list input[type=checkbox]').forEach(cb => { cb.checked = aspectValues.has(cb.value); });
@@ -1061,7 +1076,8 @@ function loadQuestion(id) {
   {
     const missing = [];
     const checkedPeriodes = new Set([...document.querySelectorAll('.q-periode-cb:checked')].map(cb => cb.value));
-    (q.periodes||[]).forEach(p => { if(!checkedPeriodes.has(p)) missing.push(`société « ${p} »`); });
+    if(!(societeEditee && checkedPeriodes.has(societeEditee)))
+      (q.periodes||[]).forEach(p => { if(!checkedPeriodes.has(p)) missing.push(`société « ${p} »`); });
     const checkedAspects = new Set([...document.querySelectorAll('#aspects-list input[type=checkbox]:checked')].map(cb => cb.value));
     (q.aspects||[]).forEach(a => { if(!checkedAspects.has(a.aspect)) missing.push(`aspect « ${a.aspect} »`); });
     if(document.getElementById('q-oi').value !== q.oi) missing.push(`OI « ${q.oi} »`);
@@ -2739,8 +2755,8 @@ const VALIDATION_RULES = [
     check: () => !!document.getElementById('q-enonce').value.trim() },
   { message: 'Aucune société sélectionnée',
     check: () => getSelectedPeriodes().length > 0 },
-  { message: 'Maximum 2 sociétés par question',
-    check: () => getSelectedPeriodes().length <= 2 },
+  { message: 'Une seule société par question',
+    check: () => getSelectedPeriodes().length === 1 },
   { message: 'Aucun aspect sélectionné',
     check: () => document.querySelectorAll('#aspects-list input[type=checkbox]:checked').length > 0 },
   { message: 'Image de réponse non sélectionnée',

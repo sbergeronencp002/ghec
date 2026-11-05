@@ -313,6 +313,11 @@ function societeContextForQuestion(q) {
   return null;
 }
 
+function libelleSocieteQuestion(q) {
+  const contexte = societeContextForQuestion(q);
+  return contexte ? contexte.label : (q.periodes || []).join(' + ');
+}
+
 function questionMatchesSocietyContext(q, value) {
   if(!value) return true;
   const ctx = societeContextForQuestion(q);
@@ -421,7 +426,7 @@ function rebuildMainCascade() {
 function populateFilters() {
   Q_MAP = new Map(QUESTIONS.map(q => [q.id, q]));
   Q_SEARCH_IDX = new Map(QUESTIONS.map(q => [q.id,
-    fold([q.enonce||'', q.oi||'', q.competence||'', competenceEffective(q), ...(q.periodes||[]), ...(q.aspects||[]).map(a=>a.aspect)].join(' '))
+    fold([q.enonce||'', q.oi||'', q.competence||'', competenceEffective(q), libelleSocieteQuestion(q), ...(q.periodes||[]), ...(q.aspects||[]).map(a=>a.aspect)].join(' '))
   ]));
   const sorted = [...QUESTIONS].sort((a,b) => {
     const ta = a.updatedAt || '';
@@ -531,6 +536,45 @@ function updateContextUi(filters) {
   }
 }
 
+function updateActiveFilterChips(filters) {
+  const wrap = document.getElementById('active-filters');
+  if(!wrap) return;
+  wrap.replaceChildren();
+  const fields = [
+    ['f-niveau', 'Niveau', filters.niveau],
+    ['f-competence', 'Compétence', filters.competence],
+    ['f-periode', 'Société', filters.periode],
+    ['f-aspect', 'Aspect', filters.aspect],
+    ['f-oi', 'OI', filters.oi],
+    ['f-search', 'Recherche', filters.search]
+  ];
+  fields.forEach(([id, kind, value]) => {
+    if(!value) return;
+    const el = document.getElementById(id);
+    const displayValue = id === 'f-search' ? el.value.trim() : selectedFilterLabel(id);
+    if(!displayValue) return;
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'active-filter-chip';
+    chip.setAttribute('aria-label', 'Retirer le filtre ' + kind + ' : ' + displayValue);
+    const label = document.createElement('span');
+    label.textContent = kind + ' : ' + displayValue;
+    const close = document.createElement('strong');
+    close.setAttribute('aria-hidden', 'true');
+    close.textContent = '×';
+    chip.append(label, close);
+    chip.addEventListener('click', () => {
+      const field = document.getElementById(id);
+      if(!field) return;
+      field.value = '';
+      if(id !== 'f-search') rebuildMainCascade();
+      applyFilters();
+    });
+    wrap.appendChild(chip);
+  });
+  wrap.hidden = !wrap.childElementCount;
+}
+
 function applyFilters() {
   const filters = getMainFilterValues();
   const filtered = QUESTIONS.filter(q => questionMatchesMainFilters(q, filters, true));
@@ -554,6 +598,7 @@ function applyFilters() {
       : filtered.length + ' question' + (filtered.length!==1?'s':'') + ' · ' + totalPtsFilt + ' pt' + (totalPtsFilt!==1?'s':'');
 
   updateContextUi(filters);
+  updateActiveFilterChips(filters);
   render(filtered);
 }
 
@@ -886,7 +931,7 @@ function copyQuestion() {
   const q = id && Q_MAP.get(id);
   if(!q) return;
   const aspects = (q.aspects||[]).map(a=>a.aspect).join(', ');
-  const periode = (q.periodes||[]).join(' + ');
+  const periode = libelleSocieteQuestion(q);
   const enonce = (q.enonce||'').replace(/\*\*(.*?)\*\*/g,'$1').replace(/^• /gm,'- ');
   const text = [q.oi, aspects && `Aspects : ${aspects}`, periode && `Société : ${periode}`, '', enonce]
     .filter(l=>l!==undefined).join('\n');
@@ -968,33 +1013,38 @@ function scheduleTilePreview(tile, keyboard = false) {
   if(!keyboard && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   clearTimeout(tilePreviewTimer);
   clearTimeout(tilePreviewCloseTimer);
-  const currentPanel = document.getElementById('tile-preview');
-  const switching = currentPanel && !currentPanel.hidden;
   const seq = ++tilePreviewSeq;
   tilePreviewTimer = setTimeout(async () => {
     if(seq !== tilePreviewSeq || !tile.isConnected) return;
+    const q = Q_MAP.get(tile.id.slice(5));
+    if(!q) return;
     const panel = getTilePreview();
     if(tilePreviewAnchor) tilePreviewAnchor.removeAttribute('aria-describedby');
     tilePreviewAnchor = tile;
-    panel.textContent = 'Chargement de la question…';
+    // L'énoncé provient de l'index léger : il s'affiche sans attendre les documents.
+    panel.innerHTML = '<div class="tile-preview-label">' + escLine(q.id) + ' · Aperçu</div>' +
+      '<div class="tile-preview-question">' + formatTexte(q.enonce || '') + '</div>';
     panel.hidden = false;
     tile.setAttribute('aria-describedby', 'tile-preview');
+    const documents = document.createElement('div');
+    panel.appendChild(documents);
     positionTilePreview(panel, tile);
     try {
-      await ensureDataLoaded();
+      if(!_dataLoaded) {
+        documents.textContent = 'Chargement des documents…';
+        await ensureDataLoaded();
+      }
       if(seq !== tilePreviewSeq || !tile.isConnected) return;
-      const q = Q_MAP.get(tile.id.slice(5));
-      if(!q) { hideTilePreview(); return; }
-      panel.innerHTML = '<div class="tile-preview-label">' + escLine(q.id) + ' · Aperçu</div>' +
-        '<div class="tile-preview-question">' + formatTexte(q.enonce || '') + '</div>' +
-        docsForRender(q.documents || []).map(d => renderDoc(d, true)).join('');
-      positionTilePreview(panel, tile);
+      const fullQ = Q_MAP.get(q.id) || q;
+      documents.innerHTML = docsForRender(fullQ.documents || []).map(d => renderDoc(d, true)).join('');
     } catch(e) {
       if(seq !== tilePreviewSeq) return;
-      panel.textContent = 'Aperçu indisponible. Clique sur la tuile pour réessayer.';
+      documents.textContent = 'Documents indisponibles. Clique sur la tuile pour réessayer.';
     }
-  }, switching && !keyboard ? 650 : 350);
+    if(seq === tilePreviewSeq && tile.isConnected) positionTilePreview(panel, tile);
+  }, keyboard ? 100 : 160);
 }
+
 document.addEventListener('keydown', e => { if(e.key === 'Escape') hideTilePreview(); });
 window.addEventListener('resize', hideTilePreview);
 document.addEventListener('scroll', e => {
@@ -1077,25 +1127,36 @@ function initSite() {
   if(window.requestIdleCallback) window.requestIdleCallback(preload, { timeout: 2000 });
   else setTimeout(preload, 1000);
   try {
-    const saved = localStorage.getItem('hqc_panier');
-    if(saved) {
-      const ids = JSON.parse(saved).filter(id => QUESTIONS.some(q => q.id === id));
-      if(ids.length) { panier = ids; updatePanierBar(); refreshPanierButtons(); }
+    const saved = localStorage.getItem(PANIER_STORAGE_KEY);
+    const legacy = saved === null ? localStorage.getItem('hqc_panier') : null;
+    const ids = nettoyerIdsPanier(JSON.parse(saved !== null ? saved : (legacy || '[]')));
+    if(saved !== null || legacy !== null) {
+      panier = ids;
+      updatePanierBar();
+      refreshPanierButtons();
     }
   } catch(e) {
-    console.warn('Panier corrompu dans localStorage, réinitialisation.', e);
-    localStorage.removeItem('hqc_panier');
+    console.warn('Panier GHEC corrompu, réinitialisation.', e);
+    localStorage.removeItem(PANIER_STORAGE_KEY);
   }
 }
 
+const PANIER_STORAGE_KEY = 'ghec_panier';
+function nettoyerIdsPanier(ids) {
+  if(!Array.isArray(ids)) return [];
+  return [...new Set(ids.filter(id => typeof id === 'string' && Q_MAP.has(id)))].slice(0,20);
+}
+
 window.addEventListener('storage', e => {
-  if(e.key !== 'hqc_panier') return;
+  if(e.key !== PANIER_STORAGE_KEY) return;
   try {
-    panier = JSON.parse(e.newValue || '[]').filter(id => QUESTIONS.some(q => q.id === id));
+    panier = nettoyerIdsPanier(JSON.parse(e.newValue || '[]'));
     updatePanierBar();
     refreshPanierButtons();
+    const btn = document.getElementById('q-modal-panier-btn');
+    if(btn && btn.dataset.id) updateQModalBtn(btn.dataset.id);
   } catch(_) {
-    console.warn('Panier: données cross-tab invalides, ignorées.');
+    console.warn('Panier GHEC : données inter-onglets invalides, ignorées.');
   }
 });
 
@@ -1725,7 +1786,10 @@ function togglePanier(id) {
 }
 
 function refreshPanierButtons() {
-  panier.forEach(id => updateTileState(id));
+  document.querySelectorAll('.q-tile[data-id], .q-tile[id^="tile-"]').forEach(tile => {
+    const id = tile.id.startsWith('tile-') ? tile.id.slice(5) : tile.dataset.id;
+    tile.classList.toggle('in-panier', panier.includes(id));
+  });
 }
 
 function updatePanierBar() {
@@ -1734,7 +1798,7 @@ function updatePanierBar() {
   const totalPts = panier.reduce((s, id) => { const q = Q_MAP.get(id); return s+(q?q.points:0); }, 0);
   count.textContent = panier.length + ' / 20  ·  ' + totalPts + ' pt' + (totalPts !== 1 ? 's' : '');
   bar.classList.toggle('visible', panier.length > 0);
-  try { localStorage.setItem('hqc_panier', JSON.stringify(panier)); } catch(e) {}
+  try { localStorage.setItem(PANIER_STORAGE_KEY, JSON.stringify(panier)); } catch(e) {}
   if(document.getElementById('cahier-panel').classList.contains('open')) renderCahier();
 }
 
@@ -1745,14 +1809,38 @@ function retirerPanier(id) {
   updatePanierBar();
 }
 
+let panierAvantVidage = null;
+let panierUndoTimer = null;
+function cacherAnnulationPanier() {
+  clearTimeout(panierUndoTimer);
+  const undo = document.getElementById('panier-undo');
+  if(undo) undo.hidden = true;
+  panierAvantVidage = null;
+}
+function annulerVidagePanier() {
+  if(!panierAvantVidage) return;
+  panier = nettoyerIdsPanier([...panierAvantVidage, ...panier]);
+  cacherAnnulationPanier();
+  updatePanierBar();
+  refreshPanierButtons();
+  const modalBtn = document.getElementById('q-modal-panier-btn');
+  if(modalBtn && modalBtn.dataset.id) updateQModalBtn(modalBtn.dataset.id);
+}
 function viderPanier() {
-  if(panier.length && !confirm('Vider le panier ?')) return;
-  const ids = [...panier];
+  if(!panier.length) return;
+  if(!confirm('Vider le panier ?')) return;
+  cacherAnnulationPanier();
+  panierAvantVidage = [...panier];
   panier = [];
-  ids.forEach(id => updateTileState(id));
+  refreshPanierButtons();
   const modalBtn = document.getElementById('q-modal-panier-btn');
   if(modalBtn && modalBtn.dataset.id) updateQModalBtn(modalBtn.dataset.id);
   updatePanierBar();
+  const undo = document.getElementById('panier-undo');
+  if(undo) {
+    undo.hidden = false;
+    panierUndoTimer = setTimeout(cacherAnnulationPanier, 8000);
+  }
 }
 
 function showWarn(msg) {
@@ -2680,7 +2768,7 @@ function renderExam() {
 
   // Corps
   const soustag = q.soustag ? `<span class="exam-meta">${escLine(q.soustag)}</span>` : '';
-  const periodeTxt = (q.periodes||[]).join(' + ');
+  const periodeTxt = libelleSocieteQuestion(q);
   const periode = periodeTxt ? `<span class="exam-meta">${escLine(periodeTxt)}</span>` : '';
   const docs = (q.documents || []).map(d => renderDoc(d, true)).join('');
   const rep  = renderReponse(q);

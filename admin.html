@@ -391,7 +391,7 @@ header a:hover { color: #fff; }
         </div>
       </div>
       <div class="field">
-        <label>Société <span style="font-weight:400;color:var(--ink-3)">(un seul regroupement par question)</span></label>
+        <label for="periodes-list">Société(s)</label>
         <div id="periodes-list" style="display:flex;flex-direction:column;gap:.3rem;margin-top:.3rem;padding:.5rem;background:var(--paper);border:1px solid var(--border);border-radius:5px;max-height:180px;overflow-y:auto"></div>
       </div>
       <div class="field">
@@ -565,7 +565,7 @@ const BRANCH = 'main';
 // jour-là venaient d'un onglet obsolète). ADMIN_BUILD doit être incrémenté à
 // chaque modification d'admin.html ; isAdminStale() compare avec la version
 // réellement déployée avant chaque publication.
-const ADMIN_BUILD = '2026-11-04-g3-societes-1';
+const ADMIN_BUILD = '2026-11-04-g3-societes-2';
 async function isAdminStale() {
   try {
     const r = await fetch(`admin.html?t=${Date.now()}`, { cache: 'no-store' });
@@ -598,11 +598,14 @@ function updatePeriodes() {
   const niveau = document.getElementById('q-niveau').value;
   const periodes = PERIODES_PAR_NIVEAU[niveau] || [];
   const wrap = document.getElementById('periodes-list');
+  const g3 = String(niveau) === '3';
   wrap.innerHTML = periodes.map((p,i) =>
     `<label style="display:flex;align-items:center;gap:.5rem;font-size:.83rem;cursor:pointer">
-      <input type="radio" name="q-periode" class="q-periode-cb" value="${escHtml(p)}" onchange="updateAspects();scheduleLivePreview()" style="width:auto;cursor:pointer"${i===0?' checked':''}> ${escHtml(p)}
+      <input type="${g3 ? 'radio' : 'checkbox'}" ${g3 ? 'name="q-periode"' : ''} class="q-periode-cb" value="${escHtml(p)}" onchange="onSocieteChange()" style="width:auto;cursor:pointer"${i===0?' checked':''}> ${escHtml(p)}
     </label>`
   ).join('');
+  const label = document.querySelector('label[for="periodes-list"]');
+  if(label) label.textContent = g3 ? 'Société (une seule)' : 'Société(s)';
   updateAspects();
   // Le niveau vient de changer : re-grouper les menus d'images pour remonter en tête celles
   // de ce niveau (buildImageOptions lit #q-niveau). Sans ça, on saisirait une question
@@ -622,6 +625,20 @@ function societeG3Canonique(periodes, competence) {
   if(p.has('Société iroquoienne entre 1500 et 1745')) return 'Société iroquoienne entre 1500 et 1745';
   if(p.has('Iroquoiens vers 1500')) return 'Iroquoiens vers 1500';
   return null;
+}
+
+function onSocieteChange() {
+  if(document.getElementById('q-niveau').value === '3') {
+    const selected = getSelectedPeriodes()[0];
+    const competence = selected === 'Société iroquoienne entre 1500 et 1745'
+      ? 'Interpréter le changement'
+      : (selected === 'Iroquoiens et Algonquiens vers 1500' || selected === 'Iroquoiens et Incas vers 1500')
+        ? "S'ouvrir à la diversité" : "Lire l'organisation du territoire";
+    const sel = document.getElementById('q-competence');
+    if(sel) sel.value = competence;
+  }
+  updateAspects();
+  scheduleLivePreview();
 }
 
 function getSelectedPeriodes() {
@@ -2755,8 +2772,19 @@ const VALIDATION_RULES = [
     check: () => !!document.getElementById('q-enonce').value.trim() },
   { message: 'Aucune société sélectionnée',
     check: () => getSelectedPeriodes().length > 0 },
-  { message: 'Une seule société par question',
-    check: () => getSelectedPeriodes().length === 1 },
+  { message: 'Nombre de sociétés invalide pour ce niveau',
+    check: () => document.getElementById('q-niveau').value === '3'
+      ? getSelectedPeriodes().length === 1 : getSelectedPeriodes().length <= 2 },
+  { message: 'La compétence ne correspond pas au regroupement GHEC3',
+    check: () => {
+      if(document.getElementById('q-niveau').value !== '3') return true;
+      const p = getSelectedPeriodes()[0];
+      const expected = p === 'Société iroquoienne entre 1500 et 1745'
+        ? 'Interpréter le changement'
+        : (p === 'Iroquoiens et Algonquiens vers 1500' || p === 'Iroquoiens et Incas vers 1500')
+          ? "S'ouvrir à la diversité" : "Lire l'organisation du territoire";
+      return document.getElementById('q-competence').value === expected;
+    } },
   { message: 'Aucun aspect sélectionné',
     check: () => document.querySelectorAll('#aspects-list input[type=checkbox]:checked').length > 0 },
   { message: 'Image de réponse non sélectionnée',

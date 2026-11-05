@@ -565,7 +565,7 @@ const BRANCH = 'main';
 // jour-là venaient d'un onglet obsolète). ADMIN_BUILD doit être incrémenté à
 // chaque modification d'admin.html ; isAdminStale() compare avec la version
 // réellement déployée avant chaque publication.
-const ADMIN_BUILD = '2026-11-04-g3-societes-2';
+const ADMIN_BUILD = '2026-11-04-g3-societes-3';
 async function isAdminStale() {
   try {
     const r = await fetch(`admin.html?t=${Date.now()}`, { cache: 'no-store' });
@@ -606,6 +606,10 @@ function updatePeriodes() {
   ).join('');
   const label = document.querySelector('label[for="periodes-list"]');
   if(label) label.textContent = g3 ? 'Société (une seule)' : 'Société(s)';
+  if(g3) {
+    const sel = document.getElementById('q-competence');
+    if(sel) sel.value = "Lire l'organisation du territoire";
+  }
   updateAspects();
   // Le niveau vient de changer : re-grouper les menus d'images pour remonter en tête celles
   // de ce niveau (buildImageOptions lit #q-niveau). Sans ça, on saisirait une question
@@ -625,6 +629,16 @@ function societeG3Canonique(periodes, competence) {
   if(p.has('Société iroquoienne entre 1500 et 1745')) return 'Société iroquoienne entre 1500 et 1745';
   if(p.has('Iroquoiens vers 1500')) return 'Iroquoiens vers 1500';
   return null;
+}
+
+function libelleSocieteAdmin(q) {
+  if(Number(q.niveau) === 3) return societeG3Canonique(q.periodes, q.competence) || (q.periodes || []).join(' + ');
+  return (q.periodes || []).join(' + ');
+}
+function questionDansSocieteAdmin(q, periode) {
+  return Number(q.niveau) === 3
+    ? libelleSocieteAdmin(q) === periode
+    : (q.periodes || []).includes(periode);
 }
 
 function onSocieteChange() {
@@ -947,7 +961,7 @@ function filterEditList() {
     if(niveau && String(q.niveau) !== niveau) return false;
     if(oi     && q.oi !== oi) return false;
     if(search) {
-      const hay = fold([q.id, q.oi, ...(q.periodes||[]), q.enonce||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
+      const hay = fold([q.id, q.oi, libelleSocieteAdmin(q), ...(q.periodes||[]), q.enonce||'', ...(q.aspects||[]).map(a=>a.aspect)].join(' '));
       if(!hay.includes(search)) return false;
     }
     return true;
@@ -984,7 +998,7 @@ function filterEditList() {
     const isSelected = q.id === editingId;
     const isFocused  = i === editFocusIdx;
     const enonce = (q.enonce||'').replace(/\*\*/g,'').slice(0, 90) + ((q.enonce||'').length > 90 ? '…' : '');
-    const periodesTxt = (q.periodes||[]).join(' + ');
+    const periodesTxt = libelleSocieteAdmin(q);
     return `<div class="edit-result-card${isSelected ? ' selected' : ''}${isFocused ? ' focused' : ''}"
       data-idx="${i}" data-id="${escHtml(q.id)}" onclick="${escHtml(`loadQuestion('${jsStr(q.id)}')`)}" onmouseenter="editFocusIdx=${i}">
       <div style="min-width:0;flex:1">
@@ -1061,7 +1075,7 @@ function loadQuestion(id) {
     selBar.style.display = '';
     const aspects = (q.aspects||[]).map(a=>a.aspect).join(' · ');
     document.getElementById('edit-selected-label').textContent =
-      `${q.id} — ${q.oi} · Niv.${q.niveau} · ${(q.periodes||[]).join(' + ')}`;
+      `${q.id} — ${q.oi} · Niv.${q.niveau} · ${libelleSocieteAdmin(q)}`;
   }
   // Mettre à jour la sélection visuellement sans re-rendre toute la liste
   document.querySelectorAll('#edit-results .edit-result-card').forEach(el => {
@@ -3178,7 +3192,8 @@ function restoreAdminDraft(snapshot) {
   const set=(id,value)=>{const el=document.getElementById(id);if(!el)return;if(el.tagName==='SELECT' && value && ![...el.options].some(o=>o.value===value)) {const option=document.createElement('option');option.value=value;option.textContent=value+' (à vérifier)';el.appendChild(option);}el.value=value??'';};
   resetForm(false);
   set('q-niveau',values['q-niveau']);updatePeriodes();
-  document.querySelectorAll('.q-periode-cb').forEach(el=>el.checked=(snapshot.periodes||[]).includes(el.value));updateAspects();
+  const draftSociete = String(values['q-niveau']) === '3' ? societeG3Canonique(snapshot.periodes, values['q-competence']) : null;
+  document.querySelectorAll('.q-periode-cb').forEach(el=>el.checked=draftSociete ? el.value===draftSociete : (snapshot.periodes||[]).includes(el.value));updateAspects();
   document.querySelectorAll('#aspects-list input[type=checkbox]').forEach(el=>el.checked=(snapshot.aspects||[]).includes(el.value));
   set('q-oi',values['q-oi']);updatePresets();updateSoustag();setSoustag(snapshot.soustag||'');
   set('q-competence',values['q-competence']);set('q-id',values['q-id']);set('q-enonce',values['q-enonce']);
@@ -3281,7 +3296,7 @@ function renderDashboard() {
 
   // Répartition par OI pour une période donnée (dépliée au clic), triée par nombre
   function periodeDetailHtml(periode, color) {
-    const inP = currentQuestions.filter(x => (x.periodes||[]).includes(periode));
+    const inP = currentQuestions.filter(x => questionDansSocieteAdmin(x, periode));
     if(!inP.length) {
       return '<div class="dash-period-detail" style="display:none"><div class="dash-sub-row"><span class="dash-sub-label" style="font-style:italic;color:var(--ink-3)">Aucune question</span></div></div>';
     }
@@ -3303,8 +3318,8 @@ function renderDashboard() {
   function barRows(list, color) {
     const counts = list.map(p => ({
       p,
-      q: currentQuestions.filter(x => (x.periodes||[]).includes(p)).length,
-      pts: currentQuestions.filter(x => (x.periodes||[]).includes(p)).reduce((s,x) => s+(x.points||0), 0)
+      q: currentQuestions.filter(x => questionDansSocieteAdmin(x, p)).length,
+      pts: currentQuestions.filter(x => questionDansSocieteAdmin(x, p)).reduce((s,x) => s+(x.points||0), 0)
     }));
     // Barre = part de la période dans le total du niveau (la piste = 100 % du programme)
     const levelTotalQ = counts.reduce((s,c) => s+c.q, 0) || 1;

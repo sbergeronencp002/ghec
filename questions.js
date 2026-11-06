@@ -2410,10 +2410,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme une activité de subsistance pratiquée par les colons français en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_1500.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_activite_subsistance_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les colons français pratiquent l'agriculture pour se nourrir.",
- updatedAt: "2026-11-04T13:58:48.722Z"
+ updatedAt: "2026-11-06T21:07:31.783Z"
 },
 {
  id: "Q132",

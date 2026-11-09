@@ -1,0 +1,29 @@
+name: Export GHEC3 Word (isolated branch)
+on:
+  push:
+    branches:
+      - exports/ghec3-word-2026-11-09
+  workflow_dispatch:
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout source bank and illustrations
+        uses: actions/checkout@v4
+      - name: Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Word writer and image utilities
+        run: pip install python-docx Pillow
+      - name: Build the GHEC3 Word file
+        run: python tools/export_ghec3_word.py | tee export-summary.json
+      - name: Upload full Word document
+        uses: actions/upload-artifact@v4
+        with:
+          name: GHEC3-questions-documents-reponses-actualises
+          path: GHEC3_questions_documents_reponses_actualises.docx
+          if-no-files-found: error
+          retention-days: 30

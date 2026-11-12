@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap">
-<link rel="stylesheet" href="style.css?v=40">
+<link rel="stylesheet" href="style.css?v=41">
 </head>
 <body>
 <noscript><div style="padding:2rem;text-align:center;font-family:sans-serif;color:#1a1814">Ce site nécessite JavaScript pour fonctionner.</div></noscript>
@@ -74,6 +74,18 @@
       </select>
     </div>
 
+    <div class="filter-group">
+      <label class="filter-label" for="f-utilisation">Historique des billets de sortie</label>
+      <select id="f-utilisation" onchange="applyFilters()">
+        <option value="">Toutes les questions</option>
+        <option value="unused">Jamais utilisées</option>
+        <option value="used">Déjà utilisées</option>
+      </select>
+      <div class="used-history-tools">
+        <span id="used-history-count" aria-live="polite">0 question utilisée</span>
+        <button type="button" class="used-history-clear" onclick="clearUsedHistory()">Effacer l’historique</button>
+      </div>
+    </div>
     <button class="reset-btn" onclick="resetFilters()">↺ Réinitialiser les filtres</button>
 
     <div class="stats" style="margin-top:2rem">
@@ -238,7 +250,7 @@
 <script src="filters.js?v=6"></script>
 <script src="sync-data.js?v=2"></script>
 <script src="main-ui.js?v=1"></script>
-<script src="app.js?v=73"></script>
+<script src="app.js?v=74"></script>
 <script>
   // Charge questions-index.js (~200 Ko, champs grille seulement) pour affichage immédiat.
   // Les données complètes (documents, réponse, guide, réglettes) sont chargées en lazy

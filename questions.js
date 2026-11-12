@@ -922,11 +922,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l’illustration. Nomme une expression de l’art pratiquée par les Iroquoiens vers 1500.",
- aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_poterie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "« Vers 1500, les Iroquoiens pratiquent la poterie. »\n\nRéponses acceptées :\n- La fabrication de poteries.\n- La fabrication de pots en argile.",
- updatedAt: "2026-10-29T20:07:05.187Z"
+ updatedAt: "2026-11-12T19:25:52.493Z"
 },
 {
  id: "Q33",

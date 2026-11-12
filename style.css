@@ -1104,6 +1104,12 @@ header, .panier-bar { color: #fff; }
 }
 .tile-preview[hidden] { display: none; }
 .tile-preview-label { font-size: .72rem; color: var(--ink-3); margin-bottom: 8px; }
+.tile-preview-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.tile-preview-top .tile-preview-label { margin-bottom:0; }
+.tile-preview-add { flex-shrink:0; padding:7px 10px; border-radius:7px; border:1px solid #1e3358; background:#1e3358; color:white; font:600 .75rem 'DM Sans',sans-serif; cursor:pointer; }
+.tile-preview-add:hover:not(:disabled) { background:#294b7e; }
+.tile-preview-add:focus-visible { outline:2px solid #1e3358; outline-offset:3px; }
+.tile-preview-add.is-added { border-color:#a3b5a9; background:#e9f1ec; color:#28533b; cursor:default; }
 .tile-preview-question { font-size: .95rem; line-height: 1.5; margin-bottom: 16px; white-space: pre-line; }
 .tile-preview img { max-width: 100%; object-fit: contain; }
 .tile-preview .doc-img-tiles { flex-wrap: wrap; }

@@ -1131,11 +1131,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Établir tous les faits - 2",
  enonce: "Observe l’illustration. Nomme deux activités pratiquées par les Iroquoiens lors de rassemblements vers 1500.",
- aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_divertissement_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Vers 1500, les Iroquoiens pratiquent des chants et des danses lors de rassemblements.\n\nAccepter « chants » et « danses », ainsi que les formulations équivalentes comme « chanter » et « danser ». La pratique du tambour peut également être acceptée comme activité musicale si l'élève la décrit clairement; le simple mot « tambour » désigne toutefois un instrument plutôt qu'une activité.",
- updatedAt: "2026-10-30T03:45:01.334Z"
+ updatedAt: "2026-11-12T19:52:43.479Z"
 },
 {
  id: "Q47",

@@ -1176,11 +1176,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme une tâche accomplie principalement par les hommes chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_chasse_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_peche_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les hommes iroquoiens s'occupent principalement de la chasse.\n\nAccepter « chasse », « pêche » ou toute formulation indiquant que les hommes chassent des animaux ou pêchent pour se procurer de la nourriture. La construction d'habitations et certaines activités de défense peuvent également être historiquement pertinentes, si elles ont été enseignées.",
- updatedAt: "2026-10-30T19:45:36.440Z"
+ updatedAt: "2026-11-12T19:55:22.596Z"
 },
 {
  id: "Q50",

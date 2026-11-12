@@ -1011,11 +1011,11 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi la tradition orale permet aux Iroquoiens de préserver leurs connaissances et leurs traditions vers 1500.",
- aspects: [{aspect: "Communication"}, {aspect: "Culture"}],
+ aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_tradition_orale_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "La tradition orale permet aux Iroquoiens de préserver leurs connaissances et leurs traditions, car les aînés les transmettent aux jeunes par des récits et des enseignements.\nRéponses acceptées\nLes connaissances et les traditions sont préservées parce que les aînés les racontent aux jeunes, qui peuvent ensuite les transmettre à leur tour.\t\nLes Iroquoiens conservent leurs traditions, car les histoires racontées oralement permettent aux jeunes de les apprendre.",
- updatedAt: "2026-10-31T13:39:42.520Z"
+ updatedAt: "2026-11-12T19:35:59.824Z"
 },
 {
  id: "Q39",

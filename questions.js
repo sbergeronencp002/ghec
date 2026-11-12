@@ -250,7 +250,6 @@ const IMAGE_DB = {
 "divertissement_theatre.jpg": {src: "images/divertissement_theatre.jpg", w: 1200, h: 800},
 "divertissement_recits_1645.jpg": {src: "images/divertissement_recits_1645.jpg", w: 1200, h: 800},
 "deplacement_1645_a.jpg": {src: "images/deplacement_1645_a.jpg", w: 1200, h: 800},
-"troc_1.jpg": {src: "images/troc_1.jpg", w: 1200, h: 800},
 "agriculture_3.jpg": {src: "images/agriculture_3.jpg", w: 1200, h: 800},
 "toboggan_1645.jpg": {src: "images/toboggan_1645.jpg"},
 "voies_communication_1.jpg": {src: "images/voies_communication_1.jpg", w: 1200, h: 800},
@@ -435,7 +434,8 @@ const IMAGE_DB = {
 "1645_roi_decision_2.jpg": {src: "images/1645_roi_decision_2.jpg"},
 "1645_roi_decision_3.jpg": {src: "images/1645_roi_decision_3.jpg"},
 "1645_activite_subsistance_2.jpg": {src: "images/1645_activite_subsistance_2.jpg"},
-"1645_gouverneur_2.jpg": {src: "images/1645_gouverneur_2.jpg"}
+"1645_gouverneur_2.jpg": {src: "images/1645_gouverneur_2.jpg"},
+"1645_troc_1.jpg": {src: "images/1645_troc_1.jpg", w: 1200, h: 800}
 }
 
 const QUESTIONS = [
@@ -2955,7 +2955,7 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "À l’aide du document A, nomme l’activité économique représentée.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "troc_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_troc_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le commerce des fourrures.",
  updatedAt: "2026-10-26T15:09:48.188Z"

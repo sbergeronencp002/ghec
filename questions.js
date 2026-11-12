@@ -681,12 +681,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Observe les documents A et B. Nomme une caractéristique du climat du territoire occupé par les Iroquoiens vers 1500.",
+ enonce: "Observe l'illustration. Nomme une caractéristique du climat en été sur le territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vil_iro_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_vil_iro_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vil_iro_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, le territoire occupé par les Iroquoiens connaît des hivers froids et enneigés.\n\nAccepter toute réponse indiquant que les hivers sont froids et neigeux ou que les étés sont suffisamment chauds pour permettre la croissance des cultures. Les formulations équivalentes mentionnant les différences entre l'été et l'hiver sont également acceptées si elles caractérisent réellement le climat.",
- updatedAt: "2026-10-29T02:35:26.068Z"
+ guide: "Vers 1500, les étés sont chauds sur le territoire occupé par les Iroquoiens.",
+ updatedAt: "2026-11-12T19:07:55.008Z"
 },
 {
  id: "Q17",

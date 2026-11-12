@@ -1139,3 +1139,10 @@ header, .panier-bar { color: #fff; }
 .panier-undo button { color:#fff; background:none; border:1px solid rgba(255,255,255,.6);
   padding:6px 11px; border-radius:5px; cursor:pointer; font:inherit; }
 .panier-undo button:hover { background:rgba(255,255,255,.15); }
+
+/* Historique local des questions déjà utilisées */
+.used-question-badge { display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;background:#e9f1ec;color:#28533b;font-size:.7rem;font-weight:600; }
+.used-history-tools { display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-top:9px;font-size:.72rem;color:var(--ink-3); }
+.used-history-clear { font:inherit;color:var(--ink-2);background:none;border:0;text-decoration:underline;cursor:pointer;padding:4px 0; }
+.used-history-clear:hover { color:var(--ink); }
+.used-history-clear:focus-visible { outline:2px solid var(--ink);outline-offset:2px; }

@@ -1070,12 +1070,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la personne qui joue un rôle d’intermédiaire entre les humains et les esprits lors de certains rituels chez les Iroquoiens vers 1500.",
+ enonce: "Nomme la personne qui communique avec les esprits chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_chaman_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, le chaman peut servir d’intermédiaire entre les humains et les esprits lors de certains rituels.\n\nAccepter « chaman » ou « chamane », ainsi que les formulations équivalentes. Ne pas accepter uniquement « guérisseur », car ce terme ne précise pas nécessairement le rôle spirituel.",
- updatedAt: "2026-10-30T01:12:36.375Z"
+ updatedAt: "2026-11-12T19:40:09.673Z"
 },
 {
  id: "Q43",

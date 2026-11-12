@@ -755,11 +755,11 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi les cours d'eau facilitent les déplacements des Iroquoiens vers 1500.",
- aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
+ aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_riviere_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les cours d'eau facilitent les déplacements des Iroquoiens, car ils leur permettent de voyager en canot sur le territoire.\n\nAccepter toute réponse indiquant que les fleuves, les rivières ou les lacs permettent aux Iroquoiens de se déplacer en canot et d'accéder à différentes parties du territoire.",
- updatedAt: "2026-10-29T14:33:17.777Z"
+ updatedAt: "2026-11-12T19:16:19.865Z"
 },
 {
  id: "Q22",

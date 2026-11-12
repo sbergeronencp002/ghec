@@ -997,11 +997,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme un moyen utilisé par les Iroquoiens vers 1500 pour transmettre leurs connaissances et leurs traditions.",
- aspects: [{aspect: "Communication"}, {aspect: "Culture"}],
+ aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_tradition_orale_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens transmettent leurs connaissances et leurs traditions par la parole, grâce à la tradition orale.\n\nAccepter « tradition orale », « transmission orale » ou toute formulation indiquant que les connaissances, les histoires et les coutumes sont transmises verbalement, notamment par les récits des aînés.",
- updatedAt: "2026-10-29T20:17:11.257Z"
+ updatedAt: "2026-11-12T19:33:23.006Z"
 },
 {
  id: "Q38",

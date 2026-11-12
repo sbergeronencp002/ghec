@@ -1161,11 +1161,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Nomme une tâche accomplie principalement par les femmes chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_agriculture_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les femmes iroquoiennes s'occupent principalement de l'agriculture, notamment de la culture du maïs, des haricots et des courges.",
- updatedAt: "2026-10-31T13:27:42.258Z"
+ updatedAt: "2026-11-12T19:54:52.305Z"
 },
 {
  id: "Q49",

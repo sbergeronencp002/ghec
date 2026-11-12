@@ -546,7 +546,8 @@ function updateActiveFilterChips(filters) {
     ['f-periode', 'Société', filters.periode],
     ['f-aspect', 'Aspect', filters.aspect],
     ['f-oi', 'OI', filters.oi],
-    ['f-search', 'Recherche', filters.search]
+    ['f-search', 'Recherche', filters.search],
+    ['f-utilisation', 'Historique', document.getElementById('f-utilisation')?.value || '']
   ];
   fields.forEach(([id, kind, value]) => {
     if(!value) return;
@@ -577,7 +578,9 @@ function updateActiveFilterChips(filters) {
 
 function applyFilters() {
   const filters = getMainFilterValues();
-  const filtered = QUESTIONS.filter(q => questionMatchesMainFilters(q, filters, true));
+  const usage = document.getElementById('f-utilisation')?.value || '';
+  const filtered = QUESTIONS.filter(q => questionMatchesMainFilters(q, filters, true) &&
+    (usage === 'used' ? usedQuestions.has(q.id) : usage === 'unused' ? !usedQuestions.has(q.id) : true));
 
   filtered.sort((a, b) => {
     const ta = a.updatedAt || '';
@@ -614,7 +617,7 @@ function voirToutContexte() {
 }
 
 function resetFilters() {
-  ['f-niveau','f-periode','f-aspect','f-oi','f-competence','f-search'].forEach(id=>{
+  ['f-niveau','f-periode','f-aspect','f-oi','f-competence','f-search','f-utilisation'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.value = '';
   });
@@ -1086,10 +1089,11 @@ function buildTileHtml(q) {
   const st = oiStyle(q.oi);
   const aspect = (q.aspects||[]).map(a => a.aspect).join(' · ');
   const inPanier = panier.includes(q.id);
+  const isUsed = usedQuestions.has(q.id);
   const badge = s => `<span style="font-size:0.7rem;color:${st.color};background:${st.bg};border-radius:10px;padding:1px 8px;font-weight:500">${escLine(s)}</span>`;
   const badgeNew = `<span style="font-size:0.7rem;color:${st.color};background:${st.bg};border-radius:10px;padding:1px 8px;font-weight:700;letter-spacing:0.03em">Nouveauté</span>`;
-  const tagsHtml = (NEW_IDS.has(q.id) || q.soustag)
-    ? `<div style="margin-top:6px;display:flex;gap:5px;flex-wrap:wrap">${NEW_IDS.has(q.id) ? badgeNew : ''}${q.soustag ? badge(q.soustag) : ''}</div>`
+  const tagsHtml = (NEW_IDS.has(q.id) || q.soustag || isUsed)
+    ? `<div style="margin-top:6px;display:flex;gap:5px;flex-wrap:wrap">${NEW_IDS.has(q.id) ? badgeNew : ''}${q.soustag ? badge(q.soustag) : ''}${isUsed ? '<span class="used-question-badge">✓ Déjà utilisée</span>' : ''}</div>`
     : '';
   // Même id que data-id (escAttr) mais dans un contexte attribut+chaîne-JS imbriqué
   // (onclick="fn('...')") : échappement JS (jsStr) PUIS échappement HTML de l'ensemble
@@ -1148,6 +1152,7 @@ function initSite() {
   // à ce stade ne contient que les champs grille (index allégé). Les champs complets
   // sont chargés en lazy via ensureDataLoaded() au premier clic « Détail »,
   // prévisualisation ou DOCX.
+  loadUsedHistory();
   populateFilters();
   applyFilters();
   const preload = () => { ensureDataLoaded().catch(() => {}); };
@@ -1167,6 +1172,46 @@ function initSite() {
     localStorage.removeItem(PANIER_STORAGE_KEY);
   }
 }
+
+
+const USED_HISTORY_KEY = 'ghec_questions_utilisees_v1';
+let usedQuestions = new Set();
+function loadUsedHistory() {
+  try {
+    const ids = JSON.parse(localStorage.getItem(USED_HISTORY_KEY) || '[]');
+    usedQuestions = new Set(Array.isArray(ids) ? ids.filter(id => typeof id === 'string') : []);
+  } catch(e) { usedQuestions = new Set(); console.warn('Historique GHEC illisible.', e); }
+  updateUsedHistoryCount();
+}
+function updateUsedHistoryCount() {
+  const count = document.getElementById('used-history-count');
+  if(count) {
+    const n = [...usedQuestions].filter(id => Q_MAP.has(id)).length;
+    count.textContent = n + ' question' + (n === 1 ? '' : 's') + ' utilisée' + (n === 1 ? '' : 's');
+  }
+}
+function saveUsedHistory() {
+  try {
+    localStorage.setItem(USED_HISTORY_KEY, JSON.stringify([...usedQuestions]));
+  } catch(e) { showWarn('Historique non enregistré : stockage local indisponible.'); }
+  updateUsedHistoryCount();
+  applyFilters();
+}
+function markQuestionsUsed(ids) {
+  ids.forEach(id => { if(typeof id === 'string') usedQuestions.add(id); });
+  saveUsedHistory();
+}
+function clearUsedHistory() {
+  if(!usedQuestions.size) return;
+  if(!window.confirm('Effacer toutes les questions déjà utilisées sur cet appareil ? Cette action est irréversible.')) return;
+  usedQuestions.clear();
+  saveUsedHistory();
+}
+window.addEventListener('storage', e => {
+  if(e.key !== USED_HISTORY_KEY) return;
+  loadUsedHistory();
+  applyFilters();
+});
 
 const PANIER_STORAGE_KEY = 'ghec_panier';
 function nettoyerIdsPanier(ids) {
@@ -2729,6 +2774,9 @@ async function genererDocx(includeGuide=false) {
     a.download = includeGuide ? 'cahier_GHEC_guide.docx' : 'cahier_GHEC.docx';
     a.click();
     URL.revokeObjectURL(url);
+    // Marquer uniquement après génération et déclenchement du téléchargement du cahier.
+    // La génération du guide seule ne modifie pas l'historique.
+    if(!includeGuide) markQuestionsUsed(panierQuestions.map(q => q.id));
 
     if(btn) btn.textContent = '✓ Téléchargé !';
     setTimeout(() => {

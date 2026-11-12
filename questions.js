@@ -796,12 +796,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi la présence d'animaux sauvages sur le territoire favorise l'alimentation des Iroquoiens vers 1500.",
+ enonce: "Explique comment la présence d'animaux sauvages sur le territoire permet aux Iroquoiens de se nourrir vers 1500.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_ressources_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, la présence d'animaux sauvages favorise l'alimentation des Iroquoiens, car la chasse leur permet de se procurer de la viande.\n\nAccepter toute réponse établissant un lien entre la présence d'animaux sauvages et la possibilité de les chasser pour se nourrir.",
- updatedAt: "2026-11-12T19:18:07.952Z"
+ updatedAt: "2026-11-12T19:20:01.761Z"
 },
 {
  id: "Q25",

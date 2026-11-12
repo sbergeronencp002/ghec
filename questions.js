@@ -2239,10 +2239,10 @@ const QUESTIONS = [
 },
 {
  id: "Q120",
- niveau: 3,
+ niveau: 4,
  oi: "Situer dans l'espace",
  competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Situer 2 éléments dans l'espace",
  enonce: "À l’aide du document A, indique les lettres correspondant aux territoires possédés par la France vers 1645.",
@@ -2250,7 +2250,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_territoire_1645_a.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "situer-dans-lespace", elements: ["Grands Lacs", "Vallée du Saint-Laurent"]},
  guide: {type: "grille", entetes: ["Grands Lacs", "Vallées du Saint-Laurent"], rangees: [["B", "C"]]},
- updatedAt: "2026-11-03T20:00:54.259Z"
+ updatedAt: "2026-11-12T04:29:39.887Z"
 },
 {
  id: "Q121",

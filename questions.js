@@ -1101,11 +1101,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent deux types de voies de communication utilisées par les Iroquoiens vers 1500. Associe chaque élément au document correspondant.",
- aspects: [{aspect: "Communication"}, {aspect: "Transport"}],
+ aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_voie_communication_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_voie_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Voie fluviale", "Voie terrestre"]},
- guide: {type: "grille", entetes: ["Voie fluviale", "Voie terrestre"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-30T02:14:53.052Z"
+ reponse: {type: "mettre-en-relation", elements: ["Voie navigable", "Voie terrestre"]},
+ guide: {type: "grille", entetes: ["Voie navigable", "Voie terrestre"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-12T19:50:06.815Z"
 },
 {
  id: "Q45",

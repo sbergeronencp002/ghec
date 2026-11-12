@@ -769,11 +769,11 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi les rapides limitent les déplacements des Iroquoiens vers 1500.",
- aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
+ aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_riviere_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les rapides limitent les déplacements des Iroquoiens, car ils rendent la navigation en canot difficile et dangereuse.\n\nAccepter toute réponse indiquant que les rapides rendent la navigation difficile ou dangereuse, obligent les Iroquoiens à contourner certains passages ou à transporter leurs canots sur la terre (portage).",
- updatedAt: "2026-10-29T14:35:35.241Z"
+ updatedAt: "2026-11-12T19:17:07.287Z"
 },
 {
  id: "Q23",

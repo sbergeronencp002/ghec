@@ -991,6 +991,16 @@ function getTilePreview() {
   }
   return panel;
 }
+// Ajout direct depuis l'aperçu au survol, sans ouvrir la fiche.
+function addFromTilePreview(id, button) {
+  if(!Q_MAP.has(id) || panier.includes(id)) return;
+  togglePanier(id); // Réutilise la limite de 20, la sauvegarde et les indicateurs existants.
+  if(panier.includes(id)) {
+    button.textContent = '✓ Ajouté';
+    button.disabled = true;
+    button.classList.add('is-added');
+  }
+}
 function hideTilePreview() {
   clearTimeout(tilePreviewTimer);
   clearTimeout(tilePreviewCloseTimer);
@@ -1028,8 +1038,19 @@ function scheduleTilePreview(tile, keyboard = false) {
     if(tilePreviewAnchor) tilePreviewAnchor.removeAttribute('aria-describedby');
     tilePreviewAnchor = tile;
     // L'énoncé provient de l'index léger : il s'affiche sans attendre les documents.
-    panel.innerHTML = '<div class="tile-preview-label">' + escLine(q.id) + ' · Aperçu</div>' +
+    panel.innerHTML = '<div class="tile-preview-top"><div class="tile-preview-label">' + escLine(q.id) + ' · Aperçu</div></div>' +
       '<div class="tile-preview-question">' + formatTexte(q.enonce || '') + '</div>';
+    const previewButton = document.createElement('button');
+    previewButton.type = 'button';
+    previewButton.className = 'tile-preview-add';
+    previewButton.textContent = panier.includes(q.id) ? '✓ Ajouté' : '+ Ajouter au billet de sortie';
+    previewButton.disabled = panier.includes(q.id);
+    if(previewButton.disabled) previewButton.classList.add('is-added');
+    previewButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      addFromTilePreview(q.id, previewButton);
+    });
+    panel.querySelector('.tile-preview-top').appendChild(previewButton);
     panel.hidden = false;
     tile.setAttribute('aria-describedby', 'tile-preview');
     const documents = document.createElement('div');

@@ -1040,12 +1040,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Observe l’illustration. Nomme deux aliments cultivés et consommés par les Iroquoiens vers 1500.",
+ enonce: "Observe l’illustration. Nomme deux aliments consommés par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_aliments_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Vers 1500, les Iroquoiens cultivent et consomment du maïs et des courges.\n\nAccepter deux aliments différents parmi le maïs, les haricots et les courges. Les formulations équivalentes, comme « blé d'Inde » pour le maïs ou « citrouille » pour une variété de courge, sont également acceptées.",
- updatedAt: "2026-10-30T01:04:39.084Z"
+ updatedAt: "2026-11-12T19:37:57.494Z"
 },
 {
  id: "Q41",

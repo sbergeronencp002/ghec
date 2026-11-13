@@ -643,7 +643,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Agriculture", "Chasse", "Cueillette", "Pêche"]},
  guide: {type: "grille", entetes: ["Agriculture", "Chasse", "Cueillette", "Pêche"], rangees: [["B", "A", "D", "C"]]},
- updatedAt: "2026-10-29T02:12:43.824Z"
+ updatedAt: "2026-11-13T04:24:29.849Z"
 },
 {
  id: "Q14",

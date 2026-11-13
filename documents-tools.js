@@ -36,7 +36,7 @@ const GHECDocuments = (() => {
       method:'PUT', headers:{...headers,'Content-Type':'application/json'},
       body:JSON.stringify({message:'Remplacer '+img, content, sha:expectedSha, branch:'main'})
     });
-    return result.content?.sha || expectedSha;
+    return {sha:result.content?.sha || expectedSha, commit:result.commit?.sha || null};
   }
   async function deleteUnused(img, headers) {
     const snapshot = await GHECSync.stableRead(headers);

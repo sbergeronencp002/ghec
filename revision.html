@@ -26,7 +26,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 .rv-stat { margin-left:auto; font-size:.78rem; color:var(--ink-3); }
 .rv-stat b { color:var(--ink-2); }
 
-.rv-stage { display:flex; align-items:stretch; gap:1rem; padding:1.5rem 1.5rem .5rem; max-width:920px; margin:0 auto; }
+.rv-stage { display:flex; align-items:stretch; gap:1rem; padding:1.5rem 1.5rem .5rem; width:100%; max-width:1480px; margin:0 auto; }
 .rv-arrow { flex-shrink:0; width:44px; align-self:center; height:72px; border-radius:8px; border:1px solid var(--border); background:#fff; color:var(--ink-2); font-size:1.6rem; cursor:pointer; transition:all .15s; }
 .rv-arrow:hover:not(:disabled) { background:var(--paper-2); color:var(--ink); }
 .rv-arrow:disabled { opacity:.3; cursor:default; }
@@ -49,6 +49,10 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 .rv-guide-edit-btn:hover { background:#EAF6EE; }
 .rv-guide-textarea { width:100%; min-height:110px; padding:.6rem .75rem; border:1px solid #CDE9D6; border-radius:6px; font-family:inherit; font-size:.85rem; color:var(--ink); resize:vertical; background:#fff; }
 .rv-guide-textarea:focus { outline:none; border-color:#2A7A4A; }
+/* Édition de l'énoncé : grand champ occupant toute la largeur disponible. */
+#rv-enonce-textarea { display:block; width:100%; min-height:260px; padding:1rem; font-size:1rem; line-height:1.65; border-color:var(--border); resize:vertical; }
+#rv-enonce-textarea:focus { border-color:#2f6fb0; }
+
 .rv-guide-edit-actions { display:flex; align-items:center; gap:.5rem; margin-top:.5rem; justify-content:flex-end; }
 .rv-guide-status { font-size:.75rem; margin-right:auto; color:var(--ink-3); }
 .rv-guide-status.ok { color:#276539; }
@@ -140,12 +144,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 
 <div class="rv-stage">
   <button class="rv-arrow" id="rv-prev" onclick="rvNav(-1)" aria-label="Question précédente">‹</button>
-  <div id="rv-recovery" style="margin-bottom:1rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
-    <select id="rv-draft-select" aria-label="Brouillon de Révision"></select>
-    <button type="button" onclick="GHECRevision.restore()">Restaurer le brouillon</button>
-    <button type="button" onclick="GHECRevision.discard()">Supprimer le brouillon</button>
-    <span id="rv-draft-status" role="status" aria-live="polite"></span>
-  </div>
+  
   <div id="rv-load-status" role="status" aria-live="polite"></div>
   <div class="rv-card-wrap" id="rv-card-wrap">
     <div class="rv-card" id="rv-card"></div>
@@ -910,6 +909,7 @@ function rvEditEnonce() {
     + '</div>';
   const ta = document.getElementById('rv-enonce-textarea');
   ta.value = current;
+  ta.rows = 10;
   ta.focus();
 }
 

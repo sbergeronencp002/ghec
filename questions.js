@@ -453,7 +453,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_7.jpg": {src: "images/1500_territoire_atouts_contraintes_7.jpg"},
 "1500_territoire_atouts_contraintes_9.jpg": {src: "images/1500_territoire_atouts_contraintes_9.jpg"},
 "1500_animisme_a.jpg": {src: "images/1500_animisme_a.jpg"},
-"1500_population_1.jpg": {src: "images/1500_population_1.jpg"}
+"1500_population_1.jpg": {src: "images/1500_population_1.jpg"},
+"1500_territoire_atouts_contraintes_8.jpg": {src: "images/1500_territoire_atouts_contraintes_8.jpg"}
 }
 
 const QUESTIONS = [
@@ -541,10 +542,10 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 1",
  enonce: "Observe l’illustration. Nomme une caractéristique du relief du territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, le territoire occupé par les Iroquoiens comprend de vastes plaines.",
- updatedAt: "2026-11-13T17:16:29.584Z"
+ updatedAt: "2026-11-13T18:38:16.799Z"
 },
 {
  id: "Q7",

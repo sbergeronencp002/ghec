@@ -1835,15 +1835,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Iroquoiens et Incas vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent les structures sociales des Iroquoiens et des Incas vers 1500. Associe chaque énoncé au document correspondant.",
- aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Communautaire", "Hiérarchisée"]},
  guide: {type: "grille", entetes: ["Communautaire", "Hiérarchisée"], rangees: [["A", "B"]]},
- updatedAt: "2026-11-01T14:05:59.420Z"
+ updatedAt: "2026-11-13T03:42:15.096Z"
 },
 {
  id: "Q94",

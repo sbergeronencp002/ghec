@@ -452,7 +452,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_19.jpg": {src: "images/1500_territoire_atouts_contraintes_19.jpg"},
 "1500_territoire_atouts_contraintes_7.jpg": {src: "images/1500_territoire_atouts_contraintes_7.jpg"},
 "1500_territoire_atouts_contraintes_9.jpg": {src: "images/1500_territoire_atouts_contraintes_9.jpg"},
-"1500_animisme_a.jpg": {src: "images/1500_animisme_a.jpg"}
+"1500_animisme_a.jpg": {src: "images/1500_animisme_a.jpg"},
+"1500_population_1.jpg": {src: "images/1500_population_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1101,12 +1102,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe le tableau. Nomme le nombre approximatif d'habitants de la société iroquoienne vers 1500.",
+ enonce: "Observe le diagramme. Nomme le nombre approximatif d'habitants de la société iroquoienne vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_population_1.png", source: "Adapté de Jacques Lacoursière, Histoire populaire du Québec, tome 1, Québec Amérique, 1995."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_population_1.jpg", soustitre: "Nombre approximatif d’habitants des sociétés iroquoienne et algonquienne vers 1500", source: "Adapté de Jacques Lacoursière, Histoire populaire du Québec, tome 1, Québec Amérique, 1995."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, la population iroquoienne compte environ 100 000 habitants.\n\nAccepter « environ 100 000 habitants », « près de 100 000 personnes » ou toute formulation équivalente indiquant un ordre de grandeur d'environ 100 000 habitants.",
- updatedAt: "2026-11-03T19:45:46.217Z"
+ guide: "Vers 1500, la population iroquoienne compte environ 100 000 habitants.",
+ updatedAt: "2026-11-13T18:11:43.538Z"
 },
 {
  id: "Q44",

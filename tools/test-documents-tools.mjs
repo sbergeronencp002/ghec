@@ -46,23 +46,26 @@ for(const script of html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g))new vm.S
 console.log('✓ Documents : références, copie isolée, concurrence, ressources du site, requêtes limitées et syntaxe.');
 let imageWrites=[];
 const imageSync={
- stableRead:async()=>({content:'data',commit:'opened'}), parse:()=>({QUESTIONS:[{id:'Q1',reponse:{ref:'a.png'}}]}),
  request:async(url,options={})=>{
-  if(options.method){imageWrites.push(JSON.parse(options.body));return {sha:'created'};}
-  if(url.includes('git/commits/'))return {tree:{sha:'base'}};
-  return {tree:[{path:'images/a.png',sha:'original'}]};
+  if(options.method==='PUT') {
+   imageWrites.push({url,headers:options.headers,body:JSON.parse(options.body)});
+   return {content:{sha:'new-blob-sha'}};
+  }
+  throw Error('Requête inattendue : '+url);
  }
 };
 const imageApi=load(imageSync);
-await assert.rejects(()=>imageApi.replaceShared('a.png','new','original',['Q2'],{}),/usages/);
+await assert.rejects(()=>imageApi.replaceShared('a.png','new',null,['Q1'],{}),/Version/);
 assert.equal(imageWrites.length,0);
-await assert.rejects(()=>imageApi.replaceShared('a.png','new','stale',['Q1'],{}),/changé/);
-assert.equal(imageWrites.length,0);
-await imageApi.replaceShared('a.png','new','original',['Q1'],{});
-assert.equal(imageWrites.length,4);
-assert.equal(imageWrites.at(-1).force,false);
-assert.equal(imageWrites[1].tree[0].path,'images/a.png');
-console.log('✓ Remplacement partagé : usages et version vérifiés, écriture conditionnelle.');
+const newSha=await imageApi.replaceShared('a.png','new','original',['Q1'],{});
+assert.equal(newSha,'new-blob-sha');
+assert.equal(imageWrites.length,1);
+assert.ok(imageWrites[0].url.endsWith('/contents/images/a.png'));
+assert.equal(imageWrites[0].body.sha,'original');
+assert.equal(imageWrites[0].body.content,'new');
+assert.equal(imageWrites[0].body.branch,'main');
+assert.equal(imageWrites[0].headers['Content-Type'],'application/json');
+console.log('✓ Remplacement partagé : écriture unique conditionnée au SHA, sans reconstruction de commit.');
 
 // Vérifie le contrat réel entre le module partagé et Documents, sans mock de son export.
 const integration=vm.createContext({});

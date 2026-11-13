@@ -508,7 +508,7 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les plaines favorisent l'agriculture chez les Iroquoiens vers 1500.",
+ enonce: "Explique pourquoi le territoire occupé par les Iroquoiens favorise l'agriculture vers 1500.",
  aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},

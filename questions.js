@@ -1162,12 +1162,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme le groupe de personnes qui transmet les connaissances et les traditions aux enfants iroquoiens vers 1500.",
+ enonce: "Observe l'illustration. Nomme le groupe de personnes qui transmet les connaissances et les traditions aux enfants iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_tradition_orale_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_tradition_orale_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les aînés jouent un rôle important dans la transmission des connaissances et des traditions aux enfants iroquoiens.\n\nAccepter « les aînés », « les anciens de la communauté » ou « les personnes âgées de la communauté ».",
- updatedAt: "2026-11-13T03:47:47.306Z"
+ guide: "Vers 1500, les aînés transmettent les connaissances et les traditions aux enfants iroquoiens.",
+ updatedAt: "2026-11-13T18:17:29.299Z"
 },
 {
  id: "Q48",

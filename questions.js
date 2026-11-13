@@ -1102,7 +1102,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe le diagramme. Nomme le nombre approximatif d'habitants de la société iroquoienne vers 1500.",
+ enonce: "Observe le diagramme. Indique le nombre approximatif d'habitants de la société iroquoienne vers 1500.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_population_1.jpg", soustitre: "Nombre approximatif d’habitants des sociétés iroquoienne et algonquienne vers 1500", source: "Adapté de Jacques Lacoursière, Histoire populaire du Québec, tome 1, Québec Amérique, 1995."}]}],
  reponse: {type: "lignes", nombre: 1},

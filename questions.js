@@ -1177,7 +1177,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme une tâche accomplie principalement par les femmes chez les Iroquoiens vers 1500.",
+ enonce: "Observe l'illustration. Nomme une tâche accomplie principalement par les femmes chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_agriculture_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

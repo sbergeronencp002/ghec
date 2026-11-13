@@ -57,6 +57,8 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
 .img-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-2px)}
 .img-card img{display:block;width:100%;height:150px;object-fit:cover;background:#fff}
 .img-card .ic-label{font-size:.72rem;color:var(--ink-2);padding:.45rem .55rem;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-top:1px solid var(--border)}
+.img-card .ic-unused{font-size:.68rem;color:#842029;text-align:center;padding:0 .5rem .45rem;font-weight:600}
+
 .img-card .ic-count{position:absolute;top:.4rem;right:.4rem;background:#1e3358;color:#fff;border-radius:20px;padding:.1rem .5rem;font-size:.68rem;font-weight:600}
 .img-card .ic-count.single{background:rgba(255,255,255,.92);color:var(--ink-3)}
 
@@ -395,9 +397,10 @@ function renderImgGrid() {
       // un nouveau niveau (GHEC 5, 6…) apparaît tout seul dès la première question publiée.
       const nivArr = [...new Set(ids.filter(id => qById[id]).map(id => String(qById[id].niveau)))];
       return `<div class="img-card" data-img-name="${escH(img.replace(/\.[^.]+$/i,'').toLowerCase())}" data-ois="${escH(JSON.stringify(oisArr))}" data-niveaux="${escH(JSON.stringify(nivArr))}" onclick="showImg(${escH(JSON.stringify(img))})">
-        <span class="ic-count${isShared ? '' : ' single'}">${ids.length}</span>
+        <span class="ic-count${isShared ? '' : ' single'}" title="${ids.length ? ids.length + ' question(s)' : 'Image non utilisée'}">${ids.length || '0'}</span>
         <img src="images/${escH(img)}" loading="lazy" alt="${escH(img)}">
         <div class="ic-label" title="${escH(img)}">${escH(img.replace(/\.[^.]+$/i,''))}</div>
+        ${ids.length ? '' : '<div class="ic-unused">Non utilisée</div>'}
       </div>`;
     }).join('') + '</div>';
 }
@@ -496,6 +499,15 @@ async function init() {
     inventoryWarning = 'Inventaire partiel : ' + error.message + '. Suppression désactivée. ';
   }
 
+  // La galerie « Toutes les images » doit inclure aussi les fichiers présents dans
+  // images/ mais non associés aux questions. Sinon ils sont sélectionnables dans Admin,
+  // tout en semblant absents de Documents (ex. tradition_orale_2.jpg).
+  allImgGroups = [
+    ...Object.entries(imgMap),
+    ...orphans.filter(name => !imgMap[name]).map(name => [name, []])
+  ];
+  renderImgGrid();
+
   if (orphans.length) {
     document.getElementById('orphans-container').innerHTML = orphans.map(img => `
       <div class="orphan-row" id="orphan-${CSS.escape(img)}">
@@ -511,7 +523,7 @@ async function init() {
   }
 
   document.getElementById('stat-chip').innerHTML =
-    `<b>${Object.keys(imgMap).length}</b> images · <b>${sharedCount}</b> partagées · <b>${questions.length}</b> questions${orphans.length ? ` · <b style="color:#842029">${orphans.length} non utilisée${orphans.length>1?'s':''}</b>` : ''}`;
+    `<b>${allImgGroups.length}</b> images · <b>${sharedCount}</b> partagées · <b>${questions.length}</b> questions${orphans.length ? ` · <b style="color:#842029">${orphans.length} non utilisée${orphans.length>1?'s':''}</b>` : ''}`;
 
   if (inventoryWarning) {
     const notice = document.createElement('div'); notice.setAttribute('role', 'status');
@@ -724,10 +736,14 @@ async function deleteOrphan(img) {
       delete parsed.IMAGE_DB[img]; return true;
     }, 'Retirer '+img+' de IMAGE_DB');
     document.getElementById('orphan-'+CSS.escape(img))?.remove();
+    allImgGroups = allImgGroups.filter(([name]) => name !== img);
+    renderImgGrid(); filterAll();
     delete IMAGE_DB[img];
   } catch(error) {
     if (removed) {
       document.getElementById('orphan-'+CSS.escape(img))?.remove();
+      allImgGroups = allImgGroups.filter(([name]) => name !== img);
+      renderImgGrid(); filterAll();
       const notice=document.createElement('div'); notice.setAttribute('role','status');
       notice.textContent='Fichier supprimé. Nettoyage du catalogue à reprendre : '+error.message+' ';
       const retry=document.createElement('button'); retry.textContent='Reprendre le nettoyage';

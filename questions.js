@@ -528,7 +528,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les Iroquoiens établissent leurs villages près des cours d'eau.\n\nAccepter toute réponse indiquant que les villages iroquoiens sont établis près des cours d'eau (fleuves, rivières ou lacs) ou près des terres cultivables favorables à l'agriculture.",
+ guide: "Vers 1500, les plaines favorisent l'établissement des villages iroquoiens parce qu'elles offrent des terrains plats pour construire les maisons longues.",
  updatedAt: "2026-10-31T13:36:01.823Z"
 },
 {

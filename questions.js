@@ -452,7 +452,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens ont un mode de vie sédentaire.\n\nAccepter « sédentaire » ainsi que toute formulation indiquant que les Iroquoiens vivent dans des villages permanents ou demeurent longtemps au même endroit.",
+ guide: "Vers 1500, les Iroquoiens ont un mode de vie sédentaire.",
  updatedAt: "2026-10-28T20:13:37.631Z"
 },
 {

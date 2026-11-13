@@ -49,6 +49,8 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 .rv-points { font-size:.7rem; color:var(--ink-3); font-weight:600; margin-bottom:.4rem; }
 
 .rv-note { font-size:.78rem; color:var(--ink-3); font-style:italic; }
+.rv-image-filename { margin-top:5px; font-size:.69rem; line-height:1.35; color:var(--ink-3); font-family:ui-monospace, SFMono-Regular, Consolas, monospace; overflow-wrap:anywhere; user-select:text; }
+
 .rv-aspect-line { display:flex; gap:.65rem; align-items:center; flex-wrap:wrap; }
 .rv-aspects-fields { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem; margin-top:.5rem; }
 .rv-aspects-fields label { display:flex; flex-direction:column; gap:.2rem; font-size:.72rem; color:var(--ink-2); }
@@ -699,6 +701,15 @@ function rvFindColPath(documents, col) {
 
 // Contenu d'une cellule de document « textes » (hors <td> englobant) — partagé entre le
 // rendu initial et la restauration après annulation/enregistrement d'une édition.
+// Nom du fichier image affiché uniquement dans l'interface Révision.
+function rvImageFileLabel(ref, img) {
+  const source = String(ref || img?.src || '').split(/[?#]/)[0];
+  const filename = source.split('/').pop();
+  return filename
+    ? '<div class="rv-image-filename">Fichier : ' + rvEscLine(filename) + '</div>'
+    : '';
+}
+
 function rvRenderDocColInner(col, path) {
   let h = '';
   if(path) h += '<button class="rv-guide-edit-btn rv-doc-edit-btn" onclick="rvEditDoc(' + path.docIdx + ',' + path.colIdx + ')" title="Modifier ce document">✏</button>';
@@ -709,7 +720,7 @@ function rvRenderDocColInner(col, path) {
     h += '<div style="font-size:0.75rem;color:var(--ink-2);line-height:1.5">' + rvFormatTexte(col.texte) + '</div>';
   } else if(col.ref) {
     const img2 = IMAGE_DB[col.ref];
-    if(img2) h += '<div class="doc-img-tile" style="max-width:100%" onclick="' + rvEscAttr("rvOpenLightbox('" + rvJsStr(img2.src) + "')") + '"><img src="' + rvEscAttr(img2.src) + '" alt="' + rvEscAttr(col.titre||col.ref||'Document') + '" style="max-width:100%;max-height:180px;object-fit:contain" draggable="false"></div>';
+    if(img2) h += '<div class="doc-img-tile" style="max-width:100%" onclick="' + rvEscAttr("rvOpenLightbox('" + rvJsStr(img2.src) + "')") + '"><img src="' + rvEscAttr(img2.src) + '" alt="' + rvEscAttr(col.titre||col.ref||'Document') + '" style="max-width:100%;max-height:180px;object-fit:contain" draggable="false"></div>' + rvImageFileLabel(col.ref, img2);
   }
   if(col.auteur) h += '<div style="font-size:0.7rem;color:var(--ink-2);margin-top:4px;font-style:italic">' + rvEscLine(col.auteur) + '</div>';
   if(col.source) h += '<div style="font-size:0.65rem;color:var(--ink-3);margin-top:2px;font-style:italic">' + rvEscLine(col.source) + '</div>';
@@ -743,6 +754,7 @@ function rvRenderDoc(d, origDocuments) {
       html += '<img src="' + rvEscAttr(img.src) + '" alt="' + rvEscAttr(col.titre||col.ref||'Document') + '" draggable="false">';
       if(col.titre) html += '<div class="doc-img-tile-label">' + rvEscLine(col.titre) + '</div>';
       if(col.soustitre) html += '<div class="doc-img-tile-sub">' + rvEscLine(col.soustitre) + '</div>';
+      html += rvImageFileLabel(col.ref, img);
       html += '</div>';
     });
     html += '</div>';
@@ -753,6 +765,7 @@ function rvRenderDoc(d, origDocuments) {
     let html = '<div class="doc-img-tiles"><div class="doc-img-tile" onclick="' + rvEscAttr("rvOpenLightbox('" + rvJsStr(img.src) + "')") + '">';
     html += '<img src="' + rvEscAttr(img.src) + '" alt="' + rvEscAttr(d.titre||d.ref||'Document') + '" style="max-width:200px;max-height:200px;object-fit:contain" draggable="false">';
     if(d.titre) html += '<div class="doc-img-tile-label">' + rvEscLine(d.titre) + '</div>';
+    html += rvImageFileLabel(d.ref, img);
     html += '</div></div>';
     return html;
   }

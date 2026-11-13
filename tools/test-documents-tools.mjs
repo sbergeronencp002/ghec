@@ -49,7 +49,7 @@ const imageSync={
  request:async(url,options={})=>{
   if(options.method==='PUT') {
    imageWrites.push({url,headers:options.headers,body:JSON.parse(options.body)});
-   return {content:{sha:'new-blob-sha'}};
+   return {content:{sha:'new-blob-sha'},commit:{sha:'0123456789abcdef0123456789abcdef01234567'}};
   }
   throw Error('Requête inattendue : '+url);
  }
@@ -57,8 +57,9 @@ const imageSync={
 const imageApi=load(imageSync);
 await assert.rejects(()=>imageApi.replaceShared('a.png','new',null,['Q1'],{}),/Version/);
 assert.equal(imageWrites.length,0);
-const newSha=await imageApi.replaceShared('a.png','new','original',['Q1'],{});
-assert.equal(newSha,'new-blob-sha');
+const replaced=await imageApi.replaceShared('a.png','new','original',['Q1'],{});
+assert.equal(replaced.sha,'new-blob-sha');
+assert.equal(replaced.commit,'0123456789abcdef0123456789abcdef01234567');
 assert.equal(imageWrites.length,1);
 assert.ok(imageWrites[0].url.endsWith('/contents/images/a.png'));
 assert.equal(imageWrites[0].body.sha,'original');

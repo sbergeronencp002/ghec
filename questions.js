@@ -447,7 +447,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_15.jpg": {src: "images/1500_territoire_atouts_contraintes_15.jpg"},
 "1500_territoire_atouts_contraintes_14.jpg": {src: "images/1500_territoire_atouts_contraintes_14.jpg"},
 "1500_territoire_atouts_contraintes_6.jpg": {src: "images/1500_territoire_atouts_contraintes_6.jpg"},
-"1500_territoire_atouts_contraintes_17.jpg": {src: "images/1500_territoire_atouts_contraintes_17.jpg"}
+"1500_territoire_atouts_contraintes_17.jpg": {src: "images/1500_territoire_atouts_contraintes_17.jpg"},
+"1500_territoire_atouts_contraintes_5.jpg": {src: "images/1500_territoire_atouts_contraintes_5.jpg"}
 }
 
 const QUESTIONS = [
@@ -707,12 +708,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B illustrent des atouts et des contraintes du climat pour les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vil_iro_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_vil_iro_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Les documents A et B illustrent des caractéristiques du climat sur le territoire occupé par les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_territoire_atouts_contraintes_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Un atout du climat pour l'agriculture", "Une contrainte du climat pour l'agriculture"]},
- guide: {type: "grille", entetes: ["Un atout du climat pour l'agriculture", "Une contrainte du climat pour l'agriculture"], rangees: [["A", "B"]]},
- updatedAt: "2026-11-03T19:42:05.306Z"
+ guide: {type: "grille", entetes: ["Un atout du climat pour l'agriculture", "Une contrainte du climat pour l'agriculture"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-13T17:28:31.335Z"
 },
 {
  id: "Q18",

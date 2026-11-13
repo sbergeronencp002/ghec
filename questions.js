@@ -996,7 +996,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme une croyance spirituelle des Iroquoiens vers 1500.",
+ enonce: "« Observe l'illustration. Nomme la croyance selon laquelle des esprits sont présents dans la nature chez les Iroquoiens vers 1500. »",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_animisme_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

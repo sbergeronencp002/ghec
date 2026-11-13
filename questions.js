@@ -436,7 +436,8 @@ const IMAGE_DB = {
 "1500_iro_fran_f_1745.jpg": {src: "images/1500_iro_fran_f_1745.jpg"},
 "1500_territoire_iro_f.jpg": {src: "images/1500_territoire_iro_f.jpg"},
 "1500_jacques_cartier_1534.jpg": {src: "images/1500_jacques_cartier_1534.jpg", w: 1200, h: 900},
-"1500_territoire_iro_incas_1500.jpg": {src: "images/1500_territoire_iro_incas_1500.jpg"}
+"1500_territoire_iro_incas_1500.jpg": {src: "images/1500_territoire_iro_incas_1500.jpg"},
+"1500_vill_iro_e.jpg": {src: "images/1500_vill_iro_e.jpg"}
 }
 
 const QUESTIONS = [
@@ -480,10 +481,10 @@ const QUESTIONS = [
  soustag: "Établir tous les faits - 2",
  enonce: "Nomme deux activités pratiquées par les Iroquoiens vers 1500 pour se procurer de la nourriture.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_e.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture, la chasse, la pêche et la cueillette pour se procurer de la nourriture.",
- updatedAt: "2026-11-13T04:09:55.299Z"
+ updatedAt: "2026-11-13T04:10:35.457Z"
 },
 {
  id: "Q4",

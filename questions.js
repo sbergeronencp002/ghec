@@ -532,7 +532,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Observe l’illustration. Nomme une caractéristique du relief qui favorise l’établissement des villages iroquoiens vers 1500.",
+ enonce: "Observe l’illustration. Nomme une caractéristique du relief du territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},

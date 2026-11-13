@@ -940,7 +940,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_poterie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "« Vers 1500, les Iroquoiens pratiquent la poterie. »\n\nRéponses acceptées :\n- La fabrication de poteries.\n- La fabrication de pots en argile.",
+ guide: "Vers 1500, les Iroquoiens pratiquent la poterie.",
  updatedAt: "2026-11-12T19:25:52.493Z"
 },
 {

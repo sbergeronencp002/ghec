@@ -448,7 +448,9 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_14.jpg": {src: "images/1500_territoire_atouts_contraintes_14.jpg"},
 "1500_territoire_atouts_contraintes_6.jpg": {src: "images/1500_territoire_atouts_contraintes_6.jpg"},
 "1500_territoire_atouts_contraintes_17.jpg": {src: "images/1500_territoire_atouts_contraintes_17.jpg"},
-"1500_territoire_atouts_contraintes_5.jpg": {src: "images/1500_territoire_atouts_contraintes_5.jpg"}
+"1500_territoire_atouts_contraintes_5.jpg": {src: "images/1500_territoire_atouts_contraintes_5.jpg"},
+"1500_territoire_atouts_contraintes_19.jpg": {src: "images/1500_territoire_atouts_contraintes_19.jpg"},
+"1500_territoire_atouts_contraintes_7.jpg": {src: "images/1500_territoire_atouts_contraintes_7.jpg"}
 }
 
 const QUESTIONS = [
@@ -738,12 +740,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B illustrent des atouts et des contraintes des cours d'eau pour les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
- aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_riviere_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_riviere_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Atout", "Contrainte"]},
- guide: {type: "grille", entetes: ["Atout", "Contrainte"], rangees: [["B", "A"]]},
- updatedAt: "2026-11-12T19:13:20.528Z"
+ enonce: "Les documents A et B illustrent des caractéristiques des cours d'eau du territoire occupé par les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_19.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_territoire_atouts_contraintes_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Atout des cours d'eau pour les déplacements", "Contrainte des cours d'eau pour les déplacements"]},
+ guide: {type: "grille", entetes: ["Atout des cours d'eau pour les déplacements", "Contrainte des cours d'eau pour les déplacements"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-13T17:38:04.635Z"
 },
 {
  id: "Q20",

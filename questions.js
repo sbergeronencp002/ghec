@@ -534,10 +534,10 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 1",
  enonce: "Observe l’illustration. Nomme une caractéristique du relief du territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, le territoire occupé par les Iroquoiens comprend de vastes plaines.",
- updatedAt: "2026-10-31T13:36:01.823Z"
+ updatedAt: "2026-11-13T17:16:29.584Z"
 },
 {
  id: "Q7",

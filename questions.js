@@ -845,7 +845,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_mocassins_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens portent des mocassins pour se déplacer.\n\nAccepter « mocassins » ainsi que les formulations équivalentes, comme « chaussures en peau » ou « chaussures en cuir ».",
+ guide: "Vers 1500, les Iroquoiens portent des mocassins pour se déplacer.",
  updatedAt: "2026-11-12T19:23:11.624Z"
 },
 {

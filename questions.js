@@ -441,7 +441,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_1.jpg": {src: "images/1500_territoire_atouts_contraintes_1.jpg"},
 "1500_territoire_atouts_contraintes_2.jpg": {src: "images/1500_territoire_atouts_contraintes_2.jpg"},
 "1500_territoire_atouts_contraintes_3.jpg": {src: "images/1500_territoire_atouts_contraintes_3.jpg"},
-"1500_territoire_atouts_contraintes_11.jpg": {src: "images/1500_territoire_atouts_contraintes_11.jpg"}
+"1500_territoire_atouts_contraintes_11.jpg": {src: "images/1500_territoire_atouts_contraintes_11.jpg"},
+"1500_territoire_atouts_contraintes_12.jpg": {src: "images/1500_territoire_atouts_contraintes_12.jpg"}
 }
 
 const QUESTIONS = [
@@ -773,12 +774,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les rapides limitent les déplacements des Iroquoiens vers 1500.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_riviere_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l'illustration. Explique pourquoi les rapides limitent les déplacements des Iroquoiens vers 1500.",
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_12.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les rapides limitent les déplacements des Iroquoiens, car ils rendent la navigation en canot difficile et dangereuse.\n\nAccepter toute réponse indiquant que les rapides rendent la navigation difficile ou dangereuse, obligent les Iroquoiens à contourner certains passages ou à transporter leurs canots sur la terre (portage).",
- updatedAt: "2026-11-12T19:17:07.287Z"
+ guide: "Vers 1500, les rapides limitent les déplacements des Iroquoiens parce que les forts courants et les rochers rendent la navigation en canot difficile et dangereuse.",
+ updatedAt: "2026-11-13T12:32:50.355Z"
 },
 {
  id: "Q23",

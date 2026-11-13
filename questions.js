@@ -498,7 +498,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_iro_a.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Vers 1500, les villages iroquoiens sont principalement établis près du fleuve Saint-Laurent et des Grands Lacs.\n\nAccepter toute réponse indiquant que les villages iroquoiens sont situés en bordure du fleuve Saint-Laurent et des Grands Lacs. Les formulations équivalentes, comme « près du Saint-Laurent et des Grands Lacs » ou « le long du fleuve et autour des Grands Lacs », sont également acceptées.",
+ guide: "Vers 1500, les Iroquoiens occupent les Basses-terres du Saint-Laurent et la région des Grands Lacs.",
  updatedAt: "2026-10-29T00:22:04.800Z"
 },
 {

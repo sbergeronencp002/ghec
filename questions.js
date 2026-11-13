@@ -955,7 +955,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_poterie_vannerie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens pratiquent la poterie et la vannerie.\n\nAccepter « poterie » et « vannerie », ainsi que les formulations équivalentes comme « fabrication de pots en argile » et « fabrication de paniers tressés ». Les deux pratiques doivent être correctement identifiées; deux objets relevant d'une même pratique ne constituent pas deux réponses distinctes.",
+ guide: "Vers 1500, les Iroquoiens pratiquent la poterie et la vannerie.",
  updatedAt: "2026-11-12T19:27:37.807Z"
 },
 {

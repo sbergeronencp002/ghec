@@ -603,7 +603,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_agriculture_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Vers 1500, les Iroquoiens cultivent du maïs, des courges et des haricots.\n\nAccepter deux plantes différentes parmi le maïs, les haricots et les courges. Les formulations équivalentes, comme « blé d'Inde » pour le maïs ou « citrouille » pour une variété de courge, sont également acceptées.",
+ guide: "Vers 1500, les Iroquoiens cultivent du maïs, des courges et des haricots.",
  updatedAt: "2026-10-29T10:16:15.866Z"
 },
 {

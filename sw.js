@@ -1,14 +1,12 @@
 // Service Worker — GHEC · CSSBF
-// Stratégie : cache-first pour les assets versionnés (?v=N — une nouvelle version = une
-// nouvelle URL = cache-miss naturel), réseau-first avec repli cache pour index.html,
-// contexte.js, questions.js et questions-index.js (fichiers non versionnés ou régénérés
-// à chaque publication : mieux vaut une donnée fraîche que du cache indéfiniment périmé),
-// cache-first pour les images (fetch au premier accès, cache ensuite).
+// Stratégie : cache-first pour les assets versionnés (?v=N), réseau-first avec repli
+// cache pour les pages et les images, afin de détecter les remplacements conservant
+// le même nom de fichier dès leur publication par GitHub Pages.
 //
 // ⚠️ CACHE doit être incrémenté à chaque changement de PRECACHE (cf. CLAUDE.md, table
 // « Cache-bust actuel ») — sinon les navigateurs déjà visités gardent l'ancienne liste
 // indéfiniment (self.skipWaiting()/clients.claim() ne rechargent pas les onglets ouverts).
-const CACHE = 'ghec-v34';
+const CACHE = 'ghec-v35';
 const PRECACHE = [
   './sync-data.js?v=2',
   './admin-tools.js?v=1',
@@ -86,25 +84,18 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Images — stale-while-revalidate. `includes()` (pas `startsWith()`) car le site est
-  // servi sous un sous-chemin (GitHub Pages project site, ex. /ghec/images/…), pas à
-  // la racine du domaine — startsWith('/images/') ne correspondait donc jamais.
-  // Un remplacement d'image (documents.html/admin.html, même nom de fichier, contenu
-  // modifié) garde la même URL : un cache-first pur ne revaliderait jamais et servirait
-  // l'ancienne version indéfiniment. On sert le cache immédiatement s'il existe (rapide,
-  // fonctionne hors-ligne) mais on relance systématiquement une requête réseau en arrière-
-  // plan pour rafraîchir le cache — l'image à jour apparaît donc au 2ᵉ chargement au plus
-  // tard, au lieu de rester figée tant que le cache SW n'est pas vidé manuellement.
+  // Images — réseau en premier, cache seulement en repli hors ligne.
+  // Avec l'ancienne stratégie stale-while-revalidate, une image remplacée avec le
+  // même nom restait ancienne au premier affichage dans Main, Admin et Révision.
+  // Dès que GitHub Pages publie le remplacement, la prochaine requête récupère
+  // l'image récente plutôt que de renvoyer systématiquement une copie périmée.
   if (url.pathname.includes('/images/')) {
     e.respondWith(
       caches.open(CACHE).then(cache =>
-        cache.match(e.request).then(cached => {
-          const network = fetch(e.request).then(r => {
-            if (r.ok) cache.put(e.request, r.clone());
-            return r;
-          }).catch(() => cached);
-          return cached || network;
-        })
+        fetch(e.request).then(r => {
+          if (r.ok) cache.put(e.request, r.clone());
+          return r;
+        }).catch(() => cache.match(e.request).then(cached => cached || new Response('', { status: 503 })))
       )
     );
     return;

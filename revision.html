@@ -1191,31 +1191,30 @@ document.addEventListener('keydown', e => {
   if(e.key === 'Escape')     { rvCloseLightbox(); }
 });
 
-// Navigation tactile / souris (Pointer Events unifiés) sur la carte
+// Navigation par glissement réservée aux écrans tactiles.
+// Un glissement à la souris sert à sélectionner du texte et ne doit jamais changer de question.
 (function() {
-  // setPointerCapture lie tout le geste (jusqu'au pointerup/pointercancel) au pointerId qui
-  // l'a commencé, même si le relâchement a lieu hors des limites de #rv-card-wrap : plus
-  // besoin d'un booléen `dragging` global qui pouvait rester bloqué à `true` si un pointerup
-  // survenait hors de l'élément et n'était jamais reçu (voir historique : ce bug pouvait
-  // transformer un simple clic sur un bouton en navigation involontaire).
   let startX = 0, startY = 0, activePointerId = null;
   const wrap = document.getElementById('rv-card-wrap');
   wrap.addEventListener('pointerdown', e => {
+    if(e.pointerType !== 'touch' || !e.isPrimary) return;
     if(e.target.closest('textarea, input, button, select, a')) return;
     activePointerId = e.pointerId;
     startX = e.clientX; startY = e.clientY;
-    wrap.setPointerCapture(e.pointerId);
   });
-  function endDrag(e) {
+  wrap.addEventListener('pointerup', e => {
     if(e.pointerId !== activePointerId) return;
     activePointerId = null;
+    // Ne pas interférer avec une sélection de texte active (notamment sur mobile).
+    if(window.getSelection()?.toString().trim()) return;
     const dx = e.clientX - startX, dy = e.clientY - startY;
     if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
       rvNav(dx < 0 ? 1 : -1);
     }
-  }
-  wrap.addEventListener('pointerup', endDrag);
-  wrap.addEventListener('pointercancel', e => { if(e.pointerId === activePointerId) activePointerId = null; });
+  });
+  wrap.addEventListener('pointercancel', e => {
+    if(e.pointerId === activePointerId) activePointerId = null;
+  });
 })();
 
 // Charge questions.js avec cache-bust (timestamp) plutôt qu'un <script src="?v=1">

@@ -797,7 +797,7 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi les forêts du territoire favorisent la construction des maisons longues chez les Iroquoiens vers 1500.",
+ enonce: "Explique pourquoi les forêts favorisent la construction des maisons longues chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_maison_longue_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},

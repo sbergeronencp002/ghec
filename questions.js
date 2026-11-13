@@ -440,7 +440,8 @@ const IMAGE_DB = {
 "1500_vill_iro_e.jpg": {src: "images/1500_vill_iro_e.jpg"},
 "1500_territoire_atouts_contraintes_1.jpg": {src: "images/1500_territoire_atouts_contraintes_1.jpg"},
 "1500_territoire_atouts_contraintes_2.jpg": {src: "images/1500_territoire_atouts_contraintes_2.jpg"},
-"1500_territoire_atouts_contraintes_3.jpg": {src: "images/1500_territoire_atouts_contraintes_3.jpg"}
+"1500_territoire_atouts_contraintes_3.jpg": {src: "images/1500_territoire_atouts_contraintes_3.jpg"},
+"1500_territoire_atouts_contraintes_11.jpg": {src: "images/1500_territoire_atouts_contraintes_11.jpg"}
 }
 
 const QUESTIONS = [
@@ -800,12 +801,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique comment la présence d'animaux sauvages sur le territoire permet aux Iroquoiens de se nourrir vers 1500.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_ressources_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l'illustration. Explique comment la présence d'animaux sauvages sur le territoire permet aux Iroquoiens de se nourrir vers 1500.",
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_11.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, la présence d'animaux sauvages favorise l'alimentation des Iroquoiens, car la chasse leur permet de se procurer de la viande.\n\nAccepter toute réponse établissant un lien entre la présence d'animaux sauvages et la possibilité de les chasser pour se nourrir.",
- updatedAt: "2026-11-12T19:20:01.761Z"
+ guide: "Vers 1500, la présence d'animaux sauvages permet aux Iroquoiens de se nourrir parce qu'ils peuvent chasser et pêcher pour obtenir de la nourriture.",
+ updatedAt: "2026-11-13T12:30:38.172Z"
 },
 {
  id: "Q25",

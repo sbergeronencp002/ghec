@@ -1,0 +1,42 @@
+name: Optimiser les images GHEC sans perte
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/optimize-images.yml'
+      - 'tools/optimize-images.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ghec-optimisation-images
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Installer les outils d'optimisation sans perte
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libjpeg-turbo-progs optipng
+      - name: Optimiser les images
+        run: python3 tools/optimize-images.py
+      - name: Enregistrer uniquement les images améliorées
+        run: |
+          git add -u images/
+          if git diff --cached --quiet; then
+            echo "Aucun gain significatif; aucun fichier modifié."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Optimiser les images GHEC sans perte (noms conservés)"
+          git pull --rebase origin main
+          git push origin HEAD:main

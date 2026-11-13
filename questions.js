@@ -657,7 +657,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_g.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Vers 1500, le territoire occupé par les Iroquoiens comprend de grandes plaines.\n\nAccepter toute réponse indiquant que le territoire présente des plaines, des terrains plats ou un relief peu accidenté. Les formulations équivalentes, comme « de grandes étendues plates » ou « un terrain relativement plat », sont également acceptées.",
+ guide: "Vers 1500, le territoire occupé par les Iroquoiens est caractérisé par de vastes plaines.",
  updatedAt: "2026-10-29T11:43:13.565Z"
 },
 {

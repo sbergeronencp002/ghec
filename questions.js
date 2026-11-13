@@ -445,7 +445,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_12.jpg": {src: "images/1500_territoire_atouts_contraintes_12.jpg"},
 "1500_territoire_atouts_contraintes_13.jpg": {src: "images/1500_territoire_atouts_contraintes_13.jpg"},
 "1500_territoire_atouts_contraintes_15.jpg": {src: "images/1500_territoire_atouts_contraintes_15.jpg"},
-"1500_territoire_atouts_contraintes_14.jpg": {src: "images/1500_territoire_atouts_contraintes_14.jpg"}
+"1500_territoire_atouts_contraintes_14.jpg": {src: "images/1500_territoire_atouts_contraintes_14.jpg"},
+"1500_territoire_atouts_contraintes_6.jpg": {src: "images/1500_territoire_atouts_contraintes_6.jpg"}
 }
 
 const QUESTIONS = [
@@ -675,12 +676,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Nomme une caractéristique de l'hydrographie du territoire occupé par les Iroquoiens vers 1500.",
+ enonce: "Observe l'illustration. Nomme une caractéristique de l'hydrographie du territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, on retrouve de grands cours d'eau sur le territoire occupé par les Iroquoiens.\n\nAccepter toute réponse mentionnant un fleuve, une rivière, un lac ou un cours d'eau. Les formulations équivalentes sont acceptées, mais l'identification précise du fleuve Saint-Laurent ou des Grands Lacs ne doit pas être exigée à partir de cette illustration seule.",
- updatedAt: "2026-10-31T13:36:26.444Z"
+ guide: "Vers 1500, le territoire occupé par les Iroquoiens comprend de nombreux cours d'eau.",
+ updatedAt: "2026-11-13T17:00:56.877Z"
 },
 {
  id: "Q16",

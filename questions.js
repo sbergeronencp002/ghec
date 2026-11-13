@@ -1136,7 +1136,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_divertissement_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens pratiquent le jeu de crosse pour se divertir.\n\nAccepter « jeu de crosse », « crosse » ou « jeu de balle avec des bâtons munis de filets ». Les réponses décrivant clairement ce jeu sont acceptées, même si l'élève ne connaît pas le terme précis.",
+ guide: "Vers 1500, les Iroquoiens pratiquent le jeu de crosse pour se divertir.",
  updatedAt: "2026-11-12T19:51:30.220Z"
 },
 {

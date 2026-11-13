@@ -798,7 +798,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique pourquoi les forêts du territoire favorisent la construction des maisons longues chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Territoire"}],
+ aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_maison_longue_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les forêts favorisent la construction des maisons longues, car elles fournissent le bois nécessaire à leur construction.\n\nAccepter toute réponse établissant un lien entre la présence de forêts et la disponibilité du bois ou de l'écorce utilisés pour construire les maisons longues.",

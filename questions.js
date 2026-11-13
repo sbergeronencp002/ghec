@@ -512,7 +512,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les plaines favorisent l'agriculture chez les Iroquoiens parce que les terrains plats facilitent la culture des plantes.",
+ guide: "Vers 1500, le territoire occupé par les Iroquoiens favorise l'agriculture parce que les plaines offrent des terrains plats qui facilitent la culture des plantes.",
  updatedAt: "2026-11-12T18:46:09.017Z"
 },
 {

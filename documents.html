@@ -276,7 +276,7 @@ nav a.active{background:rgba(255,255,255,.18);color:#fff}
     </div>
     <div class="replace-actions">
       <button class="btn-cancel" onclick="closeReplaceModal()">Annuler</button>
-      <button class="btn-confirm" id="replace-confirm-btn" onclick="confirmReplace()" disabled>Remplacer</button>
+      <button class="btn-confirm" id="replace-confirm-btn" onclick="confirmReplace()" disabled>Enregistrer le remplacement</button>
     </div>
     <div class="replace-status" id="replace-status"></div>
   </div>
@@ -854,6 +854,8 @@ function handleReplaceFile(file) {
       document.getElementById('replace-preview-meta').innerHTML =
         `${w} × ${h} px — <span class="size-badge ${cls}">${ko} Ko</span>`;
       document.getElementById('replace-preview').classList.add('show');
+      status.className = 'replace-status';
+      status.textContent = 'Image prête : clique sur « Enregistrer le remplacement », puis confirme pour publier sur GitHub.';
       document.getElementById('replace-confirm-btn').disabled = false;
     };
     img.src = ev.target.result;

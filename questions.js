@@ -437,7 +437,8 @@ const IMAGE_DB = {
 "1500_territoire_iro_f.jpg": {src: "images/1500_territoire_iro_f.jpg"},
 "1500_jacques_cartier_1534.jpg": {src: "images/1500_jacques_cartier_1534.jpg", w: 1200, h: 900},
 "1500_territoire_iro_incas_1500.jpg": {src: "images/1500_territoire_iro_incas_1500.jpg"},
-"1500_vill_iro_e.jpg": {src: "images/1500_vill_iro_e.jpg"}
+"1500_vill_iro_e.jpg": {src: "images/1500_vill_iro_e.jpg"},
+"1500_territoire_atouts_contraintes_1.jpg": {src: "images/1500_territoire_atouts_contraintes_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -510,10 +511,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Explique pourquoi le territoire occupé par les Iroquoiens favorise l'agriculture vers 1500.",
  aspects: [{aspect: "Atouts et contraintes"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, le territoire occupé par les Iroquoiens favorise l'agriculture parce que les plaines offrent des terrains plats qui facilitent la culture des plantes.",
- updatedAt: "2026-11-12T18:46:09.017Z"
+ updatedAt: "2026-11-13T04:18:23.094Z"
 },
 {
  id: "Q6",

@@ -1219,7 +1219,7 @@ const QUESTIONS = [
  id: "Q51",
  niveau: 3,
  oi: "Situer dans le temps",
- competence: "S'ouvrir à la diversité",
+ competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Situer sur une ligne du temps",
@@ -1227,8 +1227,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_colomb_a.jpg", soustitre: "L’arrivée de Christophe Colomb en Amérique", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "1500_ligne_1490-1570.png"},
- guide: "A",
- updatedAt: "2026-10-30T04:09:35.120Z"
+ guide: "A - 1492",
+ updatedAt: "2026-11-13T18:41:23.549Z"
 },
 {
  id: "Q52",

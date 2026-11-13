@@ -439,7 +439,8 @@ const IMAGE_DB = {
 "1500_territoire_iro_incas_1500.jpg": {src: "images/1500_territoire_iro_incas_1500.jpg"},
 "1500_vill_iro_e.jpg": {src: "images/1500_vill_iro_e.jpg"},
 "1500_territoire_atouts_contraintes_1.jpg": {src: "images/1500_territoire_atouts_contraintes_1.jpg"},
-"1500_territoire_atouts_contraintes_2.jpg": {src: "images/1500_territoire_atouts_contraintes_2.jpg"}
+"1500_territoire_atouts_contraintes_2.jpg": {src: "images/1500_territoire_atouts_contraintes_2.jpg"},
+"1500_territoire_atouts_contraintes_3.jpg": {src: "images/1500_territoire_atouts_contraintes_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -743,12 +744,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "Explique pourquoi le climat limite la pratique de l'agriculture chez les Iroquoiens en hiver vers 1500.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vil_iro_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_vil_iro_hiver.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l'illustration. Explique pourquoi le climat limite la pratique de l'agriculture chez les Iroquoiens en hiver vers 1500.",
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "En hiver, les Iroquoiens ne peuvent pas cultiver leurs champs, car le froid et la neige empêchent la croissance des plantes.\n\nRéponses acceptées : Accepter toute réponse établissant un lien entre le froid, la neige ou le gel du sol et l'impossibilité de pratiquer l'agriculture pendant l'hiver.",
- updatedAt: "2026-11-13T03:44:41.073Z"
+ guide: "Vers 1500, les hivers froids limitent l'agriculture chez les Iroquoiens parce que le sol gelé et couvert de neige empêche la culture des plantes.",
+ updatedAt: "2026-11-13T12:25:50.181Z"
 },
 {
  id: "Q21",

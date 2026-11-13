@@ -1640,15 +1640,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Iroquoiens et Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre la structure sociale des Iroquoiens et celle des Incas vers 1500.",
- aspects: [{aspect: "Population"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, la société iroquoienne possède une structure sociale communautaire, tandis que la société inca possède une structure sociale hiérarchisée.\n\nRéponses acceptées\nChez les Iroquoiens, la structure sociale est communautaire, tandis que chez les Incas, elle est hiérarchisée.\t\nVers 1500, la société iroquoienne est organisée de façon communautaire, alors que la société inca est organisée selon une hiérarchie sociale.\nChez les Iroquoiens, l'organisation sociale repose davantage sur la vie communautaire, tandis que chez les Incas, les groupes occupent différents rangs dans la société.",
- updatedAt: "2026-11-01T14:07:48.422Z"
+ updatedAt: "2026-11-13T03:41:08.694Z"
 },
 {
  id: "Q81",

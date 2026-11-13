@@ -483,7 +483,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture, la chasse, la pêche et la cueillette pour se procurer de la nourriture.",
- updatedAt: "2026-10-28T20:18:04.967Z"
+ updatedAt: "2026-11-13T04:06:28.131Z"
 },
 {
  id: "Q4",

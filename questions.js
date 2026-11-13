@@ -2015,15 +2015,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Déterminer des changements",
  competence: "Interpréter le changement",
- periodes: ["Iroquoiens vers 1500", "Iroquoiens vers 1745"],
+ periodes: ["Société iroquoienne entre 1500 et 1745"],
  points: 2,
  soustag: "Déterminer un changement",
  enonce: "Observe les documents A et B. Nomme un changement dans l'emplacement de certaines communautés iroquoiennes entre 1500 et 1745.",
- aspects: [{aspect: "Population"}, {aspect: "Territoire"}],
+ aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_fran_f_1500.jpg", soustitre: "Vers 1500", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_iro_fran_f_1745.jpg", soustitre: "Vers 1745", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Entre 1500 et 1745, certaines communautés iroquoiennes s'établissent dans des villages domiciliés à proximité des établissements français.\nRéponses acceptées\nVers 1745, certaines communautés iroquoiennes vivent dans des villages domiciliés près des établissements français.\nEntre 1500 et 1745, certains Iroquoiens s'installent dans des villages situés à proximité des établissements français.\nCertaines communautés iroquoiennes se regroupent dans des villages domiciliés liés aux missions françaises.",
- updatedAt: "2026-11-03T15:14:43.226Z"
+ guide: "Entre 1500 et 1745, certaines communautés iroquoiennes s'établissent dans des villages domiciliés à proximité des établissements français.",
+ updatedAt: "2026-11-13T03:40:40.296Z"
 },
 {
  id: "Q106",

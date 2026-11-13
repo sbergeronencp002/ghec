@@ -1000,7 +1000,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_animisme_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens pratiquent l'animisme.\n\nAccepter « animisme » ou une formulation décrivant correctement cette croyance, notamment la présence d'esprits dans les êtres et les éléments de la nature.",
+ guide: "Vers 1500, les Iroquoiens pratiquent l'animisme.",
  updatedAt: "2026-11-12T19:32:01.509Z"
 },
 {

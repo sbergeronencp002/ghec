@@ -830,7 +830,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_canot_1.jpg", source: "Carte du Canada. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens utilisent le canot pour se déplacer.\n\nAccepter « canot » ou « canot d'écorce », ainsi que les formulations équivalentes.",
+ guide: "Vers 1500, les Iroquoiens utilisent le canot pour se déplacer.",
  updatedAt: "2026-10-29T15:17:49.332Z"
 },
 {

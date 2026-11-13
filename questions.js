@@ -3316,7 +3316,7 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 4",
  enonce: "Les documents A à D présentent des groupes qui jouent un rôle important en Nouvelle-France vers 1645. Associe chaque document au groupe correspondant.",
- aspects: [{aspect: "Groupes sociaux"}],
+ aspects: [{aspect: "Population"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "groupe_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "groupe_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -3325,7 +3325,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Autochtones", "Coureurs des bois", "Compagnies", "Religieux"]},
  guide: {type: "grille", entetes: ["Autochtones", "Coureurs des bois", "Compagnies", "Religieux"], rangees: [["C", "D", "A", "B"]]},
- updatedAt: "2026-11-04T13:40:05.342Z"
+ updatedAt: "2026-11-13T03:50:17.494Z"
 },
 {
  id: "Q191",

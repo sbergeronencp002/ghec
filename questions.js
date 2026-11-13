@@ -860,7 +860,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_toboggan_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens peuvent utiliser un toboggan pour transporter des charges sur la neige.\n\nRéponses acceptées : Accepter « toboggan », « traîneau » ou « traîneau de transport » selon le vocabulaire enseigné.",
+ guide: "Vers 1500, les Iroquoiens peuvent utiliser un toboggan pour transporter des charges sur la neige.",
  updatedAt: "2026-10-29T15:22:55.681Z"
 },
 {

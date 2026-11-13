@@ -713,7 +713,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_territoire_atouts_contraintes_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Un atout du climat pour l'agriculture", "Une contrainte du climat pour l'agriculture"]},
  guide: {type: "grille", entetes: ["Un atout du climat pour l'agriculture", "Une contrainte du climat pour l'agriculture"], rangees: [["B", "A"]]},
- updatedAt: "2026-11-13T17:28:31.335Z"
+ updatedAt: "2026-11-13T17:31:36.165Z"
 },
 {
  id: "Q18",

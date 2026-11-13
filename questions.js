@@ -450,7 +450,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_17.jpg": {src: "images/1500_territoire_atouts_contraintes_17.jpg"},
 "1500_territoire_atouts_contraintes_5.jpg": {src: "images/1500_territoire_atouts_contraintes_5.jpg"},
 "1500_territoire_atouts_contraintes_19.jpg": {src: "images/1500_territoire_atouts_contraintes_19.jpg"},
-"1500_territoire_atouts_contraintes_7.jpg": {src: "images/1500_territoire_atouts_contraintes_7.jpg"}
+"1500_territoire_atouts_contraintes_7.jpg": {src: "images/1500_territoire_atouts_contraintes_7.jpg"},
+"1500_territoire_atouts_contraintes_9.jpg": {src: "images/1500_territoire_atouts_contraintes_9.jpg"}
 }
 
 const QUESTIONS = [
@@ -756,10 +757,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Observe l'illustration. Explique pourquoi le climat limite la pratique de l'agriculture chez les Iroquoiens en hiver vers 1500.",
  aspects: [{aspect: "Atouts et contraintes"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_9.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les hivers froids limitent l'agriculture chez les Iroquoiens parce que le sol gelé et couvert de neige empêche la culture des plantes.",
- updatedAt: "2026-11-13T12:25:50.181Z"
+ updatedAt: "2026-11-13T17:47:35.399Z"
 },
 {
  id: "Q21",

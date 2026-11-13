@@ -875,7 +875,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_raquettes_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens utilisent des raquettes pour se déplacer dans la neige.\n\nAccepter « raquettes » ou « raquettes à neige », ainsi que les formulations équivalentes.",
+ guide: "Vers 1500, les Iroquoiens utilisent des raquettes pour se déplacer dans la neige.",
  updatedAt: "2026-10-29T15:25:55.943Z"
 },
 {

@@ -2622,11 +2622,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Établir tous les faits - 2",
  enonce: "Nomme les deux principaux groupes qui composent la population de la Nouvelle-France vers 1645.",
- aspects: [{aspect: "Groupes sociaux"}, {aspect: "Population"}],
+ aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "village_iroquoien_campement_algonquien.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "population_n-f_1645_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
  guide: "Les Français et les Autochtones.",
- updatedAt: "2026-10-26T14:13:25.701Z"
+ updatedAt: "2026-11-13T03:51:23.273Z"
 },
 {
  id: "Q146",

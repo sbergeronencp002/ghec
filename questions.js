@@ -488,7 +488,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Nomme deux activités pratiquées par les Iroquoiens vers 1500 pour se procurer de la nourriture.",
+ enonce: "Observe l'illustration. Nomme deux activités pratiquées par les Iroquoiens vers 1500 pour se procurer de la nourriture.",
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_e.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},

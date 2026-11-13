@@ -801,7 +801,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_maison_longue_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les forêts favorisent la construction des maisons longues, car elles fournissent le bois nécessaire à leur construction.\n\nAccepter toute réponse établissant un lien entre la présence de forêts et la disponibilité du bois ou de l'écorce utilisés pour construire les maisons longues.",
+ guide: "Vers 1500, les forêts favorisent la construction des maisons longues parce qu'elles fournissent le bois nécessaire à leur construction.",
  updatedAt: "2026-10-29T14:42:22.457Z"
 },
 {

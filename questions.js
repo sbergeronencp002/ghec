@@ -1266,7 +1266,7 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A à D illustrent différentes activités pratiquées chez les Iroquoiens vers 1500. Indique si chaque activité est principalement accomplie par les femmes ou par les hommes.",
- aspects: [{aspect: "Groupes sociaux"}, {aspect: "Vie quotidienne"}],
+ aspects: [{aspect: "Vie quotidienne"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "1500_agriculture_g.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "1500_iro_guerre_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
@@ -1275,7 +1275,7 @@ const QUESTIONS = [
  ],
  reponse: {type: "mettre-en-relation", elements: ["Femmes", "Hommes"], double: true},
  guide: {type: "grille", entetes: ["Femmes", "Hommes"], rangees: [["A et D", "B et C"]]},
- updatedAt: "2026-10-31T00:50:38.016Z"
+ updatedAt: "2026-11-13T03:43:43.947Z"
 },
 {
  id: "Q56",

@@ -451,7 +451,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_5.jpg": {src: "images/1500_territoire_atouts_contraintes_5.jpg"},
 "1500_territoire_atouts_contraintes_19.jpg": {src: "images/1500_territoire_atouts_contraintes_19.jpg"},
 "1500_territoire_atouts_contraintes_7.jpg": {src: "images/1500_territoire_atouts_contraintes_7.jpg"},
-"1500_territoire_atouts_contraintes_9.jpg": {src: "images/1500_territoire_atouts_contraintes_9.jpg"}
+"1500_territoire_atouts_contraintes_9.jpg": {src: "images/1500_territoire_atouts_contraintes_9.jpg"},
+"1500_animisme_a.jpg": {src: "images/1500_animisme_a.jpg"}
 }
 
 const QUESTIONS = [
@@ -996,12 +997,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "« Observe l'illustration. Nomme la croyance selon laquelle des esprits sont présents dans la nature chez les Iroquoiens vers 1500. »",
+ enonce: "Observe l'illustration. Nomme la croyance selon laquelle des esprits sont présents dans la nature chez les Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_animisme_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_animisme_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens pratiquent l'animisme.",
- updatedAt: "2026-11-12T19:32:01.509Z"
+ updatedAt: "2026-11-13T17:59:22.553Z"
 },
 {
  id: "Q37",

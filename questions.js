@@ -543,7 +543,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_agriculture_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture.\n\nAccepter « agriculture » ainsi que toute formulation indiquant que les Iroquoiens cultivent la terre ou font pousser des plantes comme le maïs. Les réponses « culture du maïs » et « cultiver des aliments » sont également acceptées.",
+ guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture.\n",
  updatedAt: "2026-10-29T00:19:27.701Z"
 },
 {

@@ -41,6 +41,11 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 .rv-points { font-size:.7rem; color:var(--ink-3); font-weight:600; margin-bottom:.4rem; }
 
 .rv-note { font-size:.78rem; color:var(--ink-3); font-style:italic; }
+.rv-aspect-line { display:flex; gap:.65rem; align-items:center; flex-wrap:wrap; }
+.rv-aspects-fields { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem; margin-top:.5rem; }
+.rv-aspects-fields label { display:flex; flex-direction:column; gap:.2rem; font-size:.72rem; color:var(--ink-2); }
+.rv-aspect-select { width:min(100%,300px); min-width:200px; padding:.45rem .55rem; border:1px solid var(--border); border-radius:5px; font:inherit; color:var(--ink); background:#fff; }
+
 
 .rv-guide-label { color:#2A7A4A !important; display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
 .rv-guide-box { background:#EAF6EE; border:1px solid #CDE9D6; border-radius:8px; padding:.75rem 1rem; font-size:.85rem; color:var(--ink); line-height:1.6; }
@@ -770,7 +775,9 @@ function rvBuildCardHtml(q) {
   html += `<span class="rv-id">${rvEscLine(q.id)} · ${rvEscLine((q.periodes||[]).join(' + '))}</span>`;
   html += '</div>';
   if(competenceEffective(q)) html += `<div class="rv-aspect" style="font-size:.78rem">${rvEscLine(competenceLibelle(competenceEffective(q)))}</div>`;
-  if(aspects) html += `<div class="rv-aspect">${rvEscLine(aspects)}</div>`;
+  if(aspects) html += '<div class="rv-aspect rv-aspect-line"><span id="rv-aspects-display">' + rvEscLine(aspects) + '</span>'
+    + '<button type="button" class="rv-guide-edit-btn" onclick="rvEditAspects()">✏ Modifier</button></div>'
+    + '<div id="rv-aspects-editor"></div>';
   html += `<div class="rv-points">${q.points}&thinsp;pt${q.points > 1 ? 's' : ''}</div>`;
 
   html += '<div class="q-section-label rv-label-flex">Question'
@@ -807,6 +814,76 @@ function rvBuildCardHtml(q) {
 
 
   return html;
+}
+
+// Modification des aspects : conserve les associations multiples et se limite aux valeurs
+// configurées pour les sociétés de la question.
+function rvAspectOptions(q) {
+  const configured = (q.periodes || []).flatMap(p => ASPECTS_PAR_PERIODE[p] || []);
+  const existing = (q.aspects || []).map(a => a.aspect).filter(Boolean);
+  return [...new Set([...configured, ...existing])].sort((a,b) => a.localeCompare(b,'fr'));
+}
+function rvEditAspects() {
+  const q = rvList[rvIndex];
+  if(!q) return;
+  const original = (q.aspects || []).map(a => a.aspect);
+  if(!rvBeginEdit('aspects', () =>
+    [...document.querySelectorAll('.rv-aspect-select')].some((el,i) => el.value !== original[i]),
+    rvCancelAspectsEdit)) return;
+  const options = rvAspectOptions(q);
+  const editor = document.getElementById('rv-aspects-editor');
+  editor.innerHTML = '<div class="rv-aspects-fields">' + original.map((aspect,i) =>
+    '<label>Aspect ' + (i+1) + '<select class="rv-aspect-select" aria-label="Aspect ' + (i+1) + '">' +
+    options.map(value => '<option value="' + rvEscAttr(value) + '"' + (value === aspect ? ' selected' : '') + '>' + rvEscLine(value) + '</option>').join('') +
+    '</select></label>').join('') + '</div>' +
+    '<div class="rv-guide-edit-actions"><span class="rv-guide-status" id="rv-aspects-status"></span>' +
+    '<button type="button" class="rv-guide-btn-cancel" onclick="rvCancelAspectsEdit()">Annuler</button>' +
+    '<button type="button" class="rv-guide-btn-save" id="rv-aspects-save-btn" onclick="rvSaveAspects()">Enregistrer</button></div>';
+  document.querySelector('.rv-aspect-select')?.focus();
+}
+function rvCancelAspectsEdit() {
+  if(rvSaving) return;
+  document.getElementById('rv-aspects-editor').replaceChildren();
+  rvEndEdit();
+}
+async function rvSaveAspects() {
+  if(rvSaving || _rvActiveEdit?.key !== 'aspects') return;
+  const q = rvList[rvIndex];
+  if(!q) return;
+  const id=q.id, gen=_rvEditGen;
+  const values=[...document.querySelectorAll('.rv-aspect-select')].map(el=>el.value);
+  const allowed=new Set(rvAspectOptions(q));
+  const status=document.getElementById('rv-aspects-status');
+  if(!values.length || values.some(v=>!allowed.has(v))) {
+    status.textContent='✗ Sélection invalide.';
+    status.className='rv-guide-status err';
+    return;
+  }
+  if(new Set(values).size!==values.length) {
+    status.textContent='✗ Un aspect ne peut pas être sélectionné deux fois.';
+    status.className='rv-guide-status err';
+    return;
+  }
+  const btn=document.getElementById('rv-aspects-save-btn');
+  btn.disabled=true;rvSaving=true;
+  status.className='rv-guide-status';status.textContent='Enregistrement…';
+  try {
+    const changed=await rvApplyQuestionsEdit(parsed=>{
+      const target=parsed.QUESTIONS.find(x=>x.id===id);
+      if(!target) throw new Error('Question '+id+' introuvable');
+      if((target.aspects||[]).length!==values.length) throw new Error('La liste des aspects a changé. Recharge la page.');
+      if(target.aspects.every((a,i)=>a.aspect===values[i])) return false;
+      target.aspects=target.aspects.map((a,i)=>({...a,aspect:values[i]}));
+      return true;
+    },'Modifier les aspects — '+id);
+    q.aspects=q.aspects.map((a,i)=>({...a,aspect:values[i]}));
+    if(_rvEditGen===gen){GHECRevision.saved(id,'aspects');if(_rvActiveEdit)_rvActiveEdit.persisted=true;rvEndEdit();}
+    rvRenderCard();
+    rvPopulateFilters();
+  } catch(err) {
+    status.className='rv-guide-status err';status.textContent='✗ '+err.message;
+    btn.disabled=false;
+  } finally {rvSaving=false;}
 }
 
 let rvGuideOriginal = null;

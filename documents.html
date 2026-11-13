@@ -868,10 +868,10 @@ async function confirmReplace() {
   btn.disabled = true;
   setPageLocked(true, 'Remplacement de ' + replaceTarget + '…');
   status.className = 'replace-status';
-  status.textContent = 'Récupération du SHA…';
+  status.textContent = 'Vérification des références sur GitHub…';
   try {
     const headers = {Authorization:'token '+requireToken()};
-    const current = GHECSync.parse((await GHECSync.stableRead(headers)).content);
+    const current = GHECSync.parse((await GHECSync.readFile('questions.js', headers)).content);
     const ids = GHECDocuments.users(current.QUESTIONS, replaceTarget);
     if (JSON.stringify(ids) !== JSON.stringify(replaceExpectedIds)) throw new Error('Les usages ont changé. Fermez et rouvrez cette fenêtre pour vérifier les questions concernées.');
     const onlyId = document.getElementById('replace-scope').value;
@@ -893,9 +893,10 @@ async function confirmReplace() {
       status.textContent='✓ Copie publiée pour '+onlyId+'.';
       setPageLocked(false); await loadDocuments(); return;
     }
-    if (!confirm('Remplacer cette image pour '+(ids.join(', ') || 'aucune question')+' ?')) { btn.disabled=false; return; }
+    if (!confirm('Remplacer '+replaceTarget+' pour '+(ids.join(', ') || 'aucune question')+' ?')) { btn.disabled=false; status.textContent='Remplacement annulé.'; return; }
     const d = await GHECDocuments.imageInfo(replaceTarget, headers);
-    if (!replaceExpectedSha || d.sha !== replaceExpectedSha) throw new Error('L’image a changé ou sa version n’est pas disponible. Rouvrez cette fenêtre.');
+    if (replaceExpectedSha && d.sha !== replaceExpectedSha) throw new Error('L’image a changé depuis l’ouverture. Rouvre Remplacer pour éviter un écrasement.');
+    replaceExpectedSha = d.sha;
     status.textContent = 'Envoi…';
     const replaced = await GHECDocuments.replaceShared(replaceTarget, replaceB64,
       replaceExpectedSha, replaceExpectedIds, headers);
@@ -912,11 +913,11 @@ async function confirmReplace() {
     applySizeBadge(replaceTarget, replaceBytes);
     status.className = 'replace-status ok';
     status.textContent = replaced.commit
-      ? '✓ Image enregistrée sur GitHub. Les autres onglets GHEC de ce navigateur ont reçu la nouvelle version.'
+      ? '✓ Remplacement confirmé dans GitHub (commit '+replaced.commit.slice(0,7)+'). Les autres onglets de ce navigateur utiliseront cette version.'
       : '✓ Image enregistrée sur GitHub. Actualise les autres pages pour charger le nouveau fichier.';
   } catch(err) {
     status.className = 'replace-status err';
-    status.textContent = '✗ ' + err.message;
+    status.textContent = '✗ Image non remplacée : ' + err.message + ' — aucun succès confirmé.';
     btn.disabled = false;
   } finally {
     setPageLocked(false);

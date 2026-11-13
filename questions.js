@@ -558,7 +558,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_chasse_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens pratiquent la chasse.\n\nAccepter « chasse » ainsi que toute formulation indiquant que les Iroquoiens chassent des animaux pour se nourrir. Les réponses comme « chasser l'orignal » ou « chasser avec des arcs et des flèches » sont également acceptées.",
+ guide: "Vers 1500, les Iroquoiens pratiquent la chasse.",
  updatedAt: "2026-10-29T01:58:31.244Z"
 },
 {

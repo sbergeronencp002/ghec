@@ -21,6 +21,14 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 .rv-toolbar select { width:180px; }
 .rv-toolbar input[type=search] { width:200px; padding:.5rem .75rem; border:1px solid var(--border); border-radius:4px; font-family:inherit; font-size:.8rem; background:var(--paper); color:var(--ink); }
 .rv-toolbar input[type=search]:focus { outline:none; border-color:var(--ink-2); }
+.rv-jump-controls { display:flex; gap:.35rem; align-items:center; }
+.rv-toolbar #rv-jump-input { width:95px; padding:.5rem .65rem; border:1px solid var(--border); border-radius:4px; background:var(--paper); color:var(--ink); font:inherit; font-size:.8rem; text-transform:uppercase; }
+.rv-toolbar #rv-jump-input:focus { outline:none; border-color:var(--ink-2); }
+.rv-jump-button { padding:.5rem .8rem; border:0; border-radius:4px; background:#1e3358; color:#fff; cursor:pointer; font:inherit; font-size:.8rem; }
+.rv-jump-button:hover { opacity:.9; }
+.rv-jump-status { font-size:.7rem; color:var(--ink-3); max-width:250px; }
+.rv-jump-status.error { color:#9d2929; }
+
 .rv-reset { padding:.5rem .85rem; background:transparent; border:1px solid var(--border); border-radius:4px; font-size:.75rem; color:var(--ink-3); cursor:pointer; }
 .rv-reset:hover { background:var(--paper-3); color:var(--ink); }
 .rv-stat { margin-left:auto; font-size:.78rem; color:var(--ink-3); }
@@ -109,6 +117,14 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
 </header>
 
 <div class="rv-toolbar">
+  <div class="rv-field rv-jump-field">
+    <label for="rv-jump-input">Aller à la question</label>
+    <div class="rv-jump-controls">
+      <input type="text" id="rv-jump-input" placeholder="Ex. Q75" autocomplete="off" spellcheck="false" aria-describedby="rv-jump-status" onkeydown="if(event.key==='Enter'){event.preventDefault();rvJumpToQuestion();}">
+      <button type="button" class="rv-jump-button" onclick="rvJumpToQuestion()">Aller</button>
+    </div>
+    <span id="rv-jump-status" class="rv-jump-status" role="status" aria-live="polite"></span>
+  </div>
   <div class="rv-field">
     <label for="f-search">Recherche</label>
     <input type="search" id="f-search" placeholder="Mot-clé…" oninput="rvDebouncedApply()">
@@ -1157,6 +1173,40 @@ function rvRenderCard() {
   pos.textContent = (rvIndex+1) + ' / ' + rvList.length;
   document.getElementById('rv-prev').disabled = rvIndex === 0;
   document.getElementById('rv-next').disabled = rvIndex === rvList.length - 1;
+}
+
+// Accès direct à un identifiant de question, sans modifier les filtres courants.
+function rvJumpToQuestion() {
+  const input = document.getElementById('rv-jump-input');
+  const status = document.getElementById('rv-jump-status');
+  const raw = input.value.trim().toUpperCase();
+  const id = /^Q?([0-9]+)$/.exec(raw);
+  status.className = 'rv-jump-status';
+  if(!id) {
+    status.textContent = 'Entre un numéro comme Q75.';
+    status.classList.add('error');
+    return;
+  }
+  const target = 'Q' + Number(id[1]);
+  const exists = QUESTIONS.some(q => q.id.toUpperCase() === target);
+  if(!exists) {
+    status.textContent = target + ' n’existe pas dans la banque.';
+    status.classList.add('error');
+    return;
+  }
+  const idx = rvList.findIndex(q => q.id.toUpperCase() === target);
+  if(idx < 0) {
+    status.textContent = target + ' est exclue par les filtres actifs.';
+    status.classList.add('error');
+    return;
+  }
+  if(!confirmDiscardEdit()) return;
+  rvEndEdit();
+  rvIndex = idx;
+  rvRenderCard();
+  input.value = target;
+  status.textContent = target + ' affichée (' + (idx + 1) + ' / ' + rvList.length + ').';
+  document.getElementById('rv-card')?.scrollIntoView({block:'start',behavior:'smooth'});
 }
 
 function rvNav(dir) {

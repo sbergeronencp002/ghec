@@ -446,7 +446,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_13.jpg": {src: "images/1500_territoire_atouts_contraintes_13.jpg"},
 "1500_territoire_atouts_contraintes_15.jpg": {src: "images/1500_territoire_atouts_contraintes_15.jpg"},
 "1500_territoire_atouts_contraintes_14.jpg": {src: "images/1500_territoire_atouts_contraintes_14.jpg"},
-"1500_territoire_atouts_contraintes_6.jpg": {src: "images/1500_territoire_atouts_contraintes_6.jpg"}
+"1500_territoire_atouts_contraintes_6.jpg": {src: "images/1500_territoire_atouts_contraintes_6.jpg"},
+"1500_territoire_atouts_contraintes_17.jpg": {src: "images/1500_territoire_atouts_contraintes_17.jpg"}
 }
 
 const QUESTIONS = [
@@ -693,10 +694,10 @@ const QUESTIONS = [
  soustag: "Caractériser un territoire - 1",
  enonce: "Observe l'illustration. Nomme une caractéristique du climat en été sur le territoire occupé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vil_iro_ete.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_17.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les étés sont chauds sur le territoire occupé par les Iroquoiens.",
- updatedAt: "2026-11-12T19:07:55.008Z"
+ updatedAt: "2026-11-13T17:21:25.926Z"
 },
 {
  id: "Q17",

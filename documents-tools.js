@@ -25,20 +25,18 @@ const GHECDocuments = (() => {
     const commit = await GHECSync.head(headers);
     return GHECSync.request(root+'contents/images/'+encodeURIComponent(img)+'?ref='+commit, {headers});
   }
+  // Remplacement à nom identique : une seule écriture conditionnelle GitHub Contents.
+  // L'appelant vérifie déjà les questions associées et relit le SHA juste avant l'envoi.
+  // La valeur « sha » du PUT empêche d'écraser toute modification concurrente de l'image.
+  // Inutile de reconstruire un commit Git à partir d'un arbre complet : cette opération
+  // était nettement plus lente et ne rendait pas les pages GitHub Pages plus fraîches.
   async function replaceShared(img, content, expectedSha, expectedIds, headers) {
-    const snapshot = await GHECSync.stableRead(headers);
-    const state = GHECSync.parse(snapshot.content);
-    if (JSON.stringify(users(state.QUESTIONS,img)) !== JSON.stringify(expectedIds)) throw new Error('Les usages ont changé. Rouvrez la fenêtre.');
-    const parent = await GHECSync.request(root+'git/commits/'+snapshot.commit,{headers});
-    const tree = await GHECSync.request(root+'git/trees/'+parent.tree.sha+'?recursive=1',{headers});
-    if (tree.truncated || tree.tree.find(f=>f.path==='images/'+img)?.sha !== expectedSha) throw new Error('L’image a changé. Rouvrez la fenêtre.');
-    const writeHeaders={...headers,'Content-Type':'application/json'};
-    const post=(path,body)=>GHECSync.request(root+path,{method:'POST',headers:writeHeaders,body:JSON.stringify(body)});
-    const blob=await post('git/blobs',{content,encoding:'base64'});
-    const nextTree=await post('git/trees',{base_tree:parent.tree.sha,tree:[{path:'images/'+img,mode:'100644',type:'blob',sha:blob.sha}]});
-    const nextCommit=await post('git/commits',{message:'Remplacer '+img,tree:nextTree.sha,parents:[snapshot.commit]});
-    await GHECSync.request(root+'git/refs/heads/main',{method:'PATCH',headers:writeHeaders,body:JSON.stringify({sha:nextCommit.sha,force:false})});
-    return blob.sha;
+    if(!expectedSha) throw new Error('Version de l’image inconnue. Rouvrez la fenêtre.');
+    const result = await GHECSync.request(root+'contents/images/'+encodeURIComponent(img), {
+      method:'PUT', headers:{...headers,'Content-Type':'application/json'},
+      body:JSON.stringify({message:'Remplacer '+img, content, sha:expectedSha, branch:'main'})
+    });
+    return result.content?.sha || expectedSha;
   }
   async function deleteUnused(img, headers) {
     const snapshot = await GHECSync.stableRead(headers);

@@ -443,7 +443,9 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_3.jpg": {src: "images/1500_territoire_atouts_contraintes_3.jpg"},
 "1500_territoire_atouts_contraintes_11.jpg": {src: "images/1500_territoire_atouts_contraintes_11.jpg"},
 "1500_territoire_atouts_contraintes_12.jpg": {src: "images/1500_territoire_atouts_contraintes_12.jpg"},
-"1500_territoire_atouts_contraintes_13.jpg": {src: "images/1500_territoire_atouts_contraintes_13.jpg"}
+"1500_territoire_atouts_contraintes_13.jpg": {src: "images/1500_territoire_atouts_contraintes_13.jpg"},
+"1500_territoire_atouts_contraintes_15.jpg": {src: "images/1500_territoire_atouts_contraintes_15.jpg"},
+"1500_territoire_atouts_contraintes_14.jpg": {src: "images/1500_territoire_atouts_contraintes_14.jpg"}
 }
 
 const QUESTIONS = [
@@ -719,11 +721,11 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent des atouts et des contraintes du climat pour les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vil_iro_ete_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_vil_iro_hiver_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_15.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_territoire_atouts_contraintes_14.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Un atout du climat pour les déplacements", "Une contrainte du climat pour les déplacements"]},
- guide: {type: "grille", entetes: ["Un atout du climat pour les déplacements", "Une contrainte du climat pour les déplacements"], rangees: [["A", "B"]]},
- updatedAt: "2026-11-03T19:43:12.711Z"
+ guide: {type: "grille", entetes: ["Un atout du climat pour les déplacements", "Une contrainte du climat pour les déplacements"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-13T12:40:08.957Z"
 },
 {
  id: "Q19",

@@ -113,5 +113,74 @@ const GHECSync = (() => {
     }
   }
 
-  return {request,head,readFile,stableRead,merge,mergeState,clone,parse,edit,publishIndex,finishIndex};
+
+  // Images remplacées sous un nom identique : URL immuable du commit GitHub.
+  // Les onglets de ce navigateur partagent le numéro de version via localStorage.
+  const IMAGE_VERSIONS_KEY='ghec_image_versions_v1';
+  const IMAGE_RAW_ROOT='https://raw.githubusercontent.com/sbergeronencp002/ghec/';
+  function readImageVersions() {
+    try {
+      const data=JSON.parse(localStorage.getItem(IMAGE_VERSIONS_KEY)||'{}');
+      return data && typeof data==='object' && !Array.isArray(data) ? data : {};
+    } catch(_) { return {}; }
+  }
+  let imageVersions=readImageVersions();
+  function imageNameFromUrl(src) {
+    try {
+      const url=new URL(src,location.href);
+      if(url.origin===location.origin && url.pathname.includes('/images/'))
+        return decodeURIComponent(url.pathname.split('/').at(-1));
+      if(url.origin==='https://raw.githubusercontent.com' &&
+        url.pathname.startsWith('/sbergeronencp002/ghec/') &&
+        url.pathname.includes('/images/'))
+        return decodeURIComponent(url.pathname.split('/').at(-1));
+    } catch(_) {}
+    return '';
+  }
+  function imageUrl(src) {
+    const name=imageNameFromUrl(src);
+    const commit=name && imageVersions[name];
+    if(!commit || !/^[0-9a-f]{40}$/i.test(commit)) return src;
+    return IMAGE_RAW_ROOT+commit+'/images/'+encodeURIComponent(name);
+  }
+  function refreshImageElement(el) {
+    if(!el || el.tagName!=='IMG') return;
+    const original=el.getAttribute('src');
+    if(!original) return;
+    const updated=imageUrl(original);
+    if(updated!==original) el.setAttribute('src',updated);
+  }
+  let imageObserver;
+  function observeImages() {
+    if(!document.documentElement || imageObserver) return;
+    document.querySelectorAll('img[src]').forEach(refreshImageElement);
+    imageObserver=new MutationObserver(records=>{
+      for(const record of records) {
+        if(record.type==='attributes') refreshImageElement(record.target);
+        else for(const node of record.addedNodes) {
+          if(node.nodeType!==1) continue;
+          refreshImageElement(node);
+          node.querySelectorAll?.('img[src]').forEach(refreshImageElement);
+        }
+      }
+    });
+    imageObserver.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['src']});
+  }
+  function imageReplaced(name,commit) {
+    if(!/^[^/\\?#]+\.(?:png|jpe?g|webp|gif|svg)$/i.test(name) || !/^[0-9a-f]{40}$/i.test(commit)) return;
+    imageVersions={...imageVersions,[name]:commit};
+    try { localStorage.setItem(IMAGE_VERSIONS_KEY,JSON.stringify(imageVersions)); } catch(_) {}
+    document.querySelectorAll('img[src]').forEach(refreshImageElement);
+  }
+  if(typeof document!=='undefined') {
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',observeImages);
+    else observeImages();
+    window.addEventListener('storage',e=>{
+      if(e.key!==IMAGE_VERSIONS_KEY) return;
+      imageVersions=readImageVersions();
+      document.querySelectorAll('img[src]').forEach(refreshImageElement);
+    });
+  }
+
+  return {request,head,readFile,stableRead,merge,mergeState,clone,parse,edit,publishIndex,finishIndex,imageUrl,imageReplaced};
 })();

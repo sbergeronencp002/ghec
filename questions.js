@@ -1307,7 +1307,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_donnacona_1.jpg", soustitre: "Rencontre entre Donnacona et Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "1500_ligne_1490-1570.png"},
- guide: "La lettre B\n\nLa rencontre entre Jacques Cartier et Donnacona à Stadaconé se déroule en 1535.",
+ guide: "C - 1535",
  updatedAt: "2026-11-03T16:22:45.826Z"
 },
 {

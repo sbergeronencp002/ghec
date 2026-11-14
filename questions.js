@@ -2503,8 +2503,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_jacques_cartier_1534.jpg", soustitre: "La prise de possession du territoire par Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "1500_ligne_1490-1570.png"},
- guide: "B\n\nLa prise de posession du territoire par Jacques Cartier s'est déroulée en 1534.",
- updatedAt: "2026-11-03T16:23:58.977Z"
+ guide: "C - 1534",
+ updatedAt: "2026-11-14T04:25:48.754Z"
 },
 {
  id: "Q137",

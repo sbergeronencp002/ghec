@@ -960,7 +960,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  soustag: "Établir 1 fait - 2",
- enonce: "Observe l’illustration. Nomme deux expressions de l’art pratiquées par les Iroquoiens vers 1500.",
+ enonce: "Observe l’illustration. Nomme deux formes d’art pratiquées par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_poterie_vannerie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

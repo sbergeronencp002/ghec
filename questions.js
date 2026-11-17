@@ -1063,7 +1063,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_aliments_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Vers 1500, les Iroquoiens cultivent et consomment du maïs et des courges.\n\nAccepter deux aliments différents parmi le maïs, les haricots et les courges. Les formulations équivalentes, comme « blé d'Inde » pour le maïs ou « citrouille » pour une variété de courge, sont également acceptées.",
+ guide: "Vers 1500, les Iroquoiens consomment notamment du maïs, des haricots et des courges.",
  updatedAt: "2026-11-12T19:37:57.494Z"
 },
 {

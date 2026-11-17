@@ -1201,7 +1201,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_chasse_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_peche_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les hommes iroquoiens s'occupent principalement de la chasse.",
+ guide: "Vers 1500, les hommes iroquoiens s'occupent principalement de la chasse ou de la pêche.",
  updatedAt: "2026-11-12T19:56:04.224Z"
 },
 {

@@ -1371,7 +1371,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_troc_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens pratiquent le troc pour échanger différents produits.\n\nRéponses acceptées : « Le troc », « les échanges de biens » ou « les échanges commerciaux sans utilisation de monnaie ».",
+ guide: "Vers 1500, les Iroquoiens pratiquent le troc pour échanger différents produits.",
  updatedAt: "2026-10-31T01:18:38.529Z"
 },
 {

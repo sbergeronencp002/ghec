@@ -1353,11 +1353,11 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  enonce: "Explique comment la forêt favorise la fabrication des canots chez les Iroquoiens vers 1500.",
- aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
+ aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_fabrication_canot_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "La forêt favorise la fabrication des canots chez les Iroquoiens vers 1500, car elle fournit du bois et de l'écorce qui servent à les construire.\n\nAccepter toute réponse établissant clairement le lien entre les ressources fournies par les arbres et la fabrication des canots. La mention du bois, de l'écorce ou de matériaux provenant des arbres est pertinente.",
- updatedAt: "2026-10-31T01:15:31.891Z"
+ guide: "Vers 1500, la forêt favorise la fabrication des canots parce qu'elle fournit aux Iroquoiens les arbres et l'écorce nécessaires à leur construction.",
+ updatedAt: "2026-11-17T18:57:31.276Z"
 },
 {
  id: "Q60",

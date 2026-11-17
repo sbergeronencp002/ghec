@@ -2505,13 +2505,18 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
- soustag: "Situer sur une ligne du temps",
- enonce: "Sur la ligne du temps, encercle la lettre qui correspond à la période pendant laquelle se déroulent les faits présentés dans le document A.",
+ soustag: "Placer en ordre chronologique",
+ enonce: "Les documents A à D présentent des événements marquants de l'histoire vers 1500. Place-les en ordre chronologique, du plus ancien au plus récent.",
  aspects: [{aspect: "Personnages"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_jacques_cartier_1534.jpg", soustitre: "La prise de possession du territoire par Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "image", ref: "1500_ligne_1490-1570.png"},
- guide: "C - 1534",
- updatedAt: "2026-11-14T04:25:48.754Z"
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "1500_jacques_cartier_1534.jpg", soustitre: "La prise de possession du territoire par Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "1500_colomb_a.jpg", soustitre: "L’arrivée de Christophe Colomb en Amérique", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "1500_jean_cabot_a.jpg", soustitre: "Le voyage de Jean Cabot vers les côtes de l’Amérique du Nord", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "1500_donnacona_1.jpg", soustitre: "Rencontre entre Donnacona et Jacques Cartier", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "image", ref: "ligne_bcad.png"},
+ guide: "B - C - A - D",
+ updatedAt: "2026-11-17T19:27:24.060Z"
 },
 {
  id: "Q137",

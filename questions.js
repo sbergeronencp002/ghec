@@ -506,7 +506,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_e.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture, la chasse, la pêche et la cueillette pour se procurer de la nourriture.",
+ guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture, la chasse, la pêche, la cueillette et le troc pour se procurer de la nourriture.",
  updatedAt: "2026-11-13T04:10:35.457Z"
 },
 {

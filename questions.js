@@ -1242,7 +1242,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_jean_cabot_a.jpg", soustitre: "Le voyage de Jean Cabot vers les côtes de l’Amérique du Nord", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "1500_ligne_1490-1570.png"},
- guide: "A",
+ guide: "A - 1497",
  updatedAt: "2026-11-03T01:28:05.009Z"
 },
 {

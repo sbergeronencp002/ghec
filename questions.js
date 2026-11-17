@@ -455,7 +455,9 @@ const IMAGE_DB = {
 "1500_animisme_a.jpg": {src: "images/1500_animisme_a.jpg"},
 "1500_population_1.jpg": {src: "images/1500_population_1.jpg"},
 "1500_territoire_atouts_contraintes_8.jpg": {src: "images/1500_territoire_atouts_contraintes_8.jpg"},
-"1500_troc_1.jpg": {src: "images/1500_troc_1.jpg"}
+"1500_troc_1.jpg": {src: "images/1500_troc_1.jpg"},
+"1500_vannerie_1.jpg": {src: "images/1500_vannerie_1.jpg"},
+"1500_poterie_1.jpg": {src: "images/1500_poterie_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -972,10 +974,10 @@ const QUESTIONS = [
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent deux expressions de l'art pratiquées par les Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vannerie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_poterie_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vannerie_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_poterie_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Poterie", "Vannerie"]},
  guide: {type: "grille", entetes: ["Poterie", "Vannerie"], rangees: [["B", "A"]]},
- updatedAt: "2026-11-12T19:28:08.217Z"
+ updatedAt: "2026-11-17T18:39:39.052Z"
 },
 {
  id: "Q35",

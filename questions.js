@@ -1036,7 +1036,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_tradition_orale_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Iroquoiens transmettent leurs connaissances et leurs traditions oralement aux enfants pour qu'ils puissent les apprendre, les conserver et les transmettre à leur tour.",
- updatedAt: "2026-11-17T18:47:01.043Z"
+ updatedAt: "2026-11-17T18:47:58.011Z"
 },
 {
  id: "Q39",

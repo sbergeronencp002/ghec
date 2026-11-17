@@ -459,7 +459,8 @@ const IMAGE_DB = {
 "1500_vannerie_1.jpg": {src: "images/1500_vannerie_1.jpg"},
 "1500_poterie_1.jpg": {src: "images/1500_poterie_1.jpg"},
 "1500_tradition_orale_3.jpg": {src: "images/1500_tradition_orale_3.jpg"},
-"1500_chaman_2.jpg": {src: "images/1500_chaman_2.jpg"}
+"1500_chaman_2.jpg": {src: "images/1500_chaman_2.jpg"},
+"cam_alg_d.jpg": {src: "images/cam_alg_d.jpg"}
 }
 
 const QUESTIONS = [
@@ -1648,15 +1649,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens et Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent les principales activités économiques des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_cam_alg_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cam_alg_d.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Algonquiens", "Iroquoiens"]},
  guide: {type: "grille", entetes: ["Algonquiens", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-11-02T13:12:50.840Z"
+ updatedAt: "2026-11-17T19:16:49.376Z"
 },
 {
  id: "Q80",

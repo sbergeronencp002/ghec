@@ -457,7 +457,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_8.jpg": {src: "images/1500_territoire_atouts_contraintes_8.jpg"},
 "1500_troc_1.jpg": {src: "images/1500_troc_1.jpg"},
 "1500_vannerie_1.jpg": {src: "images/1500_vannerie_1.jpg"},
-"1500_poterie_1.jpg": {src: "images/1500_poterie_1.jpg"}
+"1500_poterie_1.jpg": {src: "images/1500_poterie_1.jpg"},
+"1500_tradition_orale_3.jpg": {src: "images/1500_tradition_orale_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -1033,10 +1034,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Observe l'illustration. Explique pourquoi les Iroquoiens transmettent leurs connaissances et leurs traditions aux enfants à l'oral vers 1500.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_tradition_orale_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_tradition_orale_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Iroquoiens transmettent leurs connaissances et leurs traditions oralement aux enfants pour qu'ils puissent les apprendre, les conserver et les transmettre à leur tour.",
- updatedAt: "2026-11-17T18:47:58.011Z"
+ updatedAt: "2026-11-17T18:48:22.037Z"
 },
 {
  id: "Q39",

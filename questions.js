@@ -1581,7 +1581,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_maison_longue_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1500, les Iroquoiens habitent dans des maisons longues.",
- updatedAt: "2026-11-18T02:56:46.791Z"
+ updatedAt: "2026-11-18T03:01:24.435Z"
 },
 {
  id: "Q73",

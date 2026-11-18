@@ -474,7 +474,8 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_21.jpg": {src: "images/1500_territoire_atouts_contraintes_21.jpg"},
 "agriculture_h.jpg": {src: "images/agriculture_h.jpg"},
 "1500_agriculture_courge.jpg": {src: "images/1500_agriculture_courge.jpg"},
-"1500_agriculture_haricot.jpg": {src: "images/1500_agriculture_haricot.jpg"}
+"1500_agriculture_haricot.jpg": {src: "images/1500_agriculture_haricot.jpg"},
+"1500_territoire_atouts_contraintes_20.jpg": {src: "images/1500_territoire_atouts_contraintes_20.jpg"}
 }
 
 const QUESTIONS = [
@@ -3584,10 +3585,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "bserve l'illustration. Explique comment les ressources naturelles du territoire permettent aux Iroquoiens de construire des palissades vers 1500.",
  aspects: [{aspect: "Atouts et contraintes"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_village_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_20.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les forêts fournissent aux Iroquoiens le bois nécessaire à la construction des palissades autour de leurs villages.",
- updatedAt: "2026-11-18T01:08:28.312Z"
+ updatedAt: "2026-11-18T01:22:48.705Z"
 },
 {
  id: "Q206",

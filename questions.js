@@ -58,7 +58,7 @@ const REGLETTES = {
 "Q57": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q58": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q59": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q60": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q60": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
 "Q61": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q62": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q63": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -460,7 +460,9 @@ const IMAGE_DB = {
 "1500_poterie_1.jpg": {src: "images/1500_poterie_1.jpg"},
 "1500_tradition_orale_3.jpg": {src: "images/1500_tradition_orale_3.jpg"},
 "1500_chaman_2.jpg": {src: "images/1500_chaman_2.jpg"},
-"cam_alg_d.jpg": {src: "images/cam_alg_d.jpg"}
+"cam_alg_d.jpg": {src: "images/cam_alg_d.jpg"},
+"1500_iro_village_1.jpg": {src: "images/1500_iro_village_1.jpg"},
+"1500_incas_cite_1.jpg": {src: "images/1500_incas_cite_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1363,17 +1365,17 @@ const QUESTIONS = [
 {
  id: "Q60",
  niveau: 3,
- oi: "Établir des faits",
+ oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme l'activité économique pratiquée par les Iroquoiens vers 1500.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_troc_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens pratiquent le troc pour échanger différents produits.",
- updatedAt: "2026-10-31T01:18:38.529Z"
+ periodes: ["Iroquoiens et Incas vers 1500"],
+ points: 2,
+ soustag: "Établir une différence",
+ enonce: "Observe les documents A et B. Nomme une différence entre les habitations des Iroquoiens et celles des Incas vers 1500.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_village_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_cite_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1500, les Iroquoiens habitent dans des villages de maisons longues, tandis que les Incas habitent dans des cités de maisons en pierre.",
+ updatedAt: "2026-11-18T00:47:52.277Z"
 },
 {
  id: "Q61",

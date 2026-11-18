@@ -59,7 +59,7 @@ const REGLETTES = {
 "Q58": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q59": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q60": {oi: "Établir des comparaisons", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit la différence."}, {pts: 1, desc: "L'élève établit plus ou moins la différence."}, {pts: 0, desc: "L'élève n'établit pas la différence."}]},
-"Q61": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q61": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q62": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q63": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q64": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -462,7 +462,9 @@ const IMAGE_DB = {
 "1500_chaman_2.jpg": {src: "images/1500_chaman_2.jpg"},
 "cam_alg_d.jpg": {src: "images/cam_alg_d.jpg"},
 "1500_iro_village_1.jpg": {src: "images/1500_iro_village_1.jpg"},
-"1500_incas_cite_1.jpg": {src: "images/1500_incas_cite_1.jpg"}
+"1500_incas_cite_1.jpg": {src: "images/1500_incas_cite_1.jpg"},
+"1500_iro_village_2.jpg": {src: "images/1500_iro_village_2.jpg"},
+"1500_incas_cite_2.jpg": {src: "images/1500_incas_cite_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1380,17 +1382,17 @@ const QUESTIONS = [
 {
  id: "Q61",
  niveau: 3,
- oi: "Établir des faits",
- competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme deux produits échangés par les Iroquoiens lors du troc vers 1500.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_troc_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens échangent notamment des peaux d'animaux et du maïs.\n\nRéponses acceptées : Accepter « peaux de castor », « fourrures » et « maïs », ainsi que les formulations équivalentes correspondant aux objets clairement représentés.",
- updatedAt: "2026-10-31T18:36:51.678Z"
+ oi: "Mettre en relation des faits",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens et Incas vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B illustrent les habitations des Iroquoiens et des Incas vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_village_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_cite_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["", ""]},
+ guide: {type: "grille", entetes: ["Élément 1", "Élément 2"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-18T00:50:45.669Z"
 },
 {
  id: "Q62",

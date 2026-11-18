@@ -1323,7 +1323,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A à D illustrent différentes activités pratiquées chez les Iroquoiens vers 1500. Indique si chaque activité est principalement accomplie par les femmes ou par les hommes.",
+ enonce: "Observe les documents A à D. Indique si chaque activité est principalement pratiquée par les femmes ou les hommes iroquoiens vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "1500_agriculture_g.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},

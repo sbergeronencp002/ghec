@@ -521,12 +521,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme le mode de vie des Iroquoiens vers 1500.",
+ enonce: "Observe l'illustration. Nomme le type d'établissement où vivent les Iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens ont un mode de vie sédentaire.",
- updatedAt: "2026-10-31T18:34:55.580Z"
+ guide: "Vers 1500, les Iroquoiens vivent dans des villages.",
+ updatedAt: "2026-11-18T13:09:51.939Z"
 },
 {
  id: "Q3",

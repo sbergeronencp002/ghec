@@ -3602,7 +3602,7 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Iroquoiens vers 1500"],
  points: 2,
- enonce: "bserve l'illustration. Explique comment les ressources naturelles du territoire permettent aux Iroquoiens de construire des palissades vers 1500.",
+ enonce: "Observe l'illustration. Explique comment les ressources naturelles du territoire permettent aux Iroquoiens de construire des palissades vers 1500.",
  aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_20.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},

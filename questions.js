@@ -200,7 +200,8 @@ const REGLETTES = {
 "Q199": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q200": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q201": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q202": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q202": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q203": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -464,7 +465,9 @@ const IMAGE_DB = {
 "1500_iro_village_1.jpg": {src: "images/1500_iro_village_1.jpg"},
 "1500_incas_cite_1.jpg": {src: "images/1500_incas_cite_1.jpg"},
 "1500_iro_village_2.jpg": {src: "images/1500_iro_village_2.jpg"},
-"1500_incas_cite_2.jpg": {src: "images/1500_incas_cite_2.jpg"}
+"1500_incas_cite_2.jpg": {src: "images/1500_incas_cite_2.jpg"},
+"1500_iro_village_3.jpg": {src: "images/1500_iro_village_3.jpg"},
+"1500_incas_cite_3.jpg": {src: "images/1500_incas_cite_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -3535,5 +3538,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les colons français pratiquent la chasse pour se nourrir.",
  updatedAt: "2026-11-04T13:56:16.462Z"
+},
+{
+ id: "Q203",
+ niveau: 3,
+ oi: "Mettre en relation des faits",
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens et Incas vers 1500"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B illustrent les habitations des Iroquoiens et des Incas vers 1500. Associe chaque énoncé au document correspondant.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_village_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_cite_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Une cité", "Un village"]},
+ guide: {type: "grille", entetes: ["Une cité", "Un village"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-18T00:53:04.231Z"
 }
 ]

@@ -203,7 +203,8 @@ const REGLETTES = {
 "Q202": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q203": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q204": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q205": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q205": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q206": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -469,7 +470,8 @@ const IMAGE_DB = {
 "1500_iro_village_2.jpg": {src: "images/1500_iro_village_2.jpg"},
 "1500_incas_cite_2.jpg": {src: "images/1500_incas_cite_2.jpg"},
 "1500_iro_village_3.jpg": {src: "images/1500_iro_village_3.jpg"},
-"1500_incas_cite_3.jpg": {src: "images/1500_incas_cite_3.jpg"}
+"1500_incas_cite_3.jpg": {src: "images/1500_incas_cite_3.jpg"},
+"1500_territoire_atouts_contraintes_21.jpg": {src: "images/1500_territoire_atouts_contraintes_21.jpg"}
 }
 
 const QUESTIONS = [
@@ -3583,5 +3585,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les forêts fournissent aux Iroquoiens le bois nécessaire à la construction des palissades autour de leurs villages.",
  updatedAt: "2026-11-18T01:08:28.312Z"
+},
+{
+ id: "Q206",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Observe l'illustration. Explique comment les ressources naturelles du territoire permettent aux Iroquoiens de fabriquer des canots d'écorce vers 1500.",
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_21.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1500, les forêts fournissent aux Iroquoiens l'écorce et le bois nécessaires à la fabrication des canots.",
+ updatedAt: "2026-11-18T01:10:50.054Z"
 }
 ]

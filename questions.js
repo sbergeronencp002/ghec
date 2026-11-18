@@ -206,7 +206,8 @@ const REGLETTES = {
 "Q205": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q206": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q207": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q208": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
+"Q208": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q209": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]}
 }
 
 const IMAGE_DB = {
@@ -479,7 +480,8 @@ const IMAGE_DB = {
 "1500_agriculture_haricot.jpg": {src: "images/1500_agriculture_haricot.jpg"},
 "1500_territoire_atouts_contraintes_20.jpg": {src: "images/1500_territoire_atouts_contraintes_20.jpg"},
 "1500_portage.jpg": {src: "images/1500_portage.jpg"},
-"1500_territoire_atouts_contraintes_16.jpg": {src: "images/1500_territoire_atouts_contraintes_16.jpg"}
+"1500_territoire_atouts_contraintes_16.jpg": {src: "images/1500_territoire_atouts_contraintes_16.jpg"},
+"1500_territoire_atouts_contraintes_22.jpg": {src: "images/1500_territoire_atouts_contraintes_22.jpg"}
 }
 
 const QUESTIONS = [
@@ -3637,5 +3639,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, le territoire occupé par les Iroquoiens est couvert de vastes forêts.",
  updatedAt: "2026-11-18T01:29:33.501Z"
+},
+{
+ id: "Q209",
+ niveau: 3,
+ oi: "Caractériser un territoire",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Caractériser un territoire - 1",
+ enonce: "Observe l'illustration. Nomme une caractéristique de la faune du territoire occupé par les Iroquoiens vers 1500.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_22.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1500, le territoire occupé par les Iroquoiens possède une faune abondante.",
+ updatedAt: "2026-11-18T01:34:37.802Z"
 }
 ]

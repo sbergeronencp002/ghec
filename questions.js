@@ -501,7 +501,9 @@ const IMAGE_DB = {
 "1500_alg_hommes_chef_2.jpg": {src: "images/1500_alg_hommes_chef_2.jpg"},
 "1500_iro_femmes_chef_2.jpg": {src: "images/1500_iro_femmes_chef_2.jpg"},
 "1500_iro_femmes_chef_3.jpg": {src: "images/1500_iro_femmes_chef_3.jpg"},
-"1500_alg_hommes_chef_3.jpg": {src: "images/1500_alg_hommes_chef_3.jpg"}
+"1500_alg_hommes_chef_3.jpg": {src: "images/1500_alg_hommes_chef_3.jpg"},
+"1500_iro_vetements_ete_1.jpg": {src: "images/1500_iro_vetements_ete_1.jpg"},
+"1500_iro_vetements_hiver_1.jpg": {src: "images/1500_iro_vetements_hiver_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1225,12 +1227,12 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme une tâche accomplie principalement par les femmes chez les Iroquoiens vers 1500.",
+ enonce: "Observe les documents A et B. Nomme une caractéristique de l'habillement des Iroquoiens vers 1500.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_agriculture_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_vetements_ete_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_iro_vetements_hiver_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les femmes iroquoiennes s'occupent principalement de l'agriculture, notamment de la culture du maïs, des haricots et des courges.",
- updatedAt: "2026-11-12T19:54:52.305Z"
+ guide: "Vers 1500, les Iroquoiens portent des vêtements adaptés aux saisons.",
+ updatedAt: "2026-11-18T15:21:51.493Z"
 },
 {
  id: "Q49",

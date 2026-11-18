@@ -1873,15 +1873,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens et Algonquiens vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre les activités économiques pratiquées par les Iroquoiens et les Algonquiens vers 1500.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_cam_alg_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_vill_iro_f.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_cam_alg_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture, tandis que les Algonquiens vivent principalement de la chasse, de la pêche et de la cueillette, sans pratiquer l'agriculture selon la distinction retenue dans la PDA.\nRéponses acceptées\n\nLes Iroquoiens cultivent la terre, tandis que les Algonquiens ne pratiquent généralement pas l'agriculture vers 1500.\t\nVers 1500, l'agriculture est une activité importante chez les Iroquoiens, contrairement aux Algonquiens, qui vivent surtout de la chasse, de la pêche et de la cueillette.\t\nLes Iroquoiens cultivent le maïs, les haricots et les courges, tandis que les Algonquiens se procurent principalement leur nourriture grâce aux ressources naturelles.",
- updatedAt: "2026-11-01T14:02:10.649Z"
+ guide: "Vers 1500, les Iroquoiens pratiquent l'agriculture, tandis que les Algonquiens vivent principalement de la chasse, de la pêche et de la cueillette, sans pratiquer l'agriculture.",
+ updatedAt: "2026-11-18T15:41:14.990Z"
 },
 {
  id: "Q92",

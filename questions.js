@@ -497,7 +497,9 @@ const IMAGE_DB = {
 "1500_maison_longue_5.jpg": {src: "images/1500_maison_longue_5.jpg"},
 "1500_iro_village_4.jpg": {src: "images/1500_iro_village_4.jpg"},
 "1500_alg_hommes_chef_1.jpg": {src: "images/1500_alg_hommes_chef_1.jpg"},
-"1500_iro_femmes_chef_1.jpg": {src: "images/1500_iro_femmes_chef_1.jpg"}
+"1500_iro_femmes_chef_1.jpg": {src: "images/1500_iro_femmes_chef_1.jpg"},
+"1500_alg_hommes_chef_2.jpg": {src: "images/1500_alg_hommes_chef_2.jpg"},
+"1500_iro_femmes_chef_2.jpg": {src: "images/1500_iro_femmes_chef_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1656,16 +1658,16 @@ const QUESTIONS = [
  id: "Q77",
  niveau: 3,
  oi: "Établir des comparaisons",
- competence: "Lire l'organisation du territoire",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ competence: "S'ouvrir à la diversité",
+ periodes: ["Iroquoiens et Algonquiens vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre la structure politique des Algonquiens et celles des Iroquoiens vers 1500.",
  aspects: [{aspect: "Politique"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_algon_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_algon_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_alg_hommes_chef_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_iro_femmes_chef_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Algonquiens possèdent une structure politique patriarcale, tandis que les Iroquoiens possèdent une structure politique matriarcale.",
- updatedAt: "2026-10-31T18:12:32.356Z"
+ updatedAt: "2026-11-18T15:03:30.481Z"
 },
 {
  id: "Q78",

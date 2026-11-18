@@ -488,7 +488,9 @@ const IMAGE_DB = {
 "1500_village_iroquoien_2.jpg": {src: "images/1500_village_iroquoien_2.jpg"},
 "1500_village_iroquoien_3.jpg": {src: "images/1500_village_iroquoien_3.jpg"},
 "1500_campement_3.jpg": {src: "images/1500_campement_3.jpg"},
-"1500_maison_longue_2.jpg": {src: "images/1500_maison_longue_2.jpg"}
+"1500_maison_longue_2.jpg": {src: "images/1500_maison_longue_2.jpg"},
+"1500_wigwam_1.jpg": {src: "images/1500_wigwam_1.jpg"},
+"1500_maison_longue_3.jpg": {src: "images/1500_maison_longue_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -1588,15 +1590,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens et Algonquiens vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre les habitations des Algonquiens et celles des Iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_algon_iro_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_algon_iro_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_wigwam_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_maison_longue_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les Algonquiens habitent dans des wigwams, tandis que les Iroquoiens vivent dans des maisons longues.\nRéponses acceptées\n\nLes Algonquiens vivent dans des wigwams, alors que les Iroquoiens habitent des maisons longues.\t\nVers 1500, les habitations algonquiennes sont généralement petites et arrondies, tandis que les habitations iroquoiennes sont longues et rectangulaires.\nLes Algonquiens utilisent des habitations pouvant être démontées ou reconstruites lors de leurs déplacements, tandis que les Iroquoiens construisent des maisons longues destinées à être occupées pendant plusieurs années.",
- updatedAt: "2026-10-31T16:13:09.265Z"
+ guide: "Vers 1500, les Algonquiens habitent dans des wigwams, tandis que les Iroquoiens vivent dans des maisons longues.",
+ updatedAt: "2026-11-18T03:13:31.093Z"
 },
 {
  id: "Q74",

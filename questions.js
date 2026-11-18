@@ -492,7 +492,9 @@ const IMAGE_DB = {
 "1500_wigwam_1.jpg": {src: "images/1500_wigwam_1.jpg"},
 "1500_maison_longue_3.jpg": {src: "images/1500_maison_longue_3.jpg"},
 "1500_maison_longue_4.jpg": {src: "images/1500_maison_longue_4.jpg"},
-"1500_wigwam_2.jpg": {src: "images/1500_wigwam_2.jpg"}
+"1500_wigwam_2.jpg": {src: "images/1500_wigwam_2.jpg"},
+"1500_wigwam_3.jpg": {src: "images/1500_wigwam_3.jpg"},
+"1500_maison_longue_5.jpg": {src: "images/1500_maison_longue_5.jpg"}
 }
 
 const QUESTIONS = [
@@ -1622,15 +1624,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens et Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent les habitations des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_algon_iro_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_algon_iro_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_wigwam_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_maison_longue_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Maisons longues", "Wigwams"]},
  guide: {type: "grille", entetes: ["Maisons longues", "Wigwams"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-31T16:16:37.156Z"
+ updatedAt: "2026-11-18T03:15:17.299Z"
 },
 {
  id: "Q76",

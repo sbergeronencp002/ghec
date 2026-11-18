@@ -204,7 +204,8 @@ const REGLETTES = {
 "Q203": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q204": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q205": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q206": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q206": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q207": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -475,7 +476,8 @@ const IMAGE_DB = {
 "agriculture_h.jpg": {src: "images/agriculture_h.jpg"},
 "1500_agriculture_courge.jpg": {src: "images/1500_agriculture_courge.jpg"},
 "1500_agriculture_haricot.jpg": {src: "images/1500_agriculture_haricot.jpg"},
-"1500_territoire_atouts_contraintes_20.jpg": {src: "images/1500_territoire_atouts_contraintes_20.jpg"}
+"1500_territoire_atouts_contraintes_20.jpg": {src: "images/1500_territoire_atouts_contraintes_20.jpg"},
+"1500_portage.jpg": {src: "images/1500_portage.jpg"}
 }
 
 const QUESTIONS = [
@@ -3603,5 +3605,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les forêts fournissent aux Iroquoiens l'écorce et le bois nécessaires à la fabrication des canots.",
  updatedAt: "2026-11-18T01:10:50.054Z"
+},
+{
+ id: "Q207",
+ niveau: 3,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1500"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme la technique utilisée par les Iroquoiens pour contourner les rapides en transportant leurs canots sur la terre vers 1500.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_portage.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1500, les Iroquoiens utilisent le portage pour contourner les rapides.",
+ updatedAt: "2026-11-18T01:25:13.198Z"
 }
 ]

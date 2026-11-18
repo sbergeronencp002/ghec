@@ -1582,7 +1582,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens vers 1500"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe le document A. Nomme le type d'habitation utilisé par les Iroquoiens vers 1500.",
+ enonce: "Observe le document. Nomme une caractéristique du territoire où sont situés les villages iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_maison_longue_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

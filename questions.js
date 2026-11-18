@@ -1420,9 +1420,9 @@ const QUESTIONS = [
  enonce: "Les documents A et B illustrent les habitations des Iroquoiens et des Incas vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_village_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_cite_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["", ""]},
- guide: {type: "grille", entetes: ["Élément 1", "Élément 2"], rangees: [["B", "A"]]},
- updatedAt: "2026-11-18T00:50:45.669Z"
+ reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
+ guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-18T13:37:36.029Z"
 },
 {
  id: "Q62",

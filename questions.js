@@ -487,7 +487,8 @@ const IMAGE_DB = {
 "1500_campement_2.jpg": {src: "images/1500_campement_2.jpg"},
 "1500_village_iroquoien_2.jpg": {src: "images/1500_village_iroquoien_2.jpg"},
 "1500_village_iroquoien_3.jpg": {src: "images/1500_village_iroquoien_3.jpg"},
-"1500_campement_3.jpg": {src: "images/1500_campement_3.jpg"}
+"1500_campement_3.jpg": {src: "images/1500_campement_3.jpg"},
+"1500_maison_longue_2.jpg": {src: "images/1500_maison_longue_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1577,10 +1578,10 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe le document A. Nomme le type d'habitation utilisé par les Iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_algon_iro_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_maison_longue_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens habitent dans des maisons longues.\n\nRéponses acceptées\nLes Iroquoiens vivent dans des maisons longues vers 1500.\t\nLa maison longue est le type d'habitation utilisé par les Iroquoiens vers 1500.",
- updatedAt: "2026-10-31T16:11:10.122Z"
+ guide: "Vers 1500, les Iroquoiens habitent dans des maisons longues.",
+ updatedAt: "2026-11-18T02:56:46.791Z"
 },
 {
  id: "Q73",

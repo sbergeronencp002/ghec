@@ -481,7 +481,9 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_20.jpg": {src: "images/1500_territoire_atouts_contraintes_20.jpg"},
 "1500_portage.jpg": {src: "images/1500_portage.jpg"},
 "1500_territoire_atouts_contraintes_16.jpg": {src: "images/1500_territoire_atouts_contraintes_16.jpg"},
-"1500_territoire_atouts_contraintes_22.jpg": {src: "images/1500_territoire_atouts_contraintes_22.jpg"}
+"1500_territoire_atouts_contraintes_22.jpg": {src: "images/1500_territoire_atouts_contraintes_22.jpg"},
+"1500_campement_1.jpg": {src: "images/1500_campement_1.jpg"},
+"1500_village_iroquoien_1.jpg": {src: "images/1500_village_iroquoien_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1536,15 +1538,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens et Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent les modes de vie des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_algon_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_algon_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_campement_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_village_iroquoien_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Nomade", "Sédentaire"]},
  guide: {type: "grille", entetes: ["Nomade", "Sédentaire"], rangees: [["A", "B"]]},
- updatedAt: "2026-10-31T18:10:15.093Z"
+ updatedAt: "2026-11-18T02:48:17.391Z"
 },
 {
  id: "Q71",

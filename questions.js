@@ -483,7 +483,9 @@ const IMAGE_DB = {
 "1500_territoire_atouts_contraintes_16.jpg": {src: "images/1500_territoire_atouts_contraintes_16.jpg"},
 "1500_territoire_atouts_contraintes_22.jpg": {src: "images/1500_territoire_atouts_contraintes_22.jpg"},
 "1500_campement_1.jpg": {src: "images/1500_campement_1.jpg"},
-"1500_village_iroquoien_1.jpg": {src: "images/1500_village_iroquoien_1.jpg"}
+"1500_village_iroquoien_1.jpg": {src: "images/1500_village_iroquoien_1.jpg"},
+"1500_campement_2.jpg": {src: "images/1500_campement_2.jpg"},
+"1500_village_iroquoien_2.jpg": {src: "images/1500_village_iroquoien_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1523,15 +1525,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens et Algonquiens vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre le mode de vie des Algonquiens et des Iroquoiens vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_algon_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_algon_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_campement_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_village_iroquoien_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les Algonquiens ont un mode de vie nomade, tandis que les Iroquoiens ont un mode de vie sédentaire.",
- updatedAt: "2026-10-31T16:17:05.222Z"
+ updatedAt: "2026-11-18T02:49:39.349Z"
 },
 {
  id: "Q70",

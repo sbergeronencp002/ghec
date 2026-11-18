@@ -495,7 +495,9 @@ const IMAGE_DB = {
 "1500_wigwam_2.jpg": {src: "images/1500_wigwam_2.jpg"},
 "1500_wigwam_3.jpg": {src: "images/1500_wigwam_3.jpg"},
 "1500_maison_longue_5.jpg": {src: "images/1500_maison_longue_5.jpg"},
-"1500_iro_village_4.jpg": {src: "images/1500_iro_village_4.jpg"}
+"1500_iro_village_4.jpg": {src: "images/1500_iro_village_4.jpg"},
+"1500_alg_hommes_chef_1.jpg": {src: "images/1500_alg_hommes_chef_1.jpg"},
+"1500_iro_femmes_chef_1.jpg": {src: "images/1500_iro_femmes_chef_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1640,15 +1642,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Algonquiens vers 1500"],
+ periodes: ["Iroquoiens et Algonquiens vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent les structures politiques des Algonquiens et des Iroquoiens vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Politique"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_algon_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_algon_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_alg_hommes_chef_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_iro_femmes_chef_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Matriarcat", "Patriarcat"]},
  guide: {type: "grille", entetes: ["Matriarcat", "Patriarcat"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-31T18:05:16.294Z"
+ updatedAt: "2026-11-18T15:02:06.946Z"
 },
 {
  id: "Q77",

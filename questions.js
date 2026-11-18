@@ -494,7 +494,8 @@ const IMAGE_DB = {
 "1500_maison_longue_4.jpg": {src: "images/1500_maison_longue_4.jpg"},
 "1500_wigwam_2.jpg": {src: "images/1500_wigwam_2.jpg"},
 "1500_wigwam_3.jpg": {src: "images/1500_wigwam_3.jpg"},
-"1500_maison_longue_5.jpg": {src: "images/1500_maison_longue_5.jpg"}
+"1500_maison_longue_5.jpg": {src: "images/1500_maison_longue_5.jpg"},
+"1500_iro_village_4.jpg": {src: "images/1500_iro_village_4.jpg"}
 }
 
 const QUESTIONS = [
@@ -1583,11 +1584,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe le document. Nomme une caractéristique du territoire où sont situés les villages iroquoiens vers 1500.",
- aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_maison_longue_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_village_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Vers 1500, les Iroquoiens habitent dans des maisons longues.",
- updatedAt: "2026-11-18T03:01:24.435Z"
+ guide: "Vers 1500, les villages iroquoiens sont établis près des cours d'eau et des terres cultivables.",
+ updatedAt: "2026-11-18T13:51:04.540Z"
 },
 {
  id: "Q73",

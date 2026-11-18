@@ -1790,7 +1790,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Politique"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les chefs iroquoiens possèdent des pouvoirs limités, tandis que le dirigeant inca détient tous les pouvoirs.\n\nRéponses acceptées\n\nChez les Iroquoiens, les chefs ont des pouvoirs limités, alors que chez les Incas, le dirigeant détient tous les pouvoirs.\nLes chefs iroquoiens doivent tenir compte des décisions prises en conseil, tandis que le Sapa Inca exerce un pouvoir beaucoup plus étendu.\nVers 1500, les chefs iroquoiens ne peuvent pas décider de tout seuls, contrairement au dirigeant inca, qui concentre les pouvoirs.",
+ guide: "Vers 1500, les chefs iroquoiens possèdent des pouvoirs limités, tandis que le dirigeant inca détient tous les pouvoirs.",
  updatedAt: "2026-10-31T23:36:45.134Z"
 },
 {

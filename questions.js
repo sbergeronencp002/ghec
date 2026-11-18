@@ -201,7 +201,8 @@ const REGLETTES = {
 "Q200": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q201": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q202": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q203": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q203": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q204": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -3553,5 +3554,19 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Une cité", "Un village"]},
  guide: {type: "grille", entetes: ["Une cité", "Un village"], rangees: [["B", "A"]]},
  updatedAt: "2026-11-18T00:53:04.231Z"
+},
+{
+ id: "Q204",
+ niveau: 3,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Iroquoiens vers 1500"],
+ points: 2,
+ enonce: "Observe l'illustration. Explique pourquoi le relief du territoire occupé par les Iroquoiens favorise l'établissement des villages vers 1500.",
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_territoire_atouts_contraintes_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1500, les plaines favorisent l'établissement des villages iroquoiens parce qu'elles offrent de vastes terrains plats qui facilitent la pratique de l'agriculture.",
+ updatedAt: "2026-11-18T01:04:43.928Z"
 }
 ]

@@ -472,7 +472,9 @@ const IMAGE_DB = {
 "1500_iro_village_3.jpg": {src: "images/1500_iro_village_3.jpg"},
 "1500_incas_cite_3.jpg": {src: "images/1500_incas_cite_3.jpg"},
 "1500_territoire_atouts_contraintes_21.jpg": {src: "images/1500_territoire_atouts_contraintes_21.jpg"},
-"agriculture_h.jpg": {src: "images/agriculture_h.jpg"}
+"agriculture_h.jpg": {src: "images/agriculture_h.jpg"},
+"1500_agriculture_courge.jpg": {src: "images/1500_agriculture_courge.jpg"},
+"1500_agriculture_haricot.jpg": {src: "images/1500_agriculture_haricot.jpg"}
 }
 
 const QUESTIONS = [
@@ -652,12 +654,12 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "agriculture_h.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "1500_agriculture_c.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "1500_agriculture_e.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+  {type: "textes", cols: [{titre: "Document B", ref: "1500_agriculture_courge.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "1500_agriculture_haricot.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
  ],
  reponse: {type: "mettre-en-relation", elements: ["Courge", "Haricot", "Maïs"]},
  guide: {type: "grille", entetes: ["Courge", "Haricot", "Maïs"], rangees: [["B", "C", "A"]]},
- updatedAt: "2026-11-18T01:18:32.490Z"
+ updatedAt: "2026-11-18T01:21:05.821Z"
 },
 {
  id: "Q13",

@@ -2552,7 +2552,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "regime_seigneurial.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les plaines favorisent l'agriculture, car leur relief relativement plat facilite la culture des terres.\nRéponses acceptées.\nLes plaines favorisent l'agriculture parce que le terrain plat facilite le travail de la terre.\nLes plaines facilitent l'agriculture, car elles offrent de grandes surfaces relativement plates pour cultiver.",
+ guide: "Les plaines de la vallée du Saint-Laurent favorisent l'agriculture, car leur relief plat facilite l'aménagement et la culture des champs.",
  updatedAt: "2026-11-03T20:47:58.086Z"
 },
 {

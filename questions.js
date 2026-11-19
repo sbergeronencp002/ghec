@@ -507,7 +507,9 @@ const IMAGE_DB = {
 "1500_iro_comm_1.jpg": {src: "images/1500_iro_comm_1.jpg"},
 "1500_incas_pouvoir_1.jpg": {src: "images/1500_incas_pouvoir_1.jpg"},
 "1500_iro_comm_2.jpg": {src: "images/1500_iro_comm_2.jpg"},
-"1500_incas_pouvoir_3.jpg": {src: "images/1500_incas_pouvoir_3.jpg"}
+"1500_incas_pouvoir_3.jpg": {src: "images/1500_incas_pouvoir_3.jpg"},
+"1500_iro_comm_3.jpg": {src: "images/1500_iro_comm_3.jpg"},
+"1500_incas_pouvoir_6.jpg": {src: "images/1500_incas_pouvoir_6.jpg"}
 }
 
 const QUESTIONS = [
@@ -1912,10 +1914,10 @@ const QUESTIONS = [
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent les structures sociales des Iroquoiens et des Incas vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_comm_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_pouvoir_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Communautaire", "Hiérarchisée"]},
  guide: {type: "grille", entetes: ["Communautaire", "Hiérarchisée"], rangees: [["A", "B"]]},
- updatedAt: "2026-11-13T03:42:15.096Z"
+ updatedAt: "2026-11-19T01:15:40.918Z"
 },
 {
  id: "Q94",

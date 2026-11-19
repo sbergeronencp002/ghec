@@ -2162,7 +2162,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le territoire est traversé par de nombreux cours d'eau, dont le fleuve Saint-Laurent et plusieurs rivières.\nRéponses acceptées.\nLe territoire possède de nombreux cours d'eau.\nPlusieurs rivières se rejoignent à des confluents.\nCertains cours d'eau comportent des rapides.",
+ guide: "Le territoire possède de nombreux cours d’eau.",
  updatedAt: "2026-11-03T19:52:02.870Z"
 },
 {

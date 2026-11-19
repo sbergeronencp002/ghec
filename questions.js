@@ -515,7 +515,9 @@ const IMAGE_DB = {
 "1500_iro_ainees_chef_1.jpg": {src: "images/1500_iro_ainees_chef_1.jpg"},
 "1500_incas_pouvoir_2.jpg": {src: "images/1500_incas_pouvoir_2.jpg"},
 "1500_incas_pouvoir_5.jpg": {src: "images/1500_incas_pouvoir_5.jpg"},
-"1500_iro_ainees_chef_2.jpg": {src: "images/1500_iro_ainees_chef_2.jpg"}
+"1500_iro_ainees_chef_2.jpg": {src: "images/1500_iro_ainees_chef_2.jpg"},
+"1500_iro_ainees_chef_3.jpg": {src: "images/1500_iro_ainees_chef_3.jpg"},
+"1500_incas_pouvoir_8.jpg": {src: "images/1500_incas_pouvoir_8.jpg"}
 }
 
 const QUESTIONS = [
@@ -1795,15 +1797,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Iroquoiens et Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre le pouvoir des chefs iroquoiens et celui du dirigeant inca vers 1500.",
  aspects: [{aspect: "Politique"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_ainees_chef_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_pouvoir_8.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, les chefs iroquoiens possèdent des pouvoirs limités, tandis que le dirigeant inca détient tous les pouvoirs.",
- updatedAt: "2026-10-31T23:36:45.134Z"
+ updatedAt: "2026-11-19T04:27:18.372Z"
 },
 {
  id: "Q86",

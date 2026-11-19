@@ -2538,7 +2538,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Politique"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026.", soustitre: "Le roi de France"}]}, {type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026.", soustitre: "Le roi de France"}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le gouverneur doit appliquer les décisions du roi de France, car celui-ci le désigne et détient l'autorité sur la colonie.",
+ guide: "Le gouverneur doit appliquer les décisions du roi de France, car il est nommé par celui-ci et doit respecter son autorité.",
  updatedAt: "2026-11-04T14:33:29.447Z"
 },
 {

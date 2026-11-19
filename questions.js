@@ -1805,7 +1805,7 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Iroquoiens et Incas vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent la sélection des chefs chez les Iroquoiens et les Incas vers 1500. Associe chaque énoncé au document correspondant.",
@@ -1813,7 +1813,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},
  guide: {type: "grille", entetes: ["Incas", "Iroquoiens"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-31T23:39:35.048Z"
+ updatedAt: "2026-11-19T01:23:40.208Z"
 },
 {
  id: "Q87",

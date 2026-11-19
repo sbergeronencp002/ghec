@@ -2190,7 +2190,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "rapides_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "rapides_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les rapides compliquent le transport des marchandises, car ils peuvent obliger les voyageurs à effectuer un portage pour les contourner.\nRéponses acceptées.\nLes rapides obligent parfois les voyageurs à transporter leurs marchandises sur la terre ferme pour les contourner.\nLes rapides rendent la navigation dangereuse, ce qui complique le transport des marchandises.\nLes voyageurs doivent parfois contourner les rapides à pied avec leurs marchandises, ce qui ralentit leur déplacement.",
+ guide: "Les rapides compliquent le transport des marchandises, car ils rendent la navigation difficile et obligent parfois les voyageurs à effectuer un portage pour les contourner.",
  updatedAt: "2026-11-03T16:21:33.949Z"
 },
 {

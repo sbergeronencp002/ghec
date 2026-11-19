@@ -116,7 +116,25 @@ function matchesPeriodeFilter(q, periodeValue) {
     try { pair = JSON.parse(periodeValue.slice(6)); } catch (e) { return false; }
     return per.length === pair.length && pair.every(p => per.includes(p));
   }
-  return per.length === 1 && per[0] === periodeValue;
+  if (per.length === 1 && per[0] === periodeValue) return true;
+
+  // Compatibilité avec les anciennes questions GHEC3 saisies sous deux périodes
+  // plutôt que sous leur contexte pédagogique unique (C2 ou C3).
+  // Ces paires doivent rester exclues des filtres de société simple.
+  if (Number(q.niveau) === 3 && per.length === 2) {
+    const matchesPair = (a, b) => per.includes(a) && per.includes(b);
+    const competence = q.competence;
+    if (competence === "S'ouvrir à la diversité") {
+      if (periodeValue === 'Iroquoiens et Incas vers 1500')
+        return matchesPair('Iroquoiens vers 1500', 'Incas vers 1500');
+      if (periodeValue === 'Iroquoiens et Algonquiens vers 1500')
+        return matchesPair('Iroquoiens vers 1500', 'Algonquiens vers 1500');
+    }
+    if (competence === 'Interpréter le changement'
+      && periodeValue === 'Société iroquoienne entre 1500 et 1745')
+      return matchesPair('Iroquoiens vers 1500', 'Iroquoiens vers 1745');
+  }
+  return false;
 }
 
 function fillAspectSelect(id, aspects, periodeOrder) {

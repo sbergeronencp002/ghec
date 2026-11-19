@@ -2176,7 +2176,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "confluents_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les confluents favorisent l'établissement de postes de traite, car ils permettent aux commerçants et aux Autochtones d'accéder à un même lieu par différentes voies navigables pour échanger des marchandises.\nRéponses acceptées.\nLes confluents facilitent les échanges commerciaux, car plusieurs cours d'eau s'y rejoignent.\nLes confluents permettent aux commerçants et aux Autochtones de se rencontrer plus facilement parce qu'ils sont accessibles par plusieurs cours d'eau.",
+ guide: "Les confluents favorisent l'établissement de postes de traite, car plusieurs cours d'eau s'y rejoignent, ce qui facilite les rencontres et les échanges commerciaux entre les Français et les Autochtones.",
  updatedAt: "2026-11-03T15:51:22.657Z"
 },
 {

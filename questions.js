@@ -2524,7 +2524,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_climat_agriculture_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_climat_agriculture_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les températures chaudes et les précipitations en été favorisent l’agriculture, car elles permettent aux plantes cultivées de pousser.",
+ guide: "Les températures chaudes et les précipitations abondnates en été favorisent l’agriculture, car elles permettent aux plantes cultivées de pousser.",
  updatedAt: "2026-11-04T14:13:09.861Z"
 },
 {

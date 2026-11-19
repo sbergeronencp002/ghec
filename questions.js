@@ -2147,7 +2147,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cencives_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cencives_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les températures froides et le gel du sol empêchent généralement de cultiver les terres en hiver.\nRéponses acceptées.\nLe sol gelé empêche les habitants de cultiver leurs champs pendant l'hiver.\nLes températures trop froides empêchent la croissance des plantes cultivées pendant l'hiver.",
+ guide: "Le froid hivernal limite les activités agricoles, car les températures basses et le gel du sol empêchent généralement de cultiver la terre.",
  updatedAt: "2026-11-03T15:31:17.908Z"
 },
 {

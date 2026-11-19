@@ -2133,7 +2133,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cencives_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cencives_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "La neige rend les déplacements plus difficiles, car elle peut rendre les chemins difficiles à emprunter.\nRéponses acceptées.\nL'accumulation de neige rend les déplacements difficiles parce qu'elle bloque certains chemins.\nLe froid peut faire geler les cours d'eau, ce qui empêche la navigation en bateau ou en canot.",
+ guide: "La neige rend les déplacements difficiles en hiver, car son accumulation sur les chemins complique la circulation.",
  updatedAt: "2026-11-03T15:25:46.331Z"
 },
 {

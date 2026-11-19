@@ -2119,7 +2119,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cencives_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "cencives_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "En Nouvelle-France vers 1645, les étés sont chauds et pluvieux, tandis que les hivers sont froids et neigeux.\nRéponses acceptées.\nLes étés sont chauds et les hivers sont froids.\nIl pleut en été et il neige en hiver.\nLes hivers sont froids et neigeux.",
+ guide: "En Nouvelle-France vers 1645, les étés sont chauds et les hivers sont froids et neigeux.",
  updatedAt: "2026-11-04T00:39:33.009Z"
 },
 {

@@ -2158,7 +2158,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Caractériser un territoire - 1",
- enonce: "Nomme une caractéristique de l'hydrographie en Nouvelle-France vers 1645.",
+ enonce: "Observe l’illustration. Nomme une caractéristique de l’hydrographie en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},

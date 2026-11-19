@@ -503,7 +503,9 @@ const IMAGE_DB = {
 "1500_iro_femmes_chef_3.jpg": {src: "images/1500_iro_femmes_chef_3.jpg"},
 "1500_alg_hommes_chef_3.jpg": {src: "images/1500_alg_hommes_chef_3.jpg"},
 "1500_iro_vetements_ete_1.jpg": {src: "images/1500_iro_vetements_ete_1.jpg"},
-"1500_iro_vetements_hiver_1.jpg": {src: "images/1500_iro_vetements_hiver_1.jpg"}
+"1500_iro_vetements_hiver_1.jpg": {src: "images/1500_iro_vetements_hiver_1.jpg"},
+"1500_iro_comm_1.jpg": {src: "images/1500_iro_comm_1.jpg"},
+"1500_incas_pouvoir_1.jpg": {src: "images/1500_incas_pouvoir_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1713,10 +1715,10 @@ const QUESTIONS = [
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre la structure sociale des Iroquoiens et celle des Incas vers 1500.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_6.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_comm_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_pouvoir_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1500, la société iroquoienne possède une structure sociale communautaire, tandis que la société inca possède une structure sociale hiérarchisée.",
- updatedAt: "2026-11-13T03:41:08.694Z"
+ updatedAt: "2026-11-19T01:12:07.002Z"
 },
 {
  id: "Q81",

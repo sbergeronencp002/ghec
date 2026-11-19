@@ -2900,7 +2900,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme un aliment à la base de l’alimentation des colons en Nouvelle-France vers 1645.",
+ enonce: "Nomme un aliment consommé par les colons français en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "alimentation_1745.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

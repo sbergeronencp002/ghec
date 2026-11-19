@@ -2219,7 +2219,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1645_ressources_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "L'abondance de castors permet d'obtenir de nombreuses peaux recherchées, ce qui favorise le développement du commerce des fourrures.",
+ guide: "'abondance de castors sur le territoire permet d'obtenir de nombreuses peaux recherchées ce qui favorise le développement du commerce des fourrures.",
  updatedAt: "2026-11-04T14:51:00.517Z"
 },
 {

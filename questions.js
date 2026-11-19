@@ -1770,7 +1770,7 @@ const QUESTIONS = [
  periodes: ["Iroquoiens et Incas vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présent le pouvoir des chefs chez les Iroquoiens et les Incas vers 1500. Associe chaque énoncé au document correspondant.",
+ enonce: "Les documents A et B présentent le pouvoir des chefs chez les Iroquoiens et les Incas vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Politique"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_ainees_chef_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_pouvoir_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Incas", "Iroquoiens"]},

@@ -510,7 +510,9 @@ const IMAGE_DB = {
 "1500_incas_pouvoir_3.jpg": {src: "images/1500_incas_pouvoir_3.jpg"},
 "1500_iro_comm_3.jpg": {src: "images/1500_iro_comm_3.jpg"},
 "1500_incas_pouvoir_6.jpg": {src: "images/1500_incas_pouvoir_6.jpg"},
-"1500_incas_pouvoir_7.jpg": {src: "images/1500_incas_pouvoir_7.jpg"}
+"1500_incas_pouvoir_7.jpg": {src: "images/1500_incas_pouvoir_7.jpg"},
+"1500_incas_pouvoir_4.jpg": {src: "images/1500_incas_pouvoir_4.jpg"},
+"1500_iro_ainees_chef_1.jpg": {src: "images/1500_iro_ainees_chef_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -1820,15 +1822,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Iroquoiens et Incas vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B illustrent la sélection des chefs chez les Iroquoiens et les Incas vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Politique"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_3.jpg"}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_4.jpg"}]}],
- reponse: {type: "mettre-en-relation", elements: ["Par hérédité", "Par les femmes"]},
- guide: {type: "grille", entetes: ["Par hérédité", "Par les femmes"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-31T23:51:41.159Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_iro_ainees_chef_1.jpg"}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_pouvoir_4.jpg"}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Par hérédité", "Par les femmes aînées"]},
+ guide: {type: "grille", entetes: ["Par hérédité", "Par les femmes aînées"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-19T04:20:58.787Z"
 },
 {
  id: "Q88",

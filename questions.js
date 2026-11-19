@@ -2632,7 +2632,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Personnages"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fondation_montreal.jpg", soustitre: "Fondation de Montréal par Maisonneuve et Jeanne Mance", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "image", ref: "ligne_1600-1700.png"},
- guide: "B\n1642",
+ guide: "B - 1642",
  updatedAt: "2026-11-04T01:52:27.127Z"
 },
 {

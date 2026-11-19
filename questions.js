@@ -509,7 +509,8 @@ const IMAGE_DB = {
 "1500_iro_comm_2.jpg": {src: "images/1500_iro_comm_2.jpg"},
 "1500_incas_pouvoir_3.jpg": {src: "images/1500_incas_pouvoir_3.jpg"},
 "1500_iro_comm_3.jpg": {src: "images/1500_iro_comm_3.jpg"},
-"1500_incas_pouvoir_6.jpg": {src: "images/1500_incas_pouvoir_6.jpg"}
+"1500_incas_pouvoir_6.jpg": {src: "images/1500_incas_pouvoir_6.jpg"},
+"1500_incas_pouvoir_7.jpg": {src: "images/1500_incas_pouvoir_7.jpg"}
 }
 
 const QUESTIONS = [
@@ -1834,15 +1835,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Établir des comparaisons",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Iroquoiens et Incas vers 1500"],
  points: 2,
  soustag: "Établir une différence",
  enonce: "Observe les documents A et B. Nomme une différence entre la façon dont les chefs sont choisis chez les Iroquoiens et chez les Incas vers 1500.",
  aspects: [{aspect: "Politique"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_pouvoir_7.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_iro_femmes_chef_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Vers 1500, les chefs iroquoiens sont choisis par les femmes aînées, tandis que le pouvoir des dirigeants incas se transmet par hérédité.\n\nRéponses acceptées :\nChez les Iroquoiens, les femmes aînées désignent les chefs, alors que chez les Incas, le pouvoir se transmet au sein de la famille dirigeante.\t\nVers 1500, les chefs iroquoiens sont sélectionnés par les aînées, tandis que les dirigeants incas héritent de leur fonction.",
- updatedAt: "2026-10-31T23:53:27.626Z"
+ guide: "Vers 1500, les chefs iroquoiens sont choisis par les femmes aînées, tandis que le pouvoir des dirigeants incas se transmet par hérédité.",
+ updatedAt: "2026-11-19T01:19:49.896Z"
 },
 {
  id: "Q89",

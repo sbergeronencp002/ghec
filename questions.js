@@ -2268,7 +2268,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Traces du passé"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_traces_passe_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Une pièce de monnaie portant les symboles de la monarchie française témoigne de la présence française en Nouvelle-France.",
+ guide: "Une pièce de monnaie portant les symboles de la monarchie française témoigne de la présence française.",
  updatedAt: "2026-11-03T19:56:07.976Z"
 },
 {

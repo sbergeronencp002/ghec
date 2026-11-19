@@ -2089,7 +2089,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "cencives_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le territoire occupé présente des plaines dans la vallée du Saint-Laurent.\nRéponses acceptées.\nLe territoire comprend des plaines.\nLa vallée du Saint-Laurent présente un relief relativement plat.",
+ guide: "Le territoire présente des plaines dans la vallée du Saint-Laurent.",
  updatedAt: "2026-11-03T19:51:13.900Z"
 },
 {

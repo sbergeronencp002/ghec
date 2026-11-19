@@ -513,7 +513,9 @@ const IMAGE_DB = {
 "1500_incas_pouvoir_7.jpg": {src: "images/1500_incas_pouvoir_7.jpg"},
 "1500_incas_pouvoir_4.jpg": {src: "images/1500_incas_pouvoir_4.jpg"},
 "1500_iro_ainees_chef_1.jpg": {src: "images/1500_iro_ainees_chef_1.jpg"},
-"1500_incas_pouvoir_2.jpg": {src: "images/1500_incas_pouvoir_2.jpg"}
+"1500_incas_pouvoir_2.jpg": {src: "images/1500_incas_pouvoir_2.jpg"},
+"1500_incas_pouvoir_5.jpg": {src: "images/1500_incas_pouvoir_5.jpg"},
+"1500_iro_ainees_chef_2.jpg": {src: "images/1500_iro_ainees_chef_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -1778,15 +1780,15 @@ const QUESTIONS = [
  niveau: 3,
  oi: "Mettre en relation des faits",
  competence: "S'ouvrir à la diversité",
- periodes: ["Iroquoiens vers 1500", "Incas vers 1500"],
+ periodes: ["Iroquoiens et Incas vers 1500"],
  points: 2,
  soustag: "Mettre en relation des faits - 2",
  enonce: "Les documents A et B présentent le pouvoir des chefs chez les Iroquoiens et les Incas vers 1500. Associe chaque énoncé au document correspondant.",
  aspects: [{aspect: "Politique"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_iro_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_incas_iro_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1500_incas_pouvoir_5.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1500_iro_ainees_chef_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "mettre-en-relation", elements: ["Pouvoir illimité", "Pouvoir limité"]},
  guide: {type: "grille", entetes: ["Pouvoir illimité", "Pouvoir limité"], rangees: [["A", "B"]]},
- updatedAt: "2026-10-31T23:22:52.589Z"
+ updatedAt: "2026-11-19T04:25:53.418Z"
 },
 {
  id: "Q85",

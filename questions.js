@@ -2564,12 +2564,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique pourquoi le gouverneur de la Nouvelle-France doit appliquer les décisions du roi de France vers 1645.",
+ enonce: "Observe l'illustration. Explique pourquoi le gouverneur de la Nouvelle-France doit respecter l'autorité du roi de France vers 1645.",
  aspects: [{aspect: "Politique"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026.", soustitre: "Le roi de France"}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_roi_decision_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026.", soustitre: "Le gouverneur de la Nouvelle-France"}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_1.jpg", soustitre: "Le roi de France", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_roi_decision_3.jpg", soustitre: "Le gouverneur de la Nouvelle-France", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le gouverneur doit appliquer les décisions du roi de France, car il est nommé par celui-ci et doit respecter son autorité.",
- updatedAt: "2026-11-04T14:33:29.447Z"
+ guide: "Le gouverneur doit respecter l'autorité du roi, car celui-ci le désigne pour exercer ses fonctions dans la colonie.",
+ updatedAt: "2026-11-20T16:20:07.531Z"
 },
 {
  id: "Q135",

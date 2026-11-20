@@ -524,7 +524,8 @@ const IMAGE_DB = {
 "1645_divertissements_1.jpg": {src: "images/1645_divertissements_1.jpg"},
 "1645_coureurs_des_bois_3.jpg": {src: "images/1645_coureurs_des_bois_3.jpg"},
 "1645_colons_agriculture_1.jpg": {src: "images/1645_colons_agriculture_1.jpg"},
-"1645_poste_de_traite_1.jpg": {src: "images/1645_poste_de_traite_1.jpg"}
+"1645_poste_de_traite_1.jpg": {src: "images/1645_poste_de_traite_1.jpg"},
+"1645_voie_communication_terrestre_1.jpg": {src: "images/1645_voie_communication_terrestre_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3142,12 +3143,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme une voie de communication empruntée par les habitants en Nouvelle-France vers 1645.",
+ enonce: "Observe l’illustration. Nomme une voie de communication terrestre utilisée en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "deplacement_1645_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_voie_communication_terrestre_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les sentiers forestiers.",
- updatedAt: "2026-10-26T15:21:27.736Z"
+ guide: "Les sentiers forestiers sont des voies de communication terrestres utilisées en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T02:03:28.722Z"
 },
 {
  id: "Q173",

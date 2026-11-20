@@ -530,7 +530,8 @@ const IMAGE_DB = {
 "1645_coureurs_des_bois_4.jpg": {src: "images/1645_coureurs_des_bois_4.jpg"},
 "1645_canot.jpg": {src: "images/1645_canot.jpg"},
 "1645_caravelle_1.jpg": {src: "images/1645_caravelle_1.jpg"},
-"1645_canot_1.jpg": {src: "images/1645_canot_1.jpg"}
+"1645_canot_1.jpg": {src: "images/1645_canot_1.jpg"},
+"1645_charrette_1.jpg": {src: "images/1645_charrette_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3222,12 +3223,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme le moyen de transport utilisé sur les chemins en Nouvelle-France vers 1645.",
+ enonce: "Observe l’illustration. Nomme le moyen de transport terrestre utilisé en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "charrette_boeuf.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_charrette_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "La charrette.\nAccepter aussi « une charrette tirée par un bœuf ».",
- updatedAt: "2026-10-26T15:28:47.822Z"
+ guide: "Les habitants utilisent une charrette tirée par un bœuf pour transporter des marchandises sur les chemins en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T02:17:57.520Z"
 },
 {
  id: "Q178",

@@ -189,7 +189,7 @@ const REGLETTES = {
 "Q188": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q189": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q190": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q191": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
+"Q191": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q192": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q193": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q194": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -540,7 +540,9 @@ const IMAGE_DB = {
 "1645_alimentation_a.jpg": {src: "images/1645_alimentation_a.jpg"},
 "1645_alimentation_b.jpg": {src: "images/1645_alimentation_b.jpg"},
 "1645_habillement_1.jpg": {src: "images/1645_habillement_1.jpg"},
-"1645_divertissements_2.jpg": {src: "images/1645_divertissements_2.jpg"}
+"1645_divertissements_2.jpg": {src: "images/1645_divertissements_2.jpg"},
+"1645_coutumes_a.jpg": {src: "images/1645_coutumes_a.jpg"},
+"1645_coutumes_b.jpg": {src: "images/1645_coutumes_b.jpg"}
 }
 
 const QUESTIONS = [
@@ -3430,17 +3432,16 @@ const QUESTIONS = [
 {
  id: "Q191",
  niveau: 4,
- oi: "Caractériser un territoire",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- soustag: "Caractériser un territoire - 2",
- enonce: "Nomme deux caractéristiques du territoire occupé par la société française en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe les documents A et B. Explique comment la religion catholique influence les coutumes des colons français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_coutumes_a.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_coutumes_b.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le territoire comprend des plaines et de nombreux cours d’eau.",
- updatedAt: "2026-10-26T16:52:17.663Z"
+ guide: "La religion catholique influence les coutumes des colons français, car ils célèbrent des fêtes religieuses et participent à des cérémonies.",
+ updatedAt: "2026-11-20T15:36:57.213Z"
 },
 {
  id: "Q192",

@@ -163,7 +163,7 @@ const REGLETTES = {
 "Q162": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q163": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q164": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q165": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q165": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q166": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q167": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q168": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -3031,21 +3031,16 @@ const QUESTIONS = [
 {
  id: "Q165",
  niveau: 4,
- oi: "Mettre en relation des faits",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- soustag: "Mettre en relation des faits - 3",
- enonce: "Les documents A à C présentent différents divertissements en Nouvelle-France vers 1645. Associe chaque document au divertissement correspondant.",
- aspects: [{aspect: "Culture"}],
- documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "chant_musique_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "divertissement_recits_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "divertissement_theatre.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
- ],
- reponse: {type: "mettre-en-relation", elements: ["Le théâtre", "Les chants et musique", "Les récits"]},
- guide: {type: "grille", entetes: ["Le théâtre", "Les chants et musique", "Les récits"], rangees: [["C", "A", "B"]]},
- updatedAt: "2026-09-15T11:48:29.986Z"
+ enonce: "Observe l'illustration. Explique pourquoi les colons français utilisent le bois pour construire certains bâtiments en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "chant_musique_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les colons français utilisent le bois pour construire certains bâtiments en Nouvelle-France vers 1645, car les nombreuses forêts du territoire leur fournissent ce matériau.",
+ updatedAt: "2026-11-20T15:09:29.255Z"
 },
 {
  id: "Q166",

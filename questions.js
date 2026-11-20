@@ -2842,7 +2842,7 @@ const QUESTIONS = [
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_mammiferes_fourrures_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Français recherchent certains mammifères pour leur fourrure en Nouvelle-France vers 1645.",
- updatedAt: "2026-11-20T14:40:37.013Z"
+ updatedAt: "2026-11-20T14:47:04.828Z"
 },
 {
  id: "Q153",

@@ -535,7 +535,8 @@ const IMAGE_DB = {
 "1645_mammiferes_fourrures_1.jpg": {src: "images/1645_mammiferes_fourrures_1.jpg"},
 "1645_population_1.jpg": {src: "images/1645_population_1.jpg"},
 "1645_peinture_1.jpg": {src: "images/1645_peinture_1.jpg"},
-"1645_architecture_2.jpg": {src: "images/1645_architecture_2.jpg"}
+"1645_architecture_2.jpg": {src: "images/1645_architecture_2.jpg"},
+"1645_architecture_1.jpg": {src: "images/1645_architecture_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3037,10 +3038,10 @@ const QUESTIONS = [
  points: 2,
  enonce: "Observe l'illustration. Explique pourquoi les colons français utilisent le bois pour construire certains bâtiments en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chant_musique_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_architecture_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les colons français utilisent le bois pour construire certains bâtiments en Nouvelle-France vers 1645, car les nombreuses forêts du territoire leur fournissent ce matériau.",
- updatedAt: "2026-11-20T15:09:29.255Z"
+ updatedAt: "2026-11-20T15:14:30.484Z"
 },
 {
  id: "Q166",

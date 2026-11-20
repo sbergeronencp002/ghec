@@ -150,7 +150,7 @@ const REGLETTES = {
 "Q149": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q150": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q151": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q152": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q152": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q153": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q155": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -531,7 +531,8 @@ const IMAGE_DB = {
 "1645_canot.jpg": {src: "images/1645_canot.jpg"},
 "1645_caravelle_1.jpg": {src: "images/1645_caravelle_1.jpg"},
 "1645_canot_1.jpg": {src: "images/1645_canot_1.jpg"},
-"1645_charrette_1.jpg": {src: "images/1645_charrette_1.jpg"}
+"1645_charrette_1.jpg": {src: "images/1645_charrette_1.jpg"},
+"1645_mammiferes_fourrures_1.jpg": {src: "images/1645_mammiferes_fourrures_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -2831,17 +2832,17 @@ const QUESTIONS = [
 {
  id: "Q152",
  niveau: 4,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent des groupes qui parlent différentes langues en Nouvelle-France vers 1645. Associe chaque document au type de langue correspondant.",
- aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "campement_algonquien.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "population_n-f_1645_francais.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Le français", "Les langues autochtones"]},
- guide: {type: "grille", entetes: ["Le français", "Les langues autochtones"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-26T14:26:06.077Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme une ressource naturelle recherchée par les Français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_mammiferes_fourrures_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Français recherchent certains mammifères pour leur fourrure en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T14:40:37.013Z"
 },
 {
  id: "Q153",

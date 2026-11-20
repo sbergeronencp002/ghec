@@ -162,7 +162,7 @@ const REGLETTES = {
 "Q161": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q162": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q163": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q164": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
+"Q164": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q165": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q166": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q167": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -533,7 +533,8 @@ const IMAGE_DB = {
 "1645_canot_1.jpg": {src: "images/1645_canot_1.jpg"},
 "1645_charrette_1.jpg": {src: "images/1645_charrette_1.jpg"},
 "1645_mammiferes_fourrures_1.jpg": {src: "images/1645_mammiferes_fourrures_1.jpg"},
-"1645_population_1.jpg": {src: "images/1645_population_1.jpg"}
+"1645_population_1.jpg": {src: "images/1645_population_1.jpg"},
+"1645_peinture_1.jpg": {src: "images/1645_peinture_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3015,21 +3016,17 @@ const QUESTIONS = [
 {
  id: "Q164",
  niveau: 4,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 2,
- soustag: "Mettre en relation des faits - 3",
- enonce: "Les documents A à C présentent différentes coutumes. Associe chaque document à la coutume correspondante.",
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme un sujet représenté dans les peintures en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
- documents: [
-  {type: "textes", cols: [{titre: "Document A", ref: "mariage_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document B", ref: "catholicisme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
-  {type: "textes", cols: [{titre: "Document C", ref: "bapteme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
- ],
- reponse: {type: "mettre-en-relation", elements: ["Le baptême", "Les messes", "Le mariage"]},
- guide: {type: "grille", entetes: ["Le baptême", "Les messes", "Le mariage"], rangees: [["C", "B", "A"]]},
- updatedAt: "2026-10-26T14:57:15.356Z"
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_peinture_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les peintures représentent notamment des sujets religieux en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T15:05:39.172Z"
 },
 {
  id: "Q165",

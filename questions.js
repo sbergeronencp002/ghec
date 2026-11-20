@@ -159,7 +159,7 @@ const REGLETTES = {
 "Q158": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q159": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q160": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q161": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q161": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q162": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q163": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q164": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -536,7 +536,8 @@ const IMAGE_DB = {
 "1645_population_1.jpg": {src: "images/1645_population_1.jpg"},
 "1645_peinture_1.jpg": {src: "images/1645_peinture_1.jpg"},
 "1645_architecture_2.jpg": {src: "images/1645_architecture_2.jpg"},
-"1645_architecture_1.jpg": {src: "images/1645_architecture_1.jpg"}
+"1645_architecture_1.jpg": {src: "images/1645_architecture_1.jpg"},
+"1645_alimentation_a.jpg": {src: "images/1645_alimentation_a.jpg"}
 }
 
 const QUESTIONS = [
@@ -2976,14 +2977,14 @@ const QUESTIONS = [
  oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 2,
- soustag: "Établir tous les faits - 2",
- enonce: "Observe l'illustration. Nomme deux divertissements pratiqués par les colons français en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "chant_musique_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 2},
- guide: "Les colons français se divertissent en dansant et en jouant de la musique.",
- updatedAt: "2026-11-04T14:49:00.726Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme un aliment d’origine autochtone consommé par les colons français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_alimentation_a.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les colons français consomment du maïs, des courges et des haricots en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T15:20:03.794Z"
 },
 {
  id: "Q162",

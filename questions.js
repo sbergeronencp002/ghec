@@ -2245,7 +2245,7 @@ const QUESTIONS = [
  points: 2,
  soustag: "Mettre en relation des faits - 3",
  enonce: "Les documents A à C présentent des activités de subsistance pratiquées par les colons français en Nouvelle-France vers 1645. Associe chaque activité au document correspondant.",
- aspects: [{aspect: "Territoire"}],
+ aspects: [{aspect: "Activités économiques"}],
  documents: [
   {type: "textes", cols: [{titre: "Document A", ref: "1645_activite_subsistance_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
   {type: "textes", cols: [{titre: "Document B", ref: "1645_activite_subsistance_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},

@@ -3253,7 +3253,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l'aide du document A, nomme la personne qui détient l’autorité sur la colonie vers 1645.",
+ enonce: "Observe l'illustration. Nomme la personne qui détient l’autorité sur la colonie vers 1645.",
  aspects: [{aspect: "Politique"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "roi_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

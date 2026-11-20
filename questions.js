@@ -544,7 +544,8 @@ const IMAGE_DB = {
 "1645_coutumes_a.jpg": {src: "images/1645_coutumes_a.jpg"},
 "1645_coutumes_b.jpg": {src: "images/1645_coutumes_b.jpg"},
 "1645_regime_seigneurial_1.jpg": {src: "images/1645_regime_seigneurial_1.jpg"},
-"1645_regime_seigneurial_2.jpg": {src: "images/1645_regime_seigneurial_2.jpg"}
+"1645_regime_seigneurial_2.jpg": {src: "images/1645_regime_seigneurial_2.jpg"},
+"1645_regime_seigneurial_3.jpg": {src: "images/1645_regime_seigneurial_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -3481,12 +3482,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique comment les cours d’eau favorisent le commerce des fourrures en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}, {type: "textes", cols: [{titre: "Document B", ref: "commerce_fourures_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Explique pourquoi les terres des seigneuries sont souvent disposées en bandes le long du fleuve Saint-Laurent en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_regime_seigneurial_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les cours d’eau permettent de transporter les fourrures et les marchandises en canot ou en bateau, ce qui facilite les échanges.",
- updatedAt: "2026-10-26T17:11:06.049Z"
+ guide: "Les terres des seigneuries sont disposées en bandes le long du fleuve Saint-Laurent, car cette organisation permet à plusieurs habitants d'avoir accès au fleuve pour se déplacer et transporter des marchandises.",
+ updatedAt: "2026-11-20T15:48:03.678Z"
 },
 {
  id: "Q195",

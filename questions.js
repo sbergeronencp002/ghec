@@ -2916,12 +2916,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique comment les colons français adaptent leurs déplacements aux conditions hivernales en Nouvelle-France vers 1645.",
+ enonce: "Observe l'illustration. Explique comment les colons français adaptent leurs déplacements aux conditions hivernales en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_coureurs_des_bois_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les colons utilisent des raquettes, car elles les empêchent de trop s'enfoncer dans la neige.\nLes colons se déplacent en traîneau, car celui-ci peut glisser sur la neige.\nLes colons utilisent des raquettes pour marcher plus facilement sur les terrains enneigés.",
- updatedAt: "2026-11-20T01:33:54.792Z"
+ updatedAt: "2026-11-20T01:34:33.133Z"
 },
 {
  id: "Q159",

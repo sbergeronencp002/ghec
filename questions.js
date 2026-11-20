@@ -2729,7 +2729,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Situer 2 éléments dans l'espace",
- enonce: "À l’aide du document A, indique les lettres correspondant aux territoires possédés par la France vers 1645.",
+ enonce: "Observe la carte. Indique les lettres correspondant aux territoires possédés par la France vers 1645.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_n-f_abcd.jpg", source: "Carte de l'Amérique du Nord. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "situer-dans-lespace", elements: ["Grands Lacs", "Vallée du Saint-Laurent"]},

@@ -3158,7 +3158,7 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique pourquoi les cours d’eau favorisent le commerce en Nouvelle-France vers 1645.",
+ enonce: "Observe les documents A et B. Explique comment les cours d’eau favorisent le commerce des fourrures en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "voies_communication_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},

@@ -3239,7 +3239,7 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme la région de la Nouvelle-France où les premières seigneuries sont concédées.",
- aspects: [{aspect: "Activités économiques"}],
+ aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "regime_seigneurial.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La vallée du Saint-Laurent.",

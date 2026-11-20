@@ -2915,12 +2915,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique comment les colons adaptent leurs déplacements à la neige en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Transport"}],
+ enonce: "Explique comment les colons français adaptent leurs déplacements aux conditions hivernales en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "toboggan_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les colons utilisent des raquettes pour marcher sur la neige et des traîneaux (toboggan) pour transporter leurs marchandises plus facilement en hiver.",
- updatedAt: "2026-11-04T13:41:29.723Z"
+ guide: "Les colons utilisent des raquettes, car elles les empêchent de trop s'enfoncer dans la neige.\nLes colons se déplacent en traîneau, car celui-ci peut glisser sur la neige.\nLes colons utilisent des raquettes pour marcher plus facilement sur les terrains enneigés.",
+ updatedAt: "2026-11-20T01:33:08.884Z"
 },
 {
  id: "Q159",

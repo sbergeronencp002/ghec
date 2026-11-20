@@ -3108,12 +3108,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme une voie de communication utilisée en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
+ enonce: "Observe l’illustration. Nomme une voie de communication navigable utilisée en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Un cours d’eau. Accepter aussi « un sentier forestier » ou « un chemin », tous visibles dans le document. Une seule réponse suffit.",
- updatedAt: "2026-10-26T15:12:18.435Z"
+ guide: "Le fleuve Saint-Laurent et les rivières sont une voie de communication navigable utilisée en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T01:59:59.321Z"
 },
 {
  id: "Q171",

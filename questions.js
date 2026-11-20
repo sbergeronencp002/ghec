@@ -2187,7 +2187,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  enonce: "Explique pourquoi les confluents favorisent l'établissement de postes de traite en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Atouts et contraintes"}, {aspect: "Territoire"}],
+ aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "confluents_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les confluents favorisent l'établissement de postes de traite, car plusieurs cours d'eau s'y rejoignent, ce qui facilite les rencontres et les échanges commerciaux entre les Français et les Autochtones.",

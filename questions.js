@@ -2229,7 +2229,7 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique comment les ressources naturelles du territoire favorisent le développement du commerce des fourrures en Nouvelle-France vers 1645.",
+ enonce: "Observe l'illustration. Explique comment les ressources naturelles du territoire favorisent le développement du commerce des fourrures en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1645_ressources_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},

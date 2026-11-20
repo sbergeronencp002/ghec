@@ -520,7 +520,8 @@ const IMAGE_DB = {
 "1500_incas_pouvoir_8.jpg": {src: "images/1500_incas_pouvoir_8.jpg"},
 "1645_alimentation_1.jpg": {src: "images/1645_alimentation_1.jpg"},
 "1645_coureurs_des_bois_1.jpg": {src: "images/1645_coureurs_des_bois_1.jpg"},
-"1645_coureurs_des_bois_2.jpg": {src: "images/1645_coureurs_des_bois_2.jpg"}
+"1645_coureurs_des_bois_2.jpg": {src: "images/1645_coureurs_des_bois_2.jpg"},
+"1645_divertissements_1.jpg": {src: "images/1645_divertissements_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -2947,12 +2948,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "Observe l'illustration. Nomme deux divertissements pratiqués par les colons français en Nouvelle-France vers 1645.",
+ enonce: "Observe l’illustration. Nomme deux divertissements pratiqués par les colons français en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "musique_chants_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_divertissements_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "Les colons français se divertissent en dansant et en jouant de la musique.",
- updatedAt: "2026-11-04T14:47:47.678Z"
+ guide: "Les colons français pratiquent la danse et jouent de la musique pour se divertir en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T01:45:38.302Z"
 },
 {
  id: "Q161",

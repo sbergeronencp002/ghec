@@ -525,7 +525,8 @@ const IMAGE_DB = {
 "1645_coureurs_des_bois_3.jpg": {src: "images/1645_coureurs_des_bois_3.jpg"},
 "1645_colons_agriculture_1.jpg": {src: "images/1645_colons_agriculture_1.jpg"},
 "1645_poste_de_traite_1.jpg": {src: "images/1645_poste_de_traite_1.jpg"},
-"1645_voie_communication_terrestre_1.jpg": {src: "images/1645_voie_communication_terrestre_1.jpg"}
+"1645_voie_communication_terrestre_1.jpg": {src: "images/1645_voie_communication_terrestre_1.jpg"},
+"1645_voie_communication_terrestre_2.jpg": {src: "images/1645_voie_communication_terrestre_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3094,12 +3095,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la croyance selon lesquelles des esprits sont présents dans les éléments de la nature chez les peuples autochtones vers 1645.",
- aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "ceremonie_autochtone_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l’illustration. Nomme une voie de communication terrestre utilisée en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Transport"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_voie_communication_terrestre_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "L'animisme.",
- updatedAt: "2026-11-17T19:10:41.581Z"
+ guide: "Les chemins de terre sont des voies de communication terrestres utilisées en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T02:04:36.838Z"
 },
 {
  id: "Q170",

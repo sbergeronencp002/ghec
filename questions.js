@@ -187,7 +187,7 @@ const REGLETTES = {
 "Q186": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q187": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q188": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q189": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q189": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q190": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q191": {oi: "Caractériser un territoire", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève indique deux caractéristiques."}, {pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q192": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -539,7 +539,8 @@ const IMAGE_DB = {
 "1645_architecture_1.jpg": {src: "images/1645_architecture_1.jpg"},
 "1645_alimentation_a.jpg": {src: "images/1645_alimentation_a.jpg"},
 "1645_alimentation_b.jpg": {src: "images/1645_alimentation_b.jpg"},
-"1645_habillement_1.jpg": {src: "images/1645_habillement_1.jpg"}
+"1645_habillement_1.jpg": {src: "images/1645_habillement_1.jpg"},
+"1645_divertissements_2.jpg": {src: "images/1645_divertissements_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3394,17 +3395,17 @@ const QUESTIONS = [
 {
  id: "Q189",
  niveau: 4,
- oi: "Mettre en relation des faits",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 2,
- soustag: "Mettre en relation des faits - 2",
- enonce: "Les documents A et B présentent une obligation et un privilège de la Compagnie des Cent-Associés vers 1645. Associe chaque document à l’énoncé correspondant.",
- aspects: [{aspect: "Politique"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "compagnies_100_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "mettre-en-relation", elements: ["Obligation", "Privilège"]},
- guide: {type: "grille", entetes: ["Obligation", "Privilège"], rangees: [["B", "A"]]},
- updatedAt: "2026-10-26T16:38:03.364Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l’illustration. Nomme un instrument de musique utilisé par les colons français pour se divertir en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_divertissements_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les colons français utilisent le violon pour se divertir en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T15:29:32.962Z"
 },
 {
  id: "Q190",

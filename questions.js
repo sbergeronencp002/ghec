@@ -519,7 +519,8 @@ const IMAGE_DB = {
 "1500_iro_ainees_chef_3.jpg": {src: "images/1500_iro_ainees_chef_3.jpg"},
 "1500_incas_pouvoir_8.jpg": {src: "images/1500_incas_pouvoir_8.jpg"},
 "1645_alimentation_1.jpg": {src: "images/1645_alimentation_1.jpg"},
-"1645_coureurs_des_bois_1.jpg": {src: "images/1645_coureurs_des_bois_1.jpg"}
+"1645_coureurs_des_bois_1.jpg": {src: "images/1645_coureurs_des_bois_1.jpg"},
+"1645_coureurs_des_bois_2.jpg": {src: "images/1645_coureurs_des_bois_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2931,12 +2932,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme un élément de l’habillement autochtone adopté par certains colons en Nouvelle-France vers 1645.",
+ enonce: "Observe l'illustration. Nomme un élément de l’habillement autochtone adopté par certains colons l'étéen Nouvelle-France vers 1645.",
  aspects: [{aspect: "Vie quotidienne"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "deplacement_1645_a.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_coureurs_des_bois_2.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les mocassins.",
- updatedAt: "2026-11-03T20:44:52.799Z"
+ guide: "Certains colons français adoptent les mocassins ou des mitasses d'origine autochtone en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T01:41:05.995Z"
 },
 {
  id: "Q160",

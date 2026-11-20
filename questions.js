@@ -151,7 +151,7 @@ const REGLETTES = {
 "Q150": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
 "Q151": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q152": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q153": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q153": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q155": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q156": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
@@ -532,7 +532,8 @@ const IMAGE_DB = {
 "1645_caravelle_1.jpg": {src: "images/1645_caravelle_1.jpg"},
 "1645_canot_1.jpg": {src: "images/1645_canot_1.jpg"},
 "1645_charrette_1.jpg": {src: "images/1645_charrette_1.jpg"},
-"1645_mammiferes_fourrures_1.jpg": {src: "images/1645_mammiferes_fourrures_1.jpg"}
+"1645_mammiferes_fourrures_1.jpg": {src: "images/1645_mammiferes_fourrures_1.jpg"},
+"1645_population_1.jpg": {src: "images/1645_population_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -2847,16 +2848,17 @@ const QUESTIONS = [
 {
  id: "Q153",
  niveau: 4,
- oi: "Établir des liens de causalité",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 2,
- enonce: "Explique pourquoi le commerce des fourrures amène les Français et les Autochtones à communiquer malgré leurs langues différentes.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "n-f_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "poste_traite_troc.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "Ils doivent se comprendre pour échanger des fourrures contre des produits européens et s’entendre sur les échanges.",
- updatedAt: "2026-10-26T14:47:02.684Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe le diagramme. Indique le nombre approximatif de colons français qui habitent en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_population_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Environ 600 colons français habitent en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T14:59:10.839Z"
 },
 {
  id: "Q154",

@@ -153,7 +153,7 @@ const REGLETTES = {
 "Q152": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q153": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q154": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q155": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q155": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q156": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (3 sur 3)"}, {pts: 1, desc: "L'élève met en relation les faits. (2 sur 3)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 3)"}]},
 "Q157": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q158": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
@@ -534,7 +534,8 @@ const IMAGE_DB = {
 "1645_charrette_1.jpg": {src: "images/1645_charrette_1.jpg"},
 "1645_mammiferes_fourrures_1.jpg": {src: "images/1645_mammiferes_fourrures_1.jpg"},
 "1645_population_1.jpg": {src: "images/1645_population_1.jpg"},
-"1645_peinture_1.jpg": {src: "images/1645_peinture_1.jpg"}
+"1645_peinture_1.jpg": {src: "images/1645_peinture_1.jpg"},
+"1645_architecture_2.jpg": {src: "images/1645_architecture_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -2879,17 +2880,16 @@ const QUESTIONS = [
 {
  id: "Q155",
  niveau: 4,
- oi: "Établir des faits",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Nomme la religion pratiquée par les Français en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Culture"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "catholicisme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Le catholicisme.",
- updatedAt: "2026-11-04T00:37:20.072Z"
+ points: 2,
+ enonce: "Explique pourquoi les colons français doivent adapter leurs bâtiments à l’hiver de la Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_architecture_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Les colons français doivent adapter leurs bâtiments, car les hivers froids et neigeux exigent des habitations qui protègent les occupants du froid et des intempéries.",
+ updatedAt: "2026-11-20T15:13:47.055Z"
 },
 {
  id: "Q156",

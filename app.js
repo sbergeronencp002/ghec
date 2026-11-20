@@ -2098,6 +2098,9 @@ async function genererDocx(includeGuide=false) {
       await _docxLoadPromise;
     }
     const panierQuestions = panier.map(id => Q_MAP.get(id)).filter(Boolean);
+    // Attribution des billets GHEC3 : ne pas l'appliquer à un cahier d'autres niveaux.
+    const estCahierGhec3 = !includeGuide && panierQuestions.length > 0
+      && panierQuestions.every(q => Number(q.niveau) === 3);
     const imgR = k => _imgDocxCache[k] || IMAGE_DB[k]; // lit depuis le cache DOCX, pas IMAGE_DB (évite de muter IMAGE_DB avec des data URLs)
     const neededKeys = new Set();
     const missingFromDb = new Set(); // ref utilisée mais absente d'IMAGE_DB (donnée incomplète/orpheline)
@@ -2123,7 +2126,7 @@ async function genererDocx(includeGuide=false) {
     if(btn)btn.textContent='⏳ Mise en page…';
     const {
       Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
-      AlignmentType, BorderStyle, WidthType, VerticalAlign, XmlComponent
+      AlignmentType, BorderStyle, WidthType, VerticalAlign, XmlComponent, Footer
     } = docx;
 
     const BORDER = { style: BorderStyle.SINGLE, size: 4, color: '000000' };
@@ -2755,14 +2758,30 @@ async function genererDocx(includeGuide=false) {
 
     } // end else (cahier mode)
 
+    const piedDePageGhec3 = estCahierGhec3 ? new Footer({
+      children: [new Paragraph({
+        alignment: AlignmentType.CENTER,
+        border: { top: { style: BorderStyle.SINGLE, size: 3, color: 'CCCCCC' } },
+        spacing: { before: 60, after: 0 },
+        children: [new TextRun({
+          text: '© GHEC · CSSBF — Sébastien Bergeron et Élodie Gervais (2026)',
+          font: 'Aptos', size: 16, color: '666666'
+        })]
+      })]
+    }) : null;
+
     const doc = new Document({
       sections: [{
         properties: {
           page: {
             size: { width: 12240, height: 15840 },
-            margin: { top: PAGE_MARGIN, right: PAGE_MARGIN, bottom: PAGE_MARGIN, left: PAGE_MARGIN }
+            margin: {
+              top: PAGE_MARGIN, right: PAGE_MARGIN, bottom: PAGE_MARGIN, left: PAGE_MARGIN,
+              ...(estCahierGhec3 ? { footer: 227 } : {})
+            }
           }
         },
+        ...(piedDePageGhec3 ? { footers: { default: piedDePageGhec3 } } : {}),
         children
       }]
     });

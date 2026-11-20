@@ -2230,7 +2230,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  enonce: "Observe l'illustration. Explique comment les ressources naturelles du territoire favorisent le développement du commerce des fourrures en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Territoire"}],
+ aspects: [{aspect: "Atouts et contraintes"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_1645_ressources_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "'abondance de castors sur le territoire permet d'obtenir de nombreuses peaux recherchées ce qui favorise le développement du commerce des fourrures.",

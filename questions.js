@@ -208,7 +208,8 @@ const REGLETTES = {
 "Q207": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q208": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q209": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
-"Q210": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q210": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q211": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -550,7 +551,9 @@ const IMAGE_DB = {
 "1645_roi_1.jpg": {src: "images/1645_roi_1.jpg"},
 "1645_roi_2.jpg": {src: "images/1645_roi_2.jpg"},
 "1645_compagnies_monopole_a.jpg": {src: "images/1645_compagnies_monopole_a.jpg"},
-"1645_compagnies_obligation_a.jpg": {src: "images/1645_compagnies_obligation_a.jpg"}
+"1645_compagnies_obligation_a.jpg": {src: "images/1645_compagnies_obligation_a.jpg"},
+"1645_compagnies_obligation_b.jpg": {src: "images/1645_compagnies_obligation_b.jpg"},
+"1645_roi_3.jpg": {src: "images/1645_roi_3.jpg"}
 }
 
 const QUESTIONS = [
@@ -3729,5 +3732,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Le roi de France confie l'administration de la Nouvelle-France à une compagnie afin qu'elle favorise le peuplement de la colonie et organise le commerce des fourrures.",
  updatedAt: "2026-11-20T16:31:33.646Z"
+},
+{
+ id: "Q211",
+ niveau: 4,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ enonce: "Observe l'illustration Explique pourquoi la Compagnie des Cent-Associés doit favoriser l'arrivée de colons français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Politique"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_compagnies_obligation_b.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_roi_3.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "La Compagnie des Cent-Associés doit favoriser l'arrivée de colons français, car le roi de France lui a confié l'obligation de peupler la Nouvelle-France.",
+ updatedAt: "2026-11-20T16:39:57.805Z"
 }
 ]

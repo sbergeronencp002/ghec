@@ -522,7 +522,8 @@ const IMAGE_DB = {
 "1645_coureurs_des_bois_1.jpg": {src: "images/1645_coureurs_des_bois_1.jpg"},
 "1645_coureurs_des_bois_2.jpg": {src: "images/1645_coureurs_des_bois_2.jpg"},
 "1645_divertissements_1.jpg": {src: "images/1645_divertissements_1.jpg"},
-"1645_coureurs_des_bois_3.jpg": {src: "images/1645_coureurs_des_bois_3.jpg"}
+"1645_coureurs_des_bois_3.jpg": {src: "images/1645_coureurs_des_bois_3.jpg"},
+"1645_colons_agriculture_1.jpg": {src: "images/1645_colons_agriculture_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3061,12 +3062,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme l’activité économique représentée.",
+ enonce: "Observe l’illustration. Nomme une activité de subsistance pratiquée par les colons français en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "agriculture_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_colons_agriculture_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "L'agriculture.",
- updatedAt: "2026-10-26T13:43:58.149Z"
+ guide: "Les colons français pratiquent l’agriculture pour se nourrir en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T01:55:02.842Z"
 },
 {
  id: "Q168",

@@ -2387,7 +2387,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la langue parlée par les colons en Nouvelle-France vers 1645.",
+ enonce: "Nomme la langue parlée par les habitants en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "nouvelle-france_langue_parlee_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

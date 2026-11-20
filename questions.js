@@ -2992,12 +2992,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Observe les illustrations. Explique comment la religion catholique influence les coutumes des colons en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Culture"}, {aspect: "Vie quotidienne"}],
+ enonce: "Observe les illustrations. Explique comment la religion catholique influence les coutumes des colons français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "bapteme_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "mariage_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "La religion catholique encadre plusieurs moments importants de la vie des colons : ils font baptiser leurs enfants, se marient devant un prêtre et célèbrent des fêtes religieuses.",
- updatedAt: "2026-10-26T14:58:07.359Z"
+ guide: "La religion catholique influence les coutumes des colons français, car ils participent à des cérémonies religieuses, comme la messe, et célèbrent des fêtes catholiques.",
+ updatedAt: "2026-11-20T01:46:23.329Z"
 },
 {
  id: "Q164",

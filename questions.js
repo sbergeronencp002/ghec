@@ -194,7 +194,7 @@ const REGLETTES = {
 "Q193": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q194": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q195": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q196": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q196": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q197": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q198": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
 "Q199": {oi: "Situer dans le temps", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe les faits dans le temps."}, {pts: 0, desc: "L'élève ne situe pas les faits dans le temps."}]},
@@ -546,7 +546,8 @@ const IMAGE_DB = {
 "1645_regime_seigneurial_1.jpg": {src: "images/1645_regime_seigneurial_1.jpg"},
 "1645_regime_seigneurial_2.jpg": {src: "images/1645_regime_seigneurial_2.jpg"},
 "1645_regime_seigneurial_3.jpg": {src: "images/1645_regime_seigneurial_3.jpg"},
-"1645_roi_1.jpg": {src: "images/1645_roi_1.jpg"}
+"1645_roi_1.jpg": {src: "images/1645_roi_1.jpg"},
+"1645_roi_2.jpg": {src: "images/1645_roi_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3508,16 +3509,17 @@ const QUESTIONS = [
 {
  id: "Q196",
  niveau: 4,
- oi: "Établir des liens de causalité",
+ oi: "Établir des faits",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 2,
- enonce: "Explique pourquoi le commerce des fourrures se développe en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "commerce_fourures_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "commerce_fourures_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 3},
- guide: "L’abondance de castors fournit aux marchands français des peaux recherchées ce qui favorise le commerce des fourrures.",
- updatedAt: "2026-11-04T14:52:11.992Z"
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme le personnage qui désigne la compagnie chargée d'administrer la Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Politique"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le roi de France désigne les compagnies chargées d'administrer la Nouvelle-France.",
+ updatedAt: "2026-11-20T16:16:44.548Z"
 },
 {
  id: "Q197",

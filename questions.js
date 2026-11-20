@@ -3162,7 +3162,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "voies_communication_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Les cours d’eau permettent de transporter les marchandises en canot ou en bateau ce qui facilite les échanges entre les établissements.",
+ guide: "Les cours d'eau favorisent le commerce des fourrures, car ils permettent aux Français et aux Autochtones de se déplacer en canot pour transporter et échanger des fourrures et des marchandises.",
  updatedAt: "2026-10-26T15:22:46.176Z"
 },
 {

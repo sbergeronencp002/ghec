@@ -104,6 +104,7 @@ header nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
   .rv-toolbar select, .rv-toolbar input[type=search] { width:140px; }
 }
 .rv-guide-edit-table{width:100%;border-collapse:collapse}.rv-guide-edit-table th,.rv-guide-edit-table td{border:1px solid var(--border);padding:6px}.rv-guide-edit-table input,.rv-guide-edit-table textarea{width:100%;box-sizing:border-box;min-width:90px;font:inherit;padding:6px}.rv-guide-edit-table textarea{min-height:65px}
+.rv-aspect-row{display:flex;align-items:flex-end;gap:7px}.rv-aspect-row label{flex:1;min-width:0}.rv-aspect-remove{border:1px solid #dab7b7;background:#fff;color:#a23d3d;border-radius:5px;height:34px;width:34px;font-size:1.2rem;cursor:pointer}.rv-aspect-remove:hover{background:#fff0f0}
 </style>
 </head>
 <body>
@@ -886,21 +887,38 @@ function rvAspectOptions(q) {
   const existing = (q.aspects || []).map(a => a.aspect).filter(Boolean);
   return [...new Set([...configured, ...existing])].sort((a,b) => a.localeCompare(b,'fr'));
 }
+function rvSelectedAspects() {
+  return [...document.querySelectorAll('.rv-aspect-select')].map(el=>el.value);
+}
+function rvRemoveAspect(button) {
+  if(rvSaving || _rvActiveEdit?.key !== 'aspects') return;
+  const rows=document.querySelectorAll('#rv-aspects-editor .rv-aspect-row');
+  if(rows.length<=1) return;
+  button.closest('.rv-aspect-row')?.remove();
+  document.querySelectorAll('#rv-aspects-editor .rv-aspect-row').forEach((row,i) => {
+    const label=row.querySelector('.rv-aspect-label');
+    const select=row.querySelector('select');
+    if(label) label.textContent='Aspect '+(i+1);
+    if(select) select.setAttribute('aria-label','Aspect '+(i+1));
+  });
+  if(document.querySelectorAll('#rv-aspects-editor .rv-aspect-row').length===1)
+    document.querySelector('#rv-aspects-editor .rv-aspect-remove')?.remove();
+}
 function rvEditAspects() {
-  const q = rvList[rvIndex];
+  const q=rvList[rvIndex];
   if(!q) return;
-  const original = (q.aspects || []).map(a => a.aspect);
-  if(!rvBeginEdit('aspects', () =>
-    [...document.querySelectorAll('.rv-aspect-select')].some((el,i) => el.value !== original[i]),
-    rvCancelAspectsEdit)) return;
-  const options = rvAspectOptions(q);
-  const editor = document.getElementById('rv-aspects-editor');
-  editor.innerHTML = '<div class="rv-aspects-fields">' + original.map((aspect,i) =>
-    '<label>Aspect ' + (i+1) + '<select class="rv-aspect-select" aria-label="Aspect ' + (i+1) + '">' +
-    options.map(value => '<option value="' + rvEscAttr(value) + '"' + (value === aspect ? ' selected' : '') + '>' + rvEscLine(value) + '</option>').join('') +
-    '</select></label>').join('') + '</div>' +
-    '<div class="rv-guide-edit-actions"><span class="rv-guide-status" id="rv-aspects-status"></span>' +
-    '<button type="button" class="rv-guide-btn-cancel" onclick="rvCancelAspectsEdit()">Annuler</button>' +
+  const original=(q.aspects||[]).map(a=>a.aspect);
+  if(!rvBeginEdit('aspects', () => JSON.stringify(rvSelectedAspects()) !== JSON.stringify(original),rvCancelAspectsEdit)) return;
+  const options=rvAspectOptions(q);
+  const editor=document.getElementById('rv-aspects-editor');
+  editor.innerHTML='<div class="rv-aspects-fields">' + original.map((aspect,i) =>
+    '<div class="rv-aspect-row"><label><span class="rv-aspect-label">Aspect '+(i+1)+'</span><select class="rv-aspect-select" aria-label="Aspect '+(i+1)+'">'+
+    options.map(value => '<option value="'+rvEscAttr(value)+'"'+(value===aspect?' selected':'')+'>'+rvEscLine(value)+'</option>').join('')+
+    '</select></label>'+
+    (original.length>1?'<button type="button" class="rv-aspect-remove" onclick="rvRemoveAspect(this)" title="Retirer cet aspect" aria-label="Retirer cet aspect">×</button>':'')+
+    '</div>').join('')+'</div>'+
+    '<div class="rv-guide-edit-actions"><span class="rv-guide-status" id="rv-aspects-status"></span>'+
+    '<button type="button" class="rv-guide-btn-cancel" onclick="rvCancelAspectsEdit()">Annuler</button>'+
     '<button type="button" class="rv-guide-btn-save" id="rv-aspects-save-btn" onclick="rvSaveAspects()">Enregistrer</button></div>';
   document.querySelector('.rv-aspect-select')?.focus();
 }
@@ -910,15 +928,16 @@ function rvCancelAspectsEdit() {
   rvEndEdit();
 }
 async function rvSaveAspects() {
-  if(rvSaving || _rvActiveEdit?.key !== 'aspects') return;
-  const q = rvList[rvIndex];
+  if(rvSaving || _rvActiveEdit?.key!=='aspects') return;
+  const q=rvList[rvIndex];
   if(!q) return;
   const id=q.id, gen=_rvEditGen;
-  const values=[...document.querySelectorAll('.rv-aspect-select')].map(el=>el.value);
+  const original=(_rvActiveEdit.baseQuestion.aspects||[]).map(a=>a.aspect);
+  const values=rvSelectedAspects();
   const allowed=new Set(rvAspectOptions(q));
   const status=document.getElementById('rv-aspects-status');
   if(!values.length || values.some(v=>!allowed.has(v))) {
-    status.textContent='✗ Sélection invalide.';
+    status.textContent='✗ Sélection invalide : conserver au moins un aspect.';
     status.className='rv-guide-status err';
     return;
   }
@@ -934,12 +953,21 @@ async function rvSaveAspects() {
     const changed=await rvApplyQuestionsEdit(parsed=>{
       const target=parsed.QUESTIONS.find(x=>x.id===id);
       if(!target) throw new Error('Question '+id+' introuvable');
-      if((target.aspects||[]).length!==values.length) throw new Error('La liste des aspects a changé. Recharge la page.');
-      if(target.aspects.every((a,i)=>a.aspect===values[i])) return false;
-      target.aspects=target.aspects.map((a,i)=>({...a,aspect:values[i]}));
+      if(JSON.stringify((target.aspects||[]).map(a=>a.aspect))!==JSON.stringify(original))
+        throw new Error('La liste des aspects a changé. Recharge la page.');
+      if(JSON.stringify(original)===JSON.stringify(values)) return false;
+      const previous=target.aspects||[];
+      target.aspects=values.map(value=>{
+        const matched=previous.find(a=>a.aspect===value);
+        return matched ? {...matched} : {aspect:value};
+      });
       return true;
     },'Modifier les aspects — '+id);
-    q.aspects=q.aspects.map((a,i)=>({...a,aspect:values[i]}));
+    const previous=q.aspects||[];
+    q.aspects=values.map(value=>{
+      const matched=previous.find(a=>a.aspect===value);
+      return matched ? {...matched} : {aspect:value};
+    });
     if(_rvEditGen===gen){GHECRevision.saved(id,'aspects');if(_rvActiveEdit)_rvActiveEdit.persisted=true;rvEndEdit();}
     rvRenderCard();
     rvPopulateFilters();

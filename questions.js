@@ -3273,12 +3273,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Explique pourquoi la Compagnie des Cent-Associés doit appliquer les décisions du roi de France vers 1645.",
+ enonce: "Explique pourquoi la Compagnie des Cent-Associés doit respecter les décisions du roi de France vers 1645.",
  aspects: [{aspect: "Politique"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_roi_decision_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1645_roi_decision_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "La Compagnie des Cent-Associés doit appliquer les décisions du roi de France, car celui-ci détient l'autorité sur la colonie et lui accorde ses pouvoirs.",
- updatedAt: "2026-11-04T14:29:18.189Z"
+ guide: "La Compagnie des Cent-Associés doit respecter les décisions du roi de France, car celui-ci détient l'autorité sur la colonie et lui accorde ses pouvoirs.",
+ updatedAt: "2026-11-20T16:21:28.096Z"
 },
 {
  id: "Q181",

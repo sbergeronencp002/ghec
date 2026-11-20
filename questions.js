@@ -2977,7 +2977,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme une coutume pratiquée par les colons en Nouvelle-France vers 1645.",
+ enonce: "Observe l'illustration. Nomme une coutume pratiquée par les colons en Nouvelle-France vers 1645.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "fetes_religieuses_1645.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},

@@ -3333,12 +3333,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Nomme la compagnie chargée par le roi de France d’administrer la colonie vers 1645.",
+ enonce: "Nomme la compagnie chargée par le roi de France pour administrer la colonie vers 1645.",
  aspects: [{aspect: "Politique"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "compagnies_100_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "La Compagnie des Cent-Associés. \nAccepter aussi « la Compagnie de la Nouvelle-France ».",
- updatedAt: "2026-10-26T16:21:36.251Z"
+ guide: "La Compagnie des Cent-Associés.",
+ updatedAt: "2026-11-20T16:20:46.753Z"
 },
 {
  id: "Q185",

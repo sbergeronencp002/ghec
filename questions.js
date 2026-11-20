@@ -538,7 +538,8 @@ const IMAGE_DB = {
 "1645_architecture_2.jpg": {src: "images/1645_architecture_2.jpg"},
 "1645_architecture_1.jpg": {src: "images/1645_architecture_1.jpg"},
 "1645_alimentation_a.jpg": {src: "images/1645_alimentation_a.jpg"},
-"1645_alimentation_b.jpg": {src: "images/1645_alimentation_b.jpg"}
+"1645_alimentation_b.jpg": {src: "images/1645_alimentation_b.jpg"},
+"1645_habillement_1.jpg": {src: "images/1645_habillement_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3205,12 +3206,12 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe l’illustration. Nomme le moyen de transport utilisé sur les cours d’eau en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_canot_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l'illustration. Nomme un groupe qui influence l’habillement des colons français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_habillement_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
- guide: "Les habitants utilisent le canot pour se déplacer sur les cours d’eau en Nouvelle-France vers 1645.",
- updatedAt: "2026-11-20T02:16:37.939Z"
+ guide: "Les peuples autochtones influencent l’habillement des colons français en Nouvelle-France vers 1645.",
+ updatedAt: "2026-11-20T15:27:41.603Z"
 },
 {
  id: "Q177",

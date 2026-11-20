@@ -165,7 +165,7 @@ const REGLETTES = {
 "Q164": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q165": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q166": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q167": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q167": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q168": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q169": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q170": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
@@ -537,7 +537,8 @@ const IMAGE_DB = {
 "1645_peinture_1.jpg": {src: "images/1645_peinture_1.jpg"},
 "1645_architecture_2.jpg": {src: "images/1645_architecture_2.jpg"},
 "1645_architecture_1.jpg": {src: "images/1645_architecture_1.jpg"},
-"1645_alimentation_a.jpg": {src: "images/1645_alimentation_a.jpg"}
+"1645_alimentation_a.jpg": {src: "images/1645_alimentation_a.jpg"},
+"1645_alimentation_b.jpg": {src: "images/1645_alimentation_b.jpg"}
 }
 
 const QUESTIONS = [
@@ -3062,17 +3063,16 @@ const QUESTIONS = [
 {
  id: "Q167",
  niveau: 4,
- oi: "Établir des faits",
+ oi: "Établir des liens de causalité",
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
- points: 1,
- soustag: "Établir 1 fait - 1",
- enonce: "Observe l’illustration. Nomme une activité de subsistance pratiquée par les colons français en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Activités économiques"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_colons_agriculture_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
- reponse: {type: "lignes", nombre: 1},
- guide: "Les colons français pratiquent l’agriculture pour se nourrir en Nouvelle-France vers 1645.",
- updatedAt: "2026-11-20T01:55:02.842Z"
+ points: 2,
+ enonce: "Observe l'illustration. Explique comment la chasse et la pêche contribuent à l’alimentation des colons français en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1645_alimentation_b.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "La chasse et la pêche contribuent à l’alimentation des colons français, car elles leur permettent d’obtenir du gibier et du poisson pour se nourrir.",
+ updatedAt: "2026-11-20T15:25:30.528Z"
 },
 {
  id: "Q168",

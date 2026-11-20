@@ -2714,7 +2714,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "À l’aide du document A, nomme la région où se concentre la population de la Nouvelle-France vers 1645.",
+ enonce: "Observe la carte. Nomme la région où se concentre la population de la Nouvelle-France vers 1645.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "carte_n-f_1645_population.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 1},

@@ -2699,7 +2699,7 @@ const QUESTIONS = [
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
  soustag: "Établir tous les faits - 2",
- enonce: "À l’aide du document A, nomme deux régions de l’Amérique du Nord possédées par la France vers 1645.",
+ enonce: "Observe la carte. Nomme deux régions de l’Amérique du Nord possédées par la France vers 1645.",
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "territoire_n-f_1645.jpg", source: "Carte de l'Amérique. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 2},

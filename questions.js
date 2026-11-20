@@ -526,7 +526,8 @@ const IMAGE_DB = {
 "1645_colons_agriculture_1.jpg": {src: "images/1645_colons_agriculture_1.jpg"},
 "1645_poste_de_traite_1.jpg": {src: "images/1645_poste_de_traite_1.jpg"},
 "1645_voie_communication_terrestre_1.jpg": {src: "images/1645_voie_communication_terrestre_1.jpg"},
-"1645_voie_communication_terrestre_2.jpg": {src: "images/1645_voie_communication_terrestre_2.jpg"}
+"1645_voie_communication_terrestre_2.jpg": {src: "images/1645_voie_communication_terrestre_2.jpg"},
+"1645_coureurs_des_bois_4.jpg": {src: "images/1645_coureurs_des_bois_4.jpg"}
 }
 
 const QUESTIONS = [
@@ -3158,12 +3159,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["Société française en Nouvelle-France vers 1645"],
  points: 2,
- enonce: "Observe les documents A et B. Explique comment les cours d’eau favorisent le commerce des fourrures en Nouvelle-France vers 1645.",
- aspects: [{aspect: "Activités économiques"}, {aspect: "Transport"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "voies_communication_2.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "voies_communication_3.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ enonce: "Observe l'illustration. Explique comment les cours d’eau favorisent le commerce des fourrures en Nouvelle-France vers 1645.",
+ aspects: [{aspect: "Atouts et contraintes"}],
+ documents: [{type: "textes", cols: [{titre: "Document B", ref: "1645_coureurs_des_bois_4.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
  guide: "Les cours d'eau favorisent le commerce des fourrures, car ils permettent aux Français et aux Autochtones de se déplacer en canot pour transporter et échanger des fourrures et des marchandises.",
- updatedAt: "2026-10-26T15:22:46.176Z"
+ updatedAt: "2026-11-20T02:10:40.245Z"
 },
 {
  id: "Q174",

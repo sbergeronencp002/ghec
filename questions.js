@@ -210,7 +210,8 @@ const REGLETTES = {
 "Q209": {oi: "Caractériser un territoire", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève indique une caractéristique."}, {pts: 0, desc: "L'élève n'indique pas de caractéristique."}]},
 "Q210": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q211": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q212": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q212": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q213": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -555,7 +556,8 @@ const IMAGE_DB = {
 "1645_compagnies_obligation_a.jpg": {src: "images/1645_compagnies_obligation_a.jpg"},
 "1645_compagnies_obligation_b.jpg": {src: "images/1645_compagnies_obligation_b.jpg"},
 "1645_roi_3.jpg": {src: "images/1645_roi_3.jpg"},
-"1905_territoire_frontieres_maritimes_2.jpg": {src: "images/1905_territoire_frontieres_maritimes_2.jpg"}
+"1905_territoire_frontieres_maritimes_2.jpg": {src: "images/1905_territoire_frontieres_maritimes_2.jpg"},
+"1905_territoire_frontieres_terrestres_2.jpg": {src: "images/1905_territoire_frontieres_terrestres_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3763,5 +3765,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "La baie James et le golfe du Saint-Laurent.",
  updatedAt: "2026-11-22T14:06:56.449Z"
+},
+{
+ id: "Q213",
+ niveau: 6,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "Observe la carte. Nomme deux frontières terrestres du Québec vers 1905.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_frontieres_terrestres_2.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Le Québec partage ses frontières terrestres avec l'Ontario, les États-Unis, le Nouveau-Brunswick, le Labrador et District d’Ungava vers 1905.",
+ updatedAt: "2026-11-22T14:10:38.897Z"
 }
 ]

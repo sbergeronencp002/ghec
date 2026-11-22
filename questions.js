@@ -3763,8 +3763,8 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_frontieres_maritimes_2.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 2},
- guide: "La baie James et le golfe du Saint-Laurent.",
- updatedAt: "2026-11-22T14:06:56.449Z"
+ guide: "Les deux étendues d’eau qui bordent le Québec vers 1905 sont la baie James et le golfe du Saint-Laurent.",
+ updatedAt: "2026-11-22T14:12:04.129Z"
 },
 {
  id: "Q213",

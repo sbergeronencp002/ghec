@@ -232,7 +232,8 @@ const REGLETTES = {
 "Q231": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
 "Q232": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q233": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q234": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q234": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q235": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -603,7 +604,9 @@ const IMAGE_DB = {
 "1905_divertissement_1.jpg": {src: "images/1905_divertissement_1.jpg"},
 "1905_alimentation_1.jpg": {src: "images/1905_alimentation_1.jpg"},
 "1905_vetements_1.jpg": {src: "images/1905_vetements_1.jpg"},
-"1905_vetements_2.jpg": {src: "images/1905_vetements_2.jpg"}
+"1905_vetements_2.jpg": {src: "images/1905_vetements_2.jpg"},
+"1905_vetements_3.jpg": {src: "images/1905_vetements_3.jpg"},
+"1905_vetements_4.jpg": {src: "images/1905_vetements_4.jpg"}
 }
 
 const QUESTIONS = [
@@ -4142,5 +4145,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Vers 1905, les vêtements de la population québécoise varient selon les métiers et les milieux sociaux.",
  updatedAt: "2026-11-23T03:58:08.206Z"
+},
+{
+ id: "Q235",
+ niveau: 6,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 2",
+ enonce: "Les documents A et B présentent des vêtements portés par des personnes issues de différents milieux sociaux au Québec vers 1905. Associe chaque milieu social au document correspondant.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_vetements_3.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1905_vetements_4.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "mettre-en-relation", elements: ["Milieu bourgeois", "Milieu ouvrier"]},
+ guide: {type: "grille", entetes: ["Milieu bourgeois", "Milieu ouvrier"], rangees: [["B", "A"]]},
+ updatedAt: "2026-11-23T04:12:46.575Z"
 }
 ]

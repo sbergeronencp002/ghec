@@ -4104,11 +4104,11 @@ const QUESTIONS = [
  points: 1,
  soustag: "Établir 1 fait - 1",
  enonce: "Observe l'illustration. Nomme un divertissement pratiqué par la population québécoise vers 1905.",
- aspects: [{aspect: "Culture"}],
+ aspects: [{aspect: "Vie quotidienne"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_divertissement_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le hockey sur glace est un divertissement pratiqué par la population québécoise vers 1905.",
- updatedAt: "2026-11-23T02:20:43.886Z"
+ updatedAt: "2026-11-23T02:24:35.961Z"
 },
 {
  id: "Q233",

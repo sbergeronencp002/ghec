@@ -225,7 +225,8 @@ const REGLETTES = {
 "Q224": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q225": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q226": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q227": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q227": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q228": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -585,7 +586,8 @@ const IMAGE_DB = {
 "1905_travail_usines_2.jpg": {src: "images/1905_travail_usines_2.jpg"},
 "1905_langues_parlees_1.jpg": {src: "images/1905_langues_parlees_1.jpg"},
 "1905_religions_pratiquees_1.jpg": {src: "images/1905_religions_pratiquees_1.jpg"},
-"1905_arts_peinture_1.jpg": {src: "images/1905_arts_peinture_1.jpg"}
+"1905_arts_peinture_1.jpg": {src: "images/1905_arts_peinture_1.jpg"},
+"1905_arts_architecture_1.jpg": {src: "images/1905_arts_architecture_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -4014,5 +4016,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La peinture.",
  updatedAt: "2026-11-23T02:00:27.616Z"
+},
+{
+ id: "Q228",
+ niveau: 6,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme la forme d'art représentée dans la société québécoise vers 1905.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_arts_architecture_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "L'architecture.",
+ updatedAt: "2026-11-23T02:03:24.581Z"
 }
 ]

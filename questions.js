@@ -4010,12 +4010,12 @@ const QUESTIONS = [
  periodes: ["La société québécoise vers 1905"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe le document A. Nomme la forme d'art représentée dans la société québécoise vers 1905.",
+ enonce: "Observe l'illustration. Nomme la forme d'art représentée dans la société québécoise vers 1905.",
  aspects: [{aspect: "Culture"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_arts_peinture_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "La peinture.",
- updatedAt: "2026-11-23T02:00:27.616Z"
+ updatedAt: "2026-11-23T02:03:49.210Z"
 },
 {
  id: "Q228",

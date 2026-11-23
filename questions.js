@@ -582,7 +582,8 @@ const IMAGE_DB = {
 "1905_territoire_quebec_vallee_2.jpg": {src: "images/1905_territoire_quebec_vallee_2.jpg"},
 "1905_exode_rural_2.jpg": {src: "images/1905_exode_rural_2.jpg"},
 "1905_travail_usines_2.jpg": {src: "images/1905_travail_usines_2.jpg"},
-"1905_langues_parlees_1.jpg": {src: "images/1905_langues_parlees_1.jpg"}
+"1905_langues_parlees_1.jpg": {src: "images/1905_langues_parlees_1.jpg"},
+"1905_religions_pratiquees_1.jpg": {src: "images/1905_religions_pratiquees_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3992,9 +3993,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe le diagramme. Nomme la religion pratiquée par la majorité de la population québécoise vers 1905.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_langues_parlees_1.jpg", soustitre: "Les religions pratiquées au Québec vers 1905", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_religions_pratiquees_1.jpg", soustitre: "Les religions pratiquées au Québec vers 1905", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le catholicisme est la religion pratiquée par la majorité de la population québécoise vers 1905.",
- updatedAt: "2026-11-23T01:54:40.126Z"
+ updatedAt: "2026-11-23T01:56:16.626Z"
 }
 ]

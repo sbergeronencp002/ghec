@@ -220,7 +220,8 @@ const REGLETTES = {
 "Q219": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q220": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q221": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q222": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
+"Q222": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
+"Q223": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -3931,5 +3932,19 @@ const QUESTIONS = [
  reponse: {type: "tableau_2col"},
  guide: "C - le long du fleuve Saint-Laurent.",
  updatedAt: "2026-11-23T01:35:55.844Z"
+},
+{
+ id: "Q223",
+ niveau: 6,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 2,
+ enonce: "Observe la carte. Indique les lettres correspondant aux régions du Québec où se développe la colonisation vers 1905.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_quebec_vallee_2.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "situer-dans-lespace", elements: ["Laurentides", "Saguenay-Lac-St-Jean"]},
+ guide: {type: "grille", entetes: ["Laurentides", "Saguenay-Lac-St-Jean"], rangees: [["B", "D"]]},
+ updatedAt: "2026-11-23T01:39:43.703Z"
 }
 ]

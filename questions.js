@@ -558,7 +558,8 @@ const IMAGE_DB = {
 "1645_compagnies_obligation_b.jpg": {src: "images/1645_compagnies_obligation_b.jpg"},
 "1645_roi_3.jpg": {src: "images/1645_roi_3.jpg"},
 "1905_territoire_frontieres_maritimes_2.jpg": {src: "images/1905_territoire_frontieres_maritimes_2.jpg"},
-"1905_territoire_frontieres_terrestres_2.jpg": {src: "images/1905_territoire_frontieres_terrestres_2.jpg"}
+"1905_territoire_frontieres_terrestres_2.jpg": {src: "images/1905_territoire_frontieres_terrestres_2.jpg"},
+"1905_territoire_frontieres_maritimes_1.jpg": {src: "images/1905_territoire_frontieres_maritimes_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3792,9 +3793,9 @@ const QUESTIONS = [
  soustag: "Situer 2 éléments dans l'espace",
  enonce: "Observe la carte. Indique les lettres correspondant aux frontières maritimes du Québec vers 1905.",
  aspects: [{aspect: "Territoire"}],
- documents: [],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_frontieres_maritimes_1.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "situer-dans-lespace", elements: ["Baie James", "Golfe du Saint-Laurent"]},
  guide: {type: "grille", entetes: ["Baie James", "Golfe du Saint-Laurent"], rangees: [["A", "D"]]},
- updatedAt: "2026-11-23T00:21:19.496Z"
+ updatedAt: "2026-11-23T00:22:12.963Z"
 }
 ]

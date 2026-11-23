@@ -212,7 +212,8 @@ const REGLETTES = {
 "Q211": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q212": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q213": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q214": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]}
+"Q214": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
+"Q215": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -559,7 +560,8 @@ const IMAGE_DB = {
 "1645_roi_3.jpg": {src: "images/1645_roi_3.jpg"},
 "1905_territoire_frontieres_maritimes_2.jpg": {src: "images/1905_territoire_frontieres_maritimes_2.jpg"},
 "1905_territoire_frontieres_terrestres_2.jpg": {src: "images/1905_territoire_frontieres_terrestres_2.jpg"},
-"1905_territoire_frontieres_maritimes_1.jpg": {src: "images/1905_territoire_frontieres_maritimes_1.jpg"}
+"1905_territoire_frontieres_maritimes_1.jpg": {src: "images/1905_territoire_frontieres_maritimes_1.jpg"},
+"1905_territoire_frontieres_terrestres_1.jpg": {src: "images/1905_territoire_frontieres_terrestres_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3797,5 +3799,20 @@ const QUESTIONS = [
  reponse: {type: "situer-dans-lespace", elements: ["Baie James", "Golfe du Saint-Laurent"]},
  guide: {type: "grille", entetes: ["Baie James", "Golfe du Saint-Laurent"], rangees: [["A", "E"]]},
  updatedAt: "2026-11-23T00:23:50.967Z"
+},
+{
+ id: "Q215",
+ niveau: 4,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Situer 2 éléments dans l'espace",
+ enonce: "Observe la carte. Indique les lettres correspondant aux frontières terrestres du Québec vers 1905.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_frontieres_terrestres_1.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "situer-dans-lespace", elements: ["Ontario", "Nouveau-Brunswick"]},
+ guide: {type: "grille", entetes: ["Ontario", "Nouveau-Brunswick"], rangees: [["A", "C"]]},
+ updatedAt: "2026-11-23T00:25:29.867Z"
 }
 ]

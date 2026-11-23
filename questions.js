@@ -221,7 +221,8 @@ const REGLETTES = {
 "Q220": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q221": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q222": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]},
-"Q223": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]}
+"Q223": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
+"Q224": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -576,7 +577,9 @@ const IMAGE_DB = {
 "1905_travail_usines_1.jpg": {src: "images/1905_travail_usines_1.jpg"},
 "1905_population_1.jpg": {src: "images/1905_population_1.jpg"},
 "1905_population_2.jpg": {src: "images/1905_population_2.jpg"},
-"1905_territoire_quebec_vallee_2.jpg": {src: "images/1905_territoire_quebec_vallee_2.jpg"}
+"1905_territoire_quebec_vallee_2.jpg": {src: "images/1905_territoire_quebec_vallee_2.jpg"},
+"1905_exode_rural_2.jpg": {src: "images/1905_exode_rural_2.jpg"},
+"1905_travail_usines_2.jpg": {src: "images/1905_travail_usines_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3946,5 +3949,19 @@ const QUESTIONS = [
  reponse: {type: "situer-dans-lespace", elements: ["Laurentides", "Saguenay-Lac-St-Jean"]},
  guide: {type: "grille", entetes: ["Laurentides", "Saguenay-Lac-St-Jean"], rangees: [["B", "D"]]},
  updatedAt: "2026-11-23T01:39:43.703Z"
+},
+{
+ id: "Q224",
+ niveau: 6,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 2,
+ enonce: "Observe les documents A et B. Explique comment l'exode rural contribue à la croissance des villes québécoises vers 1905.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_exode_rural_2.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1905_travail_usines_2.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Vers 1905, de nombreux habitants quittent les campagnes pour s'installer dans les villes afin de travailler dans les usines, ce qui contribue à l'augmentation de la population urbaine.",
+ updatedAt: "2026-11-23T01:44:44.944Z"
 }
 ]

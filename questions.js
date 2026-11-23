@@ -229,7 +229,8 @@ const REGLETTES = {
 "Q228": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q229": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q230": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q231": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
+"Q231": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
+"Q232": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -596,7 +597,8 @@ const IMAGE_DB = {
 "1905_arts_musique_2.jpg": {src: "images/1905_arts_musique_2.jpg"},
 "1905_arts_architecture_2.jpg": {src: "images/1905_arts_architecture_2.jpg"},
 "1905_arts_peinture_2.jpg": {src: "images/1905_arts_peinture_2.jpg"},
-"1905_arts_litterature_2.jpg": {src: "images/1905_arts_litterature_2.jpg"}
+"1905_arts_litterature_2.jpg": {src: "images/1905_arts_litterature_2.jpg"},
+"1905_divertissement_1.jpg": {src: "images/1905_divertissement_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -4090,5 +4092,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Architecture", "Littérature", "Musique", "Peinture"]},
  guide: {type: "grille", entetes: ["Architecture", "Littérature", "Musique", "Peinture"], rangees: [["B", "D", "A", "C"]]},
  updatedAt: "2026-11-23T02:14:53.690Z"
+},
+{
+ id: "Q232",
+ niveau: 6,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme un divertissement pratiqué par la population québécoise vers 1905.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_divertissement_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Le hockey sur glace est un divertissement pratiqué par la population québécoise vers 1905.",
+ updatedAt: "2026-11-23T02:20:43.886Z"
 }
 ]

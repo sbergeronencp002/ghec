@@ -3795,7 +3795,7 @@ const QUESTIONS = [
  aspects: [{aspect: "Territoire"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_frontieres_maritimes_1.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "situer-dans-lespace", elements: ["Baie James", "Golfe du Saint-Laurent"]},
- guide: {type: "grille", entetes: ["Baie James", "Golfe du Saint-Laurent"], rangees: [["A", "D"]]},
- updatedAt: "2026-11-23T00:22:12.963Z"
+ guide: {type: "grille", entetes: ["Baie James", "Golfe du Saint-Laurent"], rangees: [["A", "E"]]},
+ updatedAt: "2026-11-23T00:23:50.967Z"
 }
 ]

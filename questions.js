@@ -214,7 +214,8 @@ const REGLETTES = {
 "Q213": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
 "Q214": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q215": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
-"Q216": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]}
+"Q216": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
+"Q217": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -562,7 +563,8 @@ const IMAGE_DB = {
 "1905_territoire_frontieres_maritimes_2.jpg": {src: "images/1905_territoire_frontieres_maritimes_2.jpg"},
 "1905_territoire_frontieres_terrestres_2.jpg": {src: "images/1905_territoire_frontieres_terrestres_2.jpg"},
 "1905_territoire_frontieres_maritimes_1.jpg": {src: "images/1905_territoire_frontieres_maritimes_1.jpg"},
-"1905_territoire_frontieres_terrestres_1.jpg": {src: "images/1905_territoire_frontieres_terrestres_1.jpg"}
+"1905_territoire_frontieres_terrestres_1.jpg": {src: "images/1905_territoire_frontieres_terrestres_1.jpg"},
+"1905_territoire_quebec_vallee_1.jpg": {src: "images/1905_territoire_quebec_vallee_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3830,5 +3832,20 @@ const QUESTIONS = [
  reponse: {type: "situer-dans-lespace", elements: ["Ontario", "Nouveau-Brunswick"]},
  guide: {type: "grille", entetes: ["États-Unis", "District d'Ungava"], rangees: [["B", "E"]]},
  updatedAt: "2026-11-23T00:26:10.609Z"
+},
+{
+ id: "Q217",
+ niveau: 6,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme la région où se concentre principalement la population québécoise vers 1905.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_quebec_vallee_1.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La population québécoise se concentre principalement dans la vallée du Saint-Laurent vers 1905.",
+ updatedAt: "2026-11-23T00:45:51.562Z"
 }
 ]

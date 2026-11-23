@@ -228,7 +228,8 @@ const REGLETTES = {
 "Q227": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q228": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q229": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q230": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q230": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q231": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]}
 }
 
 const IMAGE_DB = {
@@ -591,7 +592,11 @@ const IMAGE_DB = {
 "1905_arts_peinture_1.jpg": {src: "images/1905_arts_peinture_1.jpg"},
 "1905_arts_architecture_1.jpg": {src: "images/1905_arts_architecture_1.jpg"},
 "1905_arts_musique_1.jpg": {src: "images/1905_arts_musique_1.jpg"},
-"1905_arts_litterature_1.jpg": {src: "images/1905_arts_litterature_1.jpg"}
+"1905_arts_litterature_1.jpg": {src: "images/1905_arts_litterature_1.jpg"},
+"1905_arts_musique_2.jpg": {src: "images/1905_arts_musique_2.jpg"},
+"1905_arts_architecture_2.jpg": {src: "images/1905_arts_architecture_2.jpg"},
+"1905_arts_peinture_2.jpg": {src: "images/1905_arts_peinture_2.jpg"},
+"1905_arts_litterature_2.jpg": {src: "images/1905_arts_litterature_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -4065,5 +4070,25 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La littérature.",
  updatedAt: "2026-11-23T02:11:25.960Z"
+},
+{
+ id: "Q231",
+ niveau: 6,
+ oi: "Mettre en relation des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 2,
+ soustag: "Mettre en relation des faits - 4",
+ enonce: "Les documents A à D présentent différentes formes d'art de la société québécoise vers 1905. Associe chaque forme d'art au document correspondant.",
+ aspects: [{aspect: "Culture"}],
+ documents: [
+  {type: "textes", cols: [{titre: "Document A", ref: "1905_arts_musique_2.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document B", ref: "1905_arts_architecture_2.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document C", ref: "1905_arts_peinture_2.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]},
+  {type: "textes", cols: [{titre: "Document D", ref: "1905_arts_litterature_2.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}
+ ],
+ reponse: {type: "mettre-en-relation", elements: ["Architecture", "Littérature", "Musique", "Peinture"]},
+ guide: {type: "grille", entetes: ["Architecture", "Littérature", "Musique", "Peinture"], rangees: [["B", "D", "A", "C"]]},
+ updatedAt: "2026-11-23T02:14:53.690Z"
 }
 ]

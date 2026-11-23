@@ -216,7 +216,8 @@ const REGLETTES = {
 "Q215": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q216": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q217": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q218": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q218": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q219": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
 }
 
 const IMAGE_DB = {
@@ -566,7 +567,9 @@ const IMAGE_DB = {
 "1905_territoire_frontieres_maritimes_1.jpg": {src: "images/1905_territoire_frontieres_maritimes_1.jpg"},
 "1905_territoire_frontieres_terrestres_1.jpg": {src: "images/1905_territoire_frontieres_terrestres_1.jpg"},
 "1905_territoire_quebec_vallee_1.jpg": {src: "images/1905_territoire_quebec_vallee_1.jpg"},
-"1905_regions_ressources_1.jpg": {src: "images/1905_regions_ressources_1.jpg"}
+"1905_regions_ressources_1.jpg": {src: "images/1905_regions_ressources_1.jpg"},
+"1905_exode_rural_1.jpg": {src: "images/1905_exode_rural_1.jpg"},
+"1905_travail_usines_1.jpg": {src: "images/1905_travail_usines_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3864,5 +3867,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Laurentides, le Saguenay–Lac-Saint-Jean et le Témiscamingue sont des régions de colonisation qui se développent au Québec vers 1905.",
  updatedAt: "2026-11-23T00:54:19.979Z"
+},
+{
+ id: "Q219",
+ niveau: 6,
+ oi: "Établir des liens de causalité",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 2,
+ enonce: "Explique comment l'industrialisation contribue à la croissance des villes au Québec vers 1905.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_exode_rural_1.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1905_travail_usines_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 3},
+ guide: "Le développement des industries crée des emplois dans les villes, ce qui attire des travailleurs provenant notamment des campagnes.",
+ updatedAt: "2026-11-23T00:59:48.060Z"
 }
 ]

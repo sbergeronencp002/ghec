@@ -233,7 +233,8 @@ const REGLETTES = {
 "Q232": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q233": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q234": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q235": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]}
+"Q235": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
+"Q236": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -606,7 +607,8 @@ const IMAGE_DB = {
 "1905_vetements_1.jpg": {src: "images/1905_vetements_1.jpg"},
 "1905_vetements_2.jpg": {src: "images/1905_vetements_2.jpg"},
 "1905_vetements_3.jpg": {src: "images/1905_vetements_3.jpg"},
-"1905_vetements_4.jpg": {src: "images/1905_vetements_4.jpg"}
+"1905_vetements_4.jpg": {src: "images/1905_vetements_4.jpg"},
+"1905_eglise_catholique_1.jpg": {src: "images/1905_eglise_catholique_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -4160,5 +4162,20 @@ const QUESTIONS = [
  reponse: {type: "mettre-en-relation", elements: ["Milieu bourgeois", "Milieu ouvrier"]},
  guide: {type: "grille", entetes: ["Milieu bourgeois", "Milieu ouvrier"], rangees: [["B", "A"]]},
  updatedAt: "2026-11-23T04:12:46.575Z"
+},
+{
+ id: "Q236",
+ niveau: 6,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme une coutume religieuse pratiquée par la population québécoise vers 1905.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_eglise_catholique_1.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1905, la fréquentation de l'église est une coutume religieuse pratiquée par une grande partie de la population québécoise.",
+ updatedAt: "2026-11-23T11:31:42.468Z"
 }
 ]

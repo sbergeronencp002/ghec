@@ -218,7 +218,8 @@ const REGLETTES = {
 "Q217": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q218": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q219": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
-"Q220": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q220": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q221": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -571,7 +572,8 @@ const IMAGE_DB = {
 "1905_regions_ressources_1.jpg": {src: "images/1905_regions_ressources_1.jpg"},
 "1905_exode_rural_1.jpg": {src: "images/1905_exode_rural_1.jpg"},
 "1905_travail_usines_1.jpg": {src: "images/1905_travail_usines_1.jpg"},
-"1905_population_1.jpg": {src: "images/1905_population_1.jpg"}
+"1905_population_1.jpg": {src: "images/1905_population_1.jpg"},
+"1905_population_2.jpg": {src: "images/1905_population_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3898,5 +3900,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Les Canadiens français constituent le groupe majoritaire au Québec vers 1905.",
  updatedAt: "2026-11-23T01:04:44.151Z"
+},
+{
+ id: "Q221",
+ niveau: 6,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe le tableau. Indique le nombre approximatif d'habitants au Québec vers 1905.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_population_2.jpg", soustitre: "Nombre approximatif d'habitants au Québec vers 1905", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "La population québécoise compte environ 1 800 000 habitants vers 1905.",
+ updatedAt: "2026-11-23T01:21:16.247Z"
 }
 ]

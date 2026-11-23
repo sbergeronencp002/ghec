@@ -211,7 +211,8 @@ const REGLETTES = {
 "Q210": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q211": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q212": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q213": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q213": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q214": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -3780,5 +3781,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "Le Québec partage ses frontières terrestres avec l'Ontario, les États-Unis, le Nouveau-Brunswick, le Labrador et District d’Ungava vers 1905.",
  updatedAt: "2026-11-22T14:10:38.897Z"
+},
+{
+ id: "Q214",
+ niveau: 4,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 2,
+ soustag: "Situer 2 éléments dans l'espace",
+ enonce: "Observe la carte. Indique les lettres correspondant aux frontières maritimes du Québec vers 1905.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [],
+ reponse: {type: "situer-dans-lespace", elements: ["Baie James", "Golfe du Saint-Laurent"]},
+ guide: {type: "grille", entetes: ["Baie James", "Golfe du Saint-Laurent"], rangees: [["A", "D"]]},
+ updatedAt: "2026-11-23T00:21:19.496Z"
 }
 ]

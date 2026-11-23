@@ -219,7 +219,8 @@ const REGLETTES = {
 "Q218": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q219": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q220": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q221": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q221": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q222": {oi: "Situer dans l'espace", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève situe le fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas le fait dans l'espace."}]}
 }
 
 const IMAGE_DB = {
@@ -573,7 +574,8 @@ const IMAGE_DB = {
 "1905_exode_rural_1.jpg": {src: "images/1905_exode_rural_1.jpg"},
 "1905_travail_usines_1.jpg": {src: "images/1905_travail_usines_1.jpg"},
 "1905_population_1.jpg": {src: "images/1905_population_1.jpg"},
-"1905_population_2.jpg": {src: "images/1905_population_2.jpg"}
+"1905_population_2.jpg": {src: "images/1905_population_2.jpg"},
+"1905_territoire_quebec_vallee_2.jpg": {src: "images/1905_territoire_quebec_vallee_2.jpg"}
 }
 
 const QUESTIONS = [
@@ -3915,5 +3917,19 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La population québécoise compte environ 1 800 000 habitants vers 1905.",
  updatedAt: "2026-11-23T01:21:16.247Z"
+},
+{
+ id: "Q222",
+ niveau: 6,
+ oi: "Situer dans l'espace",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 1,
+ enonce: "Observe la carte. Indique la lettre correspondant à la région où se concentre principalement la population québécoise vers 1905.",
+ aspects: [{aspect: "Population"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_quebec_vallee_2.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "tableau_2col"},
+ guide: "C - le long du fleuve Saint-Laurent.",
+ updatedAt: "2026-11-23T01:35:55.844Z"
 }
 ]

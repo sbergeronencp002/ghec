@@ -3885,12 +3885,12 @@ const QUESTIONS = [
  competence: "Lire l'organisation du territoire",
  periodes: ["La société québécoise vers 1905"],
  points: 2,
- enonce: "Explique comment l'industrialisation contribue à la croissance des villes au Québec vers 1905.",
+ enonce: "Observe les documents A et B. Explique comment l'industrialisation contribue à la croissance des villes québécoises vers 1905.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_exode_rural_1.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1905_travail_usines_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 3},
- guide: "Le développement des industries crée des emplois dans les villes, ce qui attire des travailleurs provenant notamment des campagnes.",
- updatedAt: "2026-11-23T00:59:48.060Z"
+ guide: "L'industrialisation entraîne la création de nombreux emplois dans les usines ce qui attire des travailleurs des campagnes vers les villes et contribue ainsi à l'augmentation de la population urbaine.",
+ updatedAt: "2026-11-23T01:45:45.895Z"
 },
 {
  id: "Q220",

@@ -3976,9 +3976,9 @@ const QUESTIONS = [
  soustag: "Établir 1 fait - 1",
  enonce: "Observe le diagramme. Nomme la langue parlée par la majorité de la population québécoise vers 1905.",
  aspects: [{aspect: "Population"}],
- documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_langues_parlees_1.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_langues_parlees_1.jpg", soustitre: "Les langues parlées au Québec vers 1905", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
  reponse: {type: "lignes", nombre: 1},
  guide: "Le français est la langue parlée par la majorité de la population québécoise vers 1905.",
- updatedAt: "2026-11-23T01:52:01.140Z"
+ updatedAt: "2026-11-23T01:52:56.475Z"
 }
 ]

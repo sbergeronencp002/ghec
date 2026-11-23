@@ -215,7 +215,8 @@ const REGLETTES = {
 "Q214": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q215": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
 "Q216": {oi: "Situer dans l'espace", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève situe les faits dans l'espace."}, {pts: 1, desc: "L'élève situe un fait dans l'espace."}, {pts: 0, desc: "L'élève ne situe pas les faits dans l'espace."}]},
-"Q217": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q217": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q218": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -564,7 +565,8 @@ const IMAGE_DB = {
 "1905_territoire_frontieres_terrestres_2.jpg": {src: "images/1905_territoire_frontieres_terrestres_2.jpg"},
 "1905_territoire_frontieres_maritimes_1.jpg": {src: "images/1905_territoire_frontieres_maritimes_1.jpg"},
 "1905_territoire_frontieres_terrestres_1.jpg": {src: "images/1905_territoire_frontieres_terrestres_1.jpg"},
-"1905_territoire_quebec_vallee_1.jpg": {src: "images/1905_territoire_quebec_vallee_1.jpg"}
+"1905_territoire_quebec_vallee_1.jpg": {src: "images/1905_territoire_quebec_vallee_1.jpg"},
+"1905_regions_ressources_1.jpg": {src: "images/1905_regions_ressources_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -3847,5 +3849,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "La population québécoise se concentre principalement dans la vallée du Saint-Laurent vers 1905.",
  updatedAt: "2026-11-23T00:45:51.562Z"
+},
+{
+ id: "Q218",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe la carte. Nomme une région du Québec où se développe la colonisation vers 1905.",
+ aspects: [{aspect: "Territoire"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_regions_ressources_1.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Les Laurentides, le Saguenay–Lac-Saint-Jean et le Témiscamingue sont des régions de colonisation qui se développent au Québec vers 1905.",
+ updatedAt: "2026-11-23T00:54:19.979Z"
 }
 ]

@@ -230,7 +230,8 @@ const REGLETTES = {
 "Q229": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q230": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q231": {oi: "Mettre en relation des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (4 sur 4)"}, {pts: 1, desc: "L'élève met en relation les faits. (3 ou 2 sur 4)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 4)"}]},
-"Q232": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
+"Q232": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
+"Q233": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]}
 }
 
 const IMAGE_DB = {
@@ -598,7 +599,8 @@ const IMAGE_DB = {
 "1905_arts_architecture_2.jpg": {src: "images/1905_arts_architecture_2.jpg"},
 "1905_arts_peinture_2.jpg": {src: "images/1905_arts_peinture_2.jpg"},
 "1905_arts_litterature_2.jpg": {src: "images/1905_arts_litterature_2.jpg"},
-"1905_divertissement_1.jpg": {src: "images/1905_divertissement_1.jpg"}
+"1905_divertissement_1.jpg": {src: "images/1905_divertissement_1.jpg"},
+"1905_alimentation_1.jpg": {src: "images/1905_alimentation_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -4107,5 +4109,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 1},
  guide: "Le hockey sur glace est un divertissement pratiqué par la population québécoise vers 1905.",
  updatedAt: "2026-11-23T02:20:43.886Z"
+},
+{
+ id: "Q233",
+ niveau: 4,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["Société française en Nouvelle-France vers 1645"],
+ points: 1,
+ soustag: "Établir 1 fait - 1",
+ enonce: "Observe l'illustration. Nomme un aliment consommé par la population québécoise vers 1905.",
+ aspects: [{aspect: "Vie quotidienne"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_alimentation_1.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 1},
+ guide: "Vers 1905, la population québécoise consomme notamment de la viande, des produits laitiers et des légumes.",
+ updatedAt: "2026-11-23T02:23:58.775Z"
 }
 ]

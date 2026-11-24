@@ -6,7 +6,7 @@
 // ⚠️ CACHE doit être incrémenté à chaque changement de PRECACHE (cf. CLAUDE.md, table
 // « Cache-bust actuel ») — sinon les navigateurs déjà visités gardent l'ancienne liste
 // indéfiniment (self.skipWaiting()/clients.claim() ne rechargent pas les onglets ouverts).
-const CACHE = 'ghec-v38';
+const CACHE = 'ghec-v39';
 const PRECACHE = [
   './sync-data.js?v=3',
   './admin-tools.js?v=1',
@@ -15,7 +15,7 @@ const PRECACHE = [
   './main-ui.js?v=1',
   './style.css?v=41',
   './app.js?v=75',
-  './filters.js?v=6',
+  './filters.js?v=7',
 ];
 // Précachés (comme repli hors-ligne) mais TOUJOURS revalidés réseau-first dans le
 // handler 'fetch' ci-dessous : leur contenu change sans que leur URL change, un
@@ -25,6 +25,7 @@ const PRECACHE = [
 // en cache-first pur depuis la mise en place de la section Configuration).
 const NETWORK_FIRST_PRECACHE = [
   './index.html',
+  './main.html',
   './contexte.js',
   './competences.js',
   './oi-config.js?v=1',
@@ -64,6 +65,7 @@ self.addEventListener('fetch', e => {
   const isNetworkFirst = url.pathname.endsWith('/questions.js')
     || url.pathname.endsWith('/questions-index.js')
     || url.pathname.endsWith('/index.html')
+    || url.pathname.endsWith('/main.html')
     || url.pathname.endsWith('/') // navigation vers la racine du site (ex. /ghec/) == index.html
     || url.pathname.endsWith('/contexte.js')
     || url.pathname.endsWith('/competences.js')

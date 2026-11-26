@@ -235,7 +235,8 @@ const REGLETTES = {
 "Q234": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q235": {oi: "Mettre en relation des faits", colonnes: ["2 points", "0 point"], niveaux: [{pts: 2, desc: "L'élève met en relation tous les faits. (2 sur 2)"}, {pts: 0, desc: "L'élève ne met pas suffisamment en relation les faits. (1 ou 0 sur 2)"}]},
 "Q236": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
-"Q237": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]}
+"Q237": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
+"Q238": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -611,7 +612,8 @@ const IMAGE_DB = {
 "1905_vetements_4.jpg": {src: "images/1905_vetements_4.jpg"},
 "1905_eglise_catholique_1.jpg": {src: "images/1905_eglise_catholique_1.jpg"},
 "1905_eglise_catholique_2.jpg": {src: "images/1905_eglise_catholique_2.jpg"},
-"1905_eglise_catholique_3.jpg": {src: "images/1905_eglise_catholique_3.jpg"}
+"1905_eglise_catholique_3.jpg": {src: "images/1905_eglise_catholique_3.jpg"},
+"1905_agriculture_1.jpg": {src: "images/1905_agriculture_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -4194,5 +4196,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 3},
  guide: "Vers 1905, la religion catholique influence les coutumes de nombreux Québécois puisqu'ils assistent régulièrement à la messe et participent à des fêtes et à des cérémonies religieuses.",
  updatedAt: "2026-11-23T11:36:58.152Z"
+},
+{
+ id: "Q238",
+ niveau: 6,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "Observe l'illustration. Nomme deux activités économiques pratiquées dans les milieux ruraux du Québec vers 1905.",
+ aspects: [{aspect: "Activités économiques"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_agriculture_1.jpg", source: "Reconstitution réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI)."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Vers 1905, l'agriculture et l'élevage sont deux activités économiques pratiquées dans les milieux ruraux du Québec.",
+ updatedAt: "2026-11-26T19:10:26.583Z"
 }
 ]

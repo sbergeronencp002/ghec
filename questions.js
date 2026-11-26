@@ -3888,7 +3888,7 @@ const QUESTIONS = [
  periodes: ["La société québécoise vers 1905"],
  points: 1,
  soustag: "Établir 1 fait - 1",
- enonce: "Observe l'illustration. Nomme la région où se concentre principalement la population québécoise vers 1905.",
+ enonce: "Observe l'illustration. Nomme la région où se concentre principalement la population québécoise entre 1905 et 1960.",
  aspects: [{aspect: "Population"}],
  documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_territoire_quebec_vallee_1.jpg", source: "Carte du Québec. Adaptée d'après d-maps.com."}]}],
  reponse: {type: "lignes", nombre: 1},

@@ -237,7 +237,8 @@ const REGLETTES = {
 "Q236": {oi: "Établir des faits", colonnes: ["1 point", "0 point"], niveaux: [{pts: 1, desc: "L'élève établit les faits."}, {pts: 0, desc: "L'élève n'établit pas les faits."}]},
 "Q237": {oi: "Établir des liens de causalité", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit correctement le lien de causalité."}, {pts: 1, desc: "L'élève établit partiellement le lien de causalité."}, {pts: 0, desc: "L'élève n'établit pas le lien de causalité."}]},
 "Q238": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
-"Q239": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
+"Q239": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]},
+"Q240": {oi: "Établir des faits", colonnes: ["2 points", "1 point", "0 point"], niveaux: [{pts: 2, desc: "L'élève établit tous les faits. (2 sur 2)"}, {pts: 1, desc: "L'élève établit un fait. (1 sur 2)"}, {pts: 0, desc: "L'élève n'établit pas les faits. (0 sur 2)"}]}
 }
 
 const IMAGE_DB = {
@@ -615,7 +616,9 @@ const IMAGE_DB = {
 "1905_eglise_catholique_2.jpg": {src: "images/1905_eglise_catholique_2.jpg"},
 "1905_eglise_catholique_3.jpg": {src: "images/1905_eglise_catholique_3.jpg"},
 "1905_agriculture_1.jpg": {src: "images/1905_agriculture_1.jpg"},
-"1905_agriculture_2.jpg": {src: "images/1905_agriculture_2.jpg"}
+"1905_agriculture_2.jpg": {src: "images/1905_agriculture_2.jpg"},
+"1905_education_1.jpg": {src: "images/1905_education_1.jpg"},
+"1905_soins_1.jpg": {src: "images/1905_soins_1.jpg"}
 }
 
 const QUESTIONS = [
@@ -4228,5 +4231,20 @@ const QUESTIONS = [
  reponse: {type: "lignes", nombre: 2},
  guide: "Vers 1905, les agriculteurs québécois fabriquent notamment du beurre et du fromage.",
  updatedAt: "2026-11-26T19:14:43.389Z"
+},
+{
+ id: "Q240",
+ niveau: 6,
+ oi: "Établir des faits",
+ competence: "Lire l'organisation du territoire",
+ periodes: ["La société québécoise vers 1905"],
+ points: 2,
+ soustag: "Établir tous les faits - 2",
+ enonce: "Observe les documents A et B. Nomme deux domaines dans lesquels l'Église catholique joue un rôle important dans la société québécoise jusqu'en 1960.",
+ aspects: [{aspect: "Culture"}],
+ documents: [{type: "textes", cols: [{titre: "Document A", ref: "1905_education_1.jpg", source: "Reconstitution historique à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}, {type: "textes", cols: [{titre: "Document B", ref: "1905_soins_1.jpg", source: "Reconstitution historique réalisée à l'aide de l'intelligence artificielle (ChatGPT, OpenAI), 2026."}]}],
+ reponse: {type: "lignes", nombre: 2},
+ guide: "Jusqu'en 1960, l'Église catholique joue un rôle important dans l'éducation et les soins de santé.",
+ updatedAt: "2026-11-27T01:51:12.235Z"
 }
 ]
